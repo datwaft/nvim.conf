@@ -1,12 +1,27 @@
 " -------------------------------------------------------------------------------------------------
 " NeoVim configuration
 " -------------------------------------------------------------------------------------------------
+if has('win32') || has('win64')
   let g:python3_host_prog = '~/AppData/Local/Programs/Python/Python38-32/python.exe'
+else
+  let g:python3_host_prog = '/usr/bin/python3'
+  let g:python_host_prog = '/usr/bin/python'
+endif
 " -------------------------------------------------------------------------------------------------
 " Variable initiliazation
 " -------------------------------------------------------------------------------------------------
+if has('win32') || has('win64')
   let g:vim_folder = '~/AppData/Local/nvim'
   let g:plugged_home = '~/AppData/Local/nvim/plugged'
+else
+  let g:vim_folder = '~/.config/nvim'
+  let g:plugged_home = '~/.config/nvim/plugged'
+endif
+" -------------------------------------------------------------------------------------------------
+" Before initialization
+" -------------------------------------------------------------------------------------------------
+  " vim-polyglot
+  let g:polyglot_disabled = ['python', 'python-indent', 'latex']
 " -------------------------------------------------------------------------------------------------
 " Plugin declaration
 " -------------------------------------------------------------------------------------------------
@@ -19,6 +34,7 @@
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     " Syntax highlighting
     Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+    Plug 'sheerun/vim-polyglot'
     " Better visual guide
     Plug 'Yggdroot/indentLine'
     Plug 'haya14busa/incsearch.vim'
@@ -150,6 +166,8 @@
   set fileencoding=utf-8
   " Format
   set formatoptions+=j
+  " Mouse support
+  set mouse=a
 " -------------------------------------------------------------------------------------------------
 " Keyboard
 " -------------------------------------------------------------------------------------------------
@@ -162,6 +180,17 @@
   " Ctrl + s to go to the beginning of the line
   map <C-s> $
   imap <C-s> <ESC>A
+  " Tabs
+  map <C-t><up> :tabr<cr>
+  map <C-t>k :tabr<cr>
+  map <C-t><down> :tabl<cr>
+  map <C-t>j :tabl<cr>
+  map <C-t><left> :tabp<cr>
+  map <C-t>h :tabp<cr>
+  map <C-t><right> :tabn<cr>
+  map <C-t>l :tabn<cr>
+  " Folding
+  nnoremap <expr> <f2> &foldlevel ? 'zM' :'zR'
 " -------------------------------------------------------------------------------------------------
 " Language Specific
 " -------------------------------------------------------------------------------------------------
@@ -170,4 +199,3 @@
   " Python
   au BufNewFile,BufRead *.py set foldmethod=indent
   nnoremap <space> za
-
