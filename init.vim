@@ -159,7 +159,11 @@ endif
   set shiftwidth=2
   set autoindent
   " Undo persistence
-  set undodir=~/AppData/Local/nvim/undodir.vim
+  if has('win32') || has('win64')
+    set undodir=~/AppData/Local/nvim/undodir.vim
+  else
+    set undodir=~/.config/nvim/undodir.vim
+  endif
   set undofile
   " Wrapping
   set wrap 
