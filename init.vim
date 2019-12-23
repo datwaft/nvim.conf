@@ -181,6 +181,7 @@ endif
   " Search configuration
   set ignorecase
   set smartcase
+  set inccommand=nosplit
   " Clipboard
   set clipboard+=unnamedplus
   " Syntax
