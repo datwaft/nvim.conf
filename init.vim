@@ -27,7 +27,8 @@ endif
 " -------------------------------------------------------------------------------------------------
   call plug#begin(g:plugged_home)
     " Status Line
-    Plug 'itchyny/lightline.vim'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
     " UI Decoration
     Plug 'mhinz/vim-startify'
     " Autocompleter
@@ -135,6 +136,8 @@ endif
     endfunction
     let g:fzf_layout = { 'window': 'call FloatingFZF()' }
   endif
+  " vim-airline
+  let g:airline_powerline_fonts = 1
 " -------------------------------------------------------------------------------------------------
 " File compatibility
 " -------------------------------------------------------------------------------------------------
