@@ -57,6 +57,9 @@ endif
     Plug 'lervag/vimtex'
     Plug 'Konfekt/FastFold'
     Plug 'matze/vim-tex-fold'
+    " Git
+    Plug 'tpope/vim-fugitive'
+    Plug 'airblade/vim-gitgutter'
   call plug#end()
   filetype plugin indent on
 " -------------------------------------------------------------------------------------------------
