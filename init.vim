@@ -39,7 +39,6 @@ endif
     Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
     Plug 'sheerun/vim-polyglot'
     " Better visual guide
-    Plug 'Yggdroot/indentLine'
     Plug 'haya14busa/incsearch.vim'
     Plug 'norcalli/nvim-colorizer.lua'
     " Themes
@@ -49,6 +48,7 @@ endif
     Plug 'tmsvg/pear-tree'
     Plug 'kshenoy/vim-signature'
     Plug 'wellle/targets.vim'
+    Plug 'ntpeters/vim-better-whitespace'
     " File searching
     Plug 'scrooloose/nerdtree'
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -56,7 +56,9 @@ endif
     " Autocomment
     Plug 'tpope/vim-commentary'
     " Indentation
+    Plug 'Yggdroot/indentLine'
     Plug 'Vimjas/vim-python-pep8-indent'
+    Plug 'sickill/vim-pasta'
     " LaTeX
     Plug 'lervag/vimtex'
     Plug 'Konfekt/FastFold'
@@ -143,6 +145,8 @@ endif
   let g:airline_powerline_fonts = 1
   " nvim-colorizer
   lua require'colorizer'.setup()
+  " vim-better-whitespace
+  let g:strip_whitespace_on_save = 1
 " -------------------------------------------------------------------------------------------------
 " File compatibility
 " -------------------------------------------------------------------------------------------------
@@ -175,7 +179,7 @@ endif
   endif
   set undofile
   " Wrapping
-  set wrap 
+  set wrap
   set textwidth=100
   set backspace=2
   " Line numbers
@@ -200,7 +204,7 @@ endif
 " -------------------------------------------------------------------------------------------------
 " Keyboard
 " -------------------------------------------------------------------------------------------------
-  map <C-c> :NERDTreeToggle<CR> 
+  map <C-c> :NERDTreeToggle<CR>
   inoremap  ¿
   tnoremap <Esc> <C-\><C-n>
   " Ctrl + a to go to the beginning of the line
