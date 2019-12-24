@@ -22,6 +22,8 @@ endif
 " -------------------------------------------------------------------------------------------------
   " vim-polyglot
   let g:polyglot_disabled = ['python', 'python-indent', 'latex']
+  " nvim-colorizer
+  set termguicolors
 " -------------------------------------------------------------------------------------------------
 " Plugin declaration
 " -------------------------------------------------------------------------------------------------
@@ -39,11 +41,12 @@ endif
     " Better visual guide
     Plug 'Yggdroot/indentLine'
     Plug 'haya14busa/incsearch.vim'
+    Plug 'norcalli/nvim-colorizer.lua'
     " Themes
     Plug 'morhetz/gruvbox'
     " Utilities
-    Plug 'tpope/vim-surround'
-    Plug 'jiangmiao/auto-pairs'
+    Plug 'machakann/vim-sandwich'
+    Plug 'tmsvg/pear-tree'
     Plug 'kshenoy/vim-signature'
     Plug 'wellle/targets.vim'
     " File searching
@@ -138,6 +141,8 @@ endif
   endif
   " vim-airline
   let g:airline_powerline_fonts = 1
+  " nvim-colorizer
+  lua require'colorizer'.setup()
 " -------------------------------------------------------------------------------------------------
 " File compatibility
 " -------------------------------------------------------------------------------------------------
@@ -149,8 +154,6 @@ endif
 " -------------------------------------------------------------------------------------------------
 " Color and Look&Feel
 " -------------------------------------------------------------------------------------------------
-  " TrueColor support
-  set termguicolors
   " Colorscheme
   let g:gruvbox_contrast_dark = 'hard'
   colorscheme gruvbox
