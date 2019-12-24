@@ -37,5 +37,5 @@ pip install neovim pynvim
 
 # getting neovim configuration
 cd .config/
-git clone https://github.com/DatWaft/nvim
+git clone https://github.com/datwaft/nvim
  #here please do a :PlugInstall and a :UpdateRemotePlugins
