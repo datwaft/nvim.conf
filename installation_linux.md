@@ -9,7 +9,7 @@ sudo apt-get install build-essential
 sudo apt-get install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip
 ```
 
-### Install _neovim_ to **/usr/local**:
+### Install _neovim_ to _/usr/local_:
 ```
 git clone https://github.com/neovim/neovim
 cd neovim
