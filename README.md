@@ -1,3 +1,3 @@
 # NeoVim configuration file
 
-Created by: David Guevara 
+**Written by:** David Guevara (datwaft)
