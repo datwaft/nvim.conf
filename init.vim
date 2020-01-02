@@ -21,7 +21,7 @@ endif
 " Before initialization
 " -------------------------------------------------------------------------------------------------
   " vim-polyglot
-  let g:polyglot_disabled = ['python', 'python-indent', 'latex']
+  let g:polyglot_disabled = ['python', 'python-indent', 'latex', 'markdown']
   " nvim-colorizer
   set termguicolors
 " -------------------------------------------------------------------------------------------------
@@ -66,6 +66,10 @@ endif
     " Git
     Plug 'tpope/vim-fugitive'
     Plug 'airblade/vim-gitgutter'
+    " Markdown
+    Plug 'godlygeek/tabular'
+    Plug 'plasticboy/vim-markdown'
+    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
   call plug#end()
   filetype plugin indent on
 " -------------------------------------------------------------------------------------------------
@@ -148,6 +152,11 @@ endif
   lua require'colorizer'.setup()
   " vim-better-whitespace
   let g:strip_whitespace_on_save = 1
+  " markdown-preview.nvim
+  autocmd FileType markdown map <F5> <Plug>MarkdownPreviewToggle
+  " vim-markdown
+  autocmd FileType markdown let g:vim_markdown_conceal = 0
+  autocmd FileType markdown normal zR
 " -------------------------------------------------------------------------------------------------
 " File compatibility
 " -------------------------------------------------------------------------------------------------
@@ -227,3 +236,5 @@ endif
   " Python
   au BufNewFile,BufRead *.py set foldmethod=indent
   nnoremap <space> za
+  " Markdown
+  au BufNewFile,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,*.md setf markdown
