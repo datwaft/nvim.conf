@@ -1,4 +1,4 @@
-source init.vim
+source ./init.vim
 
 if exists('g:fvim_loaded')
   " good old 'set guifont' compatibility
