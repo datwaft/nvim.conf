@@ -11,4 +11,11 @@ if exists('g:fvim_loaded')
   nnoremap <silent> <C-ScrollWheelUp> :set guifont=+<CR>
   nnoremap <silent> <C-ScrollWheelDown> :set guifont=-<CR>
   nnoremap <A-CR> :FVimToggleFullScreen<CR>
+  
+  FVimFontAntialias v:true
+  FVimFontAutohint v:true
+  FVimFontSubpixel v:true
+  FVimFontLcdRender v:true
+  FVimFontHintLevel 'full'
+  FVimFontLineHeight '+1.0'
 endif
