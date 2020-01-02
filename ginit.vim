@@ -18,4 +18,5 @@ if exists('g:fvim_loaded')
   FVimFontLcdRender v:true
   FVimFontHintLevel 'full'
   FVimFontLineHeight '+1.0'
+  FVimFontAutoSnap v:true
 endif
