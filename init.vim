@@ -4,7 +4,7 @@
 if has('win32') || has('win64')
   let g:python3_host_prog = '~/AppData/Local/Programs/Python/Python38-32/python.exe'
 else
-  let g:python3_host_prog = '/usr/bin/python3'
+  let g:python3_host_prog = '~/anaconda3/bin/python'
   let g:python_host_prog = '/usr/bin/python'
 endif
 " -------------------------------------------------------------------------------------------------
@@ -42,7 +42,7 @@ endif
     Plug 'haya14busa/incsearch.vim'
     Plug 'norcalli/nvim-colorizer.lua'
     " Themes
-    Plug 'morhetz/gruvbox'
+    Plug 'gruvbox-community/gruvbox'
     " Utilities
     Plug 'machakann/vim-sandwich'
     Plug 'tmsvg/pear-tree'
@@ -143,6 +143,7 @@ endif
   endif
   " vim-airline
   let g:airline_powerline_fonts = 1
+  let g:airline_theme='gruvbox'
   " nvim-colorizer
   lua require'colorizer'.setup()
   " vim-better-whitespace
@@ -207,12 +208,6 @@ endif
   map <C-c> :NERDTreeToggle<CR>
   inoremap  ¿
   tnoremap <Esc> <C-\><C-n>
-  " Ctrl + a to go to the beginning of the line
-  map <C-a> ^
-  imap <C-a> <ESC>I
-  " Ctrl + s to go to the beginning of the line
-  map <C-s> $
-  imap <C-s> <ESC>A
   " Tabs
   map <C-t><up> :tabr<cr>
   map <C-t>k :tabr<cr>
