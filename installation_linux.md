@@ -1,7 +1,7 @@
 # Linux Installation Instructions
 **Written by:** David Guevara (datwaft)
 
-## Get essentials
+### Get essentials
 ```
 sudo apt-get update
 sudo apt-get upgrade
@@ -9,7 +9,7 @@ sudo apt-get install build-essential
 sudo apt-get install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip
 ```
 
-## Install neovim to /usr/local
+### Install neovim to /usr/local
 ```
 git clone https://github.com/neovim/neovim
 cd neovim
@@ -19,7 +19,7 @@ cd ..
 rm -r -f -d neovim
 ```
 
-## pip install
+### pip install
 ```
 sudo apt-get install python3-pip
 python3 -m pip install eyed3
@@ -30,13 +30,13 @@ sudo apt-get install texlive
 sudo apt-get install latexmk
 ```
 
-## ruby install
+### ruby install
 ```
 sudo apt-get install ruby-full
 sudo gem install neovim
 ```
 
-## node install
+### node install
 ```
 sudo apt-get install curl
 curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
@@ -44,13 +44,13 @@ sudo apt-get install nodejs
 sudo npm install -g neovim
 ```
 
-## python2 install
+### python2 install
 ```
 sudo apt-get install python-pip
 python -m pip install neovim pynvim
 ```
 
-## getting neovim configuration
+### getting neovim configuration
 ```
 cd .config/
 git clone https://github.com/datwaft/nvim
