@@ -22,7 +22,6 @@ rm -r -f -d neovim
 ### _Pip_ install:
 ```shell
 sudo apt-get install python3-pip
-python3 -m pip install eyed3
 python3 -m pip install neovim pynvim
 python3 -m pip install jedi
 sudo -H python3 -m pip install neovim-remote
