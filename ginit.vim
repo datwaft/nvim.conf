@@ -6,7 +6,7 @@ endif
 
 if exists('g:fvim_loaded')
   " good old 'set guifont' compatibility
-  set guifont=Consolas:h10
+  :Guifont DejaVu Sans Mono for Powerline:h13
   " Ctrl-ScrollWheel for zooming in/out
   nnoremap <silent> <C-ScrollWheelUp> :set guifont=+<CR>
   nnoremap <silent> <C-ScrollWheelDown> :set guifont=-<CR>
