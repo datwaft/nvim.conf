@@ -11,12 +11,11 @@ sudo apt-get install ninja-build gettext libtool libtool-bin autoconf automake c
 
 ### Install _neovim_ to _/usr/local_:
 ```shell
+cd /tmp/
 git clone https://github.com/neovim/neovim
 cd neovim
 make CMAKE_BUILD_TYPE=Release
 sudo make install
-cd ..
-rm -r -f -d neovim
 ```
 
 ### _Pip_ install:
