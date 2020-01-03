@@ -4,7 +4,7 @@
 if has('win32') || has('win64')
   let g:python3_host_prog = '~/AppData/Local/Programs/Python/Python38-32/python.exe'
 else
-  let g:python3_host_prog = '~/anaconda3/bin/python'
+  let g:python3_host_prog = '/usr/bin/python3'
   let g:python_host_prog = '/usr/bin/python'
 endif
 " -------------------------------------------------------------------------------------------------
