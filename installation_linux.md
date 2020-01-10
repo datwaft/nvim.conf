@@ -54,3 +54,27 @@ cd .config/
 git clone https://github.com/datwaft/nvim
 ```
 Here please do a `:PlugInstall` and a `:UpdateRemotePlugins`.
+
+### _Git_ configuration:
+```shell
+git config --global user.name "datwaft"
+git config --global user.email "datwaftx@gmail.com"
+git config --global core.editor nvim
+ssh-keygen -t rsa -C "datwaftx@gmail.com"
+clip.exe < ~/.ssh/id_rsa.pub
+```
+Paste your ssh public key into your github account settings.
+Go to your github Account Settings
+Click “SSH Keys” on the left.
+Click “Add SSH Key” on the right.
+Add a label (like “My laptop”) and paste the public key into the big text box.
+
+In a terminal/shell, type the following to test it:
+```
+ssh -T git@github.com
+```
+If it says something like the following, it worked:
+```
+Hi username! You've successfully authenticated, but Github does
+not provide shell access.
+```
