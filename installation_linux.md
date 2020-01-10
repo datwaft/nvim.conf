@@ -67,14 +67,9 @@ Paste your ssh public key into your github account settings.
 Go to your github Account Settings
 Click “SSH Keys” on the left.
 Click “Add SSH Key” on the right.
-Add a label (like “My laptop”) and paste the public key into the big text box.
+Add a label (like “WSL”) and paste the public key into the big text box.
 
 In a terminal/shell, type the following to test it:
 ```
 ssh -T git@github.com
-```
-If it says something like the following, it worked:
-```
-Hi username! You've successfully authenticated, but Github does
-not provide shell access.
 ```
