@@ -65,7 +65,7 @@ endif
     Plug 'matze/vim-tex-fold'
     " Git
     Plug 'tpope/vim-fugitive'
-    Plug 'airblade/vim-gitgutter'
+    Plug 'mhinz/vim-signify'
     " Markdown
     Plug 'godlygeek/tabular'
     Plug 'plasticboy/vim-markdown'
@@ -77,7 +77,7 @@ endif
 " -------------------------------------------------------------------------------------------------
   " coc.nvim
   set hidden
-  set updatetime=300
+  set updatetime=100
   set shortmess+=c
   inoremap <silent><expr> <TAB>
     \ pumvisible() ? "\<C-n>" :
