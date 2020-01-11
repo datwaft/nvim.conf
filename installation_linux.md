@@ -29,6 +29,7 @@ sudo apt-get install latexmk
 ```
 
 ### _Ruby_ install:
+Note: You cannot use _gem_ with hamachi adapter enabled. 
 ```shell
 sudo apt-get install ruby-full
 sudo gem install neovim
