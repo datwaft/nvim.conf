@@ -51,7 +51,7 @@ python -m pip install neovim pynvim
 
 ### Getting _neovim_ configuration:
 ```shell
-cd .config/
+cd ~/.config/
 git clone https://github.com/datwaft/nvim
 ```
 Here please do a `:PlugInstall` and a `:UpdateRemotePlugins`.
