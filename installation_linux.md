@@ -1,5 +1,5 @@
 # Linux Installation Instructions
-**Written by:** David Guevara (datwaft)
+**Written by:** datwaft
 
 ### Get essentials:
 ```shell
