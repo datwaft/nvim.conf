@@ -50,6 +50,7 @@ python -m pip install neovim pynvim
 ```
 
 ### Getting _neovim_ configuration:
+If you can't enter .config folder try using `sudo chmod` to get permission.
 ```shell
 cd ~/.config/
 git clone https://github.com/datwaft/nvim
