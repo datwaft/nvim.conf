@@ -29,7 +29,7 @@ sudo make install
 sudo apt-get install python3-pip
 python3 -m pip install neovim pynvim
 python3 -m pip install jedi pylint
-sudo -H python3 -m pip install neovim-remote
+python3 -m pip install neovim-remote
 sudo apt-get install texlive
 sudo apt-get install latexmk
 ```
