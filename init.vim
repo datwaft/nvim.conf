@@ -1,80 +1,117 @@
-" -------------------------------------------------------------------------------------------------
-" NeoVim configuration
-" -------------------------------------------------------------------------------------------------
-if has('win32') || has('win64')
-  let g:python3_host_prog = '~/AppData/Local/Programs/Python/Python38-32/python.exe'
-else
-  let g:python3_host_prog = '/usr/bin/python3'
-  let g:python_host_prog = '/usr/bin/python'
-endif
-" -------------------------------------------------------------------------------------------------
-" Variable initiliazation
-" -------------------------------------------------------------------------------------------------
-if has('win32') || has('win64')
-  let g:vim_folder = '~/AppData/Local/nvim'
-  let g:plugged_home = '~/AppData/Local/nvim/plugged'
-else
-  let g:vim_folder = '~/.config/nvim'
-  let g:plugged_home = '~/.config/nvim/plugged'
-endif
-" -------------------------------------------------------------------------------------------------
-" Before initialization
-" -------------------------------------------------------------------------------------------------
-  " vim-polyglot
-  let g:polyglot_disabled = ['python', 'python-indent', 'latex', 'markdown']
-  " nvim-colorizer
-  set termguicolors
-" -------------------------------------------------------------------------------------------------
-" Plugin declaration
-" -------------------------------------------------------------------------------------------------
-  call plug#begin(g:plugged_home)
-    " Status Line
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
-    " UI Decoration
-    Plug 'mhinz/vim-startify'
-    " Autocompleter
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    " Syntax highlighting
-    Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-    Plug 'sheerun/vim-polyglot'
-    " Better visual guide
-    Plug 'haya14busa/incsearch.vim'
-    Plug 'norcalli/nvim-colorizer.lua'
-    " Themes
-    Plug 'gruvbox-community/gruvbox'
-    " Utilities
-    Plug 'machakann/vim-sandwich'
-    Plug 'tmsvg/pear-tree'
-    Plug 'kshenoy/vim-signature'
-    Plug 'wellle/targets.vim'
-    Plug 'ntpeters/vim-better-whitespace'
-    " File searching
-    Plug 'scrooloose/nerdtree'
-    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-    Plug 'junegunn/fzf.vim'
-    " Autocomment
-    Plug 'tpope/vim-commentary'
-    " Indentation
-    Plug 'Yggdroot/indentLine'
-    Plug 'Vimjas/vim-python-pep8-indent'
-    Plug 'sickill/vim-pasta'
-    " LaTeX
-    Plug 'lervag/vimtex'
-    Plug 'Konfekt/FastFold'
-    Plug 'matze/vim-tex-fold'
-    " Git
-    Plug 'tpope/vim-fugitive'
-    Plug 'mhinz/vim-signify'
-    " Markdown
-    Plug 'godlygeek/tabular'
-    Plug 'plasticboy/vim-markdown'
-    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+" ---------------------------------------------------------------------------- "
+" ->                    _       _ _         _                               <- "
+" ->                   (_)_ __ (_) |___   _(_)_ __ ___                      <- "
+" ->                   | | '_ \| | __\ \ / / | '_ ` _ \                     <- "
+" ->                   | | | | | | |_ \ V /| | | | | | |                    <- "
+" ->                   |_|_| |_|_|\__(_)_/ |_|_| |_| |_|                    <- "
+" ->                                                                        <- "
+" ->                          Created by: datwaft                           <- "
+" ---------------------------------------------------------------------------- "
+
+" ---------------------------------------------------------------------------- "
+" ->                          NeoVim configuration                          <- "
+" ---------------------------------------------------------------------------- "
+  if has('win32') || has('win64')
+    let g:python3_host_prog = '~/AppData/Local/Programs/Python/Python38-32/python.exe'
+  else
+    let g:python3_host_prog = '/usr/bin/python3'
+    let g:python_host_prog = '/usr/bin/python'
+  endif
+" ---------------------------------------------------------------------------- "
+" ->                        Variable initialization                         <- "
+" ---------------------------------------------------------------------------- "
+  if has('win32') || has('win64')
+    let g:plugins_folder = '~/AppData/Local/nvim/plugged'
+  else
+    let g:plugins_folder = '~/.config/nvim/plugged'
+  endif
+" ---------------------------------------------------------------------------- "
+" ->                           Plugin management                            <- "
+" ---------------------------------------------------------------------------- "
+  call plug#begin(g:plugins_folder)
+    " --------------------- "
+    " ↓ Aesthetic Plugins ↓ "
+    " --------------------- "
+      " Start screen
+      Plug 'mhinz/vim-startify'
+      " Colorscheme
+      Plug 'morhetz/gruvbox'
+      Plug 'arcticicestudio/nord-vim'
+      " Status line
+      Plug 'vim-airline/vim-airline'
+      Plug 'vim-airline/vim-airline-themes'
+      " Improved search highlight
+      Plug 'haya14busa/incsearch.vim'
+      " Indent guides
+      Plug 'Yggdroot/indentLine'
+      " Developer icons
+      Plug 'ryanoasis/vim-devicons'
+      " Display marks
+      Plug 'kshenoy/vim-signature'
+      " Syntax highlighting
+      Plug 'sheerun/vim-polyglot'
+      " Git
+      Plug 'mhinz/vim-signify'
+    " ------------------ "
+    " ↓ Useful plugins ↓ "
+    " ------------------ "
+      " Better pasting
+      Plug 'sickill/vim-pasta'
+      " Ability to comment
+      Plug 'tpope/vim-commentary'
+      " More targets
+      Plug 'wellle/targets.vim'
+      " Ability to surround
+      Plug 'machakann/vim-sandwich'
+      " Git management
+      Plug 'tpope/vim-fugitive'
+      " Autocompleter
+      Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    " ----------------------------- "
+    " ↓ Language Specific Plugins ↓ "
+    " ----------------------------- "
+      " Markdown
+      Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
   call plug#end()
   filetype plugin indent on
-" -------------------------------------------------------------------------------------------------
-" Plugin configuration
-" -------------------------------------------------------------------------------------------------
+" ---------------------------------------------------------------------------- "
+" ->                     Plugin specific configuration                      <- "
+" ---------------------------------------------------------------------------- "
+  " vim-airline
+  let g:airline_powerline_fonts = 1
+  " let g:airline_theme='gruvbox'
+  let g:airline_theme='nord'
+  " incsearch.vim
+  let g:incsearch#auto_nohlsearch=1
+  map /  <Plug>(incsearch-forward)
+  map ?  <Plug>(incsearch-backward)
+  map g/ <Plug>(incsearch-stay)
+  map n  <Plug>(incsearch-nohl-n)
+  map N  <Plug>(incsearch-nohl-N)
+  map *  <Plug>(incsearch-nohl-*)
+  map #  <Plug>(incsearch-nohl-#)
+  map g* <Plug>(incsearch-nohl-g*)
+  map g# <Plug>(incsearch-nohl-g#)
+  " indentLine
+  let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+  let g:indentLine_fileTypeExclude = ['help', 'nerdtree', 'startify']
+  " startify
+  let g:startify_custom_header = startify#center([
+  \ '    __        __   _                            _                _         ',
+  \ '    \ \      / /__| | ___ ___  _ __ ___   ___  | |__   __ _  ___| | __     ',
+  \ '     \ \ /\ / / _ \ |/ __/ _ \| |_ ` _ \ / _ \ | |_ \ / _` |/ __| |/ /     ',
+  \ '      \ V  V /  __/ | (_| (_) | | | | | |  __/ | |_) | (_| | (__|   <      ',
+  \ '       \_/\_/ \___|_|\___\___/|_| |_| |_|\___| |_.__/ \__,_|\___|_|\_\     ',
+  \ '                                                                           ',
+  \ '                       _       _                  __ _                     ',
+  \ '                    __| | __ _| |___      ____ _ / _| |_                   ',
+  \ '                   / _` |/ _` | __\ \ /\ / / _` | |_| __|                  ',
+  \ '                  | (_| | (_| | |_ \ V  V / (_| |  _| |_                   ',
+  \ '                   \__,_|\__,_|\__| \_/\_/ \__,_|_|  \__|                  ',
+  \ '                                                                           ',
+  \ ])
+  " markdown-preview.nvim
+  autocmd FileType markdown map <F5> <Plug>MarkdownPreviewToggle
   " coc.nvim
   set hidden
   set updatetime=100
@@ -104,82 +141,58 @@ endif
       call CocAction('doHover')
     endif
   endfunction
-  " incsearch.vim
-  set incsearch
-  set hlsearch
-  let g:incsearch#auto_nohlsearch = 1
-  map /  <Plug>(incsearch-forward)
-  map ?  <Plug>(incsearch-backward)
-  map n  <Plug>(incsearch-nohl-n)
-  map N  <Plug>(incsearch-nohl-N)
-  map *  <Plug>(incsearch-nohl-*)
-  map #  <Plug>(incsearch-nohl-#)
-  map g* <Plug>(incsearch-nohl-g*)
-  map g# <Plug>(incsearch-nohl-g#)ap g/ <Plug>(incsearch-stay)
-  " vimtex
-  let g:tex_flavor  = 'latex'
-  let g:tex_conceal = ''
-  let g:vimtex_fold_manual = 1
-  let g:vimtex_latexmk_continuous = 1
-  let g:vimtex_compiler_progname = 'nvr'
-  let g:vimtex_view_general_viewer = 'SumatraPDF'
-  let g:vimtex_view_general_options = '-reuse-instance -forward-search @tex @line @pdf'
-  let g:vimtex_view_general_options_latexmk = '-reuse-instance'
-  " fzf.vim
-  let g:fzf_buffers_jump = 1
-  let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
-  let g:fzf_tags_command = 'ctags -R'
-  let g:fzf_commands_expect = 'alt-enter,ctrl-x'
-  if has('nvim')
-    let $FZF_DEFAULT_OPTS .= ' --border --margin=0,2'
-    function! FloatingFZF()
-      let width = float2nr(&columns * 0.9)
-      let height = float2nr(&lines * 0.6)
-      let opts = { 'relative': 'editor',
-                 \ 'row': (&lines - height) / 2,
-                 \ 'col': (&columns - width) / 2,
-                 \ 'width': width,
-                 \ 'height': height }
-      let win = nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
-      call setwinvar(win, '&winhighlight', 'NormalFloat:Normal')
-    endfunction
-    let g:fzf_layout = { 'window': 'call FloatingFZF()' }
-  endif
-  " vim-airline
-  let g:airline_powerline_fonts = 1
-  let g:airline_theme='gruvbox'
-  " nvim-colorizer
-  lua require'colorizer'.setup()
-  " vim-better-whitespace
-  let g:strip_whitespace_on_save = 1
-  " markdown-preview.nvim
-  autocmd FileType markdown map <F5> <Plug>MarkdownPreviewToggle
-  " vim-markdown
-  autocmd FileType markdown let g:vim_markdown_conceal = 0
-  autocmd FileType markdown normal zR
-" -------------------------------------------------------------------------------------------------
-" File compatibility
-" -------------------------------------------------------------------------------------------------
-  " To avoid garbage and to use vim defaults
+  vmap <leader>a <Plug>(coc-codeaction-selected)
+  nmap <leader>a <Plug>(coc-codeaction-selected)
+" ---------------------------------------------------------------------------- "
+" ->                          Color and Look&Feel                           <- "
+" ---------------------------------------------------------------------------- "
+  " Colorscheme configuration
+  let g:gruvbox_contrast_dark='hard'
+  " Colorscheme declaration
+  colorscheme gruvbox
+  set background=dark
+" ---------------------------------------------------------------------------- "
+" ->                           File compatibility                           <- "
+" ---------------------------------------------------------------------------- "
+  set nocompatible
   set nobackup
   set nowritebackup
   set noswapfile
-  set nocompatible
-" -------------------------------------------------------------------------------------------------
-" Color and Look&Feel
-" -------------------------------------------------------------------------------------------------
-  " Colorscheme
-  let g:gruvbox_contrast_dark = 'hard'
-  colorscheme gruvbox
-  set background=dark
-" -------------------------------------------------------------------------------------------------
-" Various configurations
-" -------------------------------------------------------------------------------------------------
-  " Tabulation and indentation
+" ---------------------------------------------------------------------------- "
+" ->                         Terminal configuration                         <- "
+" ---------------------------------------------------------------------------- "
+  " Mouse support
+  set mouse=a
+  " Color compatibility
+  set termguicolors
+" ---------------------------------------------------------------------------- "
+" ->                          Visual configuration                          <- "
+" ---------------------------------------------------------------------------- "
+  " Encoding
+  set encoding=utf-8
+  set fileencoding=utf-8
+  " Line numbers
+  set number
+  set relativenumber
+  " Syntax highlighting
+  if !exists("g:syntax_on")
+    syntax enable
+  endif
+  " Search highlighting
+  set incsearch
+  set hlsearch
+  " Wildmenu
+  set wildmenu
+  set wildmode=full
+" ---------------------------------------------------------------------------- "
+" ->                       Miscelaneous configuration                       <- "
+" ---------------------------------------------------------------------------- "
+  " Tabulation
   set expandtab
   set tabstop=2
   set softtabstop=2
   set shiftwidth=2
+  " Indentation
   set autoindent
   " Undo persistence
   if has('win32') || has('win64')
@@ -191,32 +204,18 @@ endif
   " Wrapping
   set wrap
   set textwidth=100
+  " Backspace
   set backspace=2
-  " Line numbers
-  set number
-  set relativenumber
-  " Search configuration
+  " Search
   set ignorecase
   set smartcase
-  set inccommand=nosplit
-  " Clipboard
-  set clipboard+=unnamedplus
-  " Syntax
-  syntax on
-  syntax enable
-  " Encoding
-  set encoding=utf-8
-  set fileencoding=utf-8
-  " Format
+  " Format options
+  set formatoptions+=t
+  set formatoptions+=c
   set formatoptions+=j
-  " Mouse support
-  set mouse=a
-" -------------------------------------------------------------------------------------------------
-" Keyboard
-" -------------------------------------------------------------------------------------------------
-  map <C-c> :NERDTreeToggle<CR>
-  inoremap  ¿
-  tnoremap <Esc> <C-\><C-n>
+" ---------------------------------------------------------------------------- "
+" ->                           Keyboard bindings                            <- "
+" ---------------------------------------------------------------------------- "
   " Tabs
   map <C-t><up> :tabr<cr>
   map <C-t>k :tabr<cr>
@@ -226,15 +225,23 @@ endif
   map <C-t>h :tabp<cr>
   map <C-t><right> :tabn<cr>
   map <C-t>l :tabn<cr>
+  " Terminal
+  tnoremap <Esc> <C-\><C-n>
   " Folding
   nnoremap <expr> <f2> &foldlevel ? 'zM' :'zR'
-" -------------------------------------------------------------------------------------------------
-" Language Specific
-" -------------------------------------------------------------------------------------------------
-  " ASM
-  let g:asmsyntax = 'nasm'
-  " Python
-  au BufNewFile,BufRead *.py set foldmethod=indent
   nnoremap <space> za
-  " Markdown
-  au BufNewFile,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,*.md setf markdown
+" ---------------------------------------------------------------------------- "
+" ->                          Function declaration                          <- "
+" ---------------------------------------------------------------------------- "
+  funct! Exec(command)
+    redir =>output
+    silent exec a:command
+    redir END
+    return output
+  endfunct!
+" ---------------------------------------------------------------------------- "
+" ->                    Language specific configuration                     <- "
+" ---------------------------------------------------------------------------- "
+  " Assembly
+  let g:asmsyntax='nasm'
+
