@@ -1,5 +1,11 @@
 # Linux Installation Instructions
-**Written by:** David Guevara (datwaft)
+**Written by:** datwaft
+
+It's recommended to add this folder to $PATH like this:
+```shell
+echo "export PATH=\$PATH:~/.local/bin" >> ~/.profile
+source ~/.profile
+```
 
 ### Get essentials:
 ```shell
@@ -23,7 +29,7 @@ sudo make install
 sudo apt-get install python3-pip
 python3 -m pip install neovim pynvim
 python3 -m pip install jedi pylint
-sudo -H python3 -m pip install neovim-remote
+python3 -m pip install neovim-remote
 sudo apt-get install texlive
 sudo apt-get install latexmk
 ```
@@ -50,8 +56,9 @@ python -m pip install neovim pynvim
 ```
 
 ### Getting _neovim_ configuration:
+If you can't enter .config folder try using `sudo chmod` to get permission.
 ```shell
-cd .config/
+cd ~/.config/
 git clone https://github.com/datwaft/nvim
 ```
 Here please do a `:PlugInstall` and a `:UpdateRemotePlugins`.
@@ -59,9 +66,9 @@ Here please do a `:PlugInstall` and a `:UpdateRemotePlugins`.
 ### _Git_ configuration:
 ```shell
 git config --global user.name "datwaft"
-git config --global user.email "datwaftx@gmail.com"
+git config --global user.email "37723586+datwaft@users.noreply.github.com"
 git config --global core.editor nvim
-ssh-keygen -t rsa -C "datwaftx@gmail.com"
+ssh-keygen -t rsa -C "37723586+datwaft@users.noreply.github.com"
 clip.exe < ~/.ssh/id_rsa.pub
 ```
 Paste your ssh public key into your github account settings.  
