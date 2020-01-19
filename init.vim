@@ -203,7 +203,7 @@
   set undofile
   " Wrapping
   set wrap
-  set textwidth=100
+  set textwidth=80
   " Backspace
   set backspace=2
   " Search
