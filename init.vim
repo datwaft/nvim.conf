@@ -36,7 +36,6 @@
       Plug 'mhinz/vim-startify'
       " Colorscheme
       Plug 'morhetz/gruvbox'
-      Plug 'arcticicestudio/nord-vim'
       " Status line
       Plug 'vim-airline/vim-airline'
       Plug 'vim-airline/vim-airline-themes'
@@ -79,8 +78,7 @@
 " ---------------------------------------------------------------------------- "
   " vim-airline
   let g:airline_powerline_fonts = 1
-  " let g:airline_theme='gruvbox'
-  let g:airline_theme='nord'
+  let g:airline_theme='gruvbox'
   " incsearch.vim
   let g:incsearch#auto_nohlsearch=1
   map /  <Plug>(incsearch-forward)
