@@ -1,20 +1,30 @@
+" ---------------------------------------------------------------------------- "
+" ->                       _       _ _         _                            <- "
+" ->                  __ _(_)_ __ (_) |___   _(_)_ __ ___                   <- "
+" ->                 / _` | | '_ \| | __\ \ / / | '_ ` _ \                  <- "
+" ->                | (_| | | | | | | |_ \ V /| | | | | | |                 <- "
+" ->                 \__, |_|_| |_|_|\__(_)_/ |_|_| |_| |_|                 <- "
+" ->                 |___/                                                  <- "
+" ->                          Created by: datwaftx                          <- "
+" ---------------------------------------------------------------------------- "
+
+" ---------------------------------------------------------------------------- "
+" ->                           Pre-initialization                           <- "
+" ---------------------------------------------------------------------------- "
 set modifiable
+" ---------------------------------------------------------------------------- "
+" ->                           Sourcing init.vim                            <- "
+" ---------------------------------------------------------------------------- "
 if has('win32') || has('win64')
   source ~/AppData/Local/nvim/init.vim
 else
   source ~/.config/nvim/init.vim
 endif
-
-Guifont DejaVu Sans Mono for Powerline:h10
-nnoremap <silent> <C-ScrollWheelUp> :set guifont=+<CR>
-nnoremap <silent> <C-ScrollWheelDown> :set guifont=-<CR>
+" ---------------------------------------------------------------------------- "
+" ->                            Font definition                             <- "
+" ---------------------------------------------------------------------------- "
 if exists('g:fvim_loaded')
-  nnoremap <A-CR> :FVimToggleFullScreen<CR>
-  FVimFontAntialias v:true
-  FVimFontAutohint v:true
-  FVimFontSubpixel v:true
-  FVimFontLcdRender v:true
-  FVimFontHintLevel 'full'
-  FVimFontLineHeight '+1.0'
-  FVimFontAutoSnap v:true
+  set guifont=Delugia_Nerd_Font:h16
+else
+  Guifont Delugia Nerd Font:h9
 endif
