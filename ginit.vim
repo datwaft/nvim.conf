@@ -11,20 +11,20 @@
 " ---------------------------------------------------------------------------- "
 " ->                           Pre-initialization                           <- "
 " ---------------------------------------------------------------------------- "
-set modifiable
+  set modifiable
 " ---------------------------------------------------------------------------- "
 " ->                           Sourcing init.vim                            <- "
 " ---------------------------------------------------------------------------- "
-if has('win32') || has('win64')
-  source ~/AppData/Local/nvim/init.vim
-else
-  source ~/.config/nvim/init.vim
-endif
+  if has('win32') || has('win64')
+    source ~/AppData/Local/nvim/init.vim
+  else
+    source ~/.config/nvim/init.vim
+  endif
 " ---------------------------------------------------------------------------- "
-" ->                            Font definition                             <- "
+" ->                           GUI configuration                            <- "
 " ---------------------------------------------------------------------------- "
-if exists('g:fvim_loaded')
-  set guifont=Delugia_Nerd_Font:h16
-else
-  Guifont Delugia Nerd Font:h9
-endif
+  " Font definition
+  Guifont! Delugia Nerd Font:h9
+  " Disable popup menu
+  GuiPopupmenu 0
+
