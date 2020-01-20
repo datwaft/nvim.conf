@@ -1,6 +1,9 @@
 # NeoVim configuration file
 
 **Written by:** datwaft
+
+Here is my neovim configuration.
+
 ## FAQ
 
 ### Wanna generate the titles?
