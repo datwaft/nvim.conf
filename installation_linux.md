@@ -7,8 +7,6 @@ echo "export PATH=\$PATH:~/.local/bin" >> ~/.profile
 source ~/.profile
 ```
 
-
-
 ### Get essentials:
 ```shell
 sudo apt-get update
