@@ -66,6 +66,8 @@
       Plug 'tpope/vim-fugitive'
       " Autocompleter
       Plug 'neoclide/coc.nvim', {'branch': 'release'}
+      " Pair insert.
+      Plug 'tmsvg/pear-tree'
     " ----------------------------- "
     " ↓ Language Specific Plugins ↓ "
     " ----------------------------- "
@@ -141,12 +143,15 @@
   endfunction
   vmap <leader>a <Plug>(coc-codeaction-selected)
   nmap <leader>a <Plug>(coc-codeaction-selected)
+  " pear-tree
+  let g:pear_tree_smart_openers = 1
+  let g:pear_tree_smart_closers = 1
+  let g:pear_tree_smart_backspace = 1
 " ---------------------------------------------------------------------------- "
 " ->                          Color and Look&Feel                           <- "
 " ---------------------------------------------------------------------------- "
   " Colorscheme configuration
   let g:gruvbox_contrast_dark='hard'
-  let g:gruvbox_italic=1
   " Colorscheme declaration
   colorscheme gruvbox
   set background=dark
@@ -212,6 +217,8 @@
   set formatoptions+=t
   set formatoptions+=c
   set formatoptions+=j
+  set formatoptions-=r
+  set formatoptions-=o
 " ---------------------------------------------------------------------------- "
 " ->                           Keyboard bindings                            <- "
 " ---------------------------------------------------------------------------- "
