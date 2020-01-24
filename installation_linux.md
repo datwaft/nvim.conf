@@ -66,9 +66,9 @@ Here please do a `:PlugInstall` and a `:UpdateRemotePlugins`.
 ### _Git_ configuration:
 ```shell
 git config --global user.name "datwaft"
-git config --global user.email "37723586+datwaft@users.noreply.github.com"
+git config --global user.email "datwaft@github.com"
 git config --global core.editor nvim
-ssh-keygen -t rsa -C "37723586+datwaft@users.noreply.github.com"
+ssh-keygen -t rsa -C "datwaft@github.com"
 clip.exe < ~/.ssh/id_rsa.pub
 ```
 Paste your ssh public key into your github account settings.  
