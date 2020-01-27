@@ -113,36 +113,45 @@
   " markdown-preview.nvim
   autocmd FileType markdown map <F5> <Plug>MarkdownPreviewToggle
   " coc.nvim
-  set hidden
-  set updatetime=100
-  set shortmess+=c
-  inoremap <silent><expr> <TAB>
-    \ pumvisible() ? "\<C-n>" :
-    \ <SID>check_back_space() ? "\<TAB>" :
-    \ coc#refresh()
-  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-  function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
-  endfunction
-  inoremap <silent><expr> <c-space> coc#refresh()
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-  autocmd CursorHold * silent call CocActionAsync('highlight')
-  command! -nargs=0 Format :call CocAction('format')
-  command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-  command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-  set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-  nmap <silent> gd <Plug>(coc-definition)
-  nnoremap <silent> K :call <SID>show_documentation()<CR>
-  function! s:show_documentation()
-    if (index(['vim','help'], &filetype) >= 0)
-      execute 'h '.expand('<cword>')
-    else
-      call CocAction('doHover')
-    endif
-  endfunction
-  vmap <leader>a <Plug>(coc-codeaction-selected)
-  nmap <leader>a <Plug>(coc-codeaction-selected)
+    " Functions
+    function! s:check_back_space() abort
+      let col = col('.') - 1
+      return !col || getline('.')[col - 1]  =~# '\s'
+    endfunction
+    function! s:show_documentation()
+      if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+      else
+        call CocAction('doHover')
+      endif
+    endfunction
+    " Recommended settings
+    set hidden
+    set updatetime=100
+    set shortmess+=c
+    " Using <TAB> for triggering completion 
+    inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+    " Using <Up>, j, <Down> and k for navigating completion list
+    inoremap <expr> <UP> pumvisible() ? "\<C-p>" : "\<UP>"
+    inoremap <expr> k pumvisible() ? "\<C-p>" : "\k"
+    inoremap <expr> <DOWN> pumvisible() ? "\<C-n>" : "\<DOWN>"
+    inoremap <expr> j pumvisible() ? "\<C-n>" : "\j"
+    " Using <cr> to confirm completion
+    inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+    " Close the preview window when completion is done
+    autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+    " Extra configurations
+    autocmd CursorHold * silent call CocActionAsync('highlight')
+    command! -nargs=0 Format :call CocAction('format')
+    command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+    command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+    set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+    " Keybinds
+    nmap <silent> gd <Plug>(coc-definition)
+    nnoremap <silent> K :call <SID>show_documentation()<CR>
   " pear-tree
   let g:pear_tree_smart_openers = 1
   let g:pear_tree_smart_closers = 1
