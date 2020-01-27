@@ -134,11 +134,9 @@
       \ pumvisible() ? coc#_select_confirm() :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
-    " Using <Up>, j, <Down> and k for navigating completion list
+    " Using <Up> and <Down> for navigating completion list
     inoremap <expr> <UP> pumvisible() ? "\<C-p>" : "\<UP>"
-    inoremap <expr> k pumvisible() ? "\<C-p>" : "\k"
     inoremap <expr> <DOWN> pumvisible() ? "\<C-n>" : "\<DOWN>"
-    inoremap <expr> j pumvisible() ? "\<C-n>" : "\j"
     " Using <cr> to confirm completion
     inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
     " Close the preview window when completion is done
