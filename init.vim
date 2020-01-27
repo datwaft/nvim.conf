@@ -158,14 +158,15 @@
     " Show documentation
     nnoremap <silent> K :call <SID>show_documentation()<CR>
   " pear-tree
-  let g:pear_tree_smart_openers = 1
-  let g:pear_tree_smart_closers = 1
-  let g:pear_tree_smart_backspace = 1
+  let g:pear_tree_smart_openers=1
+  let g:pear_tree_smart_closers=1
+  let g:pear_tree_smart_backspace=1
 " ---------------------------------------------------------------------------- "
 " ->                          Color and Look&Feel                           <- "
 " ---------------------------------------------------------------------------- "
   " Colorscheme configuration
   let g:gruvbox_contrast_dark='hard'
+  let g:gruvbox_italic=1
   " Colorscheme declaration
   colorscheme gruvbox
   set background=dark
