@@ -129,16 +129,17 @@
     set hidden
     set updatetime=100
     set shortmess+=c
-    " Using <TAB> for triggering completion 
-    inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-    " Using <Up> and <Down> for navigating completion list
+    " Using <Tab> for triggering completion and navigating completion list 
+    inoremap <silent><expr> <Tab>
+          \ pumvisible() ? "\<C-n>" :
+          \ <SID>check_back_space() ? "\<Tab>" :
+          \ coc#refresh()
+    " Using <Tab>, <UP>, <S-Tab> and <DOWN> for navigating completion list
     inoremap <expr> <UP> pumvisible() ? "\<C-p>" : "\<UP>"
     inoremap <expr> <DOWN> pumvisible() ? "\<C-n>" : "\<DOWN>"
-    " Using <cr> to confirm completion
-    inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+    " Using <space> to confirm completion
+    inoremap <silent><expr> <space> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<space>"
     " Close the preview window when completion is done
     autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
     " Extra configurations
@@ -257,4 +258,6 @@
 " ---------------------------------------------------------------------------- "
   " Assembly
   let g:asmsyntax='nasm'
+  " JSON
+  autocmd FileType json syntax match Comment +\/\/.\+$+
 
