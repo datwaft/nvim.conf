@@ -1,4 +1,3 @@
 {
-  "suggest.autoTrigger": "trigger",
-  "suggest.noselect": false
+  "suggest.autoTrigger": "trigger"
 }
