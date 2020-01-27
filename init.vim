@@ -129,6 +129,7 @@
     set hidden
     set updatetime=100
     set shortmess+=c
+    set signcolumn=yes
     " Using <Tab> for triggering completion and navigating completion list 
     inoremap <silent><expr> <Tab>
           \ pumvisible() ? "\<C-n>" :
@@ -145,11 +146,16 @@
     " Extra configurations
     autocmd CursorHold * silent call CocActionAsync('highlight')
     command! -nargs=0 Format :call CocAction('format')
-    command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-    command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-    set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-    " Keybinds
+    command! -nargs=? Fold :call CocAction('fold', <f-args>)
+    command! -nargs=0 OR   :call CocAction('runCommand', 'editor.action.organizeImport')
+    " Gotos
     nmap <silent> gd <Plug>(coc-definition)
+    nmap <silent> gy <Plug>(coc-type-definition)
+    nmap <silent> gi <Plug>(coc-implementation)
+    nmap <silent> gr <Plug>(coc-references)
+    " Rename
+    nmap <leader>rn <Plug>(coc-rename)
+    " Show documentation
     nnoremap <silent> K :call <SID>show_documentation()<CR>
   " pear-tree
   let g:pear_tree_smart_openers = 1
