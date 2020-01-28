@@ -81,3 +81,16 @@ In a terminal/shell, type the following to test it:
 ```
 ssh -T git@github.com
 ```
+
+### Install _clang_:
+```shell
+sudo apt-get install software-properties-common
+sudo apt-get update
+sudo apt-get install clang-tools-9
+```
+
+### Install _clangd_:
+```shell
+sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-9 100
+sudo apt-get install clang-tools-9
+```
