@@ -81,3 +81,22 @@ In a terminal/shell, type the following to test it:
 ```
 ssh -T git@github.com
 ```
+
+### Install _clang_:
+```shell
+sudo apt-get install software-properties-common
+sudo apt-get update
+git clone https://github.com/llvm/llvm-project.git & cd llvm-project
+mkdir build & cd build
+cmake -DCMAKE_BUILD_TYPE=Debug ../llvm/
+cmake --build .
+cmake --build . --target install
+```
+
+### Install _ccls_:
+```shell
+git clone --depth=1 --recursive https://github.com/MaskRay/ccls
+cd ccls
+cmake -H. -BRelease -DCMAKE_BUILD_TYPE=Release
+cmake --build Release
+```
