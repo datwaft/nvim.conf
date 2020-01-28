@@ -86,11 +86,7 @@ ssh -T git@github.com
 ```shell
 sudo apt-get install software-properties-common
 sudo apt-get update
-git clone https://github.com/llvm/llvm-project.git & cd llvm-project
-mkdir build & cd build
-cmake -DCMAKE_BUILD_TYPE=Debug ../llvm/
-cmake --build .
-cmake --build . --target install
+sudo apt-get install clang-tools-9
 ```
 
 ### Install _clangd_:
