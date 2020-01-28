@@ -26,6 +26,10 @@
     let g:plugins_folder = '~/.config/nvim/plugged'
   endif
 " ---------------------------------------------------------------------------- "
+" ->                           Pre-initialization                           <- "
+" ---------------------------------------------------------------------------- "
+  let g:polyglot_disabled = ['c++11', 'c/c++']
+" ---------------------------------------------------------------------------- "
 " ->                           Plugin management                            <- "
 " ---------------------------------------------------------------------------- "
   call plug#begin(g:plugins_folder)
@@ -73,6 +77,8 @@
     " ----------------------------- "
       " Markdown
       Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+      " C++
+      Plug 'arakashic/chromatica.nvim'
   call plug#end()
   filetype plugin indent on
 " ---------------------------------------------------------------------------- "
@@ -161,6 +167,11 @@
   let g:pear_tree_smart_openers=1
   let g:pear_tree_smart_closers=1
   let g:pear_tree_smart_backspace=1
+  " chromatica.nvim
+  let g:chromatica#libclang_path='/usr/lib/llvm-7/lib/'
+  let g:chromatica#global_args = ['-isystem/usr/lib/llvm-7/lib/clang/7.0.1/include']
+  let g:chromatica#enable_at_startup=1
+  let g:chromatica#responsive_mode=1
 " ---------------------------------------------------------------------------- "
 " ->                          Color and Look&Feel                           <- "
 " ---------------------------------------------------------------------------- "
