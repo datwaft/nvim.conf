@@ -169,11 +169,11 @@
   let g:pear_tree_smart_backspace=1
   " chromatica.nvim
   if has('win32') || has('win64')
-    let g:chromatica#libclang_path='C:\Program Files\LLVM\lib'
-    let g:chromatica#global_args = ['C:\Program Files\LLVM\lib\clang\9.0.0\include']
+    let g:chromatica#libclang_path='C:/Program Files/LLVM/bin/libclang.dll'
+    let g:chromatica#global_args = ['-isystem C:/Program Files/LLVM/lib/clang/9.0.0/include']
   else
     let g:chromatica#libclang_path='/usr/lib/llvm-7/lib/'
-    let g:chromatica#global_args = ['-isystem/usr/lib/llvm-7/lib/clang/7.0.1/include']
+    let g:chromatica#global_args = ['-isystem /usr/lib/llvm-7/lib/clang/7.0.1/include']
   endif
   let g:chromatica#enable_at_startup=1
   let g:chromatica#responsive_mode=1
