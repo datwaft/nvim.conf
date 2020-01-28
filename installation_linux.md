@@ -93,10 +93,8 @@ cmake --build .
 cmake --build . --target install
 ```
 
-### Install _ccls_:
+### Install _clangd_:
 ```shell
-git clone --depth=1 --recursive https://github.com/MaskRay/ccls
-cd ccls
-cmake -H. -BRelease -DCMAKE_BUILD_TYPE=Release
-cmake --build Release
+sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-9 100
+sudo apt-get install clang-tools-9
 ```
