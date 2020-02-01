@@ -112,6 +112,19 @@
   \ ])
   " markdown-preview.nvim
   autocmd FileType markdown map <F5> <Plug>MarkdownPreviewToggle
+  " vim-polyglot
+    " vim-markdown
+      " LaTeX math
+      let g:vim_markdown_math = 1
+      " No concealing
+      let g:vim_markdown_conceal = 0
+      let g:tex_conceal = ""
+      let g:vim_markdown_math = 1
+      let g:vim_markdown_conceal_code_blocks = 0
+      " Strikethough
+      let g:vim_markdown_strikethrough = 1
+      " Links without .md
+      let g:vim_markdown_no_extensions_in_markdown = 1
   " coc.nvim
     " Functions
     function! s:check_back_space() abort
