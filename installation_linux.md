@@ -1,7 +1,7 @@
 # Linux Installation Instructions
 **Written by:** datwaft
 
-It's recommended to add this folder to $PATH like this:
+It's recommended to add this folder to PATH like this:
 ```shell
 echo "export PATH=\$PATH:~/.local/bin" >> ~/.profile
 source ~/.profile
@@ -93,4 +93,9 @@ sudo apt-get install clang-tools-9
 ```shell
 sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-9 100
 sudo apt-get install clang-tools-9
+```
+
+### Install _ctags_:
+```shell
+sudo apt-get install ctags
 ```
