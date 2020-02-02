@@ -1,7 +1,7 @@
 # Linux Installation Instructions
 **Written by:** datwaft
 
-It's recommended to add this folder to PATH like this:
+It's recommended to add this folder to `$PATH` like this:
 ```shell
 echo "export PATH=\$PATH:~/.local/bin" >> ~/.profile
 source ~/.profile
