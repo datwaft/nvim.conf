@@ -79,7 +79,6 @@
     " ----------------------------- "
       " Markdown
       Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-      Plug 'mzlogin/vim-markdown-toc'
   call plug#end()
   filetype plugin indent on
 " ---------------------------------------------------------------------------- "
@@ -119,13 +118,6 @@
   \ ])
   " markdown-preview.nvim
   autocmd FileType markdown map <F5> <Plug>MarkdownPreviewToggle
-  if has('win32') || has('win64')
-    let g:mkdp_markdown_css = '~/AppData/Local/nvim/markdown.css'
-  else
-    let g:mkdp_markdown_css = '~/.config/nvim/markdown.css'
-  endif
-  " vim-markdown-toc
-  let g:vmt_fence_text = "Table of Contents"
   " vim-polyglot
     " vim-markdown
       " LaTeX math
