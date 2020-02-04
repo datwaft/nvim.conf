@@ -1,2 +1,4 @@
 plugged/
 undodir.vim/
+*.temp
+tags.lock
