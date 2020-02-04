@@ -30,7 +30,7 @@
 " ---------------------------------------------------------------------------- "
   call plug#begin(g:plugins_folder)
     " --------------------- "
-    " ↓ Aesthetic Plugins ↓ "
+    " ↓ Aesthetic plugins ↓ "
     " --------------------- "
       " Start screen
       Plug 'mhinz/vim-startify'
