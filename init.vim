@@ -51,6 +51,8 @@
       Plug 'sheerun/vim-polyglot'
       " Git
       Plug 'mhinz/vim-signify'
+      " Floating terminal
+      Plug 'voldikss/vim-floaterm'
     " ------------------ "
     " ↓ Useful plugins ↓ "
     " ------------------ "
@@ -184,6 +186,12 @@
   nmap <leader>s <plug>(SubversiveSubstitute)
   nmap <leader>ss <plug>(SubversiveSubstituteLine)
   nmap <leader>S <plug>(SubversiveSubstituteToEndOfLine)
+  " vim-floaterm
+  let g:floaterm_keymap_new    = '<leader><C-t>n'
+  let g:floaterm_keymap_prev   = '<leader><C-t>h'
+  let g:floaterm_keymap_next   = '<leader><C-t>l'
+  let g:floaterm_keymap_toggle = '<leader><C-t>r'
+  autocmd User Startified setlocal buflisted
 " ---------------------------------------------------------------------------- "
 " ->                          Color and Look&Feel                           <- "
 " ---------------------------------------------------------------------------- "
@@ -257,6 +265,13 @@
   set formatoptions+=j
   set formatoptions-=r
   set formatoptions-=o
+  " Autoread when file changes on disk
+  set autoread
+  autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * 
+    \ if mode() != 'c' | checktime | endif
+  " Notification after file change on disk
+  autocmd FileChangedShellPost * echohl WarningMsg |
+    \ echo "File changed on disk. Buffer reloaded." | echohl None
 " ---------------------------------------------------------------------------- "
 " ->                           Keyboard bindings                            <- "
 " ---------------------------------------------------------------------------- "
