@@ -95,7 +95,8 @@ sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-9 100
 sudo apt-get install clang-tools-9
 ```
 
-### Install _ctags_:
+### Install extras:
 ```shell
 sudo apt-get install ctags
+sudo apt-get install sdcv
 ```
