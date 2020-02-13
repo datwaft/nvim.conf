@@ -187,10 +187,10 @@
   nmap <leader>ss <plug>(SubversiveSubstituteLine)
   nmap <leader>S <plug>(SubversiveSubstituteToEndOfLine)
   " vim-floaterm
-  let g:floaterm_keymap_new    = '<leader><C-t>n'
-  let g:floaterm_keymap_prev   = '<leader><C-t>h'
-  let g:floaterm_keymap_next   = '<leader><C-t>l'
-  let g:floaterm_keymap_toggle = '<leader><C-t>r'
+  let g:floaterm_keymap_new    = '<leader>tn'
+  let g:floaterm_keymap_prev   = '<leader>th'
+  let g:floaterm_keymap_next   = '<leader>tl'
+  let g:floaterm_keymap_toggle = '<leader>tt'
   autocmd User Startified setlocal buflisted
 " ---------------------------------------------------------------------------- "
 " ->                          Color and Look&Feel                           <- "
@@ -307,4 +307,3 @@
   autocmd FileType json syntax match Comment +\/\/.\+$+
   " Markdown
   autocmd FileType markdown setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
-
