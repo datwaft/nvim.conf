@@ -76,11 +76,19 @@
       Plug 'svermeulen/vim-subversive'
       " Tags
       Plug 'ludovicchabant/vim-gutentags'
+      " Convert numbers
+      Plug 'glts/vim-radical'
+      " Repeat motions
+      Plug 'tpope/vim-repeat'
+      " Big Integer library
+      Plug 'glts/vim-magnum'
     " ----------------------------- "
     " ↓ Language Specific Plugins ↓ "
     " ----------------------------- "
       " Markdown
       Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+      " SQL
+      Plug 'shmup/vim-sql-syntax'
   call plug#end()
   filetype plugin indent on
 " ---------------------------------------------------------------------------- "
