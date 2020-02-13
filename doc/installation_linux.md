@@ -98,5 +98,4 @@ sudo apt-get install clang-tools-9
 ### Install extras:
 ```shell
 sudo apt-get install ctags
-sudo apt-get install sdcv
 ```
