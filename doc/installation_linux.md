@@ -27,7 +27,7 @@ sudo make install
 ### _Pip_ install:
 ```shell
 sudo apt-get install python3-pip
-python3 -m pip install neovim pynvim
+python3 -m pip install pynvim
 python3 -m pip install jedi pylint
 python3 -m pip install neovim-remote
 sudo apt-get install texlive
@@ -52,7 +52,7 @@ sudo npm install -g neovim
 ### _Python2_ install:
 ```shell
 sudo apt-get install python-pip
-python -m pip install neovim pynvim
+python -m pip install pynvim
 ```
 
 ### Getting _neovim_ configuration:
