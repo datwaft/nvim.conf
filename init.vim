@@ -26,6 +26,10 @@
     let g:plugins_folder = '~/.config/nvim/plugged'
   endif
 " ---------------------------------------------------------------------------- "
+" ->                           Pre-initialization                           <- "
+" ---------------------------------------------------------------------------- "
+  let g:polyglot_disabled = ['c++11', 'c/c++']
+" ---------------------------------------------------------------------------- "
 " ->                           Plugin management                            <- "
 " ---------------------------------------------------------------------------- "
   call plug#begin(g:plugins_folder)
@@ -40,7 +44,7 @@
       Plug 'vim-airline/vim-airline'
       Plug 'vim-airline/vim-airline-themes'
       " Improved search highlight
-      Plug 'haya14busa/incsearch.vim'
+      Plug 'markonm/traces.vim'
       " Indent guides
       Plug 'Yggdroot/indentLine'
       " Developer icons
@@ -85,6 +89,8 @@
     " ----------------------------- "
     " ↓ Language Specific Plugins ↓ "
     " ----------------------------- "
+      " C, C++, C#
+      Plug 'arakashic/chromatica.nvim'
       " Markdown
       Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
       " SQL
@@ -97,17 +103,6 @@
   " vim-airline
   let g:airline_powerline_fonts = 1
   let g:airline_theme='gruvbox'
-  " incsearch.vim
-  let g:incsearch#auto_nohlsearch=1
-  map /  <Plug>(incsearch-forward)
-  map ?  <Plug>(incsearch-backward)
-  map g/ <Plug>(incsearch-stay)
-  map n  <Plug>(incsearch-nohl-n)
-  map N  <Plug>(incsearch-nohl-N)
-  map *  <Plug>(incsearch-nohl-*)
-  map #  <Plug>(incsearch-nohl-#)
-  map g* <Plug>(incsearch-nohl-g*)
-  map g# <Plug>(incsearch-nohl-g#)
   " indentLine
   let g:indentLine_char_list = ['|', '¦', '┆', '┊']
   let g:indentLine_fileTypeExclude = ['help', 'nerdtree', 'startify']
@@ -200,6 +195,11 @@
   let g:floaterm_keymap_next   = '<leader>tl'
   let g:floaterm_keymap_toggle = '<leader>tt'
   autocmd User Startified setlocal buflisted
+  " chromatica.nvim
+  let g:chromatica#libclang_path='/usr/lib/llvm-7/lib/'
+  let g:chromatica#global_args = ['-isystem/usr/lib/llvm-7/lib/clang/7.0.1/include']
+  let g:chromatica#enable_at_startup=1
+  let g:chromatica#responsive_mode=1
 " ---------------------------------------------------------------------------- "
 " ->                          Color and Look&Feel                           <- "
 " ---------------------------------------------------------------------------- "
