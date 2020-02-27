@@ -238,7 +238,7 @@
   endif
   " Search highlighting
   set incsearch
-  set hlsearch
+  set nohlsearch
   " Wildmenu
   set wildmenu
   set wildmode=full
