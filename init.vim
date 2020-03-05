@@ -74,6 +74,8 @@
       Plug 'godlygeek/tabular'
       " Substitute
       Plug 'svermeulen/vim-subversive'
+      " Easy quick-scoping
+      Plug 'unblevable/quick-scope'
     " ----------------------------- "
     " ↓ Language Specific Plugins ↓ "
     " ----------------------------- "
@@ -184,6 +186,8 @@
   let g:chromatica#global_args = ['-isystem/usr/lib/llvm-7/lib/clang/7.0.1/include']
   let g:chromatica#enable_at_startup=1
   let g:chromatica#responsive_mode=1
+  " quick-scope
+  let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 " ---------------------------------------------------------------------------- "
 " ->                          Color and Look&Feel                           <- "
 " ---------------------------------------------------------------------------- "
