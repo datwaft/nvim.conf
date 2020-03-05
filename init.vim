@@ -60,8 +60,6 @@
     " ------------------ "
     " ↓ Useful plugins ↓ "
     " ------------------ "
-      " Better pasting
-      Plug 'sickill/vim-pasta'
       " Ability to comment
       Plug 'tpope/vim-commentary'
       " More targets
@@ -72,20 +70,10 @@
       Plug 'tpope/vim-fugitive'
       " Autocompleter
       Plug 'neoclide/coc.nvim', {'branch': 'release'}
-      " Pair insert.
-      Plug 'tmsvg/pear-tree'
       " Filtering and alignment
       Plug 'godlygeek/tabular'
       " Substitute
       Plug 'svermeulen/vim-subversive'
-      " Tags
-      Plug 'ludovicchabant/vim-gutentags'
-      " Convert numbers
-      Plug 'glts/vim-radical'
-      " Repeat motions
-      Plug 'tpope/vim-repeat'
-      " Big Integer library
-      Plug 'glts/vim-magnum'
     " ----------------------------- "
     " ↓ Language Specific Plugins ↓ "
     " ----------------------------- "
