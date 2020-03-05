@@ -169,10 +169,6 @@
     nmap <leader>rn <Plug>(coc-rename)
     " Show documentation
     nnoremap <silent> K :call <SID>show_documentation()<CR>
-  " pear-tree
-  let g:pear_tree_smart_openers=1
-  let g:pear_tree_smart_closers=1
-  let g:pear_tree_smart_backspace=1
   " vim-subversive
   nmap <leader>s <plug>(SubversiveSubstitute)
   nmap <leader>ss <plug>(SubversiveSubstituteLine)
