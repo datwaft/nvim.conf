@@ -196,7 +196,6 @@
 " ---------------------------------------------------------------------------- "
 " ->                           File compatibility                           <- "
 " ---------------------------------------------------------------------------- "
-  set nocompatible
   set nobackup
   set nowritebackup
   set noswapfile
@@ -231,9 +230,10 @@
 " ---------------------------------------------------------------------------- "
   " Tabulation
   set expandtab
+  set smarttab
+  set shiftwidth=0
+  set softtabstop=-1
   set tabstop=2
-  set softtabstop=2
-  set shiftwidth=2
   " Indentation
   set autoindent
   " Undo persistence
@@ -247,7 +247,7 @@
   set wrap
   set textwidth=80
   " Backspace
-  set backspace=2
+  set backspace=indent,eol,start
   " Search
   set ignorecase
   set smartcase
@@ -298,4 +298,5 @@
   " JSON
   autocmd FileType json syntax match Comment +\/\/.\+$+
   " Markdown
-  autocmd FileType markdown setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+  autocmd FileType markdown setlocal tabstop=4
+
