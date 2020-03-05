@@ -60,8 +60,6 @@
     " ------------------ "
     " ↓ Useful plugins ↓ "
     " ------------------ "
-      " Better pasting
-      Plug 'sickill/vim-pasta'
       " Ability to comment
       Plug 'tpope/vim-commentary'
       " More targets
@@ -72,20 +70,12 @@
       Plug 'tpope/vim-fugitive'
       " Autocompleter
       Plug 'neoclide/coc.nvim', {'branch': 'release'}
-      " Pair insert.
-      Plug 'tmsvg/pear-tree'
       " Filtering and alignment
       Plug 'godlygeek/tabular'
       " Substitute
       Plug 'svermeulen/vim-subversive'
-      " Tags
-      Plug 'ludovicchabant/vim-gutentags'
-      " Convert numbers
-      Plug 'glts/vim-radical'
-      " Repeat motions
-      Plug 'tpope/vim-repeat'
-      " Big Integer library
-      Plug 'glts/vim-magnum'
+      " Easy quick-scoping
+      Plug 'unblevable/quick-scope'
     " ----------------------------- "
     " ↓ Language Specific Plugins ↓ "
     " ----------------------------- "
@@ -181,10 +171,6 @@
     nmap <leader>rn <Plug>(coc-rename)
     " Show documentation
     nnoremap <silent> K :call <SID>show_documentation()<CR>
-  " pear-tree
-  let g:pear_tree_smart_openers=1
-  let g:pear_tree_smart_closers=1
-  let g:pear_tree_smart_backspace=1
   " vim-subversive
   nmap <leader>s <plug>(SubversiveSubstitute)
   nmap <leader>ss <plug>(SubversiveSubstituteLine)
@@ -200,6 +186,8 @@
   let g:chromatica#global_args = ['-isystem/usr/lib/llvm-7/lib/clang/7.0.1/include']
   let g:chromatica#enable_at_startup=1
   let g:chromatica#responsive_mode=1
+  " quick-scope
+  let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 " ---------------------------------------------------------------------------- "
 " ->                          Color and Look&Feel                           <- "
 " ---------------------------------------------------------------------------- "
@@ -212,7 +200,6 @@
 " ---------------------------------------------------------------------------- "
 " ->                           File compatibility                           <- "
 " ---------------------------------------------------------------------------- "
-  set nocompatible
   set nobackup
   set nowritebackup
   set noswapfile
@@ -247,9 +234,10 @@
 " ---------------------------------------------------------------------------- "
   " Tabulation
   set expandtab
+  set smarttab
+  set shiftwidth=0
+  set softtabstop=-1
   set tabstop=2
-  set softtabstop=2
-  set shiftwidth=2
   " Indentation
   set autoindent
   " Undo persistence
@@ -263,7 +251,7 @@
   set wrap
   set textwidth=80
   " Backspace
-  set backspace=2
+  set backspace=indent,eol,start
   " Search
   set ignorecase
   set smartcase
@@ -314,4 +302,5 @@
   " JSON
   autocmd FileType json syntax match Comment +\/\/.\+$+
   " Markdown
-  autocmd FileType markdown setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+  autocmd FileType markdown setlocal tabstop=4
+
