@@ -99,3 +99,10 @@ sudo apt-get install clang-tools-9
 ```shell
 sudo apt-get install ctags
 ```
+
+### Install Maven:
+```shell
+sudo apt-get install maven
+echo "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64" >> ~/.profile
+source ~/.profile
+```
