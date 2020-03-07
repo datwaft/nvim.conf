@@ -53,6 +53,8 @@
       Plug 'kshenoy/vim-signature'
       " Syntax highlighting
       Plug 'sheerun/vim-polyglot'
+      " Semantic highlighting
+      Plug 'jaxbot/semantic-highlight.vim'
       " Git
       Plug 'mhinz/vim-signify'
       " Floating terminal
@@ -79,12 +81,12 @@
     " ----------------------------- "
     " ↓ Language Specific Plugins ↓ "
     " ----------------------------- "
-      " C, C++, C#
-      Plug 'arakashic/chromatica.nvim'
       " Markdown
       Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
       " SQL
       Plug 'shmup/vim-sql-syntax'
+      " Java
+      Plug 'uiiaoo/java-syntax.vim'
   call plug#end()
   filetype plugin indent on
 " ---------------------------------------------------------------------------- "
@@ -181,13 +183,10 @@
   let g:floaterm_keymap_next   = '<leader>tl'
   let g:floaterm_keymap_toggle = '<leader>tt'
   autocmd User Startified setlocal buflisted
-  " chromatica.nvim
-  let g:chromatica#libclang_path='/usr/lib/llvm-7/lib/'
-  let g:chromatica#global_args = ['-isystem/usr/lib/llvm-7/lib/clang/7.0.1/include']
-  let g:chromatica#enable_at_startup=1
-  let g:chromatica#responsive_mode=1
   " quick-scope
   let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+  " semantic-highlight.vim
+  au BufReadPost,BufNewFile *.js,*.html,*.java,*.c,*.cpp,*.h,*.py,*.ts SemanticHighlight
 " ---------------------------------------------------------------------------- "
 " ->                          Color and Look&Feel                           <- "
 " ---------------------------------------------------------------------------- "
