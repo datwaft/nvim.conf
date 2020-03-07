@@ -105,7 +105,4 @@ sudo apt-get install ctags
 sudo apt-get install maven
 sudo apt-get install default-jre
 sudo apt-get install default-jdk
-echo "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64" >> ~/.profile
-echo "export PATH=\$JAVA_HOME/bin:\$PATH" >> ~/.profile
-source ~/.profile
 ```
