@@ -31,6 +31,7 @@ Here [adam7/delugia-code](https://github.com/adam7/delugia-code/releases) :D.
 - coc-snippets
 - coc-css
 - coc-html
+- coc-xml
 - coc-tsserver
 - coc-tslint-plugin
-- coc-spell-checker
+- coc-java
