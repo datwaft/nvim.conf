@@ -302,4 +302,6 @@
   autocmd FileType json syntax match Comment +\/\/.\+$+
   " Markdown
   autocmd FileType markdown setlocal tabstop=4
+  " C & C++
+  autocmd FileType c,cpp setlocal tabstop=4
 
