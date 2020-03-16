@@ -26,18 +26,12 @@
     let g:plugins_folder = '~/.config/nvim/plugged'
   endif
 " ---------------------------------------------------------------------------- "
-" ->                           Pre-initialization                           <- "
-" ---------------------------------------------------------------------------- "
-  let g:polyglot_disabled = ['c++11', 'c/c++']
-" ---------------------------------------------------------------------------- "
 " ->                           Plugin management                            <- "
 " ---------------------------------------------------------------------------- "
   call plug#begin(g:plugins_folder)
     " --------------------- "
     " ↓ Aesthetic plugins ↓ "
     " --------------------- "
-      " Start screen
-      Plug 'mhinz/vim-startify'
       " Colorscheme
       Plug 'morhetz/gruvbox'
       " Status line
@@ -98,21 +92,6 @@
   " indentLine
   let g:indentLine_char_list = ['|', '¦', '┆', '┊']
   let g:indentLine_fileTypeExclude = ['help', 'nerdtree', 'startify']
-  " startify
-  let g:startify_custom_header = startify#center([
-  \ '    __        __   _                            _                _         ',
-  \ '    \ \      / /__| | ___ ___  _ __ ___   ___  | |__   __ _  ___| | __     ',
-  \ '     \ \ /\ / / _ \ |/ __/ _ \| |_ ` _ \ / _ \ | |_ \ / _` |/ __| |/ /     ',
-  \ '      \ V  V /  __/ | (_| (_) | | | | | |  __/ | |_) | (_| | (__|   <      ',
-  \ '       \_/\_/ \___|_|\___\___/|_| |_| |_|\___| |_.__/ \__,_|\___|_|\_\     ',
-  \ '                                                                           ',
-  \ '                       _       _                  __ _                     ',
-  \ '                    __| | __ _| |___      ____ _ / _| |_                   ',
-  \ '                   / _` |/ _` | __\ \ /\ / / _` | |_| __|                  ',
-  \ '                  | (_| | (_| | |_ \ V  V / (_| |  _| |_                   ',
-  \ '                   \__,_|\__,_|\__| \_/\_/ \__,_|_|  \__|                  ',
-  \ '                                                                           ',
-  \ ])
   " markdown-preview.nvim
   autocmd FileType markdown map <F5> <Plug>MarkdownPreviewToggle
   " vim-polyglot
