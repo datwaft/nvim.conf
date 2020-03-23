@@ -86,13 +86,9 @@ ssh -T git@github.com
 ```shell
 sudo apt-get install software-properties-common
 sudo apt-get update
-sudo apt-get install clang-tools-9
-```
-
-### Install _clangd_:
-```shell
+sudo apt-get install wget
+bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
 sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-9 100
-sudo apt-get install clang-tools-9
 ```
 
 ### Install extras:
