@@ -7,6 +7,45 @@ echo "export PATH=\$PATH:~/.local/bin" >> ~/.profile
 source ~/.profile
 ```
 
+And also use this so the clipboard can work:
+
+```shell
+echo "export DISPLAY=:0" >> ~/.profile
+source ~/.profile
+```
+
+And create a the file `/usr/bin/xsel` with the following contents:
+
+```bash
+#!/bin/bash
+
+# filename: xsel
+# make sure this file has executable privledges
+# neovim will paste "xsel -o -b"
+# neovim will copy using "xsel --nodetach -i -b"
+
+for i in "$@"
+do
+  case "$i" in
+  -o )
+    # for paste we will grab contents from powershell.exe
+    powershell.exe Get-Clipboard | sed 's/\r$//'
+    exit 0
+    ;;
+  -i )
+    # for copy we'll direct stdin to clip.exe
+    tee <&0 | clip.exe
+    exit 0
+  esac
+done
+```
+
+And use this configuration at the end:
+
+```bash
+chmod u+x /usr/bin/xsel
+```
+
 ### Get essentials:
 ```shell
 sudo apt-get update
