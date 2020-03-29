@@ -11,11 +11,12 @@ And also use this so the clipboard can work:
 
 ```shell
 echo "export DISPLAY=:0" >> ~/.profile
+echo "export PATH=\$PATH:/home/$USER/bin" >> ~/.profile
 source ~/.profile
-mkdir /home/$USER/.local/bin
+mkdir /home/$USER/bin
 ```
 
-And create a the file `/home/datwaft/.local/bin/xsel` with the following contents:
+And create a the file `/home/$USER/bin/xsel` with the following contents:
 
 ```bash
 #!/bin/bash
@@ -44,7 +45,7 @@ done
 And use this configuration at the end:
 
 ```bash
-sudo chmod u+x /home/datwaft/.local/bin/xsel
+sudo chmod 777 /home/$USER/bin/xsel
 ```
 
 ### Get essentials:
