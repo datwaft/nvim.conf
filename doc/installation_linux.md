@@ -43,7 +43,7 @@ done
 And use this configuration at the end:
 
 ```bash
-chmod u+x /usr/bin/xsel
+sudo chmod u+x /usr/bin/xsel
 ```
 
 ### Get essentials:
