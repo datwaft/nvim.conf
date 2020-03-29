@@ -12,9 +12,10 @@ And also use this so the clipboard can work:
 ```shell
 echo "export DISPLAY=:0" >> ~/.profile
 source ~/.profile
+mkdir /home/$USER/.local/bin
 ```
 
-And create a the file `/usr/bin/xsel` with the following contents:
+And create a the file `/home/datwaft/.local/bin/xsel` with the following contents:
 
 ```bash
 #!/bin/bash
@@ -43,7 +44,7 @@ done
 And use this configuration at the end:
 
 ```bash
-sudo chmod u+x /usr/bin/xsel
+sudo chmod u+x /home/datwaft/.local/bin/xsel
 ```
 
 ### Get essentials:
