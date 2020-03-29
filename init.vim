@@ -56,6 +56,8 @@
     " ------------------ "
     " ↓ Useful plugins ↓ "
     " ------------------ "
+      " UndoTree
+      Plug 'mbbill/undotree'
       " Ability to comment
       Plug 'tpope/vim-commentary'
       " More targets
@@ -72,6 +74,8 @@
       Plug 'svermeulen/vim-subversive'
       " Easy quick-scoping
       Plug 'unblevable/quick-scope'
+      " Easy swap in function
+      Plug 'machakann/vim-swap'
     " ----------------------------- "
     " ↓ Language Specific Plugins ↓ "
     " ----------------------------- "
@@ -166,6 +170,11 @@
   let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
   " semantic-highlight.vim
   au BufReadPost,BufNewFile *.js,*.html,*.java,*.c,*.cpp,*.h,*.py,*.ts SemanticHighlight
+  " vim-swap
+  omap i, <Plug>(swap-textobject-i)
+  xmap i, <Plug>(swap-textobject-i)
+  omap a, <Plug>(swap-textobject-a)
+  xmap a, <Plug>(swap-textobject-a)
 " ---------------------------------------------------------------------------- "
 " ->                          Color and Look&Feel                           <- "
 " ---------------------------------------------------------------------------- "
@@ -230,6 +239,8 @@
   set textwidth=80
   " Backspace
   set backspace=indent,eol,start
+  " Not redrawing while macro is playing
+  set lazyredraw
   " Search
   set ignorecase
   set smartcase
@@ -247,6 +258,14 @@
   autocmd FileChangedShellPost * echohl WarningMsg |
     \ echo "File changed on disk. Buffer reloaded." | echohl None
 " ---------------------------------------------------------------------------- "
+" ->                         Autocmd configuration                          <- "
+" ---------------------------------------------------------------------------- "
+  augroup every
+    autocmd!
+    au InsertEnter * set norelativenumber
+    au InsertLeave * set relativenumber
+  augroup END
+" ---------------------------------------------------------------------------- "
 " ->                           Keyboard bindings                            <- "
 " ---------------------------------------------------------------------------- "
   " Tabs
@@ -263,6 +282,13 @@
   " Folding
   nnoremap <expr> <f2> &foldlevel ? 'zM' :'zR'
   nnoremap <space> za
+  " Run current line as if it were a command
+  nnoremap <leader>e :exe getline(line('.'))<cr>
+  " Move by wrapped line
+  nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
+  nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
+  nnoremap <expr> <up> (v:count == 0 ? 'gk' : '<up>')
+  nnoremap <expr> <down> (v:count == 0 ? 'gj' : '<down>')
 " ---------------------------------------------------------------------------- "
 " ->                          Function declaration                          <- "
 " ---------------------------------------------------------------------------- "
@@ -281,6 +307,10 @@
   autocmd FileType json syntax match Comment +\/\/.\+$+
   " Markdown
   autocmd FileType markdown setlocal tabstop=4
+  augroup md
+    autocmd!
+    au BufNewFile,BufRead *.md inoremap <buffer> ;` ```<cr><cr>```<Up><Up>
+  augroup END
   " C & C++
   autocmd FileType c,cpp setlocal tabstop=4
 
