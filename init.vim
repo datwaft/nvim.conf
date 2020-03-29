@@ -76,6 +76,12 @@
       Plug 'unblevable/quick-scope'
       " Easy swap in function
       Plug 'machakann/vim-swap'
+      " Abolish
+      Plug 'tpope/vim-abolish'
+      " Indentation object
+      Plug 'michaeljsmith/vim-indent-object'
+      " Camel and snake case objects
+      Plug 'bkad/CamelCaseMotion'
     " ----------------------------- "
     " ↓ Language Specific Plugins ↓ "
     " ----------------------------- "
@@ -170,11 +176,9 @@
   let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
   " semantic-highlight.vim
   au BufReadPost,BufNewFile *.js,*.html,*.java,*.c,*.cpp,*.h,*.py,*.ts SemanticHighlight
-  " vim-swap
-  omap i, <Plug>(swap-textobject-i)
-  xmap i, <Plug>(swap-textobject-i)
-  omap a, <Plug>(swap-textobject-a)
-  xmap a, <Plug>(swap-textobject-a)
+  " CamelCaseMotion
+  let g:camelcasemotion_key = '<leader>'
+
 " ---------------------------------------------------------------------------- "
 " ->                          Color and Look&Feel                           <- "
 " ---------------------------------------------------------------------------- "
@@ -260,11 +264,14 @@
 " ---------------------------------------------------------------------------- "
 " ->                         Autocmd configuration                          <- "
 " ---------------------------------------------------------------------------- "
-  augroup every
+  augroup numbertoggle
     autocmd!
     au InsertEnter * set norelativenumber
     au InsertLeave * set relativenumber
+    autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu   | endif
+    autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
   augroup END
+
 " ---------------------------------------------------------------------------- "
 " ->                           Keyboard bindings                            <- "
 " ---------------------------------------------------------------------------- "
@@ -282,13 +289,16 @@
   " Folding
   nnoremap <expr> <f2> &foldlevel ? 'zM' :'zR'
   nnoremap <space> za
-  " Run current line as if it were a command
-  nnoremap <leader>e :exe getline(line('.'))<cr>
   " Move by wrapped line
   nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
   nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
   nnoremap <expr> <up> (v:count == 0 ? 'gk' : '<up>')
   nnoremap <expr> <down> (v:count == 0 ? 'gj' : '<down>')
+  " Go to beginning and end with H and L
+  nnoremap H ^
+  nnoremap L $
+  " Better Y
+  noremap Y y$
 " ---------------------------------------------------------------------------- "
 " ->                          Function declaration                          <- "
 " ---------------------------------------------------------------------------- "
