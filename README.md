@@ -2,10 +2,6 @@
 
 **Written by:** datwaft
 
----
-
-My NeoVim configuration file.
-
 ## FAQ
 
 ### Wanna generate the titles?
