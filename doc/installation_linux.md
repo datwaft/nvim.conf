@@ -97,12 +97,12 @@ python -m pip install pynvim
 ```
 
 ### Getting _neovim_ configuration:
-If you can't enter .config folder try using `sudo chmod` to get permission.
+If you can't enter .config folder try using `sudo chmod 777 ~/.config` to get permission.
 ```shell
 cd ~/.config/
 git clone https://github.com/datwaft/nvim
 ```
-Here please do a `:PlugInstall` and a `:UpdateRemotePlugins`.
+Here please do a `:PlugInstall` and a `:UpdateRemotePlugins` when inside *neovim*.
 
 ### _Git_ configuration:
 ```shell
@@ -132,12 +132,7 @@ bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
 sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-9 100
 ```
 
-### Install extras:
-```shell
-sudo apt-get install ctags
-```
-
-### Install Maven:
+### Install _maven_:
 ```shell
 sudo apt-get install maven
 sudo apt-get install default-jre
