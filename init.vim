@@ -379,8 +379,8 @@
     au InsertEnter * set norelativenumber
     au InsertLeave * set relativenumber
     " Change to absolute numbers on terminal
-    autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu   | endif
-    autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
+    autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu | set nu   | endif
+    autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | set nonu | endif
   augroup END
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
 " ║                                      Keyboard bindings                                       ║ "
