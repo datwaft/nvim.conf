@@ -1,5 +1,6 @@
 {
-  "suggest.autoTrigger": "trigger",
+  "suggest.autoTrigger": "none",
+  "suggest.snippetIndicator": "►",
   "languageserver": 
   {
     "clangd": 
