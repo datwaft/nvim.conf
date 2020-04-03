@@ -220,6 +220,10 @@
   " │                                      CamelCaseMotion                                       │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     let g:camelcasemotion_key = '<leader>'
+  " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
+  " │                                        exchange.vim                                        │ "
+  " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
+    set timeoutlen=250
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
 " ║                                     Color and Look&Feel                                      ║ "
 " ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ "
@@ -376,11 +380,16 @@
   augroup numbertoggle
     autocmd!
     " Change to absolute numbers on insert mode
-    au InsertEnter * set norelativenumber
-    au InsertLeave * set relativenumber
-    " Change to absolute numbers on terminal
-    autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu | set nu   | endif
-    autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | set nonu | endif
+    autocmd InsertEnter * set norelativenumber
+    autocmd InsertLeave * set relativenumber
+    " Disable numbers on terminal and begin insert mode
+    autocmd TermOpen * setlocal nonumber norelativenumber listchars=
+    autocmd TermOpen * startinsert
+    autocmd BufEnter,BufWinEnter,WinEnter term://* startinsert
+    autocmd BufLeave term://* stopinsert
+    " Enable numbers when entering any buffer
+    autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu   | endif
+    autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
   augroup END
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
 " ║                                      Keyboard bindings                                       ║ "
