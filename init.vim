@@ -82,6 +82,10 @@
       Plug 'michaeljsmith/vim-indent-object'
       " Camel and snake case objects
       Plug 'bkad/CamelCaseMotion'
+      " FZF
+      Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+      Plug 'junegunn/fzf.vim'
+      Plug 'chengzeyi/fzf-preview.vim'
     " ----------------------------- "
     " ↓ Language Specific Plugins ↓ "
     " ----------------------------- "
@@ -101,7 +105,7 @@
   let g:airline_theme='gruvbox'
   " indentLine
   let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-  let g:indentLine_fileTypeExclude = ['help', 'nerdtree', 'startify']
+  let g:indentLine_fileTypeExclude = ['help', 'nerdtree', 'startify', 'fzf']
   " markdown-preview.nvim
   autocmd FileType markdown map <F5> <Plug>MarkdownPreviewToggle
   " vim-polyglot
@@ -175,7 +179,7 @@
   " quick-scope
   let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
   " semantic-highlight.vim
-  au BufReadPost,BufNewFile *.js,*.html,*.java,*.c,*.cpp,*.h,*.py,*.ts SemanticHighlight
+  au BufReadPost,BufNewFile,BufWritePost *.js,*.html,*.java,*.c,*.cpp,*.h,*.py,*.ts SemanticHighlight
   " CamelCaseMotion
   let g:camelcasemotion_key = '<leader>'
 
@@ -256,8 +260,8 @@
   set formatoptions-=o
   " Autoread when file changes on disk
   set autoread
-  autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * 
-    \ if mode() != 'c' | checktime | endif
+  autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c'
+    \ && !bufexists("[Command Line]") | checktime | endif
   " Notification after file change on disk
   autocmd FileChangedShellPost * echohl WarningMsg |
     \ echo "File changed on disk. Buffer reloaded." | echohl None
@@ -321,6 +325,4 @@
     autocmd!
     au BufNewFile,BufRead *.md inoremap <buffer> ;` ```<cr><cr>```<Up><Up>
   augroup END
-  " C & C++
-  autocmd FileType c,cpp setlocal tabstop=4
 
