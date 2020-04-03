@@ -285,6 +285,11 @@
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     set incsearch
     set nohlsearch
+  " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
+  " │                                    Split configuration                                     │ "
+  " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
+    " Auto resize splits when window is resized
+    autocmd VimResized * wincmd =
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
 " ║                                 Autocompletion configuration                                 ║ "
 " ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ "
@@ -338,13 +343,22 @@
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                          Wrapping                                          │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
+    " Enable wrapping
     set wrap
     set textwidth=100
+    " Better wrapping for lonf lines with indentation
+    set breakindent
+    set breakindentopt=shift:2
+    set showbreak=↳
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
-  " │                                           Search                                           │ "
+  " │                                     Search and replace                                     │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
+    " Intelligent search case
     set ignorecase
+    set infercase
     set smartcase
+    " Always use global substitution
+    set gdefault
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                       Format options                                       │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
@@ -356,6 +370,8 @@
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                       Miscellaneous                                        │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
+    " Better diffing
+    set diffopt=filler,internal,algorithm:histogram,indent-heuristic
     " Undo persistence
     if has('win32') || has('win64')
       set undodir=~/AppData/Local/nvim/undodir.vim
@@ -367,6 +383,9 @@
     set backspace=indent,eol,start
     " Not redrawing while macro is playing
     set lazyredraw
+    " Easily jump to another file
+    set hidden
+    set path+=**
     " Autoread when file changes on disk
     set autoread
     autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c'
@@ -390,6 +409,11 @@
     " Enable numbers when entering any buffer
     autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu   | endif
     autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
+  augroup END
+  " Better scroll performance
+  augroup syntaxSyncMinLines
+      autocmd!
+      autocmd Syntax * syntax sync minlines=2000
   augroup END
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
 " ║                                      Keyboard bindings                                       ║ "
@@ -418,10 +442,10 @@
   " │                                          Movement                                          │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     " Move vertically without worrying about wrapped lines
-    nnoremap <expr> k      ( v:count == 0 ? 'gk' : 'k')
-    nnoremap <expr> j      ( v:count == 0 ? 'gj' : 'j')
-    nnoremap <expr> <up>   ( v:count == 0 ? 'gk' : '<up>')
-    nnoremap <expr> <down> ( v:count == 0 ? 'gj' : '<down>')
+    nnoremap <expr> j      v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j'      : 'gj'
+    nnoremap <expr> k      v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k'      : 'gk'
+    nnoremap <expr> <up>   v:count ? (v:count > 5 ? "m'" . v:count : '') . '<up>'   : 'gk'
+    nnoremap <expr> <down> v:count ? (v:count > 5 ? "m'" . v:count : '') . '<down>' : 'gj'
     " Move to the beginning or end with H or L
     nnoremap H ^
     nnoremap L $
@@ -430,8 +454,11 @@
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     " Use Y to copy from the cursor to the end
     noremap Y y$
-    " Highlight last inserted text
-    nnoremap gV `[v`]
+    " Execute macro over visual selection
+    xnoremap Q :'<,'>:normal @q<CR>
+    " Move lines up and down
+    nnoremap <C-j> :m+<cr>
+    nnoremap <C-k> :m-2<cr>
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
 " ║                                     Function declaration                                     ║ "
 " ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ "
@@ -457,8 +484,4 @@
   " │                                          Markdown                                          │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     autocmd FileType markdown setlocal tabstop=4
-    augroup md
-      autocmd!
-      au BufNewFile,BufRead *.md inoremap <buffer> ;` ```<cr><cr>```<Up><Up>
-    augroup END
 

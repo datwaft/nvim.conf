@@ -3,3 +3,4 @@ undodir.vim/
 *.temp
 tags.lock
 tags
+.netrwhist
