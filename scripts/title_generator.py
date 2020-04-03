@@ -16,10 +16,10 @@ DELIMITER = {
 }
 
 def title_generator(word):
-    divisor = left + ' ' + '-' * (width - 2 - len(left) - len(right))\
+    divisor = left + ' ' + divisor_char * (width - 2 - len(left) - len(right))\
             + ' ' + right
-    title_line = left + ' ->' + word.center(width - 6 - len(left) -\
-            len(right)) + '<- ' + right
+    title_line = left + f' {divisor_char}>' + word.center(width - 6 - len(left) -\
+            len(right)) + f'<{divisor_char} ' + right
     return divisor + '\n' + title_line + '\n' + divisor + '\n'
 
 if __name__ == "__main__":
@@ -30,9 +30,12 @@ if __name__ == "__main__":
                         help='the width of the title, defaults to \'80\'')
     parser.add_argument('-l', dest='language', type=str, default='vim', choices=DELIMITER,
                         help='the language for the delimiters, defaults to \'vim\'')
+    parser.add_argument('-d', dest='divisor', type=str, default='-',
+                        help='the divisor character, defaults to \'-\'')
     args = parser.parse_args()
     string = args.string
     width = args.width
+    divisor_char = args.divisor
     left = DELIMITER[args.language]['left']
     right = DELIMITER[args.language]['right']
     print(title_generator(string))
