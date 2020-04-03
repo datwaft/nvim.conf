@@ -74,8 +74,6 @@
       Plug 'neoclide/coc.nvim', {'branch': 'release'}
       " Filtering and alignment
       Plug 'godlygeek/tabular'
-      " Substitute
-      Plug 'svermeulen/vim-subversive'
       " Easy quick-scoping
       Plug 'unblevable/quick-scope'
       " Easy swap in function
@@ -127,10 +125,6 @@
       let g:vim_markdown_no_extensions_in_markdown = 1
   " coc.nvim
     " Functions
-    function! s:check_back_space() abort
-      let col = col('.') - 1
-      return !col || getline('.')[col - 1]  =~# '\s'
-    endfunction
     function! s:show_documentation()
       if (index(['vim','help'], &filetype) >= 0)
         execute 'h '.expand('<cword>')
@@ -143,20 +137,6 @@
     set updatetime=100
     set shortmess+=c
     set signcolumn=yes
-    " Using <Tab> for triggering completion and navigating completion list 
-    inoremap <silent><expr> <Tab>
-          \ pumvisible() ? "\<C-n>" :
-          \ <SID>check_back_space() ? "\<Tab>" :
-          \ coc#refresh()
-    " Using <Tab>, <UP>, <S-Tab> and <DOWN> for navigating completion list
-    inoremap <expr> <UP>    pumvisible() ? "\<C-p>" : "\<UP>"
-    inoremap <expr> <DOWN>  pumvisible() ? "\<C-n>" : "\<DOWN>"
-    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-    " Using <space> or <C-X> to confirm completion
-    inoremap <silent><expr> <space> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<space>"
-    inoremap <silent><expr> <C-X>   pumvisible() ? coc#_select_confirm() : "\<C-g>u\<C-X>"
-    " Close the preview window when completion is done
-    autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
     " Extra configurations
     autocmd CursorHold * silent call CocActionAsync('highlight')
     command! -nargs=0 Format :call CocAction('format')
@@ -171,10 +151,6 @@
     nmap <leader>rn <Plug>(coc-rename)
     " Show documentation
     nnoremap <silent> K :call <SID>show_documentation()<CR>
-  " vim-subversive
-  nmap <leader>s  <plug>(SubversiveSubstitute)
-  nmap <leader>ss <plug>(SubversiveSubstituteLine)
-  nmap <leader>S  <plug>(SubversiveSubstituteToEndOfLine)
   " vim-floaterm
   let g:floaterm_keymap_new    = '<leader>tn'
   let g:floaterm_keymap_prev   = '<leader>th'
@@ -226,6 +202,38 @@
   " Search highlighting
   set incsearch
   set nohlsearch
+" ---------------------------------------------------------------------------- "
+" ->                      Autocompletion configuration                      <- "
+" ---------------------------------------------------------------------------- "
+  " ========================================================================== "
+  " =>                        Insert-mode completion                        <= "
+  " ========================================================================== "
+    " Function for checking if there is a space behind the cursor.
+    function! s:check_back_space() abort
+      let col = col('.') - 1
+      return !col || getline('.')[col - 1]  =~# '\s'
+    endfunction
+    " Using <Tab> for triggering completion and navigating completion list 
+    inoremap <silent><expr> <Tab>
+          \ pumvisible() ? "\<C-n>" :
+          \ <SID>check_back_space() ? "\<Tab>" :
+          \ coc#refresh()
+    " Using <Tab>, <UP>, <S-Tab> and <DOWN> for navigating completion list
+    inoremap <expr> <UP>    pumvisible() ? "\<C-p>" : "\<UP>"
+    inoremap <expr> <DOWN>  pumvisible() ? "\<C-n>" : "\<DOWN>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+    " Using <space> or <C-X> to confirm completion
+    inoremap <silent><expr> <space> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<space>"
+    inoremap <silent><expr> <C-X>   pumvisible() ? coc#_select_confirm() : "\<C-g>u\<C-X>"
+    " Close the preview window when completion is done
+    autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+  " ========================================================================== "
+  " =>                       Command-mode completion                        <= "
+  " ========================================================================== "
+    set wildmenu
+    set wildcharm=<Tab>
+    set wildignorecase
+    cnoremap <expr> <space> wildmenumode() ? "\<C-e>" : "\<space>"
 " ---------------------------------------------------------------------------- "
 " ->                       Miscelaneous configuration                       <- "
 " ---------------------------------------------------------------------------- "
