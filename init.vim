@@ -149,18 +149,19 @@
           \ <SID>check_back_space() ? "\<Tab>" :
           \ coc#refresh()
     " Using <Tab>, <UP>, <S-Tab> and <DOWN> for navigating completion list
-    inoremap <expr> <UP> pumvisible() ? "\<C-p>" : "\<UP>"
-    inoremap <expr> <DOWN> pumvisible() ? "\<C-n>" : "\<DOWN>"
+    inoremap <expr> <UP>    pumvisible() ? "\<C-p>" : "\<UP>"
+    inoremap <expr> <DOWN>  pumvisible() ? "\<C-n>" : "\<DOWN>"
     inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-    " Using <space> to confirm completion
+    " Using <space> or <C-X> to confirm completion
     inoremap <silent><expr> <space> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<space>"
+    inoremap <silent><expr> <C-X>   pumvisible() ? coc#_select_confirm() : "\<C-g>u\<C-X>"
     " Close the preview window when completion is done
     autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
     " Extra configurations
     autocmd CursorHold * silent call CocActionAsync('highlight')
     command! -nargs=0 Format :call CocAction('format')
-    command! -nargs=? Fold :call CocAction('fold', <f-args>)
-    command! -nargs=0 OR   :call CocAction('runCommand', 'editor.action.organizeImport')
+    command! -nargs=? Fold   :call CocAction('fold', <f-args>)
+    command! -nargs=0 OR     :call CocAction('runCommand', 'editor.action.organizeImport')
     " Gotos
     nmap <silent> gd <Plug>(coc-definition)
     nmap <silent> gy <Plug>(coc-type-definition)
@@ -171,9 +172,9 @@
     " Show documentation
     nnoremap <silent> K :call <SID>show_documentation()<CR>
   " vim-subversive
-  nmap <leader>s <plug>(SubversiveSubstitute)
+  nmap <leader>s  <plug>(SubversiveSubstitute)
   nmap <leader>ss <plug>(SubversiveSubstituteLine)
-  nmap <leader>S <plug>(SubversiveSubstituteToEndOfLine)
+  nmap <leader>S  <plug>(SubversiveSubstituteToEndOfLine)
   " vim-floaterm
   let g:floaterm_keymap_new    = '<leader>tn'
   let g:floaterm_keymap_prev   = '<leader>th'
@@ -183,10 +184,10 @@
   " quick-scope
   let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
   " semantic-highlight.vim
-  au BufReadPost,BufNewFile,BufWritePost *.js,*.html,*.java,*.c,*.cpp,*.h,*.py,*.ts SemanticHighlight
+  au BufReadPost,BufNewFile,BufWritePost 
+    \ *.js,*.html,*.java,*.c,*.cpp,*.h,*.py,*.ts SemanticHighlight
   " CamelCaseMotion
   let g:camelcasemotion_key = '<leader>'
-
 " ---------------------------------------------------------------------------- "
 " ->                          Color and Look&Feel                           <- "
 " ---------------------------------------------------------------------------- "
@@ -225,9 +226,6 @@
   " Search highlighting
   set incsearch
   set nohlsearch
-  " Wildmenu
-  set wildmenu
-  set wildmode=full
 " ---------------------------------------------------------------------------- "
 " ->                       Miscelaneous configuration                       <- "
 " ---------------------------------------------------------------------------- "
@@ -283,29 +281,31 @@
 " ->                           Keyboard bindings                            <- "
 " ---------------------------------------------------------------------------- "
   " Tabs
-  map <C-t><up> :tabr<cr>
-  map <C-t>k :tabr<cr>
-  map <C-t><down> :tabl<cr>
-  map <C-t>j :tabl<cr>
-  map <C-t><left> :tabp<cr>
-  map <C-t>h :tabp<cr>
+  map <C-t><up>    :tabr<cr>
+  map <C-t>k       :tabr<cr>
+  map <C-t><down>  :tabl<cr>
+  map <C-t>j       :tabl<cr>
+  map <C-t><left>  :tabp<cr>
+  map <C-t>h       :tabp<cr>
   map <C-t><right> :tabn<cr>
-  map <C-t>l :tabn<cr>
+  map <C-t>l       :tabn<cr>
   " Terminal
   tnoremap <Esc> <C-\><C-n>
   " Folding
   nnoremap <expr> <f2> &foldlevel ? 'zM' :'zR'
   nnoremap <space> za
   " Move by wrapped line
-  nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
-  nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
-  nnoremap <expr> <up> (v:count == 0 ? 'gk' : '<up>')
-  nnoremap <expr> <down> (v:count == 0 ? 'gj' : '<down>')
+  nnoremap <expr> k      ( v:count == 0 ? 'gk' : 'k')
+  nnoremap <expr> j      ( v:count == 0 ? 'gj' : 'j')
+  nnoremap <expr> <up>   ( v:count == 0 ? 'gk' : '<up>')
+  nnoremap <expr> <down> ( v:count == 0 ? 'gj' : '<down>')
   " Go to beginning and end with H and L
   nnoremap H ^
   nnoremap L $
   " Better Y
   noremap Y y$
+  " Highlight last inserted text
+  nnoremap gV `[v`]
 " ---------------------------------------------------------------------------- "
 " ->                          Function declaration                          <- "
 " ---------------------------------------------------------------------------- "
