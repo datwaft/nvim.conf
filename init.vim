@@ -58,8 +58,6 @@
       Plug 'jaxbot/semantic-highlight.vim'
       " Git
       Plug 'mhinz/vim-signify'
-      " Floating terminal
-      Plug 'voldikss/vim-floaterm'
     " ┌──────────────────────────────────────────────────────────────────────────────────────────┐ "
     " │                                      Useful plugins                                      │ "
     " └──────────────────────────────────────────────────────────────────────────────────────────┘ "
@@ -179,33 +177,50 @@
     " -------------------------------------------------------------------------------------------- "
     " ->                                  Extra configurations                                  <- "
     " -------------------------------------------------------------------------------------------- "
+      " Highlight the symbol and its references when holding the cursor.
       autocmd CursorHold * silent call CocActionAsync('highlight')
+      " Format current document
       command! -nargs=0 Format :call CocAction('format')
+      " Fold current document
       command! -nargs=? Fold   :call CocAction('fold', <f-args>)
+      " Organize imports
       command! -nargs=0 OR     :call CocAction('runCommand', 'editor.action.organizeImport')
     " -------------------------------------------------------------------------------------------- "
-    " ->                                         Gotos                                          <- "
+    " ->                                    Code navigation                                     <- "
     " -------------------------------------------------------------------------------------------- "
+      " GoTo code navigation
       nmap <silent> gd <Plug>(coc-definition)
       nmap <silent> gy <Plug>(coc-type-definition)
       nmap <silent> gi <Plug>(coc-implementation)
       nmap <silent> gr <Plug>(coc-references)
+      " Navigate diagnostics
+      nmap <silent> [g <Plug>(coc-diagnostic-prev)
+      nmap <silent> ]g <Plug>(coc-diagnostic-next)
     " -------------------------------------------------------------------------------------------- "
-    " ->                                         Rename                                         <- "
+    " ->                                       Utilities                                        <- "
     " -------------------------------------------------------------------------------------------- "
+      " Rename
       nmap <leader>rn <Plug>(coc-rename)
-    " -------------------------------------------------------------------------------------------- "
-    " ->                                   Show documentation                                   <- "
-    " -------------------------------------------------------------------------------------------- "
+      " Show documentation
       nnoremap <silent> K :call <SID>show_documentation()<CR>
-  " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
-  " │                                        vim-floaterm                                        │ "
-  " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
-    let g:floaterm_keymap_new    = '<leader>tn'
-    let g:floaterm_keymap_prev   = '<leader>th'
-    let g:floaterm_keymap_next   = '<leader>tl'
-    let g:floaterm_keymap_toggle = '<leader>tt'
-    autocmd User Startified setlocal buflisted
+      " Format selected code
+      xmap <leader>f  <Plug>(coc-format-selected)
+      nmap <leader>f  <Plug>(coc-format-selected)
+      " Apply codeAction to the selected region
+      xmap <leader>a  <Plug>(coc-codeaction-selected)
+      nmap <leader>a  <Plug>(coc-codeaction-selected)
+      " codeAction for the current line
+      nmap <leader>ac  <Plug>(coc-codeaction)
+      " Fix current line
+      nmap <leader>qf  <Plug>(coc-fix-current)
+      " Funtion text object
+      xmap if <Plug>(coc-funcobj-i)
+      xmap af <Plug>(coc-funcobj-a)
+      omap if <Plug>(coc-funcobj-i)
+      omap af <Plug>(coc-funcobj-a)
+      " Use <TAB> to select range
+      nmap <silent> <TAB> <Plug>(coc-range-select)
+      xmap <silent> <TAB> <Plug>(coc-range-select)
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                        quick-scope                                         │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
@@ -306,9 +321,12 @@
     inoremap <expr> <UP>    pumvisible() ? "\<C-p>" : "\<UP>"
     inoremap <expr> <DOWN>  pumvisible() ? "\<C-n>" : "\<DOWN>"
     inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-    " Using <space> or <C-X> to confirm completion
-    inoremap <silent><expr> <space> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<space>"
-    inoremap <silent><expr> <C-X>   pumvisible() ? coc#_select_confirm() : "\<C-g>u\<C-X>"
+    " Using <space> to confirm completion
+    if has('patch8.1.1068')
+      inoremap <expr> <space> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<space>"
+    else
+      imap <expr> <space> pumvisible() ? "\<C-y>" : "\<C-g>u\<space>"
+    endif
     " Close the preview window when completion is done
     autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
@@ -426,6 +444,10 @@
   " │                                          Terminal                                          │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     tnoremap <Esc> <C-\><C-n>
+    tnoremap <C-w>h <C-\><C-n><C-w>h
+    tnoremap <C-w>j <C-\><C-n><C-w>j
+    tnoremap <C-w>k <C-\><C-n><C-w>k
+    tnoremap <C-w>l <C-\><C-n><C-w>l
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                          Folding                                           │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
@@ -454,6 +476,10 @@
     nnoremap <C-k> :m-2<cr>
     nnoremap <C-up> :m-2<cr>
     nnoremap <C-down> :m+<cr>
+" ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
+" ║                                       Custom commands                                        ║ "
+" ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ "
+  command Term execute "bel 5sp | term"
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
 " ║                                     Function declaration                                     ║ "
 " ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ "
