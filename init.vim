@@ -38,8 +38,9 @@
     " ┌──────────────────────────────────────────────────────────────────────────────────────────┐ "
     " │                                    Aesthetic plugins                                     │ "
     " └──────────────────────────────────────────────────────────────────────────────────────────┘ "
-      " Colorscheme
+      " Colorschemes
       Plug 'morhetz/gruvbox'
+      Plug 'jacoborus/tender.vim'
       " Status line
       Plug 'vim-airline/vim-airline'
       Plug 'vim-airline/vim-airline-themes'
@@ -126,8 +127,6 @@
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     " Enables powerline fonts for airline
     let g:airline_powerline_fonts = 1
-    " Sets airline theme to gruvbox
-    let g:airline_theme='gruvbox'
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                         indentLine                                         │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
@@ -215,7 +214,7 @@
   " │                                   semantic-highlight.vim                                   │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     au BufReadPost,BufNewFile,BufWritePost 
-      \ *.js,*.html,*.java,*.c,*.cpp,*.h,*.py,*.ts SemanticHighlight
+      \ *.java,*.c,*.cpp,*.h,*.py SemanticHighlight
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                      CamelCaseMotion                                       │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
@@ -230,16 +229,13 @@
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                 Colorscheme configuration                                  │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
-    " Sets gruvbox to hard contrast
-    let g:gruvbox_contrast_dark='hard'
-    let g:gruvbox_contrast_light='hard'
-    " Enables italics for gruvbox
-    let g:gruvbox_italic=1
+    " Sets airline theme to gruvbox
+    let g:airline_theme='tender'
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                  Colorscheme declaration                                   │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     " Uses gruvbox colorscheme
-    colorscheme gruvbox
+    colorscheme tender
     " Sets colorscheme to dark mode
     set background=dark
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
@@ -406,9 +402,6 @@
     autocmd TermOpen * startinsert
     autocmd BufEnter,BufWinEnter,WinEnter term://* startinsert
     autocmd BufLeave term://* stopinsert
-    " Enable numbers when entering any buffer
-    autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu   | endif
-    autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
   augroup END
   " Better scroll performance
   augroup syntaxSyncMinLines
