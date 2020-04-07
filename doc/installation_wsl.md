@@ -7,7 +7,20 @@ echo "export PATH=\$PATH:~/.local/bin" >> ~/.profile
 source ~/.profile
 ```
 
-And also use this so the clipboard can work:
+## Make clipboard work with neovim in WSL
+
+### Option1: With X Server
+
+Install [xming](https://sourceforge.net/projects/xming/) on your Windows.
+
+Do this:
+
+```shell
+echo "export DISPLAY=:0" >> ~/.profile
+source ~/.profile
+```
+
+### Option 2: Without X Server
 
 ```shell
 echo "export DISPLAY=:0" >> ~/.profile
