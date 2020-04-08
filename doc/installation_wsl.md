@@ -22,8 +22,8 @@ source ~/.profile
 
 #### Making _xming_ start with the OS
 
-1. Run XLaunch.exe and save the configuration to file config.xlaunch.
-2. Create a shotcut of XLaunch.exe under Startup directory (shell:startup).
+1. Run XLaunch.exe and save the configuration to file `config.xlaunch`.
+2. Create a shotcut of XLaunch.exe under _startup directory_ (`shell:startup`).
 3. Modify the target field of the shotcut to `"PATH/TO/Xming/XLaunch.exe" -run "PATH/TO/config.xlaunch"`.
 
 **Information from:** http://zhangzhihuiaaa.blogspot.com/2013/09/make-xming-automatically-run-at-startup.html
