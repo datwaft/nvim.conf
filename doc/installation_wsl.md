@@ -164,9 +164,5 @@ source ~/.profile
 
 ### Install _tmux_:
 ```shell
-DIR="$HOME/.bin-libevent"
-cd /tmp/
-git clone https://github.com/tmux/tmux.git && cd tmux
-sh autogen.sh
-./configure && make
+sudo apt-get install -y tmux
 ```
