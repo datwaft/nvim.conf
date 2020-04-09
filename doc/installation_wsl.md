@@ -164,9 +164,7 @@ source ~/.profile
 
 ### Install _tmux_:
 ```shell
-sudo apt-get install -y autoconf g++ make openssl libssl-dev libcurl4-openssl-dev
-sudo apt-get install -y libcurl4-openssl-dev pkg-config
-sudo apt-get install -y libsasl2-dev
+DIR="$HOME/.bin-libevent"
 cd /tmp/
 git clone https://github.com/tmux/tmux.git && cd tmux
 sh autogen.sh
