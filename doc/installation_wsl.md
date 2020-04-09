@@ -112,6 +112,13 @@ sudo npm install -g wsl-open
 sudo update-alternatives --install /usr/bin/xdg-open xdg-open /usr/bin/wsl-open 100
 ```
 
+And for **Bracey** please do:
+
+```shell
+cd ~/.config/nvim/plugged/bracey.vim/
+npm install --prefix server
+```
+
 ### _Python2_ install:
 ```shell
 sudo apt-get install -y python-pip
