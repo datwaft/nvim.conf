@@ -73,47 +73,46 @@ sudo chmod 777 /home/$USER/bin/xsel
 ```shell
 sudo apt-get update
 sudo apt-get upgrade
-sudo apt-get install build-essential
-sudo apt-get install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip
+sudo apt-get install -y build-essential
+sudo apt-get install -y ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip
 ```
 
 ### Install _neovim_ to _/usr/local_:
 ```shell
 cd /tmp/
-git clone https://github.com/neovim/neovim
-cd neovim
+git clone https://github.com/neovim/neovim && cd neovim
 make CMAKE_BUILD_TYPE=Release
 sudo make install
 ```
 
 ### _Pip_ install:
 ```shell
-sudo apt-get install python3-pip
+sudo apt-get install -y python3-pip
 python3 -m pip install pynvim
 python3 -m pip install jedi pylint
 python3 -m pip install neovim-remote
-sudo apt-get install texlive
-sudo apt-get install latexmk
+sudo apt-get install -y texlive
+sudo apt-get install -y latexmk
 ```
 
 ### _Ruby_ install:
 Note: You cannot use _gem_ with hamachi adapter enabled. 
 ```shell
-sudo apt-get install ruby-full
+sudo apt-get install -y ruby-full
 sudo gem install neovim
 ```
 
 ### _Node_ install:
 ```shell
-sudo apt-get install curl
+sudo apt-get install -y curl
 curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
-sudo apt-get install nodejs
+sudo apt-get install -y nodejs
 sudo npm install -g neovim
 ```
 
 ### _Python2_ install:
 ```shell
-sudo apt-get install python-pip
+sudo apt-get install -y python-pip
 python -m pip install pynvim
 ```
 
@@ -146,19 +145,30 @@ ssh -T git@github.com
 
 ### Install _clang_:
 ```shell
-sudo apt-get install software-properties-common
+sudo apt-get install -y software-properties-common
 sudo apt-get update
-sudo apt-get install wget
+sudo apt-get install -y wget
 bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
 sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-9 100
 ```
 
 ### Install _maven_:
 ```shell
-sudo apt-get install maven
-sudo apt-get install default-jre
-sudo apt-get install default-jdk
+sudo apt-get install -y maven
+sudo apt-get install -y default-jre
+sudo apt-get install -y default-jdk
 echo "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64" >> ~/.profile
 echo "export PATH=\$JAVA_HOME/bin:\$PATH" >> ~/.profile
 source ~/.profile
+```
+
+### Install _tmux_:
+```shell
+sudo apt-get install -y autoconf g++ make openssl libssl-dev libcurl4-openssl-dev
+sudo apt-get install -y libcurl4-openssl-dev pkg-config
+sudo apt-get install -y libsasl2-dev
+cd /tmp/
+git clone https://github.com/tmux/tmux.git && cd tmux
+sh autogen.sh
+./configure && make
 ```
