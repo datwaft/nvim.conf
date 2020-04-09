@@ -108,6 +108,8 @@ sudo apt-get install -y curl
 curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
 sudo apt-get install -y nodejs
 sudo npm install -g neovim
+sudo npm install -g wsl-open
+sudo update-alternatives --install /usr/bin/xdg-open xdg-open /usr/bin/wsl-open 100
 ```
 
 ### _Python2_ install:
