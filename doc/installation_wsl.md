@@ -90,6 +90,7 @@ sudo make install
 ```shell
 sudo apt-get install -y python3-setuptools
 sudo apt-get install -y python3-pip
+python3 -m pip install wheel
 python3 -m pip install pynvim
 python3 -m pip install jedi pylint
 python3 -m pip install neovim-remote
