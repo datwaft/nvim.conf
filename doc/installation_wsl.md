@@ -88,6 +88,7 @@ sudo make install
 
 ### _Pip_ install:
 ```shell
+sudo apt-get install -y python3-setuptools
 sudo apt-get install -y python3-pip
 python3 -m pip install pynvim
 python3 -m pip install jedi pylint
@@ -122,6 +123,7 @@ npm install --prefix server
 
 ### _Python2_ install:
 ```shell
+sudo apt-get install python-setuptools
 sudo apt-get install -y python-pip
 python -m pip install pynvim
 ```
