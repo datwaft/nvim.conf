@@ -35,86 +35,90 @@
 " ║                                      Plugin management                                       ║ "
 " ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ "
   call plug#begin(g:plugins_folder)
-    " ┌──────────────────────────────────────────────────────────────────────────────────────────┐ "
-    " │                                    Aesthetic plugins                                     │ "
-    " └──────────────────────────────────────────────────────────────────────────────────────────┘ "
-      " Colorschemes
-      Plug 'morhetz/gruvbox'
-      Plug 'jacoborus/tender.vim'
-      " Status line
-      Plug 'vim-airline/vim-airline'
-      Plug 'vim-airline/vim-airline-themes'
-      " Improved search highlight
-      Plug 'markonm/traces.vim'
-      " Indent guides
-      Plug 'Yggdroot/indentLine'
-      " Developer icons
-      Plug 'ryanoasis/vim-devicons'
-      " Display marks
-      Plug 'kshenoy/vim-signature'
-      " Syntax highlighting
-      Plug 'sheerun/vim-polyglot'
-      " Semantic highlighting
-      Plug 'jaxbot/semantic-highlight.vim'
-      " Git
-      Plug 'mhinz/vim-signify'
-    " ┌──────────────────────────────────────────────────────────────────────────────────────────┐ "
-    " │                                      Useful plugins                                      │ "
-    " └──────────────────────────────────────────────────────────────────────────────────────────┘ "
-      " ------------------------------------------------------------------------------------------ "
-      " ->                                     Text objects                                     <- "
-      " ------------------------------------------------------------------------------------------ "
-        " More targets
-        Plug 'wellle/targets.vim'
-        " Indentation object
-        Plug 'michaeljsmith/vim-indent-object'
-        " Camel and snake case objects
-        Plug 'bkad/CamelCaseMotion'
-      " ------------------------------------------------------------------------------------------ "
-      " ->                                        Others                                        <- "
-      " ------------------------------------------------------------------------------------------ "
-        " UndoTree
-        Plug 'mbbill/undotree'
-        " Ability to comment
-        Plug 'tpope/vim-commentary'
-        " Ability to surround
-        Plug 'machakann/vim-sandwich'
-        " Git management
-        Plug 'tpope/vim-fugitive'
-        " Autocompleter
-        Plug 'neoclide/coc.nvim', {'branch': 'release'}
-        " Filtering and alignment
-        Plug 'godlygeek/tabular'
-        " Easy quick-scoping
-        Plug 'unblevable/quick-scope'
-        " Easy swap in function
-        Plug 'machakann/vim-swap'
-        " Abolish
-        Plug 'tpope/vim-abolish'
-        " FZF
-        Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-        Plug 'junegunn/fzf.vim'
-        Plug 'chengzeyi/fzf-preview.vim'
-        " Exchange objects
-        Plug 'tommcdo/vim-exchange'
-    " ┌──────────────────────────────────────────────────────────────────────────────────────────┐ "
-    " │                                Language Specific plugins                                 │ "
-    " └──────────────────────────────────────────────────────────────────────────────────────────┘ "
-      " ------------------------------------------------------------------------------------------ "
-      " ->                                       Markdown                                       <- "
-      " ------------------------------------------------------------------------------------------ "
-        " Document preview
-        Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-      " ------------------------------------------------------------------------------------------ "
-      " ->                                         SQL                                          <- "
-      " ------------------------------------------------------------------------------------------ "
-        " Syntax highlight
-        Plug 'shmup/vim-sql-syntax'
-      " ------------------------------------------------------------------------------------------ "
-      " ->                                         Java                                         <- "
-      " ------------------------------------------------------------------------------------------ "
-        " Syntax highlight
-        Plug 'uiiaoo/java-syntax.vim'
+  " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
+  " │                                     Aesthetic plugins                                      │ "
+  " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
+    " Colorschemes
+    Plug 'morhetz/gruvbox'
+    Plug 'jacoborus/tender.vim'
+    " Status line
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+    " Improved search highlight
+    Plug 'markonm/traces.vim'
+    " Indent guides
+    Plug 'Yggdroot/indentLine'
+    " Developer icons
+    Plug 'ryanoasis/vim-devicons'
+    " Display marks
+    Plug 'kshenoy/vim-signature'
+    " Syntax highlighting
+    Plug 'sheerun/vim-polyglot'
+    " Semantic highlighting
+    Plug 'jaxbot/semantic-highlight.vim'
+    " Git
+    Plug 'mhinz/vim-signify'
+  " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
+  " │                                       Useful plugins                                       │ "
+  " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
+    " -------------------------------------------------------------------------------------------- "
+    " ->                                      Text objects                                      <- "
+    " -------------------------------------------------------------------------------------------- "
+      " More targets
+      Plug 'wellle/targets.vim'
+      " Indentation object
+      Plug 'michaeljsmith/vim-indent-object'
+      " Camel and snake case objects
+      Plug 'bkad/CamelCaseMotion'
+    " -------------------------------------------------------------------------------------------- "
+    " ->                                         Others                                         <- "
+    " -------------------------------------------------------------------------------------------- "
+      " UndoTree
+      Plug 'mbbill/undotree'
+      " Ability to comment
+      Plug 'tpope/vim-commentary'
+      " Ability to surround
+      Plug 'machakann/vim-sandwich'
+      " Git management
+      Plug 'tpope/vim-fugitive'
+      " Autocompleter
+      Plug 'neoclide/coc.nvim', {'branch': 'release'}
+      " Filtering and alignment
+      Plug 'godlygeek/tabular'
+      " Easy quick-scoping
+      Plug 'unblevable/quick-scope'
+      " Easy swap in function
+      Plug 'machakann/vim-swap'
+      " Abolish
+      Plug 'tpope/vim-abolish'
+      " FZF
+      Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+      Plug 'junegunn/fzf.vim'
+      Plug 'chengzeyi/fzf-preview.vim'
+      " Exchange objects
+      Plug 'tommcdo/vim-exchange'
+      " Live CSS, HTML & JS
+      Plug 'turbio/bracey.vim'
+      " Color picker
+      Plug 'DougBeney/pickachu'
+  " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
+  " │                                 Language specific plugins                                  │ "
+  " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
+    " -------------------------------------------------------------------------------------------- "
+    " ->                                        Markdown                                        <- "
+    " -------------------------------------------------------------------------------------------- "
+      " Document preview
+      Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+    " -------------------------------------------------------------------------------------------- "
+    " ->                                          SQL                                           <- "
+    " -------------------------------------------------------------------------------------------- "
+      " Syntax highlight
+      Plug 'shmup/vim-sql-syntax'
+    " -------------------------------------------------------------------------------------------- "
+    " ->                                          Java                                          <- "
+    " -------------------------------------------------------------------------------------------- "
+      " Syntax highlight
+      Plug 'uiiaoo/java-syntax.vim'
   call plug#end()
   filetype plugin indent on
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
@@ -238,6 +242,10 @@
   " │                                        exchange.vim                                        │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     set timeoutlen=250
+  " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
+  " │                                          pickachu                                          │ "
+  " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
+    map <A-c> :Pickachu<CR>
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
 " ║                                     Color and Look&Feel                                      ║ "
 " ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ "
