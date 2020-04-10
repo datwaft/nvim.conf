@@ -7,6 +7,12 @@ echo "export PATH=\$PATH:~/.local/bin" >> ~/.profile
 source ~/.profile
 ```
 
+## Custom PROMPT for WSL
+
+The idea is to summarize `/mnt/c/something` into `C:/something`, like windows.
+
+**WIP**
+
 ## Make clipboard work with neovim in WSL
 
 ### Option1: With X Server
