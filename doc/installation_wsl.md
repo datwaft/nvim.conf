@@ -11,7 +11,7 @@ source ~/.profile
 
 The idea is to summarize `/mnt/c/something` into `C:/something`, like Windows.
 
-**WIP**
+-- **WIP** --
 
 ## Make clipboard work with neovim in WSL
 
