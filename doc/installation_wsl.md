@@ -7,7 +7,28 @@ echo "export PATH=\$PATH:~/.local/bin" >> ~/.profile
 source ~/.profile
 ```
 
-And also use this so the clipboard can work:
+## Make clipboard work with neovim in WSL
+
+### Option1: With X Server
+
+Install [xming](https://sourceforge.net/projects/xming/) on your Windows.
+
+Do this:
+
+```shell
+echo "export DISPLAY=:0" >> ~/.profile
+source ~/.profile
+```
+
+#### Making _xming_ start with the OS
+
+1. Run XLaunch.exe and save the configuration to file `config.xlaunch`.
+2. Create a shotcut of XLaunch.exe under _startup directory_ (`shell:startup`).
+3. Modify the target field of the shotcut to `"PATH/TO/Xming/XLaunch.exe" -run "PATH/TO/config.xlaunch"`.
+
+**Information from:** http://zhangzhihuiaaa.blogspot.com/2013/09/make-xming-automatically-run-at-startup.html
+
+### Option 2: Without X Server
 
 ```shell
 echo "export DISPLAY=:0" >> ~/.profile
@@ -52,47 +73,59 @@ sudo chmod 777 /home/$USER/bin/xsel
 ```shell
 sudo apt-get update
 sudo apt-get upgrade
-sudo apt-get install build-essential
-sudo apt-get install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip
+sudo apt-get install -y build-essential
+sudo apt-get install -y ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip
 ```
 
 ### Install _neovim_ to _/usr/local_:
 ```shell
+sudo apt-get install -y mercurial
 cd /tmp/
-git clone https://github.com/neovim/neovim
-cd neovim
+git clone https://github.com/neovim/neovim && cd neovim
 make CMAKE_BUILD_TYPE=Release
 sudo make install
 ```
 
 ### _Pip_ install:
 ```shell
-sudo apt-get install python3-pip
+sudo apt-get install -y python3-setuptools
+sudo apt-get install -y python3-pip
+python3 -m pip install wheel
 python3 -m pip install pynvim
 python3 -m pip install jedi pylint
 python3 -m pip install neovim-remote
-sudo apt-get install texlive
-sudo apt-get install latexmk
+sudo apt-get install -y texlive
+sudo apt-get install -y latexmk
 ```
 
 ### _Ruby_ install:
 Note: You cannot use _gem_ with hamachi adapter enabled. 
 ```shell
-sudo apt-get install ruby-full
+sudo apt-get install -y ruby-full
 sudo gem install neovim
 ```
 
 ### _Node_ install:
 ```shell
-sudo apt-get install curl
+sudo apt-get install -y curl
 curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
-sudo apt-get install nodejs
+sudo apt-get install -y nodejs
 sudo npm install -g neovim
+sudo npm install -g wsl-open
+sudo update-alternatives --install /usr/bin/xdg-open xdg-open /usr/bin/wsl-open 100
+```
+
+And for **Bracey** please do:
+
+```shell
+cd ~/.config/nvim/plugged/bracey.vim/
+npm install --prefix server
 ```
 
 ### _Python2_ install:
 ```shell
-sudo apt-get install python-pip
+sudo apt-get install python-setuptools
+sudo apt-get install -y python-pip
 python -m pip install pynvim
 ```
 
@@ -125,19 +158,24 @@ ssh -T git@github.com
 
 ### Install _clang_:
 ```shell
-sudo apt-get install software-properties-common
+sudo apt-get install -y software-properties-common
 sudo apt-get update
-sudo apt-get install wget
+sudo apt-get install -y wget
 bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
 sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-9 100
 ```
 
 ### Install _maven_:
 ```shell
-sudo apt-get install maven
-sudo apt-get install default-jre
-sudo apt-get install default-jdk
+sudo apt-get install -y maven
+sudo apt-get install -y default-jre
+sudo apt-get install -y default-jdk
 echo "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64" >> ~/.profile
 echo "export PATH=\$JAVA_HOME/bin:\$PATH" >> ~/.profile
 source ~/.profile
+```
+
+### Install _tmux_:
+```shell
+sudo apt-get install -y tmux
 ```
