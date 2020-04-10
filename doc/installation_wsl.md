@@ -9,7 +9,7 @@ source ~/.profile
 
 ## Custom PROMPT for WSL
 
-The idea is to summarize `/mnt/c/something` into `C:/something`, like windows.
+The idea is to summarize `/mnt/c/something` into `C:/something`, like Windows.
 
 **WIP**
 
