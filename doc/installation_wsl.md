@@ -79,6 +79,7 @@ sudo apt-get install -y ninja-build gettext libtool libtool-bin autoconf automak
 
 ### Install _neovim_ to _/usr/local_:
 ```shell
+sudo apt-get install -y mercurial
 cd /tmp/
 git clone https://github.com/neovim/neovim && cd neovim
 make CMAKE_BUILD_TYPE=Release
