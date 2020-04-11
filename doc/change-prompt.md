@@ -67,3 +67,8 @@ PS1='\e[1;32m\u@\H\e[m:\e[1;34m$pwd2\e[m\$ '
 ## New prompt for windows
 
 Wanna summarize `C:\Users\david\AppData\Local\Packages\TheDebianProject.DebianGNULinux_76v4gfsz19hv4\LocalState\rootfs` into `//wsl$/`
+
+```bash
+PROMPT_COMMAND='pwd2=$(p="${PWD#${HOME}}"; [ "${PWD}" != "${p}" ] && echo "~"; (echo $p | grep -Eq /media/david/A29E3C599E3C27E5/Users/david/AppData/Local/Packages/TheDebianProject.DebianGNULinux_76v4gfsz19hv4/LocalState/rootfs) && echo $p|sed "s:/media/david/A29E3C599E3C27E5/Users/david/AppData/Local/Packages/TheDebianProject.DebianGNULinux_76v4gfsz19hv4/LocalState/rootfs/\?://wsl$/:" || echo $p)'
+PS1='\e[1;32m\u@\H\e[m:\e[1;34m$pwd2\e[m\$ '
+```
