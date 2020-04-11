@@ -63,3 +63,7 @@ And there is it, perfect, but it now needs color.
 PROMPT_COMMAND='pwd2=$(p="${PWD#${HOME}}"; [ "${PWD}" != "${p}" ] && echo "~"; (echo $p | grep -Eq /mnt/.) && echo $p|sed "s-/mnt/\(\w\)/\?-\u\1:/-" || echo $p)'
 PS1='\e[1;32m\u@\H\e[m:\e[1;34m$pwd2\e[m\$ '
 ```
+
+## New prompt for windows
+
+Wanna summarize `C:\Users\david\AppData\Local\Packages\TheDebianProject.DebianGNULinux_76v4gfsz19hv4\LocalState\rootfs` into `//wsl$/`
