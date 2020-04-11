@@ -18,7 +18,7 @@ export PROMPT_COMMAND='pwd2=$(p="${PWD#${HOME}}"; [ "${PWD}" != "${p}" ] && echo
 export PS1='\e[1;32m\u@\H\e[m:\e[1;34m$pwd2\e[m\$ '
 ```
 
-Use this to change it permanently add that to ~/.bashrc and do a `source ~/.bashrc`.
+To change it permanently add that to ~/.bashrc and do a `source ~/.bashrc`.
 
 ## Make clipboard work with neovim in WSL
 
