@@ -71,6 +71,22 @@
       " Camel and snake case objects
       Plug 'bkad/CamelCaseMotion'
     " -------------------------------------------------------------------------------------------- "
+    " ->                                    File management                                     <- "
+    " -------------------------------------------------------------------------------------------- "
+      " File manager
+      Plug 'cocopon/vaffle.vim'
+      " Quick file search
+      Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+      Plug 'junegunn/fzf.vim'
+      Plug 'chengzeyi/fzf-preview.vim'
+    " -------------------------------------------------------------------------------------------- "
+    " ->                                     Live execution                                     <- "
+    " -------------------------------------------------------------------------------------------- "
+      " Live CSS, HTML & JS
+      Plug 'turbio/bracey.vim'
+      " Markdown document preview
+      Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+    " -------------------------------------------------------------------------------------------- "
     " ->                                         Others                                         <- "
     " -------------------------------------------------------------------------------------------- "
       " UndoTree
@@ -91,24 +107,13 @@
       Plug 'machakann/vim-swap'
       " Abolish
       Plug 'tpope/vim-abolish'
-      " FZF
-      Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-      Plug 'junegunn/fzf.vim'
-      Plug 'chengzeyi/fzf-preview.vim'
       " Exchange objects
       Plug 'tommcdo/vim-exchange'
-      " Live CSS, HTML & JS
-      Plug 'turbio/bracey.vim'
       " Color picker
       Plug 'DougBeney/pickachu'
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                 Language specific plugins                                  │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
-    " -------------------------------------------------------------------------------------------- "
-    " ->                                        Markdown                                        <- "
-    " -------------------------------------------------------------------------------------------- "
-      " Document preview
-      Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
     " -------------------------------------------------------------------------------------------- "
     " ->                                          SQL                                           <- "
     " -------------------------------------------------------------------------------------------- "
