@@ -188,6 +188,12 @@ echo "export PATH=\$JAVA_HOME/bin:\$PATH" >> ~/.profile
 source ~/.profile
 ```
 
+### Install sql-language-server
+
+```shell
+sudo npm i -g sql-language-server
+```
+
 ### Install _tmux_:
 ```shell
 sudo apt-get install -y tmux
