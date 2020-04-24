@@ -7,12 +7,13 @@ import sys
 import argparse
 
 DELIMITER = {
-    'c':    {'left': '/*', 'right': '*/'},
-    'c++':    {'left': '//', 'right': '//'},
-    'python': {'left': '#', 'right': '#'},
-    'vim':   {'left': '"', 'right': '"'},
-    'lisp':   {'left': ';;', 'right': ';;'},
-    'custom':   {'left': '\\ \'', 'right': '\','}
+    'c':      {'left': '*',      'right': '*/'},
+    'c++':    {'left': '//',      'right': '//'},
+    'python': {'left': '#',       'right': '#'},
+    'vim':    {'left': '"',       'right': '"'},
+    'lisp':   {'left': ';;',      'right': ';;'},
+    'custom': {'left': '\\ \'',   'right': '\','},
+    'sql':    {'left': 'PROMPT',  'right': ''}
 }
 
 def title_generator(word):
@@ -36,7 +37,8 @@ if __name__ == "__main__":
     string = args.string
     width = args.width
     divisor_char = args.divisor
-    left = DELIMITER[args.language]['left']
-    right = DELIMITER[args.language]['right']
+    language = args.language
+    left = DELIMITER[language]['left']
+    right = DELIMITER[language]['right']
     print(title_generator(string))
 

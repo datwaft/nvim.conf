@@ -18,7 +18,30 @@ CHARSET = {
         'DR' : '┘',
         'H'  : '─',
         'V'  : '│'
+    },
+    "TEXT": {
+        'UL' : '+',
+        'UR' : '+',
+        'DL' : '+',
+        'DR' : '+',
+        'H'  : '-',
+        'V'  : '|'
+    },
+    "MEGATEXT": {
+        'UL' : '=',
+        'UR' : '=',
+        'DL' : '=',
+        'DR' : '=',
+        'H'  : '=',
+        'V'  : '='
     }
+}
+
+PARSE = {
+    "d": "DOUBLE",
+    "s": "SINGLE",
+    "t": "TEXT",
+    "mt": "MEGATEXT"
 }
 
 DELIMITER = {
@@ -27,6 +50,7 @@ DELIMITER = {
     'python': {'left': '#', 'right': '#'},
     'vim':   {'left': '"', 'right': '"'},
     'lisp':   {'left': ';;', 'right': ';;'},
+    'sql':   {'left': 'PROMPT', 'right': ''},
     'custom':   {'left': '\\ \'', 'right': '\','}
 }
 
@@ -34,8 +58,7 @@ def title_generator(word):
     up = left + ' ' + box['UL'] + box['H'] * (width - 4 - len(left) - len(right)) + box['UR'] + ' ' + right
     down = left + ' ' + box['DL'] + box['H'] * (width - 4 - len(left) - len(right)) + box['DR'] + ' ' + right
     title_line = left + ' ' + box['V'] + word.center(width - 4 - len(left) - len(right)) + box['V'] + ' ' + right
-    return up + '\n' + title_line + '\n' + down + '\n'
-
+    return up + '\n' + title_line + '\n' + down
 def banner_generator(word):
     try:
         result = subprocess.run(['figlet', '-w', str(width - 4 - len(left) -\
@@ -48,7 +71,7 @@ def banner_generator(word):
     banner = up + '\n'
     for line in result:
         banner += left + ' ' + box['V'] + line.center(width - 4 - len(left) - len(right)) + box['V'] + ' ' + right + '\n'
-    return banner + down + '\n'
+    return banner + down
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Generates a centered title')
@@ -62,12 +85,12 @@ if __name__ == "__main__":
         help='arguments for figlet, defaults to \'\'')
     parser.add_argument('-b', action='store_true',
         help='the flag means it is going to use figlet for the banner')
-    parser.add_argument('-s', action='store_true',
-        help='the flag means it is going to be a simple box')
+    parser.add_argument('-t', dest='type', type=str, default='t', choices=PARSE,
+        help='the type of the box, defaults to \'t\'')
     args = parser.parse_args()
     string = args.string
     width = args.width
-    box = CHARSET["SINGLE" if args.s else "DOUBLE"]
+    box = CHARSET[PARSE[args.type]]
     left = DELIMITER[args.language]['left']
     right = DELIMITER[args.language]['right']
     if len(args.arguments) >= 1:
