@@ -15,7 +15,7 @@ This is the script to change it temporarily:
 
 ```bash
 export PROMPT_COMMAND='pwd2=$(p="${PWD#${HOME}}"; [ "${PWD}" != "${p}" ] && printf "~"; (echo $p | grep -Eq /mnt/.) && echo $p|sed "s-/mnt/\(\w\)/\?-\u\1:/-" || echo $p)'
-export PS1='\e[1;32m\u@\H\e[m:\e[1;34m$pwd2\e[m\$ '
+export PS1='\[\e[1;32m\]\u@\H\[\e[m\]:\[\e[1;34m\]$pwd2\[\e[m\]\$ '
 ```
 
 To change it permanently add that to ~/.bashrc and do a `source ~/.bashrc`.
@@ -186,6 +186,12 @@ sudo apt-get install -y default-jdk
 echo "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64" >> ~/.profile
 echo "export PATH=\$JAVA_HOME/bin:\$PATH" >> ~/.profile
 source ~/.profile
+```
+
+### Install sql-language-server
+
+```shell
+sudo npm i -g sql-language-server
 ```
 
 ### Install _tmux_:
