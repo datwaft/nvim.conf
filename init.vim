@@ -85,8 +85,6 @@
     " -------------------------------------------------------------------------------------------- "
       " Live CSS, HTML & JS
       Plug 'turbio/bracey.vim'
-      " Markdown document preview
-      Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
     " -------------------------------------------------------------------------------------------- "
     " ->                                         Others                                         <- "
     " -------------------------------------------------------------------------------------------- "
@@ -112,6 +110,8 @@
       Plug 'tommcdo/vim-exchange'
       " Color picker
       Plug 'DougBeney/pickachu'
+      " Asyncronous execution
+      Plug 'skywind3000/asyncrun.vim'
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                 Language specific plugins                                  │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
@@ -127,6 +127,8 @@
       Plug 'vim-pandoc/vim-pandoc'
       " Pandoc syntax
       Plug 'vim-pandoc/vim-pandoc-syntax'
+      " Live preview
+      Plug 'conornewton/vim-pandoc-markdown-preview'
     " -------------------------------------------------------------------------------------------- "
     " ->                                  Cisco Configuration                                   <- "
     " -------------------------------------------------------------------------------------------- "
@@ -149,11 +151,6 @@
     let g:indentLine_char_list = ['|', '¦', '┆', '┊']
     " Excludes those filetypes from having indent lines
     let g:indentLine_fileTypeExclude = ['help', 'nerdtree', 'startify', 'fzf']
-  " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
-  " │                                   markdown-preview.nvim                                    │ "
-  " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
-    " Opens preview of markdown document with <F5>
-    autocmd FileType markdown map <F5> <Plug>MarkdownPreviewToggle
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                        vim-polyglot                                        │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
@@ -251,6 +248,11 @@
     let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
     let g:pandoc#filetypes#pandoc_markdown = 0
     let g:pandoc#syntax#conceal#use = 0
+  " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
+  " │                                       Pandoc preview                                       │ "
+  " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
+    let g:md_pdf_viewer="SumatraPDF"
+    let g:md_args = "-V geometry:margin=1in"
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
 " ║                                     Color and Look&Feel                                      ║ "
 " ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ "
