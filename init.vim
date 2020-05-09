@@ -367,7 +367,8 @@
     " Enable wrapping
     set wrap
     set textwidth=100
-    " Better wrapping for lonf lines with indentation
+    set linebreak
+    " Better wrapping for long lines with indentation
     set breakindent
     set breakindentopt=shift:2
     set showbreak=↳
