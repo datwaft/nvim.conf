@@ -5,9 +5,11 @@
 ## FAQ
 
 ### Where can you find Cascadia Code font patched?
+
 Here [adam7/delugia-code](https://github.com/adam7/delugia-code/releases) :D.
 
 ### Coc extensions to install:
+
 - coc-highlight
 - coc-marketplace
 - coc-python
@@ -18,3 +20,4 @@ Here [adam7/delugia-code](https://github.com/adam7/delugia-code/releases) :D.
 - coc-tsserver
 - coc-tslint-plugin
 - coc-java
+- coc-emmet
