@@ -12,7 +12,7 @@
   - `%LOCALAPPDATA%\wsltty\bin\mintty.exe --WSL= --configdir="%APPDATA%\wsltty" nvim '%1'` if you use _wsltty_.
   - `bash.exe -c "wslpath '%1' | xargs nvim"` if you want to use the default form.
 
-Information extracted from: [How to add vim context menu entry - stackoverflow](https://stackoverflow.com/questions/51367359/how-to-add-open-in-vim-context-menu-entry-to-edit-text-files-in-windows-from-w).
+Information extracted from: [How to add vim context menu entry - stackoverflow](https://stackoverflow.com/questions/51367359/how-to-add-open-in-vim-context-menu-entry-to-edit-text-files-in-windows-from-w) and [How can I add "open with vim" to context menu?](https://github.com/mintty/wsltty/issues/131).
 
 ## Examples
 
