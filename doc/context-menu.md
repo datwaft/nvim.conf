@@ -13,3 +13,9 @@
   - `bash.exe -c "wslpath '%1' | xargs nvim"` if you want to use the default form.
 
 Information extracted from: [How to add vim context menu entry - stackoverflow](https://stackoverflow.com/questions/51367359/how-to-add-open-in-vim-context-menu-entry-to-edit-text-files-in-windows-from-w).
+
+## Examples
+
+### Command
+
+![image](https://user-images.githubusercontent.com/37723586/83305506-23850600-a1be-11ea-84b0-db799c85dca8.png)
