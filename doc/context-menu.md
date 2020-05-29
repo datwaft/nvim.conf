@@ -14,6 +14,8 @@
 
 Information extracted from: [How to add vim context menu entry - stackoverflow](https://stackoverflow.com/questions/51367359/how-to-add-open-in-vim-context-menu-entry-to-edit-text-files-in-windows-from-w) and [How can I add "open with vim" to context menu?](https://github.com/mintty/wsltty/issues/131).
 
+Extra information [here](https://nickjanetakis.com/blog/launching-wsl-programs-from-a-right-click-windows-menu).
+
 ## Examples
 
 ### Main
