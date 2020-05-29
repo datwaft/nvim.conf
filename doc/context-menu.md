@@ -9,7 +9,10 @@
 4. Add a new _registry key_ under the one we just create, name it _"command"_.
 
 5. Edit the value of the string with the name `(Default)` inside _"command"_. The string may be one of these values:
-  - `C:\Users\david\AppData\Local\wsltty\bin\mintty.exe --WSL="Debian" --configdir="C:\Users\david\AppData\Roaming\wsltty" -t "%1" -e bash --login -c "nvim $(wslpath '%1')"` if you use _wsltty_. You need to change _Debian_ for the Linux you use, and _david_ for your username.
+  -  The next one if you use _wsltty_. You need to change _Debian_ for the Linux you use, and _david_ for your username.
+    ```
+    C:\Users\david\AppData\Local\wsltty\bin\mintty.exe --WSL="Debian" --configdir="C:\Users\david\AppData\Roaming\wsltty" -t "%1" -e bash --login -c "nvim $(wslpath '%1')"
+    ```
   - `bash.exe -c "wslpath '%1' | xargs nvim"` if you want to use the default form.
 
 Information extracted from: [How to add vim context menu entry - stackoverflow](https://stackoverflow.com/questions/51367359/how-to-add-open-in-vim-context-menu-entry-to-edit-text-files-in-windows-from-w) and [How can I add "open with vim" to context menu?](https://github.com/mintty/wsltty/issues/131).
