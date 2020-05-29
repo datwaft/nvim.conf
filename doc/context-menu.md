@@ -11,7 +11,7 @@
 5. Edit the value of the string with the name `(Default)` inside _"command"_. The string may be one of these values:
   -  The next one if you use _wsltty_. You need to change _Debian_ for the Linux you use, and _david_ for your username.
 ```bash
-C:\Users\david\AppData\Local\wsltty\bin\mintty.exe --WSL="Debian" --configdir="C:\Users\david\AppData\Roaming\wsltty" -t "%1" -e bash --login -c "nvim $(wslpath '%1')"
+C:\Users\david\AppData\Local\wsltty\bin\mintty.exe --WSL="Debian" --configdir="C:\Users\david\AppData\Roaming\wsltty" -t "%1" -e bash --login -c "nvim \"$(wslpath '%1')\""
 ```
   - `bash.exe -c "wslpath '%1' | xargs nvim"` if you want to use the default form.
 
