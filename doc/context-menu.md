@@ -16,6 +16,10 @@ Information extracted from: [How to add vim context menu entry - stackoverflow](
 
 ## Examples
 
+### Main
+
+![image](https://user-images.githubusercontent.com/37723586/83305549-3e577a80-a1be-11ea-9030-13981037159e.png)
+
 ### Command
 
 ![image](https://user-images.githubusercontent.com/37723586/83305506-23850600-a1be-11ea-84b0-db799c85dca8.png)
