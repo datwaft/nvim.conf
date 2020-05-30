@@ -61,26 +61,32 @@ And create a the file `/home/$USER/bin/xsel` with the following contents:
 ```bash
 #!/bin/bash
 
-# filename: xsel
-# make sure this file has executable privledges
-# neovim will paste "xsel -o -b"
-# neovim will copy using "xsel --nodetach -i -b"
-
-for i in "$@"
-do
+# xsel simulation in WSL
+# usage:
+#     xsel -o
+#     xsel -i [string]
+for i in "$@"; do
   case "$i" in
-  -o )
-    # for paste we will grab contents from powershell.exe
-    powershell.exe Get-Clipboard | sed 's/\r$//'
-    exit 0
-    ;;
-  -i )
-    # for copy we'll direct stdin to clip.exe
-    tee <&0 | clip.exe
-    exit 0
+    -o )
+      # for paste
+      powershell.exe Get-Clipboard | sed 's/\r$//' | head -c -1
+      exit 0
+      ;;
+    -i )
+      # for copy
+      wsl_clipboard="/tmp/wsl_clipboard"
+      distro="$(lsb_release -is)"
+      wsl_root_folder="//wsl$/${distro}"
+
+      cat > "${wsl_clipboard}"
+      powershell.exe "Get-Content ${wsl_root_folder}${wsl_clipboard} | Set-Clipboard"
+      exit 0
+      ;;
   esac
 done
 ```
+
+Extracted from [this reddit comment](https://www.reddit.com/r/neovim/comments/fyj7mp/neovim_in_wsl_copy_to_windows_clipboard/fn241ig?utm_source=share&utm_medium=web2x).
 
 And use this configuration at the end:
 
@@ -192,15 +198,4 @@ sudo apt-get install -y default-jdk
 echo "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64" >> ~/.profile
 echo "export PATH=\$JAVA_HOME/bin:\$PATH" >> ~/.profile
 source ~/.profile
-```
-
-### Install sql-language-server
-
-```shell
-sudo npm i -g sql-language-server
-```
-
-### Install _tmux_:
-```shell
-sudo apt-get install -y tmux
 ```
