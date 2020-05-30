@@ -33,9 +33,15 @@ echo "export DISPLAY=:0" >> ~/.profile
 source ~/.profile
 ```
 
+If you use WSL2 instead add this to `~/.profile`:
+
+```shell
+export DISPLAY=$(/sbin/ip route | awk '/default/ { print $3 }'):0
+```
+
 #### Making _xming_ start with the OS
 
-1. Run XLaunch.exe and save the configuration to file `config.xlaunch`.
+1. Run XLaunch.exe and save the configuration to file `config.xlaunch`. If you use WSL2 use the arguments `-ac`
 2. Create a shotcut of XLaunch.exe under _startup directory_ (`shell:startup`).
 3. Modify the target field of the shotcut to `"PATH/TO/Xming/XLaunch.exe" -run "PATH/TO/config.xlaunch"`.
 
