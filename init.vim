@@ -120,6 +120,8 @@
       Plug 'DougBeney/pickachu'
       " Asyncronous execution
       Plug 'skywind3000/asyncrun.vim'
+      " Color converter
+      Plug 'amadeus/vim-convert-color-to'
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                 Language specific plugins                                  │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
@@ -179,7 +181,6 @@
       \ 'coc-xml',
       \ 'coc-css',
       \ 'coc-emmet',
-      \ 'coc-highlight',
       \ 'coc-tsserver',
       \ 'coc-tslint-plugin',
       \ 'coc-java'
@@ -209,9 +210,9 @@
       " Format current document
       command! -nargs=0 Format :call CocAction('format')
       " Fold current document
-      command! -nargs=? Fold   :call CocAction('fold', <f-args>)
+      command! -nargs=? Fold :call CocAction('fold', <f-args>)
       " Organize imports
-      command! -nargs=0 OR     :call CocAction('runCommand', 'editor.action.organizeImport')
+      command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
     " -------------------------------------------------------------------------------------------- "
     " ->                                    Code navigation                                     <- "
     " -------------------------------------------------------------------------------------------- "
@@ -231,15 +232,15 @@
       " Show documentation
       nnoremap <silent> K :call <SID>show_documentation()<CR>
       " Format selected code
-      xmap <leader>f  <Plug>(coc-format-selected)
-      nmap <leader>f  <Plug>(coc-format-selected)
+      xmap <leader>f <Plug>(coc-format-selected)
+      nmap <leader>f <Plug>(coc-format-selected)
       " Apply codeAction to the selected region
-      xmap <leader>a  <Plug>(coc-codeaction-selected)
-      nmap <leader>a  <Plug>(coc-codeaction-selected)
+      xmap <leader>a <Plug>(coc-codeaction-selected)
+      nmap <leader>a <Plug>(coc-codeaction-selected)
       " codeAction for the current line
-      nmap <leader>ac  <Plug>(coc-codeaction)
+      nmap <leader>ac <Plug>(coc-codeaction)
       " Fix current line
-      nmap <leader>qf  <Plug>(coc-fix-current)
+      nmap <leader>qf <Plug>(coc-fix-current)
       " Funtion text object
       xmap if <Plug>(coc-funcobj-i)
       xmap af <Plug>(coc-funcobj-a)
@@ -517,6 +518,7 @@
     noremap Y y$
     " Execute macro over visual selection
     xnoremap Q :'<,'>:normal @q<CR>
+    nnoremap Q :'<,'>:normal @q<CR>
     " Move lines up and down
     nnoremap <C-j> :m+<cr>
     nnoremap <C-k> :m-2<cr>
