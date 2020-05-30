@@ -11,5 +11,9 @@
       "filetypes": ["c", "cpp", "objc", "objcpp"]
     }
   },
-  "snippets.userSnippetsDirectory": "~/.config/nvim/snippets"
+  "snippets.userSnippetsDirectory": "~/.config/nvim/snippets",
+  "emmet.includeLanguages":
+  {
+    "jsp": "html"
+  }
 }

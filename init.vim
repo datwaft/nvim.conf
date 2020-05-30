@@ -158,7 +158,9 @@
     " Uses those characters for every level of indentation.
     let g:indentLine_char_list = ['|', '¦', '┆', '┊']
     " Excludes those filetypes from having indent lines
-    let g:indentLine_fileTypeExclude = ['help', 'nerdtree', 'startify', 'fzf']
+    let g:indentLine_fileTypeExclude = ['help', 'nerdtree', 'startify', 'fzf', 'terminal']
+    " Disable indentLine on terminal
+    autocmd TermOpen * IndentLinesDisable
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                        vim-polyglot                                        │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
@@ -424,6 +426,8 @@
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                       Miscellaneous                                        │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
+    " Toggle pasting
+    set pastetoggle=<F3>
     " Better diffing
     set diffopt=filler,internal,algorithm:histogram,indent-heuristic
     " Undo persistence
