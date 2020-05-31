@@ -28,3 +28,7 @@ Extra information [here](https://nickjanetakis.com/blog/launching-wsl-programs-f
 ### Command
 
 ![image](https://user-images.githubusercontent.com/37723586/83305506-23850600-a1be-11ea-84b0-db799c85dca8.png)
+
+## If you use Windows Terminal (the new one)
+
+You can use these scripts: https://github.com/lextm/windowsterminal-shell.
