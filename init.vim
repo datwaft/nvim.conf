@@ -50,8 +50,7 @@
   " │                                     Aesthetic plugins                                      │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     " Colorschemes
-    Plug 'morhetz/gruvbox'
-    Plug 'jacoborus/tender.vim'
+    Plug 'kyoz/purify', { 'rtp': 'vim' }
     " Status line
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
@@ -163,6 +162,8 @@
     let g:indentLine_fileTypeExclude = ['help', 'nerdtree', 'startify', 'fzf', 'terminal']
     " Disable indentLine on terminal
     autocmd TermOpen * IndentLinesDisable
+    " Disable conceal cursor
+    let g:indentLine_concealcursor = ''
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                        vim-polyglot                                        │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
@@ -268,9 +269,17 @@
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                           Pandoc                                           │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
+    augroup pandoc_syntax
+      autocmd! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
+    augroup END
     let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
-    let g:pandoc#filetypes#pandoc_markdown = 0
-    let g:pandoc#syntax#conceal#use = 0
+    let g:pandoc#syntax#codeblocks#embeds#use = 1
+    let g:pandoc#syntax#codeblocks#embeds#langs = [
+      \ "ruby",
+      \ "sql",
+      \ "python",
+      \ "cpp"
+      \ ]
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                       Pandoc preview                                       │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
@@ -283,12 +292,12 @@
   " │                                 Colorscheme configuration                                  │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     " Sets airline theme to gruvbox
-    let g:airline_theme='tender'
+    let g:airline_theme='purify'
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                  Colorscheme declaration                                   │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     " Uses gruvbox colorscheme
-    colorscheme tender
+    colorscheme purify
     " Sets colorscheme to dark mode
     set background=dark
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
@@ -339,6 +348,11 @@
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     " Auto resize splits when window is resized
     autocmd VimResized * wincmd =
+  " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
+  " │                                          Conceal                                           │ "
+  " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
+    " Don't conceal current line
+    set concealcursor-=inc
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
 " ║                                 Autocompletion configuration                                 ║ "
 " ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ "
@@ -517,8 +531,8 @@
     " Use Y to copy from the cursor to the end
     noremap Y y$
     " Execute macro over visual selection
-    xnoremap Q :'<,'>:normal @q<CR>
-    nnoremap Q :'<,'>:normal @q<CR>
+    xnoremap Q :normal @@<CR>
+    nnoremap Q :normal @@<CR>
     " Move lines up and down
     nnoremap <C-j> :m+<cr>
     nnoremap <C-k> :m-2<cr>
