@@ -51,6 +51,8 @@
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     " Colorschemes
     Plug 'kyoz/purify', { 'rtp': 'vim' }
+    Plug 'nanotech/jellybeans.vim'
+    Plug 'nightsense/carbonized'
     " Status line
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
@@ -273,6 +275,7 @@
       autocmd! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
     augroup END
     let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
+    let g:pandoc#filetypes#pandoc_markdown = 0
     let g:pandoc#syntax#codeblocks#embeds#use = 1
     let g:pandoc#syntax#codeblocks#embeds#langs = [
       \ "ruby",
@@ -284,7 +287,11 @@
   " │                                       Pandoc preview                                       │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     let g:md_pdf_viewer="SumatraPDF"
-    let g:md_args = "--syntax-definition=$HOME/.config/nvim/markdown-syntax/cisco.xml"
+    let g:md_args = "--syntax-definition=$HOME/.config/nvim/markdown-syntax/cisco.xml
+          \ -V mainfont='DejaVu Serif'
+          \ -V monofont='DejaVu Sans Mono'
+          \ -V geometry:a4paper
+          \ -V geometry:margin=2cm"
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
 " ║                                     Color and Look&Feel                                      ║ "
 " ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ "
@@ -292,12 +299,16 @@
   " │                                 Colorscheme configuration                                  │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     " Sets airline theme to gruvbox
-    let g:airline_theme='purify'
+    let g:airline_theme='bubblegum'
+    let g:carbonized_dark_CursorLineNr = 'off'
+    let g:carbonized_light_CursorLineNr = 'off'
+    let g:carbonized_dark_LineNr = 'off'
+    let g:carbonized_light_LineNr = 'off'
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                  Colorscheme declaration                                   │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     " Uses gruvbox colorscheme
-    colorscheme purify
+    colorscheme carbonized-dark
     " Sets colorscheme to dark mode
     set background=dark
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
