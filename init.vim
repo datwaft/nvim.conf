@@ -68,6 +68,10 @@
     Plug 'sheerun/vim-polyglot'
     " Git
     Plug 'mhinz/vim-signify', ActivateIf(executable('git'))
+    " Hightlight match tag HTML
+    Plug 'gregsexton/MatchTag'
+    " Colorizer of color codes
+    Plug 'RRethy/vim-hexokinase'
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                       Useful plugins                                       │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
@@ -89,11 +93,6 @@
       Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
       Plug 'junegunn/fzf.vim'
       Plug 'chengzeyi/fzf-preview.vim'
-    " -------------------------------------------------------------------------------------------- "
-    " ->                                     Live execution                                     <- "
-    " -------------------------------------------------------------------------------------------- "
-      " Live CSS, HTML & JS
-      Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
     " -------------------------------------------------------------------------------------------- "
     " ->                                         Others                                         <- "
     " -------------------------------------------------------------------------------------------- "
@@ -161,7 +160,7 @@
     " Uses those characters for every level of indentation.
     let g:indentLine_char_list = ['|', '¦', '┆', '┊']
     " Excludes those filetypes from having indent lines
-    let g:indentLine_fileTypeExclude = ['help', 'nerdtree', 'startify', 'fzf', 'terminal']
+    let g:indentLine_fileTypeExclude = ['help', 'nerdtree', 'startify', 'fzf', 'terminal', 'man']
     " Disable indentLine on terminal
     autocmd TermOpen * IndentLinesDisable
     " Disable conceal cursor
@@ -288,10 +287,10 @@
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     let g:md_pdf_viewer="SumatraPDF"
     let g:md_args = "--syntax-definition=$HOME/.config/nvim/markdown-syntax/cisco.xml
-          \ -V mainfont='DejaVu Serif'
-          \ -V monofont='DejaVu Sans Mono'
-          \ -V geometry:a4paper
-          \ -V geometry:margin=2cm"
+      \ -V mainfont='DejaVu Serif'
+      \ -V monofont='DejaVu Sans Mono'
+      \ -V geometry:a4paper
+      \ -V geometry:margin=2cm"
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
 " ║                                     Color and Look&Feel                                      ║ "
 " ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ "
@@ -377,9 +376,9 @@
     endfunction
     " Using <Tab> for triggering completion and navigating completion list 
     inoremap <silent><expr> <Tab>
-          \ pumvisible() ? "\<C-n>" :
-          \ <SID>check_back_space() ? "\<Tab>" :
-          \ coc#refresh()
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
     " Using <Tab>, <UP>, <S-Tab> and <DOWN> for navigating completion list
     inoremap <expr> <UP>    pumvisible() ? "\<C-p>" : "\<UP>"
     inoremap <expr> <DOWN>  pumvisible() ? "\<C-n>" : "\<DOWN>"
