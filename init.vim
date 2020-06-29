@@ -122,6 +122,8 @@
       Plug 'skywind3000/asyncrun.vim'
       " Color converter
       Plug 'amadeus/vim-convert-color-to'
+      " Tmux integration
+      Plug 'christoomey/vim-tmux-navigator'
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                 Language specific plugins                                  │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
@@ -439,7 +441,7 @@
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                       Format options                                       │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
-    set formatoptions+=t
+    set formatoptions-=t
     set formatoptions+=c
     set formatoptions+=j
     set formatoptions-=r
@@ -513,10 +515,10 @@
   " │                                          Terminal                                          │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     tnoremap <Esc> <C-\><C-n>
-    tnoremap <C-w>h <C-\><C-n><C-w>h
-    tnoremap <C-w>j <C-\><C-n><C-w>j
-    tnoremap <C-w>k <C-\><C-n><C-w>k
-    tnoremap <C-w>l <C-\><C-n><C-w>l
+    tnoremap <C-h> <C-\><C-n><C-w>h
+    tnoremap <C-j> <C-\><C-n><C-w>j
+    tnoremap <C-k> <C-\><C-n><C-w>k
+    tnoremap <C-l> <C-\><C-n><C-w>l
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                          Folding                                           │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
@@ -544,8 +546,6 @@
     xnoremap Q :normal @@<CR>
     nnoremap Q :normal @@<CR>
     " Move lines up and down
-    nnoremap <C-j> :m+<cr>
-    nnoremap <C-k> :m-2<cr>
     nnoremap <C-up> :m-2<cr>
     nnoremap <C-down> :m+<cr>
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
