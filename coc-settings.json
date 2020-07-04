@@ -1,20 +1,14 @@
 {
   "suggest.autoTrigger": "none",
   "suggest.snippetIndicator": "►",
-  "languageserver": 
-  {
-    "clangd": 
-    {
-      "command": "clangd",
-      "args": ["--background-index"],
-      "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".vim/", ".git/", ".hg/"],
-      "filetypes": ["c", "cpp", "objc", "objcpp"]
-    }
-  },
   "snippets.userSnippetsDirectory": "~/.config/nvim/snippets",
-  "emmet.includeLanguages":
-  {
+  "emmet.includeLanguages": {
     "jsp": "html",
-    "vue": "html",
-  }
+    "vue": "html"
+  },
+  "clangd.arguments": [
+    "-cross-file-rename"
+  ],
+  "clangd.semanticHighlighting": "true",
+  "clangd.path": "/home/datwaft/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/clangd"
 }
