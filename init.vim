@@ -58,8 +58,6 @@
     Plug 'vim-airline/vim-airline-themes'
     " Improved search highlight
     Plug 'markonm/traces.vim'
-    " Indent guides
-    Plug 'Yggdroot/indentLine'
     " Developer icons
     Plug 'ryanoasis/vim-devicons'
     " Display marks
@@ -88,7 +86,7 @@
     " |                                     File management                                      | "
     " +------------------------------------------------------------------------------------------+ "
       " File manager
-      Plug 'cocopon/vaffle.vim'
+      Plug 'preservim/nerdtree'
       " Quick file search
       Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
       Plug 'junegunn/fzf.vim'
@@ -167,17 +165,6 @@
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     " Enables powerline fonts for airline
     let g:airline_powerline_fonts = 1
-  " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
-  " │                                         indentLine                                         │ "
-  " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
-    " Uses those characters for every level of indentation.
-    let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-    " Excludes those filetypes from having indent lines
-    let g:indentLine_fileTypeExclude = ['help', 'nerdtree', 'startify', 'fzf', 'terminal', 'man']
-    " Disable indentLine on terminal
-    autocmd TermOpen * IndentLinesDisable
-    " Disable conceal cursor
-    let g:indentLine_concealcursor = ''
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                        vim-polyglot                                        │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
@@ -317,6 +304,13 @@
     nmap <leader>s <Plug>SlimeMotionSend
     nmap <leader>ss <Plug>SlimeLineSend
     let g:slime_default_config = {"socket_name": "default", "target_pane": "{last}"}
+  " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
+  " │                                          NERDTree                                          │ "
+  " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
+    " Shortcut to toggle NERDTree
+    map <C-n> :NERDTreeToggle<CR>
+    " Close vim if NERDTree is the last window open
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
 " ║                                     Color and Look&Feel                                      ║ "
 " ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ "
