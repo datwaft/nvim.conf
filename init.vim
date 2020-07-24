@@ -327,13 +327,19 @@
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     " Sets airline theme to gruvbox
     let g:airline_theme='gruvbox_material'
+    " Enable bold keywords
+    let g:gruvbox_material_enable_bold = 1
+    " Enable italic keywords
+    let g:gruvbox_material_enable_italic = 1
+    " Disable italic comments
+    let g:gruvbox_material_disable_italic_comment = 1
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                  Colorscheme declaration                                   │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     " Sets colorscheme to dark mode
     set background=dark
     let g:gruvbox_material_background = 'soft'
-    " Uses gruvbox colorscheme
+    " Colorscheme
     colorscheme gruvbox-material
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
 " ║                                      File compatibility                                      ║ "
