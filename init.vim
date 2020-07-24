@@ -80,8 +80,10 @@
       Plug 'wellle/targets.vim'
       " Indentation object
       Plug 'michaeljsmith/vim-indent-object'
-      " Camel and snake case objects
-      Plug 'bkad/CamelCaseMotion'
+      " Variable segment object
+      Plug 'Julian/vim-textobj-variable-segment'
+      " User defined objects
+      Plug 'kana/vim-textobj-user'
     " +------------------------------------------------------------------------------------------+ "
     " |                                     File management                                      | "
     " +------------------------------------------------------------------------------------------+ "
@@ -96,6 +98,8 @@
     " +------------------------------------------------------------------------------------------+ "
       " UndoTree
       Plug 'mbbill/undotree'
+      " BufferTree
+      Plug 'el-iot/buffer-tree'
       " Ability to comment
       Plug 'tpope/vim-commentary'
       " Ability to surround
@@ -124,6 +128,7 @@
       Plug 'christoomey/vim-tmux-navigator'
       " REPL integration
       Plug 'jpalardy/vim-slime'
+      Plug 'Yggdroot/indentLine'
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                 Language specific plugins                                  │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
@@ -311,6 +316,11 @@
     map <C-n> :NERDTreeToggle<CR>
     " Close vim if NERDTree is the last window open
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+  " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
+  " │                                         BufferTree                                         │ "
+  " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
+    " Compressed Tree
+    let g:buffertree_compress = 1
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
 " ║                                     Color and Look&Feel                                      ║ "
 " ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ "
