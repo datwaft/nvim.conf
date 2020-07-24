@@ -50,9 +50,7 @@
   " │                                     Aesthetic plugins                                      │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     " Colorschemes
-    Plug 'kyoz/purify', { 'rtp': 'vim' }
-    Plug 'nanotech/jellybeans.vim'
-    Plug 'nightsense/carbonized'
+    Plug 'sainnhe/gruvbox-material'
     " Status line
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
@@ -328,18 +326,15 @@
   " │                                 Colorscheme configuration                                  │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     " Sets airline theme to gruvbox
-    let g:airline_theme='bubblegum'
-    let g:carbonized_dark_CursorLineNr = 'off'
-    let g:carbonized_light_CursorLineNr = 'off'
-    let g:carbonized_dark_LineNr = 'off'
-    let g:carbonized_light_LineNr = 'off'
+    let g:airline_theme='gruvbox_material'
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                  Colorscheme declaration                                   │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
-    " Uses gruvbox colorscheme
-    colorscheme carbonized-dark
     " Sets colorscheme to dark mode
     set background=dark
+    let g:gruvbox_material_background = 'soft'
+    " Uses gruvbox colorscheme
+    colorscheme gruvbox-material
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
 " ║                                      File compatibility                                      ║ "
 " ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ "
