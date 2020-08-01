@@ -50,7 +50,7 @@
   " │                                     Aesthetic plugins                                      │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     " Colorschemes
-    Plug 'sainnhe/gruvbox-material'
+    Plug 'nightsense/snow'
     " Status line
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
@@ -126,7 +126,6 @@
       Plug 'christoomey/vim-tmux-navigator'
       " REPL integration
       Plug 'jpalardy/vim-slime'
-      Plug 'Yggdroot/indentLine'
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                 Language specific plugins                                  │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
@@ -326,21 +325,14 @@
   " │                                 Colorscheme configuration                                  │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     " Sets airline theme to gruvbox
-    let g:airline_theme='gruvbox_material'
-    " Enable bold keywords
-    let g:gruvbox_material_enable_bold = 1
-    " Enable italic keywords
-    let g:gruvbox_material_enable_italic = 1
-    " Disable italic comments
-    let g:gruvbox_material_disable_italic_comment = 1
+    let g:airline_theme='snow_dark'
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                  Colorscheme declaration                                   │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     " Sets colorscheme to dark mode
     set background=dark
-    let g:gruvbox_material_background = 'soft'
     " Colorscheme
-    colorscheme gruvbox-material
+    colorscheme snow
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
 " ║                                      File compatibility                                      ║ "
 " ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ "
@@ -362,6 +354,8 @@
     if has('termguicolors')
       set termguicolors
     endif
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
 " ║                                     Visual configuration                                     ║ "
 " ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ "
