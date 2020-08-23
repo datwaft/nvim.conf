@@ -86,7 +86,7 @@
     " |                                     File management                                      | "
     " +------------------------------------------------------------------------------------------+ "
       " File manager
-      Plug 'preservim/nerdtree'
+      Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
       " Quick file search
       Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
       Plug 'junegunn/fzf.vim'
@@ -287,7 +287,9 @@
       \ "ruby",
       \ "sql",
       \ "python",
-      \ "cpp"
+      \ "cpp",
+      \ "prolog",
+      \ "java"
       \ ]
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                       Pandoc preview                                       │ "
@@ -314,9 +316,8 @@
   " │                                          NERDTree                                          │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     " Shortcut to toggle NERDTree
-    map <C-n> :NERDTreeToggle<CR>
-    " Close vim if NERDTree is the last window open
-    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+    nnoremap <C-n> <cmd>CHADopen<cr>
+    lua vim.api.nvim_set_var("chadtree_ignores", { name = {".*", ".git"} })
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                         BufferTree                                         │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
