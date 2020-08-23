@@ -53,7 +53,7 @@
     Plug 'nightsense/snow'
     " Status line
     Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
+    Plug 'vim-airline/vim-airline-theme'
     " Improved search highlight
     Plug 'markonm/traces.vim'
     " Developer icons
@@ -146,8 +146,6 @@
       Plug 'vim-pandoc/vim-pandoc'
       " Pandoc syntax
       Plug 'vim-pandoc/vim-pandoc-syntax'
-      " Live preview
-      Plug 'conornewton/vim-pandoc-markdown-preview'
     " +------------------------------------------------------------------------------------------+ "
     " |                                   Cisco configuration                                    | "
     " +------------------------------------------------------------------------------------------+ "
@@ -277,11 +275,8 @@
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                           Pandoc                                           │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
-    augroup pandoc_syntax
-      autocmd! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
-    augroup END
+    let g:pandoc#command#templates_file = split(&runtimepath, ",")[0] . "/.vim-pandoc-templates"
     let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
-    let g:pandoc#filetypes#pandoc_markdown = 0
     let g:pandoc#syntax#codeblocks#embeds#use = 1
     let g:pandoc#syntax#codeblocks#embeds#langs = [
       \ "ruby",
@@ -291,15 +286,6 @@
       \ "prolog",
       \ "java"
       \ ]
-  " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
-  " │                                       Pandoc preview                                       │ "
-  " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
-    let g:md_pdf_viewer="SumatraPDF"
-    let g:md_args = "--syntax-definition=$HOME/.config/nvim/markdown-syntax/cisco.xml
-      \ -V mainfont='DejaVu Serif'
-      \ -V monofont='DejaVu Sans Mono'
-      \ -V geometry:a4paper
-      \ -V geometry:margin=2cm"
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                     vim-tmux-navigator                                     │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
@@ -433,7 +419,7 @@
     " Wildmenu ignores the case
     set wildignorecase
     " Can use <space> to terminate wildmenu
-    cnoremap <expr> <space> wildmenumode() ? "\<C-e>" : "\<space>"
+    cnoremap <expr> <space> wildmenumode() ? "\<C-y>" : "\<space>"
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
 " ║                                  Miscelaneous configuration                                  ║ "
 " ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ "
@@ -493,6 +479,8 @@
       set undodir=~/.config/nvim/undodir.vim
     endif
     set undofile
+    " Saving marks on exit
+    set viminfo='100,<50,s10,h
     " Backspace
     set backspace=indent,eol,start
     " Not redrawing while macro is playing
