@@ -50,10 +50,10 @@
   " │                                     Aesthetic plugins                                      │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     " Colorschemes
-    Plug 'nightsense/snow'
+    Plug 'kaicataldo/material.vim', { 'branch': 'main' }
     " Status line
     Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-theme'
+    Plug 'vim-airline/vim-airline-themes'
     " Improved search highlight
     Plug 'markonm/traces.vim'
     " Developer icons
@@ -103,7 +103,7 @@
       " Ability to surround
       Plug 'machakann/vim-sandwich'
       " Git management
-      Plug 'tpope/vim-fugitive', ActivateIf(executable('git'))
+      Plug 'lambdalisue/gina.vim'
       " Autocompleter
       Plug 'neoclide/coc.nvim', {'branch': 'release'}
       " Filtering and alignment
@@ -116,8 +116,6 @@
       Plug 'tpope/vim-abolish'
       " Exchange objects
       Plug 'tommcdo/vim-exchange'
-      " Color picker
-      Plug 'DougBeney/pickachu'
       " Asyncronous execution
       Plug 'skywind3000/asyncrun.vim'
       " Color converter
@@ -169,9 +167,6 @@
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     " Enables powerline fonts for airline
     let g:airline_powerline_fonts = 1
-  " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
-  " │                                        vim-polyglot                                        │ "
-  " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                          coc.nvim                                          │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
@@ -261,17 +256,9 @@
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
-  " │                                      CamelCaseMotion                                       │ "
-  " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
-    let g:camelcasemotion_key = '<leader>'
-  " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                        exchange.vim                                        │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     set timeoutlen=250
-  " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
-  " │                                          pickachu                                          │ "
-  " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
-    map <A-c> :Pickachu<CR>
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                           Pandoc                                           │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
@@ -316,14 +303,18 @@
   " │                                 Colorscheme configuration                                  │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     " Sets airline theme to gruvbox
-    let g:airline_theme='snow_dark'
+    let g:airline_theme = 'material'
+    " Set theme style
+    let g:material_theme_style = 'default'    
+    " Enable italics
+    let g:material_terminal_italics = 1
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                  Colorscheme declaration                                   │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     " Sets colorscheme to dark mode
     set background=dark
     " Colorscheme
-    colorscheme snow
+    colorscheme material
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
 " ║                                      File compatibility                                      ║ "
 " ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ "
