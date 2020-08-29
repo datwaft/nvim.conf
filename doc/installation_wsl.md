@@ -166,6 +166,7 @@ Here please do a `:PlugInstall` and a `:UpdateRemotePlugins` when inside *neovim
 ```shell
 git config --global user.name "datwaft"
 git config --global user.email "datwaft@github.com"
+git config --global --add url."git@github.com:".insteadOf "https://github.com/"
 git config --global core.editor nvim
 ssh-keygen -t rsa -C "datwaft@github.com"
 clip.exe < ~/.ssh/id_rsa.pub
