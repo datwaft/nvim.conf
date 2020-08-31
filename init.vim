@@ -163,11 +163,6 @@
 " ║                                Plugin specific configuration                                 ║ "
 " ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ "
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
-  " │                                        vim-airline                                         │ "
-  " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
-    " Enables powerline fonts for airline
-    let g:airline_powerline_fonts = 1
-  " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                          coc.nvim                                          │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     " +------------------------------------------------------------------------------------------+ "
@@ -263,7 +258,6 @@
   " │                                           Pandoc                                           │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     let g:pandoc#command#templates_file = split(&runtimepath, ",")[0] . "/.vim-pandoc-templates"
-    let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
     let g:pandoc#syntax#codeblocks#embeds#use = 1
     let g:pandoc#syntax#codeblocks#embeds#langs = [
       \ "ruby",
@@ -286,9 +280,9 @@
     nmap <leader>ss <Plug>SlimeLineSend
     let g:slime_default_config = {"socket_name": "default", "target_pane": "{last}"}
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
-  " │                                          NERDTree                                          │ "
+  " │                                          CHADTree                                          │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
-    " Shortcut to toggle NERDTree
+    " Shortcut to toggle CHADTree
     nnoremap <C-n> <cmd>CHADopen<cr>
     lua vim.api.nvim_set_var("chadtree_ignores", { name = {".*", ".git"} })
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
@@ -505,6 +499,12 @@
     autocmd!
     autocmd Syntax * syntax sync minlines=2000
   augroup END
+  " Open on last position
+	if has("autocmd")
+		au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+	endif
+  " Open with folds
+  autocmd Syntax md normal zR
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
 " ║                                      Keyboard bindings                                       ║ "
 " ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ "
