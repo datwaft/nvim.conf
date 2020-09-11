@@ -49,7 +49,10 @@
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                      Auxiliar Plugins                                      │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
+    " Fix neovim bug
     Plug 'antoinemadec/FixCursorHold.nvim'
+    " Asyncronous execution
+    Plug 'skywind3000/asyncrun.vim'
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                     Aesthetic plugins                                      │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
@@ -62,6 +65,8 @@
     Plug 'markonm/traces.vim'
     " Developer icons
     Plug 'ryanoasis/vim-devicons'
+    " Colorized developer icons
+    Plug 'lambdalisue/glyph-palette.vim'
     " Display marks
     Plug 'kshenoy/vim-signature'
     " Syntax highlighting
@@ -72,6 +77,8 @@
     Plug 'gregsexton/MatchTag'
     " Colorizer of color codes
     Plug 'RRethy/vim-hexokinase'
+    " Easy quick-scoping
+    Plug 'unblevable/quick-scope'
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                       Useful plugins                                       │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
@@ -87,10 +94,38 @@
       " User defined objects
       Plug 'kana/vim-textobj-user'
     " +------------------------------------------------------------------------------------------+ "
+    " |                                         Actions                                          | "
+    " +------------------------------------------------------------------------------------------+ "
+      " Ability to comment
+      Plug 'tpope/vim-commentary'
+      " Ability to surround
+      Plug 'machakann/vim-sandwich'
+      " Easy swap in function
+      Plug 'machakann/vim-swap'
+      " Exchange objects
+      Plug 'tommcdo/vim-exchange'
+    " +------------------------------------------------------------------------------------------+ "
+    " |                                         Commands                                         | "
+    " +------------------------------------------------------------------------------------------+ "
+      " UndoTree
+      Plug 'mbbill/undotree'
+      " BufferTree
+      Plug 'el-iot/buffer-tree'
+      " Git management
+      Plug 'lambdalisue/gina.vim'
+      " Filtering and alignment
+      Plug 'godlygeek/tabular'
+      " Color converter
+      Plug 'amadeus/vim-convert-color-to'
+      " Abolish
+      Plug 'tpope/vim-abolish'
+    " +------------------------------------------------------------------------------------------+ "
     " |                                     File management                                      | "
     " +------------------------------------------------------------------------------------------+ "
       " File manager
-      Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
+      Plug 'lambdalisue/fern.vim'
+      Plug 'lambdalisue/fern-git-status.vim'
+      Plug 'lambdalisue/fern-comparator-lexical.vim'
       " Quick file search
       Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
       Plug 'junegunn/fzf.vim'
@@ -98,32 +133,8 @@
     " +------------------------------------------------------------------------------------------+ "
     " |                                          Others                                          | "
     " +------------------------------------------------------------------------------------------+ "
-      " UndoTree
-      Plug 'mbbill/undotree'
-      " BufferTree
-      Plug 'el-iot/buffer-tree'
-      " Ability to comment
-      Plug 'tpope/vim-commentary'
-      " Ability to surround
-      Plug 'machakann/vim-sandwich'
-      " Git management
-      Plug 'lambdalisue/gina.vim'
       " Autocompleter
       Plug 'neoclide/coc.nvim', {'branch': 'release'}
-      " Filtering and alignment
-      Plug 'godlygeek/tabular'
-      " Easy quick-scoping
-      Plug 'unblevable/quick-scope'
-      " Easy swap in function
-      Plug 'machakann/vim-swap'
-      " Abolish
-      Plug 'tpope/vim-abolish'
-      " Exchange objects
-      Plug 'tommcdo/vim-exchange'
-      " Asyncronous execution
-      Plug 'skywind3000/asyncrun.vim'
-      " Color converter
-      Plug 'amadeus/vim-convert-color-to'
       " Tmux integration
       Plug 'christoomey/vim-tmux-navigator'
       " REPL integration
@@ -166,6 +177,14 @@
   " │                                     FixCursorHold.nvim                                     │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     let g:cursorhold_updatetime = 100
+  " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
+  " │                                     glyph-palette.vim                                      │ "
+  " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
+    augroup my-glyph-palette
+      autocmd! *
+      autocmd FileType fern call glyph_palette#apply()
+      autocmd FileType nerdtree,startify call glyph_palette#apply()
+    augroup END
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                          coc.nvim                                          │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
@@ -284,11 +303,23 @@
     nmap <leader>ss <Plug>SlimeLineSend
     let g:slime_default_config = {"socket_name": "default", "target_pane": "{last}"}
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
-  " │                                          CHADTree                                          │ "
+  " │                                          fern.vim                                          │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
-    " Shortcut to toggle CHADTree
-    nnoremap <C-n> <cmd>CHADopen<cr>
-    lua vim.api.nvim_set_var("chadtree_ignores", { name = {".*", ".git"} })
+    " +------------------------------------------------------------------------------------------+ "
+    " |                                   Plugin configuration                                   | "
+    " +------------------------------------------------------------------------------------------+ "
+      " Toggles a left-hand side project drawer whilst equalizing existing splits
+      noremap <silent> <C-n> :Fern . -drawer -width=35 -toggle<CR><C-w>=
+    " +------------------------------------------------------------------------------------------+ "
+    " |                                    Git configuration                                     | "
+    " +------------------------------------------------------------------------------------------+ "
+      let g:fern_git_status#disable_ignored = 1
+      let g:fern_git_status#disable_untracked = 1
+      let g:fern_git_status#disable_submodules = 1
+    " ┌──────────────────────────────────────────────────────────────────────────────────────────┐ "
+    " │                                  Lexical configuration                                   │ "
+    " └──────────────────────────────────────────────────────────────────────────────────────────┘ "
+      let g:fern#comparator = "lexical"
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                         BufferTree                                         │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
