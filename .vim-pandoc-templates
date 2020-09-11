@@ -1,1 +1,2 @@
-pdf|pdf -Vlinkcolor:blue -Vgeometry:a4paper -Vmainfont="DejaVu Serif" -Vmonofont="Delugia Nerd Font" -Vgeometry:margin=2cm
+pdf-old|pdf -Vlinkcolor:blue -Vgeometry:a4paper -Vmainfont="DejaVu Serif" -Vmonofont="Delugia Nerd Font" -Vgeometry:margin=2cm
+pdf|pdf --from markdown --template eisvogel --listings
