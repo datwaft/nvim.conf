@@ -438,6 +438,10 @@
     set wildcharm=<Tab>
     " Wildmenu ignores the case
     set wildignorecase
+    " Configure the wildmenu completion
+    set wildmode=full
+    " Make wildmenu vertical
+    set wildoptions+=pum
     " Can use <space> to terminate wildmenu
     cnoremap <expr> <space> wildmenumode() ? "\<C-y>" : "\<space>"
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
