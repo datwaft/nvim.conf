@@ -59,8 +59,7 @@
     " Colorschemes
     Plug 'kaicataldo/material.vim', { 'branch': 'main' }
     " Status line
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
+    Plug 'itchyny/lightline.vim'
     " Improved search highlight
     Plug 'markonm/traces.vim'
     " Developer icons
@@ -331,8 +330,8 @@
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                 Colorscheme configuration                                  │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
-    " Sets airline theme to gruvbox
-    let g:airline_theme = 'material'
+    " Sets lightline theme
+    let g:lightline = { 'colorscheme': 'material_vim' }
     " Set theme style
     let g:material_theme_style = 'default'    
     " Enable italics
