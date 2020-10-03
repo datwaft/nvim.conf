@@ -2,6 +2,7 @@
   "suggest.autoTrigger": "none",
   "suggest.snippetIndicator": "►",
   "snippets.userSnippetsDirectory": "~/.config/nvim/snippets",
+  "python.pythonPath": "python3",
   "emmet.includeLanguages": {
     "jsp": "html",
     "vue": "html"

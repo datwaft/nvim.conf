@@ -192,7 +192,6 @@
     " +------------------------------------------------------------------------------------------+ "
       let g:coc_global_extensions = [
       \ 'coc-marketplace',
-      \ 'coc-pairs',
       \ 'coc-python',
       \ 'coc-snippets',
       \ 'coc-html',
