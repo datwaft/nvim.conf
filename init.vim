@@ -259,14 +259,37 @@
       nmap <leader>ac <Plug>(coc-codeaction)
       " Fix current line
       nmap <leader>qf <Plug>(coc-fix-current)
-      " Funtion text object
+      " Funtion and class text object
       xmap if <Plug>(coc-funcobj-i)
-      xmap af <Plug>(coc-funcobj-a)
       omap if <Plug>(coc-funcobj-i)
+      xmap af <Plug>(coc-funcobj-a)
       omap af <Plug>(coc-funcobj-a)
+      xmap ic <Plug>(coc-classobj-i)
+      omap ic <Plug>(coc-classobj-i)
+      xmap ac <Plug>(coc-classobj-a)
+      omap ac <Plug>(coc-classobj-a)
       " Use <TAB> to select range
-      nmap <silent> <TAB> <Plug>(coc-range-select)
-      xmap <silent> <TAB> <Plug>(coc-range-select)
+      nmap <silent> <C-s> <Plug>(coc-range-select)
+      xmap <silent> <C-s> <Plug>(coc-range-select)
+    " +------------------------------------------------------------------------------------------+ "
+    " |                                   Mappings for CoCList                                   | "
+    " +------------------------------------------------------------------------------------------+ "
+      " Show all diagnostics.
+      nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+      " Manage extensions.
+      nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+      " Show commands.
+      nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+      " Find symbol of current document.
+      nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+      " Search workspace symbols.
+      nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+      " Do default action for next item.
+      nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+      " Do default action for previous item.
+      nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+      " Resume latest coc list.
+      nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                        quick-scope                                         │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
@@ -331,10 +354,10 @@
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     " Sets lightline theme
     let g:lightline = { 'colorscheme': 'material_vim' }
-    " Set theme style
-    let g:material_theme_style = 'default'    
     " Enable italics
     let g:material_terminal_italics = 1
+    " Set theme style
+    let g:material_theme_style = 'default'    
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                  Colorscheme declaration                                   │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
@@ -420,13 +443,7 @@
     inoremap <expr> <DOWN>  pumvisible() ? "\<C-n>" : "\<DOWN>"
     inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
     " Using <space> to confirm completion
-    if has('patch8.1.1068')
-      inoremap <expr> <space> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<space>"
-    else
-      imap <expr> <space> pumvisible() ? "\<C-y>" : "\<C-g>u\<space>"
-    endif
-    " Close the preview window when completion is done
-    autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+    inoremap <silent><expr> <space> pumvisible() ? coc#_select_confirm() : "\<space>"
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                  Command-mode completion                                   │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
@@ -583,6 +600,8 @@
     " Move to the beginning or end with H or L
     nnoremap H ^
     nnoremap L $
+    inoremap <C-h> <C-o>^
+    inoremap <C-l> <C-o>$
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                       Miscellaneous                                        │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
@@ -614,7 +633,10 @@
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                          Assembly                                          │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
-    let g:asmsyntax='nasm'
+    augroup asm_ft
+      au!
+      autocmd BufNewFile,BufRead *.asm set filetype=nasm
+    augroup END
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                            JSON                                            │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
