@@ -13,20 +13,12 @@
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
 " ║                                     NeoVim configuration                                     ║ "
 " ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ "
-  if has('win32') || has('win64')
-    let g:python3_host_prog = '~/AppData/Local/Programs/Python/Python38-32/python.exe'
-  else
-    let g:python3_host_prog = '/usr/bin/python3'
-    let g:python_host_prog = '/usr/bin/python'
-  endif
+  let g:python3_host_prog = '/usr/bin/python3'
+  let g:python_host_prog = '/usr/bin/python'
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
 " ║                                   Variable initialization                                    ║ "
 " ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ "
-  if has('win32') || has('win64')
-    let g:plugins_folder = '~/AppData/Local/nvim/plugged'
-  else
-    let g:plugins_folder = '~/.config/nvim/plugged'
-  endif
+  let g:plugins_folder = '~/.config/nvim/plugged'
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
 " ║                                      Pre-initialization                                      ║ "
 " ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ "
@@ -118,6 +110,8 @@
       Plug 'amadeus/vim-convert-color-to'
       " Abolish
       Plug 'tpope/vim-abolish'
+      " Syntax analizer
+      Plug 'vim-scripts/SyntaxAttr.vim'
     " +------------------------------------------------------------------------------------------+ "
     " |                                     File management                                      | "
     " +------------------------------------------------------------------------------------------+ "
@@ -167,10 +161,6 @@
     " +------------------------------------------------------------------------------------------+ "
       " Syntax highlight
       Plug 'momota/cisco.vim'
-    " +------------------------------------------------------------------------------------------+ "
-    " |                                          Proloc                                          | "
-    " +------------------------------------------------------------------------------------------+ "
-      Plug 'adimit/prolog.vim'
   call plug#end()
   filetype plugin indent on
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
@@ -214,6 +204,7 @@
       \ 'coc-emmet',
       \ 'coc-tsserver',
       \ 'coc-tslint-plugin',
+      \ 'coc-vetur',
       \ 'coc-java',
       \ 'coc-clangd'
       \ ]
@@ -526,11 +517,7 @@
     " Better diffing
     set diffopt=filler,internal,algorithm:histogram,indent-heuristic
     " Undo persistence
-    if has('win32') || has('win64')
-      set undodir=~/AppData/Local/nvim/undodir.vim
-    else
-      set undodir=~/.config/nvim/undodir.vim
-    endif
+    set undodir=~/.config/nvim/undodir.vim
     set undofile
     " Saving marks on exit
     set viminfo='1000,f1
