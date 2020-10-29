@@ -5,3 +5,4 @@ tags.lock
 tags
 .netrwhist
 *.old
+*.old.*
