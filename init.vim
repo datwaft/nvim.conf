@@ -113,10 +113,6 @@
     " +------------------------------------------------------------------------------------------+ "
     " |                                     File management                                      | "
     " +------------------------------------------------------------------------------------------+ "
-      " File manager
-      Plug 'lambdalisue/fern.vim'
-      Plug 'lambdalisue/fern-git-status.vim'
-      Plug 'lambdalisue/fern-comparator-lexical.vim'
       " Quick file search
       Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
       Plug 'junegunn/fzf.vim'
