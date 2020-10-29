@@ -44,7 +44,7 @@ syntax case match
     syntax match prologOperator '@>='
     syntax match prologOperator '\\='
     syntax match prologOperator '\\=='
-    syntax keyword prologOperator as is
+    syntax keyword prologOperator is
     syntax match prologOperator '>:<'
     syntax match prologOperator ':<'
     syntax match prologOperator '#='
@@ -91,6 +91,7 @@ syntax case match
     " Functor
       syntax match prologFunctor '[a-z]\w*\((\)\@=' contained containedin=prologFunctorGroup nextgroup=prologParameters
       syntax match prologFunctor "'.*'\((\)\@=" contained containedin=prologFunctorGroup nextgroup=prologParameters
+      syntax region prologFunctor start="'" end="'\((\)\@=" contained containedin=prologFunctorGroup nextgroup=prologParameters
     " Parameters
       syntax region prologParameters matchgroup=prologParameterDelimiter start='(' end=')' containedin=prologFunctorGroup contains=prologParameterDivisor,@prologAll
       syntax match prologParameterDivisor ',' contained containedin=prologParameters
@@ -110,11 +111,11 @@ syntax case match
       syntax region prologDCGBody matchgroup=prologDCGBodyDelimiter start='-->' end='\.' contains=@prologAll,prologDCGBodyDivisor
       syntax match prologDCGBodyDivisor '[{\}]' contained containedin=prologDCGBody
   " -> Comment
-    syntax match prologComment "%.*$"
+    syntax region prologComment start="%" end="$"
     syntax region prologCComment fold start=/\/\*/ end=/\*\//
     syntax cluster prologComments contains=prologComment,prologCComment
   " -> All
-    syntax cluster prologAll contains=@prologKeywords,@prologOperators,prologAtom,@prologNumbers,prologList,prologFunctorGroup,@prologVariables,prologString
+    syntax cluster prologAll contains=@prologKeywords,@prologOperators,prologAtom,@prologNumbers,prologList,prologFunctorGroup,@prologVariables,prologString,@prologComments
 " => Color definition
   " -> Keywords
     highlight prologKeywordTrue ctermfg=green cterm=italic guifg=#C3E88D gui=italic
