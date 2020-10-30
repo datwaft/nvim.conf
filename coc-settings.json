@@ -10,5 +10,6 @@
   "clangd.arguments": [
     "-cross-file-rename"
   ],
-  "clangd.path": "/home/datwaft/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/clangd"
+  "clangd.path": "/home/datwaft/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/clangd",
+  "explorer.icon.enableNerdfont": true
 }
