@@ -1,8 +1,8 @@
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "all",     -- one of "all", "language", or a list of languages
+  ensure_installed = "maintained",
   highlight = {
-    enable = true,              -- false will disable the whole extension
-    disable = { },  -- list of languages that will be disabled
+    enable = true,
+    disable = {  },
   },
   incremental_selection = {
     enable = true,
@@ -16,17 +16,9 @@ require'nvim-treesitter.configs'.setup {
   refactor = {
     highlight_definitions = { enable = true },
     highlight_current_scope = { enable = false },
-    smart_rename = {
-      enable = true,
-      keymaps = {
-        smart_rename = "<leader>rn",
-      },
-    },
     navigation = {
       enable = true,
       keymaps = {
-        goto_definition = "gd",
-        list_definitions = "<leader>gd",
         list_definitions_toc = "gO",
         goto_next_usage = "<C-*>",
         goto_previous_usage = "<C-#>",
