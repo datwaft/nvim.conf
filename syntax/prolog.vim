@@ -73,7 +73,7 @@ syntax case match
   " -> Atom
     syntax match prologAtom '\[\]'
     syntax match prologAtom '[a-z]\w*'
-    syntax region prologAtom start="'" end="'"
+    syntax region prologAtom start="'" end="'" extend
   " -> Numbers
     syntax match prologNumber '\d\+'
     syntax match prologNumber '[-+]\d\+'
