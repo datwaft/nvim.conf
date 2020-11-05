@@ -15,6 +15,7 @@
 " ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ "
   let g:python3_host_prog = '/usr/bin/python3'
   let g:python_host_prog = '/usr/bin/python'
+  let g:coc_node_path = '/home/datwaft/.nvm/versions/node/v14.9.0/bin/node'
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
 " ║                                   Variable initialization                                    ║ "
 " ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ "
@@ -22,6 +23,12 @@
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
 " ║                                      Pre-initialization                                      ║ "
 " ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ "
+  " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
+  " │                                    Shell configuration                                     │ "
+  " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
+    if &shell =~# 'fish$'
+      set shell=zsh
+    endif
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                          Options                                           │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
@@ -150,6 +157,10 @@
     " +------------------------------------------------------------------------------------------+ "
       " Syntax highlight
       Plug 'momota/cisco.vim'
+    " +------------------------------------------------------------------------------------------+ "
+    " |                                           Fish                                           | "
+    " +------------------------------------------------------------------------------------------+ "
+      Plug 'dag/vim-fish'
   call plug#end()
   filetype plugin indent on
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
@@ -361,6 +372,8 @@
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                 Colorscheme configuration                                  │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
+    " Enable italics
+    let g:material_terminal_italics = 1
     " Set theme style
     let g:material_theme_style = 'default'    
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
@@ -541,28 +554,115 @@
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
 " ║                                    Autocmd configuration                                     ║ "
 " ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ "
-  augroup numbertoggle
-    autocmd!
-    " Change to absolute numbers on insert mode
-    autocmd InsertEnter * set norelativenumber
-    autocmd InsertLeave * set relativenumber
-    " Disable numbers on terminal and begin insert mode
-    autocmd TermOpen * setlocal nonumber norelativenumber listchars=
-    autocmd TermOpen * startinsert
-    autocmd BufEnter,BufWinEnter,WinEnter term://* startinsert
-    autocmd BufLeave term://* stopinsert
-  augroup END
-  " Better scroll performance
-  augroup syntaxSyncMinLines
-    autocmd!
-    autocmd Syntax * syntax sync minlines=2000
-  augroup END
-  " Open on last position
-	if has("autocmd")
-		au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-	endif
-  " Open with folds
-  au BufRead * normal zR
+  " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
+  " │                                    Don't break my flow                                     │ "
+  " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
+    " Source: https://vimways.org/2019/making-things-flow/
+    function! OpfuncSteady()
+      if !empty(&operatorfunc)
+        call winrestview(w:opfuncview)
+        unlet w:opfuncview
+        noautocmd set operatorfunc=
+      endif
+    endfunction
+
+    augroup OpfuncSteady
+      autocmd!
+      autocmd OptionSet operatorfunc let w:opfuncview = winsaveview()
+      autocmd CursorMoved * call OpfuncSteady()
+    augroup END
+  " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
+  " │                                 Toggle numbers when useful                                 │ "
+  " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
+    augroup numbertoggle
+      autocmd!
+      " Change to absolute numbers on insert mode
+      autocmd InsertEnter * set norelativenumber
+      autocmd InsertLeave * set relativenumber
+      " Disable numbers on terminal and begin insert mode
+      autocmd TermOpen * setlocal nonumber norelativenumber listchars=
+      autocmd TermOpen * startinsert
+      autocmd BufEnter,BufWinEnter,WinEnter term://* startinsert
+      autocmd BufLeave term://* stopinsert
+    augroup END
+  " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
+  " │                                 Better scroll performance                                  │ "
+  " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
+    augroup syntaxSyncMinLines
+      autocmd!
+      autocmd Syntax * syntax sync minlines=2000
+    augroup END
+  " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
+  " │                                 Open file on last position                                 │ "
+  " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
+    if has("autocmd")
+      au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+    endif
+  " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
+  " │                                     Open file unfolded                                     │ "
+  " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
+    au BufRead * normal zR
+" ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
+" ║                                         Text objects                                         ║ "
+" ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ "
+  " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
+  " │                                            Line                                            │ "
+  " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
+    " Text object inner line
+    xnoremap <silent> il :<c-u>normal! g_v^<cr>
+    onoremap <silent> il :<c-u>normal! g_v^<cr>
+    " Text object around line
+    xnoremap <silent> al :<c-u>normal! $v0<cr>
+    onoremap <silent> al :<c-u>normal! $v0<cr>
+  " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
+  " │                                          Document                                          │ "
+  " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
+    " Text object inner document
+    xnoremap <silent> id :<c-u>normal! G$Vgg0<cr>
+    onoremap <silent> id :<c-u>normal! GVgg<cr>
+  " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
+  " │                                           Number                                           │ "
+  " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
+    " Source: https://vimways.org/2018/transactions-pending/
+    " +------------------------------------------------------------------------------------------+ "
+    " |                                 Text object inner number                                 | "
+    " +------------------------------------------------------------------------------------------+ "
+      let s:regNums = [ '0b[01]', '0x\x', '\d' ]
+      function! s:inNumber()
+        let l:magic = &magic
+        set magic
+        let l:lineNr = line('.')
+        let l:pat = join(s:regNums, '\+\|') . '\+'
+        if (!search(l:pat, 'ce', l:lineNr))
+          return
+        endif
+        normal! v
+        call search(l:pat, 'cb', l:lineNr)
+        let &magic = l:magic
+      endfunction
+
+      xnoremap <silent> in :<c-u>call <sid>inNumber()<cr>
+      onoremap <silent> in :<c-u>call <sid>inNumber()<cr>
+    " +------------------------------------------------------------------------------------------+ "
+    " |                                Text object around number                                 | "
+    " +------------------------------------------------------------------------------------------+ "
+      function! s:aroundNumber()
+        let l:magic = &magic
+        set magic
+        let l:lineNr = line('.')
+        let l:pat = join(s:regNums, '\+\|') . '\+'
+        if (!search(l:pat, 'ce', l:lineNr))
+          return
+        endif
+        call search('\%'.(virtcol('.')+1).'v\s*', 'ce', l:lineNr)
+        normal! v
+        call search(l:pat, 'cb', l:lineNr)
+        call search('\s*\%'.virtcol('.').'v', 'b', l:lineNr)
+        let &magic = l:magic
+      endfunction
+
+      xnoremap <silent> an :<c-u>call <sid>aroundNumber()<cr>
+      onoremap <silent> an :<c-u>call <sid>aroundNumber()<cr>
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
 " ║                                      Keyboard bindings                                       ║ "
 " ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ "
