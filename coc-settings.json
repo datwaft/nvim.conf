@@ -1,4 +1,5 @@
 {
+  "npm.binPath": "/home/datwaft/.nvm/versions/node/v14.9.0/bin/npm",
   "suggest.autoTrigger": "none",
   "suggest.snippetIndicator": "►",
   "snippets.userSnippetsDirectory": "~/.config/nvim/snippets",
