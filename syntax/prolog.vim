@@ -85,15 +85,11 @@ syntax case match
     syntax region prologList matchgroup=prologListDelimiter start='\[' end='\]' contains=prologListDivisor,@prologAll
     syntax match prologListDivisor '[,|]' contained
   " -> Fuctor
-    " Functor Group
-      syntax region prologFunctorGroup start='[a-z]\w*(' end=')' contains=prologFunctor,prologParameters keepend extend
-      syntax region prologFunctorGroup start="'.\{-}'(" end=")" contains=prologFunctor,prologParameters keepend extend
     " Functor
-      syntax match prologFunctor '[a-z]\w*\((\)\@=' contained containedin=prologFunctorGroup nextgroup=prologParameters
-      syntax match prologFunctor "'.*'\((\)\@=" contained containedin=prologFunctorGroup nextgroup=prologParameters
-      syntax region prologFunctor start="'" end="'\((\)\@=" contained containedin=prologFunctorGroup nextgroup=prologParameters
+      syntax match prologFunctor '[a-z]\w*\((\)\@=' nextgroup=prologParameters
+      syntax match prologFunctor "'.\{-}'\((\)\@=" nextgroup=prologParameters
     " Parameters
-      syntax region prologParameters matchgroup=prologParameterDelimiter start='(' end=')' containedin=prologFunctorGroup contains=prologParameterDivisor,@prologAll
+      syntax region prologParameters matchgroup=prologParameterDelimiter start='(' end=')' contained contains=prologParameterDivisor,@prologAll
       syntax match prologParameterDivisor ',' contained containedin=prologParameters
   " -> Variables
     " Varable
@@ -115,7 +111,7 @@ syntax case match
     syntax region prologCComment fold start=/\/\*/ end=/\*\//
     syntax cluster prologComments contains=prologComment,prologCComment
   " -> All
-    syntax cluster prologAll contains=@prologKeywords,@prologOperators,prologAtom,@prologNumbers,prologList,prologFunctorGroup,@prologVariables,prologString,@prologComments
+    syntax cluster prologAll contains=@prologKeywords,@prologOperators,prologAtom,@prologNumbers,prologList,prologFunctor,@prologVariables,prologString,@prologComments
 " => Color definition
   " -> Keywords
     highlight prologKeywordTrue ctermfg=green cterm=italic guifg=#C3E88D gui=italic
