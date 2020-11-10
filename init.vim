@@ -63,6 +63,7 @@
     Plug 'markonm/traces.vim'
     " Developer icons
     Plug 'ryanoasis/vim-devicons'
+    Plug 'kyazdani42/nvim-web-devicons'
     " Colorized developer icons
     Plug 'lambdalisue/glyph-palette.vim'
     " Display marks
@@ -77,6 +78,8 @@
     Plug 'RRethy/vim-hexokinase'
     " Easy quick-scoping
     Plug 'unblevable/quick-scope'
+    " Buffer Tab bar
+    Plug 'romgrk/barbar.nvim'
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                       Useful plugins                                       │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
@@ -268,6 +271,11 @@
     " +------------------------------------------------------------------------------------------+ "
       nmap <C-n> :CocCommand explorer<CR>
     " +------------------------------------------------------------------------------------------+ "
+    " |                                       coc-snippets                                       | "
+    " +------------------------------------------------------------------------------------------+ "
+      let g:coc_snippet_next = '<Tab>'
+      let g:coc_snippet_prev = '<S-Tab>'
+    " +------------------------------------------------------------------------------------------+ "
     " |                                     Code navigation                                      | "
     " +------------------------------------------------------------------------------------------+ "
       " GoTo code navigation
@@ -380,6 +388,32 @@
     let g:vimtex_view_general_options = '-reuse-instance -forward-search @tex @line @pdf'
     let g:vimtex_view_general_options_latexmk = '-reuse-instance'
     let g:vimtex_quickfix_open_on_warning = 0
+  " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
+  " │                                        barbar.nvim                                         │ "
+  " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
+    " Magic buffer-picking mode
+    nnoremap <silent> <C-s> :BufferPick<CR>
+    " Sort automatically by...
+    nnoremap <silent> <Space>bd :BufferOrderByDirectory<CR>
+    nnoremap <silent> <Space>bl :BufferOrderByLanguage<CR>
+    " Move to previous/next
+    nnoremap <silent> <A-,> :BufferPrevious<CR>
+    nnoremap <silent> <A-.> :BufferNext<CR>
+    " Re-order to previous/next
+    nnoremap <silent> <A-<> :BufferMovePrevious<CR>
+    nnoremap <silent> <A->> :BufferMoveNext<CR>
+    " Goto buffer in position...
+    nnoremap <silent> <A-1> :BufferGoto 1<CR>
+    nnoremap <silent> <A-2> :BufferGoto 2<CR>
+    nnoremap <silent> <A-3> :BufferGoto 3<CR>
+    nnoremap <silent> <A-4> :BufferGoto 4<CR>
+    nnoremap <silent> <A-5> :BufferGoto 5<CR>
+    nnoremap <silent> <A-6> :BufferGoto 6<CR>
+    nnoremap <silent> <A-7> :BufferGoto 7<CR>
+    nnoremap <silent> <A-8> :BufferGoto 8<CR>
+    nnoremap <silent> <A-9> :BufferLast<CR>
+    " Close buffer
+    nnoremap <silent> <A-c> :BufferClose<CR>
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
 " ║                                     Color and Look&Feel                                      ║ "
 " ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ "
@@ -472,6 +506,7 @@
     " Using <Tab> for triggering completion and navigating completion list 
     inoremap <silent><expr> <Tab>
       \ pumvisible() ? "\<C-n>" :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
       \ <SID>check_back_space() ? "\<Tab>" :
       \ coc#refresh()
     " Using <Tab>, <UP>, <S-Tab> and <DOWN> for navigating completion list
