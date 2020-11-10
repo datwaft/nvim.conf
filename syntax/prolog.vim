@@ -73,7 +73,7 @@ syntax case match
   " -> Atom
     syntax match prologAtom '\[\]'
     syntax match prologAtom '[a-z]\w*'
-    syntax region prologAtom start="'" end="'" extend
+    syntax region prologAtom start="'" end="'" oneline extend
   " -> Numbers
     syntax match prologNumber '\d\+'
     syntax match prologNumber '[-+]\d\+'
@@ -89,7 +89,7 @@ syntax case match
       syntax match prologFunctor '[a-z]\w*\((\)\@=' nextgroup=prologParameters
       syntax match prologFunctor "'.\{-}'\((\)\@=" nextgroup=prologParameters
     " Parameters
-      syntax region prologParameters matchgroup=prologParameterDelimiter start='(' end=')' contained contains=prologParameterDivisor,@prologAll
+      syntax region prologParameters matchgroup=prologParameterDelimiter start='(' end=')' contained contains=prologParameterDivisor,@prologAll extend
       syntax match prologParameterDivisor ',' contained containedin=prologParameters
   " -> Variables
     " Varable
