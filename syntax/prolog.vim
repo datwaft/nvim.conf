@@ -84,6 +84,8 @@ syntax case match
   " -> List
     syntax region prologList matchgroup=prologListDelimiter start='\[' end='\]' contains=prologListDivisor,@prologAll
     syntax match prologListDivisor '[,|]' contained
+  " -> Parentheses
+    syntax region prologParentheses start='(' end=')' contained contains=@prologAll extend keepend
   " -> Fuctor
     " Functor
       syntax match prologFunctor '[a-z]\w*\((\)\@=' nextgroup=prologParameters
@@ -111,7 +113,7 @@ syntax case match
     syntax region prologCComment fold start=/\/\*/ end=/\*\//
     syntax cluster prologComments contains=prologComment,prologCComment
   " -> All
-    syntax cluster prologAll contains=@prologKeywords,@prologOperators,prologAtom,@prologNumbers,prologList,prologFunctor,@prologVariables,prologString,@prologComments
+    syntax cluster prologAll contains=@prologKeywords,@prologOperators,prologAtom,@prologNumbers,prologList,prologFunctor,@prologVariables,prologString,@prologComments,prologParentheses
 " => Color definition
   " -> Keywords
     highlight prologKeywordTrue ctermfg=green cterm=italic guifg=#C3E88D gui=italic
