@@ -9,4 +9,5 @@ Also, take into account I use *neovim* in the *WSL 2* with *Windows 10* using _D
 ## Documentation
 
 - [Neovim installation guide](doc/neovim-installation-guide.md).
+- [Dependencies installation guide](doc/dependencies-installation-guide.md).
 - [Extra configuration guide](doc/extra-configuration-guide.md).
