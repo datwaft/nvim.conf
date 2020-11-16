@@ -8,4 +8,4 @@ Also, take into account I use *neovim* in the *WSL 2* with *Windows 10* using _D
 
 ## Documentation
 
-- [Neovim installation guide.](./doc/Neovim Installation Guide.md)
+- [Neovim installation guide.](doc/Neovim Installation Guide.md)
