@@ -29,6 +29,6 @@ sudo make install
 This requires [LuaRocks](#luarocks).
 
 ```shell
-luarocks install moonscript
+sudo luarocks install moonscript
 ```
 
