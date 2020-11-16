@@ -36,6 +36,7 @@ These are the essentials for building neovim:
   <li><pre>unzip</pre></li>
   <li><pre>mercurial (with Debian)</pre></li>
 </ul>
+</details>
 
 You can get these essentials like this:
 
