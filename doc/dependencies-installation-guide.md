@@ -24,3 +24,11 @@ make
 sudo make install
 ```
 
+## MoonScript
+
+This requires [LuaRocks](#LuaRocks).
+
+```shell
+luarocks install moonscript
+```
+
