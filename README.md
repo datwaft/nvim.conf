@@ -8,4 +8,5 @@ Also, take into account I use *neovim* in the *WSL 2* with *Windows 10* using _D
 
 ## Documentation
 
-- [Neovim installation guide.](doc/neovim-installation-guide.md)
+- [Neovim installation guide](doc/neovim-installation-guide.md).
+- [Extra configuration guide](doc/extra.md).
