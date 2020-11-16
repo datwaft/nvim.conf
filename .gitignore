@@ -7,3 +7,4 @@ tags
 *.old.*
 node_modules/
 package-lock.json
+plugin/packer_compiled.vim
