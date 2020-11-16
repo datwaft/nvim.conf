@@ -23,19 +23,19 @@ These are the essentials for building neovim:
 
 <details>
 	<summary>Essentials list</summary>
-<ul>
-  <li><pre>build-essential</pre></li>
-  <li><pre>ninja-build</pre></li>
-  <li><pre>gettext</pre></li>
-  <li><pre>libtool</pre></li>
-  <li><pre>libtool-bin</pre></li>
-  <li><pre>autoconf</pre></li>
-  <li><pre>automake</pre></li>
-  <li><pre>cmake</pre></li>
-  <li><pre>pkg-config</pre></li>
-  <li><pre>unzip</pre></li>
-  <li><pre>mercurial (with Debian)</pre></li>
-</ul>
+	<ul>
+		<li><pre>build-essential</pre></li>
+		<li><pre>ninja-build</pre></li>
+		<li><pre>gettext</pre></li>
+		<li><pre>libtool</pre></li>
+		<li><pre>libtool-bin</pre></li>
+		<li><pre>autoconf</pre></li>
+		<li><pre>automake</pre></li>
+		<li><pre>cmake</pre></li>
+		<li><pre>pkg-config</pre></li>
+		<li><pre>unzip</pre></li>
+		<li><pre>mercurial (with Debian)</pre></li>
+	</ul>
 </details>
 
 You can get these essentials like this:
