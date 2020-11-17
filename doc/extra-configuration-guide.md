@@ -7,7 +7,6 @@ Here are some snippets for extra configuration.
 ```shell
 git config --global user.name "datwaft"
 git config --global user.email "datwaft@github.com"
-git config --global --add url."git@github.com:".insteadOf "https://github.com/"
 git config --global core.editor nvim
 ssh-keygen -t rsa -C "datwaft@github.com"
 xclip < ~/.ssh/id_rsa.pub
