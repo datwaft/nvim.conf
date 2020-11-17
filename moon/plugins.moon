@@ -2,7 +2,7 @@
 -- ============
 -- Created by: datwaft [github.com/datwaft]
 
-return require'packer'.startup ->
+require'packer'.startup ->
 -- Important plugins
 -- =================
    -- Package manager

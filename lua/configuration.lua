@@ -1,6 +1,27 @@
+require('utils')
 vim.o.mouse = 'a'
-vim.o.expandtab = true
-vim.o.smarttab = true
-vim.o.tabstop = 3
-vim.o.shiftwidth = vim.o.tabstop
-vim.o.softtabstop = vim.o.tabstop
+do
+  local expandtab = true
+  vim.o.expandtab = expandtab
+  vim.bo.expandtab = expandtab
+end
+do
+  local smarttab = true
+  vim.o.smarttab = smarttab
+end
+do
+  local tabstop = 3
+  vim.o.tabstop = tabstop
+  vim.bo.tabstop = tabstop
+end
+do
+  local shiftwidth = vim.o.tabstop
+  vim.o.shiftwidth = shiftwidth
+  vim.bo.shiftwidth = shiftwidth
+end
+do
+  local softtabstop = vim.o.tabstop
+  vim.o.softtabstop = softtabstop
+  vim.bo.softtabstop = softtabstop
+  return softtabstop
+end
