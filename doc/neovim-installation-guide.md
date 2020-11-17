@@ -14,7 +14,7 @@ sudo apt-get upgrade
 Also, to download neovim you need *git*:
 
 ```shell
-sudo apt-get install git
+sudo apt-get install -y git
 ```
 
 ## 1. Getting build essentials
