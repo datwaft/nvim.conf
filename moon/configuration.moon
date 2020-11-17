@@ -1,5 +1,5 @@
--- CONFIGURATION.LUA
--- =================
+-- CONFIGURATION.MOON
+-- ==================
 -- Created by: datwaft [github.com/datwaft]
 
 -- Terminal configuration
