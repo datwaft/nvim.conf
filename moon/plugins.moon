@@ -11,6 +11,10 @@ require'packer'.startup ->
    use {'svermeulen/vimpeccable'}
    -- Use MoonScript as Lua
    use {'svermeulen/nvim-moonmaker'}
+-- Editor plugins
+-- ==============
+   -- Autocompletion
+   use {'neoclide/coc.nvim', branch: 'release', config: require'plugins.cocnvim' }
 -- Syntax highlight
 -- ================
    use {'leafo/moonscript-vim'}

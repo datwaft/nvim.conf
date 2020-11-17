@@ -1,4 +1,3 @@
-require('utils')
 vim.o.mouse = 'a'
 do
   local expandtab = true
@@ -23,5 +22,10 @@ do
   local softtabstop = vim.o.tabstop
   vim.o.softtabstop = softtabstop
   vim.bo.softtabstop = softtabstop
-  return softtabstop
+end
+do
+  local autoindent = true
+  vim.o.autoindent = autoindent
+  vim.bo.autoindent = autoindent
+  return autoindent
 end

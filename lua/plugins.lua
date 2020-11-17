@@ -9,6 +9,11 @@ return require('packer').startup(function()
   use({
     'svermeulen/nvim-moonmaker'
   })
+  use({
+    'neoclide/coc.nvim',
+    branch = 'release',
+    config = require('plugins.cocnvim')
+  })
   return use({
     'leafo/moonscript-vim'
   })
