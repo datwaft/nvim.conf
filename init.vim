@@ -56,7 +56,7 @@
   " │                                     Aesthetic plugins                                      │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     " Colorschemes
-    Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+    Plug 'christianchiarulli/nvcode-color-schemes.vim'
     " Status line
     Plug 'itchyny/lightline.vim'
     " Improved search highlight
@@ -186,7 +186,7 @@
     endfunction
 
     let g:lightline = {
-    \   'colorscheme': 'material_vim',
+    \   'colorscheme': 'one',
     \   'active': {
     \     'left': [
     \       [ 'mode', 'paste' ],
@@ -424,17 +424,17 @@
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                 Colorscheme configuration                                  │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
-    " Enable italics
-    let g:material_terminal_italics = 1
-    " Set theme style
-    let g:material_theme_style = 'default'    
+    " Enable 256 colors
+    let g:nvcode_termcolors=256
+    " Don't know
+    hi LineNr ctermbg=NONE guibg=NONE
   " ┌────────────────────────────────────────────────────────────────────────────────────────────┐ "
   " │                                  Colorscheme declaration                                   │ "
   " └────────────────────────────────────────────────────────────────────────────────────────────┘ "
     " Sets colorscheme to dark mode
     set background=dark
     " Colorscheme
-    colorscheme material
+    colorscheme onedark
 " ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ "
 " ║                                      File compatibility                                      ║ "
 " ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ "
