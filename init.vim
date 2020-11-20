@@ -4,7 +4,6 @@
 
 " Plugins
 " =======
-packadd packer.nvim
 lua require('plugins')
 " Configuration
 " =============
