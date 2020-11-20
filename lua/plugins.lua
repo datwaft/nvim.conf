@@ -19,7 +19,7 @@ return require('packer').startup(function()
    -- Colorscheme
    use {
       'bluz71/vim-nightfly-guicolors',
-      config = require('plugins.colorscheme'),
+      config = require('plugins.colorscheme')
    }
 -- ==========
 -- Completion

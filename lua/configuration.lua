@@ -6,7 +6,7 @@
 -- ===================
 -- Variable definition
 -- ===================
-   local configuration_folder = "$HOME/.config/nvim/"
+   local configuration_folder = "~/.config/nvim/"
 --- ==================
 --- Header declaration
 --- ==================
@@ -102,7 +102,28 @@
       end
    -- Wrapping configuration
    -- ======================
-      -- TODO
+      -- Enable soft-wrapping
+      do local wrap = true
+         vim.o.wrap = wrap
+         vim.wo.wrap = wrap
+      end
+      -- Don't break words at the middle
+      do local linebreak = true
+         vim.o.linebreak = linebreak
+         vim.wo.linebreak = linebreak
+      end
+      -- Mantain indentation on wrap
+      do local breakindent = true
+         vim.o.breakindent = breakindent
+         vim.wo.breakindent = breakindent
+      end
+      -- Add characters after wrap
+      do local breakindentopt = 'shift:2'
+         vim.o.breakindentopt = breakindentopt
+         vim.wo.breakindentopt = breakindentopt
+      end
+      -- Character to show after wrap
+      vim.o.showbreak = '↳ '
    -- Format configuration
    -- ====================
       -- Set format options
