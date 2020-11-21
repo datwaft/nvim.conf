@@ -33,6 +33,8 @@ return require('packer').startup(function()
    use { 'mhinz/vim-signify' }
    -- Quick-scoping
    use { 'unblevable/quick-scope', config = require('plugins.quickscope') }
+   -- Color highlight
+   use { 'rrethy/vim-hexokinase', run = 'make hexokinase' }
 -- ===================
 -- Syntax highlighting
 -- ===================
