@@ -6,7 +6,7 @@
 -- ===================
 -- Variable definition
 -- ===================
-   local configuration_folder = "~/.config/nvim/"
+   local configuration_folder = "/.config/nvim/"
 --- ==================
 --- Header declaration
 --- ==================
