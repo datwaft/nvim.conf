@@ -4,6 +4,12 @@
 -- Created by datwaft [github.com/datwaft]
 
 return function()
+   vim.cmd [[
+      function! CocCurrentFunction()
+         return get(b:, 'coc_current_function', '')
+      endfunction
+   ]]
+
    vim.g.lightline = {
       colorscheme = 'nightfly',
       active = {

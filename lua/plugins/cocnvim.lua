@@ -10,11 +10,11 @@ return function()
    -- Extension declaration
    -- =====================
       vim.g.coc_global_extensions = {
-         'coc-marketplace',
          'coc-explorer',
          'coc-snippets',
          'coc-json',
-         'coc-lua'
+         'coc-lua',
+         'coc-vimlsp',
       }
    -- ====================
    -- Function declaration
@@ -39,7 +39,7 @@ return function()
       -- Don't show ins-completion-menu messages
       vim.o.shortmess = vim.o.shortmess .. 'c'
       -- Show signcolumn
-      do local signcolumn = 'number'
+      do local signcolumn = 'yes'
          vim.o.signcolumn = signcolumn
          vim.wo.signcolumn = signcolumn
       end
@@ -103,4 +103,10 @@ return function()
       -- coc-explorer
       -- ============
          vimp.nmap('<C-n>', [[:CocCommand explorer<CR>]])
+      -- coc-vimlsp
+      -- ==========
+         vim.g.markdown_fenced_languages = {
+            'vim',
+            'help'
+         }
 end

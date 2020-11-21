@@ -11,7 +11,7 @@ return function()
          disable = {},
       },
       indent = {
-         enable = true
+         enable = false
       },
       refactor = {
          highlight_definitions = { enable = true },
