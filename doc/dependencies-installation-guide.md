@@ -33,6 +33,38 @@ sudo luarocks install lua-cjson
 sudo luarocks install lcf
 ```
 
+## Go
+
+Go to <https://golang.org/dl/> and copy the link for Linux. (Our example link is: `https://golang.org/dl/go1.14.6.linux-amd64.tar.gz`).
+
+### Downloading Go
+
+```shell
+cd /tmp/
+mkdir golang && cd golang
+wget https://golang.org/dl/go1.14.6.linux-amd64.tar.gz -O go.tar.gz
+```
+
+### Installing Go
+
+Here we extract Go to `/usr.local`, creating a Go tree in `/usr/local/go`
+
+```shell
+sudo tar -C /usr/local -xzf go.tar.gz
+```
+
+### After installation
+
+**Note: If you use my ZSH dotfiles the you don't need do to this.**
+
+We add `/usr/local/go/bin` to `$PATH`.
+
+Add the following snippet to `$HOME/.profile` or `$HOME/.zprofile` depending on your shell.
+
+```shell
+export PATH=$PATH:/usr/local/go/bin
+```
+
 ## Node
 
 This is required for _coc.nvim_:
