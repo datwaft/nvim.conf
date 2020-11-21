@@ -10,11 +10,26 @@ return function()
    -- Extension declaration
    -- =====================
       vim.g.coc_global_extensions = {
+         -- Utility plugins
          'coc-explorer',
          'coc-snippets',
-         'coc-json',
+         -- Language plugins
          'coc-lua',
          'coc-vimlsp',
+         'coc-python',
+
+         'coc-json',
+         'coc-html',
+         'coc-xml',
+         'coc-css',
+         'coc-emmet',
+
+         'coc-tsserver',
+         'coc-tslint-plugin',
+         'coc-vetur',
+
+         'coc-java',
+         'coc-clangd',
       }
    -- ====================
    -- Function declaration
