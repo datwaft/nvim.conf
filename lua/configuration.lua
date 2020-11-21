@@ -267,7 +267,7 @@
          end
       end)
       -- Fold or unfold local
-      vimp.nnoremap('<space>', 'za')
+      vimp.nnoremap({'silent'}, '<leader><space>', 'za')
    -- Movement
    -- ========
       -- Move vertically on wrapped lines
