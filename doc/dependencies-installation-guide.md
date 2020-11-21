@@ -24,6 +24,15 @@ make
 sudo make install
 ```
 
+## lua-lsp
+
+```shell
+sudo luarocks install --server=http://luarocks.org/dev lua-lsp
+sudo luarocks install luacheck
+sudo luarocks install lua-cjson
+sudo luarocks install lcf
+```
+
 ## Node
 
 This is required for _coc.nvim_:
