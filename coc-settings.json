@@ -1,16 +1,23 @@
 {
-  "npm.binPath": "/home/datwaft/.nvm/versions/node/v14.9.0/bin/npm",
-  "suggest.autoTrigger": "none",
-  "suggest.snippetIndicator": "►",
-  "snippets.userSnippetsDirectory": "~/.config/nvim/snippets",
-  "python.pythonPath": "python3",
-  "emmet.includeLanguages": {
-    "jsp": "html",
-    "vue": "html"
-  },
-  "clangd.arguments": [
-    "-cross-file-rename"
-  ],
-  "clangd.path": "/home/datwaft/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/clangd",
-  "explorer.icon.enableNerdfont": true
+   "suggest.autoTrigger": "none",
+   "suggest.snippetIndicator": "►",
+
+   "explorer.icon.enableNerdfont": true,
+
+   "snippets.userSnippetsDirectory": "~/.config/nvim/snippets",
+
+   "lua.enable": true,
+   "lua.commandPath": "/usr/local/bin/lua-lsp",
+
+   "python.pythonPath": "python3",
+
+   "emmet.includeLanguages": {
+       "jsp": "html",
+       "vue": "html"
+   },
+
+   "clangd.arguments": [
+      "-cross-file-rename"
+   ],
+   "clangd.path": "/home/datwaft/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/clangd"
 }
