@@ -237,13 +237,78 @@
    if vim.fn.has('autocmd') == 1 then
       vim.cmd [[ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif ]]
    end
-   -- Open file unfolded
-   vim.cmd [[ au BufRead * normal zR ]]
 -- ============
 -- Text Objects
 -- ============
-   -- TODO
+   -- Line
+   -- ====
+      -- Text object inner line
+      vimp.xnoremap({'silent'}, 'il', ':<c-u>normal! g_v^<cr>')
+      vimp.onoremap({'silent'}, 'il', ':<c-u>normal! g_v^<cr>')
+      -- Text object around line
+      vimp.xnoremap({'silent'}, 'al', ':<c-u>normal! $v0<cr>')
+      vimp.onoremap({'silent'}, 'al', ':<c-u>normal! $v0<cr>')
+   -- Document
+   -- ========
+      -- Text object iner document
+      vimp.xnoremap({'silent'}, 'id', ':<c-u>normal! G$Vgg0<cr>')
+      vimp.onoremap({'silent'}, 'id', ':<c-u>normal! GVgg<cr>')
 -- =================
 -- Keyboard bindings
 -- =================
-   -- TODO
+   -- Folding
+   -- =======
+      -- Fold or unfold all
+      vimp.nnoremap({'expr'}, '<f2>', function()
+         if vim.wo.foldlevel == 1 then
+            return 'zM'
+         else
+            return 'zR'
+         end
+      end)
+      -- Fold or unfold local
+      vimp.nnoremap('<space>', 'za')
+   -- Movement
+   -- ========
+      -- Move vertically on wrapped lines
+      do local function vert_move(original, char, insert)
+            return function()
+               if vim.v.count ~= 0 then
+                  if vim.v.count > 5 then
+                     return "m'" .. original
+                  else
+                     return original
+                  end
+               else
+                  if insert then
+                     return '<C-o>g' .. char
+                  else 
+                     return 'g' .. char
+                  end
+               end
+            end
+         end
+         vimp.nnoremap({'expr'}, 'j', vert_move('j', 'j', false))
+         vimp.nnoremap({'expr'}, 'k', vert_move('k', 'k', false))
+         vimp.nnoremap({'expr'}, '<up>', vert_move('<up>', 'k', false))
+         vimp.nnoremap({'expr'}, '<down>', vert_move('<down>', 'j', false))
+         vimp.inoremap({'expr'}, '<up>', vert_move('<up>', 'k', true))
+         vimp.inoremap({'expr'}, '<down>', vert_move('<down>', 'j', true))
+      end
+      -- Move to the beginning or the end with H or L
+      vimp.nnoremap('H', '^')
+      vimp.nnoremap('L', '$')
+      vimp.inoremap('<C-h>', '<C-o>^')
+      vimp.inoremap('<C-l>', '<C-o>$')
+      vimp.cnoremap('<C-h>', '<home>')
+      vimp.cnoremap('<C-l>', '<end>')
+   -- Miscellaneous
+   -- =============
+      -- Use Y to copy from the cursor to the end
+      vimp.nnoremap('Y', 'y$')
+      -- Fast execute macro
+      vimp.xnoremap('Q', ':normal @@<CR>')
+      vimp.nnoremap('Q', ':normal @@<CR>')
+      -- Move lines up and down
+      vimp.nnoremap('<C-up>', ':m-2<CR>')
+      vimp.nnoremap('<C-down>', ':m+<CR>')
