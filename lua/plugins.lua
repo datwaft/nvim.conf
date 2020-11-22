@@ -7,7 +7,7 @@ vim.cmd [[ packadd packer.nvim ]]
 
 vim.cmd [[ autocmd BufWritePost plugins.lua PackerCompile ]]
 
-return require('packer').startup(function()
+return require'packer'.startup(function()
 -- =========
 -- Essential
 -- =========
@@ -19,9 +19,9 @@ return require('packer').startup(function()
 -- Aesthetic
 -- =========
    -- Colorscheme
-   use { 'bluz71/vim-nightfly-guicolors', config = require('plugins.colorscheme') }
+   use { 'bluz71/vim-nightfly-guicolors', config = require'plugins.colorscheme' }
    -- Status line
-   use { 'itchyny/lightline.vim', config = require('plugins.lightline') }
+   use { 'itchyny/lightline.vim', config = require'plugins.lightline' }
    -- Improved search highlight
    use { 'markonm/traces.vim' }
    -- Developer icons
@@ -32,7 +32,7 @@ return require('packer').startup(function()
    -- Show VCS changes
    use { 'mhinz/vim-signify' }
    -- Quick-scoping
-   use { 'unblevable/quick-scope', config = require('plugins.quickscope') }
+   use { 'unblevable/quick-scope', config = require'plugins.quickscope' }
    -- Color highlight
    use { 'rrethy/vim-hexokinase', run = 'make hexokinase' }
 -- ===================
@@ -46,7 +46,7 @@ return require('packer').startup(function()
    -- Treesitter
    use { 
       'nvim-treesitter/nvim-treesitter',
-      config = require('plugins.treesitter')
+      config = require'plugins.treesitter'
    }
    -- Treesitter refactor
    use {
@@ -65,7 +65,7 @@ return require('packer').startup(function()
    use {
       'neoclide/coc.nvim',
       branch = 'release',
-      config = require('plugins.cocnvim'),
+      config = require'plugins.cocnvim',
    }
 -- ============
 -- Text objects
@@ -75,7 +75,7 @@ return require('packer').startup(function()
    -- Indentation object
    use { 'michaeljsmith/vim-indent-object' }
    -- CamelCase and snake_case objects
-   use { 'bkad/camelcasemotion', config = require('plugins.camelcasemotion') }
+   use { 'bkad/camelcasemotion', config = require'plugins.camelcasemotion' }
 -- =======
 -- Actions
 -- =======
@@ -106,7 +106,7 @@ return require('packer').startup(function()
 -- Integration
 -- ===========
    -- Tmux integration
-   use { 'christoomey/vim-tmux-navigator', config = require('plugins.tmuxnavigator') }
+   use { 'christoomey/vim-tmux-navigator', config = require'plugins.tmuxnavigator' }
    -- REPL integration
-   use { 'jpalardy/vim-slime', config = require('plugins.slime') }
+   use { 'jpalardy/vim-slime', config = require'plugins.slime' }
 end)

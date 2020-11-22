@@ -6,9 +6,6 @@
 
    "snippets.userSnippetsDirectory": "~/.config/nvim/snippets",
 
-   "lua.enable": true,
-   "lua.commandPath": "/usr/local/bin/lua-lsp",
-
    "python.pythonPath": "python3",
 
    "emmet.includeLanguages": {

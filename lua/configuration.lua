@@ -10,7 +10,7 @@
 --- ==================
 --- Header declaration
 --- ==================
-   require('vimp')
+   require'vimp'
 
 -- ====================
 -- NeoVim Configuration
@@ -154,8 +154,8 @@
       vim.o.infercase = true
       -- Function to check if there is a space behind de cursor
       function check_back_space()
-         local col = vim.fn.col('.') - 1
-         local line = vim.fn.getline('.')
+         local col = vim.fn.col'.' - 1
+         local line = vim.fn.getline'.'
          local char = string.sub(line, col, col)
          return col == 0 or string.find(char, '%s')
       end
@@ -234,7 +234,7 @@
    -- Notification after change on disk
    vim.cmd [[ autocmd FileChangedShellPost * echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None]]
    -- Open file on last position
-   if vim.fn.has('autocmd') == 1 then
+   if vim.fn.has'autocmd' == 1 then
       vim.cmd [[ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif ]]
    end
 -- ============

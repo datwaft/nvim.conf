@@ -3,7 +3,7 @@
 -- ======================
 -- Created by datwaft [github.com/datwaft]
 
-require('vimp')
+require'vimp'
 
 return function()
    -- =====================
@@ -14,7 +14,6 @@ return function()
          'coc-explorer',
          'coc-snippets',
          -- Language plugins
-         'coc-lua',
          'coc-vimlsp',
          'coc-python',
 
@@ -39,7 +38,7 @@ return function()
          if vim.fn.index({'vim', 'index'}, vim.bo.filetype) >= 0 then
             vim.cmd [[ execute 'h '.expand('<cword>') ]]
          else
-            vim.fn.CocAction('doHover')
+            vim.fn.CocAction'doHover'
          end
       end
    -- ========
@@ -107,7 +106,7 @@ return function()
    -- Command definition
    -- ==================
       -- Format current buffer
-      vimp.map_command('Format', function() vim.fn.CocAction('format') end)
+      vimp.map_command('Format', function() vim.fn.CocAction'format' end)
       -- Fold current buffer
       vimp.map_command('Fold', function(args) vim.fn.CocAction('format', args) end)
       -- Organize imports of current buffer
