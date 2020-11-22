@@ -67,7 +67,7 @@ return require'packer'.startup(function()
    use {
       'neoclide/coc.nvim',
       branch = 'release',
-      config = require'plugins.cocnvim',
+      config = require'plugins.coc',
    }
 -- ============
 -- Text objects
