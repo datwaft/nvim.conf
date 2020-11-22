@@ -35,6 +35,8 @@ return require'packer'.startup(function()
    use { 'unblevable/quick-scope', config = require'plugins.quickscope' }
    -- Color highlight
    use { 'rrethy/vim-hexokinase', run = 'make hexokinase' }
+   -- Smooth scrolling
+   use { 'psliwka/vim-smoothie' }
 -- ===================
 -- Syntax highlighting
 -- ===================
