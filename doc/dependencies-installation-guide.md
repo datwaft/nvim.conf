@@ -24,6 +24,15 @@ make
 sudo make install
 ```
 
+## lua-lsp
+
+```shell
+sudo luarocks install --server=http://luarocks.org/dev lua-lsp
+sudo luarocks install luacheck
+sudo luarocks install lua-cjson
+sudo luarocks install lcf
+```
+
 ## Go
 
 Go to <https://golang.org/dl/> and copy the link for Linux. (Our example link is: `https://golang.org/dl/go1.14.6.linux-amd64.tar.gz`).
