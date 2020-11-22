@@ -37,19 +37,10 @@ sudo luarocks install lcf
 
 Go to <https://golang.org/dl/> and copy the link for Linux. (Our example link is: `https://golang.org/dl/go1.14.6.linux-amd64.tar.gz`).
 
-### Downloading Go
-
 ```shell
-cd /tmp/
-mkdir golang && cd golang
+mkdir ~/downloads; cd ~/downloads
 wget https://golang.org/dl/go1.14.6.linux-amd64.tar.gz -O go.tar.gz
-```
-
-### Installing Go
-
-Here we extract Go to `/usr.local`, creating a Go tree in `/usr/local/go`
-
-```shell
+# Extract Go to /usr/local
 sudo tar -C /usr/local -xzf go.tar.gz
 ```
 
