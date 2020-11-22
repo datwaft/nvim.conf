@@ -153,7 +153,7 @@
       -- The case of the completion is inferred
       vim.o.infercase = true
       -- Function to check if there is a space behind de cursor
-      function check_back_space()
+      local function check_back_space()
          local col = vim.fn.col'.' - 1
          local line = vim.fn.getline'.'
          local char = string.sub(line, col, col)
@@ -282,7 +282,7 @@
                else
                   if insert then
                      return '<C-o>g' .. char
-                  else 
+                  else
                      return 'g' .. char
                   end
                end

@@ -46,7 +46,7 @@ return require'packer'.startup(function()
 -- Semantic analysis
 -- =================
    -- Treesitter
-   use { 
+   use {
       'nvim-treesitter/nvim-treesitter',
       config = require'plugins.treesitter'
    }
