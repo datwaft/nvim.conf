@@ -81,7 +81,7 @@
       -- More intelligent tabulation
      vim.o.smarttab = true
       -- Number of spaces that a <Tab> counts for
-      do local tabstop = 3
+      do local tabstop = 2
         vim.o.tabstop = tabstop
         vim.bo.tabstop = tabstop
       end
@@ -100,6 +100,8 @@
         vim.o.autoindent = autoindent
         vim.bo.autoindent = autoindent
       end
+      -- Lua specific configuration
+      vim.cmd [[ autocmd FileType lua setlocal tabstop=3 shiftwidth=3 softtabstop=3 expandtab ]]
    -- Wrapping configuration
    -- ======================
       -- Enable soft-wrapping
