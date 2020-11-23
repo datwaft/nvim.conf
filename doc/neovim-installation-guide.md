@@ -22,20 +22,20 @@ sudo apt-get install -y git
 These are the essentials for building neovim:
 
 <details>
-	<summary>Essentials list</summary>
-	<ul>
-		<li><pre>build-essential</pre></li>
-		<li><pre>ninja-build</pre></li>
-		<li><pre>gettext</pre></li>
-		<li><pre>libtool</pre></li>
-		<li><pre>libtool-bin</pre></li>
-		<li><pre>autoconf</pre></li>
-		<li><pre>automake</pre></li>
-		<li><pre>cmake</pre></li>
-		<li><pre>pkg-config</pre></li>
-		<li><pre>unzip</pre></li>
-		<li><pre>mercurial (with Debian)</pre></li>
-	</ul>
+<summary>Essentials list</summary>
+	
+- `build-essential`
+- `ninja-build`
+- `gettext`
+- `libtool`
+- `libtool-bin`
+- `autoconf`
+- `automake`
+- `cmake`
+- `pkg-config`
+- `unzip`
+- `mercurial` (with Debian)
+		
 </details>
 
 You can get these essentials like this:
