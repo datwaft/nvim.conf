@@ -125,4 +125,8 @@ return function()
             'vim',
             'help'
          }
+      -- coc-snippets
+      -- ============
+         vim.g.coc_snippet_next = '<c-l>'
+         vim.g.coc_snippet_prev = '<c-h>'
 end
