@@ -6,7 +6,7 @@ I created some documentation files you can see below. They are mainly to automat
 
 Also, take into account I use *neovim* in the *WSL 2* with *Windows 10* using _Debian_ distro, so some steps may not be needed if you don’t use the system as me.
 
-Feel free to use these *dotfiles* for inspiration.
+Feel free to use these *dotfiles* for inspiration. :D
 
 ## Documentation
 
