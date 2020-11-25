@@ -8,7 +8,7 @@ Here are some snippets for extra configuration.
 git config --global user.name "datwaft"
 git config --global user.email "datwaftx@gmail.com"
 git config --global core.editor nvim
-ssh-keygen -t rsa -C "datwaft@gmail.com"
+ssh-keygen -t rsa -C "datwaftx@gmail.com"
 xclip < ~/.ssh/id_rsa.pub
 ```
 
