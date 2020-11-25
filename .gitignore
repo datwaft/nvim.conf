@@ -1,6 +1,7 @@
 # ==========
-# .gitignore
+# .GITIGNORE
 # ==========
+# Created by: datwaft [github.com/datwaft]
 
 # NeoVim undo directory
 undodir.vim/
