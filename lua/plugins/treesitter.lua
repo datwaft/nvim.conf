@@ -4,7 +4,12 @@
 -- Created by datwaft [github.com/datwaft]
 
 return function()
-   require'nvim-treesitter.configs'.setup {
+   local configs = require'utils'.prerequire('nvim-treesitter.configs')
+   if not configs then
+      vim.cmd [[ echom 'Cannot load `nvim-treesitter.configs`' ]]
+      return
+   end
+   configs.setup {
       ensure_installed = "maintained",
       highlight = {
          enable = true,
