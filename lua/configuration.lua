@@ -309,3 +309,9 @@ end
       -- Move lines up and down
       vimp.nnoremap('<C-up>', ':m-2<CR>')
       vimp.nnoremap('<C-down>', ':m+<CR>')
+-- ===============================
+-- Language specific configuration
+-- ===============================
+   -- Prolog
+   -- ======
+      vim.cmd [[ autocmd BufNewFile,BufRead *.pl set filetype=prolog ]]

@@ -42,6 +42,8 @@ return require'packer'.startup(function()
 -- ===================
    -- Polyglot
    use { 'sheerun/vim-polyglot' }
+   -- Prolog
+   use { 'datwaft/prolog-syntax-vim' }
 -- =================
 -- Semantic analysis
 -- =================
