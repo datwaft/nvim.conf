@@ -10,7 +10,10 @@
 --- ==================
 --- Header declaration
 --- ==================
-   require'vimp'
+if not pcall(require, 'vimp') then
+   vim.cmd [[ echom 'Cannot load `vimp`' ]]
+   return
+end
 
 -- ====================
 -- NeoVim Configuration
