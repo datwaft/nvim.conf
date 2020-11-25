@@ -1,10 +1,25 @@
+# ==========
+# .gitignore
+# ==========
+
+# NeoVim undo directory
 undodir.vim/
+
+# Temporal files
 *.temp
+
+# Old files
+*.old
+*.old.*
+
+# Neovim files
 tags.lock
 tags
 .netrwhist
-*.old
-*.old.*
+
+# Node files
 node_modules/
 package-lock.json
+
+# Packer files
 plugin/packer_compiled.vim
