@@ -4,7 +4,7 @@
 -- Created by datwaft [github.com/datwaft]
 
 return function()
-   local configs = require'utils'.prerequire('nvim-treesitter.configs')
+   local configs = require'utils'.prerequire'nvim-treesitter.configs'
    if not configs then
       vim.cmd [[ echom 'Cannot load `nvim-treesitter.configs`' ]]
       return
