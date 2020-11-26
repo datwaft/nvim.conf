@@ -58,6 +58,8 @@ end
 -- ======================
    -- Activate mouse
    vim.o.mouse = 'a'
+   -- Restore cursor on exit
+   vim.cmd [[ au VimLeave * set guicursor=a:ver100-blinkon0 ]]
 -- ====================
 -- Editor configuration
 -- ====================
