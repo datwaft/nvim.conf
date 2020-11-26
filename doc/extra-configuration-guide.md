@@ -6,9 +6,9 @@ Here are some snippets for extra configuration.
 
 ```shell
 git config --global user.name "datwaft"
-git config --global user.email "datwaft@github.com"
+git config --global user.email "datwaftx@gmail.com"
 git config --global core.editor nvim
-ssh-keygen -t rsa -C "datwaft@github.com"
+ssh-keygen -t rsa -C "datwaftx@gmail.com"
 xclip < ~/.ssh/id_rsa.pub
 ```
 

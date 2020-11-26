@@ -58,6 +58,8 @@ end
 -- ======================
    -- Activate mouse
    vim.o.mouse = 'a'
+   -- Restore cursor on exit
+   vim.cmd [[ au VimLeave * set guicursor=a:ver100-blinkon0 ]]
 -- ====================
 -- Editor configuration
 -- ====================
@@ -279,17 +281,9 @@ end
       do local function vert_move(original, char, insert)
             return function()
                if vim.v.count ~= 0 then
-                  if vim.v.count > 5 then
-                     return "m'" .. original
-                  else
-                     return original
-                  end
+                  return (vim.v.count > 5 and "m'" or '') .. original
                else
-                  if insert then
-                     return '<C-o>g' .. char
-                  else
-                     return 'g' .. char
-                  end
+                  return (insert and '<C-o>' or '') .. 'g' .. char
                end
             end
          end
@@ -317,3 +311,9 @@ end
       -- Move lines up and down
       vimp.nnoremap('<C-up>', ':m-2<CR>')
       vimp.nnoremap('<C-down>', ':m+<CR>')
+-- ===============================
+-- Language specific configuration
+-- ===============================
+   -- Prolog
+   -- ======
+      vim.cmd [[ autocmd BufNewFile,BufRead *.pl set filetype=prolog ]]
