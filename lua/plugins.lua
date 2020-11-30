@@ -50,7 +50,8 @@ return require'packer'.startup(function()
    -- Treesitter
    use {
       'nvim-treesitter/nvim-treesitter',
-      config = require'plugins.treesitter'
+      config = require'plugins.treesitter',
+      run = ':TSUpdate'
    }
    -- Treesitter refactor
    use {
