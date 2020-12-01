@@ -11,7 +11,7 @@ return function()
    ]]
 
    vim.g.lightline = {
-      colorscheme = 'nightfly',
+      colorscheme = 'edge',
       active = {
          left = {
             { 'mode', 'paste' },
