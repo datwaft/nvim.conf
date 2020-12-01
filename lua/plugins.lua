@@ -19,9 +19,15 @@ return require'packer'.startup(function()
 -- Aesthetic
 -- =========
    -- Colorscheme
-   use { 'bluz71/vim-nightfly-guicolors', config = require'plugins.colorscheme' }
+   use {
+      'sainnhe/edge',
+      config = require'plugins.colorscheme',
+   }
    -- Status line
-   use { 'itchyny/lightline.vim', config = require'plugins.lightline' }
+   use {
+      'itchyny/lightline.vim',
+      config = require'plugins.lightline',
+   }
    -- Improved search highlight
    use { 'markonm/traces.vim' }
    -- Developer icons
@@ -34,7 +40,11 @@ return require'packer'.startup(function()
    -- Quick-scoping
    use { 'unblevable/quick-scope', config = require'plugins.quickscope' }
    -- Color highlight
-   use { 'rrethy/vim-hexokinase', run = 'make hexokinase' }
+   use {
+      'rrethy/vim-hexokinase',
+      run = 'make hexokinase',
+      config = require'plugins.hexokinase'
+   }
    -- Smooth scrolling
    use { 'psliwka/vim-smoothie' }
 -- ===================
