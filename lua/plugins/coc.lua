@@ -118,7 +118,7 @@ return function()
    -- ====================
       -- coc-explorer
       -- ============
-         vimp.nmap('<C-n>', [[:CocCommand explorer<CR>]])
+         vimp.nmap({'silent'}, '<C-n>', [[:CocCommand explorer<CR>]])
       -- coc-vimlsp
       -- ==========
          vim.g.markdown_fenced_languages = {
