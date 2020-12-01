@@ -12,6 +12,7 @@
        "jsp": "html",
        "vue": "html"
    },
+   "coc.preferences.colorSupport": false,
 
    "clangd.arguments": [
       "-cross-file-rename"
