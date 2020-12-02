@@ -22,12 +22,13 @@ return require'packer'.startup(function()
    use {
       'sainnhe/edge',
       config = require'plugins.colorscheme',
+      as = 'colorscheme',
    }
    -- Status line
    use {
       'itchyny/lightline.vim',
       config = require'plugins.lightline',
-      after = 'edge',
+      after = 'colorscheme',
    }
    -- Improved search highlight
    use { 'markonm/traces.vim' }
