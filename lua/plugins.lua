@@ -27,6 +27,7 @@ return require'packer'.startup(function()
    use {
       'itchyny/lightline.vim',
       config = require'plugins.lightline',
+      after = 'edge',
    }
    -- Improved search highlight
    use { 'markonm/traces.vim' }

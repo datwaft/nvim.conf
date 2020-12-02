@@ -12,4 +12,6 @@ return function()
    vim.g.edge_current_word  = 'underline'
    -- Set colorscheme
    vim.cmd [[ colorscheme edge ]]
+   -- Set lightline theme
+   vim.g.statusline_theme = 'edge'
 end
