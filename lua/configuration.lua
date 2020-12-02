@@ -53,6 +53,12 @@ end
    -- Status
    -- ======
       vim.o.showmode = false
+   -- Status line
+   -- ===========
+      do local statusline = require'statusline'()
+         vim.wo.statusline = statusline
+         vim.o.statusline = statusline
+      end
 -- ======================
 -- Terminal configuration
 -- ======================
