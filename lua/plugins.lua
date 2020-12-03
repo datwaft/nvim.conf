@@ -24,12 +24,6 @@ return require'packer'.startup(function()
       config = require'plugins.colorscheme',
       as = 'colorscheme',
    }
-   -- Status line
-   use {
-      'itchyny/lightline.vim',
-      config = require'plugins.lightline',
-      after = 'colorscheme',
-   }
    -- Improved search highlight
    use { 'markonm/traces.vim' }
    -- Developer icons
