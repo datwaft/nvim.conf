@@ -61,9 +61,9 @@
       define_dark_bubble_highlight('lightgrey', palette)
       define_dark_bubble_highlight('darkgrey', palette)
    end
--- =====================
--- Status bar components
--- =====================
+-- =========
+-- Factories
+-- =========
    -- Render bubble
    local function render_bubble(list, configuration)
       -- list is a list of objects with the form:
@@ -101,81 +101,98 @@
       end
       return bubble
    end
+-- =====================
+-- Status bar components
+-- =====================
    -- Render mode bubble
-   local function render_mode(configuration)
+   local function render_mode(configuration, isinactive)
       local mode = vim.fn.mode()
       if mode == 'n' then
-         return render_bubble({{ data = 'NORMAL', color = 'green', style = 'bold' }}, configuration)
+         return render_bubble({{ data = 'NORMAL', color = ( isinactive and 'lightgrey' or 'green' ), style = 'bold' }}, configuration)
       elseif mode == 'i' then
-         return render_bubble({{ data = 'INSERT', color = 'blue', style = 'bold' }}, configuration)
+         return render_bubble({{ data = 'INSERT', color = ( isinactive and 'lightgrey' or 'blue' ), style = 'bold' }}, configuration)
       elseif mode == 'v' or mode == 'V' or mode == '^V' then
-         return render_bubble({{ data = 'VISUAL', color = 'red', style = 'bold' }}, configuration)
+         return render_bubble({{ data = 'VISUAL', color = ( isinactive and 'lightgrey' or 'red' ), style = 'bold' }}, configuration)
       elseif mode == 'c' then
-         return render_bubble({{ data = 'COMMAND', color = 'red', style = 'bold' }}, configuration)
+         return render_bubble({{ data = 'COMMAND', color = ( isinactive and 'lightgrey' or 'red' ), style = 'bold' }}, configuration)
       elseif mode == 't' then
-         return render_bubble({{ data = 'TERMINAL', color = 'blue', style = 'bold' }}, configuration)
+         return render_bubble({{ data = 'TERMINAL', color = ( isinactive and 'lightgrey' or 'blue' ), style = 'bold' }}, configuration)
       elseif mode == 'R' then
-         return render_bubble({{ data = 'REPLACE', color = 'yellow', style = 'bold' }}, configuration)
+         return render_bubble({{ data = 'REPLACE', color = ( isinactive and 'lightgrey' or 'yellow' ), style = 'bold' }}, configuration)
       else
-         return render_bubble({{ data = vim.fn.mode(1), color = 'white', style = 'bold' }}, configuration)
+         return render_bubble({{ data = vim.fn.mode(1), color = ( isinactive and 'lightgrey' or 'white' ), style = 'bold' }}, configuration)
       end
    end
    -- Path bubble
-   local function path_bubble(configuration)
+   local function path_bubble(configuration, isinactive)
       return render_bubble({
-         { data = ( vim.bo.ro and '' or '' ), color = 'lightgrey' },
-         { data = '%.30f', color = 'white' },
+         { data = ( vim.bo.ro and 'RO' or '' ), color = 'lightgrey', style = 'bold' },
+         { data = ( not vim.bo.ma and '' or '' ), color = 'darkgrey' },
+         { data = '%.30f', color = ( isinactive and 'lightgrey' or 'white' ) },
          { data = ( vim.bo.mod and '+' or '' ), color = 'lightgrey' },
       }, configuration)
    end
+   local function simple_path_bubble(configuration)
+      return render_bubble({{ data = '%.30f', color = 'lightgrey' }}, configuration)
+   end
    -- paste bubble
-   local function paste_bubble(configuration)
-      return render_bubble({{ data = ( vim.o.paste and 'PASTE' or '' ), color = 'red', style = 'bold' }}, configuration)
+   local function paste_bubble(configuration, isinactive)
+      return render_bubble({{ data = ( vim.o.paste and 'PASTE' or '' ), color = ( isinactive and 'lightgrey' or 'red' ), style = 'bold' }}, configuration)
    end
    -- coc.nvim bubble
-   local function coc_bubble(configuration)
+   local function coc_bubble(configuration, isinactive)
       local info = vim.b.coc_diagnostic_info
       if info == nil or next(info) == nil then return '' end
       return render_bubble({
-         { data = ( info.error ~= 0 and 'E' .. info.error or '' ), color = 'red', style = bold },
-         { data = ( info.warning ~= 0 and 'W' .. info.warning or '' ), color = 'yellow', style = bold },
+         { data = ( info.error ~= 0 and 'E' .. info.error or '' ), color = ( isinactive and 'lightgrey' or 'red' ), style = bold },
+         { data = ( info.warning ~= 0 and 'W' .. info.warning or '' ), color = ( isinactive and 'lightgrey' or 'yellow' ), style = bold },
          { data = vim.g.coc_status, color = 'lightgrey', style = bold },
       }, configuration)
    end
    -- Progress bubble
-   local function progress_bubble(configuration)
+   local function progress_bubble(configuration, isinactive)
       return render_bubble({
          { data = '%-8.(%l:%c%)', color = 'lightgrey' },
-         { data = '%P', color = 'darkgrey' },
+         { data = '%P', color = ( isinactive and 'lightgrey' or 'darkgrey' ) },
       }, configuration)
    end
    -- Filetype bubble
-   local function filetype_bubble(configuration)
+   local function filetype_bubble(configuration, isinactive)
       local filetype = vim.bo.filetype
       if filetype == '' then filetype = 'undefined'
       else filetype = filetype:lower() end
-      return render_bubble({{ data = filetype, color = 'blue' }}, configuration)
+      return render_bubble({{ data = filetype, color = ( isinactive and 'lightgrey' or 'blue' ) }}, configuration)
    end
 -- =====================
 -- Status bar definition
 -- =====================
-   local function get_statusline(configuration)
+   local function get_statusline(configuration, isinactive)
       local statusline = ''
 
       -- render current mode
-      statusline = statusline .. render_mode(configuration) .. ' '
+      if not isinactive then
+         statusline = statusline .. render_mode(configuration, isinactive) .. ' '
+      end
       -- render path to file
-      statusline = statusline .. path_bubble(configuration) .. ' '
+      if isinactive then
+         statusline = statusline .. simple_path_bubble(configuration) .. ' '
+      else
+         statusline = statusline .. path_bubble(configuration, isinactive) .. ' '
+      end
       -- render paste bubble
-      do local instance = paste_bubble(configuration)
-         if instance ~= '' then
-            statusline = statusline .. instance .. ' '
+      if not isinactive then
+         do local instance = paste_bubble(configuration, isinactive)
+            if instance ~= '' then
+               statusline = statusline .. instance .. ' '
+            end
          end
       end
       -- render coc.nvim bubble
-      do local instance = coc_bubble(configuration)
-         if instance ~= '' then
-            statusline = statusline .. instance .. ' '
+      if not isinactive then
+         do local instance = coc_bubble(configuration, isinactive)
+            if instance ~= '' then
+               statusline = statusline .. instance .. ' '
+            end
          end
       end
 
@@ -183,9 +200,11 @@
       statusline = statusline .. '%='
 
       -- render filetype of file
-      statusline = statusline .. ' ' .. filetype_bubble(configuration)
+      if not isinactive then
+         statusline = statusline .. ' ' .. filetype_bubble(configuration, isinactive)
+      end
       -- render progress of file
-      statusline = statusline .. ' ' .. progress_bubble(configuration)
+      statusline = statusline .. ' ' .. progress_bubble(configuration, isinactive)
 
       return statusline
    end
@@ -201,9 +220,9 @@
          }
       end,
       inactive = function()
-         return get_statusline {
+         return get_statusline({
             left_character = '',
             right_character = '',
-         }
+         }, true)
       end,
    }
