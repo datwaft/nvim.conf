@@ -55,10 +55,38 @@ end
       vim.o.showmode = false
    -- Status line
    -- ===========
-      do local statusline = require'statusline'()
-         vim.wo.statusline = statusline
-         vim.o.statusline = statusline
-      end
+      -- Define highlight groups
+      require'statusline'.define_highlights {
+         background = "#2c2e34",
+         foreground = "#c5cdd9",
+         black = "#3e4249",
+         red = "#ec7279",
+         green = "#a0c980",
+         yellow = "#deb974",
+         blue = "#6cb6eb",
+         purple = "#d38aea",
+         cyan = "#5dbbc1",
+         white = "#c5cdd9",
+         lightgrey = "#57595e",
+         darkgrey = "#404247",
+      }
+      -- Function definition
+      vim.cmd [[
+         function! InactiveStatusLine()
+            return luaeval("require'statusline'.inactive()")
+         endfunction
+      ]]
+      vim.cmd [[
+         function! ActiveStatusLine()
+            return luaeval("require'statusline'.active()")
+         endfunction
+      ]]
+      -- Render definition
+      vim.cmd'augroup StatusLineRender'
+         vim.cmd'autocmd!'
+         vim.cmd'autocmd WinEnter,BufEnter * setlocal statusline=%!ActiveStatusLine()'
+         vim.cmd'autocmd WinLeave,BufLeave * setlocal statusline=%!InactiveStatusLine()'
+      vim.cmd'augroup END'
 -- ======================
 -- Terminal configuration
 -- ======================
