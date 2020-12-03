@@ -6,8 +6,8 @@
 -- =======
 -- Plugins
 -- =======
-require('plugins')
+require'plugins'
 -- =============
 -- Configuration
 -- =============
-require('configuration')
+require'configuration'
