@@ -70,7 +70,7 @@
       -- {
       --    data: string,
       --    color: string,
-      --    type: string,
+      --    style: string,
       -- }
       local function initial(color)
          return '%#Bubble' .. titlecase(color) .. 'Delimiter#' .. configuration.left_character
@@ -89,9 +89,9 @@
       for i, e in ipairs(list) do
          if e.data ~= '' then
             local last = islast(i)
-            if not e.type then e.type = '' end
+            if not e.style then e.style = '' end
             if first then bubble = bubble .. initial(e.color) end
-            bubble = bubble .. '%#Bubble' .. titlecase(e.color) .. titlecase(e.type) .. '#'
+            bubble = bubble .. '%#Bubble' .. titlecase(e.color) .. titlecase(e.style) .. '#'
             if not first then bubble = bubble .. ' ' end
             bubble = bubble .. e.data
             if not last then bubble = bubble .. ' ' end
@@ -128,12 +128,12 @@
       return render_bubble({
          { data = ( vim.bo.ro and 'RO' or '' ), color = 'lightgrey', style = 'bold' },
          { data = ( not vim.bo.ma and '' or '' ), color = 'darkgrey' },
-         { data = '%.30f', color = ( isinactive and 'lightgrey' or 'white' ) },
+         { data = '%.30f', color = ( isinactive and 'lightgrey' or 'white' ), style = 'italic' },
          { data = ( vim.bo.mod and '+' or '' ), color = 'lightgrey' },
       }, configuration)
    end
    local function simple_path_bubble(configuration)
-      return render_bubble({{ data = '%.30f', color = 'lightgrey' }}, configuration)
+      return render_bubble({{ data = '%.30f', color = 'lightgrey', style = 'italic' }}, configuration)
    end
    -- paste bubble
    local function paste_bubble(configuration, isinactive)
@@ -159,7 +159,7 @@
    -- Filetype bubble
    local function filetype_bubble(configuration, isinactive)
       local filetype = vim.bo.filetype
-      if filetype == '' then filetype = 'undefined'
+      if filetype == '' then filetype = 'no ft'
       else filetype = filetype:lower() end
       return render_bubble({{ data = filetype, color = ( isinactive and 'lightgrey' or 'blue' ) }}, configuration)
    end

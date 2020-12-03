@@ -57,7 +57,7 @@ end
    -- ===========
       -- Define highlight groups
       require'statusline'.define_highlights {
-         background = "#2c2e34",
+         background = "#34343c",
          foreground = "#c5cdd9",
          black = "#3e4249",
          red = "#ec7279",
