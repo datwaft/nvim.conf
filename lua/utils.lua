@@ -10,6 +10,11 @@ local function prerequire(...)
    return nil
 end
 
+-- prettyprint
+local function prettyprint(object)
+   print(vim.inspect(object))
+end
+
 -- convert word to title case
 local function titlecase(str)
    return str:sub(1,1):upper() .. str:sub(2)
@@ -40,5 +45,6 @@ return {
    prerequire = prerequire,
    titlecase = titlecase,
    copytable = copytable,
-   highlight = highlight
+   highlight = highlight,
+   prettyprint = prettyprint,
 }

@@ -6,23 +6,23 @@
 --   This is a module that generates a status line from a palette and a configuration dictionary.
 --   The palette follows the form:
 --   {
---        background = '...',
---        foreground = '...',
---        black = '...',
---        red = '...',
---        green = '...',
---        yellow = '...',
---        blue = '...',
---        purple = '...',
---        cyan = '...',
---        white = '...',
---        lightgrey = '...',
---        darkgrey = '...',
+--        background = string,
+--        foreground = string,
+--        black = string,
+--        red = string,
+--        green = string,
+--        yellow = string,
+--        blue = string,
+--        purple = string,
+--        cyan = string,
+--        white = string,
+--        lightgrey = string,
+--        darkgrey = string,
 --    }
 --    And the configuration follows the form:
 --    {
---       left_character = '...',
---       right_character = '...',
+--       left_character = string,
+--       right_character = string,
 --    }
 --
 
@@ -65,135 +65,96 @@
 -- Status bar components
 -- =====================
    -- Render bubble
-   local function create_bubble(color, data, configuration, type)
-      if type and type == 'bold' then
-         return '%#Bubble' .. titlecase(color) .. 'Delimiter#' .. configuration.left_character ..
-            '%#Bubble' .. titlecase(color) .. 'Bold#' .. data ..
-            '%#Bubble' .. titlecase(color) .. 'Delimiter#' .. configuration.right_character ..
-            '%#StatusBar#'
-      elseif type and type == 'italic' then
-         return '%#Bubble' .. titlecase(color) .. 'Delimiter#' .. configuration.left_character ..
-            '%#Bubble' .. titlecase(color) .. 'Italic#' .. data ..
-            '%#Bubble' .. titlecase(color) .. 'Delimiter#' .. configuration.right_character ..
-            '%#StatusBar#'
-      else
-         return '%#Bubble' .. titlecase(color) .. 'Delimiter#' .. configuration.left_character ..
-            '%#Bubble' .. titlecase(color) .. '#' .. data ..
-            '%#Bubble' .. titlecase(color) .. 'Delimiter#' .. configuration.right_character ..
-            '%#StatusBar#'
+   local function render_bubble(list, configuration)
+      -- list is a list of objects with the form:
+      -- {
+      --    data: string,
+      --    color: string,
+      --    type: string,
+      -- }
+      local function initial(color)
+         return '%#Bubble' .. titlecase(color) .. 'Delimiter#' .. configuration.left_character
       end
+      local function final(color)
+         return '%#Bubble' .. titlecase(color) .. 'Delimiter#' .. configuration.right_character
+      end
+      local function islast(begin)
+         for i=begin+1,#list do
+            if list[i].data ~= '' then return false end
+         end
+         return true
+      end
+      local first = true
+      local bubble = ''
+      for i, e in ipairs(list) do
+         if e.data ~= '' then
+            local last = islast(i)
+            if not e.type then e.type = '' end
+            if first then bubble = bubble .. initial(e.color) end
+            bubble = bubble .. '%#Bubble' .. titlecase(e.color) .. titlecase(e.type) .. '#'
+            if not first then bubble = bubble .. ' ' end
+            bubble = bubble .. e.data
+            if not last then bubble = bubble .. ' ' end
+            if last then bubble = bubble .. final(e.color) end
+            if first then first = false end
+         end
+      end
+      return bubble
    end
    -- Render mode bubble
    local function render_mode(configuration)
       local mode = vim.fn.mode()
       if mode == 'n' then
-         return create_bubble('green', 'NORMAL', configuration, 'bold')
+         return render_bubble({{ data = 'NORMAL', color = 'green', style = 'bold' }}, configuration)
       elseif mode == 'i' then
-         return create_bubble('blue', 'INSERT', configuration, 'bold')
+         return render_bubble({{ data = 'INSERT', color = 'blue', style = 'bold' }}, configuration)
       elseif mode == 'v' or mode == 'V' or mode == '^V' then
-         return create_bubble('red', 'VISUAL', configuration, 'bold')
+         return render_bubble({{ data = 'VISUAL', color = 'red', style = 'bold' }}, configuration)
       elseif mode == 'c' then
-         return create_bubble('red', 'COMMAND', configuration, 'bold')
+         return render_bubble({{ data = 'COMMAND', color = 'red', style = 'bold' }}, configuration)
       elseif mode == 't' then
-         return create_bubble('blue', 'TERMINAL', configuration, 'bold')
+         return render_bubble({{ data = 'TERMINAL', color = 'blue', style = 'bold' }}, configuration)
       elseif mode == 'R' then
-         return create_bubble('yellow', 'REPLACE', configuration, 'bold')
+         return render_bubble({{ data = 'REPLACE', color = 'yellow', style = 'bold' }}, configuration)
       else
-         return create_bubble('white', vim.fn.mode(1), configuration, 'bold')
+         return render_bubble({{ data = vim.fn.mode(1), color = 'white', style = 'bold' }}, configuration)
       end
    end
    -- Path bubble
    local function path_bubble(configuration)
-      local bubble = ''
-      if vim.bo.ro then
-         bubble = bubble .. '%#BubbleLightgreyDelimiter#' .. configuration.left_character ..
-            '%#BubbleLightgrey#' ..  '' .. ' '
-      end
-
-      if not vim.bo.ro then
-         bubble = bubble .. '%#BubbleWhiteDelimiter#' .. configuration.left_character
-      end
-      bubble = bubble .. '%#BubbleWhiteItalic#'
-      if vim.bo.ro then bubble = bubble .. ' ' end
-      bubble = bubble .. '%.30f'
-      if vim.bo.mod then bubble = bubble .. ' ' end
-      if not vim.bo.mod then
-         bubble = bubble .. '%#BubbleWhiteDelimiter#' .. configuration.right_character ..
-            '%#StatusBar#'
-      end
-
-      if vim.bo.mod then
-         bubble = bubble .. '%#BubbleLightgrey#' .. ' ' .. '+' ..
-            '%#BubbleLightgreyDelimiter#' .. configuration.right_character ..
-            '%#StatusBar#'
-      end
-      return bubble
+      return render_bubble({
+         { data = ( vim.bo.ro and '' or '' ), color = 'lightgrey' },
+         { data = '%.30f', color = 'white' },
+         { data = ( vim.bo.mod and '+' or '' ), color = 'lightgrey' },
+      }, configuration)
    end
    -- paste bubble
    local function paste_bubble(configuration)
-      if not vim.o.paste then
-         return ''
-      else
-         return create_bubble('red', 'PASTE', configuration, 'bold')
-      end
+      return render_bubble({{ data = ( vim.o.paste and 'PASTE' or '' ), color = 'red', style = 'bold' }}, configuration)
    end
    -- coc.nvim bubble
    local function coc_bubble(configuration)
       local info = vim.b.coc_diagnostic_info
       if info == nil or next(info) == nil then return '' end
-      local begun = false
-      local bubble = ''
-      if info.error ~= 0 then
-         begun = true
-         bubble = bubble .. '%#BubbleRedDelimiter#' .. configuration.left_character ..
-            '%#BubbleRedBold#' .. 'E' .. info.error
-         if info.warning == 0 and vim.g.coc_status == '' then
-            bubble = bubble .. '%#BubbleRedDelimiter#' .. configuration.right_character ..
-               '%#StatusBar#'
-         end
-      end
-      if info.warning ~= 0 then
-         if not begun then
-            bubble = bubble .. '%#BubbleYellowDelimiter#' .. configuration.left_character ..
-               '%#BubbleYellowBold#' .. 'W' .. info.warning
-            begun = true
-         else
-            bubble = bubble .. ' ' .. '%#BubbleYellowBold#' .. ' ' .. 'W' .. info.warning
-         end
-         if vim.g.coc_status == '' then
-            bubble = bubble .. '%#BubbleYellowDelimiter#' .. configuration.right_character ..
-               '%#StatusBar#'
-         end
-      end
-      if vim.g.coc_status ~= '' then
-         if not begun then
-            bubble = bubble .. '%#BubbleLightgreyDelimiter#' .. configuration.left_character ..
-               '%#BubbleLightgrey#' .. vim.g.coc_status ..
-               '%#BubbleLightgreyDelimiter#' .. configuration.right_character ..
-               '%#StatusBar#'
-         else
-            bubble = bubble .. ' ' .. '%#BubbleLightgrey#' .. ' ' .. vim.g.coc_status ..
-               '%#BubbleLightgreyDelimiter#' .. configuration.right_character ..
-               '%#StatusBar#'
-         end
-      end
-      return bubble
+      return render_bubble({
+         { data = ( info.error ~= 0 and 'E' .. info.error or '' ), color = 'red', style = bold },
+         { data = ( info.warning ~= 0 and 'W' .. info.warning or '' ), color = 'yellow', style = bold },
+         { data = vim.g.coc_status, color = 'lightgrey', style = bold },
+      }, configuration)
    end
    -- Progress bubble
    local function progress_bubble(configuration)
-      return '%#BubbleLightgreyDelimiter#' .. configuration.left_character ..
-         '%#BubbleLightgrey#' .. ' ' ..
-         '%-8.(' .. '%l' .. ':'  .. '%c' .. '%)' ..
-         '%#BubbleDarkgrey#' .. ' %P' ..
-         '%#BubbleDarkgreyDelimiter#' .. configuration.right_character ..
-         '%#StatusBar#'
+      return render_bubble({
+         { data = '%-8.(%l:%c%)', color = 'lightgrey' },
+         { data = '%P', color = 'darkgrey' },
+      }, configuration)
    end
    -- Filetype bubble
    local function filetype_bubble(configuration)
       local filetype = vim.bo.filetype
       if filetype == '' then filetype = 'undefined'
       else filetype = filetype:lower() end
-      return create_bubble('blue', filetype, configuration)
+      return render_bubble({{ data = filetype, color = 'blue' }}, configuration)
    end
 -- =====================
 -- Status bar definition
@@ -206,10 +167,14 @@
       -- render path to file
       statusline = statusline .. path_bubble(configuration) .. ' '
       -- render paste bubble
-      statusline = statusline .. paste_bubble(configuration) .. ' '
+      do local instance = paste_bubble(configuration)
+         if instance ~= '' then
+            statusline = statusline .. instance .. ' '
+         end
+      end
       -- render coc.nvim bubble
       do local instance = coc_bubble(configuration)
-         if instace ~= '' then
+         if instance ~= '' then
             statusline = statusline .. instance .. ' '
          end
       end
