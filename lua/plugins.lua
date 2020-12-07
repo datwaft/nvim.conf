@@ -116,8 +116,8 @@ return require'packer'.startup(function()
 -- ===========
 -- Integration
 -- ===========
-   -- Tmux integration
-   use { 'christoomey/vim-tmux-navigator', config = require'plugins.tmuxnavigator' }
+   -- Kitty integration
+   use { 'knubie/vim-kitty-navigator' }
    -- REPL integration
    use { 'jpalardy/vim-slime', config = require'plugins.slime' }
 end)
