@@ -93,7 +93,7 @@
             if first then bubble = bubble .. initial(e.color) end
             bubble = bubble .. '%#Bubble' .. titlecase(e.color) .. titlecase(e.style) .. '#'
             if not first then bubble = bubble .. ' ' end
-            bubble = bubble .. e.data
+            bubble = bubble .. e.data:gsub('^%s*(.-)%s*$', '%1')
             if not last then bubble = bubble .. ' ' end
             if last then bubble = bubble .. final(e.color) end
             if first then first = false end
