@@ -142,9 +142,9 @@
       if modified == -1 then modified = 0 end
       if removed == -1 then removed = 0 end
       return render_bubble({
-         { data = added ~= 0 and '+' .. added or '', color = ( isinactive and 'lightgrey' or 'green' ) },
-         { data = modified ~= 0 and '~' .. modified or '', color = ( isinactive and 'lightgrey' or 'blue' ) },
-         { data = removed ~= 0 and '-' .. removed or '', color = ( isinactive and 'lightgrey' or 'red' ) },
+         { data = added ~= 0 and '+' .. added or '', color = ( isinactive and 'lightgrey' or 'green' ), style = 'bold' },
+         { data = modified ~= 0 and '~' .. modified or '', color = ( isinactive and 'lightgrey' or 'blue' ), style = 'bold' },
+         { data = removed ~= 0 and '-' .. removed or '', color = ( isinactive and 'lightgrey' or 'red' ), style = 'bold' },
       }, configuration)
    end
    -- Paste bubble
@@ -193,7 +193,7 @@
       end
       -- render vs changes of file
       if not isinactive then
-         statusline = statusline .. ' ' .. signify_bubble(configuration, isinactive)
+         statusline = statusline .. signify_bubble(configuration, isinactive) .. ' '
       end
       -- render paste bubble
       if not isinactive then
