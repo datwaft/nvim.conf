@@ -128,7 +128,7 @@
       return render_bubble({
          { data = ( vim.bo.ro and 'RO' or '' ), color = 'lightgrey', style = 'bold' },
          { data = ( not vim.bo.ma and '' or '' ), color = 'darkgrey' },
-         { data = '%.30f', color = ( isinactive and 'lightgrey' or 'white' ), style = 'italic' },
+         { data = '%.30f', color = ( isinactive and 'lightgrey' or 'white' ) },
          { data = ( vim.bo.mod and '+' or '' ), color = 'lightgrey' },
       }, configuration)
    end
