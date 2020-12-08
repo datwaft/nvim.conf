@@ -193,7 +193,7 @@
       end
       -- render vs changes of file
       if not isinactive then
-         statusline = statusline .. ' ' .. signify_bubble(configuration, isinactive)
+         statusline = statusline .. signify_bubble(configuration, isinactive) .. ' '
       end
       -- render paste bubble
       if not isinactive then
