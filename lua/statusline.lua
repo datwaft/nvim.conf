@@ -128,14 +128,26 @@
       return render_bubble({
          { data = ( vim.bo.ro and 'RO' or '' ), color = 'lightgrey', style = 'bold' },
          { data = ( not vim.bo.ma and '' or '' ), color = 'darkgrey' },
-         { data = '%.30f', color = ( isinactive and 'lightgrey' or 'white' ), style = 'italic' },
+         { data = '%.30f', color = ( isinactive and 'lightgrey' or 'white' ) },
          { data = ( vim.bo.mod and '+' or '' ), color = 'lightgrey' },
       }, configuration)
    end
    local function simple_path_bubble(configuration)
       return render_bubble({{ data = '%.30f', color = 'lightgrey', style = 'italic' }}, configuration)
    end
-   -- paste bubble
+   -- Signify bubble
+   local function signify_bubble(configuration, isinactive)
+      local added, modified, removed = unpack(vim.fn['sy#repo#get_stats']())
+      if added == -1 then added = 0 end
+      if modified == -1 then modified = 0 end
+      if removed == -1 then removed = 0 end
+      return render_bubble({
+         { data = added ~= 0 and '+' .. added or '', color = ( isinactive and 'lightgrey' or 'green' ) },
+         { data = modified ~= 0 and '~' .. modified or '', color = ( isinactive and 'lightgrey' or 'blue' ) },
+         { data = removed ~= 0 and '-' .. removed or '', color = ( isinactive and 'lightgrey' or 'red' ) },
+      }, configuration)
+   end
+   -- Paste bubble
    local function paste_bubble(configuration, isinactive)
       return render_bubble({{ data = ( vim.o.paste and 'PASTE' or '' ), color = ( isinactive and 'lightgrey' or 'red' ), style = 'bold' }}, configuration)
    end
@@ -149,19 +161,19 @@
          { data = vim.g.coc_status, color = 'lightgrey', style = bold },
       }, configuration)
    end
-   -- Progress bubble
-   local function progress_bubble(configuration, isinactive)
-      return render_bubble({
-         { data = '%-8.(%l:%c%)', color = 'lightgrey' },
-         { data = '%P', color = ( isinactive and 'lightgrey' or 'darkgrey' ) },
-      }, configuration)
-   end
    -- Filetype bubble
    local function filetype_bubble(configuration, isinactive)
       local filetype = vim.bo.filetype
       if filetype == '' then filetype = 'no ft'
       else filetype = filetype:lower() end
       return render_bubble({{ data = filetype, color = ( isinactive and 'lightgrey' or 'blue' ) }}, configuration)
+   end
+   -- Progress bubble
+   local function progress_bubble(configuration, isinactive)
+      return render_bubble({
+         { data = '%-8.(%l:%c%)', color = 'lightgrey' },
+         { data = '%P', color = ( isinactive and 'lightgrey' or 'darkgrey' ) },
+      }, configuration)
    end
 -- =====================
 -- Status bar definition
@@ -178,6 +190,10 @@
          statusline = statusline .. simple_path_bubble(configuration) .. ' '
       else
          statusline = statusline .. path_bubble(configuration, isinactive) .. ' '
+      end
+      -- render vs changes of file
+      if not isinactive then
+         statusline = statusline .. ' ' .. signify_bubble(configuration, isinactive)
       end
       -- render paste bubble
       if not isinactive then
