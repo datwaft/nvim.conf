@@ -1,1 +1,8 @@
-ignore = { "112", "113", "631" }
+ignore = {
+   "631", -- Line is too long error
+   "113", -- Accessing undefined variable
+}
+globals = {
+   "vim",
+   "vimp",
+}
