@@ -71,21 +71,12 @@ end
          darkgrey = "#404247",
       }
       -- Function definition
-      vim.cmd [[
-         function! InactiveStatusLine()
-            return luaeval("require'statusline'.inactive()")
-         endfunction
-      ]]
-      vim.cmd [[
-         function! ActiveStatusLine()
-            return luaeval("require'statusline'.active()")
-         endfunction
-      ]]
+      _G.statusline = require('statusline')
       -- Render definition
       vim.cmd'augroup StatusLineRender'
          vim.cmd'autocmd!'
-         vim.cmd'autocmd WinEnter,BufEnter * setlocal statusline=%!ActiveStatusLine()'
-         vim.cmd'autocmd WinLeave,BufLeave * setlocal statusline=%!InactiveStatusLine()'
+         vim.cmd'autocmd WinEnter,BufEnter * setlocal statusline=%!v:lua.statusline.active()'
+         vim.cmd'autocmd WinLeave,BufLeave * setlocal statusline=%!v:lua.statusline.inactive()'
       vim.cmd'augroup END'
 -- ======================
 -- Terminal configuration
