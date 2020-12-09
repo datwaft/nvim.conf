@@ -3,25 +3,28 @@
 -- =================
 -- Created by datwaft [github.com/datwaft]
 
+-- preamble
+local M = {}
+
 -- prerequire a package
-local function prerequire(...)
+M.prerequire = function(...)
    local status, lib = pcall(require, ...)
    if status then return lib end
    return nil
 end
 
 -- prettyprint
-local function prettyprint(object)
+M.prettyprint = function(object)
    print(vim.inspect(object))
 end
 
 -- convert word to title case
-local function titlecase(str)
+M.titlecase = function(str)
    return str:sub(1,1):upper() .. str:sub(2)
 end
 
 -- create a duplicate of a table
-local function copytable(table)
+M.copytable = function(table)
    local result = {}
    for k,v in pairs(table) do
        result[k] = v
@@ -30,7 +33,7 @@ local function copytable(table)
 end
 
 -- return string for syntax highlight
-local function highlight(name, foreground, background, special)
+M.highlight = function(name, foreground, background, special)
    local command = 'highlight '
    command = command .. name .. ' '
    command = command .. 'guifg=' .. foreground .. ' '
@@ -41,10 +44,4 @@ local function highlight(name, foreground, background, special)
    return command
 end
 
-return {
-   prerequire = prerequire,
-   titlecase = titlecase,
-   copytable = copytable,
-   highlight = highlight,
-   prettyprint = prettyprint,
-}
+return M
