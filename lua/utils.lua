@@ -13,11 +13,6 @@ M.prerequire = function(...)
    return nil
 end
 
--- prettyprint
-M.prettyprint = function(object)
-   print(vim.inspect(object))
-end
-
 -- convert word to title case
 M.titlecase = function(str)
    return str:sub(1,1):upper() .. str:sub(2)
