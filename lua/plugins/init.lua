@@ -24,6 +24,8 @@ return require'packer'.startup(function()
       config = require'plugins.colorscheme',
       as = 'colorscheme',
    }
+   -- Statusline
+   use { 'datwaft/bubbly.nvim' }
    -- Improved search highlight
    use { 'markonm/traces.vim' }
    -- Developer icons
@@ -107,6 +109,11 @@ return require'packer'.startup(function()
    use { 'lambdalisue/gina.vim' }
    -- Subtitution with caps
    use { 'tpope/vim-abolish' }
+   -- Markdown preview
+   use {
+      'iamcco/markdown-preview.nvim',
+      run = 'cd app && yarn install',
+   }
 -- ===============
 -- File management
 -- ===============
