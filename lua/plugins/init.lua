@@ -72,7 +72,7 @@ return require'packer'.startup(function()
 -- ==========
 -- Completion
 -- ==========
-   -- LSP autocompletion
+   -- LSP completion
    use {
       'neoclide/coc.nvim',
       branch = 'release',

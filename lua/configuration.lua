@@ -73,11 +73,13 @@ end
       -- Function definition
       _G.statusline = require('statusline')
       -- Render definition
-      vim.cmd'augroup StatusLineRender'
-         vim.cmd'autocmd!'
-         vim.cmd'autocmd WinEnter,BufEnter * setlocal statusline=%!v:lua.statusline.active()'
-         vim.cmd'autocmd WinLeave,BufLeave * setlocal statusline=%!v:lua.statusline.inactive()'
-      vim.cmd'augroup END'
+      vim.api.nvim_exec([[
+         augroup StatusLineRender
+            autocmd!
+            autocmd WinEnter,BufEnter * setlocal statusline=%!v:lua.statusline.active()
+            autocmd WinLeave,BufLeave * setlocal statusline=%!v:lua.statusline.inactive()
+         augroup END
+      ]], false)
 -- ======================
 -- Terminal configuration
 -- ======================
