@@ -1,28 +1,28 @@
 {
-   "suggest.autoTrigger": "none",
-   "suggest.snippetIndicator": "►",
+  "suggest.autoTrigger": "none",
+  "suggest.snippetIndicator": "►",
 
-   "explorer.icon.enableNerdfont": true,
+  "explorer.icon.enableNerdfont": true,
 
-   "snippets.userSnippetsDirectory": "~/.config/nvim/snippets",
+  "snippets.userSnippetsDirectory": "~/.config/nvim/snippets",
 
-   "python.pythonPath": "python3",
+  "python.pythonPath": "python3",
 
-   "emmet.includeLanguages": {
-       "jsp": "html",
-       "vue": "html"
-   },
-   "coc.preferences.colorSupport": false,
+  "emmet.includeLanguages": {
+     "jsp": "html",
+     "vue": "html"
+  },
+  "coc.preferences.colorSupport": false,
 
-   "clangd.arguments": [
-      "-cross-file-rename"
-   ],
-   "clangd.path": "/home/datwaft/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd",
+  "clangd.arguments": [
+    "-cross-file-rename"
+  ],
+  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd",
 
-   "languageserver": {
-      "lua": {
-         "command": "lua-lsp",
-         "filetypes": ["lua"]
-      }
+  "languageserver": {
+    "lua": {
+       "command": "lua-lsp",
+       "filetypes": ["lua"]
+     }
    }
 }
