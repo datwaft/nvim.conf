@@ -121,3 +121,4 @@ return require'packer'.startup(function()
    -- REPL integration
    use { 'jpalardy/vim-slime', config = require'plugins.slime' }
 end)
+
