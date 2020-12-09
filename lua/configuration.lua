@@ -335,6 +335,8 @@ end
       vimp.inoremap('<C-l>', '<C-o>$')
       vimp.cnoremap('<C-h>', '<home>')
       vimp.cnoremap('<C-l>', '<end>')
+      -- Remove character
+      vimp.imap('<C-s>', '<BS>')
    -- Miscellaneous
    -- =============
       -- Use Y to copy from the cursor to the end
