@@ -24,6 +24,8 @@ return require'packer'.startup(function()
       config = require'plugins.colorscheme',
       as = 'colorscheme',
    }
+   -- Statusline
+   use { 'datwaft/bubbly.nvim', config = require'plugins.statusline', branch = 'dev' }
    -- Improved search highlight
    use { 'markonm/traces.vim' }
    -- Developer icons
