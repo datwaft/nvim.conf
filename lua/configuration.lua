@@ -6,7 +6,7 @@
 -- ===================
 -- Variable definition
 -- ===================
-   local configuration_folder = "/home/datwaft/.config/nvim/"
+   local configuration_folder = vim.fn.expand('~') .. '/.config/nvim/'
 --- ==================
 --- Header declaration
 --- ==================
@@ -18,8 +18,8 @@ end
 -- ====================
 -- NeoVim Configuration
 -- ====================
-   vim.g.python3_host_prog = '/home/datwaft/anaconda3/bin/python3'
-   vim.g.python_host_prog = '/home/datwaft/anaconda3/bin/python'
+   vim.g.python3_host_prog = vim.fn.expand('~') .. '/anaconda3/bin/python3'
+   vim.g.python_host_prog = vim.fn.expand('~') .. '/anaconda3/bin/python'
 -- ====================
 -- Visual configuration
 -- ====================
