@@ -3,6 +3,10 @@
 -- ===========
 -- Created by: datwaft [github.com/datwaft]
 
+-- Warning supression [[
+   local use = _G.use
+-- ]]
+
 vim.cmd [[ packadd packer.nvim ]]
 
 vim.cmd [[ autocmd BufWritePost plugins.lua PackerCompile ]]
