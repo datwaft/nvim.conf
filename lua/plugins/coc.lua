@@ -31,6 +31,7 @@ return function()
 
          'coc-java',
          'coc-clangd',
+         'coc-lua',
       }
    -- ====================
    -- Function declaration

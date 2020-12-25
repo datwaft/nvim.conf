@@ -19,10 +19,10 @@
   ],
   "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd",
 
-  "languageserver": {
-    "lua": {
-       "command": "lua-lsp",
-       "filetypes": ["lua"]
-     }
-   }
+  "Lua.runtime.version": "LuaJIT",
+  "Lua.diagnostics.globals": [ "vim", "vimp" ],
+  "Lua.workspace.library": {
+    "/usr/local/share/nvim/runtime/lua": true,
+    "/usr/local/share/nvim/runtime/lua/vim/lsp": true
+  }
 }
