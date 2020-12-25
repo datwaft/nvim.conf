@@ -54,7 +54,7 @@ return function()
       -- Less delays
       vim.o.updatetime = 300
       -- Don't show ins-completion-menu messages
-      vim.o.shortmess = vim.o.shortmess .. 'c'
+      vim.o.shortmess = vim.o.shortmess..'c'
       -- Show signcolumn
       do local signcolumn = 'yes'
          vim.o.signcolumn = signcolumn

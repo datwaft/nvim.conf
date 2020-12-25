@@ -6,7 +6,7 @@
 -- ===================
 -- Variable definition
 -- ===================
-   local configuration_folder = vim.fn.expand('~') .. '/.config/nvim/'
+   local configuration_folder = vim.fn.expand('~')..'/.config/nvim/'
 --- ==================
 --- Header declaration
 --- ==================
@@ -18,8 +18,8 @@ end
 -- ====================
 -- NeoVim Configuration
 -- ====================
-   vim.g.python3_host_prog = vim.fn.expand('~') .. '/anaconda3/bin/python3'
-   vim.g.python_host_prog = vim.fn.expand('~') .. '/anaconda3/bin/python'
+   vim.g.python3_host_prog = vim.fn.expand('~')..'/anaconda3/bin/python3'
+   vim.g.python_host_prog = vim.fn.expand('~')..'/anaconda3/bin/python'
 -- ====================
 -- Visual configuration
 -- ====================
@@ -147,7 +147,7 @@ end
       end
    -- Undo persistance
    -- ================
-      vim.o.undodir = configuration_folder .. "undodir.vim"
+      vim.o.undodir = configuration_folder.."undodir.vim"
       do local undofile = true
          vim.o.undofile = undofile
          vim.bo.undofile = undofile
@@ -231,7 +231,7 @@ end
    -- Hidden
    vim.o.hidden = true
    -- Easy jumps to another file
-   vim.o.path = vim.o.path .. '**'
+   vim.o.path = vim.o.path..'**'
    -- Autoread when file changes on disk
    do local autoread = true
       vim.o.autoread = autoread
@@ -281,9 +281,9 @@ end
       do local function vert_move(original, char, insert)
             return function()
                if vim.v.count ~= 0 then
-                  return (vim.v.count > 5 and "m'" or '') .. original
+                  return (vim.v.count > 5 and "m'" or '')..original
                else
-                  return (insert and '<C-o>' or '') .. 'g' .. char
+                  return (insert and '<C-o>' or '')..'g'..char
                end
             end
          end
