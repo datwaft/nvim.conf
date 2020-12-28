@@ -31,7 +31,7 @@ Go to <https://golang.org/dl/> and copy the link for Linux. (Our example link is
 ```shell
 mkdir ~/downloads; cd ~/downloads
 wget https://golang.org/dl/go1.14.6.linux-amd64.tar.gz -O go.tar.gz
-# Extract Go to /usr/local
+# Extract Go to /usr/local/share
 sudo tar -C /usr/local/share -xzf go.tar.gz
 ```
 
