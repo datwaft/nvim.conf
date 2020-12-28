@@ -18,8 +18,7 @@ end
 -- ====================
 -- NeoVim Configuration
 -- ====================
-   vim.g.python3_host_prog = vim.fn.expand('~')..'/anaconda3/bin/python3'
-   vim.g.python_host_prog = vim.fn.expand('~')..'/anaconda3/bin/python'
+   vim.g.python3_host_prog = '/usr/local/share/anaconda/bin/python3'
 -- ====================
 -- Visual configuration
 -- ====================
