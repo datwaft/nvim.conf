@@ -109,6 +109,11 @@ return require'packer'.startup(function()
    use { 'lambdalisue/gina.vim' }
    -- Subtitution with caps
    use { 'tpope/vim-abolish' }
+   -- Markdown preview
+   use {
+      'iamcco/markdown-preview.nvim',
+      run = 'cd app && yarn install',
+   }
 -- ===============
 -- File management
 -- ===============
@@ -118,8 +123,8 @@ return require'packer'.startup(function()
 -- ===========
 -- Integration
 -- ===========
-   -- Tmux integration
-   use { 'christoomey/vim-tmux-navigator', config = require'plugins.tmuxnavigator' }
+   -- Kitty integration
+   use { 'knubie/vim-kitty-navigator' }
    -- REPL integration
    use { 'jpalardy/vim-slime', config = require'plugins.slime' }
 end)
