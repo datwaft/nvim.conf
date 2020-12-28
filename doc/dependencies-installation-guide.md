@@ -10,7 +10,7 @@ This was extracted from this [link](https://github.com/luarocks/luarocks/wiki/In
 # Development tools for building
 sudo apt-get install -y build-essential libreadline-dev
 # Installing Lua
-mkdir ~/downloads; cd ~/downloads
+mkdir ~/downloads 2> /dev/null; cd ~/downloads
 curl -R -O http://www.lua.org/ftp/lua-5.3.5.tar.gz
 tar -zxf lua-5.3.5.tar.gz && cd lua-5.3.5
 make linux test
@@ -29,7 +29,7 @@ sudo make install
 Go to <https://golang.org/dl/> and copy the link for Linux. (Our example link is: `https://golang.org/dl/go1.14.6.linux-amd64.tar.gz`).
 
 ```shell
-mkdir ~/downloads; cd ~/downloads
+mkdir ~/downloads 2> /dev/null; cd ~/downloads
 wget https://golang.org/dl/go1.14.6.linux-amd64.tar.gz -O go.tar.gz
 # Extract Go to /usr/local/share
 sudo tar -C /usr/local/share -xzf go.tar.gz

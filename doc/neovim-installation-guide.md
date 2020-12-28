@@ -52,7 +52,7 @@ These steps will install neovim to `/usr/local`, if you want to install it in an
 
 ```bash
 # 1. Go to the directory where you want to download neovim.
-mkdir ~/downloads; cd ~/downloads
+mkdir ~/downloads 2> /dev/null; cd ~/downloads
 # 2. Download neovim (this will download the latest bleeding-edge version)
 git clone https://github.com/neovim/neovim && cd neovim
 # 3. Build neovim
