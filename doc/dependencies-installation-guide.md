@@ -24,15 +24,6 @@ make
 sudo make install
 ```
 
-## lua-lsp
-
-```shell
-sudo luarocks install --server=http://luarocks.org/dev lua-lsp
-sudo luarocks install luacheck
-sudo luarocks install lua-cjson
-sudo luarocks install lcf
-```
-
 ## Go
 
 Go to <https://golang.org/dl/> and copy the link for Linux. (Our example link is: `https://golang.org/dl/go1.14.6.linux-amd64.tar.gz`).
@@ -41,19 +32,7 @@ Go to <https://golang.org/dl/> and copy the link for Linux. (Our example link is
 mkdir ~/downloads; cd ~/downloads
 wget https://golang.org/dl/go1.14.6.linux-amd64.tar.gz -O go.tar.gz
 # Extract Go to /usr/local
-sudo tar -C /usr/local -xzf go.tar.gz
-```
-
-### After installation
-
-**Note: If you use my ZSH dotfiles the you don't need do to this.**
-
-We add `/usr/local/go/bin` to `$PATH`.
-
-Add the following snippet to `$HOME/.profile` or `$HOME/.zprofile` depending on your shell.
-
-```shell
-export PATH=$PATH:/usr/local/go/bin
+sudo tar -C /usr/local/share -xzf go.tar.gz
 ```
 
 ## Node
