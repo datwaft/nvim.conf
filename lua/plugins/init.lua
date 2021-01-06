@@ -113,13 +113,14 @@ return require'packer'.startup(function()
    use {
       'iamcco/markdown-preview.nvim',
       run = 'cd app && yarn install',
+      config = require'plugins.markdownpreview'
    }
 -- ===============
 -- File management
 -- ===============
    -- Fuzzy Finder
    use { 'junegunn/fzf', run = function() vim.fn['fzf#install']() end }
-   use { 'junegunn/fzf.vim' }
+   use { 'junegunn/fzf.vim', config = require'plugins.fzf' }
 -- ===========
 -- Integration
 -- ===========
