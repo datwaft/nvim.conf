@@ -4,8 +4,8 @@
 -- Created by datwaft [github.com/datwaft]
 
 return function()
-   if not pcall(require, 'vimp') then
-      vim.cmd [[ echom 'Cannot load `vimp`' ]]
+   if not require'utils.prequire''vimp' then
+      require'utils.io'.warning'WARNING: cannot load `vimp`'
       return
    end
    -- Mappings
