@@ -74,6 +74,12 @@ return require'packer'.startup(function()
 -- ==========
 -- Completion
 -- ==========
+-- LSP completion
+   use {
+      'neoclide/coc.nvim',
+      branch = 'release',
+      config = require'plugins.coc',
+   }
 -- ============
 -- Text objects
 -- ============
