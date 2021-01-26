@@ -1,0 +1,28 @@
+{
+  "suggest.autoTrigger": "none",
+  "suggest.snippetIndicator": "►",
+
+  "explorer.icon.enableNerdfont": true,
+
+  "snippets.userSnippetsDirectory": "~/.config/nvim/snippets",
+
+  "python.pythonPath": "python3",
+
+  "emmet.includeLanguages": {
+     "jsp": "html",
+     "vue": "html"
+  },
+  "coc.preferences.colorSupport": false,
+
+  "clangd.arguments": [
+    "-cross-file-rename"
+  ],
+  "clangd.path": "/home/datwaft/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd",
+
+  "Lua.runtime.version": "LuaJIT",
+  "Lua.diagnostics.globals": [ "vim", "vimp" ],
+  "Lua.workspace.library": {
+    "/usr/local/share/nvim/runtime/lua": true,
+    "/usr/local/share/nvim/runtime/lua/vim/lsp": true
+  }
+}
