@@ -74,7 +74,7 @@ return require'packer'.startup(function()
 -- ==========
 -- Completion
 -- ==========
--- LSP completion
+   -- LSP completion
    use {
       'neoclide/coc.nvim',
       branch = 'release',
