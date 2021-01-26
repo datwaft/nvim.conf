@@ -169,14 +169,13 @@
       vimp.inoremap({'silent', 'expr'}, '<Tab>', function()
          if vim.fn.pumvisible() == 1 then
             return [[<C-n>]]
-         -- elseif vim.fn['coc#expandableOrJumpable']() then
-         --    return [[<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])<CR>]]
+         elseif vim.fn['coc#expandableOrJumpable']() then
+            return [[<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])<CR>]]
          elseif check_back_space() then
             return [[<Tab>]]
-         -- else
-         --    return vim.fn['coc#refresh']()
+         else
+            return vim.fn['coc#refresh']()
          end
-         return ''
       end)
       -- Using <Tab> and <S-Tab> for navigating completion list
       vimp.inoremap({'expr'}, '<S-Tab>', function()
