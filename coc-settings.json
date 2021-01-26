@@ -17,7 +17,7 @@
   "clangd.arguments": [
     "-cross-file-rename"
   ],
-  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd",
+  "clangd.path": "/home/datwaft/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd",
 
   "Lua.runtime.version": "LuaJIT",
   "Lua.diagnostics.globals": [ "vim", "vimp" ],
