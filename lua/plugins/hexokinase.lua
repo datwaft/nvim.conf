@@ -12,6 +12,5 @@ return function()
       'rgba',
       'hsl',
       'hsla',
-      'colour_names',
    }
 end
