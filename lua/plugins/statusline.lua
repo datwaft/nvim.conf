@@ -18,4 +18,19 @@ return function()
       lightgrey = "#57595e",
       darkgrey = "#404247",
    }
+   vim.g.bubbly_statusline = {
+      'mode',
+
+      'truncate',
+
+      'path',
+      'branch',
+      'signify',
+      'coc',
+
+      'divisor',
+
+      'filetype',
+      'progress',
+   }
 end
