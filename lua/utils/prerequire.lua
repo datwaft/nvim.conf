@@ -1,7 +1,7 @@
--- =================
--- PRE-REQUIRE UTILS
--- =================
--- Created by: datwaft [github.com/datwaft]
+-- ===================
+-- PREREQUIRE FUNCTION
+-- ===================
+-- Created by datwaft <github.com/datwaft>
 
 return function(...)
    local status, lib = pcall(require, ...)
