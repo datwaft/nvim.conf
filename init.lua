@@ -7,3 +7,7 @@
 -- Global variable declaration
 -- ===========================
    require'globals'()
+-- ==================
+-- Configuration file
+-- ==================
+   require'configuration'

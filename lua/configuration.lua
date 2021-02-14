@@ -225,18 +225,21 @@
    -- ~~~~~~~~
       -- Move vertically on wrapped lines
       _G.vertical_movement = function (original, char, insert)
+	 local result
          if vim.v.count ~= 0 then
-            return (vim.v.count > 5 and "m'" or '')..original
+            result = (vim.v.count > 5 and "m'" or '')..original
          else
-            return (insert and '<C-o>' or '')..'g'..char
+            result = (insert == 1 and '<C-o>' or '')..'g'..char
          end
+	 dump(result)
+	 return result
       end
-      vim.api.nvim_set_keymap('n', 'j', [[v:lua.vert_move('j', 'j', false)]], { noremap = true, expr = true })
-      vim.api.nvim_set_keymap('n', 'k', [[v:lua.vert_move('k', 'k', false)]], { noremap = true, expr = true })
-      vim.api.nvim_set_keymap('n', '<up>', [[v:lua.vert_move('<up>', 'k', false)]], { noremap = true, expr = true })
-      vim.api.nvim_set_keymap('n', '<down>', [[v:lua.vert_move('<down>', 'j', false)]], { noremap = true, expr = true })
-      vim.api.nvim_set_keymap('i', '<up>', [[v:lua.vert_move('<up>', 'k', true)]], { noremap = true, expr = true })
-      vim.api.nvim_set_keymap('i', '<down>', [[v:lua.vert_move('<down>', 'j', true)]], { noremap = true, expr = true })
+      vim.api.nvim_set_keymap('n', 'j', [[v:lua.vertical_movement('j', 'j', 0)]], { noremap = true, expr = true })
+      vim.api.nvim_set_keymap('n', 'k', [[v:lua.vertical_movement('k', 'k', 0)]], { noremap = true, expr = true })
+      vim.api.nvim_set_keymap('n', '<up>', [[v:lua.vertical_movement('<up>', 'k', 0)]], { noremap = true, expr = true })
+      vim.api.nvim_set_keymap('n', '<down>', [[v:lua.vertical_movement('<down>', 'j', 0)]], { noremap = true, expr = true })
+      vim.api.nvim_set_keymap('i', '<up>', [[v:lua.vertical_movement('<up>', 'k', 1)]], { noremap = true, expr = true })
+      vim.api.nvim_set_keymap('i', '<down>', [[v:lua.vertical_movement('<down>', 'j', 1)]], { noremap = true, expr = true })
       -- Move to the beginning or the end with H or L
       vim.api.nvim_set_keymap('n', 'H', '^', { noremap = true, silent = true })
       vim.api.nvim_set_keymap('n', 'L', '$', { noremap = true, silent = true })
