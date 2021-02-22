@@ -48,4 +48,9 @@ return require'packer'.startup(function()
       requires = { 'nvim-lua/plenary.nvim' },
       config = require'plugins.gitsigns',
     }
+    -- Show blame
+    use {
+      'f-person/git-blame.nvim',
+      config = require'plugins.git-blame'
+    }
 end)
