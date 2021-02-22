@@ -4,14 +4,15 @@
 -- Created by datwaft <github.com/datwaft>
 
 return {
-   -- Create new module with a name
-   new = function(name)
-      if name == nil then name = 'UNKNOWN' end
-      return setmetatable({
-         name = name,
-      }, {
+   -- Create a new module
+   -- The argument should follow the structure: 
+   -- {
+   --    name: string,
+   -- }
+   new = function(module)
+      return setmetatable(module, {
          __index = function(self, key)
-            require'utils.io'.warning(string.format("[CORE] => [Warning] Tried to index module '%s' with invalid key '%s'", self.name, key))
+            require'utils.io'.warning(string.format("Tried to index module '%s' with invalid key '%s'", self.name, key))
          end,
       })
    end

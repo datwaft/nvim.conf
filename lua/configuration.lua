@@ -8,7 +8,14 @@
 -- ==================
    local options = require'core.options'
    local io = require'utils.io'
-   local t = io.replace_termcodes
+   local prerequire = require'utils.prerequire'
+   local autocmd = require'core.autocmd'
+   if not prerequire'vimp' then
+      io.warning"Couldn't load `vimp` package"
+      return
+   else
+      vimp.unmap_all()
+   end
 -- ===================
 -- Variable definition
 -- ===================
@@ -49,7 +56,11 @@
       -- Copy indent from current line when starting a new line
       options.autoindent = true
       -- Lua specific indentation
-      vim.cmd [[autocmd FileType lua setlocal tabstop=3 shiftwidth=3 softtabstop=3 expandtab]]
+      autocmd {
+         events = { 'FileType' },
+         pattern = 'lua',
+         command = 'setlocal tabstop=3 shiftwidth=3 softtabstop=3 expandtab'
+      }
    -- ~~~~~~~~~~~~~~~~~~~~~~
    -- Wrapping configuration
    -- ~~~~~~~~~~~~~~~~~~~~~~
@@ -82,7 +93,11 @@
    -- Enable mouse support
    options.mouse = 'a'
    -- Restore cursor on exit
-   vim.cmd [[autocmd VimLeave * set guicursor=a:ver100-blinkon0]]
+   autocmd {
+      events = { 'VimLeave' },
+      pattern = '*',
+      command = 'set guicursor=a:ver100-blinkon0'
+   }
 -- ====================
 -- Visual configuration
 -- ====================
@@ -105,7 +120,11 @@
    -- Split configuration
    -- ~~~~~~~~~~~~~~~~~~~
       -- Auto resize splits when window is resized
-      vim.cmd [[autocmd VimResized * wincmd =]]
+      autocmd {
+         events = { 'VimResized' },
+         pattern = '*',
+         command = 'wincmd ='
+      }
    -- ~~~~~~~~~~~~~~~~~~~~~
    -- Conceal configuration
    -- ~~~~~~~~~~~~~~~~~~~~~
@@ -131,14 +150,13 @@
       -- Wildmenu ignores case
       options.wildignorecase = true
       -- Use <space> to confirm completion
-      _G.smart_command_space = function()
+      vimp.cnoremap('<space>', function()
          if vim.fn.wildmenumode() == 1 then
-            return t'<C-n>'
+            return '<C-n>'
          else
-            return t'<space>'
+            return '<space>'
          end
-      end
-      vim.api.nvim_set_keymap('c', '<space>', 'v:lua.smart_command_space()', { noremap = true, expr = true })
+      end)
 -- =====================
 -- Command configuration
 -- =====================
@@ -168,23 +186,41 @@
    options.path = options.path..'**'
    -- Autoread when file chages on disk
    options.autoread = true
-   _G.autoread_on_file_changed = function()
-      if vim.fn.mode() ~= 'c' and vim.fn.bufexists("[Command Line]") == 0 then
-         vim.cmd [[checktime]]
-      end
-   end
-   vim.cmd [[autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * :call v:lua.autoread_on_file_changed()]]
-   _G.warn_on_file_changed = function()
-      io.warn'File changed on disk. Buffer reloaded'
-   end
-   vim.cmd [[autocmd FileChangedShellPost * :call v:lua.warn_on_file_changed()]]
+   autocmd {
+      events = { 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI' },
+      pattern = '*',
+      command = {
+         name = 'autoread_on_file_change',
+         command = function()
+            if vim.fn.mode() ~= 'c' and vim.fn.bufexists("[Command Line]") == 0 then
+               vim.cmd [[checktime]]
+            end
+         end
+      }
+   }
+   autocmd {
+      events = { 'FileChangedShellPost' },
+      pattern = '*',
+      command = {
+         name = 'warn_on_file_change',
+         command = function()
+            io.raw_warn'File changed on disk. Buffer reloaded'
+         end
+      }
+   }
    -- Open file on last position
-   _G.open_file_on_last_position = function()
-      if vim.fn.line([['"]]) > 1 and vim.fn.line([['"]]) <= vim.fn.line('$') then
-         vim.cmd [[normal! g'"]]
-      end
-   end
-   vim.cmd [[autocmd BufReadPost * :call v:lua.open_file_on_last_position()]]
+   autocmd {
+      events = { 'BufReadPost' },
+      pattern = '*',
+      command = {
+         name = 'open_file_on_last_position',
+         command = function()
+            if vim.fn.line([['"]]) > 1 and vim.fn.line([['"]]) <= vim.fn.line('$') then
+               vim.cmd [[normal! g'"]]
+            end
+         end
+      }
+   }
 -- ============
 -- Text objects
 -- ============
@@ -192,17 +228,17 @@
    -- Line object
    -- ~~~~~~~~~~~
       -- Inner line
-      vim.api.nvim_set_keymap('x', 'il', ':<C-u>normal! g_v^<cr>', { noremap = true, silent = true })
-      vim.api.nvim_set_keymap('o', 'il', ':<C-u>normal! g_v^<cr>', { noremap = true, silent = true })
+      vimp.xnoremap({'silent'}, 'il', ':<C-u>normal! g_v^<cr>')
+      vimp.onoremap({'silent'}, 'il', ':<C-u>normal! g_v^<cr>')
       -- Around line
-      vim.api.nvim_set_keymap('x', 'al', ':<C-u>normal! $v0<cr>', { noremap = true, silent = true })
-      vim.api.nvim_set_keymap('o', 'al', ':<C-u>normal! $v0<cr>', { noremap = true, silent = true })
+      vimp.xnoremap({'silent'}, 'al', ':<C-u>normal! $v0<cr>')
+      vimp.onoremap({'silent'}, 'al', ':<C-u>normal! $v0<cr>')
    -- ~~~~~~~~
    -- Document
    -- ~~~~~~~~
       -- Inner document
-      vim.api.nvim_set_keymap('x', 'id', ':<C-u>normal! G$Vgg0<cr>', { noremap = true, silent = true })
-      vim.api.nvim_set_keymap('o', 'id', ':<C-u>normal! GVgg<cr>', { noremap = true, silent = true })
+      vimp.xnoremap({'silent'}, 'id', ':<C-u>normal! G$Vgg0<cr>')
+      vimp.onoremap({'silent'}, 'id', ':<C-u>normal! GVgg<cr>')
 -- =================
 -- Keyboard bindings
 -- =================
@@ -210,60 +246,76 @@
    -- Folding
    -- ~~~~~~~
       -- Fold or unfold all
-      _G.fold_or_unfold_all = function()
+      vimp.nnoremap({'silent'}, '<F2>', function()
          if vim.wo.foldlevel == 1 then
             return 'zM'
          else
             return 'zR'
          end
-      end
-      vim.api.nvim_set_keymap('n', '<F2>', 'v:lua.fold_or_unfold_all()', { noremap = true, silent = true, expr = true })
+      end)
       -- Fold or unfold local
-      vim.api.nvim_set_keymap('n', '<leader><space>', 'za', { noremap = true, silent = true })
+      vimp.nnoremap({'silent'}, '<leader><space>', 'za')
    -- ~~~~~~~~
    -- Movement
    -- ~~~~~~~~
       -- Move vertically on wrapped lines
-      _G.vertical_movement = function (original, char, insert)
-	 local result
-         if vim.v.count ~= 0 then
-            result = (vim.v.count > 5 and "m'" or '')..original
-         else
-            result = (insert == 1 and '<C-o>' or '')..'g'..char
+      do
+         local function vertical_movement(original, char, insert)
+            local result
+            if vim.v.count ~= 0 then
+               result = (vim.v.count > 5 and "m'" or '')..original
+            else
+               result = (insert and '<C-o>' or '')..'g'..char
+            end
+            return result
          end
-	 dump(result)
-	 return result
+         vimp.nnoremap({'silent'}, 'j', function()
+            vertical_movement('j', 'j', false)
+         end)
+         vimp.nnoremap({'silent'}, 'k', function()
+            vertical_movement('k', 'k', false)
+         end)
+         vimp.nnoremap({'silent'}, '<up>', function()
+            vertical_movement('<up>', 'k', false)
+         end)
+         vimp.nnoremap({'silent'}, '<down>', function()
+            vertical_movement('<down>', 'j', false)
+         end)
+         vimp.inoremap({'silent'}, '<up>', function()
+            vertical_movement('<up>', 'k', true)
+         end)
+         vimp.inoremap({'silent'}, '<down>', function()
+            vertical_movement('<down>', 'j', true)
+         end)
       end
-      vim.api.nvim_set_keymap('n', 'j', [[v:lua.vertical_movement('j', 'j', 0)]], { noremap = true, expr = true })
-      vim.api.nvim_set_keymap('n', 'k', [[v:lua.vertical_movement('k', 'k', 0)]], { noremap = true, expr = true })
-      vim.api.nvim_set_keymap('n', '<up>', [[v:lua.vertical_movement('<up>', 'k', 0)]], { noremap = true, expr = true })
-      vim.api.nvim_set_keymap('n', '<down>', [[v:lua.vertical_movement('<down>', 'j', 0)]], { noremap = true, expr = true })
-      vim.api.nvim_set_keymap('i', '<up>', [[v:lua.vertical_movement('<up>', 'k', 1)]], { noremap = true, expr = true })
-      vim.api.nvim_set_keymap('i', '<down>', [[v:lua.vertical_movement('<down>', 'j', 1)]], { noremap = true, expr = true })
       -- Move to the beginning or the end with H or L
-      vim.api.nvim_set_keymap('n', 'H', '^', { noremap = true, silent = true })
-      vim.api.nvim_set_keymap('n', 'L', '$', { noremap = true, silent = true })
-      vim.api.nvim_set_keymap('i', '<C-h>', '<C-o>^', { noremap = true, silent = true })
-      vim.api.nvim_set_keymap('i', '<C-l>', '<C-o>$', { noremap = true, silent = true })
-      vim.api.nvim_set_keymap('c', '<C-h>', '<home>', { noremap = true, silent = true })
-      vim.api.nvim_set_keymap('c', '<C-l>', '<end>', { noremap = true, silent = true })
+      vimp.nnoremap({'silent'}, 'H', '^')
+      vimp.nnoremap({'silent'}, 'L', '$')
+      vimp.inoremap({'silent'}, '<C-h>', '<C-o>^')
+      vimp.inoremap({'silent'}, '<C-l>', '<C-o>$')
+      vimp.cnoremap({'silent'}, '<C-h>', '<home>')
+      vimp.cnoremap({'silent'}, '<C-l>', '<end>')
       -- Remove character
-      vim.api.nvim_set_keymap('i', '<C-s>', '<BS>', { silent = true })
+      vimp.inoremap({'silent'}, '<C-s>', '<BS>')
    -- ~~~~~~~~~~~~~
    -- Miscellaneous
    -- ~~~~~~~~~~~~~
       -- Use Y to copy from the cursor to the end
-      vim.api.nvim_set_keymap('n', 'Y', 'y$', { noremap = true, silent = true })
+      vimp.nnoremap({ 'silent' }, 'Y', 'y$')
       -- Fast execute macro
-      vim.api.nvim_set_keymap('x', 'Q', ':normal @@<CR>', { noremap = true, silent = true })
-      vim.api.nvim_set_keymap('n', 'Q', ':normal @@<CR>', { noremap = true, silent = true })
+      vimp.xnoremap({ 'silent' }, 'Q', ':normal @@<CR>')
+      vimp.nnoremap({ 'silent' }, 'Q', ':normal @@<CR>')
       -- Move lines up and down
-      vim.api.nvim_set_keymap('n', '<C-up>', ':m-2<CR>', { noremap = true, silent = true })
-      vim.api.nvim_set_keymap('n', '<C-down>', ':m+<CR>', { noremap = true, silent = true })
+      vimp.nnoremap({ 'silent' }, '<C-up>', ':m-2<CR>')
+      vimp.nnoremap({ 'silent' }, '<C-down>', ':m+<CR>')
 -- ===============================
 -- Language specific configuration
 -- ===============================
    -- ~~~~~~
    -- Prolog
    -- ~~~~~~
-      vim.cmd [[autocmd BufNewFile,BufRead *.pl set filetype=prolog]]
+      autocmd {
+         events = { 'BufNewFile', 'BufRead' },
+         pattern = '*.pl',
+         command = 'set filetype=prolog'
+      }

@@ -17,7 +17,7 @@ return setmetatable({}, {
       end
    end,
    __newindex = function(_, key, value)
-      pcall(function() vim.o[key] = value end)
+      vim.o[key] = value
       local scope = options_info[key].scope
       if scope == 'win' then
          vim.wo[key] = value

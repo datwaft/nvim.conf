@@ -6,8 +6,12 @@
 -- ===========================
 -- Global variable declaration
 -- ===========================
-   require'globals'()
+   require'globals'
 -- ==================
 -- Configuration file
 -- ==================
    require'configuration'
+-- =====================
+-- Plugin initialization
+-- =====================
+   require'plugins'
