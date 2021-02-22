@@ -28,4 +28,14 @@ return require'packer'.startup(function()
     config = require'plugins.statusline',
     branch = 'development',
   }
+-- ===========
+-- Integration
+-- ===========
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim'
+    },
+    config = require'plugins.gitsigns',
+  }
 end)
