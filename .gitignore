@@ -5,6 +5,7 @@
 
 # NeoVim undo directory
 undodir.vim/
+undodir.nvim/
 
 # Temporal files
 *.temp
