@@ -18,6 +18,12 @@ return function()
       lightgrey = "#57595e",
       darkgrey = "#404247",
    }
+   vim.g.bubbly_colors = {
+      total_buffer_number = 'red',
+   }
+   vim.g.bubbly_styles = {
+      total_buffer_number = 'bold',
+   }
    vim.g.bubbly_statusline = {
       'mode',
 
@@ -30,6 +36,7 @@ return function()
 
       'divisor',
 
+      'total_buffer_number',
       'filetype',
       'progress',
    }
