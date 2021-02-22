@@ -9,33 +9,43 @@ return require'packer'.startup(function()
 -- =========
 -- Essential
 -- =========
+  -----------------
   -- Plugin manager
-  use { 'wbthomason/packer.nvim', opt = true }
+  -----------------
+    use { 'wbthomason/packer.nvim', opt = true }
+  --------------------------------------------------
   -- Auxiliar functions to use Lua for configuration
-  use { 'svermeulen/vimpeccable' }
+  --------------------------------------------------
+    use { 'svermeulen/vimpeccable' }
 -- =========
 -- Aesthetic
 -- =========
+  --------------
   -- Colorscheme
-  use {
-    'sainnhe/edge',
-    config = require'plugins.colorscheme',
-    as = 'colorscheme',
-  }
+  --------------
+    use {
+      'sainnhe/edge',
+      config = require'plugins.colorscheme',
+      as = 'colorscheme',
+    }
+  --------------
   -- Statusline
-  use {
-    'datwaft/bubbly.nvim',
-    config = require'plugins.statusline',
-    branch = 'development',
-  }
+  --------------
+    use {
+      'datwaft/bubbly.nvim',
+      config = require'plugins.statusline',
+      branch = 'development',
+    }
 -- ===========
 -- Integration
 -- ===========
-  use {
-    'lewis6991/gitsigns.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim'
-    },
-    config = require'plugins.gitsigns',
-  }
+  ------
+  -- Git
+  ------
+    -- Show changes
+    use {
+      'lewis6991/gitsigns.nvim',
+      requires = { 'nvim-lua/plenary.nvim' },
+      config = require'plugins.gitsigns',
+    }
 end)
