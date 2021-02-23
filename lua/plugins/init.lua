@@ -198,6 +198,10 @@ return require'packer'.startup(function()
       'hrsh7th/nvim-compe',
       config = require'plugins.nvim-compe',
     }
+  -------------
+  -- Extensions
+  -------------
+    use { 'nvim-lua/lsp_extensions.nvim' }
   ----------
   -- Actions
   ----------
