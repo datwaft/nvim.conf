@@ -7,6 +7,7 @@ return function()
   if not vimp then
     return
   end
+  local dap = require'dap'
   ---------------------
   -- Keyboards mappings
   ---------------------
@@ -47,7 +48,6 @@ return function()
   ---------------------------
   -- C/C++/Rust configuration
   ---------------------------
-    local dap = require'dap'
     dap.adapters.cpp = {
       type = 'executable',
       attach = {
