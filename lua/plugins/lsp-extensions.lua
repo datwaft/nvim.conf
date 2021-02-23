@@ -8,9 +8,8 @@ return function()
   autocmd {
     events = { 'CursorHold', 'CursorHoldI' },
     pattern = '*.rs',
-    command = [[:lua require'lsp_extensions'.inlay_hints{
-      only_current_line = true
-    }]]
+    command =
+      [[:lua require'lsp_extensions'.inlay_hints{ only_current_line = true }]]
   }
 end
 
