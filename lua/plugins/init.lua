@@ -104,4 +104,17 @@ return require'packer'.startup(function()
       requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
       config = require'plugins.telescope',
     }
+  ----------------
+  -- File explorer
+  ----------------
+    use {
+      {
+        'lambdalisue/fern.vim',
+        requires = { 'antoinemadec/FixCursorHold.nvim' },
+        config = require'plugins.file-explorer',
+      },
+      { 'lambdalisue/fern-git-status.vim' },
+      { 'lambdalisue/fern-renderer-nerdfont.vim' },
+      { 'lambdalisue/fern-hijack.vim' },
+    }
 end)
