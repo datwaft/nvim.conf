@@ -61,6 +61,15 @@ return require'packer'.startup(function()
       'f-person/git-blame.nvim',
       config = require'plugins.git-blame'
     }
+  -------
+  -- Glow
+  -------
+    -- Markdown preview
+    use {
+      'npxbr/glow.nvim',
+      run = ':GlowInstall',
+      config = require'plugins.glow'
+    }
 -- =====================
 -- Files and directories
 -- =====================
