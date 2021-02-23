@@ -201,7 +201,10 @@ return require'packer'.startup(function()
   -------------
   -- Extensions
   -------------
-    use { 'nvim-lua/lsp_extensions.nvim' }
+    use {
+      'nvim-lua/lsp_extensions.nvim',
+      config = require'plugins.lsp-extensions'
+    }
   ----------
   -- Actions
   ----------
