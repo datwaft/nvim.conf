@@ -25,7 +25,7 @@ local root_path = vim.fn.expand'~'..'/.local/share/nvim/lspinstall/'..
 local binary = root_path..'/bin/'..system_name..'/lua-language-server'
 
 lspconfig.sumneko_lua.setup {
-  cmd = { binary, '-E', root_path, '/main.lua' },
+  cmd = { binary, '-E', root_path..'/main.lua' },
   settings = {
     Lua = {
       runtime = {
