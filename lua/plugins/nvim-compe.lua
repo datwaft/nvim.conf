@@ -78,7 +78,7 @@ return function()
     elseif check_back_space() then
       return '<Tab>'
     else
-      return vim.fn['compe#complete']()
+      return vim.fn['compe#complete']()..'<C-p>'
     end
   end)
   vimp.snoremap({'override', 'expr'}, '<Tab>', function()
@@ -89,14 +89,14 @@ return function()
     elseif check_back_space() then
       return '<Tab>'
     else
-      return vim.fn['compe#complete']()
+      return vim.fn['compe#complete']()..'<C-p>'
     end
   end)
   vimp.inoremap({'override', 'expr'}, '<S-Tab>', function()
     if vim.fn.pumvisible() == 1 then
       return '<C-p>'
     elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
-      return t "<Plug>(vsnip-jump-prev)"
+      return "<Plug>(vsnip-jump-prev)"
     else
       return '<S-Tab>'
     end
@@ -105,7 +105,7 @@ return function()
     if vim.fn.pumvisible() == 1 then
       return '<C-p>'
     elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
-      return t "<Plug>(vsnip-jump-prev)"
+      return "<Plug>(vsnip-jump-prev)"
     else
       return '<S-Tab>'
     end
