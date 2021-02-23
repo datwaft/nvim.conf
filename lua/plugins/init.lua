@@ -109,6 +109,8 @@ return require'packer'.startup(function()
       requires = { 'nvim-lua/plenary.nvim' },
       config = require'plugins.gitsigns',
     }
+    -- Execute commands
+    use { 'lambdalisue/gina.vim' }
   -------
   -- Glow
   -------
