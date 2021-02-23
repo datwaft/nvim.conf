@@ -9,7 +9,7 @@ return function()
   end
 
   local options = require'core.options'
-  
+
   options.completeopt = 'menuone,noselect'
 
   require'compe'.setup {
