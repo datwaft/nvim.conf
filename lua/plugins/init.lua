@@ -56,6 +56,10 @@ return require'packer'.startup(function()
       run = 'make hexokinase',
       config = require'plugins.hexokinase',
     }
+  -------------------
+  -- Syntax highlight
+  -------------------
+    use { 'sheerun/vim-polyglot' }
 -- =======
 -- Actions
 -- =======
