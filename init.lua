@@ -15,3 +15,7 @@
 -- Plugin initialization
 -- =====================
   require'plugins'
+-- =================
+-- LSP initilization
+-- =================
+  require'lsp'

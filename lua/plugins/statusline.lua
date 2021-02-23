@@ -31,6 +31,8 @@ return function()
 
     'path',
     'branch',
+    'lsp_status.diagnostics',
+    'lsp_status.messages',
 
     'divisor',
 

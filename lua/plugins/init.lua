@@ -165,4 +165,48 @@ return require'packer'.startup(function()
       { 'lambdalisue/fern-renderer-nerdfont.vim' },
       { 'lambdalisue/fern-hijack.vim' },
     }
+-- ================
+-- Language Servers
+-- ================
+  ----------------
+  -- Configuration
+  ----------------
+    use { 'neovim/nvim-lspconfig' }
+  ---------------
+  -- Installation
+  ---------------
+    use { 'anott03/nvim-lspinstall' }
+  ---------
+  -- Status
+  ---------
+    use { 'nvim-lua/lsp-status.nvim' }
+  -------------
+  -- Completion
+  -------------
+    use {
+      'hrsh7th/nvim-compe',
+      config = require'plugins.nvim-compe',
+    }
+  ----------
+  -- Actions
+  ----------
+    use {
+      'glepnir/lspsaga.nvim',
+      config = require'plugins.lspsaga',
+    }
+  -----------
+  -- Snippets
+  -----------
+    use {
+      'hrsh7th/vim-vsnip',
+      'hrsh7th/vim-vsnip-integ',
+      'norcalli/snippets.nvim',
+    }
+  ------------
+  -- Aesthetic
+  ------------
+    -- Add pictograms to completion
+    use { 'onsails/lspkind-nvim', config = require'plugins.lspkind' }
+    -- Show lightbulb for code actions
+    use { 'kosayoda/nvim-lightbulb', config = require'plugins.lightbulb' }
 end)
