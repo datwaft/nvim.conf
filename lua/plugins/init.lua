@@ -48,6 +48,14 @@ return require'packer'.startup(function()
   -- Substitution preview
   -----------------------
     use { 'markonm/traces.vim' }
+  ------------------
+  -- Color highlight
+  ------------------
+    use {
+      'rrethy/vim-hexokinase',
+      run = 'make hexokinase',
+      config = require'plugins.hexokinase',
+    }
 -- =======
 -- Actions
 -- =======
