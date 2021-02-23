@@ -150,6 +150,7 @@ return require'packer'.startup(function()
         config = require'plugins.dap'
       },
       { 'theHamsta/nvim-dap-virtual-text' },
+      { 'mfussenegger/nvim-dap-python' },
     }
 -- =====================
 -- Files and directories

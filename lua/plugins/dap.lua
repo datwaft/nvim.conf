@@ -60,4 +60,8 @@ return function()
       },
       name = 'lldb',
     }
+  -----------------------
+  -- Python configuration
+  -----------------------
+    require'dap-python'.setup'~/.virtualenvs/debugpy/bin/python'
 end
