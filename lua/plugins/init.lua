@@ -53,4 +53,15 @@ return require'packer'.startup(function()
       'f-person/git-blame.nvim',
       config = require'plugins.git-blame'
     }
+-- =====================
+-- Files and directories
+-- =====================
+  ---------------
+  -- Fuzzy Finder
+  ---------------
+    use {
+      'nvim-telescope/telescope.nvim',
+      requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
+      config = require'plugins.telescope',
+    }
 end)
