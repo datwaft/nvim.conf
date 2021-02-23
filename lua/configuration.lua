@@ -217,7 +217,7 @@
     command = {
       name = 'warn_on_file_change',
       command = function()
-        io.raw_warn'File changed on disk. Buffer reloaded'
+        io.raw_warning'File changed on disk. Buffer reloaded'
       end
     }
   }
