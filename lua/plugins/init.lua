@@ -60,6 +60,21 @@ return require'packer'.startup(function()
   -- Syntax highlight
   -------------------
     use { 'sheerun/vim-polyglot' }
+-- ============
+-- Text objects
+-- ============
+  ---------------------------
+  -- General-use text objects
+  ---------------------------
+    use { 'wellle/targets.vim' }
+  --------------------------------
+  -- Indentation level text object
+  --------------------------------
+    use { 'michaeljsmith/vim-indent-object' }
+  ---------------------------------------
+  -- CameCase and snake_case text objects
+  ---------------------------------------
+    use { 'bkad/camelcasemotion', config = require'plugins.camelcasemotion' }
 -- =======
 -- Actions
 -- =======
