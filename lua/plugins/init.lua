@@ -141,6 +141,16 @@ return require'packer'.startup(function()
       'christoomey/vim-tmux-navigator',
       config = require'plugins.tmux-navigator',
     }
+  -------------------------
+  -- Debug Adapter Protocol
+  -------------------------
+    use {
+      {
+        'mfussenegger/nvim-dap',
+        config = require'plugins.dap'
+      },
+      { 'theHamsta/nvim-dap-virtual-text' },
+    }
 -- =====================
 -- Files and directories
 -- =====================
