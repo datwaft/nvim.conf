@@ -36,6 +36,14 @@ return require'packer'.startup(function()
       config = require'plugins.statusline',
       branch = 'development',
     }
+  -------------
+  -- Treesitter
+  -------------
+    use {
+      'nvim-treesitter/nvim-treesitter',
+      run = ':TSUpdate',
+      config = require'plugins.treesitter',
+    }
 -- ===========
 -- Integration
 -- ===========
