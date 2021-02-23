@@ -39,7 +39,7 @@ return function()
       treesitter = true,
     },
   }
-  
+
   vimp.inoremap(
     {'override', 'silent', 'expr'},
     '<C-Space>',
