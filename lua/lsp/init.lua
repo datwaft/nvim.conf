@@ -8,6 +8,7 @@ local LSPs = {
   'python',
   'bash',
   'c',
+  'cmake',
 }
 
 for _, lsp in ipairs(LSPs) do
