@@ -81,7 +81,17 @@ return require'packer'.startup(function()
     use {
       'npxbr/glow.nvim',
       run = ':GlowInstall',
-      config = require'plugins.glow'
+      config = require'plugins.glow',
+    }
+  -------------
+  -- Nerd fonts
+  -------------
+    -- Nerd font support
+    use { 'lambdalisue/nerdfont.vim' }
+    -- Colorize nerd font icons
+    use {
+      'lambdalisue/glyph-palette.vim',
+      config = require'plugins.glyph-palette',
     }
 -- =====================
 -- Files and directories
