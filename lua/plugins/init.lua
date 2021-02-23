@@ -44,6 +44,10 @@ return require'packer'.startup(function()
       run = ':TSUpdate',
       config = require'plugins.treesitter',
     }
+  -----------------------
+  -- Substitution preview
+  -----------------------
+    use { 'markonm/traces.vim' }
 -- =======
 -- Actions
 -- =======
