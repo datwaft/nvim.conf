@@ -205,8 +205,6 @@ return require'packer'.startup(function()
   ------------
   -- Aesthetic
   ------------
-    -- Add pictograms to completion
-    use { 'onsails/lspkind-nvim', config = require'plugins.lspkind' }
     -- Show lightbulb for code actions
     use { 'kosayoda/nvim-lightbulb', config = require'plugins.lightbulb' }
 end)
