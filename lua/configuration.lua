@@ -154,6 +154,8 @@
   -- Insert-mode completion
   -------------------------
     options.infercase = true
+    -- Disable messages
+    options.shortmess = options.shortmess..'c'
   --------------------------
   -- Command-mode completion
   --------------------------
