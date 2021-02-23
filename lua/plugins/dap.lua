@@ -39,6 +39,11 @@ return function()
   -- Virtual text configuration
   -----------------------------
     vim.g.dap_virtual_text = true
+  ---------------------
+  -- Sign configuration
+  ---------------------
+    vim.fn.sign_define('DapBreakpoint',
+      {text='🛑', texthl='', linehl='', numhl=''})
   ---------------------------
   -- C/C++/Rust configuration
   ---------------------------
