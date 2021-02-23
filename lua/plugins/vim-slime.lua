@@ -9,7 +9,7 @@ return function()
   end
   vim.g.slime_target = 'tmux'
   vim.g.slime_python_ipython = 1
-  vimp.nmap('<leader>s', '<Plug>SlimeMotionSend')
+  vimp.nmap({'override'}, '<leader>s', '<Plug>SlimeMotionSend')
   vim.g.slime_default_config = {
     socket_name = "default",
     target_pane = "{last}"
