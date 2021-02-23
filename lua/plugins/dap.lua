@@ -13,27 +13,27 @@ return function()
     vimp.nnoremap(
       {'override'},
       '<A-t>',
-      [[:lua require'dap'.toggle_breakpoint()]]
+      [[:lua require'dap'.toggle_breakpoint()<cr>]]
     )
     vimp.nnoremap(
       {'override'},
       '<A-c>',
-      [[:lua require'dap'.continue()]]
+      [[:lua require'dap'.continue()<cr>]]
     )
     vimp.nnoremap(
       {'override'},
       '<A-s>',
-      [[:lua require'dap'.step_over()]]
+      [[:lua require'dap'.step_over()<cr>]]
     )
     vimp.nnoremap(
       {'override'},
       '<A-g>',
-      [[:lua require'dap'.step_into()]]
+      [[:lua require'dap'.step_into()<cr>]]
     )
     vimp.nnoremap(
       {'override'},
       '<A-i>',
-      [[:lua require'dap'.repl.open()]]
+      [[:lua require'dap'.repl.open()<cr>]]
     )
   -----------------------------
   -- Virtual text configuration
