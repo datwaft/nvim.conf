@@ -9,7 +9,7 @@ return function()
     events = { 'CursorHold', 'CursorHoldI' },
     pattern = '*.rs',
     command =
-      [[:lua require'lsp_extensions'.inlay_hints{ only_current_line = true }]]
+      [[lua require'lsp_extensions'.inlay_hints{ prefix = " » " }]]
   }
 end
 
