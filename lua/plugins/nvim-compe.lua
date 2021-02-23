@@ -78,7 +78,7 @@ return function()
     elseif check_back_space() then
       return '<Tab>'
     else
-      return vim.fn['compe#complete']()..'<C-p>'
+      return vim.fn['compe#complete']()
     end
   end)
   vimp.snoremap({'override', 'expr'}, '<Tab>', function()
@@ -89,7 +89,7 @@ return function()
     elseif check_back_space() then
       return '<Tab>'
     else
-      return vim.fn['compe#complete']()..'<C-p>'
+      return vim.fn['compe#complete']()
     end
   end)
   vimp.inoremap({'override', 'expr'}, '<S-Tab>', function()
