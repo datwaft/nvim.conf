@@ -93,6 +93,10 @@ return require'packer'.startup(function()
   -- Subversion and Coersion
   --------------------------
     use { 'tpope/vim-abolish' }
+  -----------------
+  -- Show undo tree
+  -----------------
+    use { 'mbbill/undotree' }
 -- ===========
 -- Integration
 -- ===========
