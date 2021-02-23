@@ -142,6 +142,11 @@
     options.list = true
     -- Show trailing whitespace as dots
     options.listchars = 'trail:·,tab:→ ,nbsp:·'
+  ----------------------------
+  -- Sign column configuration
+  ----------------------------
+    -- Always show sign column
+    options.signcolumn = 'yes'
 -- ========================
 -- Completion configuration
 -- ========================
