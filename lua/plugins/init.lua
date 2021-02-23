@@ -44,6 +44,13 @@ return require'packer'.startup(function()
       run = ':TSUpdate',
       config = require'plugins.treesitter',
     }
+-- =======
+-- Actions
+-- =======
+  ----------
+  -- Comment
+  ----------
+    use { 'b3nj5m1n/kommentary' }
 -- ===========
 -- Integration
 -- ===========
