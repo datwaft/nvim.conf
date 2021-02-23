@@ -1,21 +1,26 @@
--- ==================
--- MODULE DECLARATION
--- ==================
--- Created by: datwaft [github.com/datwaft]
+-- ==============
+-- MODULE LIBRARY
+-- ==============
+-- Created by datwaft <github.com/datwaft>
 
-local Module = {}
-
-function Module.new(name)
-   if name == nil then name = 'UNKOWN' end
-   local module = {
-      name = name,
-   }
-   setmetatable(module, {
+return {
+  -- Create a new module
+  -- The argument should follow the structure: 
+  -- {
+  --   name: string,
+  -- }
+  new = function(module)
+    return setmetatable(module, {
       __index = function(self, key)
-         require'utils.io'.warning("WARNING: Tried to index module '"..self.name.."' with invalid key '"..key.."'")
-      end
-   })
-   return module
-end
-
-return Module
+        require'utils.io'
+          .warning(
+            string.format(
+              "Tried to index module '%s' with invalid key '%s'",
+              self.name,
+              key
+            )
+          )
+      end,
+    })
+  end
+}

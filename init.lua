@@ -1,17 +1,21 @@
--- ========
--- INIT.LUA
--- ========
--- Created by: datwaft [github.com/datwaft]
+-- ==========================
+-- NEOVIM INITIALIZATION FILE
+-- ==========================
+-- Created by datwaft <github.com/datwaft>
 
--- =======
--- Globals
--- =======
-   require'globals'
--- =======
--- Plugins
--- =======
-   require'plugins'
--- =============
--- Configuration
--- =============
-   require'configuration'
+-- ===========================
+-- Global variable declaration
+-- ===========================
+  require'globals'
+-- ==================
+-- Configuration file
+-- ==================
+  require'configuration'
+-- =====================
+-- Plugin initialization
+-- =====================
+  require'plugins'
+-- =================
+-- LSP initilization
+-- =================
+  require'lsp'

@@ -1,132 +1,212 @@
--- ===========
--- PLUGINS.LUA
--- ===========
--- Created by: datwaft [github.com/datwaft]
+-- ======================
+-- PLUGINS INITIALIZATION
+-- ======================
+-- Created by datwaft <github.com/datwaft>
 
-vim.cmd [[ packadd packer.nvim ]]
-
-vim.cmd [[ autocmd BufWritePost plugins.lua PackerCompile ]]
+vim.cmd [[packadd packer.nvim]]
 
 return require'packer'.startup(function()
 -- =========
 -- Essential
 -- =========
-   -- Packer itself
-   use { 'wbthomason/packer.nvim', opt = true }
-   -- Use Lua to configure vim
-   use { 'svermeulen/vimpeccable' }
+  -----------------
+  -- Plugin manager
+  -----------------
+    use { 'wbthomason/packer.nvim', opt = true }
+  --------------------------------------------------
+  -- Auxiliar functions to use Lua for configuration
+  --------------------------------------------------
+    use { 'svermeulen/vimpeccable' }
 -- =========
 -- Aesthetic
 -- =========
-   -- Colorscheme
-   use {
+  --------------
+  -- Colorscheme
+  --------------
+    use {
       'sainnhe/edge',
       config = require'plugins.colorscheme',
       as = 'colorscheme',
-   }
-   -- Statusline
-   use { 'datwaft/bubbly.nvim', config = require'plugins.statusline', branch = 'development' }
-   -- Improved search highlight
-   use { 'markonm/traces.vim' }
-   -- Developer icons
-   use { 'kyazdani42/nvim-web-devicons' }
-   use { 'lambdalisue/glyph-palette.vim' }
-   -- Show marks
-   use { 'kshenoy/vim-signature' }
-   -- Show VCS changes
-   use { 'mhinz/vim-signify' }
-   -- Quick-scoping
-   use { 'unblevable/quick-scope', config = require'plugins.quickscope' }
-   -- Color highlight
-   use {
+    }
+  --------------
+  -- Statusline
+  --------------
+    use {
+      'datwaft/bubbly.nvim',
+      config = require'plugins.statusline',
+      branch = 'development',
+    }
+  -------------
+  -- Treesitter
+  -------------
+    use {
+      'nvim-treesitter/nvim-treesitter',
+      run = ':TSUpdate',
+      config = require'plugins.treesitter',
+    }
+  -----------------------
+  -- Substitution preview
+  -----------------------
+    use { 'markonm/traces.vim' }
+  ------------------
+  -- Color highlight
+  ------------------
+    use {
       'rrethy/vim-hexokinase',
       run = 'make hexokinase',
-      config = require'plugins.hexokinase'
-   }
-   -- Smooth scrolling
-   use { 'psliwka/vim-smoothie' }
--- ===================
--- Syntax highlighting
--- ===================
-   -- Polyglot
-   use { 'sheerun/vim-polyglot' }
-   -- Prolog
-   use { 'datwaft/prolog-syntax-vim' }
--- =================
--- Semantic analysis
--- =================
-   -- Treesitter
-   use {
-      'nvim-treesitter/nvim-treesitter',
-      config = require'plugins.treesitter',
-      run = ':TSUpdate'
-   }
-   -- Treesitter refactor
-   use {
-      'nvim-treesitter/nvim-treesitter-refactor',
-      requires = 'nvim-treesitter/nvim-treesitter'
-   }
-   -- Treesitter context
-   use {
-      'romgrk/nvim-treesitter-context',
-      requires = 'nvim-treesitter/nvim-treesitter'
-   }
--- ==========
--- Completion
--- ==========
-   -- LSP completion
-   use {
-      'neoclide/coc.nvim',
-      branch = 'release',
-      config = require'plugins.coc',
-   }
+      config = require'plugins.hexokinase',
+    }
+  -------------------
+  -- Syntax highlight
+  -------------------
+    use { 'sheerun/vim-polyglot' }
 -- ============
 -- Text objects
 -- ============
-   -- More text objects
-   use { 'wellle/targets.vim' }
-   -- Indentation object
-   use { 'michaeljsmith/vim-indent-object' }
-   -- CamelCase and snake_case objects
-   use { 'bkad/camelcasemotion', config = require'plugins.camelcasemotion' }
+  ---------------------------
+  -- General-use text objects
+  ---------------------------
+    use { 'wellle/targets.vim' }
+  --------------------------------
+  -- Indentation level text object
+  --------------------------------
+    use { 'michaeljsmith/vim-indent-object' }
+  ---------------------------------------
+  -- CameCase and snake_case text objects
+  ---------------------------------------
+    use { 'bkad/camelcasemotion', config = require'plugins.camelcasemotion' }
 -- =======
 -- Actions
 -- =======
-   -- Ability to comment
-   use { 'tpope/vim-commentary' }
-   -- Ability to surround
-   use { 'machakann/vim-sandwich' }
-   -- Easy swap in function
-   use { 'machakann/vim-swap' }
-   -- Exchange objects
-   use { 'tommcdo/vim-exchange' }
+  ----------
+  -- Comment
+  ----------
+    use { 'b3nj5m1n/kommentary' }
+  -----------
+  -- Surround
+  -----------
+    use { 'machakann/vim-sandwich' }
 -- ========
 -- Commands
 -- ========
-   -- Undo tree
-   use { 'mbbill/undotree' }
-   -- Git management
-   use { 'lambdalisue/gina.vim' }
-   -- Subtitution with caps
-   use { 'tpope/vim-abolish' }
-   -- Markdown preview
-   use {
-      'iamcco/markdown-preview.nvim',
-      run = 'cd app && yarn install',
-      config = require'plugins.markdownpreview'
-   }
--- ===============
--- File management
--- ===============
-   -- Fuzzy Finder
-   use { 'junegunn/fzf', run = function() vim.fn['fzf#install']() end }
-   use { 'junegunn/fzf.vim', config = require'plugins.fzf' }
+  --------------------------
+  -- Subversion and Coersion
+  --------------------------
+    use { 'tpope/vim-abolish' }
+  -----------------
+  -- Show undo tree
+  -----------------
+    use { 'mbbill/undotree' }
 -- ===========
 -- Integration
 -- ===========
-   -- Tmux integration
-   use { 'christoomey/vim-tmux-navigator', config = require'plugins.tmuxnavigator' }
-   -- REPL integration
-   use { 'jpalardy/vim-slime', config = require'plugins.slime' }
+  ------
+  -- Git
+  ------
+    -- Show changes
+    use {
+      'lewis6991/gitsigns.nvim',
+      requires = { 'nvim-lua/plenary.nvim' },
+      config = require'plugins.gitsigns',
+    }
+    -- Execute commands
+    use { 'lambdalisue/gina.vim' }
+  -------
+  -- Glow
+  -------
+    -- Markdown preview
+    use {
+      'npxbr/glow.nvim',
+      run = ':GlowInstall',
+      config = require'plugins.glow',
+    }
+  -------------
+  -- Nerd fonts
+  -------------
+    -- Nerd font support
+    use { 'lambdalisue/nerdfont.vim' }
+    -- Colorize nerd font icons
+    use {
+      'lambdalisue/glyph-palette.vim',
+      config = require'plugins.glyph-palette',
+    }
+  -------
+  -- REPL
+  -------
+    use { 'jpalardy/vim-slime', config = require'plugins.vim-slime' }
+  -------
+  -- Tmux
+  -------
+    use {
+      'christoomey/vim-tmux-navigator',
+      config = require'plugins.tmux-navigator',
+    }
+-- =====================
+-- Files and directories
+-- =====================
+  ---------------
+  -- Fuzzy Finder
+  ---------------
+    use {
+      'nvim-telescope/telescope.nvim',
+      requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
+      config = require'plugins.telescope',
+    }
+  ----------------
+  -- File explorer
+  ----------------
+    use {
+      {
+        'lambdalisue/fern.vim',
+        requires = { 'antoinemadec/FixCursorHold.nvim' },
+        config = require'plugins.file-explorer',
+      },
+      { 'lambdalisue/fern-git-status.vim' },
+      { 'lambdalisue/fern-renderer-nerdfont.vim' },
+      { 'lambdalisue/fern-hijack.vim' },
+    }
+-- ================
+-- Language Servers
+-- ================
+  ----------------
+  -- Configuration
+  ----------------
+    use { 'neovim/nvim-lspconfig' }
+  ---------------
+  -- Installation
+  ---------------
+    use { 'anott03/nvim-lspinstall' }
+  ---------
+  -- Status
+  ---------
+    use { 'nvim-lua/lsp-status.nvim' }
+  -------------
+  -- Completion
+  -------------
+    use {
+      'hrsh7th/nvim-compe',
+      config = require'plugins.nvim-compe',
+    }
+  ----------
+  -- Actions
+  ----------
+    use {
+      'glepnir/lspsaga.nvim',
+      config = require'plugins.lspsaga',
+    }
+  -----------
+  -- Snippets
+  -----------
+    use {
+      'hrsh7th/vim-vsnip',
+      'hrsh7th/vim-vsnip-integ',
+      'norcalli/snippets.nvim',
+    }
+  ------------
+  -- Aesthetic
+  ------------
+    -- Add pictograms to completion
+    use { 'onsails/lspkind-nvim', config = require'plugins.lspkind' }
+    -- Show lightbulb for code actions
+    use { 'kosayoda/nvim-lightbulb', config = require'plugins.lightbulb' }
 end)
-
