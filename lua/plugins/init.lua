@@ -82,6 +82,10 @@ return require'packer'.startup(function()
   -- Comment
   ----------
     use { 'b3nj5m1n/kommentary' }
+  -----------
+  -- Surround
+  -----------
+    use { 'machakann/vim-sandwich' }
 -- ========
 -- Commands
 -- ========
