@@ -6,6 +6,7 @@
 local LSPs = {
   'lua',
   'python',
+  'bash',
 }
 
 for _, lsp in ipairs(LSPs) do
