@@ -130,6 +130,17 @@ return require'packer'.startup(function()
       'lambdalisue/glyph-palette.vim',
       config = require'plugins.glyph-palette',
     }
+  -------
+  -- REPL
+  -------
+    use { 'jpalardy/vim-slime', config = require'plugins.vim-slime' }
+  -------
+  -- Tmux
+  -------
+    use {
+      'christoomey/vim-tmux-navigator',
+      config = require'plugins.tmux-navigator',
+    }
 -- =====================
 -- Files and directories
 -- =====================
