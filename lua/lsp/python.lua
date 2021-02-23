@@ -7,4 +7,4 @@ local prerequire = require'utils.prerequire'
 local lspconfig = prerequire'lspconfig'
 if not lspconfig then return end
 
-lspconfig.pyls.setup{}
+lspconfig.pyright.setup{}
