@@ -11,27 +11,27 @@ return function()
   -- Keyboards mappings
   ---------------------
     vimp.nnoremap(
-      {'override'},
+      {'override', 'silent'},
       '<A-t>',
       [[:lua require'dap'.toggle_breakpoint()<cr>]]
     )
     vimp.nnoremap(
-      {'override'},
+      {'override', 'silent'},
       '<A-c>',
       [[:lua require'dap'.continue()<cr>]]
     )
     vimp.nnoremap(
-      {'override'},
+      {'override', 'silent'},
       '<A-s>',
       [[:lua require'dap'.step_over()<cr>]]
     )
     vimp.nnoremap(
-      {'override'},
+      {'override', 'silent'},
       '<A-g>',
       [[:lua require'dap'.step_into()<cr>]]
     )
     vimp.nnoremap(
-      {'override'},
+      {'override', 'silent'},
       '<A-i>',
       [[:lua require'dap'.repl.open()<cr>]]
     )
