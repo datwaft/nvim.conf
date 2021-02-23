@@ -55,6 +55,13 @@ return require'packer'.startup(function()
   -- Comment
   ----------
     use { 'b3nj5m1n/kommentary' }
+-- ========
+-- Commands
+-- ========
+  --------------------------
+  -- Subversion and Coersion
+  --------------------------
+    use { 'tpope/vim-abolish' }
 -- ===========
 -- Integration
 -- ===========
