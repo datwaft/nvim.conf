@@ -140,6 +140,14 @@ return require'packer'.startup(function()
     use {
       'christoomey/vim-tmux-navigator',
       config = require'plugins.tmux-navigator',
+      cond = function() return vim.fn.exists('$TMUX') end,
+    }
+  --------
+  -- Kitty
+  --------
+    use {
+      'knubie/vim-kitty-navigator',
+      cond = function() return vim.fn.exists('$KITTY_WINDOW_ID') end,
     }
   -------------------------
   -- Debug Adapter Protocol
