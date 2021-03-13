@@ -160,6 +160,13 @@ return require'packer'.startup(function()
       { 'theHamsta/nvim-dap-virtual-text' },
       { 'mfussenegger/nvim-dap-python' },
     }
+  --------
+  -- Emmet
+  --------
+    use {
+      'mattn/emmet-vim',
+      config = require'plugins.emmet',
+    }
 -- =====================
 -- Files and directories
 -- =====================
