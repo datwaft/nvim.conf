@@ -10,6 +10,8 @@ local LSPs = {
   'c',
   'cmake',
   'rust',
+  'typescript',
+  'vue',
 }
 
 for _, lsp in ipairs(LSPs) do
