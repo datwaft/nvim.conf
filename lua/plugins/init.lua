@@ -228,9 +228,4 @@ return require'packer'.startup(function()
       'hrsh7th/vim-vsnip-integ',
       'norcalli/snippets.nvim',
     }
-  ------------
-  -- Aesthetic
-  ------------
-    -- Show lightbulb for code actions
-    use { 'kosayoda/nvim-lightbulb', config = require'plugins.lightbulb' }
 end)
