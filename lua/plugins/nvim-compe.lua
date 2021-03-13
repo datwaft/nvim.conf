@@ -4,10 +4,6 @@
 -- Created by datwaft <github.com/datwaft>
 
 return function()
-  if not vimp then
-    return
-  end
-
   local options = require'core.options'
 
   options.completeopt = 'menuone,noselect'
@@ -40,74 +36,79 @@ return function()
     },
   }
 
-  vimp.inoremap(
-    {'override', 'silent', 'expr'},
-    '<C-Space>',
-    [[compe#complete()]]
-  )
-  vimp.inoremap(
-    {'override', 'silent', 'expr'},
-    '<space>',
-    [[compe#confirm('<Space>')]]
-  )
-  vimp.inoremap(
-    {'override', 'silent', 'expr'},
-    '<C-e>',
-    [[compe#close('<C-e>')]]
-  )
-  vimp.inoremap(
-    {'override', 'silent', 'expr'},
-    '<C-f>',
-    [[compe#scroll({ 'delta': +4 })]]
-  )
-  vimp.inoremap(
-    {'override', 'silent', 'expr'},
-    '<C-d>',
-    [[compe#scroll({ 'delta': -4 })]]
-  )
+  local t = function(str)
+    return vim.api.nvim_replace_termcodes(str, true, true, true)
+  end
 
   local check_back_space = function()
     local col = vim.fn.col('.') - 1
     return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s')
   end
-  vimp.inoremap({'override', 'expr'}, '<Tab>', function()
+
+  vim.api.nvim_set_keymap('i', '<C-Space>', [[compe#complete()]], {
+    expr = true,
+    silent = true,
+  })
+
+  vim.api.nvim_set_keymap('i', '<C-e>', [[compe#close('<C-e>')]], {
+    expr = true,
+    silent = true,
+  })
+
+  vim.api.nvim_set_keymap('i', '<space>', [[compe#confirm('<space>')]], {
+    expr = true,
+    silent = true,
+  })
+
+  vim.api.nvim_set_keymap('i', '<C-f>', [[compe#scroll({ 'delta': +4 })]], {
+    expr = true,
+    silent = true,
+  })
+
+  vim.api.nvim_set_keymap('i', '<C-d>', [[compe#scroll({ 'delta': -4 })]], {
+    expr = true,
+    silent = true,
+  })
+
+  _G.tab_complete = function()
     if vim.fn.pumvisible() == 1 then
-      return '<C-n>'
+      return t'<C-n>'
     elseif vim.fn.call("vsnip#available", {1}) == 1 then
-      return "<Plug>(vsnip-expand-or-jump)"
+      return t'<Plug>(vsnip-expand-or-jump)'
     elseif check_back_space() then
-      return '<Tab>'
+      return t'<Tab>'
     else
       return vim.fn['compe#complete']()
     end
-  end)
-  vimp.snoremap({'override', 'expr'}, '<Tab>', function()
+  end
+
+  _G.s_tab_complete = function()
     if vim.fn.pumvisible() == 1 then
-      return '<C-n>'
-    elseif vim.fn.call("vsnip#available", {1}) == 1 then
-      return "<Plug>(vsnip-expand-or-jump)"
-    elseif check_back_space() then
-      return '<Tab>'
-    else
-      return vim.fn['compe#complete']()
-    end
-  end)
-  vimp.inoremap({'override', 'expr'}, '<S-Tab>', function()
-    if vim.fn.pumvisible() == 1 then
-      return '<C-p>'
+      return t'<C-p>'
     elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
-      return "<Plug>(vsnip-jump-prev)"
+      return t'<Plug>(vsnip-jump-prev)'
     else
-      return '<S-Tab>'
+      return t'<S-Tab>'
     end
-  end)
-  vimp.snoremap({'override', 'expr'}, '<S-Tab>', function()
-    if vim.fn.pumvisible() == 1 then
-      return '<C-p>'
-    elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
-      return "<Plug>(vsnip-jump-prev)"
-    else
-      return '<S-Tab>'
-    end
-  end)
+  end
+
+  vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {
+    expr = true,
+    silent = true,
+  })
+
+  vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {
+    expr = true,
+    silent = true,
+  })
+
+  vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {
+    expr = true,
+    silent = true,
+  })
+
+  vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {
+    expr = true,
+    silent = true,
+  })
 end
