@@ -149,17 +149,6 @@ return require'packer'.startup(function()
       'knubie/vim-kitty-navigator',
       cond = function() return vim.fn.exists('$KITTY_WINDOW_ID') end,
     }
-  -------------------------
-  -- Debug Adapter Protocol
-  -------------------------
-    use {
-      {
-        'mfussenegger/nvim-dap',
-        config = require'plugins.dap'
-      },
-      { 'theHamsta/nvim-dap-virtual-text' },
-      { 'mfussenegger/nvim-dap-python' },
-    }
   --------
   -- Emmet
   --------
