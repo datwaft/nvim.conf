@@ -34,7 +34,7 @@ return require'packer'.startup(function()
     use {
       'datwaft/bubbly.nvim',
       config = require'plugins.statusline',
-      branch = 'development',
+      branch = 'dev',
     }
   -------------
   -- Treesitter
