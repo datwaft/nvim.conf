@@ -40,4 +40,18 @@ return function()
     'filetype',
     'progress',
   }
+  vim.g.bubbly_filter = {
+    branch = {
+      'fern',
+    },
+    total_buffer_number = {
+      'fern',
+    },
+    path = {
+      'fern',
+    },
+    filetype = {
+      'fern',
+    },
+  }
 end
