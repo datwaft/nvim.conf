@@ -283,12 +283,6 @@
         end
         return result
       end
-      vimp.nnoremap({'silent', 'expr'}, 'j', function()
-        return vertical_movement('j', 'j', false)
-      end)
-      vimp.nnoremap({'silent', 'expr'}, 'k', function()
-        return vertical_movement('k', 'k', false)
-      end)
       vimp.nnoremap({'silent', 'expr'}, '<up>', function()
         return vertical_movement('<up>', 'k', false)
       end)
