@@ -202,6 +202,13 @@ return require'packer'.startup(function()
       'hrsh7th/nvim-compe',
       config = require'plugins.nvim-compe',
     }
+  ------------
+  -- Signature
+  ------------
+    use {
+      'ray-x/lsp_signature.nvim',
+      config = function() require'lsp_signature'.on_attach() end
+    }
   -------------
   -- Extensions
   -------------
