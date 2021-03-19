@@ -231,4 +231,8 @@ return require'packer'.startup(function()
       'hrsh7th/vim-vsnip-integ',
       'norcalli/snippets.nvim',
     }
+  ------------------------------
+  -- SQL Language Server support
+  ------------------------------
+    use { 'nanotee/sqls.nvim' }
 end)
