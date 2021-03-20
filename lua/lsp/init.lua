@@ -13,6 +13,7 @@ local LSPs = {
   'typescript',
   'vue',
   'sql',
+  'r',
 }
 
 for _, lsp in ipairs(LSPs) do
