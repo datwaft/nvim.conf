@@ -102,8 +102,15 @@ return require'packer'.startup(function()
       {
         'AckslD/nvim-revJ.lua',
         requires = { 'sgur/vim-textobj-parameter' },
-        config = require'plugins.revj'
+        config = require'plugins.revj',
       }
+    }
+  ----------------------------------
+  -- Increment and decrement numbers
+  ----------------------------------
+    use {
+      'zegervdv/nrpattern.nvim',
+      config = require'plugins.nrpattern',
     }
 -- ========
 -- Commands
