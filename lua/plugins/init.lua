@@ -156,6 +156,19 @@ return require'packer'.startup(function()
       'mattn/emmet-vim',
       config = require'plugins.emmet',
     }
+  ----------------------------
+  -- Treesitter comment string
+  ----------------------------
+    use {
+      'JoosepAlviste/nvim-ts-context-commentstring',
+      config = {
+        require'nvim-treesitter.configs'.setup {
+          context_commentstring = {
+            enable = true
+          }
+        }
+      }
+    }
 -- =====================
 -- Files and directories
 -- =====================
