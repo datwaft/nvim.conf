@@ -102,9 +102,7 @@ return require'packer'.startup(function()
       {
         'AckslD/nvim-revJ.lua',
         requires = { 'sgur/vim-textobj-parameter' },
-        config = function()
-          require("revj").setup{}
-        end
+        config = require'plugins.revj'
       }
     }
 -- ========
