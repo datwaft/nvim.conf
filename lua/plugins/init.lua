@@ -98,11 +98,14 @@ return require'packer'.startup(function()
   -- Split lines
   --------------
     use {
-      'AckslD/nvim-revJ.lua',
-      requires = { 'sgur/vim-textobj-parameter' },
-      config = function()
-        require("revj").setup{}
-      end
+      { 'sgur/vim-textobj-parameter', requires = 'kana/vim-textobj-user' },
+      {
+        'AckslD/nvim-revJ.lua',
+        requires = { 'sgur/vim-textobj-parameter' },
+        config = function()
+          require("revj").setup{}
+        end
+      }
     }
 -- ========
 -- Commands
