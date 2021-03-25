@@ -63,7 +63,7 @@ return require'packer'.startup(function()
   ---------------
   -- Indent lines
   ---------------
-    use { 'lukas-reineke/indent-blankline.nvim' }
+    use { 'lukas-reineke/indent-blankline.nvim', branch = 'lua' }
 -- ============
 -- Text objects
 -- ============
