@@ -11,4 +11,3 @@ return function()
     command = [[lua require'lsp_extensions'.inlay_hints{ prefix = " » " }]]
   }
 end
-
