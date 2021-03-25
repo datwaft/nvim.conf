@@ -63,7 +63,11 @@ return require'packer'.startup(function()
   ---------------
   -- Indent lines
   ---------------
-    use { 'lukas-reineke/indent-blankline.nvim', branch = 'lua' }
+    use {
+      'lukas-reineke/indent-blankline.nvim',
+      branch = 'lua',
+      config = require'plugins.indent_blankline'
+    }
 -- ============
 -- Text objects
 -- ============
