@@ -8,8 +8,7 @@ return function()
   autocmd {
     events = { 'CursorHold', 'CursorHoldI' },
     pattern = '*.rs',
-    command =
-      [[lua require'lsp_extensions'.inlay_hints{ prefix = " » " }]]
+    command = [[lua require'lsp_extensions'.inlay_hints{ prefix = " » " }]]
   }
 end
 
