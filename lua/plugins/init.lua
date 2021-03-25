@@ -111,6 +111,7 @@ return require'packer'.startup(function()
     use {
       'zegervdv/nrpattern.nvim',
       config = require'plugins.nrpattern',
+      requires = { 'tpope/vim-repeat' }
     }
 -- ========
 -- Commands
