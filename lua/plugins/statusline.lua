@@ -43,15 +43,19 @@ return function()
   vim.g.bubbly_filter = {
     branch = {
       'fern',
+      'packer',
     },
     total_buffer_number = {
       'fern',
+      'packer',
     },
     path = {
       'fern',
+      'packer',
     },
     filetype = {
       'fern',
+      'packer',
     },
   }
 end
