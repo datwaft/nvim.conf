@@ -60,6 +60,10 @@ return require'packer'.startup(function()
   -- Syntax highlight
   -------------------
     use { 'sheerun/vim-polyglot' }
+  ---------------
+  -- Indent lines
+  ---------------
+    use { 'lukas-reineke/indent-blankline.nvim' }
 -- ============
 -- Text objects
 -- ============
