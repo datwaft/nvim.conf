@@ -94,6 +94,16 @@ return require'packer'.startup(function()
   -- Surround
   -----------
     use { 'machakann/vim-sandwich' }
+  --------------
+  -- Split lines
+  --------------
+    use {
+      'AckslD/nvim-revJ.lua',
+      requires = {'sgur/vim-textobj-parameter'},
+      config = function()
+        require("revj").setup{}
+      end
+    }
 -- ========
 -- Commands
 -- ========
