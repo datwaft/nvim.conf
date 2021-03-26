@@ -9,7 +9,20 @@ return function()
   end
 
   local saga = require'lspsaga'
-  saga.init_lsp_saga()
+  saga.init_lsp_saga {
+    code_action_prompt = {
+      enable = true,
+      sign = false,
+      sign_priority = 20,
+      virtual_text = true,
+    },
+    code_action_keys = {
+      quit = 'q',exec = '<CR>'
+    },
+    rename_action_keys = {
+      quit = '<M-q>',exec = '<CR>'
+    },
+  }
 
   ---------
   -- Finder
