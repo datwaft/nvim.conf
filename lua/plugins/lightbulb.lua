@@ -23,5 +23,5 @@ return function()
       end
     }
   }
-  vim.api.nvim_command('highlight link LightBulbVirtualText WarningMsg')
+  vim.api.nvim_command('highlight link LightBulbVirtualText Red')
 end
