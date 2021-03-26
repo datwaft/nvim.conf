@@ -147,6 +147,10 @@
   ----------------------------
     -- Always show sign column
     options.signcolumn = 'yes'
+  ----------------------
+  -- Folds configuration
+  ----------------------
+    options.foldlevelstart = 99
 -- ========================
 -- Completion configuration
 -- ========================
