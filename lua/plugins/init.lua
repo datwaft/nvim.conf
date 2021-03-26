@@ -243,13 +243,6 @@ return require'packer'.startup(function()
       config = require'plugins.nvim-compe',
     }
   ------------
-  -- Aesthetic
-  ------------
-    use {
-      'kosayoda/nvim-lightbulb',
-      config = require'plugins.lightbulb'
-    }
-  ------------
   -- Signature
   ------------
     use {
