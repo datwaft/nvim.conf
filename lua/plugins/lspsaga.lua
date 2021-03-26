@@ -14,7 +14,7 @@ return function()
       enable = true,
       sign = false,
       sign_priority = 20,
-      virtual_text = true,
+      virtual_text = false,
     },
     code_action_keys = {
       quit = 'q',exec = '<CR>'
