@@ -196,13 +196,6 @@ return require'packer'.startup(function()
         }
       }
     }
-  -----------
-  -- Hunspell
-  -----------
-    use {
-      'lewis6991/spellsitter.nvim',
-      config = require'utils.spellsitter',
-    }
 -- =====================
 -- Files and directories
 -- =====================
