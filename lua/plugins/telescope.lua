@@ -7,8 +7,12 @@ return function()
   if not vimp then
     return
   end
-  vimp.nnoremap({'override'}, '<leader>ff', '<cmd>Telescope find_files<cr>')
-  vimp.nnoremap({'override'}, '<leader>fg', '<cmd>Telescope git_files<cr>')
+  vimp.nnoremap({'override'}, '<leader>ff', function()
+    local opts = {}
+    local ok = pcall(require'telescope.builtin'.git_files, opts)
+    if not ok then require'telescope.builtin'.find_files(opts) end
+  end)
+  vimp.nnoremap({'override'}, '<leader>fg', '<cmd>Telescope live_grep<cr>')
   vimp.nnoremap({'override'}, '<leader>fb', '<cmd>Telescope buffers<cr>')
   vimp.nnoremap({'override'}, '<leader>fh', '<cmd>Telescope help_tags<cr>')
   vimp.nnoremap({'override'}, '<leader>fa', '<cmd>Telescope current_buffer_fuzzy_find<cr>')
