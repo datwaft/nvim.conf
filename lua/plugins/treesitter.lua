@@ -17,7 +17,7 @@ return function()
       enable = true,
     },
     indent = {
-      enable = true,
+      enable = false,
     }
   }
   vim.cmd[[set foldmethod=expr]]
