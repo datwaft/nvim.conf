@@ -8,7 +8,7 @@ return function()
     return
   end
   vimp.nnoremap({'override'}, '<leader>ff', '<cmd>Telescope find_files<cr>')
-  vimp.nnoremap({'override'}, '<leader>fg', '<cmd>Telescope live_grep<cr>')
+  vimp.nnoremap({'override'}, '<leader>fg', '<cmd>Telescope git_files<cr>')
   vimp.nnoremap({'override'}, '<leader>fb', '<cmd>Telescope buffers<cr>')
   vimp.nnoremap({'override'}, '<leader>fh', '<cmd>Telescope help_tags<cr>')
   vimp.nnoremap({'override'}, '<leader>fa', '<cmd>Telescope current_buffer_fuzzy_find<cr>')
