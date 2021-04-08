@@ -138,15 +138,6 @@ return require'packer'.startup(function()
     }
     -- Execute commands
     use { 'lambdalisue/gina.vim' }
-  -------
-  -- Glow
-  -------
-    -- Markdown preview
-    use {
-      'npxbr/glow.nvim',
-      run = ':GlowInstall',
-      config = require'plugins.glow',
-    }
   -------------
   -- Nerd fonts
   -------------
