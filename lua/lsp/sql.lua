@@ -11,6 +11,13 @@ lspconfig.sqls.setup{
   picker = 'telescope',
   on_attach = function(client)
     client.resolved_capabilities.execute_command = true
-    require'sqls'.setup{}
+    require'sqls'.setup{
+      connections = {
+        {
+          driver = 'postgresql',
+          dataSourceName = 'host=172.30.16.1 port=15432 user=postgres password=losiram01 dbname=airline sslmode=disable',
+        },
+      }
+    }
   end
 }
