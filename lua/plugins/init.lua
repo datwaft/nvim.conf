@@ -79,6 +79,10 @@ return require'packer'.startup(function()
   -- CameCase and snake_case text objects
   ---------------------------------------
     use { 'bkad/camelcasemotion', config = require'plugins.camelcasemotion' }
+  -------------------------
+  -- Whitespace text object
+  -------------------------
+    use { 'vim-utils/vim-space' }
 -- =======
 -- Actions
 -- =======
