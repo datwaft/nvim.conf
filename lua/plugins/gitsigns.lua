@@ -4,7 +4,15 @@
 -- Created by datwaft <github.com/datwaft>
 
 return function()
-  require'gitsigns'.setup {
+  local prerequire = require'utils.prerequire'
+  local io = require'utils.io'
+
+  local gitsigns = prerequire'gitsigns'
+  if not gitsigns then
+    io.warning"Couldn't load `gitsigns` package"
+    return
+  end
+  gitsigns.setup {
     signs = {
       add          = {hl = 'GitGutterAdd'   , text = '│'},
       change       = {hl = 'GitGutterChange', text = '│'},
