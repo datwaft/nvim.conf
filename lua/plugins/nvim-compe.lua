@@ -5,10 +5,18 @@
 
 return function()
   local options = require'core.options'
+  local prerequire = require'utils.prerequire'
+  local io = require'utils.io'
+
+  local compe = prerequire'compe'
+  if not compe then
+    io.warning"Couldn't load `compe` package"
+    return
+  end
 
   options.completeopt = 'menuone,noselect'
 
-  require'compe'.setup {
+  compe.setup {
     enabled = true,
     autocomplete = false,
     debug = false,

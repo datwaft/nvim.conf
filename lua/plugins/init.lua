@@ -5,9 +5,17 @@
 
 vim.cmd [[packadd packer.nvim]]
 
-local nocode = require'utils.check'.nocode
-local tmux = require'utils.check'.tmux
-local kitty = require'utils.check'.kitty
+local nocode = function()
+  return vim.fn.exists('g:vscode') == 0
+end
+
+local tmux = function()
+  return vim.fn.exists('$TMUX') == 1
+end
+
+local kitty = function()
+  return vim.fn.exists('$KITTY_WINDOW_ID') == 1
+end
 
 return require'packer'.startup(function()
 -- =========
@@ -31,7 +39,6 @@ return require'packer'.startup(function()
       'sainnhe/edge',
       config = require'plugins.colorscheme',
       as = 'colorscheme',
-      opt = true,
       cond = { nocode },
     }
   --------------
@@ -41,23 +48,35 @@ return require'packer'.startup(function()
       'datwaft/bubbly.nvim',
       config = require'plugins.statusline',
       branch = 'dev',
-      opt = true,
-      cond = { nocode },
     }
   -------------
   -- Treesitter
   -------------
     use {
-      'nvim-treesitter/nvim-treesitter',
-      run = ':TSUpdate',
-      config = require'plugins.treesitter',
-      opt = true,
-      cond = { nocode },
+      {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate',
+        config = require'plugins.treesitter',
+        cond = { nocode },
+      },
+      {
+        'JoosepAlviste/nvim-ts-context-commentstring',
+        requires = 'nvim-treesitter/nvim-treesitter',
+        cond = { nocode },
+      },
+      {
+        'windwp/nvim-ts-autotag',
+        requires = 'nvim-treesitter/nvim-treesitter',
+        cond = { nocode },
+      },
     }
   -----------------------
   -- Substitution preview
   -----------------------
-    use { 'markonm/traces.vim' }
+    use {
+      'markonm/traces.vim',
+      config = require'plugins.traces',
+    }
   ------------------
   -- Color highlight
   ------------------
@@ -65,7 +84,6 @@ return require'packer'.startup(function()
       'rrethy/vim-hexokinase',
       run = 'make hexokinase',
       config = require'plugins.hexokinase',
-      opt = true,
       cond = { nocode },
     }
   ---------------
@@ -75,7 +93,6 @@ return require'packer'.startup(function()
       'lukas-reineke/indent-blankline.nvim',
       branch = 'lua',
       config = require'plugins.indent_blankline',
-      opt = true,
       cond = { nocode },
     }
 -- ============
@@ -111,14 +128,7 @@ return require'packer'.startup(function()
   --------------
   -- Split lines
   --------------
-    use {
-      { 'sgur/vim-textobj-parameter', requires = 'kana/vim-textobj-user' },
-      {
-        'AckslD/nvim-revJ.lua',
-        requires = { 'sgur/vim-textobj-parameter' },
-        config = require'plugins.revj',
-      },
-    }
+    use { 'AndrewRadev/splitjoin.vim' }
   ----------------------------------
   -- Increment and decrement numbers
   ----------------------------------
@@ -149,13 +159,11 @@ return require'packer'.startup(function()
       'lewis6991/gitsigns.nvim',
       requires = { 'nvim-lua/plenary.nvim' },
       config = require'plugins.gitsigns',
-      opt = true,
       cond = { nocode },
     }
     -- Execute commands
     use {
       'lambdalisue/gina.vim',
-      opt = true,
       cond = { nocode },
     }
   -------------
@@ -164,14 +172,12 @@ return require'packer'.startup(function()
     -- Nerd font support
     use {
       'lambdalisue/nerdfont.vim',
-      opt = true,
       cond = { nocode },
     }
     -- Colorize nerd font icons
     use {
       'lambdalisue/glyph-palette.vim',
       config = require'plugins.glyph-palette',
-      opt = true,
       cond = { nocode },
     }
   -------
@@ -180,7 +186,6 @@ return require'packer'.startup(function()
     use {
       'jpalardy/vim-slime',
       config = require'plugins.vim-slime',
-      opt = true,
       cond = { nocode },
     }
   -------
@@ -189,7 +194,6 @@ return require'packer'.startup(function()
     use {
       'christoomey/vim-tmux-navigator',
       config = require'plugins.tmux-navigator',
-      opt = true,
       cond = { tmux, nocode },
     }
   --------
@@ -197,7 +201,6 @@ return require'packer'.startup(function()
   --------
     use {
       'knubie/vim-kitty-navigator',
-      opt = true,
       cond = { kitty, nocode },
     }
   --------
@@ -206,16 +209,6 @@ return require'packer'.startup(function()
     use {
       'mattn/emmet-vim',
       config = require'plugins.emmet',
-      opt = true,
-      cond = { nocode },
-    }
-  ----------------------------
-  -- Treesitter comment string
-  ----------------------------
-    use {
-      'JoosepAlviste/nvim-ts-context-commentstring',
-      requires = 'nvim-treesitter/nvim-treesitter',
-      opt = true,
       cond = { nocode },
     }
 -- =====================
@@ -226,9 +219,8 @@ return require'packer'.startup(function()
   ---------------
     use {
       'nvim-telescope/telescope.nvim',
-      requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
+      requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim' },
       config = require'plugins.telescope',
-      opt = true,
       cond = { nocode },
     }
   ----------------
@@ -239,23 +231,22 @@ return require'packer'.startup(function()
         'lambdalisue/fern.vim',
         requires = { 'antoinemadec/FixCursorHold.nvim' },
         config = require'plugins.file-explorer',
-        opt = true,
         cond = { nocode },
       },
       {
         'lambdalisue/fern-git-status.vim',
-        opt = true,
-        after = { 'lambdalisue/fern.vim' },
+        requires = { 'lambdalisue/fern.vim' },
+        cond = { nocode },
       },
       {
         'lambdalisue/fern-renderer-nerdfont.vim',
-        opt = true,
-        after = { 'lambdalisue/fern.vim' },
+        requires = { 'lambdalisue/fern.vim' },
+        cond = { nocode },
       },
       {
         'lambdalisue/fern-hijack.vim',
-        opt = true,
-        after = { 'lambdalisue/fern.vim' },
+        requires = { 'lambdalisue/fern.vim' },
+        cond = { nocode },
       },
     }
 -- ================
@@ -266,7 +257,6 @@ return require'packer'.startup(function()
   ----------------
     use {
       'neovim/nvim-lspconfig',
-      opt = true,
       cond = { nocode },
     }
   ---------------
@@ -274,7 +264,6 @@ return require'packer'.startup(function()
   ---------------
     use {
       'anott03/nvim-lspinstall',
-      opt = true,
       cond = { nocode },
     }
   ---------
@@ -282,7 +271,6 @@ return require'packer'.startup(function()
   ---------
     use {
       'nvim-lua/lsp-status.nvim',
-      opt = true,
       cond = { nocode },
     }
   -------------
@@ -291,7 +279,6 @@ return require'packer'.startup(function()
     use {
       'hrsh7th/nvim-compe',
       config = require'plugins.nvim-compe',
-      opt = true,
       cond = { nocode },
     }
   ------------
@@ -300,7 +287,6 @@ return require'packer'.startup(function()
     use {
       'kosayoda/nvim-lightbulb',
       config = require'plugins.lightbulb',
-      opt = true,
       cond = { nocode },
     }
   ------------
@@ -308,8 +294,7 @@ return require'packer'.startup(function()
   ------------
     use {
       'ray-x/lsp_signature.nvim',
-      config = function() require'lsp_signature'.on_attach() end,
-      opt = true,
+      config = require'plugins.lsp-signature',
       cond = { nocode },
     }
   -------------
@@ -318,7 +303,6 @@ return require'packer'.startup(function()
     use {
       'nvim-lua/lsp_extensions.nvim',
       config = require'plugins.lsp-extensions',
-      opt = true,
       cond = { nocode },
     }
   ----------
@@ -327,7 +311,6 @@ return require'packer'.startup(function()
     use {
       'glepnir/lspsaga.nvim',
       config = require'plugins.lspsaga',
-      opt = true,
       cond = { nocode },
     }
   -----------
@@ -337,7 +320,6 @@ return require'packer'.startup(function()
       'hrsh7th/vim-vsnip',
       'hrsh7th/vim-vsnip-integ',
       'norcalli/snippets.nvim',
-      opt = true,
       cond = { nocode },
     }
   ------------------------------
@@ -345,7 +327,6 @@ return require'packer'.startup(function()
   ------------------------------
     use {
       'nanotee/sqls.nvim',
-      opt = true,
       cond = { nocode },
     }
 end)

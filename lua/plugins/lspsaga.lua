@@ -8,7 +8,15 @@ return function()
     return
   end
 
-  local saga = require'lspsaga'
+  local prerequire = require'utils.prerequire'
+  local io = require'utils.io'
+
+  local saga = prerequire'lspsaga'
+  if not saga then
+    io.warning"Couldn't load `lspsaga` package"
+    return
+  end
+
   saga.init_lsp_saga {
     code_action_prompt = {
       enable = true,

@@ -12,6 +12,7 @@ return function()
     io.warning"Couldn't load `nvim-treesitter.configs` package"
     return
   end
+
   config.setup {
     ensure_installed = 'maintained',
     highlight = {
@@ -21,8 +22,11 @@ return function()
       enable = false,
     },
     context_commentstring = {
-      enable = true
+      enable = true,
     },
+    autotag = {
+      enable = true,
+    }
   }
   vim.cmd[[set foldmethod=expr]]
   vim.cmd[[set foldexpr=nvim_treesitter#foldexpr()]]
