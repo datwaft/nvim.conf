@@ -27,6 +27,7 @@ return require'packer'.startup(function()
       'sainnhe/edge',
       config = require'plugins.colorscheme',
       as = 'colorscheme',
+      cond = function() return vim.fn.exists('g:vscode') == 0 end,
     }
   --------------
   -- Statusline
@@ -35,6 +36,7 @@ return require'packer'.startup(function()
       'datwaft/bubbly.nvim',
       config = require'plugins.statusline',
       branch = 'dev',
+      cond = function() return vim.fn.exists('g:vscode') == 0 end,
     }
   -------------
   -- Treesitter
@@ -55,6 +57,7 @@ return require'packer'.startup(function()
       'rrethy/vim-hexokinase',
       run = 'make hexokinase',
       config = require'plugins.hexokinase',
+      cond = function() return vim.fn.exists('g:vscode') == 0 end,
     }
   ---------------
   -- Indent lines
@@ -62,7 +65,8 @@ return require'packer'.startup(function()
     use {
       'lukas-reineke/indent-blankline.nvim',
       branch = 'lua',
-      config = require'plugins.indent_blankline'
+      config = require'plugins.indent_blankline',
+      cond = function() return vim.fn.exists('g:vscode') == 0 end,
     }
 -- ============
 -- Text objects
@@ -135,37 +139,55 @@ return require'packer'.startup(function()
       'lewis6991/gitsigns.nvim',
       requires = { 'nvim-lua/plenary.nvim' },
       config = require'plugins.gitsigns',
+      cond = function() return vim.fn.exists('g:vscode') == 0 end,
     }
     -- Execute commands
-    use { 'lambdalisue/gina.vim' }
+    use {
+      'lambdalisue/gina.vim',
+      cond = function() return vim.fn.exists('g:vscode') == 0 end,
+    }
   -------------
   -- Nerd fonts
   -------------
     -- Nerd font support
-    use { 'lambdalisue/nerdfont.vim' }
+    use {
+      'lambdalisue/nerdfont.vim',
+      cond = function() return vim.fn.exists('g:vscode') == 0 end,
+    }
     -- Colorize nerd font icons
     use {
       'lambdalisue/glyph-palette.vim',
       config = require'plugins.glyph-palette',
+      cond = function() return vim.fn.exists('g:vscode') == 0 end,
     }
   -------
   -- REPL
   -------
-    use { 'jpalardy/vim-slime', config = require'plugins.vim-slime' }
+    use {
+      'jpalardy/vim-slime',
+      config = require'plugins.vim-slime',
+      cond = function() return vim.fn.exists('g:vscode') == 0 end,
+    }
   -------
   -- Tmux
   -------
     use {
       'christoomey/vim-tmux-navigator',
       config = require'plugins.tmux-navigator',
-      cond = function() return vim.fn.exists('$TMUX') end,
+      cond = {
+        function() return vim.fn.exists('$TMUX') == 1 end,
+        function() return vim.fn.exists('g:vscode') == 0 end,
+      },
     }
   --------
   -- Kitty
   --------
     use {
       'knubie/vim-kitty-navigator',
-      cond = function() return vim.fn.exists('$KITTY_WINDOW_ID') end,
+      cond = {
+        function() return vim.fn.exists('$KITTY_WINDOW_ID') == 1 end,
+        function() return vim.fn.exists('g:vscode') == 0 end,
+      },
     }
   --------
   -- Emmet
@@ -173,6 +195,7 @@ return require'packer'.startup(function()
     use {
       'mattn/emmet-vim',
       config = require'plugins.emmet',
+      cond = function() return vim.fn.exists('g:vscode') == 0 end,
     }
   ----------------------------
   -- Treesitter comment string
@@ -197,6 +220,7 @@ return require'packer'.startup(function()
       'nvim-telescope/telescope.nvim',
       requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
       config = require'plugins.telescope',
+      cond = function() return vim.fn.exists('g:vscode') == 0 end,
     }
   ----------------
   -- File explorer
@@ -206,10 +230,20 @@ return require'packer'.startup(function()
         'lambdalisue/fern.vim',
         requires = { 'antoinemadec/FixCursorHold.nvim' },
         config = require'plugins.file-explorer',
+        cond = function() return vim.fn.exists('g:vscode') == 0 end,
       },
-      { 'lambdalisue/fern-git-status.vim' },
-      { 'lambdalisue/fern-renderer-nerdfont.vim' },
-      { 'lambdalisue/fern-hijack.vim' },
+      {
+        'lambdalisue/fern-git-status.vim',
+        after = { 'lambdalisue/fern.vim' },
+      },
+      {
+        'lambdalisue/fern-renderer-nerdfont.vim',
+        after = { 'lambdalisue/fern.vim' },
+      },
+      {
+        'lambdalisue/fern-hijack.vim',
+        after = { 'lambdalisue/fern.vim' },
+      },
     }
 -- ================
 -- Language Servers
@@ -217,21 +251,31 @@ return require'packer'.startup(function()
   ----------------
   -- Configuration
   ----------------
-    use { 'neovim/nvim-lspconfig' }
+    use {
+      'neovim/nvim-lspconfig',
+      cond = function() return vim.fn.exists('g:vscode') == 0 end,
+    }
   ---------------
   -- Installation
   ---------------
-    use { 'anott03/nvim-lspinstall' }
+    use {
+      'anott03/nvim-lspinstall',
+      cond = function() return vim.fn.exists('g:vscode') == 0 end,
+    }
   ---------
   -- Status
   ---------
-    use { 'nvim-lua/lsp-status.nvim' }
+    use {
+      'nvim-lua/lsp-status.nvim',
+      cond = function() return vim.fn.exists('g:vscode') == 0 end,
+    }
   -------------
   -- Completion
   -------------
     use {
       'hrsh7th/nvim-compe',
       config = require'plugins.nvim-compe',
+      cond = function() return vim.fn.exists('g:vscode') == 0 end,
     }
   ------------
   -- Aesthetic
@@ -239,20 +283,23 @@ return require'packer'.startup(function()
     use {
       'kosayoda/nvim-lightbulb',
       config = require'plugins.lightbulb',
+      cond = function() return vim.fn.exists('g:vscode') == 0 end,
     }
   ------------
   -- Signature
   ------------
     use {
       'ray-x/lsp_signature.nvim',
-      config = function() require'lsp_signature'.on_attach() end
+      config = function() require'lsp_signature'.on_attach() end,
+      cond = function() return vim.fn.exists('g:vscode') == 0 end,
     }
   -------------
   -- Extensions
   -------------
     use {
       'nvim-lua/lsp_extensions.nvim',
-      config = require'plugins.lsp-extensions'
+      config = require'plugins.lsp-extensions',
+      cond = function() return vim.fn.exists('g:vscode') == 0 end,
     }
   ----------
   -- Actions
@@ -260,6 +307,7 @@ return require'packer'.startup(function()
     use {
       'glepnir/lspsaga.nvim',
       config = require'plugins.lspsaga',
+      cond = function() return vim.fn.exists('g:vscode') == 0 end,
     }
   -----------
   -- Snippets
@@ -268,9 +316,13 @@ return require'packer'.startup(function()
       'hrsh7th/vim-vsnip',
       'hrsh7th/vim-vsnip-integ',
       'norcalli/snippets.nvim',
+      cond = function() return vim.fn.exists('g:vscode') == 0 end,
     }
   ------------------------------
   -- SQL Language Server support
   ------------------------------
-    use { 'nanotee/sqls.nvim' }
+    use {
+      'nanotee/sqls.nvim',
+      cond = function() return vim.fn.exists('g:vscode') == 0 end,
+    }
 end)

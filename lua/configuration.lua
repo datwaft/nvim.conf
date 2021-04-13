@@ -171,7 +171,7 @@
     options.wildignorecase = true
     -- Use <space> to confirm completion
     vimp.cnoremap(
-      {'expr'},
+      {'override', 'expr'},
       '<space>',
       [[wildmenumode() ? "\<C-y>" : "\<space>"]]
     )
@@ -246,17 +246,17 @@
   -- Line object
   --------------
     -- Inner line
-    vimp.xnoremap({'silent'}, 'il', ':<C-u>normal! g_v^<cr>')
-    vimp.onoremap({'silent'}, 'il', ':<C-u>normal! g_v^<cr>')
+    vimp.xnoremap({'override', 'silent'}, 'il', ':<C-u>normal! g_v^<cr>')
+    vimp.onoremap({'override', 'silent'}, 'il', ':<C-u>normal! g_v^<cr>')
     -- Around line
-    vimp.xnoremap({'silent'}, 'al', ':<C-u>normal! $v0<cr>')
-    vimp.onoremap({'silent'}, 'al', ':<C-u>normal! $v0<cr>')
+    vimp.xnoremap({'override', 'silent'}, 'al', ':<C-u>normal! $v0<cr>')
+    vimp.onoremap({'override', 'silent'}, 'al', ':<C-u>normal! $v0<cr>')
   -----------
   -- Document
   -----------
     -- Inner document
-    vimp.xnoremap({'silent'}, 'id', ':<C-u>normal! G$Vgg0<cr>')
-    vimp.onoremap({'silent'}, 'id', ':<C-u>normal! GVgg<cr>')
+    vimp.xnoremap({'override', 'silent'}, 'id', ':<C-u>normal! G$Vgg0<cr>')
+    vimp.onoremap({'override', 'silent'}, 'id', ':<C-u>normal! GVgg<cr>')
 -- =================
 -- Keyboard bindings
 -- =================
@@ -264,7 +264,7 @@
   -- Folding
   ----------
     -- Fold or unfold all
-    vimp.nnoremap({'silent'}, '<F2>', function()
+    vimp.nnoremap({'override', 'silent'}, '<F2>', function()
       if vim.wo.foldlevel == 1 then
         return 'zM'
       else
@@ -272,7 +272,7 @@
       end
     end)
     -- Fold or unfold local
-    vimp.nnoremap({'silent'}, '<leader><space>', 'za')
+    vimp.nnoremap({'override', 'silent'}, '<leader><space>', 'za')
   -----------
   -- Movement
   -----------
@@ -287,41 +287,41 @@
         end
         return result
       end
-      vimp.nnoremap({'silent', 'expr'}, '<up>', function()
+      vimp.nnoremap({'override', 'silent', 'expr'}, '<up>', function()
         return vertical_movement('<up>', 'k', false)
       end)
-      vimp.nnoremap({'silent', 'expr'}, '<down>', function()
+      vimp.nnoremap({'override', 'silent', 'expr'}, '<down>', function()
         return vertical_movement('<down>', 'j', false)
       end)
-      vimp.inoremap({'silent', 'expr'}, '<up>', function()
+      vimp.inoremap({'override', 'silent', 'expr'}, '<up>', function()
         return vertical_movement('<up>', 'k', true)
       end)
-      vimp.inoremap({'silent', 'expr'}, '<down>', function()
+      vimp.inoremap({'override', 'silent', 'expr'}, '<down>', function()
         return vertical_movement('<down>', 'j', true)
       end)
     end
     -- Move to the beginning or the end with H or L
-    vimp.nnoremap({'silent'}, 'H', '^')
-    vimp.nnoremap({'silent'}, 'L', '$')
-    vimp.inoremap({'silent'}, '<C-h>', '<C-o>^')
-    vimp.inoremap({'silent'}, '<C-l>', '<C-o>$')
-    vimp.cnoremap('<C-h>', '<home>')
-    vimp.cnoremap('<C-l>', '<end>')
+    vimp.nnoremap({'override', 'silent'}, 'H', '^')
+    vimp.nnoremap({'override', 'silent'}, 'L', '$')
+    vimp.inoremap({'override', 'silent'}, '<C-h>', '<C-o>^')
+    vimp.inoremap({'override', 'silent'}, '<C-l>', '<C-o>$')
+    vimp.cnoremap({'override'}, '<C-h>', '<home>')
+    vimp.cnoremap({'override'}, '<C-l>', '<end>')
     -- Remove character
-    vimp.inoremap({'silent'}, '<C-s>', '<BS>')
+    vimp.inoremap({'override', 'silent'}, '<C-s>', '<BS>')
   ----------------
   -- Miscellaneous
   ----------------
     -- Use Y to copy from the cursor to the end
-    vimp.nnoremap({ 'silent' }, 'Y', 'y$')
+    vimp.nnoremap({'override', 'silent'}, 'Y', 'y$')
     -- Fast execute macro
-    vimp.xnoremap({ 'silent' }, 'Q', ':normal @@<CR>')
-    vimp.nnoremap({ 'silent' }, 'Q', ':normal @@<CR>')
+    vimp.xnoremap({'override', 'silent'}, 'Q', ':normal @@<CR>')
+    vimp.nnoremap({'override', 'silent'}, 'Q', ':normal @@<CR>')
     -- Move lines up and down
-    vimp.nnoremap({ 'silent' }, '<C-k>', ':m-2<CR>')
-    vimp.nnoremap({ 'silent' }, '<C-up>', ':m-2<CR>')
-    vimp.nnoremap({ 'silent' }, '<C-j>', ':m+<CR>')
-    vimp.nnoremap({ 'silent' }, '<C-down>', ':m+<CR>')
+    vimp.nnoremap({'override', 'silent'}, '<C-k>', ':m-2<CR>')
+    vimp.nnoremap({'override', 'silent'}, '<C-up>', ':m-2<CR>')
+    vimp.nnoremap({'override', 'silent'}, '<C-j>', ':m+<CR>')
+    vimp.nnoremap({'override', 'silent'}, '<C-down>', ':m+<CR>')
 -- ===============================
 -- Language specific configuration
 -- ===============================

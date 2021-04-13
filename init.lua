@@ -18,4 +18,6 @@
 -- =================
 -- LSP initilization
 -- =================
-  require'lsp'
+  if vim.fn.exists('g:vscode') == 0 then
+    require'lsp'
+  end
