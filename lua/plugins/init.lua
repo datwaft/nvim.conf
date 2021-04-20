@@ -48,6 +48,7 @@ return require'packer'.startup(function(use)
       'datwaft/bubbly.nvim',
       config = require'plugins.statusline',
       branch = 'dev',
+      disable = windows(),
     }
   -------------
   -- Treesitter
