@@ -18,6 +18,6 @@
 -- =================
 -- LSP initilization
 -- =================
-  if vim.fn.exists('g:vscode') == 0 then
+  if not require'utils.environment'.isWindows() then
     require'lsp'
   end
