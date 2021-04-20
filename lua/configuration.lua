@@ -10,6 +10,8 @@
   local io = require'utils.io'
   local prerequire = require'utils.prerequire'
   local autocmd = require'core.autocmd'
+  local environment = require'utils.environment'
+
   if not prerequire'vimp' then
     io.warning"Couldn't load `vimp` package"
     return
@@ -20,6 +22,9 @@
 -- Variable definition
 -- ===================
   local configuration_folder = vim.fn.expand'~'..'/.config/nvim'
+  if environment.isWindows() then
+    configuration_folder = vim.fn.expand'$HOME'..'/AppData/Local/nvim'
+  end
 -- ====================
 -- Editor configuration
 -- ====================
@@ -27,7 +32,11 @@
   -- External tools configuration
   -------------------------------
     -- Set python path
-    vim.g.python3_host_prog = '/usr/local/share/anaconda/bin/python3'
+    if environment.isWindows() then
+      vim.g.python3_host_prog = vim.fn.expand'$HOME'..'/anaconda3/python.exe'
+    else
+      vim.g.python3_host_prog = '/usr/local/share/anaconda/bin/python3'
+    end
   ---------------------
   -- File configuration
   ---------------------

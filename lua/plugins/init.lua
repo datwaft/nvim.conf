@@ -5,8 +5,8 @@
 
 vim.cmd [[packadd packer.nvim]]
 
-local nocode = function()
-  return vim.fn.exists('g:vscode') == 0
+local windows = function()
+  return require'utils.environment'.isWindows()
 end
 
 local tmux = function()
@@ -17,7 +17,7 @@ local kitty = function()
   return vim.fn.exists('$KITTY_WINDOW_ID') == 1
 end
 
-return require'packer'.startup(function()
+return require'packer'.startup(function(use)
 -- =========
 -- Essential
 -- =========
@@ -39,7 +39,7 @@ return require'packer'.startup(function()
       'sainnhe/edge',
       config = require'plugins.colorscheme',
       as = 'colorscheme',
-      cond = { nocode },
+      disable = windows(),
     }
   --------------
   -- Statusline
@@ -57,17 +57,17 @@ return require'packer'.startup(function()
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
         config = require'plugins.treesitter',
-        cond = { nocode },
+        disable = windows(),
       },
       {
         'JoosepAlviste/nvim-ts-context-commentstring',
         requires = 'nvim-treesitter/nvim-treesitter',
-        cond = { nocode },
+        disable = windows(),
       },
       {
         'windwp/nvim-ts-autotag',
         requires = 'nvim-treesitter/nvim-treesitter',
-        cond = { nocode },
+        disable = windows(),
       },
     }
   -----------------------
@@ -84,7 +84,7 @@ return require'packer'.startup(function()
       'rrethy/vim-hexokinase',
       run = 'make hexokinase',
       config = require'plugins.hexokinase',
-      cond = { nocode },
+      disable = windows(),
     }
   ---------------
   -- Indent lines
@@ -93,7 +93,7 @@ return require'packer'.startup(function()
       'lukas-reineke/indent-blankline.nvim',
       branch = 'lua',
       config = require'plugins.indent_blankline',
-      cond = { nocode },
+      disable = windows(),
     }
 -- ============
 -- Text objects
@@ -159,12 +159,12 @@ return require'packer'.startup(function()
       'lewis6991/gitsigns.nvim',
       requires = { 'nvim-lua/plenary.nvim' },
       config = require'plugins.gitsigns',
-      cond = { nocode },
+      disable = windows(),
     }
     -- Execute commands
     use {
       'lambdalisue/gina.vim',
-      cond = { nocode },
+      disable = windows(),
     }
   -------------
   -- Nerd fonts
@@ -172,13 +172,13 @@ return require'packer'.startup(function()
     -- Nerd font support
     use {
       'lambdalisue/nerdfont.vim',
-      cond = { nocode },
+      disable = windows(),
     }
     -- Colorize nerd font icons
     use {
       'lambdalisue/glyph-palette.vim',
       config = require'plugins.glyph-palette',
-      cond = { nocode },
+      disable = windows(),
     }
   -------
   -- REPL
@@ -186,7 +186,7 @@ return require'packer'.startup(function()
     use {
       'jpalardy/vim-slime',
       config = require'plugins.vim-slime',
-      cond = { nocode },
+      disable = windows(),
     }
   -------
   -- Tmux
@@ -209,7 +209,7 @@ return require'packer'.startup(function()
     use {
       'mattn/emmet-vim',
       config = require'plugins.emmet',
-      cond = { nocode },
+      disable = windows(),
     }
 -- =====================
 -- Files and directories
@@ -221,7 +221,7 @@ return require'packer'.startup(function()
       'nvim-telescope/telescope.nvim',
       requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim' },
       config = require'plugins.telescope',
-      cond = { nocode },
+      disable = windows(),
     }
   ----------------
   -- File explorer
@@ -231,22 +231,22 @@ return require'packer'.startup(function()
         'lambdalisue/fern.vim',
         requires = { 'antoinemadec/FixCursorHold.nvim' },
         config = require'plugins.file-explorer',
-        cond = { nocode },
+        disable = windows(),
       },
       {
         'lambdalisue/fern-git-status.vim',
         requires = { 'lambdalisue/fern.vim' },
-        cond = { nocode },
+        disable = windows(),
       },
       {
         'lambdalisue/fern-renderer-nerdfont.vim',
         requires = { 'lambdalisue/fern.vim' },
-        cond = { nocode },
+        disable = windows(),
       },
       {
         'lambdalisue/fern-hijack.vim',
         requires = { 'lambdalisue/fern.vim' },
-        cond = { nocode },
+        disable = windows(),
       },
     }
 -- ================
@@ -257,21 +257,21 @@ return require'packer'.startup(function()
   ----------------
     use {
       'neovim/nvim-lspconfig',
-      cond = { nocode },
+      disable = windows(),
     }
   ---------------
   -- Installation
   ---------------
     use {
       'anott03/nvim-lspinstall',
-      cond = { nocode },
+      disable = windows(),
     }
   ---------
   -- Status
   ---------
     use {
       'nvim-lua/lsp-status.nvim',
-      cond = { nocode },
+      disable = windows(),
     }
   -------------
   -- Completion
@@ -279,7 +279,7 @@ return require'packer'.startup(function()
     use {
       'hrsh7th/nvim-compe',
       config = require'plugins.nvim-compe',
-      cond = { nocode },
+      disable = windows(),
     }
   ------------
   -- Aesthetic
@@ -287,7 +287,7 @@ return require'packer'.startup(function()
     use {
       'kosayoda/nvim-lightbulb',
       config = require'plugins.lightbulb',
-      cond = { nocode },
+      disable = windows(),
     }
   ------------
   -- Signature
@@ -295,7 +295,7 @@ return require'packer'.startup(function()
     use {
       'ray-x/lsp_signature.nvim',
       config = require'plugins.lsp-signature',
-      cond = { nocode },
+      disable = windows(),
     }
   -------------
   -- Extensions
@@ -303,7 +303,7 @@ return require'packer'.startup(function()
     use {
       'nvim-lua/lsp_extensions.nvim',
       config = require'plugins.lsp-extensions',
-      cond = { nocode },
+      disable = windows(),
     }
   ----------
   -- Actions
@@ -311,7 +311,7 @@ return require'packer'.startup(function()
     use {
       'glepnir/lspsaga.nvim',
       config = require'plugins.lspsaga',
-      cond = { nocode },
+      disable = windows(),
     }
   -----------
   -- Snippets
@@ -320,13 +320,13 @@ return require'packer'.startup(function()
       'hrsh7th/vim-vsnip',
       'hrsh7th/vim-vsnip-integ',
       'norcalli/snippets.nvim',
-      cond = { nocode },
+      disable = windows(),
     }
   ------------------------------
   -- SQL Language Server support
   ------------------------------
     use {
       'nanotee/sqls.nvim',
-      cond = { nocode },
+      disable = windows(),
     }
 end)
