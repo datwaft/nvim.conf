@@ -3,7 +3,8 @@
 
 (config.setup
   {:ensure_installed :maintained
-   :highlight {:enable true}
+   :highlight {:enable true
+               :additional_vim_regex_highlighting true}
    :indent {:enable false}
    :refactor {:highlight_definitions {:enable true}
               :highlight_current_scope {:enable false}
