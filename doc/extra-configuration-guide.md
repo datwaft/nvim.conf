@@ -5,9 +5,6 @@ Here are some snippets for extra configuration.
 ## Git configuration
 
 ```shell
-git config --global user.name "datwaft"
-git config --global user.email "datwaftx@gmail.com"
-git config --global core.editor nvim
 ssh-keygen -t rsa -C "datwaftx@gmail.com"
 xclip < ~/.ssh/id_rsa.pub
 ```
@@ -23,4 +20,3 @@ In a terminal/shell, type the following to test it:
 ```shell
 ssh -T git@github.com
 ```
-

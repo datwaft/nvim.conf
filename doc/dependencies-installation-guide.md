@@ -2,7 +2,7 @@
 
 My *neovim* *dotfiles* require some extra dependencies. Here is the guide about how to install them.
 
-## LuaRocks
+## Lua & LuaRocks
 
 This was extracted from this [link](https://github.com/luarocks/luarocks/wiki/Installation-instructions-for-Unix).
 
@@ -26,22 +26,18 @@ sudo make install
 
 ## Go
 
-Go to <https://golang.org/dl/> and copy the link for Linux. (Our example link is: `https://golang.org/dl/go1.14.6.linux-amd64.tar.gz`).
+This is needed for [vim-hexokinase](https://github.com/RRethy/vim-hexokinase).
 
-```shell
-mkdir ~/downloads 2> /dev/null; cd ~/downloads
-wget https://golang.org/dl/go1.14.6.linux-amd64.tar.gz -O go.tar.gz
-# Extract Go to /usr/local/share
-sudo tar -C /usr/local/share -xzf go.tar.gz
-```
+For Go you can use [Go Version Manager](https://github.com/moovweb/gvm).
 
 ## Node
 
-This is required for _coc.nvim_:
+For Node you can use [Node Version Manager](https://github.com/nvm-sh/nvm).
 
-```shell
-# Install node
-nvm install node
-# Install node neovim package
-npm install -g neovim
-```
+## Telescope dependencies
+
+Must have:
+- [ripgrep](https://github.com/BurntSushi/ripgrep) (finder)
+Optional:
+- [bat](https://github.com/sharkdp/bat) (preview)
+- [fd](https://github.com/sharkdp/fd) (finder)

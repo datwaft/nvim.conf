@@ -7,14 +7,14 @@ Welcome to the *neovim* installation guide. For extra information about alternat
 Please update your *Linux* package manager before installing anything. You can do it like this:
 
 ```sh
-sudo apt-get update
-sudo apt-get upgrade
+sudo apt update
+sudo apt upgrade
 ```
 
 Also, to download neovim you need *git*:
 
 ```shell
-sudo apt-get install -y git
+sudo apt install -y git
 ```
 
 ## 1. Getting build essentials
@@ -41,9 +41,9 @@ These are the essentials for building neovim:
 You can get these essentials like this:
 
 ```shell
-sudo apt-get install -y build-essential ninja-build gettext libtool libtool-bin autoconf automake cmake pkg-config unzip
+sudo apt install -y build-essential ninja-build gettext libtool libtool-bin autoconf automake cmake pkg-config unzip
 # Only if you use Debian like me.
-sudo apt-get install -y mercurial
+sudo apt install -y mercurial
 ```
 
 ## 2.  Building and installing *neovim* from source
@@ -53,10 +53,10 @@ These steps will install neovim to `/usr/local`, if you want to install it in an
 ```bash
 # 1. Go to the directory where you want to download neovim.
 mkdir ~/downloads 2> /dev/null; cd ~/downloads
-# 2. Download neovim (this will download the latest bleeding-edge version)
+# 2. Download neovim (this will download the latest cutting-edge version)
 git clone https://github.com/neovim/neovim && cd neovim
 # 3. Build neovim
-make CMAKE_BUILD_TYPE=Release
+sudo make CMAKE_BUILD_TYPE=Release
 # 4. Install neovim to /usr/local
 sudo make install
 ```
