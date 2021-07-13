@@ -25,6 +25,7 @@ package-lock.json
 
 # Packer files
 plugin/packer_compiled.vim
+/plugin/
 
 # Fennel compilation
 lua/
