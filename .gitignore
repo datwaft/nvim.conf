@@ -25,3 +25,9 @@ package-lock.json
 
 # Packer files
 plugin/packer_compiled.vim
+
+# Fennel compilation
+lua/
+
+# Spelling dictionaries
+spell/
