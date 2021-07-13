@@ -32,7 +32,7 @@
                         :vsnip false
                         :ultisnips false
                         :luasnip false
-                        :omni false
+                        :omni {:filetypes [:tex]}
                         }})
 
 (m.inoremap [:override :expr :silent] "<C-Space>" "compe#complete()")
