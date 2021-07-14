@@ -1,5 +1,6 @@
 (module core.plugin.treesitter
-  {autoload {config nvim-treesitter.configs}})
+  {autoload {config nvim-treesitter.configs}
+   require-macros [core.macros]})
 
 (config.setup
   {:ensure_installed :maintained
@@ -32,5 +33,5 @@
    :context_commentstring {:enable true}
    :autotag {:enable true}})
 
-(set vim.opt.foldmethod :expr)
-(vim.cmd "set foldexpr=nvim_treesitter#foldexpr()")
+(set! foldmethod :expr)
+(set! foldexpr "nvim_treesitter#foldexpr()")

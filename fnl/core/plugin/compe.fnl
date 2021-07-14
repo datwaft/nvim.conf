@@ -1,9 +1,9 @@
 (module core.plugin.compe
   {autoload {plugin compe
-             a aniseed.core ; TODO: delete this
-             m vimp}})
+             m vimp}
+   require-macros [core.macros]})
 
-(set vim.opt.completeopt [:menuone :noselect])
+(set! completeopt [:menuone :noselect])
 
 (plugin.setup {:enabled true
                :autocomplete true
