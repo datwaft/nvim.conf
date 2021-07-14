@@ -1,9 +1,10 @@
-(module core.plugin.hexokinase)
+(module core.plugin.hexokinase
+  {require-macros [core.macros]})
 
-(set vim.g.Hexokinase_highlighters [:virtual])
-(set vim.g.Hexokinase_optInPatterns [:full_hex
-                                     :triple_hex
-                                     :rgb
-                                     :rgba
-                                     :hsl
-                                     :hsla])
+(let! Hexokinase_highlighters [:virtual])
+(let! Hexokinase_optInPatterns [:full_hex
+                                :triple_hex
+                                :rgb
+                                :rgba
+                                :hsl
+                                :hsla])

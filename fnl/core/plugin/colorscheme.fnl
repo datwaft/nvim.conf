@@ -1,8 +1,9 @@
 (module core.plugin.colorscheme
-  {autoload {nvim aniseed.nvim}})
+  {autoload {nvim aniseed.nvim}
+   require-macros [core.macros]})
 
-(set vim.g.edge_style :default)
-(set vim.g.edge_enable_italic 1)
-(set vim.g.edge_current_word :underline)
-(set vim.g.edge_diagnostic_virtual_text :colored)
+(let! edge_style :default)
+(let! edge_enable_italic 1)
+(let! edge_current_word :underline)
+(let! edge_diagnostic_virtual_text :colored)
 (nvim.ex.colorscheme :edge)
