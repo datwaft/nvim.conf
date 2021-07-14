@@ -13,6 +13,13 @@
 (def- root_path (.. (vim.fn.expand "~") "/.local/share/nvim/lspinstall/lua-language-server"))
 (def- binary (.. root_path "/bin/" system_name "/lua-language-server"))
 
+(defn- deep-merge [t1 t2]
+  (each [k v (pairs t2)]
+    (if
+      (and (a.table? v) (a.table? (. t1 k))) (deep-merge (. t1 k) (. t2 k))
+      (tset t1 k v)))
+  t1)
+
 ;;; ====================
 ;;; Bash Language Server
 ;;; ====================
@@ -35,10 +42,11 @@
 ;;; Lua Language Server
 ;;; ===================
 
-(config.sumneko_lua.setup (lua-dev.setup {:lspconfig 
+(config.sumneko_lua.setup (deep-merge (lua-dev.setup {:lspconfig 
                                           (a.merge
                                             global-options
-                                            {:cmd [binary "-E" (.. root_path "/main.lua")]})}))
+                                            {:cmd [binary "-E" (.. root_path "/main.lua")]})})
+                                   {:settings {:Lua {:workspace {:preloadFileSize 500}}}}))
 
 ;;; ======================
 ;;; Python Language Server
