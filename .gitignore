@@ -24,11 +24,10 @@ node_modules/
 package-lock.json
 
 # Packer files
-plugin/packer_compiled.vim
-/plugin/
+plugin/
 
 # Fennel compilation
-lua/
+lua/core/
 
 # Spelling dictionaries
 spell/
