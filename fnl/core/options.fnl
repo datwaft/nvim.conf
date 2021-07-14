@@ -1,4 +1,5 @@
-(module core.options)
+(module core.options
+  {require-macros [core.macros]})
 
 ;;; =========================
 ;;; Local variable definition
@@ -12,7 +13,7 @@
 ;;; =========================
 
 ; Define python binary
-(set vim.g.python3_host_prog "/usr/bin/python3")
+(let! python3_host_prog "/home/linuxbrew/.linuxbrew/bin/python3")
 
 ;;; ====================
 ;;; Editor configuration
@@ -22,55 +23,55 @@
 ;; File configuration
 ;; ------------------
 ; Do not write backups
-(set vim.opt.backup false)
-(set vim.opt.writebackup false)
+(set! nobackup)
+(set! nowritebackup)
 ; Do not create swap files
-(set vim.opt.swapfile false)
+(set! noswapfile)
 
 ;; -------------------------
 ;; Indentation configuration
 ;; -------------------------
 ; Use spaces instead of tabs
-(set vim.opt.expandtab true)
+(set! expandtab)
 ; More intelligent indentation
-(set vim.opt.smarttab true)
+(set! smarttab)
 ; Number of spaces used for each <Tab> and auto-indent
 (let [value 2]
-  (set vim.opt.tabstop value)
-  (set vim.opt.shiftwidth value)
-  (set vim.opt.softtabstop value))
+  (set! tabstop value)
+  (set! shiftwidth value)
+  (set! softtabstop value))
 
 ;; ----------------------
 ;; Wrapping configuration
 ;; ----------------------
 ; Enable soft-wrapping
-(set vim.opt.wrap true)
+(set! wrap)
 ; Do no break words at the middle
-(set vim.opt.linebreak false)
+(set! nolinebreak)
 ; Maintain indentation on break
-(set vim.opt.breakindent true)
+(set! breakindent)
 ; Add characters after wrap
-(set vim.opt.breakindentopt ["shift:2"])
+(set! breakindentopt ["shift:2"])
 ; Show character after wrap
-(set vim.opt.showbreak "↳ ")
+(set! showbreak "↳ ")
 
 ;; --------------------
 ;; Format configuration
 ;; --------------------
-(set vim.opt.formatoptions [:q :j])
+(set! formatoptions [:q :j])
 
 ;; ----------------------------
 ;; Spell-checking configuration
 ;; ----------------------------
-(set vim.opt.spell true)
-(set vim.opt.spelllang [:en])
-(set vim.opt.spelloptions  [:camel])
+(set! spell)
+(set! spelllang [:en])
+(set! spelloptions [:camel])
 
 ;; ----------------
 ;; Undo persistence
 ;; ----------------
-(set vim.opt.undodir (.. configuration-folder "/undodir.nvim"))
-(set vim.opt.undofile true)
+(set! undodir (.. configuration-folder "/undodir.nvim"))
+(set! undofile)
 
 ;;; ======================
 ;;; Terminal configuration
@@ -79,7 +80,7 @@
 ;; -------------
 ;; Mouse support
 ;; -------------
-(set vim.opt.mouse :a)
+(set! mouse :a)
 
 ;;; ====================
 ;;; Visual configuration
@@ -88,63 +89,63 @@
 ;; ----------
 ;; True color
 ;; ----------
-(set vim.opt.termguicolors true)
+(set! termguicolors)
 
 ;; -----------
 ;; Line number
 ;; -----------
-(set vim.opt.number true)
-(set vim.opt.relativenumber true)
+(set! number)
+(set! relativenumber)
 
 ;; -------------------
 ;; Search highlighting
 ;; -------------------
-(set vim.opt.hlsearch false)
+(set! nohlsearch)
 
 ;; ---------------------
 ;; Conceal configuration
 ;; ---------------------
-(set vim.opt.concealcursor "")
+(set! concealcursor "")
 
 ;; --------------------
 ;; Status configuration
 ;; --------------------
-(set vim.opt.showmode false)
+(set! noshowmode)
 
 ;; --------------------
 ;; Column configuration
 ;; --------------------
-(set vim.opt.colorcolumn [81])
+(set! colorcolumn [81])
 
 ;; ------------------------
 ;; Characters configuration
 ;; ------------------------
 ; Show whitespace characters
-(set vim.opt.list true)
+(set! list)
 ; Define characters
-(set vim.opt.listchars {:trail "·"
-                        :tab "→ "
-                        :nbsp "·"})
+(set! listchars {:trail "·"
+                 :tab "→ "
+                 :nbsp "·"})
 
 ;; -----------
 ;; Sign column
 ;; -----------
 ; Always show sign column
-(set vim.opt.signcolumn "yes")
+(set! signcolumn "yes")
 
 ;; ------------------
 ;; Fold configuration
 ;; ------------------
 ; Start with everything unfolded
-(set vim.opt.foldlevelstart 99)
+(set! foldlevelstart 99)
 ; Function that generates folding
 (tset _G :__core_foldtext
       (fn []
         (vim.fn.printf "   %-6d%s"
                        (- vim.v.foldend (+ vim.v.foldstart 1))
                        (vim.fn.getline vim.v.foldstart))))
-(set vim.opt.fillchars "fold: ")
-(set vim.opt.foldtext "v:lua.__core_foldtext()")
+(set! fillchars "fold: ")
+(set! foldtext "v:lua.__core_foldtext()")
 
 ;;; ========================
 ;;; Completion configuration
@@ -153,15 +154,15 @@
 ;; ----------------------
 ;; Insert-mode completion
 ;; ----------------------
-(set vim.opt.infercase true)
-(: vim.opt.shortmess :append :c)
+(set! infercase)
+(set! shortmess+ :c)
 
 ;; -----------------------
 ;; Command-mode completion
 ;; -----------------------
-(set vim.opt.wildmenu true)
-(set vim.opt.wildcharm 9) ; <Tab>
-(set vim.opt.wildignorecase true)
+(set! wildmenu)
+(set! wildcharm 9) ; <Tab>
+(set! wildignorecase)
 
 ;;; =====================
 ;;; Command configuration
@@ -170,14 +171,14 @@
 ;; ------------------
 ;; Search and replace
 ;; ------------------
-(set vim.opt.ignorecase true)
-(set vim.opt.smartcase true)
+(set! ignorecase)
+(set! smartcase)
 
 ;; ------------
 ;; Substitution
 ;; ------------
 ; Use g option by default
-(set vim.opt.gdefault true)
+(set! gdefault)
 
 ;;; ===========================
 ;;; Miscellaneous configuration
@@ -187,30 +188,29 @@
 ;; Paste mode
 ;; ----------
 ; Toggle mapping
-(set vim.opt.pastetoggle "<F3>")
+(set! pastetoggle "<F3>")
 
 ;; ---------
 ;; Diff-mode
 ;; ---------
-(set vim.opt.diffopt [:filler :internal :indent-heuristic :algorithm:histogram])
+(set! diffopt [:filler :internal :indent-heuristic :algorithm:histogram])
 
 ;; ---------
 ;; Backspace
 ;; ---------
-(set vim.opt.backspace [:indent :eol :start])
+(set! backspace [:indent :eol :start])
 
 ;; -----------
 ;; Lazy redraw
 ;; -----------
-(set vim.opt.lazyredraw true)
+(set! lazyredraw)
 
 ;; ------
 ;; Hidden
 ;; ------
-(set vim.opt.hidden true)
-
+(set! hidden)
 
 ;; -----------
 ;; LocalLeader
 ;; -----------
-(vim.cmd "let maplocalleader = \" \"")
+(let! maplocalleader " ")
