@@ -139,11 +139,9 @@
 ; Start with everything unfolded
 (set! foldlevelstart 99)
 ; Function that generates folding
-(tset _G :__core_foldtext
-      (fn []
-        (vim.fn.printf "   %-6d%s"
-                       (- vim.v.foldend (+ vim.v.foldstart 1))
-                       (vim.fn.getline vim.v.foldstart))))
+(global __core_foldtext #(vim.fn.printf "   %-6d%s"
+                                        (- vim.v.foldend (+ vim.v.foldstart 1))
+                                        (vim.fn.getline vim.v.foldstart)))
 (set! fillchars "fold: ")
 (set! foldtext "v:lua.__core_foldtext()")
 
