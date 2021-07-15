@@ -1,4 +1,4 @@
-(module core.autocmd!
+(module core.autocmd
   {require-macros [core.macros]})
 
 ; Restore cursor on exit
