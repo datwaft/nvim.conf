@@ -4,8 +4,8 @@
 # Created by: datwaft [github.com/datwaft]
 
 # NeoVim undo directory
-undodir.vim/
-undodir.nvim/
+/undodir.vim/
+/undodir.nvim/
 
 # Temporal files
 *.temp
@@ -19,15 +19,11 @@ tags.lock
 tags
 .netrwhist
 
-# Node files
-node_modules/
-package-lock.json
-
 # Packer files
-plugin/
+/plugin/
 
 # Fennel compilation
-lua/core/
+/lua/core/
 
 # Spelling dictionaries
-spell/
+/spell/
