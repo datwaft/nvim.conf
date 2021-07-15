@@ -1,14 +1,6 @@
 ; Use the globals inside the macros
 (require :core.globals)
 
-(fn augroup [name ...]
-  "Create an augroup for your autocmds"
-  `(do
-     (vim.cmd (.. "augroup " ,(tostring name) "\nautocmd!"))
-     ,...
-     (vim.cmd "augroup END")
-     nil))
-
 (fn get? [name]
   (let [name (tostring name)
         name (if (= (name:sub 1 2) "no") (name:sub 3) name)]
@@ -51,7 +43,33 @@
       "t" `(tset vim.t ,name ,value)
       _ `(tset vim.g ,name ,value))))
 
-{: augroup
- : get?
+(fn augroup! [name ...]
+  `(do
+     (vim.cmd (.. "augroup " ,(tostring name) "\nautocmd!"))
+     ,...
+     (vim.cmd "augroup END")
+     nil))
+
+(global __autocmd_id 0)
+(fn autocmd! [events pattern command]
+  (let [events (if (sequence? events) events [events])
+        events (join "," events)
+        pattern (if (sequence? pattern) pattern [pattern])
+        pattern (join "," pattern)]
+    (if (string? command)
+      `(vim.cmd ,(.. "autocmd " events " " pattern " " command))
+      (let [name (.. "__autocmd_"
+                     (do
+                       (global __autocmd_id (inc __autocmd_id))
+                       __autocmd_id))]
+        `(vim.cmd (..
+                    ,(.. "autocmd " events " " pattern " ")
+                    (do
+                      (tset _G ,name ,command)
+                      ,(.. "call v:lua." name "()"))))))))
+
+{: get?
  : set!
- : let!}
+ : let!
+ : augroup!
+ : autocmd!}
