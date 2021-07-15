@@ -1,3 +1,6 @@
+; Use the globals inside the macros
+(require :core.globals)
+
 (fn augroup [name ...]
   "Create an augroup for your autocmds"
   `(do
@@ -15,7 +18,7 @@
 (fn set! [name value]
   "Set vim option with vim.opt"
   (let [name (tostring name)
-        value-is-nil? (= nil value)
+        value-is-nil? (nil? value)
         name-begins-with-no? (= (name:sub 1 2) "no")
         name (if (and value-is-nil? name-begins-with-no?)
                (name:sub 3)
@@ -34,18 +37,13 @@
       "^" `(: (. vim.opt ,name-without-last-character) :prepend ,value)
       _ `(tset vim.opt ,name ,value))))
 
-(fn contains? [list element]
-  (> (length (icollect [_ it (ipairs list)]
-               (when (= it element) it)))
-     0))
-
 (fn let! [name value]
   "Set vim variable with vim.[g b w t]"
   (let [name (tostring name)
-        scope (if (contains? ["g/" "b/" "w/" "t/"] (name:sub 1 2))
+        scope (if (any #(= $ (name:sub 1 2)) ["g/" "b/" "w/" "t/"])
                 (name:sub 1 1)
                 nil)
-        name (if (= nil scope) name (name:sub 3))]
+        name (if (nil? scope) name (name:sub 3))]
     (match scope
       "g" `(tset vim.g ,name ,value)
       "b" `(tset vim.b ,name ,value)
@@ -56,5 +54,4 @@
 {: augroup
  : get?
  : set!
- : contains?
  : let!}
