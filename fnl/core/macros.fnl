@@ -52,8 +52,8 @@
 
 (global __autocmd_id 0)
 (fn autocmd! [events pattern command]
-  (let [events (join "," (if (sequence? events) events [events]))
-        pattern (join "," (if (sequence? pattern) pattern [pattern]))]
+  (let [events (join "," (totable (map tostring (if (sequence? events) events [events]))))
+        pattern (join "," (totable (map tostring (if (sequence? pattern) pattern [pattern]))))]
     (if (string? command)
       `(vim.cmd ,(.. "autocmd " events " " pattern " " command))
       (let [name (.. "__autocmd_"

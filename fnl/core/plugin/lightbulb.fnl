@@ -3,7 +3,7 @@
    require-macros [core.macros]})
 
 (augroup! update-lightbulb
-          (autocmd! [:CursorHold :CursorHoldI] "*"
+          (autocmd! [CursorHold CursorHoldI] *
                     #(plugin.update_lightbulb {:sign {:enabled false}
                                                :virtual_text {:enabled true
                                                               :text ""}})))
