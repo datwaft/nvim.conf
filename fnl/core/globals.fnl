@@ -35,3 +35,5 @@
 ; Add all functional lua functions to globals
 (each [key val (pairs fun)]
   (tset _G key val))
+
+(global function? (fn [value] (= (type value) :function)))
