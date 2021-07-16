@@ -52,10 +52,8 @@
 
 (global __autocmd_id 0)
 (fn autocmd! [events pattern command]
-  (let [events (if (sequence? events) events [events])
-        events (join "," events)
-        pattern (if (sequence? pattern) pattern [pattern])
-        pattern (join "," pattern)]
+  (let [events (join "," (if (sequence? events) events [events]))
+        pattern (join "," (if (sequence? pattern) pattern [pattern]))]
     (if (string? command)
       `(vim.cmd ,(.. "autocmd " events " " pattern " " command))
       (let [name (.. "__autocmd_"
@@ -65,7 +63,7 @@
         `(vim.cmd (..
                     ,(.. "autocmd " events " " pattern " ")
                     (do
-                      (tset _G ,name ,command)
+                      (global ,(sym name) ,command)
                       ,(.. "call v:lua." name "()"))))))))
 
 {: get?
