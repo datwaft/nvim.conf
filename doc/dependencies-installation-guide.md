@@ -38,6 +38,7 @@ For Node you can use [Node Version Manager](https://github.com/nvm-sh/nvm).
 
 Must have:
 - [ripgrep](https://github.com/BurntSushi/ripgrep) (finder)
+
 Optional:
 - [bat](https://github.com/sharkdp/bat) (preview)
 - [fd](https://github.com/sharkdp/fd) (finder)
