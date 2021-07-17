@@ -47,7 +47,7 @@
                      (-> (vim.fn.getline ".")
                          (: :sub col col)
                          (: :match "%s"))))]
-    (if (a.nil? result)
+    (if (nil? result)
       false
       result)))
 
