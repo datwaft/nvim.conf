@@ -5,7 +5,7 @@
 (fn gensym-fn! []
   (.. "__core_symfn_"
       (do
-        (global __core_symfn_id (inc __core_symfn_id))
+        (global __core_symfn_id (+ __core_symfn_id 1))
         __core_symfn_id)))
 
 (fn get? [name]
@@ -23,7 +23,7 @@
 (fn set! [name value]
   "Set vim option with vim.opt"
   (let [name (tostring name)
-        value-is-nil? (nil? value)
+        value-is-nil? (= nil value)
         name-begins-with-no? (= (name:sub 1 2) "no")
         name (if (and value-is-nil? name-begins-with-no?)
                (name:sub 3)
@@ -54,7 +54,7 @@
 (fn set-local! [name value]
   "Set vim option with vim.opt_local"
   (let [name (tostring name)
-        value-is-nil? (nil? value)
+        value-is-nil? (= nil value)
         name-begins-with-no? (= (name:sub 1 2) "no")
         name (if (and value-is-nil? name-begins-with-no?)
                (name:sub 3)
@@ -74,9 +74,9 @@
                                      (global ,(sym symbol) ,value)
                                      ,(.. "v:lua." symbol "()"))))
       (match name-last-character
-        "?" `(get? ,name-without-last-character)
+        "?" `(get-local? ,name-without-last-character)
         "!" `(tset vim.opt_local ,name-without-last-character
-                   (not (get? ,name-without-last-character)))
+                   (not (get-local? ,name-without-last-character)))
         "+" `(: (. vim.opt_local ,name-without-last-character) :append ,value)
         "-" `(: (. vim.opt_local ,name-without-last-character) :remove ,value)
         "^" `(: (. vim.opt_local ,name-without-last-character) :prepend ,value)
@@ -85,10 +85,11 @@
 (fn let! [name value]
   "Set vim variable with vim.[g b w t]"
   (let [name (tostring name)
-        scope (if (any #(= $ (name:sub 1 2)) ["g/" "b/" "w/" "t/"])
+        scope (if (> (length (icollect [_ v (ipairs ["g/" "b/" "w/" "t/"])]
+                               (when (= (name:sub 1 2) v) v))) 0)
                 (name:sub 1 1)
                 nil)
-        name (if (nil? scope) name (name:sub 3))]
+        name (if (= nil scope) name (name:sub 3))]
     (match scope
       "g" `(tset vim.g ,name ,value)
       "b" `(tset vim.b ,name ,value)
@@ -105,9 +106,11 @@
      nil))
 
 (fn autocmd! [events pattern command]
-  (let [events (join "," (totable (map tostring (if (sequence? events) events [events]))))
-        pattern (join "," (totable (map tostring (if (sequence? pattern) pattern [pattern]))))]
-    (if (string? command)
+  (let [events (table.concat (icollect [_ v (ipairs (if (sequence? events) events [events]))]
+                               (tostring v)) ",")
+        pattern (table.concat (icollect [_ v (ipairs (if (sequence? pattern) pattern [pattern]))]
+                                (tostring v)) ",")]
+    (if (not (list? command))
       `(vim.cmd ,(.. "autocmd " events " " pattern " " command))
       (let [name (gensym-fn!)]
         `(vim.cmd (..
