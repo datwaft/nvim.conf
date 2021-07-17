@@ -1,6 +1,5 @@
 (module core.plugin.camel-case-motion
-  {autoload {a aniseed.core
-             m vimp}})
+  {autoload {m vimp}})
 
 (m.nmap [:override :silent] "<leader>w" "<Plug>CamelCaseMotion_w")
 (m.vmap [:override :silent] "<leader>w" "<Plug>CamelCaseMotion_w")

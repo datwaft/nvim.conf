@@ -1,6 +1,5 @@
 (module core.mapping
-  {autoload {m vimp
-             a aniseed.core}})
+  {autoload {m vimp}})
 
 ; Use <space> to close wildmenu
 (m.cnoremap [:override :expr] "<space>"

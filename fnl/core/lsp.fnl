@@ -1,6 +1,5 @@
 (module core.lsp
-  {autoload {a aniseed.core
-             config lspconfig
+  {autoload {config lspconfig
              lua-dev lua-dev
              signature lsp_signature}})
 
@@ -16,7 +15,7 @@
 (defn- deep-merge [t1 t2]
   (each [k v (pairs t2)]
     (if
-      (and (a.table? v) (a.table? (. t1 k))) (deep-merge (. t1 k) (. t2 k))
+      (and (table? v) (table? (. t1 k))) (deep-merge (. t1 k) (. t2 k))
       (tset t1 k v)))
   t1)
 
@@ -24,26 +23,26 @@
 ;;; Bash Language Server
 ;;; ====================
 
-(config.bashls.setup (a.merge global-options {}))
+(config.bashls.setup (merge global-options {}))
 
 ;;; =========================
 ;;; C and CPP Language Server
 ;;; =========================
 
-(config.clangd.setup (a.merge global-options {}))
+(config.clangd.setup (merge global-options {}))
 
 ;;; =====================
 ;;; CMake Language Server
 ;;; =====================
 
-(config.cmake.setup (a.merge global-options {}))
+(config.cmake.setup (merge global-options {}))
 
 ;;; ===================
 ;;; Lua Language Server
 ;;; ===================
 
 (config.sumneko_lua.setup (deep-merge (lua-dev.setup {:lspconfig 
-                                          (a.merge
+                                          (merge
                                             global-options
                                             {:cmd [binary "-E" (.. root_path "/main.lua")]})})
                                    {:settings {:Lua {:workspace {:preloadFileSize 500}}}}))
@@ -52,28 +51,28 @@
 ;;; Python Language Server
 ;;; ======================
 
-(config.pyright.setup (a.merge global-options {}))
+(config.pyright.setup (merge global-options {}))
 
 ;;; =================
 ;;; R Language Server
 ;;; =================
 
-(config.r_language_server.setup (a.merge global-options {}))
+(config.r_language_server.setup (merge global-options {}))
 
 ;;; ====================
 ;;; Rust Language Server
 ;;; ====================
 
-(config.rust_analyzer.setup (a.merge global-options {}))
+(config.rust_analyzer.setup (merge global-options {}))
 
 ;;; =========================================
 ;;; Javascript and Typescript Language Server
 ;;; =========================================
 
-(config.tsserver.setup (a.merge global-options {}))
+(config.tsserver.setup (merge global-options {}))
 
 ;;; ===================
 ;;; Vue Language Server
 ;;; ===================
 
-(config.vuels.setup (a.merge global-options {}))
+(config.vuels.setup (merge global-options {}))
