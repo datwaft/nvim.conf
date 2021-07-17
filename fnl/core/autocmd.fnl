@@ -4,7 +4,7 @@
 ; Restore cursor on exit
 (augroup! restore-cursor-on-exit
           (autocmd! VimLeave *
-                    "set guicursor=a:ver100-blinkon0"))
+                    #(set! guicursor ["a:ver100-blinkon0"])))
 
 ; Automatically resize splits when window is resized
 (augroup! resize-splits-on-resize
@@ -32,7 +32,7 @@
 ; Disable spell in certain filetypes
 (augroup! disable-spell-on-filetypes
           (autocmd! FileType [help packer]
-                    "setlocal nospell"))
+                    #(set-local! nospell)))
 
 ; Set terminal options
 (augroup! terminal-options
@@ -41,10 +41,12 @@
                     "startinsert")
           ; Disables line number on terminal buffers
           (autocmd! TermOpen *
-                    "setlocal nonumber norelativenumber")
+                    #(do
+                       (set-local! nonumber)
+                       (set-local! norelativenumber)))
           ; Disables spell on terminal buffers
           (autocmd! TermOpen *
-                    "setlocal nospell")
+                    #(set-local! nospell))
           ; Disables sign column on terminal buffers
           (autocmd! TermOpen *
-                    "setlocal signcolumn=\"no\""))
+                    #(set-local! signcolumn :no)))
