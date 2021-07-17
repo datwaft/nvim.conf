@@ -15,7 +15,7 @@
 (augroup! read-file-on-disk-change
           (autocmd! [FocusGained BufEnter CursorHold CursorHoldI] *
                     #(if (and
-                           (~= (vim.fn.mode) "c")
+                           (not= (vim.fn.mode) "c")
                            (= (vim.fn.bufexists "[Command Line]") 0))
                        (vim.cmd "checktime")))
           (autocmd! FileChangedShellPost *
