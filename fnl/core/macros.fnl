@@ -99,7 +99,8 @@
 (fn augroup! [name ...]
   `(do
      (vim.cmd (.. "augroup " ,(tostring name) "\nautocmd!"))
-     ,...
+     (do
+       ,...)
      (vim.cmd "augroup END")
      nil))
 
