@@ -1,6 +1,3 @@
-; Use the globals inside the macros
-(require :core.globals)
-
 (global __core_symfn_id 0)
 (fn gensym-fn! []
   (.. "__core_symfn_"
@@ -36,8 +33,8 @@
     (if (and 
           (list? value)
           (or
-            (= (tostring (head value)) :hashfn)
-            (= (tostring (head value)) :fn)))
+            (= (tostring (. value 1)) :hashfn)
+            (= (tostring (. value 1)) :fn)))
       (let [symbol (gensym-fn!)]
         `(tset vim.opt ,name (do
                                (global ,(sym symbol) ,value)
@@ -67,8 +64,8 @@
     (if (and 
           (list? value)
           (or
-            (= (tostring (head value)) :hashfn)
-            (= (tostring (head value)) :fn)))
+            (= (tostring (. value 1)) :hashfn)
+            (= (tostring (. value 1)) :fn)))
       (let [symbol (gensym-fn!)]
         `(tset vim.opt_local ,name (do
                                      (global ,(sym symbol) ,value)
