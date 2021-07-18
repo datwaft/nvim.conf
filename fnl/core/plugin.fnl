@@ -149,6 +149,11 @@
   ;; ----------------
   "aserowy/tmux.nvim" {:config (req :tmux)}
 
+  ;; ---------------
+  ;; FZF integration
+  ;; ---------------
+  "junegunn/fzf" {:run "./install --all"}
+
   ;;; =====================
   ;;; Files and directories
   ;;; =====================
@@ -227,6 +232,11 @@
   ;; Actions
   ;; -------
   "glepnir/lspsaga.nvim" {:config (req :lspsaga)}
+
+  ;; ---------------
+  ;; Quickfix window
+  ;; ---------------
+  "kevinhwang91/nvim-bqf" {}
 
   ;;; =========
   ;;; Essential
