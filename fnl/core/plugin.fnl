@@ -214,7 +214,7 @@
   "ray-x/lsp_signature.nvim" {}
 
   ;; ---------------
-  ;; Lua Development
+  ;; Lua development
   ;; ---------------
   "folke/lua-dev.nvim" {}
 
