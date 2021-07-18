@@ -3,7 +3,11 @@
              lua-dev lua-dev
              signature lsp_signature}})
 
-(def- global-options {:on_attach #(signature.on_attach)})
+(def- global-options {:on_attach (fn [client bufnr]
+                                   (signature.on_attach {:bind true
+                                                         :fix_pos true
+                                                         :hint_enable false
+                                                         :handler_opts {:border "single"}}))})
 
 (def- system_name (if
                     (= 1 (vim.fn.has "mac")) "macOS"
