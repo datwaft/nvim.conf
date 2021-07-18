@@ -189,6 +189,11 @@
   ;; ---------
   "Pocco81/AutoSave.nvim" {}
 
+  ;; ----------------------
+  ;; Better quickfix window
+  ;; ----------------------
+  "kevinhwang91/nvim-bqf" {}
+
   ;;; ==============================
   ;;; Language Server Protocol (LSP)
   ;;; ==============================
