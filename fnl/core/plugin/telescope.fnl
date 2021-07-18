@@ -1,17 +1,16 @@
 (module core.plugin.telescope
-  {autoload {m vimp
-             plugin telescope
-             actions telescope.actions}})
+  {autoload {plugin telescope
+             actions telescope.actions}
+   require-macros [core.macros]})
 
 ;; Find files using Telescope command-line sugar
-(m.nnoremap [:override] "<leader>ff" "<cmd>Telescope find_files<cr>")
-(m.nnoremap [:override] "<leader>fg" "<cmd>Telescope live_grep<cr>")
-(m.nnoremap [:override] "<leader>fb" "<cmd>Telescope buffers<cr>")
-(m.nnoremap [:override] "<leader>fh" "<cmd>Telescope help_tags<cr>")
+(noremap! [n] "<leader>ff" "<cmd>Telescope find_files<cr>")
+(noremap! [n] "<leader>fg" "<cmd>Telescope live_grep<cr>")
+(noremap! [n] "<leader>fb" "<cmd>Telescope buffers<cr>")
+(noremap! [n] "<leader>fh" "<cmd>Telescope help_tags<cr>")
 
 ;; Suggest spelling
-(m.nnoremap [:override :silent] "zf"
-            "<cmd>lua require'telescope.builtin'.spell_suggest{}<cr>")
+(noremap! [n] "zf" "<cmd>lua require'telescope.builtin'.spell_suggest{}<cr>" :silent)
 
 ;; Configure telescope
 (plugin.setup {:defaults {:mappings {:i {"<ESC>" actions.close

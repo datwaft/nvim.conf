@@ -121,6 +121,33 @@
            (vim.cmd ,(string.format "autocmd %s %s call v:lua.%s()"
                                     events pattern name)))))))
 
+(fn map! [mode-list combination command ...]
+  (let [mode-list (tostring (if (sequence? mode-list) (. mode-list 1) mode-list))
+        combination (tostring combination)
+        options (collect [_ option (ipairs [...])]
+                  (values (tostring option) true))
+        out []]
+    (if (and
+          (list? command)
+          (or
+            (= (tostring (. command 1)) :hashfn)
+            (= (tostring (. command 1)) :fn)))
+      (let [name (gensym-fn!)]
+        (table.insert out `(global ,(sym name) ,command))
+        (each [mode (string.gmatch mode-list ".")]
+          (table.insert out `(vim.api.nvim_set_keymap ,mode ,combination ,(string.format "v:lua.%s()" name) ,options))))
+      (each [mode (string.gmatch mode-list ".")]
+        (table.insert out `(vim.api.nvim_set_keymap ,mode ,combination ,(tostring command) ,options))))
+    (if (> (length out) 1)
+      `(do ,(unpack out))
+      `,(unpack out))))
+
+(fn noremap! [mode-list combination command ...]
+  `(map! ,mode-list ,combination ,command :noremap ,...))
+
+(fn t [combination]
+  `(vim.api.nvim_replace_termcodes ,(tostring combination) true true true))
+
 {: gensym-fn!
  : get?
  : get-local?
@@ -128,4 +155,7 @@
  : set-local!
  : let!
  : augroup!
- : autocmd!}
+ : autocmd!
+ : map!
+ : noremap!
+ : t}

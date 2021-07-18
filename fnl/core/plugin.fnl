@@ -242,11 +242,6 @@
   ;; ---------------
   "Olical/conjure" {}
 
-  ;; -----------------------
-  ;; Mapping with Lua/Fennel
-  ;; -----------------------
-  "svermeulen/vimpeccable" {}
-
   ;; --------------
   ;; Plugin manager
   ;; --------------

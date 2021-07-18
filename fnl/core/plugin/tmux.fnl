@@ -1,17 +1,17 @@
 (module core.plugin.tmux
-  {autoload {plugin tmux
-             m vimp}})
+  {autoload {plugin tmux}
+   require-macros [core.macros]})
 
 (plugin.setup {:copy_sync {:enable false}
                :navigation {:enable_default_keybindings false}
                :resize {:enable_default_keybindings false}})
 
-(m.nnoremap [:override :silent] "<C-w>h" "<cmd>lua require('tmux').move_left()<cr>")
-(m.nnoremap [:override :silent] "<C-w>j" "<cmd>lua require('tmux').move_bottom()<cr>")
-(m.nnoremap [:override :silent] "<C-w>k" "<cmd>lua require('tmux').move_top()<cr>")
-(m.nnoremap [:override :silent] "<C-w>l" "<cmd>lua require('tmux').move_right()<cr>")
+(noremap! [n] "<C-w>h" "<cmd>lua require('tmux').move_left()<cr>" :silent)
+(noremap! [n] "<C-w>j" "<cmd>lua require('tmux').move_bottom()<cr>" :silent)
+(noremap! [n] "<C-w>k" "<cmd>lua require('tmux').move_top()<cr>" :silent)
+(noremap! [n] "<C-w>l" "<cmd>lua require('tmux').move_right()<cr>" :silent)
 
-(m.nnoremap [:override :silent] "<M-h>" "<cmd>lua require('tmux').resize_left()<cr>")
-(m.nnoremap [:override :silent] "<M-j>" "<cmd>lua require('tmux').resize_bottom()<cr>")
-(m.nnoremap [:override :silent] "<M-k>" "<cmd>lua require('tmux').resize_top()<cr>")
-(m.nnoremap [:override :silent] "<M-l>" "<cmd>lua require('tmux').resize_right()<cr>")
+(noremap! [n] "<M-h>" "<cmd>lua require('tmux').resize_left()<cr>" :silent)
+(noremap! [n] "<M-j>" "<cmd>lua require('tmux').resize_bottom()<cr>" :silent)
+(noremap! [n] "<M-k>" "<cmd>lua require('tmux').resize_top()<cr>" :silent)
+(noremap! [n] "<M-l>" "<cmd>lua require('tmux').resize_right()<cr>" :silent)

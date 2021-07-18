@@ -1,4 +1,4 @@
 (module core.plugin.file-explorer
-  {autoload {m vimp}})
+  {require-macros [core.macros]})
 
-(m.nnoremap [:override] "<C-n>" "<cmd>NvimTreeToggle<cr>")
+(noremap! [n] "<C-n>" "<cmd>NvimTreeToggle<cr>")

@@ -1,29 +1,30 @@
 (module core.mapping
-  {autoload {m vimp}})
+  {require-macros [core.macros]})
 
 ; Use <space> to close wildmenu
-(m.cnoremap [:override :expr] "<space>"
-            "wildmenumode() ? \"\\<C-y>\" : \"\\<space>\"")
+(noremap! [c] "<space>" #(if
+                           (= (vim.fn.wildmenumode) 1) (t "<C-y>")
+                           (t "<space>")) :expr)
 
 ; Move to the beginning or end with H or L
-(m.nnoremap [:override :silent] "H" "^")
-(m.nnoremap [:override :silent] "L" "$")
-(m.inoremap [:override :silent] "<C-h>" "<C-o>^")
-(m.inoremap [:override :silent] "<C-l>" "<C-o>$")
-(m.cnoremap [:override] "<C-h>" "<home>")
-(m.cnoremap [:override] "<C-l>" "<end>")
+(noremap! [n] "H" "^" :silent)
+(noremap! [n] "L" "$" :silent)
+(noremap! [i] "<C-h>" "<C-o>^" :silent)
+(noremap! [i] "<C-l>" "<C-o>^" :silent)
+(noremap! [c] "<C-h>" "<home>")
+(noremap! [c] "<C-l>" "<end>")
 
 ; Use Y to copy from the cursor to the end
-(m.nnoremap [:override :silent] "Y" "y$")
+(noremap! [n] "Y" "y$" :silent)
 
 ; Execute macro fast
-(m.xnoremap [:override :silent] "Q" ":normal @@<CR>")
-(m.nnoremap [:override :silent] "Q" ":normal @@<CR>")
+(noremap! [xn] "Q" ":normal @@<cr>" :silent)
+
 ; Move lines up and down
-(m.nnoremap [:override :silent] "<C-k>" ":m-2<CR>")
-(m.nnoremap [:override :silent] "<C-up>" ":m-2<CR>")
-(m.nnoremap [:override :silent] "<C-j>" ":m+<CR>")
-(m.nnoremap [:override :silent] "<C-down>" ":m+<CR>")
+(noremap! [n] "<C-k>" ":m-2<CR>" :silent)
+(noremap! [n] "<C-j>" ":m+<CR>" :silent)
+(noremap! [n] "<C-up>" ":m-2<CR>" :silent)
+(noremap! [n] "<C-down>" ":m+<CR>" :silent)
 
 ;;; ============
 ;;; Text objects
@@ -31,13 +32,11 @@
 
 ;; Line object
 ; Inner line
-(m.xnoremap [:override :silent] "il" ":<C-u>normal! g_v^<cr>")
-(m.onoremap [:override :silent] "il" ":<C-u>normal! g_v^<cr>")
+(noremap! [xo] "il" ":<C-u>normal! g_v^<cr>" :silent)
 ; Around line
-(m.xnoremap [:override :silent] "al" ":<C-u>normal! $v0<cr>")
-(m.onoremap [:override :silent] "al" ":<C-u>normal! $v0<cr>")
+(noremap! [xo] "al" ":<C-u>normal! $v0<cr>" :silent)
 
 ;; Document object
 ; Inner document
-(m.xnoremap [:override :silent] "id" ":<C-u>normal! G$Vgg0<cr>")
-(m.onoremap [:override :silent] "id" ":<C-u>normal! GVgg<cr>")
+(noremap! [x] "id" ":<C-u>normal! G$Vgg0<cr>" :silent)
+(noremap! [o] "id" ":<C-u>normal! GVgg<cr>" :silent)

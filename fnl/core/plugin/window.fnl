@@ -1,6 +1,4 @@
 (module core.plugin.window
-  {autoload {m vimp}})
+   {require-macros [core.macros]})
 
-(m.nmap [:override :silent] "<leader>w" "<cmd>lua require('nvim-window').pick()<cr>")
-(m.vmap [:override :silent] "<leader>w" "<cmd>lua require('nvim-window').pick()<cr>")
-(m.omap [:override :silent] "<leader>w" "<cmd>lua require('nvim-window').pick()<cr>")
+(noremap! [nvo] "<leader>w" "<cmd>lua require'nvim-window'.pick()<cr>" :silent)

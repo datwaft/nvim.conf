@@ -1,6 +1,5 @@
 (module core.plugin.compe
-  {autoload {plugin compe
-             m vimp}
+  {autoload {plugin compe}
    require-macros [core.macros]})
 
 (set! completeopt [:menuone :noselect])
@@ -35,35 +34,14 @@
                         :omni {:filetypes [:tex]}
                         }})
 
-(m.inoremap [:override :expr :silent] "<C-Space>" "compe#complete()")
-(m.inoremap [:override :expr :silent] "<C-e>" "compe#close('<C-e>')")
-(m.inoremap [:override :expr :silent] "<space>" "compe#confirm('<space>')")
-(m.inoremap [:override :expr :silent] "<C-f>" "compe#scroll({ 'delta': +4 })")
-(m.inoremap [:override :expr :silent] "<C-d>" "compe#scroll({ 'delta': -4 })")
+(noremap! [i] "<C-Space>" "compe#complete()" :expr :silent)
+(noremap! [i] "<C-e>" "compe#close('<C-e>')" :expr :silent)
+(noremap! [i] "<space>" "compe#confirm('<space>')" :expr :silent)
+(noremap! [i] "<C-f>" "compe#scroll({'delta': +4})" :expr :silent)
+(noremap! [i] "<C-d>" "compe#scroll({'delta': -4})" :expr :silent)
 
-(defn- check-backspace []
-  (let [result (let [col (- (vim.fn.col ".") 1)]
-                 (or (= col 0)
-                     (-> (vim.fn.getline ".")
-                         (: :sub col col)
-                         (: :match "%s"))))]
-    (if (nil? result)
-      false
-      result)))
+(noremap! [is] "<Tab>" #(if (= (vim.fn.pumvisible) 1) (t "<C-n>")
+                          (t "<Tab>")) :expr :silent)
 
-(defn- tab-complete []
-  (if
-    (= (vim.fn.pumvisible) 1) "<C-n>"
-    ; (= (vim.fn.call "vsnip#available" [1]) 1) "<Plug>(vsnip-expand-or-jump)"
-    "<Tab>"))
-
-(defn- s-tab-complete []
-  (if
-    (= (vim.fn.pumvisible) 1) "<C-p>"
-    ; (= (vim.fn.call "vsnip#available" [-1]) 1) "<Plug>(vsnip-jump-prev)"
-    "<S-Tab>"))
-
-(m.inoremap [:override :expr :silent] "<Tab>" tab-complete)
-(m.snoremap [:override :expr :silent] "<Tab>" tab-complete)
-(m.inoremap [:override :expr :silent] "<S-Tab>" s-tab-complete)
-(m.snoremap [:override :expr :silent] "<S-Tab>" s-tab-complete)
+(noremap! [is] "<S-Tab>" #(if (= (vim.fn.pumvisible) 1) (t "<C-p>")
+                            (t "<S-Tab>")) :expr :silent)
