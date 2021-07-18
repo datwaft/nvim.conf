@@ -36,9 +36,9 @@
             (= (tostring (. value 1)) :hashfn)
             (= (tostring (. value 1)) :fn)))
       (let [symbol (gensym-fn!)]
-        `(tset vim.opt ,name (do
-                               (global ,(sym symbol) ,value)
-                               ,(.. "v:lua." symbol "()"))))
+        `(do
+           (global ,(sym symbol) ,value)
+           (tset vim.opt ,name ,(string.format "v:lua.%s()" symbol))))
       (match name-last-character
         "?" `(get? ,name-without-last-character)
         "!" `(tset vim.opt ,name-without-last-character
@@ -67,9 +67,9 @@
             (= (tostring (. value 1)) :hashfn)
             (= (tostring (. value 1)) :fn)))
       (let [symbol (gensym-fn!)]
-        `(tset vim.opt_local ,name (do
-                                     (global ,(sym symbol) ,value)
-                                     ,(.. "v:lua." symbol "()"))))
+        `(do
+           (global ,(sym symbol) ,value)
+           (tset vim.opt_local ,name ,(string.format "v:lua.%s()" symbol))))
       (match name-last-character
         "?" `(get-local? ,name-without-last-character)
         "!" `(tset vim.opt_local ,name-without-last-character
@@ -96,25 +96,30 @@
 
 (fn augroup! [name ...]
   `(do
-     (vim.cmd (.. "augroup " ,(tostring name) "\nautocmd!"))
+     (vim.cmd ,(string.format "augroup %s\nautocmd!"
+                              (tostring name)))
      (do
        ,...)
      (vim.cmd "augroup END")
      nil))
 
 (fn autocmd! [events pattern command]
-  (let [events (table.concat (icollect [_ v (ipairs (if (sequence? events) events [events]))]
+  (let [events (table.concat (icollect [_ v (ipairs (if
+                                                      (sequence? events) events
+                                                      [events]))]
                                (tostring v)) ",")
-        pattern (table.concat (icollect [_ v (ipairs (if (sequence? pattern) pattern [pattern]))]
+        pattern (table.concat (icollect [_ v (ipairs (if
+                                                       (sequence? pattern) pattern
+                                                       [pattern]))]
                                 (tostring v)) ",")]
     (if (not (list? command))
-      `(vim.cmd ,(.. "autocmd " events " " pattern " " command))
+      `(vim.cmd ,(string.format "autocmd %s %s %s"
+                                events pattern command))
       (let [name (gensym-fn!)]
-        `(vim.cmd (..
-                    ,(.. "autocmd " events " " pattern " ")
-                    (do
-                      (global ,(sym name) ,command)
-                      ,(.. "call v:lua." name "()"))))))))
+        `(do
+           (global ,(sym name) ,command)
+           (vim.cmd ,(string.format "autocmd %s %s call v:lua.%s()"
+                                    events pattern name)))))))
 
 {: gensym-fn!
  : get?
