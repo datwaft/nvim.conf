@@ -238,11 +238,6 @@
   ;; -------
   "glepnir/lspsaga.nvim" {:config (req :lspsaga)}
 
-  ;; ---------------
-  ;; Quickfix window
-  ;; ---------------
-  "kevinhwang91/nvim-bqf" {}
-
   ;;; =========
   ;;; Essential
   ;;; =========
