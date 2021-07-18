@@ -73,6 +73,11 @@
   ;; ---------------
   "kyazdani42/nvim-web-devicons" {:config (req :devicons)}
 
+  ;; ----------------------
+  ;; Better match highlight
+  ;; ----------------------
+  "kevinhwang91/nvim-hlslens" {:config (req :hlslens)}
+
   ;;; ============
   ;;; Text objects
   ;;; ============

@@ -100,7 +100,7 @@
 ;; -------------------
 ;; Search highlighting
 ;; -------------------
-(set! nohlsearch)
+(set! hlsearch)
 
 ;; ---------------------
 ;; Conceal configuration
