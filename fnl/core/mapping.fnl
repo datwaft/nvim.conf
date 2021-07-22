@@ -6,6 +6,9 @@
                            (= (vim.fn.wildmenumode) 1) (t "<C-y>")
                            (t "<space>")) :expr)
 
+; Use x as s was originally used
+(noremap! [n] "x" "s")
+
 ; Move to the beginning or end with H or L
 (noremap! [n] "H" "^" :silent)
 (noremap! [n] "L" "$" :silent)
