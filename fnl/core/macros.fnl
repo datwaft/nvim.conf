@@ -159,3 +159,8 @@
  : map!
  : noremap!
  : t}
+
+;; These macros were inspired by https://github.com/tsbohc/zest.nvim.
+;; In the documentation folder of this repo you can read an explanation about
+;; how they work, but, if you want some macros that are plug-and-play you can
+;; use zest, they are less opinionated than mine.
