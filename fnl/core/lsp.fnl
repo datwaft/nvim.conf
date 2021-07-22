@@ -80,3 +80,9 @@
 ;;; ===================
 
 (config.vuels.setup (merge global-options {}))
+
+;;; ====================
+;;; JSON Language Server
+;;; ====================
+
+(config.jsonls.setup (merge global-options {}))
