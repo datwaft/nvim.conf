@@ -86,3 +86,13 @@
 ;;; ====================
 
 (config.jsonls.setup (merge global-options {}))
+
+;;; ===================
+;;; EFM Language Server
+;;; ===================
+
+(config.efm.setup (merge global-options
+                         {:init_options {:documentFormatting true}
+                          :settings {:rootMarkers [".git/"]
+                                     :languages {:lua [{:formatCommand "lua-format -i"
+                                                        :formatStdin true}]}}}))
