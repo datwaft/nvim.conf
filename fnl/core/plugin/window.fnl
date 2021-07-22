@@ -1,4 +1,4 @@
 (module core.plugin.window
    {require-macros [core.macros]})
 
-(noremap! [nvo] "<leader>w" "<cmd>lua require'nvim-window'.pick()<cr>" :silent)
+(noremap! [nvo] "<C-w>f" "<cmd>lua require'nvim-window'.pick()<cr>" :silent)
