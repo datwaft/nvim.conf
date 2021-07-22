@@ -165,6 +165,11 @@
   ;; ---------------
   "junegunn/fzf" {:run "./install --all"}
 
+  ;; ----------------------------
+  ;; Markdown with Pandoc preview
+  ;; ----------------------------
+  "davidgranstrom/nvim-markdown-preview" {}
+
   ;;; =====================
   ;;; Files and directories
   ;;; =====================
