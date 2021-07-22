@@ -13,3 +13,4 @@ Feel free to use these *dotfiles* for inspiration. :smile:
 - [Neovim installation guide](doc/neovim-installation-guide.md).
 - [Dependencies installation guide](doc/dependencies-installation-guide.md).
 - [Extra configuration guide](doc/extra-configuration-guide.md).
+- [Macros explanation](doc/macros-explanation.md).
