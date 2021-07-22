@@ -125,7 +125,8 @@
   ;; -------------------
   ;; Lightspeed movement
   ;; -------------------
-  "ggandor/lightspeed.nvim" {:requires ["tpope/vim-repeat"]}
+  "ggandor/lightspeed.nvim" {:config (req :lightspeed)
+                             :requires ["tpope/vim-repeat"]}
 
   ;;; ========
   ;;; Commands
