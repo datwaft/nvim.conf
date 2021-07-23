@@ -237,7 +237,10 @@
   ;; ----------
   ;; Completion
   ;; ----------
-  "hrsh7th/nvim-compe" {:config (req :compe)}
+  "hrsh7th/nvim-compe" {:as :compe
+                        :config (req :compe)}
+  ; Conjure source
+  "tami5/compe-conjure" {:requires :compe}
 
   ;; ---------
   ;; Signature

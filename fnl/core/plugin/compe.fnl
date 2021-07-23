@@ -28,6 +28,7 @@
                         :calc true
                         :nvim_lsp true
                         :nvim_lua true
+                        :conjure true
                         :vsnip false
                         :ultisnips false
                         :luasnip false
