@@ -215,11 +215,6 @@
   ;; ----------------------
   "kevinhwang91/nvim-bqf" {}
 
-  ;; -----------------------------
-  ;; Parentheses balance for Lisps
-  ;; -----------------------------
-  "kovisoft/paredit" {:config (req :paredit)}
-
   ;;; ==============================
   ;;; Language Server Protocol (LSP)
   ;;; ==============================
