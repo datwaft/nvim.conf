@@ -170,6 +170,11 @@
   ;; ----------------------------
   "davidgranstrom/nvim-markdown-preview" {}
 
+  ;; ----------------
+  ;; REPL integration
+  ;; ----------------
+  "jpalardy/vim-slime" {:config (req :slime)}
+
   ;;; =====================
   ;;; Files and directories
   ;;; =====================
