@@ -46,9 +46,9 @@
 ;;; ===================
 
 (config.sumneko_lua.setup (deep-merge (lua-dev.setup {:lspconfig 
-                                          (merge
-                                            global-options
-                                            {:cmd [binary "-E" (.. root_path "/main.lua")]})})
+                                                      (merge
+                                                        global-options
+                                                        {:cmd [binary "-E" (.. root_path "/main.lua")]})})
                                    {:settings {:Lua {:workspace {:preloadFileSize 500}}}}))
 
 ;;; ======================

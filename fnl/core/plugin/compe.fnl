@@ -32,8 +32,8 @@
                         :vsnip false
                         :ultisnips false
                         :luasnip false
-                        :omni {:filetypes [:tex]}
-                        }})
+                        :omni {:filetypes [:tex]}}})
+
 
 (noremap! [i] "<C-Space>" "compe#complete()" :expr :silent)
 (noremap! [i] "<C-e>" "compe#close('<C-e>')" :expr :silent)
