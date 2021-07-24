@@ -42,3 +42,7 @@ Must have:
 Optional:
 - [bat](https://github.com/sharkdp/bat) (preview)
 - [fd](https://github.com/sharkdp/fd) (finder)
+
+## Cargo
+
+You can install cargo following [this](https://doc.rust-lang.org/cargo/getting-started/installation.html) procedure.
