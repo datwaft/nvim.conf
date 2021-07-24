@@ -175,6 +175,11 @@
   ;; ----------------
   "jpalardy/vim-slime" {:config (req :slime)}
 
+  ;; --------------------
+  ;; Parinfer integration
+  ;; --------------------
+  "eraserhd/parinfer-rust" {:run "cargo build --release"}
+
   ;;; =====================
   ;;; Files and directories
   ;;; =====================
