@@ -1,9 +1,10 @@
 (module core.globals
-  {require {fun lib.fun
-            a aniseed.core
-            s aniseed.string}})
+  {require {a aniseed.core
+            clj lib.cljlib}})
 
 (defn- import-all [tbl]
+  "This function adds every key/value pair from a table to the global table
+  using the same format in which fennel formats its compiled variable names"
   (each [key value (pairs tbl)]
     (let [key (if (string.match key "%W")
                 (.. "__fnl_global__"
@@ -17,11 +18,8 @@
                (let [objects (vim.tbl_map vim.inspect [...])]
                  (print (unpack objects)))))
 
-; Add aniseed string functions to globals
-(import-all s.aniseed/locals)
-
 ; Add aniseed core functions to globals
 (import-all a.aniseed/locals)
 
-; Add all functional lua functions to globals
-(import-all fun)
+; Use fennel cljlib as a standard library
+(import-all clj)
