@@ -256,7 +256,10 @@
   ;; ---------
   ;; Aesthetic
   ;; ---------
+  ; Code actions lightbulb
   "kosayoda/nvim-lightbulb" {:config (req :lightbulb)}
+  ; Pictograms for completion
+  "onsails/lspkind-nvim" {:config (req :lspkind)}
 
   ;; -------
   ;; Actions
