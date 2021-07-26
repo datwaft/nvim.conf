@@ -122,12 +122,6 @@
   "zegervdv/nrpattern.nvim" {:config (req :nrpattern)
                              :requires ["tpope/vim-repeat"]}
 
-  ;; -------------------
-  ;; Lightspeed movement
-  ;; -------------------
-  "ggandor/lightspeed.nvim" {:config (req :lightspeed)
-                             :requires ["tpope/vim-repeat"]}
-
   ;;; ========
   ;;; Commands
   ;;; ========
