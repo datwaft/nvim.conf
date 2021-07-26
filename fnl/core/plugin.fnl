@@ -253,6 +253,11 @@
   ;; ---------------
   "folke/lua-dev.nvim" {}
 
+  ;; -----------
+  ;; Diagnostics
+  ;; -----------
+  "folke/trouble.nvim" {:config (req :trouble)}
+
   ;; ---------
   ;; Aesthetic
   ;; ---------
