@@ -1,33 +1,47 @@
+(require :core.globals)
+
 (global __core_symfn_id 0)
-(fn gensym-fn! []
+(lambda gensym-fn! []
+  "Generates a new unique variable name following the structure __core_symfn_#"
   (.. "__core_symfn_"
       (do
         (global __core_symfn_id (+ __core_symfn_id 1))
         __core_symfn_id)))
 
-(fn get? [name]
+(lambda get? [name]
+  "Returns the value of a vim option"
+  (assert-compile (or (sym? name)
+                      (= "string" (type name)))
+                  "'name' must be either a symbol or a string" name)
   (let [name (tostring name)
         name (if (= (name:sub 1 2) "no") (name:sub 3) name)]
     `(let [(ok?# value#) (pcall #(: (. vim.opt ,name) :get))]
        (if ok?# value# nil))))
 
-(fn get-local? [name]
+(lambda get-local? [name]
+  "Returns the value of a vim local option"
+  (assert-compile (or (sym? name)
+                      (= "string" (type name)))
+                  "'name' must be either a symbol or a string" name)
   (let [name (tostring name)
         name (if (= (name:sub 1 2) "no") (name:sub 3) name)]
     `(let [(ok?# value#) (pcall #(: (. vim.opt_local ,name) :get))]
        (if ok?# value# nil))))
 
-(fn set! [name value]
-  "Set vim option with vim.opt"
+(lambda set! [name ?value]
+  "Set a vim option using the vim.opt api"
+  (assert-compile (or (sym? name)
+                      (= "string" (type name)))
+                  "'name' must be either a symbol or a string" name)
   (let [name (tostring name)
-        value-is-nil? (= nil value)
+        value-is-nil? (= nil ?value)
         name-begins-with-no? (= (name:sub 1 2) "no")
         name (if (and value-is-nil? name-begins-with-no?)
                (name:sub 3)
                name)
         value (if value-is-nil?
                 (not name-begins-with-no?)
-                value)
+                ?value)
         name-last-character (name:sub -1)
         name-without-last-character (name:sub 1 -2)]
     (if (and 
@@ -48,17 +62,20 @@
         "^" `(: (. vim.opt ,name-without-last-character) :prepend ,value)
         _ `(tset vim.opt ,name ,value)))))
 
-(fn set-local! [name value]
-  "Set vim option with vim.opt_local"
+(lambda set-local! [name ?value]
+  "Set a local vim option using the vim.opt_local api"
+  (assert-compile (or (sym? name)
+                      (= "string" (type name)))
+                  "'name' must be either a symbol or a string" name)
   (let [name (tostring name)
-        value-is-nil? (= nil value)
+        value-is-nil? (= nil ?value)
         name-begins-with-no? (= (name:sub 1 2) "no")
         name (if (and value-is-nil? name-begins-with-no?)
                (name:sub 3)
                name)
         value (if value-is-nil?
                 (not name-begins-with-no?)
-                value)
+                ?value)
         name-last-character (name:sub -1)
         name-without-last-character (name:sub 1 -2)]
     (if (and 
@@ -79,8 +96,11 @@
         "^" `(: (. vim.opt_local ,name-without-last-character) :prepend ,value)
         _ `(tset vim.opt_local ,name ,value)))))
 
-(fn let! [name value]
-  "Set vim variable with vim.[g b w t]"
+(lambda let! [name value]
+  "Set vim variable using the vim.[g b w t] api"
+  (assert-compile (or (sym? name)
+                      (= "string" (type name)))
+                  "'name' must be either a symbol or a string" name)
   (let [name (tostring name)
         scope (if (> (length (icollect [_ v (ipairs ["g/" "b/" "w/" "t/"])]
                                (when (= (name:sub 1 2) v) v))) 0)
@@ -94,7 +114,11 @@
       "t" `(tset vim.t ,name ,value)
       _ `(tset vim.g ,name ,value))))
 
-(fn augroup! [name ...]
+(lambda augroup! [name ...]
+  "Defines an augroup with a name and auto-commands"
+  (assert-compile (or (sym? name)
+                      (= "string" (type name)))
+                  "'name' must be either a symbol or a string" name)
   `(do
      (vim.cmd ,(string.format "augroup %s\nautocmd!"
                               (tostring name)))
@@ -103,7 +127,8 @@
      (vim.cmd "augroup END")
      nil))
 
-(fn autocmd! [events pattern command]
+(lambda autocmd! [events pattern command]
+  "Defines an auto-command"
   (let [events (table.concat (icollect [_ v (ipairs (if
                                                       (sequence? events) events
                                                       [events]))]
@@ -121,7 +146,8 @@
            (vim.cmd ,(string.format "autocmd %s %s call v:lua.%s()"
                                     events pattern name)))))))
 
-(fn map! [mode-list combination command ...]
+(lambda map! [mode-list combination command ...]
+  "Maps a combination to a command in some modes"
   (let [mode-list (tostring (if (sequence? mode-list) (. mode-list 1) mode-list))
         combination (tostring combination)
         options (collect [_ option (ipairs [...])]
@@ -142,10 +168,15 @@
       `(do ,(unpack out))
       `,(unpack out))))
 
-(fn noremap! [mode-list combination command ...]
+(lambda noremap! [mode-list combination command ...]
+  "Maps a combination to a command in some modes with the noremap option"
   `(map! ,mode-list ,combination ,command :noremap ,...))
 
-(fn t [combination]
+(lambda t [combination]
+  "Returns the string with termcodes replaced"
+  (assert-compile (or (sym? combination)
+                      (= "string" (type combination)))
+                  "'combination' must be either a symbol or a string" combination)
   `(vim.api.nvim_replace_termcodes ,(tostring combination) true true true))
 
 {: gensym-fn!
