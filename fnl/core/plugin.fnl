@@ -51,6 +51,8 @@
   "p00f/nvim-ts-rainbow" {:requires :treesitter}
   "JoosepAlviste/nvim-ts-context-commentstring" {:requires :treesitter}
   "windwp/nvim-ts-autotag" {:requires :treesitter}
+  "lewis6991/spellsitter.nvim" {:requires :treesitter
+                                :config (req :spellsitter)}
 
   ;; --------------------
   ;; Substitution preview
@@ -268,6 +270,11 @@
   "ray-x/navigator.lua" {:config (req :navigator)
                          :requires [:nvim-lspconfig
                                     :guihua.lua]}
+
+  ;; ---------------
+  ;; Set root folder
+  ;; ---------------
+  "ahmedkhalf/lsp-rooter.nvim" {:config (req :lsp-rooter)}
 
   ;;; =========
   ;;; Essential
