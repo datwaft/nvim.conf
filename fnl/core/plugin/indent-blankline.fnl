@@ -3,7 +3,7 @@
 
 (let! indent_blankline_char "│")
 (let! indent_blankline_use_treesitter true)
-(let! indent_blankline_filetype_exclude [:help :fern :packer :fennel :lisp :markdown])
+(let! indent_blankline_filetype_exclude [:help :fern :packer :fennel :lisp :markdown :NvimTree])
 (let! indent_blankline_buftype_exclude [:terminal])
 (let! indent_blankline_show_current_context false)
 (let! indent_blankline_context_patterns

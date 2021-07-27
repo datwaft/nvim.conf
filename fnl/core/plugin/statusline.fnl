@@ -27,7 +27,7 @@
    :total_buffer_number :filetype :progress])
 
 (let! bubbly_filter
-  {:branch [:fern :packer]
-   :total_buffer_number [:fern :packer]
-   :path [:fern :packer]
-   :filetype [:fern :packer]})
+  {:branch [:fern :packer :NvimTree]
+   :total_buffer_number [:fern :packer :NvimTree]
+   :path [:fern :packer :NvimTree]
+   :filetype [:fern :packer :NvimTree]})
