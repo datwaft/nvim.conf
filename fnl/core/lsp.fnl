@@ -96,3 +96,9 @@
                           :settings {:rootMarkers [".git/"]
                                      :languages {:lua [{:formatCommand "lua-format -i"
                                                         :formatStdin true}]}}}))
+
+;;; =======================
+;;; Clojure Language Server
+;;; =======================
+
+(config.clojure_lsp.setup (merge global-options {}))
