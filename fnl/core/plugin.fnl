@@ -272,14 +272,6 @@
   ;; Actions
   ;; -------
   "glepnir/lspsaga.nvim" {:config (req :lspsaga)}
-  
-  ;; ----------
-  ;; Navigation
-  ;; ----------
-  "ray-x/guihua.lua" {:run "cd lua/fzy && make"}
-  "ray-x/navigator.lua" {:config (req :navigator)
-                         :requires [:nvim-lspconfig
-                                    :guihua.lua]}
 
   ;; ---------------
   ;; Set root folder
