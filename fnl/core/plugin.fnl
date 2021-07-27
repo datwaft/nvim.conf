@@ -170,7 +170,8 @@
   ;; REPL integration
   ;; ----------------
   "jpalardy/vim-slime" {:config (req :slime)}
-  "clojure-vim/vim-jack-in" {:requires ["radenling/vim-dispatch-neovim"]}
+  "clojure-vim/vim-jack-in" {:requires ["tpope/vim-dispatch"
+                                        "radenling/vim-dispatch-neovim"]}
 
   ;; --------------------
   ;; Parinfer integration
