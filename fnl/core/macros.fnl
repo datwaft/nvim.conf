@@ -179,6 +179,12 @@
                   "'combination' must be either a symbol or a string" combination)
   `(vim.api.nvim_replace_termcodes ,(tostring combination) true true true))
 
+(lambda unless [condition ...]
+  "Takes a single condition and evaluates the rest as a body if it's nil or
+  false. This is intended for side-effects."
+  `(when (not ,condition)
+     ,...))
+
 {: gensym-fn!
  : get?
  : get-local?
@@ -189,7 +195,8 @@
  : autocmd!
  : map!
  : noremap!
- : t}
+ : t
+ : unless}
 
 ;; These macros were inspired by https://github.com/tsbohc/zest.nvim.
 ;; In the documentation folder of this repo you can read an explanation about
