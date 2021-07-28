@@ -15,23 +15,23 @@
 (noremap! [c] "<C-l>" "<end>")
 
 ; Allow moving the cursor through wrapped lines with j, k, <up> and <down>
-(noremap! [nvo] "j" #(if (= vim.v.count 0) "gj"
-                       (if (> vim.v.count 5) "m'j" "j"))
+(noremap! [nv] "j" #(if (= vim.v.count 0) (t "gj")
+                      (if (> vim.v.count 5) (t "m'j") (t "j")))
           :silent :expr)
-(noremap! [nvo] "k" #(if (= vim.v.count 0) "gk"
-                       (if (> vim.v.count 5) "m'j" "k"))
+(noremap! [nv] "k" #(if (= vim.v.count 0) (t "gk")
+                      (if (> vim.v.count 5) (t "m'j") (t "k")))
           :silent :expr)
-(noremap! [nvo] "<down>" #(if (= vim.v.count 0) "gj"
-                            (if (> vim.v.count 5) "m'<down>" "<down>"))
+(noremap! [nv] "<down>" #(if (= vim.v.count 0) (t "gj")
+                           (if (> vim.v.count 5) (t "m'<down>") (t "<down>")))
           :silent :expr)
 (noremap! [i] "<down>" #(if (= vim.v.count 0) (t "<C-o>gj")
-                          (if (> vim.v.count 5) "m'<down>" "<down>"))
+                          (if (> vim.v.count 5) (t "m'<down>") (t "<down>")))
           :silent :expr)
-(noremap! [nvo] "<up>" #(if (= vim.v.count 0) "gk"
-                          (if (> vim.v.count 5) "m'<up>" "<up>"))
+(noremap! [nv] "<up>" #(if (= vim.v.count 0) (t "gk")
+                         (if (> vim.v.count 5) (t "m'<up>") (t "<up>")))
           :silent :expr)
 (noremap! [i] "up" #(if (= vim.v.count 0) (t "<C-o>gk")
-                      (if (> vim.v.count 5) "m'<up>" "<up>"))
+                      (if (> vim.v.count 5) (t "m'<up>") (t "<up>")))
           :silent :expr)
 
 ; Use Y to copy from the cursor to the end
@@ -97,10 +97,10 @@
   (noremap! [n] "<leader>lD" "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>"
             :silent))
 
-; Use ]e and [e to jump between diagnostics
+; Use [d and ]d to jump between diagnostics
 (when (exists? :lspsaga)
-  (noremap! [n] "[e" "<cmd>Lspsaga diagnostic_jump_prev<cr>" :silent)
-  (noremap! [n] "]e" "<cmd>Lspsaga diagnostic_jump_next<cr>" :silent))
+  (noremap! [n] "[d" "<cmd>Lspsaga diagnostic_jump_prev<cr>" :silent)
+  (noremap! [n] "]d" "<cmd>Lspsaga diagnostic_jump_next<cr>" :silent))
 
 ; Use <leader>lr to display a list of references for the symbol below the
 ; cursor
@@ -109,7 +109,10 @@
             :silent))
 
 ; Use gd to go to the definition of the symbol below the cursor
-; TODO
+(noremap! [n] "gd" "<cmd>lua vim.lsp.buf.definition()<cr>" :silent)
+
+; Use gt to go to the type definition of the symbol below the cursor
+(noremap! [n] "gt" "<cmd>lua vim.lsp.buf.type_definition()<cr>" :silent)
 
 ; Use <leader>pd to preview the definition of the symbol below the cursor
 (when (exists? :lspsaga)
