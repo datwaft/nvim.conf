@@ -9,7 +9,7 @@
     (let [key (if (string.match key "%W")
                 (.. "__fnl_global__"
                     (key:gsub "." #(if (not (= nil (string.match $ "%w"))) $
-                                     (string.format "_%x" (string.byte "?")))))
+                                     (string.format "_%x" (string.byte $)))))
                 key)]
       (tset _G key value))))
 
