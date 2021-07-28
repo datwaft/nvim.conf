@@ -40,3 +40,65 @@
 ; Inner document
 (noremap! [x] "id" ":<C-u>normal! G$Vgg0<cr>" :silent)
 (noremap! [o] "id" ":<C-u>normal! GVgg<cr>" :silent)
+
+;;; ============
+;;; LSP Mappings
+;;; ============
+
+(defn- exists? [module-name]
+  "This function verifies if a module exists returning nil if it doesn't and
+  returning the module if it does"
+  (let [(ok?# content#) (pcall require module-name)]
+    (if ok?# content# nil)))
+
+; Use K to show the documentation
+(noremap! [n] "K" "<cmd>lua vim.lsp.buf.hover()<cr>" :silent)
+
+; Use <leader>a to open the code-actions menu
+(when (exists? :lspsaga)
+  (noremap! [n] "<leader>a" "<cmd>Lspsaga code_action<cr>" :silent)
+  (noremap! [v] "<leader>a" "<cmd>Lspsaga range_code_action<cr>" :silent))
+
+; Use <leader>d to display the diagnostics for the current line
+(when (exists? :lspsaga)
+  (noremap! [n] "<leader>d" "<cmd>Lspsaga show_line_diagnostics<cr>" :silent))
+
+; Use <leader>D to display a list of diagnostics
+(when (exists? :trouble)
+  (noremap! [n] "<leader>D" "<cmd>TroubleToggle<cr>" :silent))
+
+; Use <leader>ld to display a list of diagnostics for the current file
+(when (exists? :trouble)
+  (noremap! [n] "<leader>ld" "<cmd>TroubleToggle lsp_document_diagnostics<cr>"
+            :silent))
+
+; Use <leader>lD to display a list of diagnostics for the workspace
+(when (exists? :trouble)
+  (noremap! [n] "<leader>lD" "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>"
+            :silent))
+
+; Use ]e and [e to jump between diagnostics
+(when (exists? :lspsaga)
+  (noremap! [n] "[e" "<cmd>Lspsaga diagnostic_jump_prev<cr>" :silent)
+  (noremap! [n] "]e" "<cmd>Lspsaga diagnostic_jump_next<cr>" :silent))
+
+; Use <leader>lr to display a list of references for the symbol below the
+; cursor
+(when (exists? :trouble)
+  (noremap! [n] "<leader>lr" "<cmd>TroubleToggle lsp_references<cr>"
+            :silent))
+
+; Use gd to go to the definition of the symbol below the cursor
+; TODO
+
+; Use <leader>pd to preview the definition of the symbol below the cursor
+(when (exists? :lspsaga)
+  (noremap! [n] "<leader>pd" "<cmd>Lspsaga preview_definition<cr>" :silent))
+
+; Use <leader>ps to preview the signature of the symbol below the cursor
+(when (exists? :lspsaga)
+  (noremap! [n] "<leader>ps" "<cmd>Lspsaga signature_help<cr>" :silent))
+
+; Use <leader>rn to rename the symbol below the cursor
+(when (exists? :lspsaga)
+  (noremap! [n] "<leader>rn" "<cmd>Lspsaga rename<cr>" :silent))
