@@ -87,12 +87,6 @@
 
 (config.jsonls.setup (merge global-options {}))
 
-;;; ===================
-;;; EFM Language Server
-;;; ===================
-
-(config.efm.setup (merge global-options {}))
-
 ;;; =======================
 ;;; Clojure Language Server
 ;;; =======================
