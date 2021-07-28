@@ -10,7 +10,7 @@
 (noremap! [n] "H" "^" :silent)
 (noremap! [n] "L" "$" :silent)
 (noremap! [i] "<C-h>" "<C-o>^" :silent)
-(noremap! [i] "<C-l>" "<C-o>^" :silent)
+(noremap! [i] "<C-l>" "<C-o>$" :silent)
 (noremap! [c] "<C-h>" "<home>")
 (noremap! [c] "<C-l>" "<end>")
 
