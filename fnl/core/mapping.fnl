@@ -14,6 +14,26 @@
 (noremap! [c] "<C-h>" "<home>")
 (noremap! [c] "<C-l>" "<end>")
 
+; Allow moving the cursor through wrapped lines with j, k, <up> and <down>
+(noremap! [nvo] "j" #(if (= vim.v.count 0) "gj"
+                       (if (> vim.v.count 5) "m'j" "j"))
+          :silent :expr)
+(noremap! [nvo] "k" #(if (= vim.v.count 0) "gk"
+                       (if (> vim.v.count 5) "m'j" "k"))
+          :silent :expr)
+(noremap! [nvo] "<down>" #(if (= vim.v.count 0) "gj"
+                            (if (> vim.v.count 5) "m'<down>" "<down>"))
+          :silent :expr)
+(noremap! [i] "<down>" #(if (= vim.v.count 0) (t "<C-o>gj")
+                          (if (> vim.v.count 5) "m'<down>" "<down>"))
+          :silent :expr)
+(noremap! [nvo] "<up>" #(if (= vim.v.count 0) "gk"
+                          (if (> vim.v.count 5) "m'<up>" "<up>"))
+          :silent :expr)
+(noremap! [i] "up" #(if (= vim.v.count 0) (t "<C-o>gk")
+                      (if (> vim.v.count 5) "m'<up>" "<up>"))
+          :silent :expr)
+
 ; Use Y to copy from the cursor to the end
 (noremap! [n] "Y" "y$" :silent)
 
