@@ -7,7 +7,7 @@
                                          :NvimTree :fern
                                          :fennel :clojure :lisp
                                          :markdown])
-(let! indent_blankline_buftype_exclude [:terminal])
+(let! indent_blankline_buftype_exclude [:terminal :nofile])
 (let! indent_blankline_show_current_context false)
 (let! indent_blankline_context_patterns
   [:class :return :function :method :^if :^while :jsx_element
