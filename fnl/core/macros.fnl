@@ -179,6 +179,12 @@
                   "'combination' must be either a symbol or a string" combination)
   `(vim.api.nvim_replace_termcodes ,(tostring combination) true true true))
 
+(lambda has? [property]
+  `(match (vim.fn.has ,property)
+     1 true
+     0 false
+     _# nil))
+
 (lambda unless [condition ...]
   "Takes a single condition and evaluates the rest as a body if it's nil or
   false. This is intended for side-effects."
@@ -196,6 +202,7 @@
  : map!
  : noremap!
  : t
+ : has?
  : unless}
 
 ;; These macros were inspired by https://github.com/tsbohc/zest.nvim.
