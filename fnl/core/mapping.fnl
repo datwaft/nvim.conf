@@ -30,8 +30,8 @@
 (noremap! [nv] "<up>" #(if (= vim.v.count 0) (t "gk")
                          (if (> vim.v.count 5) (t "m'<up>") (t "<up>")))
           :silent :expr)
-(noremap! [i] "up" #(if (= vim.v.count 0) (t "<C-o>gk")
-                      (if (> vim.v.count 5) (t "m'<up>") (t "<up>")))
+(noremap! [i] "<up>" #(if (= vim.v.count 0) (t "<C-o>gk")
+                        (if (> vim.v.count 5) (t "m'<up>") (t "<up>")))
           :silent :expr)
 
 ; Use Y to copy from the cursor to the end
