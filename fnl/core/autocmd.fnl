@@ -34,6 +34,11 @@
           (autocmd! FileType [help packer]
                     #(set-local! nospell)))
 
+; Disable colorcolumn in certain filyetypes
+(augroup! disable-colorcolumn-on-filetypes
+          (autocmd! FileType [help packer]
+                    #(set-local! colorcolumn [])))
+
 ; Set terminal options
 (augroup! terminal-options
           ; Enter Terminal-mode (insert) automatically
