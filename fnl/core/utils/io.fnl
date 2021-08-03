@@ -25,5 +25,3 @@
 
 (defn cmd! [str]
   (last (icollect [s (string.gmatch (vim.fn.execute (string.format "!%s" str)) "[^\n\r]+")] s)))
-
-(cmd! "command -v python3")
