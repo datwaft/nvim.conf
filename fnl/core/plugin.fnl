@@ -273,11 +273,6 @@
   ;; -------
   "glepnir/lspsaga.nvim" {:config (req :lspsaga)}
 
-  ;; ---------------
-  ;; Set root folder
-  ;; ---------------
-  "ahmedkhalf/lsp-rooter.nvim" {:config (req :lsp-rooter)}
-
   ;;; =========
   ;;; Essential
   ;;; =========
