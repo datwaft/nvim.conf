@@ -1,5 +1,6 @@
 (module core.options
-  {require-macros [core.macros]})
+  {autoload {io core.utils.io}
+   require-macros [core.macros]})
 
 ;;; =========================
 ;;; Local variable definition
@@ -13,7 +14,7 @@
 ;;; =========================
 
 ; Define python binary
-(let! python3_host_prog "/home/linuxbrew/.linuxbrew/bin/python3")
+(let! python3_host_prog (io.cmd! "command -v python3"))
 
 ;;; ====================
 ;;; Editor configuration
