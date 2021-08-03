@@ -36,7 +36,10 @@
 
 ; Disable colorcolumn in certain filyetypes
 (augroup! disable-colorcolumn-on-filetypes
-          (autocmd! FileType [help packer]
+          (autocmd! FileType [help packer
+                              NvimTree fern
+                              fennel clojure lisp
+                              markdown]
                     #(set-local! colorcolumn [])))
 
 ; Set terminal options
@@ -54,4 +57,7 @@
                     #(set-local! nospell))
           ; Disables sign column on terminal buffers
           (autocmd! TermOpen *
-                    #(set-local! signcolumn :no)))
+                    #(set-local! signcolumn :no))
+          ; Disables colorcolumn on terminal buffers
+          (autocmd! TermOpen *
+                    #(set-local! colorcolumn [])))
