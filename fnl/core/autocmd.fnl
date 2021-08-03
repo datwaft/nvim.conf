@@ -1,5 +1,6 @@
 (module core.autocmd
-  {require-macros [core.macros]})
+  {autoload {io core.utils.io}
+   require-macros [core.macros]})
 
 ; Restore cursor on exit
 (augroup! restore-cursor-on-exit
@@ -19,7 +20,7 @@
                            (= (vim.fn.bufexists "[Command Line]") 0))
                        (vim.cmd "checktime")))
           (autocmd! FileChangedShellPost *
-                    "echom \"File changed on disk. Buffer reloaded.\""))
+                    #(io.echo! "File changed on disk. Buffer reloaded.")))
 
 ; Open file on last position
 (augroup! open-file-on-last-position
