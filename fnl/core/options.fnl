@@ -158,7 +158,7 @@
 ;; Command-mode completion
 ;; -----------------------
 (set! wildmenu)
-(set! wildcharm 9) ; <Tab>
+(set! wildcharm (string.byte (t "<Tab>")))
 (set! wildignorecase)
 
 ;;; =====================
