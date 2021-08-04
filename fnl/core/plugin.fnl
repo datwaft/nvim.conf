@@ -213,6 +213,11 @@
   ;; ---------
   "Pocco81/AutoSave.nvim" {}
 
+  ;; -----------
+  ;; Better save
+  ;; -----------
+  "jghauser/mkdir.nvim" {:config #(require :mkdir)}
+
   ;; ----------------------
   ;; Better quickfix window
   ;; ----------------------
