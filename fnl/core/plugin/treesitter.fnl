@@ -35,3 +35,5 @@
 
 (set! foldmethod :expr)
 (set! foldexpr "nvim_treesitter#foldexpr()")
+
+(let! markdown_fenced_languages ["lua"])
