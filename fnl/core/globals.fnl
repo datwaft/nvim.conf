@@ -23,3 +23,27 @@
 
 ; Use fennel cljlib as a standard library
 (import-all clj)
+
+; Function to check if collection contains item or all items of another collection
+(global contains?
+  (lambda [collection item]
+   (match (type collection)
+     :table (match (type item)
+              :table (= (length (icollect [_ value (ipairs item)] (when (contains? collection value) value)))
+                        (length item))
+              _ (> (length (icollect [_ value (ipairs collection)] (when (= item value) value))) 0))
+     :string (match (type item)
+               :table (= (length (icollect [_ value (ipairs item)] (when (contains? collection value) value)))
+                         (length item))
+               _ (if (string.find collection item) true false)))))
+
+; Function to check if collection contains item or any items of another collection
+(global contains-any?
+  (lambda [collection item]
+   (match (type collection)
+     :table (match (type item)
+              :table (> (length (icollect [_ value (ipairs item)] (when (contains? collection value) value))) 0)
+              _ (> (length (icollect [_ value (ipairs collection)] (when (= item value) value))) 0))
+     :string (match (type item)
+               :table (> (length (icollect [_ value (ipairs item)] (when (contains? collection value) value))) 0)
+               _ (if (string.find collection item) true false)))))

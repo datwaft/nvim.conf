@@ -35,7 +35,7 @@
           (autocmd! FileType [help packer]
                     #(set-local! nospell)))
 
-; Disable colorcolumn in certain filyetypes
+; Disable colorcolumn in certain filetypes
 (augroup! disable-colorcolumn-on-filetypes
           (autocmd! FileType [help packer
                               NvimTree fern

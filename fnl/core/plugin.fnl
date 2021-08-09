@@ -21,7 +21,8 @@
   configuration. Intended for use with packer's config or setup
   configuration options. Will prefix the name with `core.plugin.`
   before requiring."
-  (.. "require('core.plugin." name "')"))
+  (table.concat ["require('core.globals')"
+                 (.. "require('core.plugin." name "')")] " "))
 
 ; Declaration and configuration of the plugins
 (use
