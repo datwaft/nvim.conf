@@ -32,8 +32,8 @@
   ;; -----------
   ;; Colorscheme
   ;; -----------
-  "sainnhe/edge" {:as :colorscheme
-                  :config (req :colorscheme)}
+  "projekt0n/github-nvim-theme" {:as :colorscheme
+                                 :config (req :colorscheme)}
   ;; -----------
   ;; Status line
   ;; -----------

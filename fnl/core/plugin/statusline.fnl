@@ -2,20 +2,21 @@
   {require-macros [core.macros]})
 
 (let! bubbly_palette
-  {:background "#34343c"
-   :foreground "#c5cdd9"
-   :black "#3e4249"
-   :red "#ec7279"
-   :green "#a0c980"
-   :yellow "#deb974"
-   :blue "#6cb6eb"
-   :purple "#d38aea"
-   :cyan "#5dbbc1"
-   :white "#c5cdd9"
-   :lightgrey "#57595e"
+  {:background "#24292e"
+   :foreground "#d1d5da"
+   :black "#24292e"
+   :red "#f14c4c"
+   :green "#23d18b"
+   :yellow "#e2e210"
+   :blue "#3b8eea"
+   :purple "#bc3fbc"
+   :cyan "#29b7da"
+   :white "#d1d5da"
+   :lightgrey "#666666"
    :darkgrey "#404247"})
 
-(let! bubbly_colors {:total_buffer_number "red"})
+(let! bubbly_colors {:total_buffer_number "red"
+                     :branch "yellow"})
 
 (let! bubbly_styles {:total_buffer_number "bold"})
 
