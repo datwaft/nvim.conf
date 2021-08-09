@@ -224,6 +224,11 @@
   ;; ----------------------
   "kevinhwang91/nvim-bqf" {}
 
+  ;; ------------------
+  ;; Mapping management
+  ;; ------------------
+  "folke/which-key.nvim" {:config (req :which-key)}
+
   ;;; ==============================
   ;;; Language Server Protocol (LSP)
   ;;; ==============================
