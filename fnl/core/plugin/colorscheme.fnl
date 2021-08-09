@@ -5,5 +5,5 @@
                :keywordStyle "italic"
                :functionStyle "italic"
                :variableStyle "italic"
-               :darkSidebar false
-               :darkFloat false})
+               :darkSidebar true
+               :darkFloat true})
