@@ -57,6 +57,13 @@ true
 
 This macro lets you set a vim option a if you were using vimscript.
 
+**Warning:** as can be seen in [this
+explanation](https://github.com/datwaft/nvim/issues/13#issuecomment-894824218),
+you cannot use a variable as an option name, if you try it will use the
+variable name as the option name. If you want this functionality you can use
+`(tset vim.opt <variable name> <option value>)`. This applies to all macros
+that let you use symbols as strings.
+
 ```clojure
 > (set! spell)
 (tset vim.opt "spell" true)
@@ -87,6 +94,13 @@ This macro lets you set a vim option a if you were using vimscript.
 
 This macro lets you set a vim option a if you were using vimscript.
 
+**Warning:** as can be seen in [this
+explanation](https://github.com/datwaft/nvim/issues/13#issuecomment-894824218),
+you cannot use a variable as an option name, if you try it will use the
+variable name as the option name. If you want this functionality you can use
+`(tset vim.opt_local <variable name> <option value>)`. This applies to all
+macros that let you use symbols as strings.
+
 ```clojure
 > (set-local! spell)
 (tset vim.opt_local "spell" true)
@@ -116,6 +130,13 @@ This macro lets you set a vim option a if you were using vimscript.
 ## `let!`
 
 Lets you set a vim variable as if you were using vimscript... almost.
+
+**Warning:** as can be seen in [this
+explanation](https://github.com/datwaft/nvim/issues/13#issuecomment-894824218),
+you cannot use a variable as a vim variable name, if you try it will use the
+variable name as the vim variable name. If you want this functionality you can
+use `(tset vim.g <variable name> <value>)`. This applies to all macros that let
+you use symbols as strings.
 
 ```clojure
 > (let! python3_path "/usr/local/python3")
