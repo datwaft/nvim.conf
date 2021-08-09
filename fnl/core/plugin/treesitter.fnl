@@ -89,7 +89,6 @@
                                  "typescript"
                                  "typescriptcommon"
                                  "typescriptreact"
-                                 "vim"
                                  "vue"
                                  "yaml"
                                  "zsh"])
