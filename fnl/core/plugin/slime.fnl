@@ -9,4 +9,4 @@
 (let! slime_dont_ask_default 1)
 
 ; Global mappings
-(map! [n] "<leader>s" "<plug>SlimeMotionSend")
+(map! [n] "<leader>s" "<Plug>SlimeMotionSend")

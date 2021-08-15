@@ -10,7 +10,7 @@
 (noremap! [n] "<leader>fh" "<cmd>Telescope help_tags<cr>")
 
 ;; Suggest spelling
-(noremap! [n] "zf" "<cmd>lua require'telescope.builtin'.spell_suggest{}<cr>" :silent)
+(noremap! [n :silent] "zf" "<cmd>lua require'telescope.builtin'.spell_suggest{}<cr>")
 
 ;; Configure telescope
 (plugin.setup {:defaults {:mappings {:i {"<ESC>" actions.close

@@ -1,200 +1,258 @@
-(require :core.globals)
+;;; Helper Functions Declaration
+
+(fn inc [number]
+  "Increments a number by 1"
+  (+ number 1))
+
+(fn dec [number]
+  "Decrements a number by 1"
+  (- number 1))
+
+(fn first [seq]
+  "Returns the first value of the sequence"
+  (?. seq 1))
+
+(fn last [seq]
+  "Returns the last value of the sequence"
+  (?. seq (length seq)))
+
+(fn rest [seq]
+  "Returns all but the first value of the sequence"
+  (let [[_ & rest] seq] rest))
+
+(fn map [fun seq]
+  "Map a function over a sequence"
+  (icollect [_ value (ipairs seq)]
+    (fun value)))
+
+(fn filter [cond seq]
+  "Returns a sequence of every item that fulfills the condition"
+  (icollect [_ value (ipairs seq)]
+    (when (cond value) value)))
+
+(fn any? [cond seq]
+  "Returns true if any element of the sequence fulfills the condition"
+  (accumulate [does? false
+               _ value (ipairs seq)
+               :until does?]
+              (cond value)))
+
+(fn every? [cond seq]
+  "Returns true if every element of the sequence fulfills the condition"
+  (not (accumulate [does-not? false
+                    _ value (ipairs seq)
+                    :until does-not?]
+                   (not (cond value)))))
+
+(fn keys [tbl]
+  "Returns a sequence of all keys of a table"
+  (icollect [key _ (pairs tbl)] key))
+
+(fn vals [tbl]
+  "Returns a sequence of all values of a table"
+  (icollect [_ value (pairs tbl)] value))
+
+(fn cons [obj seq]
+  "Returns a sequence with the object appended as the first element of the sequence"
+  [obj (unpack seq)])
+
+(fn tbl->seq [tbl]
+  "Converts a table into a sequence of key-value pairs"
+  (icollect [key value (pairs tbl)] [key value]))
+
+(fn str->seq [str]
+  "Converts a string to a sequence of characters"
+  (icollect [chr (string.gmatch str ".")] chr))
+
+(fn ->str [obj]
+  "Converts an object to its string representation"
+  (tostring obj))
+
+(fn seq->set [seq]
+  "Returns a set following the structure of `{:key true}` from a sequence"
+  (collect [_ value (ipairs seq)]
+    (values value true)))
+
+(fn string? [obj]
+  "Returns true if the object is a string"
+  (= :string (type obj)))
+
+(fn fn? [obj]
+  "Returns true if the object is a function
+  This only works at compilation time"
+  (and
+    (list? obj)
+    (or
+      (= (->str (first obj)) :hashfn)
+      (= (->str (first obj)) :fn))))
+
+(fn number? [obj]
+  "Returns true if the object is a number"
+  (= :number (type obj)))
+
+(fn tbl? [obj]
+  "Returns true if the object is a table"
+  (= :table (type obj)))
+
+(fn seq? [obj]
+  "Returns true if the object is a sequence"
+  (and (tbl? obj)
+       (every? number? (keys obj))))
+
+(fn set? [obj]
+  "Returns true if the object is a sequence"
+  (and (tbl? obj)
+       (every? #(= $ true) (vals obj))))
+
+(fn nil? [obj]
+  "Returns true if the object is nil"
+  (= nil obj))
+
+(fn contains? [seq obj]
+  "Returns true if the sequence contains the object"
+  (accumulate [does? false
+               _ it (ipairs seq)
+               :until does?]
+              (= it obj)))
+
+(fn any= [obj ...]
+  "Returns true if the object equals any other parameter"
+  (contains? [...] obj))
+
+(fn exists? [module-name]
+  "Returns true if the module exists and false if it doesn't"
+  (let [(ok? _) (pcall require module-name)]
+    ok?))
 
 (global __core_symfn_id 0)
-(lambda gensym-fn! []
-  "Generates a new unique variable name following the structure __core_symfn_#"
+(fn gensym-fn! []
+  "Generates a new unique variable name following the structure `__core_symfn_#`"
   (.. "__core_symfn_"
       (do
-        (global __core_symfn_id (+ __core_symfn_id 1))
+        (global __core_symfn_id (inc __core_symfn_id))
         __core_symfn_id)))
 
-(lambda get? [name]
-  "Returns the value of a vim option"
-  (assert-compile (or (sym? name)
-                      (= "string" (type name)))
-                  "'name' must be either a symbol or a string" name)
-  (let [name (tostring name)
-        name (if (= (name:sub 1 2) "no") (name:sub 3) name)]
-    `(let [(ok?# value#) (pcall #(: (. vim.opt ,name) :get))]
-       (if ok?# value# nil))))
+;;; Macros Declaration
 
-(lambda get-local? [name]
-  "Returns the value of a vim local option"
-  (assert-compile (or (sym? name)
-                      (= "string" (type name)))
-                  "'name' must be either a symbol or a string" name)
-  (let [name (tostring name)
-        name (if (= (name:sub 1 2) "no") (name:sub 3) name)]
-    `(let [(ok?# value#) (pcall #(: (. vim.opt_local ,name) :get))]
-       (if ok?# value# nil))))
-
-(lambda set! [name ?value]
-  "Set a vim option using the vim.opt api"
-  (assert-compile (or (sym? name)
-                      (= "string" (type name)))
-                  "'name' must be either a symbol or a string" name)
-  (let [name (tostring name)
-        value-is-nil? (= nil ?value)
-        name-begins-with-no? (= (name:sub 1 2) "no")
-        name (if (and value-is-nil? name-begins-with-no?)
-               (name:sub 3)
-               name)
-        value (if value-is-nil?
-                (not name-begins-with-no?)
-                ?value)
-        name-last-character (name:sub -1)
-        name-without-last-character (name:sub 1 -2)]
-    (if (and 
-          (list? value)
-          (or
-            (= (tostring (. value 1)) :hashfn)
-            (= (tostring (. value 1)) :fn)))
-      (let [symbol (gensym-fn!)]
-        `(do
-           (global ,(sym symbol) ,value)
-           (tset vim.opt ,name ,(string.format "v:lua.%s()" symbol))))
-      (match name-last-character
-        "?" `(get? ,name-without-last-character)
-        "!" `(tset vim.opt ,name-without-last-character
-                   (not (get? ,name-without-last-character)))
-        "+" `(: (. vim.opt ,name-without-last-character) :append ,value)
-        "-" `(: (. vim.opt ,name-without-last-character) :remove ,value)
-        "^" `(: (. vim.opt ,name-without-last-character) :prepend ,value)
-        _ `(tset vim.opt ,name ,value)))))
-
-(lambda set-local! [name ?value]
-  "Set a local vim option using the vim.opt_local api"
-  (assert-compile (or (sym? name)
-                      (= "string" (type name)))
-                  "'name' must be either a symbol or a string" name)
-  (let [name (tostring name)
-        value-is-nil? (= nil ?value)
-        name-begins-with-no? (= (name:sub 1 2) "no")
-        name (if (and value-is-nil? name-begins-with-no?)
-               (name:sub 3)
-               name)
-        value (if value-is-nil?
-                (not name-begins-with-no?)
-                ?value)
-        name-last-character (name:sub -1)
-        name-without-last-character (name:sub 1 -2)]
-    (if (and 
-          (list? value)
-          (or
-            (= (tostring (. value 1)) :hashfn)
-            (= (tostring (. value 1)) :fn)))
-      (let [symbol (gensym-fn!)]
-        `(do
-           (global ,(sym symbol) ,value)
-           (tset vim.opt_local ,name ,(string.format "v:lua.%s()" symbol))))
-      (match name-last-character
-        "?" `(get-local? ,name-without-last-character)
-        "!" `(tset vim.opt_local ,name-without-last-character
-                   (not (get-local? ,name-without-last-character)))
-        "+" `(: (. vim.opt_local ,name-without-last-character) :append ,value)
-        "-" `(: (. vim.opt_local ,name-without-last-character) :remove ,value)
-        "^" `(: (. vim.opt_local ,name-without-last-character) :prepend ,value)
-        _ `(tset vim.opt_local ,name ,value)))))
-
-(lambda let! [name value]
-  "Set vim variable using the vim.[g b w t] api"
-  (assert-compile (or (sym? name)
-                      (= "string" (type name)))
-                  "'name' must be either a symbol or a string" name)
-  (let [name (tostring name)
-        scope (if (> (length (icollect [_ v (ipairs ["g/" "b/" "w/" "t/"])]
-                               (when (= (name:sub 1 2) v) v))) 0)
-                (name:sub 1 1)
-                nil)
-        name (if (= nil scope) name (name:sub 3))]
-    (match scope
-      "g" `(tset vim.g ,name ,value)
-      "b" `(tset vim.b ,name ,value)
-      "w" `(tset vim.w ,name ,value)
-      "t" `(tset vim.t ,name ,value)
-      _ `(tset vim.g ,name ,value))))
-
-(lambda augroup! [name ...]
-  "Defines an augroup with a name and auto-commands"
-  (assert-compile (or (sym? name)
-                      (= "string" (type name)))
-                  "'name' must be either a symbol or a string" name)
-  `(do
-     (vim.cmd ,(string.format "augroup %s\nautocmd!"
-                              (tostring name)))
-     (do
-       ,...)
-     (vim.cmd "augroup END")
-     nil))
-
-(lambda autocmd! [events pattern command]
-  "Defines an auto-command"
-  (let [events (table.concat (icollect [_ v (ipairs (if
-                                                      (sequence? events) events
-                                                      [events]))]
-                               (tostring v)) ",")
-        pattern (table.concat (icollect [_ v (ipairs (if
-                                                       (sequence? pattern) pattern
-                                                       [pattern]))]
-                                (tostring v)) ",")]
-    (if (not (list? command))
-      `(vim.cmd ,(string.format "autocmd %s %s %s"
-                                events pattern command))
-      (let [name (gensym-fn!)]
-        `(do
-           (global ,(sym name) ,command)
-           (vim.cmd ,(string.format "autocmd %s %s call v:lua.%s()"
-                                    events pattern name)))))))
-
-(lambda map! [mode-list combination command ...]
-  "Maps a combination to a command in some modes"
-  (let [mode-list (tostring (if (sequence? mode-list) (. mode-list 1) mode-list))
-        combination (tostring combination)
-        options (collect [_ option (ipairs [...])]
-                  (values (tostring option) true))
-        out []]
-    (if (and
-          (list? command)
-          (or
-            (= (tostring (. command 1)) :hashfn)
-            (= (tostring (. command 1)) :fn)))
-      (let [name (gensym-fn!)]
-        (table.insert out `(global ,(sym name) ,command))
-        (each [mode (string.gmatch mode-list ".")]
-          (table.insert out `(vim.api.nvim_set_keymap ,mode ,combination ,(string.format "v:lua.%s()" name) ,options))))
-      (each [mode (string.gmatch mode-list ".")]
-        (table.insert out `(vim.api.nvim_set_keymap ,mode ,combination ,(tostring command) ,options))))
-    (if (> (length out) 1)
-      `(do ,(unpack out))
-      `,(unpack out))))
-
-(lambda noremap! [mode-list combination command ...]
-  "Maps a combination to a command in some modes with the noremap option"
-  `(map! ,mode-list ,combination ,command :noremap ,...))
-
-(lambda t [combination]
-  "Returns the string with termcodes replaced"
-  (assert-compile (or (sym? combination)
-                      (= "string" (type combination)))
-                  "'combination' must be either a symbol or a string" combination)
-  `(vim.api.nvim_replace_termcodes ,(tostring combination) true true true))
-
-(lambda has? [property]
-  `(match (vim.fn.has ,property)
-     1 true
-     0 false
-     _# nil))
-
-(lambda unless [condition ...]
+(fn unless [condition ...]
   "Takes a single condition and evaluates the rest as a body if it's nil or
   false. This is intended for side-effects."
   `(when (not ,condition)
      ,...))
 
-{: gensym-fn!
- : get?
- : get-local?
- : set!
+(fn set! [name ?value]
+  "Set a vim option using the `vim.opt` API"
+  (let [name (->str name)
+        value (if (nil? ?value) (not (name:match "^no")) ?value)
+        name (if (nil? ?value) (or (name:match "^no(.*)$") name) name)]
+    (if (fn? value)
+      (let [fn-name (gensym-fn!)]
+        `(do
+           (global ,(sym fn-name) ,value)
+           (tset vim.opt ,name ,(string.format "v:lua.%s()" fn-name))))
+      (match (name:sub -1)
+        :+ `(: (. vim.opt ,(name:sub 1 -2)) :append ,value)
+        :- `(: (. vim.opt ,(name:sub 1 -2)) :remove ,value)
+        :^ `(: (. vim.opt ,(name:sub 1 -2)) :prepend ,value)
+        _ `(tset vim.opt ,name ,value)))))
+
+(fn set-local! [name ?value]
+  "Set a local vim option using the `vim.opt_local` API"
+  (let [name (->str name)
+        value (if (nil? ?value) (not (name:match "^no")) ?value)
+        name (if (nil? ?value) (or (name:match "^no(.*)$") name) name)]
+    (if (fn? value)
+      (let [fn-name (gensym-fn!)]
+        `(do
+           (global ,(sym fn-name) ,value)
+           (tset vim.opt_local ,name ,(string.format "v:lua.%s()" fn-name))))
+      (match (name:sub -1)
+        :+ `(: (. vim.opt_local ,(name:sub 1 -2)) :append ,value)
+        :- `(: (. vim.opt_local ,(name:sub 1 -2)) :remove ,value)
+        :^ `(: (. vim.opt_local ,(name:sub 1 -2)) :prepend ,value)
+        _ `(tset vim.opt_local ,name ,value)))))
+
+(fn let! [name value]
+  "Set a vim variable using the vim.[g b w t] API"
+  (let [name (->str name)
+        scope (when (any= (name:sub 1 2) "g/" "b/" "w/" "t/")
+                (name:sub 1 1))
+        name (if (nil? scope) name (name:sub 3))]
+    (match scope
+      :g `(tset vim.g ,name ,value)
+      :b `(tset vim.b ,name ,value)
+      :w `(tset vim.w ,name ,value)
+      :t `(tset vim.t ,name ,value)
+      _ `(tset vim.g ,name ,value))))
+
+(fn augroup! [name ...]
+  `(do
+     (vim.cmd ,(string.format "augroup %s\nautocmd!"
+                              (->str name)))
+     (do
+       ,...)
+     (vim.cmd "augroup END")
+     nil))
+
+(fn autocmd! [events pattern command]
+  "Defines an autocommand"
+  (let [events (if (sequence? events) events [events])
+        events (-> (map ->str events) 
+                   (table.concat ","))
+        pattern (if (sequence? pattern) pattern [pattern])
+        pattern (-> (map ->str pattern)
+                    (table.concat ","))]
+    (if (fn? command)
+      (let [fn-name (gensym-fn!)]
+        `(do
+           (global ,(sym fn-name) ,command)
+           (vim.cmd ,(string.format "autocmd %s %s call v:lua.%s()"
+                                    events pattern fn-name))))
+      `(vim.cmd ,(string.format "autocmd %s %s call %s"
+                                events pattern command)))))
+
+(fn map! [[modes & options] lhs rhs]
+  "Defines a vim mapping
+  Allows functions as right-hand side"
+  (fn expr [buffer? mode lhs rhs options]
+    (if buffer?
+      `(vim.api.nvim_buf_set_keymap 0 ,mode ,lhs ,rhs ,options)
+      `(vim.api.nvim_set_keymap ,mode ,lhs ,rhs ,options)))
+  (let [modes (str->seq (->str modes))
+        buffer? (contains? options :buffer)
+        options (-> (filter #(not= $ :buffer) options)
+                    (seq->set options))]
+    (if (fn? rhs)
+      (let [fn-name (gensym-fn!)
+            exprs (->> (map #(expr buffer? $ lhs
+                                   (string.format "v:lua.%s()" fn-name)
+                                   options) modes)
+                       (cons `(global ,(sym fn-name) ,rhs)))]
+        `(do ,(unpack exprs)))
+      (let [exprs (map #(expr buffer? $ lhs rhs options) modes)]
+        (if (> (length exprs) 1)
+          `(do ,(unpack exprs))
+          (unpack exprs))))))
+
+(fn noremap! [[modes & options] lhs rhs ?name]
+  "Defines a vim mapping
+  Allows functions as right-hand side
+  Appends :noremap to the options"
+  (let [options (cons :noremap options)]
+    `(map! ,(cons modes options) ,lhs ,rhs ,?name)))
+
+(fn t [combination]
+  "Returns the string with termcodes replaced"
+  `(vim.api.nvim_replace_termcodes ,(->str combination) true true true))
+
+(fn has? [property]
+  "Returns true if vim has a propety"
+  `(match (vim.fn.has ,property)
+     1 true
+     0 false
+     _# nil))
+
+{: set!
  : set-local!
  : let!
  : augroup!

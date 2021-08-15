@@ -1,10 +1,10 @@
 (module core.plugin.camel-case-motion
   {require-macros [core.macros]})
 
-(map! [nvo] "<leader>w" "<Plug>CamelCaseMotion_w" :silent)
+(map! [nvo :silent] "<leader>w" "<Plug>CamelCaseMotion_w")
 
-(map! [nvo] "<leader>b" "<Plug>CamelCaseMotion_b" :silent)
+(map! [nvo :silent] "<leader>b" "<Plug>CamelCaseMotion_b")
 
-(map! [nvo] "<leader>e" "<Plug>CamelCaseMotion_e" :silent)
+(map! [nvo :silent] "<leader>e" "<Plug>CamelCaseMotion_e")
 
-(map! [xo] "i<leader>w" "<Plug>CamelCaseMotion_ie" :silent)
+(map! [xo :silent] "i<leader>w" "<Plug>CamelCaseMotion_ie")

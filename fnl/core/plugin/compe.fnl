@@ -35,14 +35,14 @@
                         :omni {:filetypes [:tex]}}})
 
 
-(noremap! [i] "<C-Space>" "compe#complete()" :expr :silent)
-(noremap! [i] "<C-e>" "compe#close('<C-e>')" :expr :silent)
-(noremap! [i] "<space>" "compe#confirm('<space>')" :expr :silent)
-(noremap! [i] "<C-f>" "compe#scroll({'delta': +4})" :expr :silent)
-(noremap! [i] "<C-d>" "compe#scroll({'delta': -4})" :expr :silent)
+(noremap! [i :expr :silent] "<C-Space>" "compe#complete()")
+(noremap! [i :expr :silent] "<C-e>" "compe#close('<C-e>')")
+(noremap! [i :expr :silent] "<space>" "compe#confirm('<space>')")
+(noremap! [i :expr :silent] "<C-f>" "compe#scroll({'delta': +4})")
+(noremap! [i :expr :silent] "<C-d>" "compe#scroll({'delta': -4})")
 
-(noremap! [is] "<Tab>" #(if (= (vim.fn.pumvisible) 1) (t "<C-n>")
-                          (t "<Tab>")) :expr :silent)
+(noremap! [is :expr :silent] "<Tab>" #(if (= (vim.fn.pumvisible) 1) (t "<C-n>")
+                                        (t "<Tab>")))
 
-(noremap! [is] "<S-Tab>" #(if (= (vim.fn.pumvisible) 1) (t "<C-p>")
-                            (t "<S-Tab>")) :expr :silent)
+(noremap! [is :expr :silent] "<S-Tab>" #(if (= (vim.fn.pumvisible) 1) (t "<C-p>")
+                                          (t "<S-Tab>")))
