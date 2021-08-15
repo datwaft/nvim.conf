@@ -194,7 +194,7 @@ Lets you set a vim autocmd as if you were using vimscript.
 This macro lets you create a mapping as if you were using vimscript.
 
 ```clojure
-> (map! [nvo] "x" "<C-w>v" :noremap)
+> (map! [nvo :noremap] "x" "<C-w>v")
 (do
   (vim.api.nvim_set_keymap "n" "x" "<C-w>v" {:noremap true})
   (vim.api.nvim_set_keymap "v" "x" "<C-w>v" {:noremap true})
