@@ -52,10 +52,6 @@
   "Returns a sequence of all values of a table"
   (icollect [_ value (pairs tbl)] value))
 
-(fn cons [obj seq]
-  "Returns a sequence with the object appended as the first element of the sequence"
-  [obj (unpack seq)])
-
 (fn tbl->seq [tbl]
   "Converts a table into a sequence of key-value pairs"
   (icollect [key value (pairs tbl)] [key value]))
@@ -114,6 +110,29 @@
                _ it (ipairs seq)
                :until does?]
               (= it obj)))
+
+(fn cons [obj seq]
+  "Returns a sequence with the object appended as the first element of the sequence"
+  [obj (unpack seq)])
+
+(fn conj [tbl ...]
+  "Return a table or a sequence with the values/key-value pairs inserted (at the end)"
+  (if (seq? tbl)
+    (let [copy (icollect [v (ipairs tbl)] v)]
+      (each [_ v (ipairs [...])]
+        (table.insert copy v))
+      copy)
+    (let [copy (collect [k v (pairs tbl)] (values k v))]
+      (each [_ [k v] (ipairs [...])]
+        (tset copy k v))
+      copy)))
+
+(fn disj [tbl ...]
+  "Return a table without the keys in the parameters"
+  (let [copy (collect [k v (pairs tbl)] (values k v))]
+    (each [_ key (ipairs [...])]
+      (tset copy key nil))
+    copy))
 
 (fn any= [obj ...]
   "Returns true if the object equals any other parameter"
@@ -220,10 +239,11 @@
       `(vim.api.nvim_set_keymap ,mode ,lhs ,rhs ,options)))
   (let [modes (str->seq (->str modes))
         buffer? (contains? options :buffer)
-        options (-> (filter #(not= $ :buffer) options)
-                    (seq->set options))]
+        options (-> (seq->set options)
+                    (disj :buffer))]
     (if (fn? rhs)
       (let [fn-name (gensym-fn!)
+            options (conj options [:expr true])
             exprs (->> (map #(expr buffer? $ lhs
                                    (string.format "v:lua.%s()" fn-name)
                                    options) modes)
