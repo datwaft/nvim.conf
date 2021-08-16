@@ -111,13 +111,22 @@
                :until does?]
               (= it obj)))
 
+(fn empty? [seq]
+  "Returns true if the sequence has length 0"
+  (= 0 (length seq)))
+
 (fn cons [obj seq]
   "Returns a sequence with the object appended as the first element of the sequence"
   [obj (unpack seq)])
 
 (fn conj [tbl ...]
   "Return a table or a sequence with the values/key-value pairs inserted (at the end)"
-  (if (seq? tbl)
+  (if (and (seq? tbl)
+           (if (empty? tbl)
+             (not (every? #(match $
+                             [_ _] true
+                             _ false) [...]))
+             true))
     (let [copy (icollect [v (ipairs tbl)] v)]
       (each [_ v (ipairs [...])]
         (table.insert copy v))
@@ -261,6 +270,22 @@
   (let [options (cons :noremap options)]
     `(map! ,(cons modes options) ,lhs ,rhs ,?name)))
 
+(fn buf-map! [[modes & options] lhs rhs ?name]
+  "Defines a vim mapping
+  Allows functions as right-hand side
+  Appends :buffer to the options"
+  (let [options (cons :buffer options)]
+    `(map! ,(cons modes options) ,lhs ,rhs ,?name)))
+
+(fn buf-noremap! [[modes & options] lhs rhs ?name]
+  "Defines a vim mapping
+  Allows functions as right-hand side
+  Appends :buffer and :noremap to the options"
+  (let [options (->> options
+                    (cons :buffer)
+                    (cons :noremap))]
+    `(map! ,(cons modes options) ,lhs ,rhs ,?name)))
+
 (fn t [combination]
   "Returns the string with termcodes replaced"
   `(vim.api.nvim_replace_termcodes ,(->str combination) true true true))
@@ -279,6 +304,8 @@
  : autocmd!
  : map!
  : noremap!
+ : buf-map!
+ : buf-noremap!
  : t
  : has?
  : unless}

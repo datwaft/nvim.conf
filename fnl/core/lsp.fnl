@@ -34,43 +34,43 @@
   ;; Mappings
   ;; --------
   ; Use K to show the documentation
-  (noremap! [n :buffer] "K" "<cmd>lua vim.lsp.buf.hover()<cr>")
+  (buf-noremap! [n] "K" "<cmd>lua vim.lsp.buf.hover()<cr>")
   ; Use <leader>a to open the code-actions menu
   (when (exists? :lspsaga)
-    (noremap! [n :buffer] "<leader>a" "<cmd>Lspsaga code_action<cr>")
-    (noremap! [v :buffer] "<leader>a" "<cmd>Lspsaga range_code_action<cr>"))
+    (buf-noremap! [n] "<leader>a" "<cmd>Lspsaga code_action<cr>")
+    (buf-noremap! [v] "<leader>a" "<cmd>Lspsaga range_code_action<cr>"))
   ; Use <leader>d to display the diagnostics for the current line
   (when (exists? :lspsaga)
-    (noremap! [n :buffer] "<leader>d" "<cmd>Lspsaga show_line_diagnostics<cr>"))
+    (buf-noremap! [n] "<leader>d" "<cmd>Lspsaga show_line_diagnostics<cr>"))
   ; Use <leader>D to display a list of diagnostics
   (when (exists? :trouble)
-    (noremap! [n :buffer] "<leader>D" "<cmd>TroubleToggle<cr>"))
+    (buf-noremap! [n] "<leader>D" "<cmd>TroubleToggle<cr>"))
   ; Use <leader>ld to display a list of diagnostics for the current file
   (when (exists? :trouble)
-    (noremap! [n :buffer] "<leader>ld" "<cmd>TroubleToggle lsp_document_diagnostics<cr>"))
+    (buf-noremap! [n] "<leader>ld" "<cmd>TroubleToggle lsp_document_diagnostics<cr>"))
   ; Use <leader>lD to display a list of diagnostics for the workspace
   (when (exists? :trouble)
-    (noremap! [n :buffer] "<leader>lD" "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>"))
+    (buf-noremap! [n] "<leader>lD" "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>"))
   ; Use [d and ]d to jump between diagnostics
   (when (exists? :lspsaga)
-    (noremap! [n :buffer] "[d" "<cmd>Lspsaga diagnostic_jump_prev<cr>")
-    (noremap! [n :buffer] "]d" "<cmd>Lspsaga diagnostic_jump_next<cr>"))
+    (buf-noremap! [n] "[d" "<cmd>Lspsaga diagnostic_jump_prev<cr>")
+    (buf-noremap! [n] "]d" "<cmd>Lspsaga diagnostic_jump_next<cr>"))
   ; Use <leader>lr to display a list of references for the symbol below the cursor
   (when (exists? :trouble)
-    (noremap! [n :buffer] "<leader>lr" "<cmd>TroubleToggle lsp_references<cr>"))
+    (buf-noremap! [n] "<leader>lr" "<cmd>TroubleToggle lsp_references<cr>"))
   ; Use gd to go to the definition of the symbol below the cursor
-  (noremap! [n :buffer] "gd" "<cmd>lua vim.lsp.buf.definition()<cr>")
+  (buf-noremap! [n] "gd" "<cmd>lua vim.lsp.buf.definition()<cr>")
   ; Use gt to go to the type definition of the symbol below the cursor
-  (noremap! [n :buffer] "gt" "<cmd>lua vim.lsp.buf.type_definition()<cr>")
+  (buf-noremap! [n] "gt" "<cmd>lua vim.lsp.buf.type_definition()<cr>")
   ; Use <leader>pd to preview the definition of the symbol below the cursor
   (when (exists? :lspsaga)
-    (noremap! [n :buffer] "<leader>pd" "<cmd>Lspsaga preview_definition<cr>"))
+    (buf-noremap! [n] "<leader>pd" "<cmd>Lspsaga preview_definition<cr>"))
   ; Use <leader>ps to preview the signature of the symbol below the cursor
   (when (exists? :lspsaga)
-    (noremap! [n :buffer] "<leader>ps" "<cmd>Lspsaga signature_help<cr>"))
+    (buf-noremap! [n] "<leader>ps" "<cmd>Lspsaga signature_help<cr>"))
   ; Use <leader>rn to rename the symbol below the cursor
   (when (exists? :lspsaga)
-    (noremap! [n :buffer] "<leader>rn" "<cmd>Lspsaga rename<cr>"))
+    (buf-noremap! [n] "<leader>rn" "<cmd>Lspsaga rename<cr>"))
   ;; ---------
   ;; Signature
   ;; ---------
