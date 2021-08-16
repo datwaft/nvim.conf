@@ -28,9 +28,6 @@
 (noremap! [i] "<up>" #(if (= vim.v.count 0) (t "<C-o>gk")
                         (if (> vim.v.count 5) (t "m'<up>") (t "<up>"))))
 
-; Use Y to copy from the cursor to the end
-(noremap! [n] "Y" "y$")
-
 ; Execute macro fast
 (noremap! [xn] "Q" "<cmd>normal @@<cr>")
 
