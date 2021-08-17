@@ -236,7 +236,7 @@
            (global ,(sym fn-name) ,command)
            (vim.cmd ,(string.format "autocmd %s %s call v:lua.%s()"
                                     events pattern fn-name))))
-      `(vim.cmd ,(string.format "autocmd %s %s call %s"
+      `(vim.cmd ,(string.format "autocmd %s %s %s"
                                 events pattern command)))))
 
 (fn map! [[modes & options] lhs rhs]
