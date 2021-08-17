@@ -296,7 +296,7 @@
   ;; ---------------
   ;; REPL for Fennel
   ;; ---------------
-  "Olical/conjure" {}
+  "Olical/conjure" {:config (req :conjure)}
 
   ;; --------------
   ;; Plugin manager
