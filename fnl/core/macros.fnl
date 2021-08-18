@@ -239,52 +239,73 @@
       `(vim.cmd ,(string.format "autocmd %s %s %s"
                                 events pattern command)))))
 
-(fn map! [[modes & options] lhs rhs]
+(fn doc-map! [mode lhs options description]
+  `(let [(ok?# which-key#) (pcall require :which-key)]
+     (when ok?#
+       (which-key#.register
+         {,lhs ,description}
+         {:mode ,mode
+          :buffer ,(if options.buffer 0)
+          :silent ,(if options.silent true)
+          :noremap ,(if (not options.noremap) false)
+          :nowait ,(if options.nowait true)}))))
+
+(fn map! [[modes & options] lhs rhs ?description]
   "Defines a vim mapping
   Allows functions as right-hand side"
   (fn expr [buffer? mode lhs rhs options]
     (if buffer?
       `(vim.api.nvim_buf_set_keymap 0 ,mode ,lhs ,rhs ,options)
       `(vim.api.nvim_set_keymap ,mode ,lhs ,rhs ,options)))
-  (let [modes (str->seq (->str modes))
+  (let [modes (-> modes
+                  (->str)
+                  (str->seq))
         buffer? (contains? options :buffer)
-        options (-> (seq->set options)
-                    (disj :buffer))]
-    (if (fn? rhs)
-      (let [fn-name (gensym-fn!)
-            options (conj options [:expr true])
-            exprs (->> (map #(expr buffer? $ lhs
-                                   (string.format "v:lua.%s()" fn-name)
-                                   options) modes)
-                       (cons `(global ,(sym fn-name) ,rhs)))]
-        `(do ,(unpack exprs)))
-      (let [exprs (map #(expr buffer? $ lhs rhs options) modes)]
-        (if (> (length exprs) 1)
-          `(do ,(unpack exprs))
-          (unpack exprs))))))
+        options (seq->set options)
+        options (if (fn? rhs)
+                  (conj options [:expr true])
+                  options)
+        fn-name (when (fn? rhs)
+                  (gensym-fn!))
+        exprs (map #(expr buffer? $ lhs
+                          (if (fn? rhs)
+                            (string.format "v:lua.%s()" fn-name)
+                            rhs)
+                          (disj options :buffer))
+                   modes)
+        exprs (if (fn? rhs)
+                (cons `(global ,(sym fn-name) ,rhs) exprs)
+                exprs)
+        exprs (if (and ?description (exists? :which-key))
+                (conj exprs (unpack (map #(doc-map! $ lhs options ?description)
+                                         modes)))
+                exprs)]
+    (if (> (length exprs) 1)
+      `(do ,(unpack exprs))
+      (unpack exprs))))
 
-(fn noremap! [[modes & options] lhs rhs ?name]
+(fn noremap! [[modes & options] lhs rhs ?description]
   "Defines a vim mapping
   Allows functions as right-hand side
   Appends :noremap to the options"
   (let [options (cons :noremap options)]
-    `(map! ,(cons modes options) ,lhs ,rhs ,?name)))
+    `(map! ,(cons modes options) ,lhs ,rhs ,?description)))
 
-(fn buf-map! [[modes & options] lhs rhs ?name]
+(fn buf-map! [[modes & options] lhs rhs ?description]
   "Defines a vim mapping
   Allows functions as right-hand side
   Appends :buffer to the options"
   (let [options (cons :buffer options)]
-    `(map! ,(cons modes options) ,lhs ,rhs ,?name)))
+    `(map! ,(cons modes options) ,lhs ,rhs ,?description)))
 
-(fn buf-noremap! [[modes & options] lhs rhs ?name]
+(fn buf-noremap! [[modes & options] lhs rhs ?description]
   "Defines a vim mapping
   Allows functions as right-hand side
   Appends :buffer and :noremap to the options"
   (let [options (->> options
                     (cons :buffer)
                     (cons :noremap))]
-    `(map! ,(cons modes options) ,lhs ,rhs ,?name)))
+    `(map! ,(cons modes options) ,lhs ,rhs ,?description)))
 
 (fn t [combination]
   "Returns the string with termcodes replaced"
@@ -302,6 +323,7 @@
  : let!
  : augroup!
  : autocmd!
+ : doc-map!
  : map!
  : noremap!
  : buf-map!

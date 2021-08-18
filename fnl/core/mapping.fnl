@@ -2,8 +2,8 @@
   {require-macros [core.macros]})
 
 ; Use <space> to close wildmenu
-(noremap! [c] "<space>" #(if
-                           (= (vim.fn.wildmenumode) 1) (t "<C-y>")
+(noremap! [c] "<space>" #(if (= (vim.fn.wildmenumode) 1)
+                           (t "<C-y>")
                            (t "<space>")))
 
 ; Move to the beginning or end with H or L
@@ -43,11 +43,15 @@
 
 ;; Line object
 ; Inner line
-(noremap! [xo] "il" "<cmd>normal! g_v^<cr>")
+(noremap! [xo] "il" "<cmd>normal! g_v^<cr>"
+          "Inner line")
 ; Around line
-(noremap! [xo] "al" "<cmd>normal! $v0<cr>")
+(noremap! [xo] "al" "<cmd>normal! $v0<cr>"
+          "At line")
 
 ;; Document object
 ; Inner document
-(noremap! [x] "id" "<cmd>normal! G$Vgg0<cr>")
-(noremap! [o] "id" "<cmd>normal! GVgg<cr>")
+(noremap! [x] "id" "<cmd>normal! G$Vgg0<cr>"
+          "Inner document")
+(noremap! [o] "id" "<cmd>normal! GVgg<cr>"
+          "Inner document")
