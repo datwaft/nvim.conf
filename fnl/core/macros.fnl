@@ -127,7 +127,7 @@
                              [_ _] true
                              _ false) [...]))
              true))
-    (let [copy (icollect [v (ipairs tbl)] v)]
+    (let [copy (icollect [_ v (ipairs tbl)] v)]
       (each [_ v (ipairs [...])]
         (table.insert copy v))
       copy)
