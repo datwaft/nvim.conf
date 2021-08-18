@@ -240,6 +240,7 @@
                                 events pattern command)))))
 
 (fn doc-map! [mode lhs options description]
+  "Documents a mapping using which-key"
   `(let [(ok?# which-key#) (pcall require :which-key)]
      (when ok?#
        (which-key#.register
