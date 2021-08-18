@@ -44,14 +44,14 @@
 ;; Line object
 ; Inner line
 (noremap! [xo] "il" "<cmd>normal! g_v^<cr>"
-          "Inner line")
+          "inner line")
 ; Around line
 (noremap! [xo] "al" "<cmd>normal! $v0<cr>"
-          "At line")
+          "at line")
 
 ;; Document object
 ; Inner document
 (noremap! [x] "id" "<cmd>normal! G$Vgg0<cr>"
-          "Inner document")
+          "inner document")
 (noremap! [o] "id" "<cmd>normal! GVgg<cr>"
-          "Inner document")
+          "inner document")
