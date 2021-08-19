@@ -4,13 +4,14 @@
    require-macros [core.macros]})
 
 ;; Find files using Telescope command-line sugar
-(noremap! [n] "<leader>ff" "<cmd>Telescope find_files<cr>")
-(noremap! [n] "<leader>fg" "<cmd>Telescope live_grep<cr>")
-(noremap! [n] "<leader>fb" "<cmd>Telescope buffers<cr>")
-(noremap! [n] "<leader>fh" "<cmd>Telescope help_tags<cr>")
-
-;; Suggest spelling
-(noremap! [n :silent] "zf" "<cmd>lua require'telescope.builtin'.spell_suggest{}<cr>")
+(noremap! [n] "<leader>ff" "<cmd>Telescope find_files<cr>"
+          "Find a file")
+(noremap! [n] "<leader>fg" "<cmd>Telescope live_grep<cr>"
+          "Live grep a file")
+(noremap! [n] "<leader>fb" "<cmd>Telescope buffers<cr>"
+          "Find a buffer")
+(noremap! [n] "<leader>fh" "<cmd>Telescope help_tags<cr>"
+          "Find a help tag")
 
 ;; Configure telescope
 (plugin.setup {:defaults {:mappings {:i {"<ESC>" actions.close
