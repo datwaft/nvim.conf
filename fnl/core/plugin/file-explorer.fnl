@@ -27,7 +27,7 @@
 
 (let! nvim_tree_show_icons {:git 1
                             :folders 1
-                            :files 1 
+                            :files 1
                             :folder_arrows 1})
 
 (let! nvim_tree_icons {:default ""

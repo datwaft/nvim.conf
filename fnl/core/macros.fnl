@@ -200,18 +200,28 @@
         :^ `(: (. vim.opt_local ,(name:sub 1 -2)) :prepend ,value)
         _ `(tset vim.opt_local ,name ,value)))))
 
-(fn let! [name value]
+(fn let! [...]
   "Set a vim variable using the vim.[g b w t] API"
-  (let [name (->str name)
-        scope (when (any= (name:sub 1 2) "g/" "b/" "w/" "t/")
-                (name:sub 1 1))
-        name (if (nil? scope) name (name:sub 3))]
-    (match scope
-      :g `(tset vim.g ,name ,value)
-      :b `(tset vim.b ,name ,value)
-      :w `(tset vim.w ,name ,value)
-      :t `(tset vim.t ,name ,value)
-      _ `(tset vim.g ,name ,value))))
+  (fn expr [name value]
+    (let [name (->str name)
+          scope (when (any= (name:sub 1 2) "g/" "b/" "w/" "t/")
+                  (name:sub 1 1))
+          name (if (nil? scope) name (name:sub 3))]
+      `(tset ,(match scope
+                :b 'vim.b
+                :w 'vim.w
+                :t 'vim.t
+                _ 'vim.g) ,name ,value)))
+  (fn exprs [...]
+    (match [...]
+      (where [& rest] (empty? rest)) []
+      [name value & rest] [(expr name value)
+                           (unpack (exprs (unpack rest)))]
+      _ []))
+  (let [exprs (exprs ...)]
+    (if (> (length exprs) 1)
+      `(do ,(unpack exprs))
+      (unpack exprs))))
 
 (fn augroup! [name ...]
   `(do
