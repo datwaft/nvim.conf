@@ -1,5 +1,6 @@
 (module core.plugin
-  {autoload {packer packer}})
+  {autoload {packer packer
+             a aniseed.core}})
 
 (defn- use [...]
   "Iterates through the arguments as pairs and calls packer's use function for
@@ -11,10 +12,10 @@
   (let [pkgs [...]]
     (packer.startup
       (fn [use]
-        (for [i 1 (count pkgs) 2]
+        (for [i 1 (length pkgs) 2]
           (let [name (. pkgs i)
                 opts (. pkgs (+ i 1))]
-            (use (assoc opts 1 name))))))))
+            (use (a.assoc opts 1 name))))))))
 
 (defn- req [name]
   "A shortcut to building a require string for your plugin

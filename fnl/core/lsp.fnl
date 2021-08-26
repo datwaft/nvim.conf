@@ -4,6 +4,9 @@
              signature lsp_signature}
    require-macros [core.macros]})
 
+(defn- table? [obj]
+  (= :table (type obj)))
+
 (defn- deep-copy [obj]
   (if (table?)
     (collect [k v (pairs obj)]

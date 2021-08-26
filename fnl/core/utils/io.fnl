@@ -1,4 +1,5 @@
-(module core.utils.io)
+(module core.utils.io
+  {autoload {clj lib.cljlib}})
 
 (defn- double-quote [str]
   (string.format "\"%s\"" str))
@@ -24,4 +25,4 @@
   nil)
 
 (defn cmd! [str]
-  (last (icollect [s (string.gmatch (vim.fn.execute (string.format "!%s" str)) "[^\n\r]+")] s)))
+  (clj.last (icollect [s (string.gmatch (vim.fn.execute (string.format "!%s" str)) "[^\n\r]+")] s)))
