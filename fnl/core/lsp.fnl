@@ -72,7 +72,8 @@
   (when (exists? :lspsaga)
     (buf-noremap! [n] "<leader>rn" "<cmd>Lspsaga rename<cr>"))
   ; Use <leader>= to format the current buffer
-  (buf-noremap! [n] "<leader>=" "<cmd>lua vim.lsp.buf.formatting()<cr>")
+  (when client.resolved_capabilities.document_formatting
+    (buf-noremap! [n] "<leader>=" "<cmd>lua vim.lsp.buf.formatting()<cr>"))
   (when client.resolved_capabilities.document_range_formatting
     (buf-noremap! [n] "<leader>=" "<cmd>lua vim.lsp.buf.formatting()<cr>"))
   ;; ---------
