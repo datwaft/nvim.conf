@@ -166,15 +166,15 @@
 ;;; EFM Language Server
 ;;; ===================
 
-(let [luafmt {:formatCommand "lua-format -i"
-              :formatStdin true}
-      prettierd {:formatCommand "prettierd \"${INPUT}\""
-                 :formatStdin true
-                 :env [(string.format "PRETTIERD_DEFAULT_CONFIG=%s"
-                                      (vim.fn.expand "~/.config/nvim/utils/linter-config/.prettierrc.json"))]}
-      languages {:lua [luafmt]
-                 :javascript [prettierd]
-                 :typescript [prettierd]}]
+(let [formatters {:luafmt {:formatCommand "lua-format -i"
+                           :formatStdin true}
+                  :prettierd {:formatCommand "prettierd \"${INPUT}\""
+                              :formatStdin true
+                              :env [(string.format "PRETTIERD_DEFAULT_CONFIG=%s"
+                                                   (vim.fn.expand "~/.config/nvim/utils/linter-config/.prettierrc.json"))]}}
+      languages {:lua [formatters.luafmt]
+                 :javascript [formatters.prettierd]
+                 :typescript [formatters.prettierd]}]
   (config.efm.setup (deep-merge global-options
                                 {:init_options {:documentFormatting true
                                                 :codeAction true}
