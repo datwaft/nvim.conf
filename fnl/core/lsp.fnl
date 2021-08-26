@@ -53,8 +53,8 @@
     (buf-noremap! [n] "<leader>lD" "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>"))
   ; Use [d and ]d to jump between diagnostics
   (when (exists? :lspsaga)
-    (buf-noremap! [n] "[d" "<cmd>Lspsaga diagnostic_jump_prev<cr>")
-    (buf-noremap! [n] "]d" "<cmd>Lspsaga diagnostic_jump_next<cr>"))
+    (buf-noremap! [n] "[d" "<cmd>Lspsaga diagnostic_jump_prev<cr>"
+                        (buf-noremap! [n] "]d" "<cmd>Lspsaga diagnostic_jump_next<cr>")))
   ; Use <leader>lr to display a list of references for the symbol below the cursor
   (when (exists? :trouble)
     (buf-noremap! [n] "<leader>lr" "<cmd>TroubleToggle lsp_references<cr>"))
@@ -71,6 +71,10 @@
   ; Use <leader>rn to rename the symbol below the cursor
   (when (exists? :lspsaga)
     (buf-noremap! [n] "<leader>rn" "<cmd>Lspsaga rename<cr>"))
+  ; Use <leader>= to format the current buffer
+  (buf-noremap! [n] "<leader>=" "<cmd>lua vim.lsp.buf.formatting()<cr>")
+  (when client.resolved_capabilities.document_range_formatting
+    (buf-noremap! [n] "<leader>=" "<cmd>lua vim.lsp.buf.formatting()<cr>"))
   ;; ---------
   ;; Signature
   ;; ---------
@@ -157,3 +161,25 @@
 ;;; =======================
 
 (config.clojure_lsp.setup (deep-merge global-options {}))
+
+;;; ===================
+;;; EFM Language Server
+;;; ===================
+
+(let [luafmt {:formatCommand "lua-format -i"
+              :formatStdin true}
+      prettierd {:formatCommand "prettierd \"${INPUT}\""
+                 :formatStdin true
+                 :env [(string.format "PRETTIERD_DEFAULT_CONFIG=%s"
+                                      (vim.fn.expand "~/.config/nvim/utils/linter-config/.prettierrc.json"))]}
+      languages {:lua [luafmt]
+                 :javascript [prettierd]
+                 :typescript [prettierd]}]
+  (config.efm.setup (deep-merge global-options
+                                {:init_options {:documentFormatting true
+                                                :codeAction true}
+                                 :settings {:rootMarkers [".git/"]
+                                            :log_level 1
+                                            :log_file "~/efm.log"
+                                            :languages languages}
+                                 :filetypes (vim.tbl_keys languages)})))
