@@ -175,7 +175,11 @@
                                                    (vim.fn.expand "~/.config/nvim/utils/linter-config/.prettierrc.json"))]}}
       languages {:lua [formatters.luafmt]
                  :javascript [formatters.prettierd]
-                 :typescript [formatters.prettierd]}]
+                 :typescript [formatters.prettierd]
+                 :css [formatters.prettierd]
+                 :html [formatters.prettierd]
+                 :json [formatters.prettierd]
+                 :yaml [formatters.prettierd]}]
   (config.efm.setup (deep-merge global-options
                                 {:init_options {:documentFormatting true
                                                 :codeAction true}
