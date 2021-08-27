@@ -1,7 +1,6 @@
 (module core.globals
   {require {a aniseed.core
-            fennel conjure.aniseed.deps.fennel
-            clj lib.cljlib}})
+            fennel aniseed.deps.fennel}})
 
 ; Prints parameters in a readable format
 (global dump (fn [...]
