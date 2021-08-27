@@ -115,7 +115,7 @@
                     (has? "mac") "macOS"
                     (has? "unix") "Linux"
                     (has? "win32") "Windows")
-      root-path (.. (vim.fn.expand "~") "/.local/share/nvim/lspinstall/lua-language-server")
+      root-path (.. (vim.fn.expand "~") "/.local/bin/lua-language-server")
       binary-path (.. root-path "/bin/" system-name "/lua-language-server")]
   (config.sumneko_lua.setup (deep-merge
                               (lua-dev.setup {:lspconfig 
