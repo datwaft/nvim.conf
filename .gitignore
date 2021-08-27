@@ -23,7 +23,7 @@ tags
 /plugin/
 
 # Fennel compilation
-/lua/core/
+/lua/
 
 # Spelling dictionaries
 /spell/
