@@ -27,3 +27,6 @@ tags
 
 # Spelling dictionaries
 /spell/
+
+# Test files
+/fnl/test/
