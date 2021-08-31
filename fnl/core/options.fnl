@@ -37,10 +37,10 @@
 ; More intelligent indentation
 (set! smarttab)
 ; Number of spaces used for each <Tab> and auto-indent
-(let [value 2]
-  (set! tabstop value)
-  (set! shiftwidth value)
-  (set! softtabstop value))
+(set!
+  tabstop 2
+  shiftwidth 2
+  softtabstop 2)
 
 ;; ----------------------
 ;; Wrapping configuration

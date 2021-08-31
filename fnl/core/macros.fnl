@@ -168,37 +168,69 @@
   `(when (not ,condition)
      ,...))
 
-(fn set! [name ?value]
-  "Set a vim option using the `vim.opt` API"
-  (let [name (->str name)
-        value (if (nil? ?value) (not (name:match "^no")) ?value)
-        name (if (nil? ?value) (or (name:match "^no(.*)$") name) name)]
-    (if (fn? value)
-      (let [fn-name (gensym-fn!)]
-        `(do
-           (global ,(sym fn-name) ,value)
-           (tset vim.opt ,name ,(string.format "v:lua.%s()" fn-name))))
-      (match (name:sub -1)
-        :+ `(: (. vim.opt ,(name:sub 1 -2)) :append ,value)
-        :- `(: (. vim.opt ,(name:sub 1 -2)) :remove ,value)
-        :^ `(: (. vim.opt ,(name:sub 1 -2)) :prepend ,value)
-        _ `(tset vim.opt ,name ,value)))))
+(fn set! [...]
+  "Set one or multiple vim options using the `vim.opt` API
+  The option name must be a symbol
+  If the option doesn't have a corresponding value, if it begins with no the
+  value becomes false, and if it doesn't it becomes true"
+  (fn expr [name ?value]
+    (let [name (->str name)
+          value (if (nil? ?value) (not (name:match "^no")) ?value)
+          name (if (nil? ?value) (or (name:match "^no(.*)$") name) name)]
+      (if (fn? value)
+        (let [fn-name (gensym-fn!)]
+          `(do
+             (global ,(sym fn-name) ,value)
+             (tset vim.opt ,name ,(string.format "v:lua.%s()" fn-name))))
+        (match (name:sub -1)
+          :+ `(: (. vim.opt ,(name:sub 1 -2)) :append ,value)
+          :- `(: (. vim.opt ,(name:sub 1 -2)) :remove ,value)
+          :^ `(: (. vim.opt ,(name:sub 1 -2)) :prepend ,value)
+          _ `(tset vim.opt ,name ,value)))))
+  (fn exprs [...]
+    (match [...]
+      (where [& rest] (empty? rest)) []
+      (where [name value & rest] (not (sym? value))) [(expr name value)
+                                                      (unpack (exprs (unpack rest)))]
+      [name & rest] [(expr name)
+                     (unpack (exprs (unpack rest)))]
+      _ []))
+  (let [exprs (exprs ...)]
+    (if (> (length exprs) 1)
+      `(do ,(unpack exprs))
+      (unpack exprs))))
 
-(fn set-local! [name ?value]
-  "Set a local vim option using the `vim.opt_local` API"
-  (let [name (->str name)
-        value (if (nil? ?value) (not (name:match "^no")) ?value)
-        name (if (nil? ?value) (or (name:match "^no(.*)$") name) name)]
-    (if (fn? value)
-      (let [fn-name (gensym-fn!)]
-        `(do
-           (global ,(sym fn-name) ,value)
-           (tset vim.opt_local ,name ,(string.format "v:lua.%s()" fn-name))))
-      (match (name:sub -1)
-        :+ `(: (. vim.opt_local ,(name:sub 1 -2)) :append ,value)
-        :- `(: (. vim.opt_local ,(name:sub 1 -2)) :remove ,value)
-        :^ `(: (. vim.opt_local ,(name:sub 1 -2)) :prepend ,value)
-        _ `(tset vim.opt_local ,name ,value)))))
+(fn set-local! [...]
+  "Set one or multiple vim options using the `vim.opt_local` API
+  The option name must be a symbol
+  If the option doesn't have a corresponding value, if it begins with no the
+  value becomes false, and if it doesn't it becomes true"
+  (fn expr [name ?value]
+    (let [name (->str name)
+          value (if (nil? ?value) (not (name:match "^no")) ?value)
+          name (if (nil? ?value) (or (name:match "^no(.*)$") name) name)]
+      (if (fn? value)
+        (let [fn-name (gensym-fn!)]
+          `(do
+             (global ,(sym fn-name) ,value)
+             (tset vim.opt_local ,name ,(string.format "v:lua.%s()" fn-name))))
+        (match (name:sub -1)
+          :+ `(: (. vim.opt_local ,(name:sub 1 -2)) :append ,value)
+          :- `(: (. vim.opt_local ,(name:sub 1 -2)) :remove ,value)
+          :^ `(: (. vim.opt_local ,(name:sub 1 -2)) :prepend ,value)
+          _ `(tset vim.opt_local ,name ,value)))))
+  (fn exprs [...]
+    (match [...]
+      (where [& rest] (empty? rest)) []
+      (where [name value & rest] (not (sym? value))) [(expr name value)
+                                                      (unpack (exprs (unpack rest)))]
+      [name & rest] [(expr name)
+                     (unpack (exprs (unpack rest)))]
+      _ []))
+  (let [exprs (exprs ...)]
+    (if (> (length exprs) 1)
+      `(do ,(unpack exprs))
+      (unpack exprs))))
 
 (fn let! [...]
   "Set a vim variable using the vim.[g b w t] API"
