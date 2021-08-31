@@ -230,10 +230,16 @@
   ;; ------------------
   "folke/which-key.nvim" {:config (req :which-key)}
 
+  ;; ---------------
+  ;; Better wildmenu
+  ;; ---------------
+  "gelguy/wilder.nvim" {:run ":UpdateRemotePlugins"
+                        :config (req :wilder)}
+
   ;;; ==============================
   ;;; Language Server Protocol (LSP)
   ;;; ==============================
-  
+
   ;; -------------
   ;; Configuration
   ;; -------------
