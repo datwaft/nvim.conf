@@ -173,9 +173,7 @@
 (let [formatters {:luafmt {:formatCommand "lua-format -i"
                            :formatStdin true}
                   :prettierd {:formatCommand "prettierd \"${INPUT}\""
-                              :formatStdin true
-                              :env [(string.format "PRETTIERD_DEFAULT_CONFIG=%s"
-                                                   (.. (vim.fn.stdpath :config) "/config/.prettierrc.json"))]}}
+                              :formatStdin true}}
       languages {:lua [formatters.luafmt]
                  :javascript [formatters.prettierd]
                  :typescript [formatters.prettierd]
