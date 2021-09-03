@@ -264,6 +264,15 @@
      (vim.cmd "augroup END")
      nil))
 
+(fn buf-augroup! [name ...]
+  `(do
+     (vim.cmd ,(string.format "augroup %s\nautocmd! * <buffer>"
+                              (->str name)))
+     (do
+       ,...)
+     (vim.cmd "augroup END")
+     nil))
+
 (fn autocmd! [events pattern command]
   "Defines an autocommand"
   (let [events (if (sequence? events) events [events])
@@ -365,6 +374,7 @@
  : set-local!
  : let!
  : augroup!
+ : buf-augroup!
  : autocmd!
  : doc-map!
  : map!
