@@ -18,10 +18,9 @@
             (use (a.assoc opts 1 name))))))))
 
 (defn- req [name]
-  "A shortcut to building a require string for your plugin
-  configuration. Intended for use with packer's config or setup
-  configuration options. Will prefix the name with `core.plugin.`
-  before requiring."
+  "A shortcut to building a require string for your plugin configuration.
+  Intended for use with packer's config or setup configuration options. Will
+  prefix the name with `core.plugin.` before requiring."
   (table.concat ["require('core.globals')"
                  (.. "require('core.plugin." name "')")] " "))
 
