@@ -79,6 +79,13 @@
     (buf-noremap! [n] "<leader>=" "<cmd>lua vim.lsp.buf.formatting()<cr>"))
   (when client.resolved_capabilities.document_range_formatting
     (buf-noremap! [n] "<leader>=" "<cmd>lua vim.lsp.buf.formatting()<cr>"))
+  ;; ------------
+  ;; Autocommands
+  ;; ------------
+  (when client.resolved_capabilities.document_formatting
+    (buf-augroup! lsp-format-on-save
+                  (autocmd! BufWritePre <buffer>
+                            "lua vim.lsp.buf.formatting_seq_sync(nil, 1000)")))
   ;; ---------
   ;; Signature
   ;; ---------
@@ -173,9 +180,7 @@
 (let [formatters {:luafmt {:formatCommand "lua-format -i"
                            :formatStdin true}
                   :prettierd {:formatCommand "prettierd \"${INPUT}\""
-                              :formatStdin true
-                              :env [(string.format "PRETTIERD_DEFAULT_CONFIG=%s"
-                                                   (vim.fn.expand "~/.config/nvim/utils/linter-config/.prettierrc.json"))]}}
+                              :formatStdin true}}
       languages {:lua [formatters.luafmt]
                  :javascript [formatters.prettierd]
                  :typescript [formatters.prettierd]

@@ -40,7 +40,7 @@
           (autocmd! FileType [help packer
                               NvimTree fern
                               fennel clojure lisp
-                              markdown]
+                              json yaml markdown]
                     #(set-local! colorcolumn [])))
 
 ; Set terminal options
