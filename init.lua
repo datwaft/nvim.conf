@@ -7,4 +7,4 @@ if vim.fn.empty(vim.fn.glob(hotpot_path)) > 0 then
   })
 end
 require("hotpot")
-require("fenneled_init")
+require("core")
