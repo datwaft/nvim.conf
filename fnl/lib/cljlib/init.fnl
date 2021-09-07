@@ -54,7 +54,7 @@ non-ASCII strings."})
 
 (import-macros {: defn : into : empty
                 : when-let : if-let : when-some : if-some}
-               (if (and ... (not= ... :init)) (.. ... :.lib.cljlib.macros) :lib.cljlib.macros))
+               (if (and ... (not= ... :init)) (.. ... :.init-macros) :init-macros))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Utility functions ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -740,7 +740,7 @@ Map `mul' over two tables:
 Basic `zipmap' implementation:
 
 ``` fennel
-(import-macros {: into} :lib.cljlib.macros)
+(import-macros {: into} :init-macros)
 (fn zipmap [keys vals]
   (into {} (mapv vector keys vals)))
 

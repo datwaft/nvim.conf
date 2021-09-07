@@ -1,1 +1,1 @@
-(require :core.plugin)
+(require :lib.cljlib)

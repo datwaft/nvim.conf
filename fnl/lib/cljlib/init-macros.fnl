@@ -48,7 +48,7 @@
                            (table? (first bindings)))
                        "expected symbol, sequence or table as binding." bindings)))
 
-(local fennel (require :hotpot.fennel))
+(local fennel (require :fennel))
 
 (fn attach-meta [value meta]
   (each [k v (pairs meta)]
@@ -850,7 +850,7 @@ See `into' for more info on how conversion is done."
                     (fn [t# ...]
                       ,docstring
                       (let [dispatch-value# (,dispatch-fn ...)
-                            view# #((. (require :hotpot.fennel) :view) $ {:one-line true})]
+                            view# #((. (require :fennel) :view) $ {:one-line true})]
                         ((or (. t# dispatch-value#)
                              (. t# (or (. ,options :default) :default))
                              (error (.. "No method in multimethod '"
@@ -1287,4 +1287,3 @@ number of elements in the passed in table. (In this case, 5)"
 ;; LocalWords:  multimethods multimethod multifn REPL fnl AST Lua's
 ;; LocalWords:  lua tostring str concat namespace ns Cljlib Clojure
 ;; LocalWords:  TODO init Andrey Listopadov
-
