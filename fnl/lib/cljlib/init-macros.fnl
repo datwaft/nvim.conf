@@ -182,7 +182,7 @@ respecting `--metadata` switch.  So if you're using Fennel < 0.7.1
 this stuff will only work if you use `require-macros' instead of
 `import-macros'."
   `(let [(res# fennel#) (pcall require :hotpot.api.fennel)
-         fennel# (when res#) (fennel#.latest)]
+         fennel# (when res# (fennel#.latest))]
      (if res# (. fennel#.metadata ,value))))
 
 (fn with-meta [value meta]
@@ -198,7 +198,7 @@ this stuff will only work if you use `require-macros' instead of
 ```"
   `(let [value# ,value
          (res# fennel#) (pcall require :hotpot.api.fennel)
-         fennel# (when res#) (fennel#.latest)]
+         fennel# (when res# (fennel#.latest))]
      (if res#
          (each [k# v# (pairs ,meta)]
            (fennel#.metadata:set value# k# v#)))
