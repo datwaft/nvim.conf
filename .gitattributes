@@ -5,6 +5,3 @@
 
 # Auto detect text files and perform LF normalization
 * text=auto
-
-# Use Clojure syntax highlighting for fennel
-*.fnl linguist-language=Clojure
