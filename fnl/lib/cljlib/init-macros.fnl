@@ -48,7 +48,7 @@
                            (table? (first bindings)))
                        "expected symbol, sequence or table as binding." bindings)))
 
-(local fennel (require :fennel))
+(local fennel ((. (require :hotpot.api.fennel) :latest)))
 
 (fn attach-meta [value meta]
   (each [k v (pairs meta)]
@@ -850,7 +850,7 @@ See `into' for more info on how conversion is done."
                     (fn [t# ...]
                       ,docstring
                       (let [dispatch-value# (,dispatch-fn ...)
-                            view# #((. (require :fennel) :view) $ {:one-line true})]
+                            view# #((. ((. (require :hotpot.api.fennel) :latest)) :view) $ {:one-line true})]
                         ((or (. t# dispatch-value#)
                              (. t# (or (. ,options :default) :default))
                              (error (.. "No method in multimethod '"
