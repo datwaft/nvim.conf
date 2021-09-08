@@ -43,15 +43,15 @@
 
 ;; Line object
 ; Inner line
-(noremap! [xo] "il" "<cmd>normal! g_v^<cr>"
+(noremap! [xo :silent] "il" ":<C-u>normal! g_v^<cr>"
           "inner line")
 ; Around line
-(noremap! [xo] "al" "<cmd>normal! $v0<cr>"
+(noremap! [xo :silent] "al" ":<C-u>normal! $v0<cr>"
           "at line")
 
 ;; Document object
 ; Inner document
-(noremap! [x] "id" "<cmd>normal! G$Vgg0<cr>"
+(noremap! [x :silent] "id" ":<C-u>normal! G$Vgg0<cr>"
           "inner document")
-(noremap! [o] "id" "<cmd>normal! GVgg<cr>"
+(noremap! [o :silent] "id" ":<C-u>normal! GVgg<cr>"
           "inner document")
