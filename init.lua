@@ -6,5 +6,9 @@ if vim.fn.empty(vim.fn.glob(hotpot_path)) > 0 then
     "git", "clone", "https://github.com/rktjmp/hotpot.nvim", hotpot_path
   })
 end
-require("hotpot")
+require("hotpot").setup({
+  compiler = {
+    macros = {env = "_COMPILER", compilerEnv = _G, allowedGlobals = false}
+  }
+})
 require("core")
