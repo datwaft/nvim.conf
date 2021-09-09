@@ -81,6 +81,12 @@
   ;; ----------------------
   "kevinhwang91/nvim-hlslens" {:config (req :hlslens)}
 
+  ;; ----------------
+  ;; Syntax highlight
+  ;; ----------------
+  ; dockerfile
+  "ekalinin/Dockerfile.vim" {}
+
   ;;; ============
   ;;; Text objects
   ;;; ============
