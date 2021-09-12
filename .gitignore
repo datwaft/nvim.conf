@@ -22,11 +22,5 @@ tags
 # Packer files
 /plugin/
 
-# Fennel compilation
-/lua/
-
 # Spelling dictionaries
 /spell/
-
-# Test files
-/fnl/test/
