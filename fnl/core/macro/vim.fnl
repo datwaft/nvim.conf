@@ -1,6 +1,6 @@
 (local {: inc
-        : nil?} (require :lib.cljlib))
-(local {: ->str} (require :lib.core))
+        : nil?} (require :cljlib))
+(local {: ->str} (require :core.utils.core))
 
 (global core#id 0)
 (fn core#gensym []

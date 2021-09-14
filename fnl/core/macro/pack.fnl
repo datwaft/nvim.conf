@@ -3,7 +3,7 @@
         : nil?
         : empty?
         : vector
-        : hash-map} (require :lib.cljlib))
+        : hash-map} (require :cljlib))
 
 (global core#pack (vector))
 (global core#rock (vector))
