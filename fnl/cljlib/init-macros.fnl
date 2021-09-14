@@ -48,7 +48,7 @@
                            (table? (first bindings)))
                        "expected symbol, sequence or table as binding." bindings)))
 
-(local fennel ((. (require :hotpot.api.fennel) :latest)))
+(local fennel (require :fennel))
 
 (fn attach-meta [value meta]
   (each [k v (pairs meta)]
@@ -181,8 +181,7 @@ Lastly, note that prior to Fennel 0.7.1 `import-macros' wasn't
 respecting `--metadata` switch.  So if you're using Fennel < 0.7.1
 this stuff will only work if you use `require-macros' instead of
 `import-macros'."
-  `(let [(res# fennel#) (pcall require :hotpot.api.fennel)
-         fennel# (when res# (fennel#.latest))]
+  `(let [(res# fennel#) (pcall require :fennel)]
      (if res# (. fennel#.metadata ,value))))
 
 (fn with-meta [value meta]
@@ -197,8 +196,7 @@ this stuff will only work if you use `require-macros' instead of
 ;; =>   sum first three values
 ```"
   `(let [value# ,value
-         (res# fennel#) (pcall require :hotpot.api.fennel)
-         fennel# (when res# (fennel#.latest))]
+         (res# fennel#) (pcall require :fennel)]
      (if res#
          (each [k# v# (pairs ,meta)]
            (fennel#.metadata:set value# k# v#)))
@@ -852,7 +850,7 @@ See `into' for more info on how conversion is done."
                     (fn [t# ...]
                       ,docstring
                       (let [dispatch-value# (,dispatch-fn ...)
-                            view# #((. ((. (require :hotpot.api.fennel) :latest)) :view) $ {:one-line true})]
+                            view# #((. (require :fennel) :view) $ {:one-line true})]
                         ((or (. t# dispatch-value#)
                              (. t# (or (. ,options :default) :default))
                              (error (.. "No method in multimethod '"
