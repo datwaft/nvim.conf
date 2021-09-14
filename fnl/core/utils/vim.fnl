@@ -1,4 +1,4 @@
-(local {: last} (require :lib.cljlib))
+(local {: last} (require :cljlib))
 
 (fn cmd! [str]
   (vim.cmd str))

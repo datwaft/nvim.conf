@@ -1,4 +1,4 @@
-(local {: cmd!} (require :lib.vim))
+(local {: cmd!} (require :core.utils.vim))
 
 (fn double-quote [str]
   (string.format "\"%s\"" str))
