@@ -51,4 +51,40 @@
       `(do ,(unpack exprs))
       (unpack exprs))))
 
-{: set!}
+(fn bufset! [...]
+  "Set one or multiple vim options using the `vim.opt_local` API.
+  The name of the option must be a symbol.
+  If the option doesn't have a value, if it begins with 'no' the value becomes
+  false, and true otherwise.
+  e.g.
+  `nospell` -> spell false
+  `spell`   -> spell true"
+  (fn bufset!#expr [name ?value]
+    (let [name (->str name)
+          value (or ?value (not (rex.match name "^no")))
+          name (rex.match name "^(?:no)?(\\w+)$")]
+      (if (fn? value)
+        (let [fsym (core#gensym)]
+          `(do
+             (global ,fsym ,value)
+             (tset vim.opt_local ,name ,(vlua fsym))))
+        (match (name:sub -1)
+          :+ `(: (. vim.opt_local ,(name:sub -1 -2)) :append ,value)
+          :- `(: (. vim.opt_local ,(name:sub -1 -2)) :remove ,value)
+          :^ `(: (. vim.opt_local ,(name:sub -1 -2)) :prepend ,value)
+          _ `(tset vim.opt_local ,name ,value)))))
+  (fn bufset!#exprs [...]
+    (match [...]
+      (where [& rest] (empty? rest)) []
+      (where [name value & rest] (not (sym? value))) [(bufset!#expr name value)
+                                                      (unpack (bufset!#exprs (unpack rest)))]
+      [name & rest] [(bufset!#expr name)
+                     (unpack (bufset!#exprs (unpack rest)))]
+      _ []))
+  (let [exprs (bufset!#exprs ...)]
+    (if (> (length exprs) 1)
+      `(do ,(unpack exprs))
+      (unpack exprs))))
+
+{: set!
+ : bufset!}
