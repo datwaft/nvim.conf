@@ -1,6 +1,7 @@
 (local {: inc
         : empty?
-        : nil?} (require :cljlib))
+        : nil?
+        :some some?} (require :cljlib))
 (local {: ->str} (require :core.utils.core))
 (local {: fn?} (require :core.macro.utils))
 (local rex ((require :rex_pcre2)))
@@ -27,16 +28,16 @@
   (fn set!#expr [name ?value]
     (let [name (->str name)
           value (or ?value (not (rex.match name "^no")))
-          name (rex.match name "^(?:no)?(\\w+)$")]
+          name (rex.match name "^(?:no)?(.+)$")]
       (if (fn? value)
         (let [fsym (core#gensym)]
           `(do
              (global ,fsym ,value)
              (tset vim.opt ,name ,(vlua fsym))))
         (match (name:sub -1)
-          :+ `(: (. vim.opt ,(name:sub -1 -2)) :append ,value)
-          :- `(: (. vim.opt ,(name:sub -1 -2)) :remove ,value)
-          :^ `(: (. vim.opt ,(name:sub -1 -2)) :prepend ,value)
+          :+ `(: (. vim.opt ,(name:sub 1 -2)) :append ,value)
+          :- `(: (. vim.opt ,(name:sub 1 -2)) :remove ,value)
+          :^ `(: (. vim.opt ,(name:sub 1 -2)) :prepend ,value)
           _ `(tset vim.opt ,name ,value)))))
   (fn set!#exprs [...]
     (match [...]
@@ -86,5 +87,44 @@
       `(do ,(unpack exprs))
       (unpack exprs))))
 
+(fn let! [...]
+  "Set a vim variable using the `vim.[gbwt]` API.
+  The name can be either a symbol or a string.
+  If the name begins with `[gbwt]/`, `[gbwt]#`, `[gbwt]:` or `[gbwt].` the
+  name is scoped to the respective scope:
+  g -> global (default)
+  b -> buffer
+  w -> window
+  t -> tab"
+  (fn let!#expr [name value]
+    (let [name (->str name)
+          scope (when (some? #(= $ (name:sub 1 2)) ["g/" "b/" "w/" "t/"
+                                                    "g." "b." "w." "t."
+                                                    "g:" "b:" "w:" "t:"
+                                                    "g#" "b#" "w#" "t#"])
+                  (name:sub 1 1))
+          name (if (nil? scope) name (name:sub 3))]
+      `(tset ,(match scope
+                :b 'vim.b
+                :w 'vim.w
+                :t 'vim.t
+                _ 'vim.g) ,name ,value)))
+  (fn let!#exprs [...]
+    (match [...]
+      (where [& rest] (empty? rest)) []
+      [name value & rest] [(let!#expr name value)
+                           (unpack (let!#exprs (unpack rest)))]
+      _ []))
+  (let [exprs (let!#exprs ...)]
+    (if (> (length exprs) 1)
+      `(do ,(unpack exprs))
+      (unpack exprs))))
+
+(fn t [combination]
+  "Returns the string with the termcodes replaced"
+  `(vim.api.nvim_replace_termcodes ,(->str combination) true true true))
+
 {: set!
- : bufset!}
+ : bufset!
+ : let!
+ : t}
