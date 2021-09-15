@@ -1,1 +1,1 @@
-(import-macros {} :core.macro.vim)
+(import-macros {: set!} :core.macro.vim)
