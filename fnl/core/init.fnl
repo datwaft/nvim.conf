@@ -18,10 +18,11 @@
       (warn! (string.format "Module `%s` was not found." name)))
     (warn! "Please execute :PackerSync to install the missing modules")
 
-    (pack! :wbthomason/packer.nvim)
-    (pack! :rktjmp/hotpot.nvim)
-    (rock! :lrexlib-pcre2)
+    (pack! "wbthomason/packer.nvim")
+    (pack! "rktjmp/hotpot.nvim")
+    (rock! "lrexlib-pcre2")
     (unpack!))
   (do
     (require :core.plugin)
-    (require :core.settings)))
+    (require :core.settings)
+    (require :core.autocmd)))

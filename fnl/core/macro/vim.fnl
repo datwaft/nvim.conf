@@ -1,6 +1,8 @@
 (local {: inc
         : empty?
         : nil?
+        : mapv
+        : conj
         :some some?} (require :cljlib))
 (local {: ->str} (require :core.utils.core))
 (local {: fn?} (require :core.macro.utils))
@@ -9,10 +11,10 @@
 (global core#id 0)
 (fn core#gensym []
   "Generates a new symbol to use as a global variable name.
-  The returned symbol follows the structure 'core#_%d_' where `%d` is the symbol
-  number"
+  The returned symbol follows the structure '__core_%d_' where `%d` is the
+  symbol number"
   (global core#id (inc core#id))
-  (sym (string.format "core#_%d_" core#id)))
+  (sym (string.format "__core_%d_" core#id)))
 
 (fn vlua [symbol]
   (.. "v:lua." (->str symbol) "()"))
@@ -120,11 +122,55 @@
       `(do ,(unpack exprs))
       (unpack exprs))))
 
+(fn augroup! [name ...]
+  "Defines an autocommand group"
+  `(do
+     ,(unpack
+        (-> [`(vim.cmd ,(string.format "augroup %s" name))
+             `(vim.cmd "autocmd!")]
+            (conj ...)
+            (conj `(vim.cmd "augroup END"))))))
+
+(fn bufaugroup! [name ...]
+  "Defines a buffer-local autocommand group"
+  `(do
+     ,(unpack
+        (-> [`(vim.cmd ,(string.format "augroup %s" name))
+             `(vim.cmd "autocmd! * <buffer>")]
+            (conj ...)
+            (conj `(vim.cmd "augroup END"))))))
+
+(fn autocmd! [events pattern command]
+  "Defines an autocommand using the `vim.cmd` API"
+  (let [events (-> (->> (if (sequence? events) events [events])
+                        (mapv ->str))
+                   (table.concat ","))
+        pattern (-> (->> (if (sequence? pattern) pattern [pattern])
+                         (mapv ->str))
+                    (table.concat ","))]
+    (if (fn? command)
+      (let [fsym (core#gensym)]
+        `(do
+           (global ,fsym ,command)
+           (vim.cmd ,(string.format "autocmd %s %s call %s"
+                                    events pattern (vlua fsym)))))
+      `(vim.cmd ,(string.format "autocmd %s %s %s"
+                                events pattern command)))))
+
 (fn t [combination]
   "Returns the string with the termcodes replaced"
   `(vim.api.nvim_replace_termcodes ,(->str combination) true true true))
 
+(fn colorscheme! [name]
+  "Sets a vim colorscheme.
+  The name can be either a symbol or a string"
+  `(vim.cmd ,(string.format "colorscheme %s" (->str name))))
+
 {: set!
  : bufset!
  : let!
- : t}
+ : augroup!
+ : bufaugroup!
+ : autocmd!
+ : t
+ : colorscheme!}
