@@ -10,13 +10,13 @@
 (local {: fn?} (require :core.macro.utils))
 (local rex ((require :rex_pcre2)))
 
-(global core#id 0)
-(fn core#gensym []
+(global core/id 0)
+(fn core/gensym []
   "Generates a new symbol to use as a global variable name.
   The returned symbol follows the structure '__core_%d_' where `%d` is the
   symbol number"
-  (global core#id (inc core#id))
-  (sym (string.format "__core_%d_" core#id)))
+  (global core/id (inc core/id))
+  (sym (string.format "__core_%d_" core/id)))
 
 (fn vlua [symbol]
   "Returns a symbol mapped to `v:lua.%s()` where %s is the symbol"
@@ -30,12 +30,12 @@
   e.g.
   `nospell` -> spell false
   `spell`   -> spell true"
-  (fn set!#expr [name ?value]
+  (fn set!/expr [name ?value]
     (let [name (->str name)
           value (or ?value (not (rex.match name "^no")))
           name (rex.match name "^(?:no)?(.+)$")]
       (if (fn? value)
-        (let [fsym (core#gensym)]
+        (let [fsym (core/gensym)]
           `(do
              (global ,fsym ,value)
              (tset vim.opt ,name ,(vlua fsym))))
@@ -44,15 +44,15 @@
           :- `(: (. vim.opt ,(name:sub 1 -2)) :remove ,value)
           :^ `(: (. vim.opt ,(name:sub 1 -2)) :prepend ,value)
           _ `(tset vim.opt ,name ,value)))))
-  (fn set!#exprs [...]
+  (fn set!/exprs [...]
     (match [...]
       (where [& rest] (empty? rest)) []
-      (where [name value & rest] (not (sym? value))) [(set!#expr name value)
-                                                      (unpack (set!#exprs (unpack rest)))]
-      [name & rest] [(set!#expr name)
-                     (unpack (set!#exprs (unpack rest)))]
+      (where [name value & rest] (not (sym? value))) [(set!/expr name value)
+                                                      (unpack (set!/exprs (unpack rest)))]
+      [name & rest] [(set!/expr name)
+                     (unpack (set!/exprs (unpack rest)))]
       _ []))
-  (let [exprs (set!#exprs ...)]
+  (let [exprs (set!/exprs ...)]
     (if (> (length exprs) 1)
       `(do ,(unpack exprs))
       (unpack exprs))))
@@ -65,12 +65,12 @@
   e.g.
   `nospell` -> spell false
   `spell`   -> spell true"
-  (fn bufset!#expr [name ?value]
+  (fn bufset!/expr [name ?value]
     (let [name (->str name)
           value (or ?value (not (rex.match name "^no")))
           name (rex.match name "^(?:no)?(\\w+)$")]
       (if (fn? value)
-        (let [fsym (core#gensym)]
+        (let [fsym (core/gensym)]
           `(do
              (global ,fsym ,value)
              (tset vim.opt_local ,name ,(vlua fsym))))
@@ -79,15 +79,15 @@
           :- `(: (. vim.opt_local ,(name:sub -1 -2)) :remove ,value)
           :^ `(: (. vim.opt_local ,(name:sub -1 -2)) :prepend ,value)
           _ `(tset vim.opt_local ,name ,value)))))
-  (fn bufset!#exprs [...]
+  (fn bufset!/exprs [...]
     (match [...]
       (where [& rest] (empty? rest)) []
-      (where [name value & rest] (not (sym? value))) [(bufset!#expr name value)
-                                                      (unpack (bufset!#exprs (unpack rest)))]
-      [name & rest] [(bufset!#expr name)
-                     (unpack (bufset!#exprs (unpack rest)))]
+      (where [name value & rest] (not (sym? value))) [(bufset!/expr name value)
+                                                      (unpack (bufset!/exprs (unpack rest)))]
+      [name & rest] [(bufset!/expr name)
+                     (unpack (bufset!/exprs (unpack rest)))]
       _ []))
-  (let [exprs (bufset!#exprs ...)]
+  (let [exprs (bufset!/exprs ...)]
     (if (> (length exprs) 1)
       `(do ,(unpack exprs))
       (unpack exprs))))
@@ -95,18 +95,17 @@
 (fn let! [...]
   "Set a vim variable using the `vim.[gbwt]` API.
   The name can be either a symbol or a string.
-  If the name begins with `[gbwt]/`, `[gbwt]#`, `[gbwt]:` or `[gbwt].` the
+  If the name begins with `[gbwt]/`, `[gbwt]:` or `[gbwt].` the
   name is scoped to the respective scope:
   g -> global (default)
   b -> buffer
   w -> window
   t -> tab"
-  (fn let!#expr [name value]
+  (fn let!/expr [name value]
     (let [name (->str name)
           scope (when (some? #(= $ (name:sub 1 2)) ["g/" "b/" "w/" "t/"
                                                     "g." "b." "w." "t."
-                                                    "g:" "b:" "w:" "t:"
-                                                    "g#" "b#" "w#" "t#"])
+                                                    "g:" "b:" "w:" "t:"])
                   (name:sub 1 1))
           name (if (nil? scope) name (name:sub 3))]
       `(tset ,(match scope
@@ -114,13 +113,13 @@
                 :w 'vim.w
                 :t 'vim.t
                 _ 'vim.g) ,name ,value)))
-  (fn let!#exprs [...]
+  (fn let!/exprs [...]
     (match [...]
       (where [& rest] (empty? rest)) []
-      [name value & rest] [(let!#expr name value)
-                           (unpack (let!#exprs (unpack rest)))]
+      [name value & rest] [(let!/expr name value)
+                           (unpack (let!/exprs (unpack rest)))]
       _ []))
-  (let [exprs (let!#exprs ...)]
+  (let [exprs (let!/exprs ...)]
     (if (> (length exprs) 1)
       `(do ,(unpack exprs))
       (unpack exprs))))
@@ -154,7 +153,7 @@
                       (mapv ->str $)
                       (table.concat $ ","))]
     (if (fn? command)
-      (let [fsym (core#gensym)]
+      (let [fsym (core/gensym)]
         `(do
            (global ,fsym ,command)
            (vim.cmd ,(string.format "autocmd %s %s call %s"
