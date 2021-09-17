@@ -1,3 +1,5 @@
+(import-macros {: as->} :core.macro.core)
+
 (local {: inc
         : empty?
         : nil?
@@ -17,6 +19,7 @@
   (sym (string.format "__core_%d_" core#id)))
 
 (fn vlua [symbol]
+  "Returns a symbol mapped to `v:lua.%s()` where %s is the symbol"
   (.. "v:lua." (->str symbol) "()"))
 
 (fn set! [...]
@@ -123,7 +126,7 @@
       (unpack exprs))))
 
 (fn augroup! [name ...]
-  "Defines an autocommand group"
+  "Defines an autocommand group using the `vim.cmd` API"
   `(do
      ,(unpack
         (-> [`(vim.cmd ,(string.format "augroup %s" name))
@@ -132,7 +135,7 @@
             (conj `(vim.cmd "augroup END"))))))
 
 (fn bufaugroup! [name ...]
-  "Defines a buffer-local autocommand group"
+  "Defines a buffer-local autocommand group using the `vim.cmd` API"
   `(do
      ,(unpack
         (-> [`(vim.cmd ,(string.format "augroup %s" name))
@@ -142,12 +145,14 @@
 
 (fn autocmd! [events pattern command]
   "Defines an autocommand using the `vim.cmd` API"
-  (let [events (-> (->> (if (sequence? events) events [events])
-                        (mapv ->str))
-                   (table.concat ","))
-        pattern (-> (->> (if (sequence? pattern) pattern [pattern])
-                         (mapv ->str))
-                    (table.concat ","))]
+  (let [events (as-> events $
+                     (if (sequence? $) $ [$])
+                     (mapv ->str $)
+                     (table.concat $ ","))
+        pattern (as-> pattern $
+                      (if (sequence? $) $ [$])
+                      (mapv ->str $)
+                      (table.concat $ ","))]
     (if (fn? command)
       (let [fsym (core#gensym)]
         `(do
