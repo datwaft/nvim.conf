@@ -1,24 +1,21 @@
 (local {: cmd!} (require :core.utils.vim))
+(local {: format} string)
 
-(fn double-quote [str]
-  (string.format "\"%s\"" str))
+(fn double-quote [s]
+  (format "\"%s\"" s))
 
-(fn echo! [str]
-  (cmd! (string.format "echom %s" (double-quote str))))
+(fn echo! [s]
+  (cmd! (format "echom %s" (double-quote s))))
 
-(fn warn! [str]
-  (cmd! (string.format "
-                       echohl WarningMsg
-                       echom %s
-                       echohl None
-                       " (double-quote str))))
+(fn warn! [s]
+  (cmd! (format "echohl WarningMsg
+                 echom %s
+                 echohl None" (double-quote s))))
 
-(fn err! [str]
-  (cmd! (string.format "
-                       echohl ErrorMsg
-                       echom %s
-                       echohl None
-                       " (double-quote str))))
+(fn err! [s]
+  (cmd! (format "echohl ErrorMsg
+                 echom %s
+                 echohl None" (double-quote s))))
 
 {: echo!
  : warn!

@@ -1,12 +1,12 @@
-(fn ->str [obj]
-  (tostring obj))
+(fn ->str [o]
+  (tostring o))
 
-(fn ->bool [obj]
-  (if obj true false))
+(fn ->bool [o]
+  (if o true false))
 
-(fn module#exists? [name]
+(fn module/exists? [name]
   (->bool (pcall #(require name))))
 
 {: ->str
  : ->bool
- : module#exists?}
+ : module/exists?}

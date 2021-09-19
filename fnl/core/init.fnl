@@ -2,7 +2,7 @@
         : filter
         : every?
         : complement} (require :cljlib))
-(local {: module#exists?} (require :core.utils.core))
+(local {: module/exists?} (require :core.utils.core))
 (local {: warn!} (require :core.utils.io))
 
 (import-macros {: pack!
@@ -12,9 +12,9 @@
 (local requirements (vector
                       :rex_pcre2))
 
-(if (not (every? module#exists? requirements))
+(if (not (every? module/exists? requirements))
   (do
-    (each [_ name (ipairs (filter (complement module#exists?) requirements))]
+    (each [_ name (ipairs (filter (complement module/exists?) requirements))]
       (warn! (string.format "Module `%s` was not found." name)))
     (warn! "Please execute :PackerSync to install the missing modules")
 
