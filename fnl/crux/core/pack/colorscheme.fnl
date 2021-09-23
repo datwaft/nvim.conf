@@ -1,4 +1,4 @@
-(import-macros {: colorscheme!} :core.macro.vim)
+(import-macros {: colorscheme!} :crux.lib.macro.vim)
 (local {: setup} (require :catppuccino))
 
 (setup {:colorscheme "dark_catppuccino"

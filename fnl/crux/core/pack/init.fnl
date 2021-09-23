@@ -1,12 +1,13 @@
 (import-macros {: pack!
                 : rock!
-                : unpack!} :core.macro.pack)
+                : unpack!} :crux.lib.macro.pack)
+(local {: format} string)
 
 (fn req [module]
   "A shortcut for building a require string for the plugin configuration.
   Intended for use with packer's configuration options.
   Will prefix the name with `core.plugin.` before requiring."
-  (string.format "require('core.plugin.%s')" module))
+  (format "require('crux.core.pack.%s')" module))
 
 ;;; Essential
 ;; Plugin Manager

@@ -22,6 +22,15 @@ if vim.fn.empty(vim.fn.glob(hotpot_path)) > 0 then
   })
 end
 
+local packer_path = vim.fn.stdpath("data") ..
+                      "/site/pack/packer/start/packer.nvim"
+if vim.fn.empty(vim.fn.glob(packer_path)) > 0 then
+  print("Could not find packer.nvim, cloning new copy to", packer_path)
+  vim.fn.system({
+    "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", packer_path
+  })
+end
+
 require("hotpot").setup({
   provide_require_fennel = true,
   compiler = {
@@ -38,4 +47,4 @@ table.insert(fennel["macro-searchers"], function(module_name)
   end
 end)
 
-require("core")
+require("crux.core")

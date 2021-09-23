@@ -1,13 +1,13 @@
 (import-macros {: augroup!
                 : autocmd!
-                : bufset!} :core.macro.vim)
-(local {: echo!} (require :core.utils.io))
-(local {: cmd!} (require :core.utils.vim))
+                : bufset!} :crux.lib.macro.vim)
+(local {: echo!} (require :crux.lib.io))
+(local {: cmd!} (require :crux.lib.vim))
 
 ; Restore cursor on exit
 (augroup! restore-cursor-on-exit
-          (autocmd! VimLeave *
-                    #(set! guicursor ["a:ver100-blinkon0"])))
+         (autocmd! VimLeave *
+                   #(set! guicursor ["a:ver100-blinkon0"])))
 
 ; Automatically resize splits when window is resized
 (augroup! resize-splits-on-resize
@@ -56,4 +56,3 @@
           ; Disables colorcolumn on terminal buffers
           (autocmd! TermOpen *
                     #(bufset! colorcolumn [])))
-

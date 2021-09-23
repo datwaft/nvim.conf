@@ -1,54 +1,57 @@
-(local {: conj
-        : concat
+(local {: vector
+        : hash-map
         : nil?
         : empty?
-        : vector
-        : hash-map} (require :cljlib))
+        : conj
+        : concat
+        : mapv} (require :cljlib))
 
-(global core#pack (vector))
-(global core#rock (vector))
+(global core/pack (vector))
+(global core/rock (vector))
 
 (fn pack [name ?options]
-  "Returns a plugin with its options.
+  "Returns a mixed table with a plugin as the first sequential and the options
+  as hash-table items.
   See https://github.com/wbthomason/packer.nvim for information about the
   options."
   (let [options (if (or (nil? ?options)
                         (empty? ?options)) (hash-map)
-                  ?options)]
+                    ?options)]
     (conj options [1 name])))
 
 (fn pack! [name ?options]
   "Declares a plugin with its options.
   See https://github.com/wbthomason/packer.nvim for information about the
   options."
-  (global core#pack (conj core#pack (pack name ?options))))
+  (global core/pack (conj core/pack (pack name ?options))))
 
 (fn rock [name ?options]
-  "Returns a rock with its options.
+  "Returns a mixed table with a rock as the first sequential and the options
+  as hash-table items.
   See https://github.com/wbthomason/packer.nvim for information about the
   options."
   (let [options (if (or (nil? ?options)
                         (empty? ?options)) (hash-map)
-                  ?options)]
+                    ?options)]
     (conj options [1 name])))
 
 (fn rock! [name ?options]
   "Declares a rock with its options.
   See https://github.com/wbthomason/packer.nvim for information about the
   options."
-  (global core#rock (conj core#rock (rock name ?options))))
+  (global core/rock (conj core/rock (rock name ?options))))
 
 (fn unpack! []
   "Initializes the plugin manager with the previously declared plugins and
   their options."
   `((. (require :packer) :startup)
     #(do
-       ,(unpack (concat (icollect [_ rock (ipairs core#rock)]
-                          `(use_rocks ,rock))
-                        (icollect [_ pack (ipairs core#pack)]
-                          `(use ,pack)))))))
+       ,(unpack (concat
+                  (mapv #`(use_rocks ,$) core/rock)
+                  (mapv #`(use ,$) core/pack))))))
 
 {: pack
  : pack!
+ : rock
  : rock!
  : unpack!}

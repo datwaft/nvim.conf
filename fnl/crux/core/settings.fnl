@@ -1,7 +1,8 @@
 (import-macros {: set!
                 : let!
-                : t} :core.macro.vim)
-(local {: extcmd!} (require :core.utils.vim))
+                : t} :crux.lib.macro.vim)
+(local {: extcmd!} (require :crux.lib.vim))
+(local {: byte} string)
 
 ;;; Local variable definition
 ; Define configuration folder
@@ -97,7 +98,7 @@
 (set! shortmess+ :c)
 
 ;; Command-mode completion
-(set! wildcharm (string.byte (t "<tab>")))
+(set! wildcharm (byte (t "<tab>")))
 (set! wildignorecase)
 
 ;;; Command configuration
@@ -122,3 +123,4 @@
 
 ;; LocalLeader
 (let! maplocalleader " ")
+
