@@ -34,6 +34,8 @@
 ;; Color codes highlight
 (pack! "rrethy/vim-hexokinase" {:run "make hexokinase"
                                 :config (req :hexokinase)})
+;; Developer icons
+(pack! "kyazdani42/nvim-web-devicons" {:config (req :devicons)})
 
 ;;; Text Editing
 ;; Parentheses Inference
