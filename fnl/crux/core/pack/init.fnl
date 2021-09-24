@@ -30,6 +30,9 @@
 (pack! "nvim-treesitter/nvim-treesitter-textobjects" {:requires :treesitter})
 (pack! "JoosepAlviste/nvim-ts-context-commentstring" {:requires :treesitter})
 
+;; Preview substitution
+(pack! "markonm/traces.vim")
+
 ;; Color codes highlight
 (pack! "rrethy/vim-hexokinase" {:run "make hexokinase"
                                 :config (req :hexokinase)})
