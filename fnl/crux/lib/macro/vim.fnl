@@ -18,6 +18,7 @@
 (local {: format
         : gsub} string)
 
+(math.randomseed (os.time))
 (fn core/gensym []
   "Generates a new symbol to use as a global variable name.
   The returned symbol follows the structure `__core_%s_` where `%s` is a uuid."
