@@ -38,6 +38,8 @@
 (pack! "lukas-reineke/indent-blankline.nvim" {:config (req :indent-blankline)})
 ;; Developer icons
 (pack! "kyazdani42/nvim-web-devicons" {:config (req :devicons)})
+;; Hihglight matches
+(pack! "kevinhwang91/nvim-hlslens" {:config (req :hlslens)})
 
 ;;; Text Editing
 ;; Parentheses Inference
