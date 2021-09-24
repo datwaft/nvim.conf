@@ -30,6 +30,10 @@
 (pack! "nvim-treesitter/nvim-treesitter-textobjects" {:requires :treesitter})
 (pack! "JoosepAlviste/nvim-ts-context-commentstring" {:requires :treesitter})
 
+;; Color codes highlight
+(pack! "rrethy/vim-hexokinase" {:run "make hexokinase"
+                                :config (req :hexokinase)})
+
 ;;; Text Editing
 ;; Parentheses Inference
 (pack! "eraserhd/parinfer-rust" {:run "cargo build --release"
