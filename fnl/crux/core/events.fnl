@@ -1,6 +1,6 @@
 (import-macros {: augroup!
                 : autocmd!
-                : bufset!} :crux.lib.macro.vim)
+                : buf-set!} :crux.lib.macro.vim)
 (local {: echo!} (require :crux.lib.io))
 (local {: cmd!} (require :crux.lib.vim))
 
@@ -27,7 +27,7 @@
 ; Disable spell in certain filetypes
 (augroup! disable-spell-on-filetypes
           (autocmd! FileType [help packer]
-                    #(bufset! nospell)))
+                    #(buf-set! nospell)))
 
 ; Disable colorcolumn in certain filetypes
 (augroup! disable-colorcolumn-on-filetypes
@@ -35,7 +35,7 @@
                               NvimTree fern
                               fennel clojure lisp
                               json yaml markdown]
-                    #(bufset! colorcolumn [])))
+                    #(buf-set! colorcolumn [])))
 
 ; Set terminal options
 (augroup! terminal-options
@@ -45,14 +45,14 @@
           ; Disables line number on terminal buffers
           (autocmd! TermOpen *
                     #(do
-                       (bufset! nonumber)
-                       (bufset! norelativenumber)))
+                       (buf-set! nonumber)
+                       (buf-set! norelativenumber)))
           ; Disables spell on terminal buffers
           (autocmd! TermOpen *
-                    #(bufset! nospell))
+                    #(buf-set! nospell))
           ; Disables sign column on terminal buffers
           (autocmd! TermOpen *
-                    #(bufset! signcolumn :no))
+                    #(buf-set! signcolumn :no))
           ; Disables colorcolumn on terminal buffers
           (autocmd! TermOpen *
-                    #(bufset! colorcolumn [])))
+                    #(buf-set! colorcolumn [])))

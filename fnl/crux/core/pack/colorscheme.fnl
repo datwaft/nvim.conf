@@ -37,7 +37,7 @@
                        :bufferline false
                        :markdown false
                        :lightspeed false
-                       :ts_rainbow false
+                       :ts_rainbow true
                        :hop false}})
 
 (colorscheme! catppuccino)

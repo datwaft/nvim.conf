@@ -18,8 +18,17 @@
 (rock! "lrexlib-pcre2")
 
 ;;; Aesthetic
+;; Colorscheme
 (pack! "Pocco81/Catppuccino.nvim" {:as :colorscheme
                                    :config (req :colorscheme)})
+;; Treesitter
+(pack! "nvim-treesitter/nvim-treesitter" {:as :treesitter
+                                          :run ":TSUpdate"
+                                          :config (req :treesitter)})
+(pack! "p00f/nvim-ts-rainbow" {:requires :treesitter})
+(pack! "nvim-treesitter/nvim-treesitter-refactor" {:requires :treesitter})
+(pack! "nvim-treesitter/nvim-treesitter-textobjects" {:requires :treesitter})
+(pack! "JoosepAlviste/nvim-ts-context-commentstring" {:requires :treesitter})
 
 ;;; Text Editing
 ;; Parentheses Inference
@@ -33,6 +42,7 @@
 ;;; Filetypes
 ;; Fennel
 (pack! "bakpakin/fennel.vim" {:ft [:fennel]})
+;; Dockerfile
 (pack! "ekalinin/Dockerfile.vim" {:ft [:dockerfile]})
 
 ;;; --------------------

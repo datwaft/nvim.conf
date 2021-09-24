@@ -5,9 +5,14 @@
         : nil?
         : mapv
         : conj
+        : cons
+        : disj
         :some some?} (require :cljlib))
-(local {: ->str} (require :crux.lib.flux))
+(local {: ->str
+        : str->seq
+        : seq->set} (require :crux.lib.flux))
 (local {: fn?} (require :crux.lib.macro.utils))
+(local {: exists?} (require :crux.lib.module))
 (local rex ((require :rex_pcre2)))
 (local {: format} string)
 
@@ -59,7 +64,7 @@
       `(do ,(unpack exprs))
       (unpack exprs))))
 
-(fn bufset! [...]
+(fn buf-set! [...]
   "Set one or multiple vim options using the `vim.opt_local` API.
   The name of the option must be a symbol.
   If the option doesn't have a value, if it begins with 'no' the value becomes
@@ -135,7 +140,7 @@
             (conj ...)
             (conj `(vim.cmd "augroup END"))))))
 
-(fn bufaugroup! [name ...]
+(fn buf-augroup! [name ...]
   "Defines a buffer-local autocommand group using the `vim.cmd` API."
   `(do
      ,(unpack
@@ -163,6 +168,80 @@
       `(vim.cmd ,(format "autocmd %s %s %s"
                                 events pattern command)))))
 
+(fn doc-map! [mode lhs {:buffer buffer? :silent silent?
+                        :noremap noremap? :nowait nowait?} description]
+  "Documents a mapping using which-key, if the plugin is available."
+  `(let [(ok?# which-key#) (pcall #(require :which-key))]
+     (when ok?#
+       (which-key#.register
+         {,lhs ,description}
+         {:mode ,mode
+          :buffer ,(if buffer? 0)
+          :silent ,(if silent? true)
+          :noremap ,(if (not noremap?) false)
+          :nowait ,(if nowait? true)}))))
+
+(fn map! [[modes & options] lhs rhs ?description]
+  "Defines a vim mapping using the `vim.api.nvim_set_keymap` API or the
+  `vim.api.nvim_buf_set_keymap` if the option `:buffer` was passed.
+  Support all the options the API supports.
+  If the `rhs` argument is a function then automatically includes the `:expr`
+  option."
+  (fn map!/expr [mode lhs rhs options]
+    (if (some? #(= $ :buffer) options)
+      `(vim.api.nvim_buf_set_keymap 0 ,mode ,lhs ,rhs ,options)
+      `(vim.api.nvim_set_keymap ,mode ,lhs ,rhs ,options)))
+  (let [modes (-> modes
+                  ->str
+                  str->seq)
+        options (as-> options $
+                      (if (fn? rhs) (conj $ :expr) $)
+                      (seq->set $))
+        fsym (when (fn? rhs)
+               (core/gensym))
+        exprs (as-> modes $
+                    (icollect [_ mode (ipairs $)]
+                              (map!/expr mode lhs (if (fn? rhs) (vlua fsym) rhs) options))
+                    (if (fn? rhs) (cons `(global ,fsym ,rhs) $) $)
+                    (if (and ?description (exists? :which-key))
+                      (conj $ (unpack (icollect [_ mode (ipairs mode)]
+                                                (doc-map! mode lhs options ?description))))
+                      $))]
+    (if (> (length exprs) 1)
+      `(do ,(unpack exprs))
+      (unpack exprs))))
+
+(fn noremap! [[modes & options] lhs rhs ?description]
+  "Defines a vim mapping using the `vim.api.nvim_set_keymap` API or the
+  `vim.api.nvim_buf_set_keymap` if the option `:buffer` was passed.
+  Support all the options the API supports.
+  If the `rhs` argument is a function then automatically includes the `:expr`
+  option.
+  Automatically includes the `:noremap` option."
+  (let [options (cons :noremap options)]
+    (map! (cons modes options) lhs rhs ?description)))
+
+(fn buf-map! [[modes & options] lhs rhs ?description]
+  "Defines a vim mapping using the `vim.api.nvim_buf_set_keymap` if the option
+  `:buffer` was passed.
+  Support all the options the API supports.
+  If the `rhs` argument is a function then automatically includes the `:expr`
+  option."
+  (let [options (cons :buffer options)]
+    (map! (cons modes options) lhs rhs ?description)))
+
+(fn buf-noremap! [[modes & options] lhs rhs ?description]
+  "Defines a vim mapping using the `vim.api.nvim_buf_set_keymap` if the option
+  `:buffer` was passed.
+  Support all the options the API supports.
+  If the `rhs` argument is a function then automatically includes the `:expr`
+  option.
+  Automatically includes the `:noremap` option."
+  (let [options (->> options
+                    (cons :buffer)
+                    (cons :noremap))]
+    (map! (cons modes options) lhs rhs ?description)))
+
 (fn t [combination]
   "Returns the string with the termcodes replaced."
   `(vim.api.nvim_replace_termcodes ,(->str combination) true true true))
@@ -173,10 +252,15 @@
   `(vim.cmd ,(format "colorscheme %s" (->str name))))
 
 {: set!
- : bufset!
+ : buf-set!
  : let!
  : augroup!
- : bufaugroup!
+ : buf-augroup!
  : autocmd!
+ : doc-map!
+ : map!
+ : noremap!
+ : buf-map!
+ : buf-noremap!
  : t
  : colorscheme!}
