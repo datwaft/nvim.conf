@@ -8,22 +8,20 @@
         : cons
         : disj
         :some some?} (require :cljlib))
+(local {: uuid} (require :lume))
 (local {: ->str
         : str->seq
         : seq->set} (require :crux.lib.flux))
 (local {: fn?} (require :crux.lib.macro.utils))
 (local {: exists?} (require :crux.lib.module))
 (local rex ((require :rex_pcre2)))
-(local {: format} string)
+(local {: format
+        : gsub} string)
 
-(global core/id 0)
 (fn core/gensym []
   "Generates a new symbol to use as a global variable name.
-  Has an internal counter.
-  The returned symbol follows the structure `__core_%d_` where `%d` is the
-  actual counter."
-  (global core/id (inc core/id))
-  (sym (format "__core_%d_" core/id)))
+  The returned symbol follows the structure `__core_%s_` where `%s` is a uuid."
+  (sym (format "__core_%s_" (gsub (uuid) "-" "_"))))
 
 (fn vlua [symbol]
   "Returns a symbol mapped to `v:lua.%s()` where `%s` is the symbol."

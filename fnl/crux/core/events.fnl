@@ -1,6 +1,7 @@
 (import-macros {: augroup!
                 : autocmd!
-                : buf-set!} :crux.lib.macro.vim)
+                : buf-set!
+                : set!} :crux.lib.macro.vim)
 (local {: echo!} (require :crux.lib.io))
 (local {: cmd!} (require :crux.lib.vim))
 
