@@ -25,6 +25,14 @@
           (autocmd! FileChangedShellPost *
                     #(echo! "File changed on disk. Buffer reloaded.")))
 
+; Open file on last position
+(augroup! open-file-on-last-position
+          (autocmd! BufReadPost *
+                    #(if (and
+                           (> (vim.fn.line "'\"") 1)
+                           (<= (vim.fn.line "'\"") (vim.fn.line "$")))
+                       (cmd! "normal! g'\""))))
+
 ; Disable spell in certain filetypes
 (augroup! disable-spell-on-filetypes
           (autocmd! FileType [help packer]
