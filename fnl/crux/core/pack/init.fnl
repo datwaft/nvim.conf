@@ -34,6 +34,8 @@
 ;; Color codes highlight
 (pack! "rrethy/vim-hexokinase" {:run "make hexokinase"
                                 :config (req :hexokinase)})
+;; Indent lines
+(pack! "lukas-reineke/indent-blankline.nvim" {:config (req :indent-blankline)})
 ;; Developer icons
 (pack! "kyazdani42/nvim-web-devicons" {:config (req :devicons)})
 
