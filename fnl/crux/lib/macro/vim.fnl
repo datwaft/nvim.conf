@@ -6,7 +6,7 @@
         : mapv
         : conj
         : cons
-        : disj
+        : dissoc
         :some some?} (require :cljlib))
 (local {: uuid} (require :lume))
 (local {: ->str
@@ -183,12 +183,14 @@
   "Defines a vim mapping using the `vim.api.nvim_set_keymap` API or the
   `vim.api.nvim_buf_set_keymap` if the option `:buffer` was passed.
   Support all the options the API supports.
-  If the `rhs` argument is a function then automatically includes the `:expr`
-  option."
+  If the `rhs` argument is a function then automatically includes the
+  `:expr` option."
   (fn map!/expr [mode lhs rhs options]
-    (if (some? #(= $ :buffer) options)
-      `(vim.api.nvim_buf_set_keymap 0 ,mode ,lhs ,rhs ,options)
-      `(vim.api.nvim_set_keymap ,mode ,lhs ,rhs ,options)))
+    (let [buffer? (?. options :buffer)
+          options (dissoc options :buffer)]
+      (if buffer?
+        `(vim.api.nvim_buf_set_keymap 0 ,mode ,lhs ,rhs ,options)
+        `(vim.api.nvim_set_keymap ,mode ,lhs ,rhs ,options))))
   (let [modes (-> modes
                   ->str
                   str->seq)
