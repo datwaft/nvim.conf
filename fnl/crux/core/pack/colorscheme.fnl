@@ -27,15 +27,15 @@
                        :nvimtree {:enabled false
                                   :show_root false}
                        :which_key false
-                       :indent_blankline {:enabled false
-                                          :colored_indent_levels false}
+                       :indent_blankline {:enabled true
+                                          :colored_indent_levels true}
                        :dashboard false
                        :neogit false
                        :vim_sneak false
                        :fern false
                        :barbar false
                        :bufferline false
-                       :markdown false
+                       :markdown true
                        :lightspeed false
                        :ts_rainbow true
                        :hop false}})
