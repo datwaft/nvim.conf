@@ -41,6 +41,14 @@
 ;; Hihglight matches
 (pack! "kevinhwang91/nvim-hlslens" {:config (req :hlslens)})
 
+;;; Text objects
+;; Intent-level text object
+(pack! "michaeljsmith/vim-indent-object")
+;; CamelCase text objects
+(pack! "bkad/CamelCaseMotion" {:config (req :camel-case-motion)})
+;; Whitespace text objects
+(pack! "vim-utils/vim-space")
+
 ;;; Text Editing
 ;; Parentheses Inference
 (pack! "eraserhd/parinfer-rust" {:run "cargo build --release"
@@ -48,13 +56,14 @@
 
 ;;; REPL
 ;; Lisp REPL
-(pack! "Olical/conjure" {:config (req :conjure)})
+(pack! "Olical/conjure" {:config (req :conjure)
+                         :ft [:fennel :clojure :lisp]})
 
 ;;; Filetypes
 ;; Fennel
 (pack! "bakpakin/fennel.vim" {:ft [:fennel]})
 ;; Dockerfile
-(pack! "ekalinin/Dockerfile.vim" {:ft [:dockerfile]})
+(pack! "ekalinin/Dockerfile.vim" {:ft [:Dockerfile :dockerfile]})
 
 ;;; --------------------
 
