@@ -252,6 +252,18 @@
   The name can be either a symbol or a string."
   `(vim.cmd ,(format "colorscheme %s" (->str name))))
 
+(fn command! [name expr]
+  "Define a vim command using the `vim.cmd` API."
+  (let [name (->str name)]
+    (if (fn? expr)
+      (let [fsym (core/gensym)]
+        `(do
+           (global ,fsym ,expr)
+           (vim.cmd ,(format "command! %s call %s"
+                             name (vlua fsym)))))
+      `(vim.cmd ,(format "command! %s %s"
+                         name expr)))))
+
 {: set!
  : buf-set!
  : let!
@@ -264,4 +276,5 @@
  : buf-map!
  : buf-noremap!
  : t
- : colorscheme!}
+ : colorscheme!
+ : command!}
