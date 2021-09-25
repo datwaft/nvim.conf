@@ -8,21 +8,28 @@
         : cons
         : dissoc
         :some some?} (require :cljlib))
-(local {: uuid} (require :lume))
+(local {:sumhexa md5} (require :md5))
 (local {: ->str
         : str->seq
         : seq->set} (require :crux.lib.flux))
 (local {: fn?} (require :crux.lib.macro.utils))
 (local {: exists?} (require :crux.lib.module))
 (local rex ((require :rex_pcre2)))
-(local {: format
-        : gsub} string)
+(local {: format} string)
+(local {: concat} table)
 
-(math.randomseed (os.time))
-(fn core/gensym []
+(fn core/gensym [...]
   "Generates a new symbol to use as a global variable name.
-  The returned symbol follows the structure `__core_%s_` where `%s` is a uuid."
-  (sym (format "__core_%s_" (gsub (uuid) "-" "_"))))
+  The symbol is generated based on the checksum (using md5) of the
+  concatenation of the arguments (each one converted to string using
+  `fennel.view`).
+  The returned symbol follows the structure `__%s` where `%s` is the checksum."
+  (->> (icollect [_ expr (ipairs [...])]
+                 (->str expr))
+       (concat)
+       (md5)
+       (format "__%s")
+       (sym)))
 
 (fn vlua [symbol]
   "Returns a symbol mapped to `v:lua.%s()` where `%s` is the symbol."
@@ -41,7 +48,7 @@
           value (or ?value (not (rex.match name "^no")))
           name (rex.match name "^(?:no)?(.+)$")]
       (if (fn? value)
-        (let [fsym (core/gensym)]
+        (let [fsym (core/gensym value)]
           `(do
              (global ,fsym ,value)
              (tset vim.opt ,name ,(vlua fsym))))
@@ -76,7 +83,7 @@
           value (or ?value (not (rex.match name "^no")))
           name (rex.match name "^(?:no)?(\\w+)$")]
       (if (fn? value)
-        (let [fsym (core/gensym)]
+        (let [fsym (core/gensym value)]
           `(do
              (global ,fsym ,value)
              (tset vim.opt_local ,name ,(vlua fsym))))
@@ -159,7 +166,7 @@
                       (mapv ->str $)
                       (table.concat $ ","))]
     (if (fn? command)
-      (let [fsym (core/gensym)]
+      (let [fsym (core/gensym command)]
         `(do
            (global ,fsym ,command)
            (vim.cmd ,(format "autocmd %s %s call %s"
@@ -199,7 +206,7 @@
                       (if (fn? rhs) (conj $ :expr) $)
                       (seq->set $))
         fsym (when (fn? rhs)
-               (core/gensym))
+               (core/gensym rhs))
         exprs (as-> modes $
                     (icollect [_ mode (ipairs $)]
                               (map!/expr mode lhs (if (fn? rhs) (vlua fsym) rhs) options))
@@ -256,7 +263,7 @@
   "Define a vim command using the `vim.cmd` API."
   (let [name (->str name)]
     (if (fn? expr)
-      (let [fsym (core/gensym)]
+      (let [fsym (core/gensym expr)]
         `(do
            (global ,fsym ,expr)
            (vim.cmd ,(format "command! %s call %s"
