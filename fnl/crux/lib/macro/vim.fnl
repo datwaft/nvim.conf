@@ -22,7 +22,7 @@
   "Generates a new symbol to use as a global variable name.
   The symbol is generated based on the checksum (using md5) of the
   concatenation of the arguments (each one converted to string using
-  `fennel.view`).
+  `tostring`).
   The returned symbol follows the structure `__%s` where `%s` is the checksum."
   (->> (icollect [_ expr (ipairs [...])]
                  (->str expr))
