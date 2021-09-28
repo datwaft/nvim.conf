@@ -49,6 +49,10 @@
 ;; Whitespace text objects
 (pack! "vim-utils/vim-space")
 
+;;; Actions
+;; Comment
+(pack! "tpope/vim-commentary")
+
 ;;; Text Editing
 ;; Parentheses Inference
 (pack! "eraserhd/parinfer-rust" {:run "cargo build --release"
