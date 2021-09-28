@@ -52,6 +52,10 @@
 (pack! "zegervdv/nrpattern.nvim" {:requires ["tpope/vim-repeat"]
                                   :init "nrpattern"})
 
+;;; Commands
+;; Subversion and Coercion
+(pack! "tpope/vim-abolish")
+
 ;;; Text Editing
 ;; Parentheses Inference
 (pack! "eraserhd/parinfer-rust" {:run "cargo build --release"
