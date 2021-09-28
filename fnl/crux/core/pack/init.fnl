@@ -72,6 +72,7 @@
 ;; Git
 (pack! "lewis6991/gitsigns.nvim" {:init "gitsigns"
                                   :requires ["nvim-lua/plenary.nvim"]})
+(pack! "lambdalisue/gina.vim")
 
 ;;; Filetypes
 ;; Fennel
