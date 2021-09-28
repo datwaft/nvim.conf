@@ -48,6 +48,9 @@
 (pack! "tpope/vim-commentary")
 ;; Surround
 (pack! "machakann/vim-sandwich")
+;; Increment and decrement numbers
+(pack! "zegervdv/nrpattern.nvim" {:requires ["tpope/vim-repeat"]
+                                  :init "nrpattern"})
 
 ;;; Text Editing
 ;; Parentheses Inference
