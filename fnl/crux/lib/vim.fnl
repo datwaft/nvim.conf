@@ -8,5 +8,9 @@
     (if (not= output "") (output:sub 1 -2)
       nil)))
 
+(fn ui? []
+  (not= 0 (length (vim.api.nvim_list_uis))))
+
 {: cmd!
- : extcmd!}
+ : extcmd!
+ : ui?}
