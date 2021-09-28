@@ -68,6 +68,11 @@
 (pack! "Olical/conjure" {:req :conjure
                          :ft [:fennel :clojure :lisp]})
 
+;;; Integration
+;; Git
+(pack! "lewis6991/gitsigns.nvim" {:init "gitsigns"
+                                  :requires ["nvim-lua/plenary.nvim"]})
+
 ;;; Filetypes
 ;; Fennel
 (pack! "bakpakin/fennel.vim" {:ft [:fennel]})
