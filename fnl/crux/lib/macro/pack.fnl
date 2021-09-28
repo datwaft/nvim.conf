@@ -20,7 +20,7 @@
                   (collect [k v (pairs ?options)]
                            (if
                              (= k :req) (values :config (format "require('crux.core.pack.%s')" v))
-                             (= k :init) (values :config (format "require('%s').init()" v))
+                             (= k :init) (values :config (format "require('%s').setup()" v))
                              (values k v))))]
     (conj options [1 name])))
 
