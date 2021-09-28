@@ -3,12 +3,6 @@
                 : unpack!} :crux.lib.macro.pack)
 (local {: format} string)
 
-(fn req [module]
-  "A shortcut for building a require string for the plugin configuration.
-  Intended for use with packer's configuration options.
-  Will prefix the name with `core.plugin.` before requiring."
-  (format "require('crux.core.pack.%s')" module))
-
 ;;; Essential
 ;; Plugin Manager
 (pack! "wbthomason/packer.nvim")
@@ -20,11 +14,11 @@
 ;;; Aesthetic
 ;; Colorscheme
 (pack! "Pocco81/Catppuccino.nvim" {:as :colorscheme
-                                   :config (req :colorscheme)})
+                                   :req :colorscheme})
 ;; Treesitter
 (pack! "nvim-treesitter/nvim-treesitter" {:as :treesitter
                                           :run ":TSUpdate"
-                                          :config (req :treesitter)})
+                                          :req :treesitter})
 (pack! "p00f/nvim-ts-rainbow" {:requires :treesitter})
 (pack! "nvim-treesitter/nvim-treesitter-refactor" {:requires :treesitter})
 (pack! "nvim-treesitter/nvim-treesitter-textobjects" {:requires :treesitter})
@@ -33,19 +27,19 @@
 (pack! "markonm/traces.vim")
 ;; Color codes highlight
 (pack! "rrethy/vim-hexokinase" {:run "make hexokinase"
-                                :config (req :hexokinase)})
+                                :req :hexokinase})
 ;; Indent lines
-(pack! "lukas-reineke/indent-blankline.nvim" {:config (req :indent-blankline)})
+(pack! "lukas-reineke/indent-blankline.nvim" {:req :indent-blankline})
 ;; Developer icons
-(pack! "kyazdani42/nvim-web-devicons" {:config (req :devicons)})
+(pack! "kyazdani42/nvim-web-devicons" {:req :devicons})
 ;; Hihglight matches
-(pack! "kevinhwang91/nvim-hlslens" {:config (req :hlslens)})
+(pack! "kevinhwang91/nvim-hlslens" {:req :hlslens})
 
 ;;; Text objects
 ;; Intent-level text object
 (pack! "michaeljsmith/vim-indent-object")
 ;; CamelCase text objects
-(pack! "bkad/CamelCaseMotion" {:config (req :camel-case-motion)})
+(pack! "bkad/CamelCaseMotion" {:req :camel-case-motion})
 ;; Whitespace text objects
 (pack! "vim-utils/vim-space")
 
@@ -62,7 +56,7 @@
 
 ;;; REPL
 ;; Lisp REPL
-(pack! "Olical/conjure" {:config (req :conjure)
+(pack! "Olical/conjure" {:req :conjure
                          :ft [:fennel :clojure :lisp]})
 
 ;;; Filetypes

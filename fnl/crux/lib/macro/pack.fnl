@@ -5,6 +5,7 @@
         : conj
         : concat
         : mapv} (require :cljlib))
+(local {: format} string)
 
 (global core/pack (vector))
 (global core/rock (vector))
@@ -16,7 +17,11 @@
   options."
   (let [options (if (or (nil? ?options)
                         (empty? ?options)) (hash-map)
-                    ?options)]
+                  (collect [k v (pairs ?options)]
+                           (if
+                             (= k :req) (values :config (format "require('crux.core.pack.%s')" v))
+                             (= k :init) (values :config (format "require('%s').init()" v))
+                             (values k v))))]
     (conj options [1 name])))
 
 (fn pack! [name ?options]
