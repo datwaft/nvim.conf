@@ -55,6 +55,8 @@
 ;;; Commands
 ;; Subversion and Coercion
 (pack! "tpope/vim-abolish")
+;; Undo-tree
+(pack! "mbbill/undotree")
 
 ;;; Text Editing
 ;; Parentheses Inference
