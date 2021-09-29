@@ -23,7 +23,7 @@
                        :lsp_saga false
                        :gitgutter false
                        :gitsigns true
-                       :telescope false
+                       :telescope true
                        :nvimtree {:enabled false
                                   :show_root false}
                        :which_key false

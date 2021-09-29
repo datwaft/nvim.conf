@@ -76,6 +76,12 @@
 ;; Tmux
 (pack! "aserowy/tmux.nvim" {:req :tmux})
 
+;;; Files and directories
+;; Fuzzy Finder
+(pack! "nvim-telescope/telescope.nvim" {:req :telescope
+                                        :requires ["nvim-lua/popup.nvim"
+                                                   "nvim-lua/plenary.nvim"
+                                                   "nvim-telescope/telescope-fzy-native.nvim"]})
 ;;; Filetypes
 ;; Fennel
 (pack! "bakpakin/fennel.vim" {:ft [:fennel]})
