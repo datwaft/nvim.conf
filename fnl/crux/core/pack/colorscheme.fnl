@@ -24,8 +24,8 @@
                        :gitgutter false
                        :gitsigns true
                        :telescope true
-                       :nvimtree {:enabled false
-                                  :show_root false}
+                       :nvimtree {:enabled true
+                                  :show_root true}
                        :which_key false
                        :indent_blankline {:enabled true
                                           :colored_indent_levels true}
