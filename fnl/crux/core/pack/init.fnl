@@ -61,6 +61,8 @@
 ;;; Enhancement
 ;; Quickfix
 (pack! "kevinhwang91/nvim-bqf")
+;; Mapping
+(pack! "folke/which-key.nvim" {:req :which-key})
 
 ;;; Text Editing
 ;; Parentheses Inference
