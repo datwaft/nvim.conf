@@ -95,6 +95,10 @@
 (pack! "kyazdani42/nvim-tree.lua" {:as :file-explorer
                                    :req :file-explorer})
 
+;;; Language Server Protocol (LSP)
+;; Configuration
+(pack! "neovim/nvim-lspconfig")
+
 ;;; Filetypes
 ;; Fennel
 (pack! "bakpakin/fennel.vim" {:ft [:fennel]})
