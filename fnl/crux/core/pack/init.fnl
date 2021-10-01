@@ -101,7 +101,7 @@
 ;; Status
 (pack! "nvim-lua/lsp-status.nvim")
 ;; Lua Neovim Development
-(pack "folke/lua-dev.nvim")
+(pack! "folke/lua-dev.nvim")
 
 ;;; Filetypes
 ;; Fennel
