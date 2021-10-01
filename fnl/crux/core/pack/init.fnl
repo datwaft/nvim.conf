@@ -58,6 +58,10 @@
 ;; Undo-tree
 (pack! "mbbill/undotree")
 
+;;; Enhancement
+;; Quickfix
+(pack! "kevinhwang91/nvim-bqf")
+
 ;;; Text Editing
 ;; Parentheses Inference
 (pack! "eraserhd/parinfer-rust" {:run "cargo build --release"
