@@ -11,6 +11,10 @@
 ;;; Environment configuration
 ; Define python binary
 (let! python3_host_prog (extcmd! "command -v python"))
+; Disable some providers
+(let! loaded_python_provider 0)
+(let! loaded_ruby_provider 0)
+(let! loaded_perl_provider 0)
 
 ;;; Editor configuration
 
