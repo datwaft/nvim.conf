@@ -1,3 +1,7 @@
+(import-macros {: buf-noremap!
+                : buf-augroup!
+                : autocmd!} :crux.lib.macro.vim)
+
 (local {: deep-merge} (require :crux.lib.table))
 (local {: has?} (require :crux.lib.vim))
 (local {: keys} (require :cljlib))
@@ -5,7 +9,20 @@
 (local config (require :lspconfig))
 
 (fn on-attach [client bufnr]
-  nil)
+  ;;; Keybinds
+  ;; Show documentation
+  (buf-noremap! [n] "K" "<cmd>lua vim.lsp.buf.hover()<cr>")
+  ;; Format buffer
+  (when client.resolved_capabilities.document_formatting
+    (buf-noremap! [n] "<leader>=" "<cmd>lua vim.lsp.buf.formatting()<cr>"))
+  ;; Format selection
+  (when client.resolved_capabilities.document_range_formatting
+    (buf-noremap! [v] "<leader>=" "<cmd>lua vim.lsp.buf.formatting()<cr>"))
+  ;;; Events
+  (when client.resolved_capabilities.document_formatting
+    (buf-augroup! lsp-format-on-save
+                  (autocmd! BufWritePre <buffer>
+                            "lua vim.lsp.buf.formatting_seq_sync(nil, 1000)"))))
 
 (local global-options {:on_attach on-attach})
 
