@@ -98,6 +98,8 @@
 ;;; Language Server Protocol (LSP)
 ;; Configuration
 (pack! "neovim/nvim-lspconfig")
+;; Status
+(pack! "nvim-lua/lsp-status.nvim")
 
 ;;; Filetypes
 ;; Fennel
