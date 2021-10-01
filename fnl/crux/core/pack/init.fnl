@@ -63,6 +63,9 @@
 (pack! "kevinhwang91/nvim-bqf")
 ;; Mapping
 (pack! "folke/which-key.nvim" {:req :which-key})
+;; Wildmenu
+(pack! "gelguy/wilder.nvim" {:run ":UpdateRemotePlugins"
+                             :req :wilder})
 
 ;;; Text Editing
 ;; Parentheses Inference
