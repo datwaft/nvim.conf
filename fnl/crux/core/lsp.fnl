@@ -1,5 +1,6 @@
 (import-macros {: buf-noremap!
                 : buf-augroup!
+                : buf-set!
                 : autocmd!} :crux.lib.macro.vim)
 
 (local {: deep-merge} (require :crux.lib.table))
@@ -9,6 +10,9 @@
 (local config (require :lspconfig))
 
 (fn on-attach [client bufnr]
+  ;;; Completion
+  ;; Enable omnifunc-completion
+  (buf-set! omnifunc "v:lua.vim.lsp.omnifunc")
   ;;; Keybinds
   ;; Show documentation
   (buf-noremap! [n] "K" "<cmd>lua vim.lsp.buf.hover()<cr>")
