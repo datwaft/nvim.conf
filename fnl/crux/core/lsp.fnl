@@ -28,6 +28,7 @@
   ;; Format selection
   (when client.resolved_capabilities.document_range_formatting
     (buf-noremap! [v] "<leader>=" #(vim.lsp.buf.range_formatting)))
+
   ;;; Events
   ;; Format buffer on save
   (when client.resolved_capabilities.document_formatting
