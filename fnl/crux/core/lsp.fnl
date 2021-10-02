@@ -20,6 +20,8 @@
   (buf-noremap! [n] "<leader>a" #(vim.lsp.buf.code_action))
   ;; Open code-actions menu for selection
   (buf-noremap! [v] "<leader>a" #(vim.lsp.buf.range_code_action))
+  ;; Rename symbol
+  (buf-noremap! [n] "<leader>rn" #(vim.lsp.buf.rename))
   ;; Format buffer
   (when client.resolved_capabilities.document_formatting
     (buf-noremap! [n] "<leader>=" #(vim.lsp.buf.formatting)))
