@@ -15,23 +15,23 @@
   (buf-set! omnifunc "v:lua.vim.lsp.omnifunc")
   ;;; Keybinds
   ;; Show documentation
-  (buf-noremap! [n] "K" "<cmd>lua vim.lsp.buf.hover()<cr>")
+  (buf-noremap! [n] "K" #(vim.lsp.buf.hover))
   ;; Open code-actions menu for cursor position
-  (buf-noremap! [n] "<leader>a" "<cmd>lua vim.lsp.buf.code_action()<cr>")
+  (buf-noremap! [n] "<leader>a" #(vim.lsp.buf.code_action))
   ;; Open code-actions menu for selection
-  (buf-noremap! [v] "<leader>a" "<cmd>lua vim.lsp.buf.range_code_action()<cr>")
+  (buf-noremap! [v] "<leader>a" #(vim.lsp.buf.range_code_action))
   ;; Format buffer
   (when client.resolved_capabilities.document_formatting
-    (buf-noremap! [n] "<leader>=" "<cmd>lua vim.lsp.buf.formatting()<cr>"))
+    (buf-noremap! [n] "<leader>=" #(vim.lsp.buf.formatting)))
   ;; Format selection
   (when client.resolved_capabilities.document_range_formatting
-    (buf-noremap! [v] "<leader>=" "<cmd>lua vim.lsp.buf.formatting()<cr>"))
+    (buf-noremap! [v] "<leader>=" #(vim.lsp.buf.range_formatting)))
   ;;; Events
   ;; Format buffer on save
   (when client.resolved_capabilities.document_formatting
     (buf-augroup! lsp-format-on-save
                   (autocmd! BufWritePre <buffer>
-                            "lua vim.lsp.buf.formatting_seq_sync(nil, 1000)"))))
+                            #(vim.lsp.buf.formatting_seq_sync nil 1000)))))
 
 (local global-options {:on_attach on-attach})
 
