@@ -1,6 +1,7 @@
 (import-macros {: augroup!
                 : autocmd!
                 : buf-set!
+                : buf-noremap!
                 : set!} :crux.lib.macro.vim)
 (local {: echo!} (require :crux.lib.io))
 (local {: cmd!} (require :crux.lib.vim))
@@ -70,3 +71,9 @@
           ; Disables colorcolumn on terminal buffers
           (autocmd! TermOpen *
                     #(buf-set! colorcolumn [])))
+
+; Define keybinds for quickfix list window
+(augroup! quickfix-keybinds
+          (autocmd! FileType qf
+                    #(buf-noremap! [n] "<localleader>q" "<cmd>cclose<cr>"
+                                   "Close the quickfix list window")))

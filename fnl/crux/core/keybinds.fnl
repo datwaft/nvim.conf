@@ -8,13 +8,6 @@
 (noremap! [n] "<localleader>Q" "<cmd>cclose<cr>"
           "Close the quickfix list window")
 
-;; Open or focus the location list window
-(noremap! [n] "<localleader>k" "<cmd>lopen<cr>"
-          "Open or focus the location list window")
-;; Close the location list window
-(noremap! [n] "<localleader>K" "<cmd>lclose<cr>"
-          "Close the location list window")
-
 ;; Use <space> to close wildmenu
 (noremap! [c] "<space>" #(if (= (vim.fn.wildmenumode) 1)
                            (t "<C-y>")

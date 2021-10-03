@@ -22,6 +22,6 @@
 
 ;; Configure telescope
 (setup {:defaults {:mappings {:i {"<ESC>" actions.close
-                                  "<C-q>" actions.close
-                                  "<M-q>" actions.close}}}})
+                                  "<C-q>" actions.smart_send_to_qflist
+                                  "<C-k>" actions.smart_send_to_loclist}}}})
 (load_extension :fzy_native)
