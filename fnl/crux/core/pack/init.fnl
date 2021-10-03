@@ -20,7 +20,6 @@
                                           :req :treesitter})
 (pack! "p00f/nvim-ts-rainbow" {:requires :treesitter})
 (pack! "nvim-treesitter/nvim-treesitter-refactor" {:requires :treesitter})
-(pack! "nvim-treesitter/nvim-treesitter-textobjects" {:requires :treesitter})
 (pack! "JoosepAlviste/nvim-ts-context-commentstring" {:requires :treesitter})
 ;; Preview substitution
 (pack! "markonm/traces.vim")
