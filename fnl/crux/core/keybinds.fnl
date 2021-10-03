@@ -6,7 +6,7 @@
           "Open or focus the quickfix list window")
 ;; Close the quickfix list window
 (noremap! [n] "<localleader>Q" "<cmd>cclose<cr>"
-          "Close the quickfix window")
+          "Close the quickfix list window")
 
 ;; Open or focus the location list window
 (noremap! [n] "<localleader>k" "<cmd>lopen<cr>"
