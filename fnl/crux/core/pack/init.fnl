@@ -13,11 +13,11 @@
 ;;; Aesthetic
 ;; Colorscheme
 (pack! "Pocco81/Catppuccino.nvim" {:as :colorscheme
-                                   :req :colorscheme})
+                                   :req "colorscheme"})
 ;; Treesitter
 (pack! "nvim-treesitter/nvim-treesitter" {:as :treesitter
                                           :run ":TSUpdate"
-                                          :req :treesitter})
+                                          :req "treesitter"})
 (pack! "p00f/nvim-ts-rainbow" {:requires :treesitter})
 (pack! "nvim-treesitter/nvim-treesitter-refactor" {:requires :treesitter})
 (pack! "JoosepAlviste/nvim-ts-context-commentstring" {:requires :treesitter})
@@ -25,19 +25,19 @@
 (pack! "markonm/traces.vim")
 ;; Color codes highlight
 (pack! "rrethy/vim-hexokinase" {:run "make hexokinase"
-                                :req :hexokinase})
+                                :req "hexokinase"})
 ;; Indent lines
-(pack! "lukas-reineke/indent-blankline.nvim" {:req :indent-blankline})
+(pack! "lukas-reineke/indent-blankline.nvim" {:req "indent-blankline"})
 ;; Developer icons
-(pack! "kyazdani42/nvim-web-devicons" {:req :devicons})
+(pack! "kyazdani42/nvim-web-devicons" {:req "devicons"})
 ;; Highlight matches
-(pack! "kevinhwang91/nvim-hlslens" {:req :hlslens})
+(pack! "kevinhwang91/nvim-hlslens" {:req "hlslens"})
 
 ;;; Text objects
 ;; Intent-level text object
 (pack! "michaeljsmith/vim-indent-object")
 ;; CamelCase text objects
-(pack! "bkad/CamelCaseMotion" {:req :camel-case-motion})
+(pack! "bkad/CamelCaseMotion" {:req "camel-case-motion"})
 ;; Whitespace text objects
 (pack! "vim-utils/vim-space")
 
@@ -60,10 +60,10 @@
 ;; Quickfix
 (pack! "kevinhwang91/nvim-bqf")
 ;; Mapping
-(pack! "folke/which-key.nvim" {:req :which-key})
+(pack! "folke/which-key.nvim" {:req "which-key"})
 ;; Wildmenu
 (pack! "gelguy/wilder.nvim" {:run ":UpdateRemotePlugins"
-                             :req :wilder})
+                             :req "wilder"})
 
 ;;; Text Editing
 ;; Parentheses Inference
@@ -72,7 +72,7 @@
 
 ;;; REPL
 ;; Lisp REPL
-(pack! "Olical/conjure" {:req :conjure
+(pack! "Olical/conjure" {:req "conjure"
                          :ft [:fennel :clojure :lisp]})
 
 ;;; Integration
@@ -81,17 +81,17 @@
                                   :requires ["nvim-lua/plenary.nvim"]})
 (pack! "lambdalisue/gina.vim")
 ;; Tmux
-(pack! "aserowy/tmux.nvim" {:req :tmux})
+(pack! "aserowy/tmux.nvim" {:req "tmux"})
 
 ;;; Files and directories
 ;; Fuzzy Finder
-(pack! "nvim-telescope/telescope.nvim" {:req :telescope
+(pack! "nvim-telescope/telescope.nvim" {:req "telescope"
                                         :requires ["nvim-lua/popup.nvim"
                                                    "nvim-lua/plenary.nvim"
                                                    "nvim-telescope/telescope-fzy-native.nvim"]})
 ;; File explorer
 (pack! "kyazdani42/nvim-tree.lua" {:as :file-explorer
-                                   :req :file-explorer})
+                                   :req "file-explorer"})
 
 ;;; Language Server Protocol (LSP)
 ;; Configuration
