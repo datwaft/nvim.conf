@@ -1,6 +1,20 @@
 (import-macros {: noremap!
                 : t} :crux.lib.macro.vim)
 
+;; Open or focus the quickfix list window
+(noremap! [n] "<localleader>q" "<cmd>copen<cr>"
+          "Open or focus the quickfix list window")
+;; Close the quickfix list window
+(noremap! [n] "<localleader>Q" "<cmd>cclose<cr>"
+          "Close the quickfix window")
+
+;; Open or focus the location list window
+(noremap! [n] "<localleader>k" "<cmd>lopen<cr>"
+          "Open or focus the location list window")
+;; Close the location list window
+(noremap! [n] "<localleader>K" "<cmd>lclose<cr>"
+          "Close the location list window")
+
 ;; Use <space> to close wildmenu
 (noremap! [c] "<space>" #(if (= (vim.fn.wildmenumode) 1)
                            (t "<C-y>")

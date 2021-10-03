@@ -14,6 +14,12 @@
 (noremap! [n] "<leader>fh" "<cmd>Telescope help_tags<cr>"
           "Find a help tag")
 
+;; Search quickfix list
+(noremap! [n] "<leader>fq" "<cmd>Telescope quickfix<cr>")
+
+;; Search location list
+(noremap! [n] "<leader>fk" "<cmd>Telescope loclist<cr>")
+
 ;; Configure telescope
 (setup {:defaults {:mappings {:i {"<ESC>" actions.close
                                   "<C-q>" actions.close
