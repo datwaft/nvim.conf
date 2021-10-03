@@ -1,7 +1,6 @@
 (import-macros {: pack!
                 : rock!
                 : unpack!} :crux.lib.macro.pack)
-(local {: format} string)
 
 ;;; Essential
 ;; Plugin Manager
