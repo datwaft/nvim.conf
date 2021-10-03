@@ -12,10 +12,10 @@
 
 ;;; Aesthetic
 ;; Colorscheme
-(pack! "Pocco81/Catppuccino.nvim" {:as :colorscheme
+(pack! "Pocco81/Catppuccino.nvim" {:as "colorscheme"
                                    :req "colorscheme"})
 ;; Treesitter
-(pack! "nvim-treesitter/nvim-treesitter" {:as :treesitter
+(pack! "nvim-treesitter/nvim-treesitter" {:as "treesitter"
                                           :run ":TSUpdate"
                                           :req "treesitter"})
 (pack! "p00f/nvim-ts-rainbow" {:requires :treesitter})
@@ -90,7 +90,7 @@
                                                    "nvim-lua/plenary.nvim"
                                                    "nvim-telescope/telescope-fzy-native.nvim"]})
 ;; File explorer
-(pack! "kyazdani42/nvim-tree.lua" {:as :file-explorer
+(pack! "kyazdani42/nvim-tree.lua" {:as "file-explorer"
                                    :req "file-explorer"})
 
 ;;; Language Server Protocol (LSP)
