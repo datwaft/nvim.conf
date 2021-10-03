@@ -46,6 +46,11 @@
                               json yaml markdown]
                     #(buf-set! colorcolumn [])))
 
+; Disable wrap in certain filetypes
+(augroup! disable-wrap-on-filetypes
+          (autocmd! FileType [fennel clojure lisp]
+                    #(buf-set! nowrap)))
+
 ; Set terminal options
 (augroup! terminal-options
           ; Enter Terminal-mode (insert) automatically
