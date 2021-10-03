@@ -18,9 +18,9 @@
 (pack! "nvim-treesitter/nvim-treesitter" {:as "treesitter"
                                           :run ":TSUpdate"
                                           :req "treesitter"})
-(pack! "p00f/nvim-ts-rainbow" {:requires :treesitter})
-(pack! "nvim-treesitter/nvim-treesitter-refactor" {:requires :treesitter})
-(pack! "JoosepAlviste/nvim-ts-context-commentstring" {:requires :treesitter})
+(pack! "p00f/nvim-ts-rainbow" {:requires "treesitter"})
+(pack! "nvim-treesitter/nvim-treesitter-refactor" {:requires "treesitter"})
+(pack! "JoosepAlviste/nvim-ts-context-commentstring" {:requires "treesitter"})
 ;; Preview substitution
 (pack! "markonm/traces.vim")
 ;; Color codes highlight
