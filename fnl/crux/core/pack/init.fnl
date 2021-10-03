@@ -31,7 +31,7 @@
 (pack! "lukas-reineke/indent-blankline.nvim" {:req :indent-blankline})
 ;; Developer icons
 (pack! "kyazdani42/nvim-web-devicons" {:req :devicons})
-;; Hihglight matches
+;; Highlight matches
 (pack! "kevinhwang91/nvim-hlslens" {:req :hlslens})
 
 ;;; Text objects
