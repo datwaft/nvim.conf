@@ -6,5 +6,5 @@
 (noremap! [nvo] "#" "#<cmd>lua require'hlslens'.start()<cr>")
 (noremap! [nvo] "g*" "g*<cmd>lua require'hlslens'.start()<cr>")
 (noremap! [nvo] "g#" "g#<cmd>lua require'hlslens'.start()<cr>")
-(noremap! [n :silent] "<localleader>l" ":noh<cr>"
+(noremap! [n] "<leader>l" "<cmd>noh<cr>"
           "Clear highlight")
