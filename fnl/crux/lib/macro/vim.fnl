@@ -212,7 +212,7 @@
                               (map!/expr mode lhs (if (fn? rhs) (vlua fsym) rhs) options))
                     (if (fn? rhs) (cons `(global ,fsym ,rhs) $) $)
                     (if (and ?description (exists? :which-key))
-                      (conj $ (unpack (icollect [_ mode (ipairs mode)]
+                      (conj $ (unpack (icollect [_ mode (ipairs modes)]
                                                 (doc-map! mode lhs options ?description))))
                       $))]
     (if (> (length exprs) 1)
