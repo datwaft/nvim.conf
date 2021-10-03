@@ -4,7 +4,7 @@
                 : autocmd!} :crux.lib.macro.vim)
 
 (local {: deep-merge} (require :crux.lib.table))
-(local {: exists?} (require :crux.lib.table))
+(local {: exists?} (require :crux.lib.module))
 (local {: has?} (require :crux.lib.vim))
 (local {: keys} (require :cljlib))
 (local lua-dev (require :lua-dev))
