@@ -1,4 +1,5 @@
-(import-macros {: pack!
+(import-macros {: pack
+                : pack!
                 : rock!
                 : unpack!} :crux.lib.macro.pack)
 
@@ -71,7 +72,8 @@
 ;; Completion
 (pack! "hrsh7th/nvim-cmp" {:req "cmp"
                            :requires ["hrsh7th/cmp-buffer"
-                                      "hrsh7th/cmp-nvim-lsp"]})
+                                      "hrsh7th/cmp-nvim-lsp"
+                                      (pack "hrsh7th/cmp-vsnip" {:requires "hrsh7th/vim-vsnip"})]})
 
 ;;; REPL
 ;; Lisp REPL

@@ -4,12 +4,14 @@
 
 (set! completeopt [:menu :menuone :noselect])
 
-(setup {:mapping {"<C-d>" (mapping.scroll_docs -4)
+(setup {:snippet {:expand (fn [args] (vim.fn.vsnip#anonymous args.body))}
+        :mapping {"<C-d>" (mapping.scroll_docs -4)
                   "<C-f>" (mapping.scroll_docs 4)
-                  "<C-Space>" (mapping.complete)
+                  "<C-space>" (mapping.complete)
                   "<C-e>" (mapping.close)
-                  "<Tab>" (mapping.select_next_item)
-                  "<S-Tab>" (mapping.select_prev_item)
-                  "<Space>" (mapping.confirm {:select true})}
+                  "<tab>" (mapping.select_next_item)
+                  "<S-tab>" (mapping.select_prev_item)
+                  "<space>" (mapping.confirm {:select false})}
         :sources [{:name "buffer"}
-                  {:name "nvim_lsp"}]})
+                  {:name "nvim_lsp"}
+                  {:name "vsnip"}]})
