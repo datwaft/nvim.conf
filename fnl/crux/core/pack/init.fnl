@@ -101,8 +101,6 @@
 ;;; Language Server Protocol (LSP)
 ;; Configuration
 (pack! "neovim/nvim-lspconfig")
-;; Status
-(pack! "nvim-lua/lsp-status.nvim")
 ;; Lua Neovim Development
 (pack! "folke/lua-dev.nvim")
 
