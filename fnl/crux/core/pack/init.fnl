@@ -68,6 +68,10 @@
 ;; Parentheses Inference
 (pack! "eraserhd/parinfer-rust" {:run "cargo build --release"
                                  :ft [:fennel :clojure :lisp]})
+;; Completion
+(pack! "hrsh7th/nvim-cmp" {:req "cmp"
+                           :requires ["hrsh7th/cmp-buffer"
+                                      "hrsh7th/cmp-nvim-lsp"]})
 
 ;;; REPL
 ;; Lisp REPL

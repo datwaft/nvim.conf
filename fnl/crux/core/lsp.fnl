@@ -4,7 +4,8 @@
                 : autocmd!} :crux.lib.macro.vim)
 
 (local {: deep-merge} (require :crux.lib.table))
-(local {: exists?} (require :crux.lib.module))
+(local {: exists?
+        : prequire} (require :crux.lib.module))
 (local {: has?} (require :crux.lib.vim))
 (local {: keys} (require :cljlib))
 (local lua-dev (require :lua-dev))
@@ -64,7 +65,11 @@
                   (autocmd! BufWritePre <buffer>
                             "lua vim.lsp.buf.formatting_seq_sync(nil, 1000)"))))
 
-(local global-options {:on_attach on-attach})
+(local capabilities (match (prequire :cmp_nvim_lsp)
+                      {: update_capabilities} (update_capabilities (vim.lsp.protocol.make_client_capabilities))))
+
+(local global-options {: on-attach
+                       : capabilities})
 
 ;; Bash
 (config.bashls.setup global-options)
