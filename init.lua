@@ -1,31 +1,51 @@
--- Some aliases for easier access.
-local execute = vim.api.nvim_command
-local fn = vim.fn
-local fmt = string.format
-
--- Path of where the plugins are stored.
-local pack_path = fn.stdpath("data") .. "/site/pack"
-
-local function ensure(user, repo)
-  -- Ensures a given github.com/USER/REPO is cloned int the pack directory.
-  local install_path = fmt("%s/packer/start/%s", pack_path, repo, repo)
-  if fn.empty(fn.glob(install_path)) > 0 then
-    execute(fmt("!git clone https://github.com/%s/%s %s", user, repo,
-                install_path))
-    execute(fmt("packadd %s", repo))
-  end
+local package_path_str = table.concat({
+  "/home/datwaft/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua",
+  "/home/datwaft/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua",
+  "/home/datwaft/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua",
+  "/home/datwaft/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
+}, ";")
+if not string.find(package.path, package_path_str, 1, true) then
+  package.path = package.path .. ';' .. package_path_str
+end
+local install_cpath_pattern =
+  "/home/datwaft/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+if not string.find(package.cpath, install_cpath_pattern, 1, true) then
+  package.cpath = package.cpath .. ';' .. install_cpath_pattern
 end
 
--- Packer is our plugin manager.
-ensure("wbthomason", "packer.nvim")
+local hotpot_path = vim.fn.stdpath("data") ..
+                      "/site/pack/packer/start/hotpot.nvim"
+if vim.fn.empty(vim.fn.glob(hotpot_path)) > 0 then
+  print("Could not find hotpot.nvim, cloning new copy to", hotpot_path)
+  vim.fn.system({
+    "git", "clone", "https://github.com/rktjmp/hotpot.nvim", hotpot_path
+  })
+end
 
--- Aniseed compiles out Fennel code to Lua and loads it automatically.
-ensure("Olical", "aniseed")
+local packer_path = vim.fn.stdpath("data") ..
+                      "/site/pack/packer/start/packer.nvim"
+if vim.fn.empty(vim.fn.glob(packer_path)) > 0 then
+  print("Could not find packer.nvim, cloning new copy to", packer_path)
+  vim.fn.system({
+    "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim",
+    packer_path
+  })
+end
 
--- Enabled Aniseed's automatic compilation and loading of Fennel source code.
--- Aniseed looks for this when it's loaded, then it loads the rest of your
--- configuration if it's set.
-vim.g["aniseed#env"] = {module = "core.init"}
+require("hotpot").setup({
+  provide_require_fennel = true,
+  compiler = {
+    macros = {env = "_COMPILER", compilerEnv = _G, allowedGlobals = false}
+  }
+})
 
--- Now fnl/core/init.fnl is executed.
--- You can use gf to [g]o to the [f]ile.
+local fennel = require("fennel")
+table.insert(fennel["macro-searchers"], function(module_name)
+  local filename = fennel["search-module"](module_name, package.cpath)
+  if filename then
+    local func = "luaopen_" .. module_name
+    return function() return package.loadlib(filename, func) end, filename
+  end
+end)
+
+require("crux.core")
