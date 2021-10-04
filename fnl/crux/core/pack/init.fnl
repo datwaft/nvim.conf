@@ -15,12 +15,11 @@
 (pack! "Pocco81/Catppuccino.nvim" {:as "colorscheme"
                                    :req "colorscheme"})
 ;; Treesitter
-(pack! "nvim-treesitter/nvim-treesitter" {:as "treesitter"
-                                          :run ":TSUpdate"
-                                          :req "treesitter"})
-(pack! "p00f/nvim-ts-rainbow" {:requires "treesitter"})
-(pack! "nvim-treesitter/nvim-treesitter-refactor" {:requires "treesitter"})
-(pack! "JoosepAlviste/nvim-ts-context-commentstring" {:requires "treesitter"})
+(pack! "nvim-treesitter/nvim-treesitter" {:run ":TSUpdate"
+                                          :req "treesitter"
+                                          :requires ["p00f/nvim-ts-rainbow"
+                                                     "nvim-treesitter/nvim-treesitter-refactor"
+                                                     "JoosepAlviste/nvim-ts-context-commentstring"]})
 ;; Preview substitution
 (pack! "markonm/traces.vim")
 ;; Color codes highlight
