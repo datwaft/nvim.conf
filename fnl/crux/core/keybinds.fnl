@@ -21,20 +21,6 @@
 (noremap! [c] "<C-h>" "<home>")
 (noremap! [c] "<C-l>" "<end>")
 
-;; Allow moving the cursor through wrapped lines with j, k, <up> and <down>
-(noremap! [nv] "j" #(if (= vim.v.count 0) "gj"
-                      (if (> vim.v.count 5) "m'j" "j")))
-(noremap! [nv] "k" #(if (= vim.v.count 0) "gk"
-                      (if (> vim.v.count 5) "m'k" "k")))
-(noremap! [nv] "<down>" #(if (= vim.v.count 0) "gj"
-                           (if (> vim.v.count 5) "m'<down>" "<down>")))
-(noremap! [i] "<down>" #(if (= vim.v.count 0) (t "<C-o>gj")
-                          (if (> vim.v.count 5) (t "m'<down>") (t "<down>"))))
-(noremap! [nv] "<up>" #(if (= vim.v.count 0) "gk"
-                         (if (> vim.v.count 5) "m'<up>" "<up>")))
-(noremap! [i] "<up>" #(if (= vim.v.count 0) (t "<C-o>gk")
-                        (if (> vim.v.count 5) (t "m'<up>") (t "<up>"))))
-
 ;; Execute macro fast
 (noremap! [xn] "Q" "<cmd>normal @@<cr>")
 
