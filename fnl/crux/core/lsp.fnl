@@ -68,7 +68,7 @@
 (local capabilities (match (prequire :cmp_nvim_lsp)
                       {: update_capabilities} (update_capabilities (vim.lsp.protocol.make_client_capabilities))))
 
-(local global-options {: on-attach
+(local global-options {:on_attach on-attach
                        : capabilities})
 
 ;; Bash
@@ -103,24 +103,7 @@
                                                            global-options
                                                            {:cmd [binary "-E" (.. root "/main.lua")]})})
                               {:settings {:Lua {:workspace {:preloadFileSize 500}}}})))
-;; EFM
-(let [luafmt {:formatCommand "lua-format -i"
-              :formatStdin true}
-      prettierd {:formatCommand "prettierd \"${INPUT}\""
-                 :formatStdin true}
-      languages {:lua [luafmt]
-                 :javascript [prettierd]
-                 :typescript [prettierd]
-                 :css [prettierd]
-                 :html [prettierd]
-                 :json [prettierd]
-                 :yaml [prettierd]}]
-  (config.efm.setup (deep-merge
-                      global-options
-                      {:init_options {:documentFormatting true
-                                      :codeAction true}
-                       :settings {:rootMarkers [".git/"]
-                                  :log_level 1
-                                  :log_file "~/efm.log"
-                                  :languages languages}
-                       :filetypes (keys languages)})))
+
+; ;; ------------------------------
+
+{: global-options}

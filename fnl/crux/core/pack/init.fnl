@@ -103,6 +103,10 @@
 (pack! "neovim/nvim-lspconfig")
 ;; Lua Neovim Development
 (pack! "folke/lua-dev.nvim")
+;; Integrate with non-LSP
+(pack! "jose-elias-alvarez/null-ls.nvim" {:req "null-ls"
+                                          :requires ["nvim-lua/plenary.nvim"
+                                                     "neovim/nvim-lspconfig"]})
 
 ;;; Filetypes
 ;; Fennel
