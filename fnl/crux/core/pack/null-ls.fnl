@@ -5,7 +5,7 @@
 (local {: global-options} (require :crux.core.lsp))
 (local lspconfig (require :lspconfig))
 
-(config {:sources [formatting.lua_format
+(config {:sources [formatting.stylua
                    formatting.prettierd
                    formatting.markdownlint
                    formatting.sqlformat
