@@ -15,6 +15,8 @@
 ;; Colorscheme
 (pack! "Pocco81/Catppuccino.nvim" {:as "colorscheme"
                                    :req "colorscheme"})
+;; Statusline
+(pack! "famiu/feline.nvim" {:req "feline"})
 ;; Treesitter
 (pack! "nvim-treesitter/nvim-treesitter" {:run ":TSUpdate"
                                           :req "treesitter"
