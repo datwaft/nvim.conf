@@ -66,6 +66,8 @@
 ;; Wildmenu
 (pack! "gelguy/wilder.nvim" {:run ":UpdateRemotePlugins"
                              :req "wilder"})
+;; Indentation detection
+(pack! "Darazaki/indent-o-matic")
 
 ;;; Text Editing
 ;; Parentheses Inference
