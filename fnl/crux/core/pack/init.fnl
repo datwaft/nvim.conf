@@ -45,7 +45,7 @@
 
 ;;; Actions
 ;; Comment
-(pack! "tpope/vim-commentary")
+(pack! "numToStr/Comment.nvim" {:init "Comment"})
 ;; Surround
 (pack! "machakann/vim-sandwich")
 ;; Increment and decrement numbers
