@@ -81,6 +81,13 @@
 ;; Lisp REPL
 (pack! "Olical/conjure" {:req "conjure"
                          :ft [:fennel :clojure :lisp]})
+;; General REPL-like
+(pack! "michaelb/sniprun" {:run "bash install.sh"
+                           :req "sniprun"
+                           :requires ["rcarriga/nvim-notify"]
+                           :ft [:sh :c :cpp :go :java :javascript :typescript
+                                :lua :markdown :perl :python :r :ruby :rust
+                                :scala :julia]})
 
 ;;; Integration
 ;; Git
