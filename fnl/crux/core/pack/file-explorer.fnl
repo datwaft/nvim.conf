@@ -29,7 +29,11 @@
 (setup {:auto_close true
         :hijack_cursor true
         :update_cwd true
-        :lsp_diagnostics true
+        :diagnostics {:enable true
+                      :icons {:hint ""
+                              :info ""
+                              :warning ""
+                              :error ""}}
         :update_focused_file {:enable true
                               :update_cwd true}})
 
