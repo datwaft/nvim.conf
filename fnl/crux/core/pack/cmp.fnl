@@ -1,10 +1,12 @@
 (import-macros {: set!} :crux.lib.macro.vim)
 (local {: setup
         : mapping} (require :cmp))
+(local types (require :cmp.types))
 
 (set! completeopt [:menu :menuone :noselect])
 
-(setup {:snippet {:expand (fn [args] (vim.fn.vsnip#anonymous args.body))}
+(setup {:preselect types.cmp.PreselectMode.None
+        :snippet {:expand (fn [args] (vim.fn.vsnip#anonymous args.body))}
         :mapping {"<C-d>" (mapping.scroll_docs -4)
                   "<C-f>" (mapping.scroll_docs 4)
                   "<C-space>" (mapping.complete)
