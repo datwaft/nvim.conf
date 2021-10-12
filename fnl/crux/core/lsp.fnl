@@ -63,7 +63,12 @@
   (when client.resolved_capabilities.document_formatting
     (buf-augroup! lsp-format-on-save
                   (autocmd! BufWritePre <buffer>
-                            "lua vim.lsp.buf.formatting_seq_sync(nil, 1000)"))))
+                            "lua vim.lsp.buf.formatting_seq_sync(nil, 1000)")))
+  (when (exists? :lsp_extensions)
+        (buf-augroup! lsp-display-hints
+                      (autocmd! [CursorHold CursorHoldI] *.rs
+                                #(let [{: inlay_hints} (require :lsp_extensions)]
+                                      (inlay_hints {}))))))
 
 (local capabilities (match (prequire :cmp_nvim_lsp)
                       {: update_capabilities} (update_capabilities (vim.lsp.protocol.make_client_capabilities))))
