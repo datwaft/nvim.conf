@@ -15,6 +15,7 @@
   ;;; Completion
   ;; Enable omnifunc-completion
   (buf-set! omnifunc "v:lua.vim.lsp.omnifunc")
+
   ;;; Keybinds
   ;; Show documentation
   (buf-noremap! [n] "K" "<cmd>lua vim.lsp.buf.hover()<cr>")
