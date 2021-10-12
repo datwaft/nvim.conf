@@ -114,6 +114,8 @@
 (pack! "neovim/nvim-lspconfig")
 ;; Lua Neovim Development
 (pack! "folke/lua-dev.nvim")
+;; Extensions
+(pack! "nvim-lua/lsp_extensions.nvim")
 ;; Integrate with non-LSP
 (pack! "jose-elias-alvarez/null-ls.nvim" {:req "null-ls"
                                           :requires ["nvim-lua/plenary.nvim"
