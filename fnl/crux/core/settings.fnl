@@ -53,7 +53,10 @@
 ;; Undo persistence
 (set! undodir (.. configuration-folder "/undodir.nvim"))
 (set! undofile)
- 
+
+;; CursorHold delay
+(set! updatetime 500)
+
 ;;; Terminal configuration
 
 ;; Mouse support
