@@ -79,7 +79,8 @@
                                       "hrsh7th/cmp-nvim-lsp"
                                       (pack "hrsh7th/cmp-vsnip" {:requires "hrsh7th/vim-vsnip"})]})
 ;; Snippets
-(pack! "hrsh7th/vim-vsnip" {:req "vsnip"})
+(pack! "hrsh7th/vim-vsnip" {:req "vsnip"
+                            :requires ["rafamadriz/friendly-snippets"]})
 
 ;;; REPL
 ;; Lisp REPL
