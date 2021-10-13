@@ -78,6 +78,8 @@
                            :requires ["hrsh7th/cmp-buffer"
                                       "hrsh7th/cmp-nvim-lsp"
                                       (pack "hrsh7th/cmp-vsnip" {:requires "hrsh7th/vim-vsnip"})]})
+;; Snippets
+(pack! "hrsh7th/vim-vsnip" {:req "vsnip"})
 
 ;;; REPL
 ;; Lisp REPL
