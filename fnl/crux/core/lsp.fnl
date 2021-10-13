@@ -92,8 +92,6 @@
 (config.rust_analyzer.setup global-options)
 ;; Javascript & Typescript
 (config.tsserver.setup global-options)
-;; Emmet
-(config.emmet_ls.setup global-options)
 ;; Vue
 (config.vuels.setup global-options)
 ;; Json
