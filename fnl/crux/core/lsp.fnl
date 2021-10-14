@@ -9,6 +9,7 @@
 (local {: has?} (require :crux.lib.vim))
 (local {: keys} (require :cljlib))
 (local lua-dev (require :lua-dev))
+(local signature (require :lsp_signature))
 (local config (require :lspconfig))
 
 (vim.diagnostic.config {:underline true
@@ -18,18 +19,24 @@
                         :severity_sort true})
 
 (vim.fn.sign_define :DiagnosticSignError
-                    {:text "" :texthl :DiagnosticSignError})
+                    {:text "" :texthl "DiagnosticSignError"})
 
 (vim.fn.sign_define :DiagnosticSignWarn
-                    {:text "" :texthl :DiagnosticSignWarn})
+                    {:text "" :texthl "DiagnosticSignWarn"})
 
 (vim.fn.sign_define :DiagnosticSignInfo
-                    {:text "" :texthl :DiagnosticSignInfo})
+                    {:text "" :texthl "DiagnosticSignInfo"})
 
 (vim.fn.sign_define :DiagnosticSignHint
-                    {:text "" :texthl :DiagnosticSignHint})
+                    {:text "" :texthl "DiagnosticSignHint"})
 
 (fn on-attach [client bufnr]
+  ;;; Signature
+  (signature.on_attach {:bind true
+                        :hint_prefix "● "
+                        :hint_scheme "DiagnosticSignInfo"}
+                       bufnr)
+
   ;;; Completion
   ;; Enable omnifunc-completion
   (buf-set! omnifunc "v:lua.vim.lsp.omnifunc")
