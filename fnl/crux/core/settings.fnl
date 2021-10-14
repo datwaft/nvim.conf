@@ -87,7 +87,7 @@
 
 ;; Sign column
 ; Always show sign column
-(set! signcolumn :yes)
+(set! signcolumn "auto:1-9")
 
 ;; Fold configuration
 ; Start with everything unfolded
