@@ -1,13 +1,16 @@
+local hererocks_path = vim.fn.expand("~/.cache/nvim/packer_hererocks/2.1.0-beta3")
+
 local package_path_str = table.concat({
-	"/home/datwaft/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua",
-	"/home/datwaft/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua",
-	"/home/datwaft/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua",
-	"/home/datwaft/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua",
+	hererocks_path .. "/share/lua/5.1/?.lua",
+	hererocks_path .. "/share/lua/5.1/?/init.lua",
+	hererocks_path .. "/lib/luarocks/rocks-5.1/?.lua",
+	hererocks_path .. "/lib/luarocks/rocks-5.1/?/init.lua",
 }, ";")
 if not string.find(package.path, package_path_str, 1, true) then
 	package.path = package.path .. ";" .. package_path_str
 end
-local install_cpath_pattern = "/home/datwaft/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+
+local install_cpath_pattern = hererocks_path .. "/lib/lua/5.1/?.so"
 if not string.find(package.cpath, install_cpath_pattern, 1, true) then
 	package.cpath = package.cpath .. ";" .. install_cpath_pattern
 end
