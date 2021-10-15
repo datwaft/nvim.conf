@@ -10,7 +10,8 @@
 
 ;;; Environment configuration
 ; Define python binary
-(let! python3_host_prog (extcmd! "command -v python"))
+(let! python3_host_prog (or (extcmd! "command -v python")
+                            (extcmd! "command -v python3")))
 ; Disable some providers
 (let! loaded_python_provider 0)
 (let! loaded_ruby_provider 0)
