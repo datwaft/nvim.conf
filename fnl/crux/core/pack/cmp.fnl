@@ -14,6 +14,7 @@
                   "<tab>" (mapping.select_next_item)
                   "<S-tab>" (mapping.select_prev_item)
                   "<space>" (mapping.confirm {:select false})}
-        :sources [{:name "buffer"}
-                  {:name "nvim_lsp"}
-                  {:name "vsnip"}]})
+        :sources [{:name "nvim_lsp"}
+                  {:name "vsnip"}
+                  {:name "buffer"}
+                  {:name "spell"}]})

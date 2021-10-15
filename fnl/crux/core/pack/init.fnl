@@ -75,6 +75,7 @@
 (pack! "hrsh7th/nvim-cmp" {:req "cmp"
                            :requires ["hrsh7th/cmp-buffer"
                                       "hrsh7th/cmp-nvim-lsp"
+                                      "f3fora/cmp-spell"
                                       (pack "hrsh7th/cmp-vsnip" {:requires "hrsh7th/vim-vsnip"})]})
 ;; Snippets
 (pack! "hrsh7th/vim-vsnip" {:req "vsnip"
