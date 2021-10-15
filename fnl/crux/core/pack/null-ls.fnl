@@ -7,7 +7,6 @@
 
 (config {:sources [formatting.stylua
                    formatting.prettierd
-                   formatting.markdownlint
                    diagnostics.write_good
                    diagnostics.markdownlint]})
 
