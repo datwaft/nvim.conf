@@ -100,6 +100,10 @@
 (pack! "lambdalisue/gina.vim")
 ;; Tmux
 (pack! "aserowy/tmux.nvim" {:req "tmux"})
+;; Glow
+(pack! "ellisonleao/glow.nvim" {:run ":GlowInstall"
+                                :req "glow"
+                                :ft [:markdown]})
 
 ;;; Files and directories
 ;; Fuzzy Finder
