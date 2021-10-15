@@ -8,8 +8,6 @@
 (pack! "wbthomason/packer.nvim")
 ;; Using Fennel for configuration
 (pack! "rktjmp/hotpot.nvim")
-;; Regex PCRE2 Library
-(rock! "lrexlib-pcre2")
 
 ;;; Aesthetic
 ;; Colorscheme

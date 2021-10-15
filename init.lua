@@ -1,20 +1,3 @@
-local hererocks_path = vim.fn.expand("~/.cache/nvim/packer_hererocks/2.1.0-beta3")
-
-local package_path_str = table.concat({
-	hererocks_path .. "/share/lua/5.1/?.lua",
-	hererocks_path .. "/share/lua/5.1/?/init.lua",
-	hererocks_path .. "/lib/luarocks/rocks-5.1/?.lua",
-	hererocks_path .. "/lib/luarocks/rocks-5.1/?/init.lua",
-}, ";")
-if not string.find(package.path, package_path_str, 1, true) then
-	package.path = package.path .. ";" .. package_path_str
-end
-
-local install_cpath_pattern = hererocks_path .. "/lib/lua/5.1/?.so"
-if not string.find(package.cpath, install_cpath_pattern, 1, true) then
-	package.cpath = package.cpath .. ";" .. install_cpath_pattern
-end
-
 local hotpot_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/hotpot.nvim"
 if vim.fn.empty(vim.fn.glob(hotpot_path)) > 0 then
 	print("Could not find hotpot.nvim, cloning new copy to", hotpot_path)
@@ -45,16 +28,5 @@ require("hotpot").setup({
 		macros = { env = "_COMPILER", compilerEnv = _G, allowedGlobals = false },
 	},
 })
-
-local fennel = require("fennel")
-table.insert(fennel["macro-searchers"], function(module_name)
-	local filename = fennel["search-module"](module_name, package.cpath)
-	if filename then
-		local func = "luaopen_" .. module_name
-		return function()
-			return package.loadlib(filename, func)
-		end, filename
-	end
-end)
 
 require("crux.core")

@@ -14,7 +14,6 @@
         : seq->set} (require :crux.lib.flux))
 (local {: fn?} (require :crux.lib.macro.utils))
 (local {: exists?} (require :crux.lib.module))
-(local rex ((require :rex_pcre2)))
 (local {: format} string)
 (local {: concat} table)
 
@@ -45,8 +44,8 @@
   `spell`   -> spell true"
   (fn set!/expr [name ?value]
     (let [name (->str name)
-          value (or ?value (not (rex.match name "^no")))
-          name (rex.match name "^(?:no)?(.+)$")]
+          value (or ?value (not (name:match "^no")))
+          name (or (name:match "^no(.+)$") name)]
       (if (fn? value)
         (let [fsym (core/gensym value)]
           `(do
@@ -80,8 +79,8 @@
   `spell`   -> spell true"
   (fn bufset!/expr [name ?value]
     (let [name (->str name)
-          value (or ?value (not (rex.match name "^no")))
-          name (rex.match name "^(?:no)?(\\w+)$")]
+          value (or ?value (not (name:match "^no")))
+          name (or (name:match "^no(.+)$") name)]
       (if (fn? value)
         (let [fsym (core/gensym value)]
           `(do
