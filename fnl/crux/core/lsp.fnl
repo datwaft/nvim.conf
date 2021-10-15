@@ -119,6 +119,8 @@
 (config.tsserver.setup global-options)
 ;; Emmet
 (config.emmet_ls.setup global-options)
+;; ESLint
+(config.eslint.setup global-options)
 ;; Vue
 (config.vuels.setup global-options)
 ;; Json
