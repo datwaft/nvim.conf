@@ -8,9 +8,6 @@
 (config {:sources [formatting.stylua
                    formatting.prettierd
                    formatting.markdownlint
-                   formatting.sqlformat
-                   formatting.shfmt
-                   diagnostics.shellcheck
                    diagnostics.write_good
                    diagnostics.markdownlint]})
 
