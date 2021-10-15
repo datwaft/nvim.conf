@@ -7,7 +7,7 @@
 
 (config {:sources [formatting.stylua
                    formatting.prettierd
-                   diagnostics.write_good
-                   diagnostics.markdownlint]})
+                   formatting.markdownlint
+                   diagnostics.write_good]})
 
 (lspconfig.null-ls.setup global-options)
