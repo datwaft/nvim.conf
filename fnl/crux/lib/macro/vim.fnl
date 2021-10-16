@@ -1,6 +1,7 @@
 (import-macros {: as->} :crux.lib.macro.thread)
 
 (local {: inc
+        : vector?
         : empty?
         : nil?
         : mapv
@@ -270,6 +271,15 @@
       `(vim.cmd ,(format "command! %s %s"
                          name expr)))))
 
+(fn highlight! [name args]
+  "Define a vim highlight using the `vim.cmd` API."
+  `(vim.cmd ,(format "highlight %s %s"
+                     (->str name) (concat (icollect [k v (pairs args)]
+                                                    (format "%s=%s"
+                                                            k (if (vector? v)
+                                                                (concat v ",")
+                                                                v))) " "))))
+
 {: set!
  : buf-set!
  : let!
@@ -283,4 +293,5 @@
  : buf-noremap!
  : t
  : colorscheme!
- : command!}
+ : command!
+ : highlight!}

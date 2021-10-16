@@ -1,9 +1,10 @@
-(import-macros {: colorscheme!} :crux.lib.macro.vim)
+(import-macros {: colorscheme!
+                : highlight!} :crux.lib.macro.vim)
 (local {: setup} (require :catppuccino))
 
 (setup {:colorscheme "dark_catppuccino"
         :transparency false
-        :term_colors false
+        :term_colors true
         :styles {:comments "italic"
                  :functions "italic"
                  :keywords "italic"
@@ -41,3 +42,7 @@
                        :hop false}})
 
 (colorscheme! catppuccino)
+
+(highlight! SpellBad {:ctermfg 9
+                      :gui [:underline]
+                      :guifg "#e06c75"})

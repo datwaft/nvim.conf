@@ -1,3 +1,6 @@
+(local {: int?} (require :cljlib))
+(local {: format} string)
+
 (fn cmd! [s]
   "Execute ex command and capture the output."
   (vim.cmd s))
@@ -18,7 +21,14 @@
     0 false
     _ nil))
 
+(fn extract-highlight [name]
+  (let [(ok? result) (pcall vim.api.nvim_get_hl_by_name name true)]
+    (when ok? (collect [k v (pairs result)]
+                       (values k (if (int? v) (format "#%06x" v)
+                                   v))))))
+
 {: cmd!
  : extcmd!
  : ui?
- : has?}
+ : has?
+ : extract-highlight}
