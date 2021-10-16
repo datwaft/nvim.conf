@@ -21,6 +21,9 @@
                                           :requires ["p00f/nvim-ts-rainbow"
                                                      "nvim-treesitter/nvim-treesitter-refactor"
                                                      "JoosepAlviste/nvim-ts-context-commentstring"]})
+;; Treesitter-powered spelling
+(pack! "lewis6991/spellsitter.nvim" {:init "spellsitter"
+                                     :requires ["nvim-treesitter/nvim-treesitter"]})
 ;; Preview substitution
 (pack! "markonm/traces.vim")
 ;; Color codes highlight
