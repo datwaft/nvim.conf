@@ -118,7 +118,7 @@
 ;; Substitution
 (set! gdefault)
 
-;;; Misellaneous configuration
+;;; Miscellaneous configuration
 
 ;; Paste mode
 (set! pastetoggle "<F3>")
