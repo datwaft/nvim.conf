@@ -1,8 +1,7 @@
 (import-macros {: noremap!} :crux.lib.macro.vim)
 
-(local {: setup
-        : toggle} (require :dapui))
+(local {: setup} (require :dapui))
 
 (setup)
 
-(noremap! [n] "<localleader>S" #(do (toggle) ""))
+(noremap! [n] "<A-a>" "<cmd>lua require'dapui'.toggle()<cr>")
