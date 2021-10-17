@@ -12,7 +12,6 @@
 (noremap! [n] "<localleader>L" #(do (dap.step_over) ""))
 (noremap! [n] "<localleader>J" #(do (dap.step_into) ""))
 (noremap! [n] "<localleader>K" #(do (dap.step_out) ""))
-(noremap! [n] "<localleader>S" #(do (dap.repl.open) ""))
 
 (vim.fn.sign_define :DapBreakpoint {:text "●" :texthl "DapBreakpoint"})
 (vim.fn.sign_define :DapBreakpointCondition {:text "●" :texthl "DapBreakpointCondition"})

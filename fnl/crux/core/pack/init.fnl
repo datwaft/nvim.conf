@@ -135,6 +135,8 @@
 ;;; Debug Adapter Protocol (DAP)
 (pack! "mfussenegger/nvim-dap" {:run ":helptags ALL"
                                 :req "dap"})
+(pack! "rcarriga/nvim-dap-ui" {:req "dap-ui"
+                               :requires ["mfussenegger/nvim-dap"]})
 
 ;;; Filetypes
 ;; Fennel
