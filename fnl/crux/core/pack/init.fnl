@@ -137,6 +137,8 @@
                                 :req "dap"})
 (pack! "rcarriga/nvim-dap-ui" {:req "dap-ui"
                                :requires ["mfussenegger/nvim-dap"]})
+(pack! "mfussenegger/nvim-dap-python" {:req "dap-python"
+                                       :requires ["mfussenegger/nvim-dap"]})
 
 ;;; Filetypes
 ;; Fennel
