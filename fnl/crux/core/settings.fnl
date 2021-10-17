@@ -130,5 +130,4 @@
 (set! lazyredraw)
 
 ;; LocalLeader
-(let! maplocalleader " ")
-
+(let! maplocalleader (t "<space>"))
