@@ -132,6 +132,10 @@
                                           :requires ["nvim-lua/plenary.nvim"
                                                      "neovim/nvim-lspconfig"]})
 
+;;; Debug Adapter Protocol (DAP)
+(pack! "mfussenegger/nvim-dap" {:run ":helptags ALL"
+                                :req "dap"})
+
 ;;; Filetypes
 ;; Fennel
 (pack! "bakpakin/fennel.vim" {:ft [:fennel]})

@@ -44,5 +44,11 @@
 (colorscheme! catppuccino)
 
 (highlight! SpellBad {:ctermfg 9
-                      :gui [:underline]
-                      :guifg "#e06c75"})
+                      :guifg "#e06c75"
+                      :gui [:underline]})
+
+(highlight! DapBreakpoint {:ctermfg 12 :guifg "#e06c75" :cterm [:bold] :gui [:bold]})
+(highlight! DapBreakpointCondition {:ctermfg 14 :guifg "#dbc074" :cterm [:bold] :gui [:bold]})
+(highlight! DapLogPoint {:ctermfg 9 :guifg "#61afef" :cterm [:bold] :gui [:bold]})
+(highlight! DapStopped {:ctermfg 15 :guifg "#dfdfe0" :cterm [:bold] :gui [:bold]})
+(highlight! DapBreakpointRejected {:ctermfg 7 :guifg "#abb2bf" :cterm [:bold] :gui [:bold]})
