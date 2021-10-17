@@ -3,6 +3,7 @@
 
 (local dap (require :dap))
 
+;;; Keybinds
 (noremap! [n] "<A-b>" #(do (dap.toggle_breakpoint) ""))
 (noremap! [n] "<A-B>" #(do (dap.toggle_breakpoint (vim.fn.input "Breakpoint condition: ")) ""))
 (noremap! [n] "<A-L>" #(do (dap.toggle_breakpoint nil nil (vim.fn.input "Log point message: ")) ""))
@@ -12,6 +13,7 @@
 (noremap! [n] "<A-J>" #(do (dap.step_into) ""))
 (noremap! [n] "<A-K>" #(do (dap.step_out) ""))
 
+;;; Signs
 (vim.fn.sign_define :DapBreakpoint {:text "●" :texthl "DapBreakpoint"})
 (vim.fn.sign_define :DapBreakpointCondition {:text "●" :texthl "DapBreakpointCondition"})
 (vim.fn.sign_define :DapLogPoint {:text "●" :texthl "DapLogPoint"})
