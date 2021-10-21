@@ -67,6 +67,8 @@
 ;; Wildmenu
 (pack! "gelguy/wilder.nvim" {:run ":UpdateRemotePlugins"
                              :req "wilder"})
+;; Stabilization
+(pack! "luukvbaal/stabilize.nvim" {:init "stabilize"})
 
 ;;; Text Editing
 ;; Parentheses Inference
