@@ -14,8 +14,8 @@
                            (t "<space>")))
 
 ;; Move to the beginning or end with H or L
-(noremap! [n] "<C-h>" "^")
-(noremap! [n] "<C-l>" "$")
+(noremap! [nvo] "<C-h>" "^")
+(noremap! [nvo] "<C-l>" "$")
 (noremap! [i] "<C-h>" "<C-o>^")
 (noremap! [i] "<C-l>" "<C-o>$")
 (noremap! [c] "<C-h>" "<home>")
