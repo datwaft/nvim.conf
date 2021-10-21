@@ -26,7 +26,7 @@
                                      :requires ["nvim-treesitter/nvim-treesitter"]})
 ;; Preview substitution
 (pack! "markonm/traces.vim")
-;; Color codes highlight
+;; Color code highlight
 (pack! "rrethy/vim-hexokinase" {:run "make hexokinase"
                                 :req "hexokinase"})
 ;; Indent lines
@@ -37,7 +37,7 @@
 (pack! "kevinhwang91/nvim-hlslens" {:req "hlslens"})
 
 ;;; Text objects
-;; Intent-level text object
+;; Indent-level text object
 (pack! "michaeljsmith/vim-indent-object")
 ;; CamelCase text objects
 (pack! "bkad/CamelCaseMotion" {:req "camel-case-motion"})
