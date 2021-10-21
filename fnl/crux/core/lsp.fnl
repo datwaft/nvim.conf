@@ -103,10 +103,16 @@
 (local global-options {:on_attach on-attach
                        : capabilities})
 
+;; Docker
+(config.dockerls.setup global-options)
+;; Nix
+(config.rnix.setup global-options)
 ;; Bash
 (config.bashls.setup global-options)
 ;; C & C++
 (config.clangd.setup global-options)
+;; Arduino
+(config.arduino_language_server.setup global-options)
 ;; CMake
 (config.cmake.setup global-options)
 ;; Python
@@ -121,12 +127,20 @@
 (config.emmet_ls.setup global-options)
 ;; ESLint
 (config.eslint.setup global-options)
+;; CSS
+(config.cssls.setup global-options)
+;; Html
+(config.html.setup global-options)
 ;; Vue
 (config.vuels.setup global-options)
 ;; Json
 (config.jsonls.setup global-options)
+;; Yaml
+(config.yamlls.setup global-options)
 ;; Clojure
 (config.clojure_lsp.setup global-options)
+;; VimL
+(config.vimls.setup global-options)
 ;; Lua
 (let [system (if
                (has? "mac") "macOS"
