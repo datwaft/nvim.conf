@@ -59,7 +59,7 @@
   ;; Go to diagnostic
   (buf-noremap! [n] "[d" "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>")
   (buf-noremap! [n] "]d" "<cmd>lua vim.lsp.diagnostic.goto_next()<cr>")
-  ;; List diagnotics
+  ;; List diagnostics
   (if (exists? :telescope)
     (buf-noremap! [n] "<leader>ld" "<cmd>Telescope lsp_document_diagnostics<cr>")
     (buf-noremap! [n] "<leader>ld" "<cmd>lua vim.lsp.diagnostic.set_qflist()<cr>"))
