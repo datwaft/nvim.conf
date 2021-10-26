@@ -103,6 +103,8 @@
 (pack! "lambdalisue/gina.vim")
 ;; Tmux
 (pack! "aserowy/tmux.nvim" {:req "tmux"})
+;; nnn
+(pack! "mcchrish/nnn.vim" {:req "nnn"})
 ;; Glow
 (pack! "ellisonleao/glow.nvim" {:run ":GlowInstall"
                                 :req "glow"
@@ -117,8 +119,6 @@
 ;; File explorer
 (pack! "kyazdani42/nvim-tree.lua" {:as "file-explorer"
                                    :req "file-explorer"})
-;; File manager
-(pack! "mcchrish/nnn.vim" {:req "nnn"})
 
 ;;; Language Server Protocol (LSP)
 ;; Configuration
