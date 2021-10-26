@@ -89,7 +89,7 @@
   (when client.resolved_capabilities.document_formatting
     (buf-augroup! lsp-format-on-save
                   (autocmd! BufWritePre <buffer>
-                            "lua vim.lsp.buf.formatting_seq_sync(nil, 1000)")))
+                            "lua vim.lsp.buf.formatting_seq_sync(nil, 1000, {'null-ls'})")))
   ;; Display hints on CursorHold
   (when (exists? :lsp_extensions)
         (buf-augroup! lsp-display-hints
