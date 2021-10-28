@@ -15,8 +15,8 @@
                   "<C-space>" (mapping (mapping.complete) [:i :c])
                   "<C-e>" (mapping {:i (mapping.abort)
                                     :c (mapping.close)})
-                  "<Tab>" (mapping (mapping.select_next_item {:behavior select-behavior}) [:i :s])
-                  "<S-Tab>" (mapping (mapping.select_prev_item {:behavior select-behavior}) [:i :s])
+                  "<Tab>" (mapping (mapping.select_next_item {:behavior insert-behavior}) [:i :s])
+                  "<S-Tab>" (mapping (mapping.select_prev_item {:behavior insert-behavior}) [:i :s])
                   "<space>" (mapping.confirm {:select false})}
         :sources [{:name "nvim_lsp"}
                   {:name "vsnip"}
