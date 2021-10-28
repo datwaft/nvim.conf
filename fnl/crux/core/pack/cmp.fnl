@@ -10,11 +10,10 @@
 
 (setup {:preselect types.cmp.PreselectMode.None
         :snippet {:expand (fn [args] (vim.fn.vsnip#anonymous args.body))}
-        :mapping {"<C-d>" (mapping (mapping.scroll_docs -4) [:i :c])
-                  "<C-f>" (mapping (mapping.scroll_docs 4) [:i :c])
-                  "<C-space>" (mapping (mapping.complete) [:i :c])
-                  "<C-e>" (mapping {:i (mapping.abort)
-                                    :c (mapping.close)})
+        :mapping {"<C-d>" (mapping.scroll_docs -4)
+                  "<C-f>" (mapping.scroll_docs 4)
+                  "<C-space>" (mapping.complete)
+                  "<C-e>" (mapping.abort)
                   "<Tab>" (mapping (mapping.select_next_item {:behavior insert-behavior}) [:i :s])
                   "<S-Tab>" (mapping (mapping.select_prev_item {:behavior insert-behavior}) [:i :s])
                   "<space>" (mapping.confirm {:select false})}
