@@ -76,8 +76,10 @@
                                  :ft [:fennel :clojure :lisp]})
 ;; Completion
 (pack! "hrsh7th/nvim-cmp" {:req "cmp"
-                           :requires ["hrsh7th/cmp-buffer"
-                                      "hrsh7th/cmp-nvim-lsp"
+                           :requires ["hrsh7th/cmp-nvim-lsp"
+                                      "hrsh7th/cmp-buffer"
+                                      "hrsh7th/cmp-path"
+                                      "hrsh7th/cmp-cmdline"
                                       "f3fora/cmp-spell"
                                       (pack "hrsh7th/cmp-vsnip" {:requires "hrsh7th/vim-vsnip"})]})
 ;; Snippets
