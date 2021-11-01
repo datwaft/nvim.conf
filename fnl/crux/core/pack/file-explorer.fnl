@@ -2,9 +2,7 @@
                 : noremap!} :crux.lib.macro.vim)
 (local {: setup} (require :nvim-tree))
 
-(let! nvim_tree_ignore [".git" "node_modules" ".cache"])
 (let! nvim_tree_gitignore 1)
-(let! nvim_tree_hide_dotfiles 1)
 (let! nvim_tree_indent_markers 1)
 (let! nvim_tree_show_icons {:git 1
                             :folders 1
@@ -26,7 +24,9 @@
                                 :symlink ""
                                 :symlink_open ""}})
 
-(setup {:auto_close true
+(setup {:disable_netrw false
+        :hijack_netrw false
+        :auto_close true
         :hijack_cursor true
         :update_cwd true
         :diagnostics {:enable true
@@ -35,6 +35,7 @@
                               :info ""
                               :hint ""}}
         :update_focused_file {:enable true
-                              :update_cwd true}})
+                              :update_cwd true}
+        :filters {:dotfiles true}})
 
 (noremap! [n] "<C-n>" "<cmd>NvimTreeToggle<cr>")
