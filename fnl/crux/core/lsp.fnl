@@ -51,10 +51,8 @@
   ;;; Keybinds
   ;; Show documentation
   (buf-noremap! [n] "K" "<cmd>lua vim.lsp.buf.hover()<cr>")
-  ;; Open code-actions menu for cursor position
-  (buf-noremap! [n] "<leader>a" "<cmd>Telescope lsp_code_actions<cr>")
-  ;; Open code-actions menu for selection
-  (buf-noremap! [v] "<leader>a" "<cmd>Telescope lsp_range_code_actions<cr>")
+  ;; Open code-actions menu
+  (buf-noremap! [nv] "<leader>a" "<cmd>CodeActionMenu<cr>")
   ;; Rename symbol
   (buf-noremap! [nv] "<leader>rn" "<cmd>lua require('renamer').rename()<cr>")
   ;; Show line diagnostics
