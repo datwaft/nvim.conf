@@ -83,7 +83,8 @@
                                       "hrsh7th/cmp-path"
                                       "hrsh7th/cmp-cmdline"
                                       "f3fora/cmp-spell"
-                                      (pack "hrsh7th/cmp-vsnip" {:requires "hrsh7th/vim-vsnip"})]})
+                                      (pack "hrsh7th/cmp-vsnip" {:requires "hrsh7th/vim-vsnip"})
+                                      "lukas-reineke/cmp-under-comparator"]})
 ;; Snippets
 (pack! "hrsh7th/vim-vsnip" {:req "vsnip"
                             :requires ["rafamadriz/friendly-snippets"]})

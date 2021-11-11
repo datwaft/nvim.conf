@@ -1,10 +1,11 @@
 (import-macros {: set!} :crux.lib.macro.vim)
 (local {: setup
         : mapping
-        : config
+        :config {: compare}
         :SelectBehavior {:Insert insert-behavior
                          :Select select-behavior}} (require :cmp))
 (local types (require :cmp.types))
+(local under-compare (require :cmp-under-comparator))
 
 (set! completeopt [:menu :menuone :noselect])
 
@@ -22,4 +23,12 @@
                   {:name "path"}
                   {:name "buffer"}
                   {:name "cmdline"}
-                  {:name "spell"}]})
+                  {:name "spell"}]
+        :sorting {:comparators [compare.offset
+                                compare.exact
+                                compare.score
+                                under-compare.under
+                                compare.kind
+                                compare.sort_text
+                                compare.length
+                                compare.order]}})
