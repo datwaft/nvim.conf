@@ -4,8 +4,7 @@
                 : autocmd!} :crux.lib.macro.vim)
 
 (local {: deep-merge} (require :crux.lib.table))
-(local {: exists?
-        : prequire} (require :crux.lib.module))
+(local {: prequire} (require :crux.lib.module))
 (local {: has?} (require :crux.lib.vim))
 (local {: keys} (require :cljlib))
 (local lua-dev (require :lua-dev))
@@ -53,26 +52,18 @@
   ;; Show documentation
   (buf-noremap! [n] "K" "<cmd>lua vim.lsp.buf.hover()<cr>")
   ;; Open code-actions menu for cursor position
-  (if (exists? :telescope)
-    (buf-noremap! [n] "<leader>a" "<cmd>Telescope lsp_code_actions<cr>")
-    (buf-noremap! [n] "<leader>a" "<cmd>lua vim.lsp.buf.code_action()<cr>"))
+  (buf-noremap! [n] "<leader>a" "<cmd>Telescope lsp_code_actions<cr>")
   ;; Open code-actions menu for selection
-  (if (exists? :telescope)
-    (buf-noremap! [v] "<leader>a" "<cmd>Telescope lsp_range_code_actions<cr>")
-    (buf-noremap! [v] "<leader>a" "<cmd>lua vim.lsp.buf.range_code_action()<cr>"))
+  (buf-noremap! [v] "<leader>a" "<cmd>Telescope lsp_range_code_actions<cr>")
   ;; Rename symbol
-  (if (exists? :renamer)
-    (buf-noremap! [nv] "<leader>rn" "<cmd>lua require('renamer').rename()<cr>")
-    (buf-noremap! [n] "<leader>rn" "<cmd>lua vim.lsp.buf.rename()<cr>"))
+  (buf-noremap! [nv] "<leader>rn" "<cmd>lua require('renamer').rename()<cr>")
   ;; Show line diagnostics
   (buf-noremap! [n] "<leader>d" "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>")
   ;; Go to diagnostic
   (buf-noremap! [n] "[d" "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>")
   (buf-noremap! [n] "]d" "<cmd>lua vim.lsp.diagnostic.goto_next()<cr>")
   ;; List diagnostics
-  (if (exists? :telescope)
-    (buf-noremap! [n] "<leader>ld" "<cmd>Telescope lsp_document_diagnostics<cr>")
-    (buf-noremap! [n] "<leader>ld" "<cmd>lua vim.lsp.diagnostic.set_qflist()<cr>"))
+  (buf-noremap! [n] "<leader>ld" "<cmd>Telescope lsp_document_diagnostics<cr>")
   ;; Go to declaration
   (buf-noremap! [n] "<leader>gD" "<cmd>lua vim.lsp.buf.declaration()<cr>")
   ;; Go to definition
@@ -80,13 +71,9 @@
   ;; Go to type definition
   (buf-noremap! [n] "<leader>gt" "<cmd>lua vim.lsp.buf.type_definition()<cr>")
   ;; List implementations
-  (if (exists? :telescope)
-    (buf-noremap! [n] "<leader>li" "<cmd>Telescope lsp_implementations<cr>")
-    (buf-noremap! [n] "<leader>li" "<cmd>lua vim.lsp.buf.implementation()<cr>"))
+  (buf-noremap! [n] "<leader>li" "<cmd>Telescope lsp_implementations<cr>")
   ;; List references
-  (if (exists? :telescope)
-    (buf-noremap! [n] "<leader>lr" "<cmd>Telescope lsp_references<cr>")
-    (buf-noremap! [n] "<leader>lr" "<cmd>lua vim.lsp.buf.references()<cr>"))
+  (buf-noremap! [n] "<leader>lr" "<cmd>Telescope lsp_references<cr>")
   ;; Format buffer
   (when client.resolved_capabilities.document_formatting
     (buf-noremap! [n] "<leader>=" "<cmd>lua vim.lsp.buf.formatting()<cr>"))
@@ -101,11 +88,10 @@
                   (autocmd! BufWritePre <buffer>
                             "lua vim.lsp.buf.formatting_seq_sync(nil, 1000, {'null-ls'})")))
   ;; Display hints on CursorHold
-  (when (exists? :lsp_extensions)
-        (buf-augroup! lsp-display-hints
-                      (autocmd! [CursorHold CursorHoldI] *.rs
-                                #(let [{: inlay_hints} (require :lsp_extensions)]
-                                      (inlay_hints {}))))))
+  (buf-augroup! lsp-display-hints
+                (autocmd! [CursorHold CursorHoldI] *.rs
+                          #(let [{: inlay_hints} (require :lsp_extensions)]
+                             (inlay_hints {})))))
 
 (local capabilities (match (prequire :cmp_nvim_lsp)
                       {: update_capabilities} (update_capabilities (vim.lsp.protocol.make_client_capabilities))))
@@ -144,11 +130,9 @@
 ;; Vue
 (config.vuels.setup global-options)
 ;; Json
-(if (exists? "schemastore")
-  (let [{: json} (require "schemastore")]
-    (config.jsonls.setup (deep-merge global-options
-                                     {:settings {:json {:schemas (json.schemas)}}})))
-  (config.jsonls.setup global-options))
+(let [{: json} (require "schemastore")]
+  (config.jsonls.setup (deep-merge global-options
+                                   {:settings {:json {:schemas (json.schemas)}}})))
 ;; Yaml
 (config.yamlls.setup global-options)
 ;; Clojure
