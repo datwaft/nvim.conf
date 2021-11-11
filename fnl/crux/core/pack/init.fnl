@@ -37,6 +37,8 @@
 (pack! "kevinhwang91/nvim-hlslens" {:req "hlslens"})
 
 ;;; Text objects
+;; General
+(pack! "wellle/targets.vim")
 ;; Indent-level text object
 (pack! "michaeljsmith/vim-indent-object")
 ;; CamelCase text objects
