@@ -60,6 +60,8 @@
 (pack! "tpope/vim-abolish")
 ;; Undo-tree
 (pack! "mbbill/undotree")
+;; Upload to a paste bin
+(pack! "rktjmp/paperplanes.nvim" {:req "paperplanes"})
 
 ;;; Enhancement
 ;; Quickfix

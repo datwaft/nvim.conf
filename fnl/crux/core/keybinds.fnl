@@ -1,17 +1,7 @@
 (import-macros {: noremap!
                 : t} :crux.lib.macro.vim)
-(local {: echo!
-        : paste!
-        : set-clipboard!} (require :crux.lib.io))
-(local {: current-buffer-content} (require :crux.lib.vim))
-(local {: concat} table)
 
-(noremap! [n] "<leader>p" #(do
-                             (echo! "Uploading current buffer content...")
-                             (doto (paste! (current-buffer-content))
-                                   (echo!)
-                                   (set-clipboard!))
-                             ""))
+(noremap! [nv :silent] "<leader>p" ":PP<cr>")
 
 ;; Open or focus the quickfix list window
 (noremap! [n] "<localleader>q" "<cmd>copen<cr>"
