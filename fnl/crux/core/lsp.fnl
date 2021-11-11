@@ -13,10 +13,12 @@
 (local config (require :lspconfig))
 
 (vim.diagnostic.config {:underline true
-                        :virtual_text {:prefix "●"}
                         :signs true
                         :update_in_insert false
-                        :severity_sort true})
+                        :severity_sort true
+                        :float {:show_header false
+                                :border "single"}
+                        :virtual_text {:prefix "●"}})
 
 (vim.fn.sign_define :DiagnosticSignError
                     {:text "" :texthl "DiagnosticSignError"})
@@ -29,6 +31,12 @@
 
 (vim.fn.sign_define :DiagnosticSignHint
                     {:text "" :texthl "DiagnosticSignHint"})
+
+(set vim.lsp.handlers.textDocument/signatureHelp
+     (vim.lsp.with vim.lsp.handlers.signature_help {:border "single"}))
+
+(set vim.lsp.handlers.textDocument/hover
+     (vim.lsp.with vim.lsp.handlers.hover {:border "single"}))
 
 (fn on-attach [client bufnr]
   ;;; Signature
