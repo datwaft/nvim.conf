@@ -136,7 +136,11 @@
 ;; Vue
 (config.vuels.setup global-options)
 ;; Json
-(config.jsonls.setup global-options)
+(if (exists? "schemastore")
+  (let [{: json} (require "schemastore")]
+    (config.jsonls.setup (deep-merge global-options
+                                     {:settings {:json {:schemas (json.schemas)}}})))
+  (config.jsonls.setup global-options))
 ;; Yaml
 (config.yamlls.setup global-options)
 ;; Clojure

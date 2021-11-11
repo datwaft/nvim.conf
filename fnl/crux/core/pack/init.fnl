@@ -127,6 +127,8 @@
 (pack! "neovim/nvim-lspconfig")
 ;; Lua Neovim Development
 (pack! "folke/lua-dev.nvim")
+;; SchemaStore
+(pack! "b0o/schemastore.nvim")
 ;; Extensions
 (pack! "nvim-lua/lsp_extensions.nvim")
 ;; Signature
