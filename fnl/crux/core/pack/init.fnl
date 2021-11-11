@@ -131,6 +131,9 @@
 (pack! "nvim-lua/lsp_extensions.nvim")
 ;; Signature
 (pack! "ray-x/lsp_signature.nvim")
+;; Rename
+(pack! "filipdutescu/renamer.nvim" {:req "renamer"
+                                    :requires ["nvim-lua/plenary.nvim"]})
 ;; Integrate with non-LSP
 (pack! "jose-elias-alvarez/null-ls.nvim" {:req "null-ls"
                                           :requires ["nvim-lua/plenary.nvim"

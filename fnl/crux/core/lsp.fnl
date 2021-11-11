@@ -53,7 +53,9 @@
     (buf-noremap! [v] "<leader>a" "<cmd>Telescope lsp_range_code_actions<cr>")
     (buf-noremap! [v] "<leader>a" "<cmd>lua vim.lsp.buf.range_code_action()<cr>"))
   ;; Rename symbol
-  (buf-noremap! [n] "<leader>rn" "<cmd>lua vim.lsp.buf.rename()<cr>")
+  (if (exists? :renamer)
+    (buf-noremap! [nv] "<leader>rn" "<cmd>lua require('renamer').rename()<cr>")
+    (buf-noremap! [n] "<leader>rn" "<cmd>lua vim.lsp.buf.rename()<cr>"))
   ;; Show line diagnostics
   (buf-noremap! [n] "<leader>d" "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>")
   ;; Go to diagnostic
