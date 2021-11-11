@@ -1,5 +1,7 @@
-(local {: int?} (require :cljlib))
+(local {: int?
+        : empty?} (require :cljlib))
 (local {: format} string)
+(local {: concat} table)
 
 (fn cmd! [s]
   "Execute ex command and capture the output."
@@ -15,13 +17,18 @@
   (not= 0 (length (vim.api.nvim_list_uis))))
 
 (fn has? [property]
-  "Returns if vim has a property"
+  "Returns if vim has a property."
   (match (vim.fn.has property)
     1 true
     0 false
     _ nil))
 
+(fn current-buffer-content []
+  "Returns the content of the current buffer as a string."
+  (concat (vim.fn.getline 1 "$") "\r"))
+
 (fn extract-highlight [name]
+  "Extract highlight definition by name."
   (let [(ok? result) (pcall vim.api.nvim_get_hl_by_name name true)]
     (when ok? (collect [k v (pairs result)]
                        (values k (if (int? v) (format "#%06x" v)
@@ -31,4 +38,5 @@
  : extcmd!
  : ui?
  : has?
+ : current-buffer-content
  : extract-highlight}
