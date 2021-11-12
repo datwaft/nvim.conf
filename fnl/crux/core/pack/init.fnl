@@ -11,8 +11,8 @@
 
 ;;; Aesthetic
 ;; Colorscheme
-(pack! "Pocco81/Catppuccino.nvim" {:as "colorscheme"
-                                   :req "colorscheme"})
+(pack! "wuelnerdotexe/vim-enfocado" {:as "colorscheme"
+                                     :req "colorscheme"})
 ;; Statusline
 (pack! "famiu/feline.nvim" {:req "feline"})
 ;; Treesitter
