@@ -10,7 +10,6 @@
 (config {:sources [formatting.stylua
                    formatting.prettier
                    formatting.markdownlint
-                   formatting.black
-                   diagnostics.write_good]})
+                   formatting.black]})
 
 (lspconfig.null-ls.setup global-options)
