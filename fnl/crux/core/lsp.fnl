@@ -137,6 +137,8 @@
                                    global-options)))
 ;; Yaml
 (config.yamlls.setup global-options)
+;; Toml
+(config.taplo.setup global-options)
 ;; Clojure
 (config.clojure_lsp.setup global-options)
 ;; VimL
