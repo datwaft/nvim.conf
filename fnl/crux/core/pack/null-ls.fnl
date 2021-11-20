@@ -10,6 +10,7 @@
 (config {:sources [formatting.stylua
                    formatting.prettierd
                    formatting.markdownlint
-                   formatting.black]})
+                   formatting.black
+                   formatting.sqlformat]})
 
 (lspconfig.null-ls.setup global-options)
