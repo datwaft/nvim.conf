@@ -58,8 +58,8 @@
   ;; Show line diagnostics
   (buf-noremap! [n] "<leader>d" "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>")
   ;; Go to diagnostic
-  (buf-noremap! [n] "[d" "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>")
-  (buf-noremap! [n] "]d" "<cmd>lua vim.lsp.diagnostic.goto_next()<cr>")
+  (buf-noremap! [n] "[d" "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>"
+                      (buf-noremap! [n] "]d" "<cmd>lua vim.lsp.diagnostic.goto_next()<cr>"))
   ;; List diagnostics
   (buf-noremap! [n] "<leader>ld" "<cmd>Telescope lsp_document_diagnostics<cr>")
   ;; Go to declaration
@@ -116,7 +116,11 @@
 ;; Rust
 (config.rust_analyzer.setup global-options)
 ;; Javascript & Typescript
-(config.tsserver.setup global-options)
+(config.tsserver.setup (deep-merge {:on_attach (fn [client bufnr]
+                                                 (set client.resolved_capabilities.document_formatting false)
+                                                 (set client.resolved_capabilities.document_range_formatting false)
+                                                 (on-attach client bufnr))}
+                                   global-options))
 ;; Emmet
 (config.emmet_ls.setup global-options)
 ;; ESLint
@@ -129,8 +133,8 @@
 (config.vuels.setup global-options)
 ;; Json
 (let [{: json} (require "schemastore")]
-  (config.jsonls.setup (deep-merge global-options
-                                   {:settings {:json {:schemas (json.schemas)}}})))
+  (config.jsonls.setup (deep-merge {:settings {:json {:schemas (json.schemas)}}}
+                                   global-options)))
 ;; Yaml
 (config.yamlls.setup global-options)
 ;; Clojure
