@@ -8,7 +8,7 @@
 (local lspconfig (require :lspconfig))
 
 (config {:sources [formatting.stylua
-                   formatting.prettier
+                   formatting.prettierd
                    formatting.markdownlint
                    formatting.black]})
 
