@@ -167,6 +167,8 @@
 (pack! "gisphm/vim-gitignore")
 ;; Kitty
 (pack! "fladson/vim-kitty")
+;; Markdown
+(pack! "plasticboy/vim-markdown" {:requires ["godlygeek/tabular"]})
 
 ;;; --------------------
 
