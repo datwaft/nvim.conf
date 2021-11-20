@@ -21,6 +21,7 @@
         :sources [{:name "nvim_lsp"}
                   {:name "vsnip"}
                   {:name "path"}
+                  {:name "tmux"}
                   {:name "buffer"}
                   {:name "cmdline"}
                   {:name "spell"}]
