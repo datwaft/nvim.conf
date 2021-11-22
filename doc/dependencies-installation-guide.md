@@ -59,7 +59,7 @@ brew install pyenv-virtualenv
 After that you should create the `neovim` virtual environment and install `pynvim` on it:
 
 ```shell
-pyenv install 9.3.7
+pyenv install 3.9.7
 pyenv virtualenv 3.9.7 neovim
 pyenv activate neovim
 pip install pynvim
