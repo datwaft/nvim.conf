@@ -1,7 +1,7 @@
 (import-macros {: as->} :crux.lib.macro.thread)
-(import-macros {: fn?} :crux.lib.macro.utils)
 
 (local {: inc
+        : first
         : vector?
         : empty?
         : nil?
@@ -17,6 +17,14 @@
 (local {: exists?} (require :crux.lib.module))
 (local {: format} string)
 (local {: concat} table)
+
+(fn fn? [o]
+  "Returns if the object is a function"
+  (and
+    (list? o)
+    (or
+      (= 'hashfn (first o))
+      (= 'fn (first o)))))
 
 (fn core/gensym [...]
   "Generates a new symbol to use as a global variable name.
