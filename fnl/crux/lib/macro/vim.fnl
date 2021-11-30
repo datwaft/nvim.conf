@@ -1,4 +1,5 @@
 (import-macros {: as->} :crux.lib.macro.thread)
+(import-macros {: fn?} :crux.lib.macro.utils)
 
 (local {: inc
         : vector?
@@ -13,7 +14,6 @@
 (local {: ->str
         : str->seq
         : seq->set} (require :crux.lib.flux))
-(local {: fn?} (require :crux.lib.macro.utils))
 (local {: exists?} (require :crux.lib.module))
 (local {: format} string)
 (local {: concat} table)
