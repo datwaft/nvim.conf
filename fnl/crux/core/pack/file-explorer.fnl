@@ -2,7 +2,6 @@
                 : noremap!} :crux.lib.macro.vim)
 (local {: setup} (require :nvim-tree))
 
-(let! nvim_tree_gitignore 1)
 (let! nvim_tree_indent_markers 1)
 (let! nvim_tree_show_icons {:git 1
                             :folders 1
