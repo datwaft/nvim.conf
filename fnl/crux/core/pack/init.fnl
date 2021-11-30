@@ -160,8 +160,6 @@
 ;;; Filetypes
 ;; Fennel
 (pack! "bakpakin/fennel.vim" {:ft [:fennel]})
-;; Dockerfile
-(pack! "ekalinin/Dockerfile.vim" {:ft [:Dockerfile :dockerfile]})
 ;; Git
 (pack! "tpope/vim-git")
 (pack! "gisphm/vim-gitignore")
