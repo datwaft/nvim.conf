@@ -133,8 +133,9 @@
 (config.vuels.setup global-options)
 ;; Json
 (let [{: json} (require "schemastore")]
-  (config.jsonls.setup (deep-merge {:settings {:json {:schemas (json.schemas)}}}
-                                   global-options)))
+  (config.jsonls.setup
+    (deep-merge {:settings {:json {:schemas (json.schemas)}}}
+                global-options)))
 ;; Yaml
 (config.yamlls.setup global-options)
 ;; Toml
@@ -144,17 +145,12 @@
 ;; VimL
 (config.vimls.setup global-options)
 ;; Lua
-(let [system (if
-               (has? "mac") "macOS"
-               (has? "unix") "Linux"
-               (has? "win32") "Windows")
-      root (.. (vim.fn.expand "~") "/.local/bin/lua-language-server")
-      binary (.. root "/bin/" system "/lua-language-server")]
-  (config.sumneko_lua.setup (deep-merge
-                              (lua-dev.setup {:lspconfig (deep-merge
-                                                           global-options
-                                                           {:cmd [binary "-E" (.. root "/main.lua")]})})
-                              {:settings {:Lua {:workspace {:preloadFileSize 500}}}})))
+(config.sumneko_lua.setup
+  (deep-merge
+    (lua-dev.setup {:lspconfig (deep-merge
+                                 global-options
+                                 {:cmd ["lua-language-server"]})})
+    {:settings {:Lua {:workspace {:preloadFileSize 500}}}}))
 
 ; ;; ------------------------------
 
