@@ -5,10 +5,10 @@ FROM rust:latest
 ENV PATH /root/.local/bin:$PATH
 
 # Install dependencies
-RUN apt-get update && apt-get install -y curl git golang nodejs npm python3 python3-pip build-essential ninja-build
-RUN cargo install rnix-lsp taplo-lsp
-RUN pip3 install cmake-language-server
-RUN npm i -g bash-language-server pyright dockerfile-language-server-nodejs yaml-language-server vim-language-server typescript typescript-language-server emmet-ls vscode-langservers-extracted vls
+RUN apt-get update && apt-get install -y curl git golang nodejs npm python3 python3-pip build-essential ninja-build sqlformat
+RUN cargo install rnix-lsp taplo-lsp stylua
+RUN pip3 install cmake-language-server black
+RUN npm i -g bash-language-server pyright dockerfile-language-server-nodejs yaml-language-server vim-language-server typescript typescript-language-server emmet-ls vscode-langservers-extracted vls @fsouza/prettierd markdownlint-cli
 
 # Install lua-language-server
 WORKDIR /root/.local/bin
