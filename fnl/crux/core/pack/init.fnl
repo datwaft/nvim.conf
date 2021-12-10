@@ -66,6 +66,8 @@
 ;;; Enhancement
 ;; Matching words/parentheses
 (pack! "andymass/vim-matchup")
+;; Autopairs
+(pack! "windwp/nvim-autopairs" {:req "autopairs"})
 ;; Quickfix
 (pack! "kevinhwang91/nvim-bqf")
 ;; Mapping
