@@ -64,6 +64,8 @@
 (pack! "rktjmp/paperplanes.nvim" {:req "paperplanes"})
 
 ;;; Enhancement
+;; Matching words/parentheses
+(pack! "andymass/vim-matchup")
 ;; Quickfix
 (pack! "kevinhwang91/nvim-bqf")
 ;; Mapping
