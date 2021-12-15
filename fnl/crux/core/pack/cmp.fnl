@@ -28,9 +28,7 @@
                   {:name "vsnip"}
                   {:name "path"}
                   {:name "tmux"}
-                  {:name "buffer"}
-                  {:name "cmdline"}
-                  {:name "spell"}]
+                  {:name "buffer"}]
         :sorting {:comparators [compare.offset
                                 compare.exact
                                 compare.score
