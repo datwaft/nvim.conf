@@ -26,7 +26,9 @@
 ;;; ============
 ;;; Text Editing
 ;;; ============
-;; Parentheses Inference
+;; Indentation inference
+(pack! "tpope/vim-sleuth")
+;; Parentheses inference
 (pack! "eraserhd/parinfer-rust" {:run "cargo build --release"
                                  :ft lisp-ft})
 
