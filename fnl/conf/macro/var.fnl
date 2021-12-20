@@ -41,15 +41,14 @@
               _ 'vim.g) ,name ,value)))
 
 (fn let!-mult [...]
-  "Set a vim variable using the lua API.
+  "Set one or multiple vim variables using the lua API.
   The name can be either a symbol or a string.
   If the name begins with [gbwt] followed by [/:.], the name is scoped to the
   respective scope:
   g -> global (default)
   b -> buffer
   w -> window
-  t -> tab
-  Supports multiple variables."
+  t -> tab"
   (fn aux [...]
     (match [...]
       (where [& rest] (empty? rest)) []
