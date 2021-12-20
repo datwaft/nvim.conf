@@ -53,7 +53,7 @@
 (set! showbreak "↳ ")
 
 ;; Formatting configuration
-(set! formatoptions [:q :j :r :o])
+(set! formatoptions [:q :j])
 
 ;; Spell-checking configuration
 (set! spell)
