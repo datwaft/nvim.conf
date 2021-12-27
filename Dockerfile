@@ -23,4 +23,4 @@ RUN git clone https://github.com/Olical/conjure
 COPY . /root/.config/nvim
 
 # Finish
-WORKDIR /root
+WORKDIR /root/.config/nvim
