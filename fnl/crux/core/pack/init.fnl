@@ -126,10 +126,6 @@
                                         :requires ["nvim-lua/popup.nvim"
                                                    "nvim-lua/plenary.nvim"
                                                    "nvim-telescope/telescope-fzy-native.nvim"]})
-;; File explorer
-(pack! "kyazdani42/nvim-tree.lua" {:as "file-explorer"
-                                   :req "file-explorer"})
-
 ;;; Language Server Protocol (LSP)
 ;; Configuration
 (pack! "neovim/nvim-lspconfig")
