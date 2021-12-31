@@ -74,9 +74,6 @@
 ;; Status configuration
 (set! noshowmode)
 
-;; Column configuration
-(set! colorcolumn [81])
-
 ;; Characters configuration
 ; Show whitespace characters
 (set! list)
