@@ -87,7 +87,7 @@
                            :requires ["hrsh7th/cmp-nvim-lsp"
                                       "hrsh7th/cmp-buffer"
                                       "hrsh7th/cmp-path"
-                                      (pack "andersevenrud/compe-tmux" {:branch "cmp"})
+                                      "andersevenrud/cmp-tmux"
                                       (pack "hrsh7th/cmp-vsnip" {:requires "hrsh7th/vim-vsnip"})
                                       "lukas-reineke/cmp-under-comparator"]})
 ;; Snippets
