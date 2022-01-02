@@ -53,7 +53,7 @@
         options (doto options (tset :buffer nil))
         rhs (if (and (not (fn? rhs)) (list? rhs)) `#,rhs
               rhs)
-        desc (if (and (not ?desc) (or (fn? rhs) (sym? rhs)) (view rhs))
+        desc (if (and (not ?desc) (or (fn? rhs) (sym? rhs))) (view rhs)
                ?desc)
         options (if desc (doto options (tset :desc desc))
                   options)
