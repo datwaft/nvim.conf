@@ -1,9 +1,7 @@
 (local {: gmatch} string)
 (local {: insert} table)
 
-(local {: fn?
-        : gensym-checksum
-        : vlua} (require :conf.macro.helpers))
+(local {: fn?} (require :conf.macro.helpers))
 
 (fn ->str [x]
   (tostring x))
