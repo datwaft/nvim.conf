@@ -1,11 +1,12 @@
-(local {: fn?
-        : gensym-checksum
-        : vlua} (require :conf.macro.helpers))
+(local {: fn?} (require :conf.macro.helpers))
 
 (local {: format} string)
 
 (fn empty? [xs]
   (= 0 (length xs)))
+
+(fn nil? [x]
+  (= nil x))
 
 (fn str? [x]
   (= :string (type x)))
@@ -13,31 +14,17 @@
 (fn ->str [x]
   (tostring x))
 
-(lambda command! [name expr]
-  "Define a user command using the vim API."
-  (assert-compile (or (str? name) (sym? name))
-                  "expected string or symbol for name" name)
-  (let [name (->str name)]
-    (if (fn? expr)
-      (let [fsym (gensym-checksum "__" expr)]
-        `(do
-           (global ,fsym ,expr)
-           (vim.cmd ,(format "command! %s call %s"
-                             name (vlua fsym)))))
-      `(vim.cmd ,(format "command! %s %s"
-                         name expr)))))
+(lambda command! [name expr ?desc]
+  "Define a user command using the lua API.
+  See the help for nvim_add_user_command for more information."
+  (assert-compile (or (str? name) (sym? name)) "expected string or symbol for name" name)
+  (assert-compile (or (str? expr) (list? expr) (fn? expr) (sym? expr)) "expected string or list or function or symbol for expr" expr)
+  (assert-compile (or (nil? ?desc) (str? ?desc)) "expected string or nil for description" ?desc)
+  (let [name (->str name)
+        expr (if (and (not (fn? expr)) (list? expr)) `#,expr
+              expr)
+        desc (if (and (not ?desc) (or (fn? expr) (sym? expr)) (view expr))
+               ?desc)]
+    `(vim.api.nvim_add_user_command ,name ,expr {: desc})))
 
-(fn command!-mult [...]
-  "Define one or multiple user commands using the vim API."
-  (fn aux [...]
-    (match [...]
-      (where [& rest] (empty? rest)) []
-      [name expr & rest] [(command! name expr)
-                          (unpack (aux (unpack rest)))]
-      _ []))
-  (let [exprs (aux ...)]
-    (if
-      (> (length exprs) 1) `(do ,(unpack exprs))
-      (unpack exprs))))
-
-{:command! command!-mult}
+{: command!}
