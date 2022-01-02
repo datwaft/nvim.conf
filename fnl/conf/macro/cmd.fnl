@@ -23,8 +23,8 @@
   (let [name (->str name)
         expr (if (and (not (fn? expr)) (list? expr)) `#,expr
               expr)
-        desc (if (and (not ?desc) (or (fn? expr) (sym? expr)) (view expr))
+        desc (if (and (not ?desc) (or (fn? expr) (sym? expr))) (view expr)
                ?desc)]
-    `(vim.api.nvim_add_user_command ,name ,expr {: desc})))
+    `(vim.api.nvim_add_user_command ,name ,expr {:desc ,desc})))
 
 {: command!}
