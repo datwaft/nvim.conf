@@ -1,8 +1,6 @@
 (import-macros {: augroup!
                 : autocmd!} :conf.macro.event)
-(import-macros {: set!
-                : local-set!} :conf.macro.opt)
-(import-macros {: buf-noremap!} :conf.macro.keybind)
+(import-macros {: set!} :conf.macro.opt)
 
 (local {: echo!} (require :conf.lib.io))
 (local {: line
