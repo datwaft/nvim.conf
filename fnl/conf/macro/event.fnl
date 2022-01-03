@@ -25,7 +25,7 @@
      (vim.cmd ,(format "augroup %s" name))
      (vim.cmd "autocmd!")
      (do
-       ...)
+       ,...)
      (vim.cmd "augroup END")))
 
 (lambda buf-augroup! [name ...]
@@ -34,7 +34,7 @@
      (vim.cmd ,(format "augroup %s" name))
      (vim.cmd "autocmd! * <buffer>")
      (do
-       ...)
+       ,...)
      (vim.cmd "augroup END")))
 
 (lambda autocmd! [events pattern ...]
