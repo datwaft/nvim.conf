@@ -1,6 +1,7 @@
 (import-macros {: augroup!
                 : autocmd!} :conf.macro.event)
-(import-macros {: set!} :conf.macro.opt)
+(import-macros {: set!
+                : local-set!} :conf.macro.opt)
 
 (local {: echo!} (require :conf.lib.io))
 (local {: line
@@ -38,3 +39,20 @@
                        (cmd! "checktime")))
           (autocmd! FileChangedShellPost *
                     #(echo! "File changed on disk. Buffer reloaded.")))
+
+;;; ========
+;;; Terminal
+;;; ========
+(augroup! terminal-options
+          ;; Enter Terminal-mode (insert) automatically
+          (autocmd! TermOpen * "startinsert")
+          ;; Disables line number on terminal buffers
+          (autocmd! TermOpen * #(do
+                                  (local-set! nonumber)
+                                  (local-set! norelativenumber)))
+          ;; Disables spell on terminal buffers
+          (autocmd! TermOpen * #(local-set! nospell))
+          ;; Disables sign column on terminal buffers
+          (autocmd! TermOpen * #(local-set! signcolumn :no))
+          ;; Disables colorcolumn on terminal buffers
+          (autocmd! TermOpen * #(local-set! colorcolumn [])))
