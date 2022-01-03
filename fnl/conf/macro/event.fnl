@@ -23,18 +23,19 @@
   "Defines an autocommand group using the vim API."
   `(do
      (vim.cmd ,(format "augroup %s" name))
+     (vim.cmd "autocmd!")
      (do
        ...)
      (vim.cmd "augroup END")))
 
-(lambda reset-augroup! []
-  "Removes all autocommands inside the group using the vim API."
-  `(vim.cmd "autocmd!"))
-
-(lambda reset-buffer-augroup! []
-  "Removes all autocommands inside the group for the current buffer using the
-  vim API."
-  `(vim.cmd "autocmd!"))
+(lambda buf-augroup! [name ...]
+  "Defines a buffer-local autocommand group using the vim API."
+  `(do
+     (vim.cmd ,(format "augroup %s" name))
+     (vim.cmd "autocmd! * <buffer>")
+     (do
+       ...)
+     (vim.cmd "augroup END")))
 
 (lambda autocmd! [events pattern ...]
   "Defines an autocommand using the vim API."
@@ -69,6 +70,5 @@
                          events pattern command)))))
 
 {: augroup!
- : reset-augroup!
- : reset-buffer-augroup!
+ : buf-augroup!
  : autocmd!}
