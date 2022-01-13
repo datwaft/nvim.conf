@@ -19,6 +19,12 @@ RUN git clone https://github.com/wbthomason/packer.nvim
 RUN git clone https://github.com/rktjmp/hotpot.nvim
 RUN git clone https://github.com/Olical/conjure
 
+# Install neovim plugins that need caching
+WORKDIR /root/.local/share/nvim/site/pack/packer/opt
+RUN git clone https://github.com/eraserhd/parinfer-rust
+WORKDIR /root/.local/share/nvim/site/pack/packer/opt/parinfer-rust
+RUN cargo build --release
+
 # Deploy configuration
 COPY . /root/.config/nvim
 
