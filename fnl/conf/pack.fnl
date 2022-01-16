@@ -46,6 +46,18 @@
 (pack! "kevinhwang91/nvim-hlslens" {:req "hlslens"})
 
 ;;; ============
+;;; Text objects
+;;; ============
+;; General
+(pack! "wellle/targets.vim")
+;; Indent-level text objects
+(pack! "michaeljsmith/vim-indent-object")
+;; CamelCase text objects
+(pack! "bkad/CamelCaseMotion" {:req "camel-case-motion"})
+;; Whitespace text objects
+(pack! "vim-utils/vim-space")
+
+;;; ============
 ;;; Text Editing
 ;;; ============
 ;; Indentation inference
