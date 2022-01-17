@@ -68,6 +68,16 @@
 (pack! "zegervdv/nrpattern.nvim" {:requires ["tpope/vim-repeat"]
                                   :init "nrpattern"})
 
+;;; ========
+;;; Commands
+;;; ========
+;; Subversion and Coercion
+(pack! "tpope/vim-abolish")
+;; Undo-tree
+(pack! "mbbill/undotree")
+;; Upload to a paste bin
+(pack! "rktjmp/paperplanes.nvim" {:req "paperplanes"})
+
 ;;; ============
 ;;; Text Editing
 ;;; ============
