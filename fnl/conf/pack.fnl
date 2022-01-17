@@ -57,6 +57,17 @@
 ;; Whitespace text objects
 (pack! "vim-utils/vim-space")
 
+;;; =======
+;;; Actions
+;;; =======
+;; Comment
+(pack! "numToStr/Comment.nvim" {:init "Comment"})
+;; Surround
+(pack! "machakann/vim-sandwich")
+;; Increment and decrement numbers
+(pack! "zegervdv/nrpattern.nvim" {:requires ["tpope/vim-repeat"]
+                                  :init "nrpattern"})
+
 ;;; ============
 ;;; Text Editing
 ;;; ============
