@@ -1,4 +1,5 @@
-(import-macros {: pack! : unpack!} :conf.macro.pack)
+(import-macros {: pack
+                : pack! : unpack!} :conf.macro.pack)
 
 (local lisp-ft [:fennel
                 :clojure
@@ -101,6 +102,17 @@
 ;; Parentheses inference
 (pack! "eraserhd/parinfer-rust" {:run "cargo build --release"
                                  :ft lisp-ft})
+;; Completion
+(pack! "hrsh7th/nvim-cmp" {:req "cmp"
+                           :requires ["hrsh7th/cmp-nvim-lsp"
+                                      "hrsh7th/cmp-buffer"
+                                      "hrsh7th/cmp-path"
+                                      "andersevenrud/cmp-tmux"
+                                      (pack "hrsh7th/cmp-vsnip" {:requires "hrsh7th/vim-vsnip"})
+                                      "lukas-reineke/cmp-under-comparator"]})
+;; Snippets
+(pack! "hrsh7th/vim-vsnip" {:req "vsnip"
+                            :requires ["rafamadriz/friendly-snippets"]})
 
 ;;; =========
 ;;; Filetypes
