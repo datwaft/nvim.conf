@@ -78,6 +78,21 @@
 ;; Upload to a paste bin
 (pack! "rktjmp/paperplanes.nvim" {:req "paperplanes"})
 
+;;; ===========
+;;; Enhancement
+;;; ===========
+;; Matching words/parentheses
+(pack! "andymass/vim-matchup")
+;; Autopairs
+(pack! "windwp/nvim-autopairs" {:req "autopairs"})
+;; Quickfix
+(pack! "kevinhwang91/nvim-bqf")
+;; Wildmenu
+(pack! "gelguy/wilder.nvim" {:run ":UpdateRemotePlugins"
+                             :req "wilder"})
+;; Stabilization
+(pack! "luukvbaal/stabilize.nvim" {:init "stabilize"})
+
 ;;; ============
 ;;; Text Editing
 ;;; ============
