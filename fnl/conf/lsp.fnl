@@ -118,7 +118,7 @@
 ;;; ==========================
 (local capabilities (let [{: update_capabilities} (require :cmp_nvim_lsp)
                           {: make_client_capabilities} vim.lsp.protocol]
-                      (update_capabilities make_client_capabilities)))
+                      (update_capabilities (make_client_capabilities))))
 
 ;;; =========================
 ;;; Global options definition
