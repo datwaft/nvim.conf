@@ -149,5 +149,28 @@
 ;; Kitty
 (pack! "fladson/vim-kitty")
 
+;;; ==============================
+;;; Language Server Protocol (LSP)
+;;; ==============================
+;; Configuration
+(pack! "neovim/nvim-lspconfig")
+;; Lua Neovim Development
+(pack! "folke/lua-dev.nvim")
+;; SchemaStore
+(pack! "b0o/schemastore.nvim")
+;; Extensions
+(pack! "nvim-lua/lsp_extensions.nvim")
+;; Signature
+(pack! "ray-x/lsp_signature.nvim")
+;; Rename
+(pack! "filipdutescu/renamer.nvim" {:req "renamer"
+                                    :requires ["nvim-lua/plenary.nvim"]})
+;; Code Actions menu
+(pack! "weilbith/nvim-code-action-menu" {:cmd "CodeActionMenu"})
+;; Integrate with non-LSP
+(pack! "jose-elias-alvarez/null-ls.nvim" {:req "null-ls"
+                                          :requires ["nvim-lua/plenary.nvim"
+                                                     "neovim/nvim-lspconfig"]})
+
 ;;; ==========
 (unpack!)
