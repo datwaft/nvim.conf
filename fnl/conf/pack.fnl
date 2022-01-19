@@ -134,6 +134,11 @@
 ;;; =========
 ;; Fennel
 (pack! "bakpakin/fennel.vim")
+;; Git
+(pack! "tpope/vim-git")
+(pack! "gisphm/vim-gitignore")
+;; Kitty
+(pack! "fladson/vim-kitty")
 
 ;;; ==========
 (unpack!)
