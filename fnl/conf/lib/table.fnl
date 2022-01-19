@@ -1,3 +1,6 @@
+(fn table? [o]
+  (= :table (type o)))
+
 (fn deep-copy [o]
   (if (table? o)
     (collect [k v (pairs o)]
