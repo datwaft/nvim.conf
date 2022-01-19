@@ -114,6 +114,21 @@
 (pack! "hrsh7th/vim-vsnip" {:req "vsnip"
                             :requires ["rafamadriz/friendly-snippets"]})
 
+;;; ===========
+;;; Integration
+;;; ===========
+;; Git
+(pack! "lewis6991/gitsigns.nvim" {:init "gitsigns"
+                                  :requires ["nvim-lua/plenary.nvim"]})
+(pack! "lambdalisue/gina.vim")
+;; TMUX
+(pack! "aserowy/tmux.nvim" {:req "tmux"})
+;; NNN
+(pack! "mcchrish/nnn.vim" {:req "nnn"})
+;; Glow
+(pack! "ellisonleao/glow.nvim" {:req "glow"
+                                :ft [:markdown]})
+
 ;;; =========
 ;;; Filetypes
 ;;; =========
