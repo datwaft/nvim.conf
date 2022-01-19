@@ -130,7 +130,7 @@
 ;;; Client configuration
 ;;; ====================
 (local {: deep-merge} (require :conf.lib.table))
-(local {: config} (require :lspconfig))
+(local config (require :lspconfig))
 ;; Docker
 (config.dockerls.setup global-options)
 ;; Nix
