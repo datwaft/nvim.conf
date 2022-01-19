@@ -16,7 +16,8 @@
                  (not (table? o2)))) (deep-copy o1)
     _ (accumulate [acc (deep-copy o2)
                    k v (pairs o1)]
-                  (tset acc k (deep-merge v (?. acc k))))))
+                  (doto acc
+                        (tset k (deep-merge v (?. acc k)))))))
 
 {: deep-copy
  : deep-merge}
