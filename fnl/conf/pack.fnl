@@ -129,6 +129,15 @@
 (pack! "ellisonleao/glow.nvim" {:req "glow"
                                 :ft [:markdown]})
 
+;;; =====================
+;;; Files and directories
+;;; =====================
+;; Fuzzy Finder
+(pack! "nvim-telescope/telescope.nvim" {:req "telescope"
+                                        :requires ["nvim-lua/popup.nvim"
+                                                   "nvim-lua/plenary.nvim"
+                                                   "nvim-telescope/telescope-fzy-native.nvim"]})
+
 ;;; =========
 ;;; Filetypes
 ;;; =========
