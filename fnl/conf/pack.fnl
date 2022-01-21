@@ -117,6 +117,8 @@
 ;;; ===========
 ;;; Integration
 ;;; ===========
+;; Sudo
+(pack! "lambdalisue/suda.vim" {:req "suda"})
 ;; Git
 (pack! "lewis6991/gitsigns.nvim" {:init "gitsigns"
                                   :requires ["nvim-lua/plenary.nvim"]})
