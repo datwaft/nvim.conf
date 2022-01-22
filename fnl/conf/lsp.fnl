@@ -6,7 +6,6 @@
                :conf.lsp [:lua-dev
                           :lsp_signature
                           :lsp_extensions
-                          :renamer
                           :lspconfig
                           :cmp_nvim_lsp
                           :schemastore])) (lua :return)))
@@ -51,12 +50,18 @@
           :hover open-doc-float!
           :declaration goto-declaration!
           :definition goto-definition!
-          :type_definition goto-type-definition!} vim.lsp.buf)
-  (local {:open_float open-diag-float!
+          :type_definition goto-type-definition!
+          :code-action open-code-action-float!
+          :rename rename!} vim.lsp.buf)
+  (local {:open_float open-line-diag-float!
           :goto_prev goto-diag-prev!
           :goto_next goto-diag-next!} vim.diagnostic)
-  (local {:rename rename!} (require :renamer))
   (local {:inlay_hints inlay-hints!} (require :lsp_extensions))
+  (local {:lsp_implementations open-impl-float!
+          :lsp_references open-ref-float!
+          :diagnostics open-diag-float!
+          :lsp_document_symbols open-local-symbol-float!
+          :lsp_workspace_symbols open-workspace-symbol-float!} (require :telescope.builtin))
 
   ;;; =========
   ;;; Signature
@@ -77,28 +82,34 @@
   ;;; Keybinds
   ;;; ========
   ;; Show documentation
-  (buf-map! [n] "K" (open-doc-float!))
+  (buf-map! [n] "K" open-doc-float!)
   ;; Open code-actions menu
-  (buf-map! [nv] "<leader>a" "<cmd>CodeActionMenu<cr>")
+  (buf-map! [nv] "<leader>a" open-code-action-float!)
   ;; Rename symbol
-  (buf-map! [nv] "<leader>rn" (rename!))
+  (buf-map! [nv] "<leader>rn" rename!)
   ;; Show line diagnostics
-  (buf-map! [n] "<leader>d" (open-diag-float!))
+  (buf-map! [n] "<leader>d" open-line-diag-float!)
   ;; Go to diagnostic
-  (buf-map! [n] "[d" (goto-diag-prev!))
-  (buf-map! [n] "]d" (goto-diag-next!))
+  (buf-map! [n] "[d" goto-diag-prev!)
+  (buf-map! [n] "]d" goto-diag-next!)
   ;; Go to declaration
-  (buf-map! [n] "<leader>gD" (goto-declaration!))
+  (buf-map! [n] "<leader>gD" goto-declaration!)
   ;; Go to definition
-  (buf-map! [n] "<leader>gd" (goto-definition!))
+  (buf-map! [n] "<leader>gd" goto-definition!)
   ;; Go to type definition
-  (buf-map! [n] "<leader>gt" (goto-type-definition!))
+  (buf-map! [n] "<leader>gt" goto-type-definition!)
   ;; List implementations
-  (buf-map! [n] "<leader>li" "<cmd>Telescope lsp_implementations")
+  (buf-map! [n] "<leader>li" open-impl-float!)
   ;; List references
-  (buf-map! [n] "<leader>lr" "<cmd>Telescope lsp_references")
-  ;; List diagnostics
-  (buf-map! [n] "<leader>ld" "<cmd>Telescope lsp_document_diagnostics<cr>")
+  (buf-map! [n] "<leader>lr" open-ref-float!)
+  ;; List document diagnostics
+  (buf-map! [n] "<leader>ld" (open-diag-float! {:bufnr 0}))
+  ;; List workspace diagnostics
+  (buf-map! [n] "<leader>lD" open-diag-float!)
+  ;; List document symbols
+  (buf-map! [n] "<leader>ls" open-local-symbol-float!)
+  ;; List workspace symbols
+  (buf-map! [n] "<leader>lS" open-workspace-symbol-float!)
 
   ;;; ======
   ;;; Events
