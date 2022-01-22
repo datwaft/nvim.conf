@@ -1,7 +1,2 @@
-# ==============
-# .GITATTRIBUTES
-# ==============
-# Created by: datwaft [github.com/datwaft]
-
-# Auto detect text files and perform LF normalization
+# Auto-detect text files and perform LF normalization
 * text=auto

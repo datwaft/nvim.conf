@@ -1,26 +1,5 @@
-# ==========
-# .GITIGNORE
-# ==========
-# Created by: datwaft [github.com/datwaft]
-
-# NeoVim undo directory
-/undodir.vim/
+# Undo directory
 /undodir.nvim/
 
-# Temporal files
-*.temp
-
-# Old files
-*.old
-*.old.*
-
-# Neovim files
-tags.lock
-tags
-.netrwhist
-
-# Packer files
-/plugin/
-
-# Spelling dictionaries
-/spell/
+# Packer compilation
+/plugin/packer_compiled.lua
