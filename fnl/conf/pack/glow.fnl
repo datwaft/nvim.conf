@@ -1,3 +1,3 @@
-(import-macros {: noremap!} :conf.macro.keybind)
+(import-macros {: map!} :conf.macro.keybind)
 
-(noremap! [n] "<leader>p" "<cmd>Glow<cr>")
+(map! [n] "<leader>p" "<cmd>Glow<cr>")

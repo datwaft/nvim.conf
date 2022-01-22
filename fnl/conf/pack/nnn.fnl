@@ -1,4 +1,4 @@
-(import-macros {: noremap!} :conf.macro.keybind)
+(import-macros {: map!} :conf.macro.keybind)
 
 (local {: setup} (require :nnn))
 (local {: concat} table)
@@ -12,5 +12,5 @@
                  "<C-v>" "vsplit"
                  "<C-o>" #(setreg "+" (concat $ "\n"))}})
 
-(noremap! [n] "<C-n>" "<cmd>NnnPicker<cr>"
+(map! [n] "<C-n>" "<cmd>NnnPicker<cr>"
           "Open nnn")

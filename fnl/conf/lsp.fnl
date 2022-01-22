@@ -41,7 +41,7 @@
 ;;; =======================
 (fn on-attach [client bufnr]
   (import-macros {: local-set!} :conf.macro.opt)
-  (import-macros {: buf-noremap!} :conf.macro.keybind)
+  (import-macros {: buf-map!} :conf.macro.keybind)
   (import-macros {: buf-augroup!
                   : autocmd!} :conf.macro.event)
 
@@ -77,28 +77,28 @@
   ;;; Keybinds
   ;;; ========
   ;; Show documentation
-  (buf-noremap! [n] "K" (open-doc-float!))
+  (buf-map! [n] "K" (open-doc-float!))
   ;; Open code-actions menu
-  (buf-noremap! [nv] "<leader>a" "<cmd>CodeActionMenu<cr>")
+  (buf-map! [nv] "<leader>a" "<cmd>CodeActionMenu<cr>")
   ;; Rename symbol
-  (buf-noremap! [nv] "<leader>rn" (rename!))
+  (buf-map! [nv] "<leader>rn" (rename!))
   ;; Show line diagnostics
-  (buf-noremap! [n] "<leader>d" (open-diag-float!))
+  (buf-map! [n] "<leader>d" (open-diag-float!))
   ;; Go to diagnostic
-  (buf-noremap! [n] "[d" (goto-diag-prev!))
-  (buf-noremap! [n] "]d" (goto-diag-next!))
+  (buf-map! [n] "[d" (goto-diag-prev!))
+  (buf-map! [n] "]d" (goto-diag-next!))
   ;; Go to declaration
-  (buf-noremap! [n] "<leader>gD" (goto-declaration!))
+  (buf-map! [n] "<leader>gD" (goto-declaration!))
   ;; Go to definition
-  (buf-noremap! [n] "<leader>gd" (goto-definition!))
+  (buf-map! [n] "<leader>gd" (goto-definition!))
   ;; Go to type definition
-  (buf-noremap! [n] "<leader>gt" (goto-type-definition!))
+  (buf-map! [n] "<leader>gt" (goto-type-definition!))
   ;; List implementations
-  (buf-noremap! [n] "<leader>li" "<cmd>Telescope lsp_implementations")
+  (buf-map! [n] "<leader>li" "<cmd>Telescope lsp_implementations")
   ;; List references
-  (buf-noremap! [n] "<leader>lr" "<cmd>Telescope lsp_references")
+  (buf-map! [n] "<leader>lr" "<cmd>Telescope lsp_references")
   ;; List diagnostics
-  (buf-noremap! [n] "<leader>ld" "<cmd>Telescope lsp_document_diagnostics<cr>")
+  (buf-map! [n] "<leader>ld" "<cmd>Telescope lsp_document_diagnostics<cr>")
 
   ;;; ======
   ;;; Events
