@@ -28,6 +28,10 @@
 ;;; ====================
 ;;; Editor configuration
 ;;; ====================
+;; Filetype detection configuration
+; Use filetype.lua
+(let! do_filetype_lua 1)
+
 ;; File configuration
 ; Do not write backups
 (set! nowritebackup)
