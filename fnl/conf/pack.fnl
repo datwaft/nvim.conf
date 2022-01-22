@@ -164,6 +164,8 @@
 (pack! "nvim-lua/lsp_extensions.nvim")
 ;; Signature
 (pack! "ray-x/lsp_signature.nvim")
+;; Virtual lines
+(pack! "https://git.sr.ht/~whynothugo/lsp_lines.nvim" {:req "lsp-lines"})
 ;; Integrate with non-LSP
 (pack! "jose-elias-alvarez/null-ls.nvim" {:req "null-ls"
                                           :requires ["nvim-lua/plenary.nvim"

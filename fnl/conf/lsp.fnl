@@ -21,7 +21,7 @@
            :severity_sort true
            :float {:show_header false
                    :border "single"}
-           :virtual_text {:prefix "●"}})
+           :virtual_text false})
   (sign_define :DiagnosticSignError {:text "" :texthl "DiagnosticSignError"})
   (sign_define :DiagnosticSignWarn {:text "" :texthl "DiagnosticSignWarn"})
   (sign_define :DiagnosticSignInfo {:text "" :texthl "DiagnosticSignInfo"})
