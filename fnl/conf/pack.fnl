@@ -113,6 +113,10 @@
 ;; Snippets
 (pack! "hrsh7th/vim-vsnip" {:req "vsnip"
                             :requires ["rafamadriz/friendly-snippets"]})
+;; Easily exit pairs
+(pack! "abecodes/tabout.nvim" {:req "tabout"
+                               :wants "nvim-treesitter"
+                               :after "nvim-cmp"})
 
 ;;; ===========
 ;;; Integration
