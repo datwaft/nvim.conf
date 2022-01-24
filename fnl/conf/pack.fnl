@@ -93,6 +93,10 @@
                              :req "wilder"})
 ;; Stabilization
 (pack! "luukvbaal/stabilize.nvim" {:init "stabilize"})
+;; Key-chording help
+(pack! "folke/which-key.nvim" {:init "which-key"})
+;; Terminal
+(pack! "voldikss/vim-floaterm")
 
 ;;; ============
 ;;; Text Editing
@@ -129,8 +133,6 @@
 (pack! "lambdalisue/gina.vim")
 ;; TMUX
 (pack! "aserowy/tmux.nvim" {:req "tmux"})
-;; NNN
-(pack! "mcchrish/nnn.vim" {:req "nnn"})
 ;; Glow
 (pack! "ellisonleao/glow.nvim" {:req "glow"
                                 :ft [:markdown]})

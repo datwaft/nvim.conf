@@ -141,5 +141,8 @@
 ;; Lazy redraw
 (set! lazyredraw)
 
+;; Timeout for mappings
+(set! timeoutlen 500)
+
 ;; LocalLeader
 (let! maplocalleader (escape "<space>"))
