@@ -1,5 +1,8 @@
+(import-macros {: let!} :conf.macro.var)
 (import-macros {: map!} :conf.macro.keybind)
 (import-macros {: command!} :conf.macro.cmd)
+
+(let! floaterm_autoclose 1)
 
 (command! NNN "FloatermNew --width=0.8 --height=0.8 nnn")
 (map! [n] "<C-n>" "<cmd>FloatermNew --width=0.8 --height=0.8 nnn<cr>")
