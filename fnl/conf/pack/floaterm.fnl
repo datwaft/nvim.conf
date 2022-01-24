@@ -11,8 +11,8 @@
 (map! [n] "<C-t>b" "<cmd>FloatermNew --width=0.8 --height=0.8 broot<cr>")
 (map! [n] "<C-t><C-b>" "<cmd>FloatermNew --width=0.8 --height=0.8 broot<cr>")
 
-(map! [nt] "<C-t>c" "<cmd>FloatermNew<cr>")
-(map! [nt] "<C-t><C-c>" "<cmd>FloatermNew<cr>")
+(map! [n] "<C-t>c" "<cmd>FloatermNew<cr>")
+(map! [n] "<C-t><C-c>" "<cmd>FloatermNew<cr>")
 
 (map! [nt] "<C-t>t" "<cmd>FloatermToggle<cr>")
 (map! [nt] "<C-t><C-t>" "<cmd>FloatermToggle<cr>")
