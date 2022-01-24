@@ -96,7 +96,7 @@
 ;; Key-chording help
 (pack! "folke/which-key.nvim" {:init "which-key"})
 ;; Terminal
-(pack! "voldikss/vim-floaterm")
+(pack! "voldikss/vim-floaterm" {:req "floaterm"})
 
 ;;; ============
 ;;; Text Editing
