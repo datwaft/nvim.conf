@@ -176,6 +176,8 @@
 (pack! "jose-elias-alvarez/null-ls.nvim" {:req "null-ls"
                                           :requires ["nvim-lua/plenary.nvim"
                                                      "neovim/nvim-lspconfig"]})
+;; Report progress
+(pack! "j-hui/fidget.nvim" {:init "fidget"})
 
 ;;; ==========
 (unpack!)
