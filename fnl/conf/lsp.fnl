@@ -142,6 +142,8 @@
 ;;; ====================
 (local {: deep-merge} (require :conf.lib.table))
 (local config (require :lspconfig))
+(local {: expand} vim.fn)
+
 ;; Docker
 (config.dockerls.setup global-options)
 ;; Nix
@@ -155,7 +157,9 @@
 ;; CMake
 (config.cmake.setup global-options)
 ;; Python
-(config.pyright.setup global-options)
+(config.pyright.setup (deep-merge
+                        global-options
+                        {:settings {:python {:venvPath (expand "$HOME/.pyenv/versions")}}}))
 ;; R
 (config.r_language_server.setup global-options)
 ;; Rust
