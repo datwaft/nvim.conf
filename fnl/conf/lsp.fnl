@@ -68,6 +68,10 @@
   ;;; =========
   (let [signature (require :lsp_signature)]
     (signature.on_attach {:bind true
+                          :doc_lines 0
+                          :floating_window_above_cur_line true
+                          :fix_pos true
+                          :hint_enable false
                           :hint_prefix "● "
                           :hint_scheme "DiagnosticSignInfo"}
                          bufnr))
