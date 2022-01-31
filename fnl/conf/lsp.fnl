@@ -191,7 +191,11 @@
   (config.jsonls.setup
     (deep-merge
       global-options
-      {:settings {:json {:schemas (json.schemas)}}})))
+      {:settings {:json {:schemas (json.schemas)}}
+       :on_attach (fn [client bufnr]
+                    (set client.resolved_capabilities.document_formatting false)
+                    (set client.resolved_capabilities.document_range_formatting false)
+                    (on-attach client bufnr))})))
 ;; Yaml
 (config.yamlls.setup global-options)
 ;; Toml
