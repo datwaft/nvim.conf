@@ -13,8 +13,8 @@
     [_ nil] (deep-copy x1)
     (where _ (or (not (table? x1))
                  (not (table? x2)))) (deep-copy x1)
-    _ (accumulate [acc (deep-copy x2)
-                   k v (pairs x1)]
+    _ (accumulate [acc (deep-copy x1)
+                   k v (pairs x2)]
                   (doto acc
                         (tset k (deep-merge v (?. acc k)))))))
 
