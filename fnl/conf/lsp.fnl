@@ -176,8 +176,6 @@
                   (set client.resolved_capabilities.document_formatting false)
                   (set client.resolved_capabilities.document_range_formatting false)
                   (on-attach client bufnr))}))
-;; Emmet
-(config.emmet_ls.setup global-options)
 ;; ESLint
 (config.eslint.setup global-options)
 ;; CSS
