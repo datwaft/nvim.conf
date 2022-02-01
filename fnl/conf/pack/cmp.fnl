@@ -1,7 +1,8 @@
 (import-macros {: set!} :conf.macro.opt)
 (local {: setup
         : mapping
-        :config {: compare}
+        :config {: compare
+                 : disable}
         :SelectBehavior {:Insert insert-behavior
                          :Select select-behavior}
         : event} (require :cmp))
@@ -17,6 +18,8 @@
                   "<C-f>" (mapping.scroll_docs 4)
                   "<C-space>" (mapping.complete)
                   "<C-e>" (mapping.abort)
+                  "<up>" disable
+                  "<down>" disable
                   "<Tab>" (mapping (mapping.select_next_item {:behavior insert-behavior}) [:i :s])
                   "<S-Tab>" (mapping (mapping.select_prev_item {:behavior insert-behavior}) [:i :s])
                   "<space>" (mapping.confirm {:select false})}
