@@ -4,7 +4,7 @@
 
 (setup {:ensure_installed "maintained"
         :highlight {:enable true}
-        :indent {:enable true}
+        :indent {:enable false}
         :rainbow {:enable true
                   :extended_mode true}
         :refactor {:highlight_definitions {:enable true}
