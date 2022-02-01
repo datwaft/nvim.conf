@@ -7,13 +7,9 @@
         : event} (require :cmp))
 (local types (require :cmp.types))
 (local under-compare (require :cmp-under-comparator))
-(local autopairs (require :nvim-autopairs.completion.cmp))
 (local {: insert} table)
 
 (set! completeopt [:menu :menuone :noselect])
-
-(event:on :confirm_done (autopairs.on_confirm_done {:map_char {:tex ""}}))
-(insert autopairs.lisp "racket")
 
 (setup {:preselect types.cmp.PreselectMode.None
         :snippet {:expand (fn [args] (vim.fn.vsnip#anonymous args.body))}
