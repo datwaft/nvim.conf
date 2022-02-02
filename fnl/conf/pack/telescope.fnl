@@ -33,7 +33,8 @@
 (map! [n] "<leader>fk" loclist!)
 
 ;; Configure telescope
-(setup {:defaults {:mappings {:i {"<ESC>" actions.close
+(setup {:defaults {:mappings {:i {"<C-h>" actions.which_key
+                                  "<ESC>" actions.close
                                   "<C-q>" actions.smart_send_to_qflist
                                   "<C-k>" actions.smart_send_to_loclist}}}})
 (load_extension :fzy_native)
