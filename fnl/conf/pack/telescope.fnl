@@ -36,5 +36,10 @@
 (setup {:defaults {:mappings {:i {"<C-h>" actions.which_key
                                   "<ESC>" actions.close
                                   "<C-q>" actions.smart_send_to_qflist
-                                  "<C-k>" actions.smart_send_to_loclist}}}})
+                                  "<C-k>" actions.smart_send_to_loclist
+                                  "<C-Up>" actions.cycle_history_prev
+                                  "<C-Down>" actions.cycle_history_next}}
+                   :history {:path "~/.local/share/nvim/databases/telescope_history.sqlite3"
+                             :limit 100}}})
 (load_extension :fzy_native)
+(load_extension :smart_history)
