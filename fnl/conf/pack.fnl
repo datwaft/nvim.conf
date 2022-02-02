@@ -82,8 +82,8 @@
 ;;; ===========
 ;;; Enhancement
 ;;; ===========
-;; Matching words/parentheses
-(pack! "andymass/vim-matchup")
+;; Conflicts
+(pack! "rhysd/conflict-marker.vim")
 ;; Quickfix
 (pack! "kevinhwang91/nvim-bqf")
 ;; Wildmenu
