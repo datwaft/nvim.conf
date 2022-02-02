@@ -2,6 +2,12 @@
 
 (fn wildmenumode? [...] (= (vim.fn.wildmenumode ...) 1))
 
+;;; =============
+;;; Miscellaneous
+;;; =============
+;; Disable highlight on escape
+(map! [n] "<esc>" "<esc><cmd>noh<cr>")
+
 ;;; ===============
 ;;; Quickfix window
 ;;; ===============

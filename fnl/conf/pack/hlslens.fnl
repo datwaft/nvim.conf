@@ -5,6 +5,5 @@
 (map! [nvo] "*" "*<cmd>lua require'hlslens'.start()<cr>")
 (map! [nvo] "#" "#<cmd>lua require'hlslens'.start()<cr>")
 (map! [nvo] "g*" "g*<cmd>lua require'hlslens'.start()<cr>")
-(map! [nvo] "g#" "g#<cmd>lua require'hlslens'.start()<cr>")
-(map! [n] "<leader>l" "<cmd>noh<cr>"
+(map! [nvo] "g#" "g#<cmd>lua require'hlslens'.start()<cr>"
           "Clear highlight")
