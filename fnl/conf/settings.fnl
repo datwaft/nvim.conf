@@ -21,7 +21,6 @@
 ; Define python binary
 (let! python3_host_prog (expand "$HOME/.pyenv/versions/neovim/bin/python"))
 ; Disable some providers
-(let! loaded_python_provider 0)
 (let! loaded_ruby_provider 0)
 (let! loaded_perl_provider 0)
 
