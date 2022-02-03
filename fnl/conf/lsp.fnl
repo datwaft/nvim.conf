@@ -13,15 +13,16 @@
 ;;; ========================
 ;;; Diagnostic configuration
 ;;; ========================
-(let [{: config} vim.diagnostic
+(let [{: config
+       : severity} vim.diagnostic
       {: sign_define} vim.fn]
-  (config {:underline true
-           :signs true
+  (config {:underline {:severity {:min severity.INFO}}
+           :signs {:severity {:min severity.INFO}}
+           :virtual_text {:severity {:min severity.INFO}}
            :update_in_insert false
            :severity_sort true
            :float {:show_header false
-                   :border "single"}
-           :virtual_text false})
+                   :border "single"}})
   (sign_define :DiagnosticSignError {:text "" :texthl "DiagnosticSignError"})
   (sign_define :DiagnosticSignWarn {:text "" :texthl "DiagnosticSignWarn"})
   (sign_define :DiagnosticSignInfo {:text "" :texthl "DiagnosticSignInfo"})
