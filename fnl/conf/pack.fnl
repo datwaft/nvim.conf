@@ -124,7 +124,7 @@
 ;; Sudo
 (pack! "lambdalisue/suda.vim" {:req "suda"})
 ;; Git
-(pack! "lewis6991/gitsigns.nvim" {:init "gitsigns"
+(pack! "lewis6991/gitsigns.nvim" {:req "gitsigns"
                                   :requires ["nvim-lua/plenary.nvim"]})
 (pack! "lambdalisue/gina.vim")
 ;; TMUX
