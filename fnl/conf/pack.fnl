@@ -131,9 +131,6 @@
 (pack! "lambdalisue/gina.vim")
 ;; TMUX
 (pack! "aserowy/tmux.nvim" {:req "tmux"})
-;; Glow
-(pack! "ellisonleao/glow.nvim" {:req "glow"
-                                :ft [:markdown]})
 
 ;;; =====================
 ;;; Files and directories
@@ -144,6 +141,15 @@
                                                    "nvim-lua/plenary.nvim"
                                                    "nvim-telescope/telescope-fzy-native.nvim"
                                                    (pack "nvim-telescope/telescope-smart-history.nvim" {:requires ["tami5/sqlite.lua"]})]})
+
+;;; =======
+;;; Preview
+;;; =======
+;; PlantUML
+(pack! "weirongxu/plantuml-previewer.vim" {:requires ["tyru/open-browser.vim"]})
+;; Markdown
+(pack! "ellisonleao/glow.nvim" {:req "glow"
+                                :ft [:markdown]})
 
 ;;; =========
 ;;; Filetypes
