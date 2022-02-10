@@ -144,7 +144,8 @@
 ;;; Preview
 ;;; =======
 ;; PlantUML
-(pack! "weirongxu/plantuml-previewer.vim" {:requires ["tyru/open-browser.vim"]})
+(pack! "weirongxu/plantuml-previewer.vim" {:requires ["tyru/open-browser.vim"]
+                                           :ft [:plantuml]})
 ;; Markdown
 (pack! "ellisonleao/glow.nvim" {:req "glow"
                                 :ft [:markdown]})
