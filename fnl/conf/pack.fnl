@@ -155,6 +155,8 @@
 (pack! "gisphm/vim-gitignore")
 ;; Kitty
 (pack! "fladson/vim-kitty")
+;; PlantUML
+(pack! "aklt/plantuml-syntax")
 
 ;;; ==============================
 ;;; Language Server Protocol (LSP)
