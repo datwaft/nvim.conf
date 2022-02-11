@@ -95,6 +95,8 @@
 (pack! "folke/which-key.nvim" {:init "which-key"})
 ;; Terminal
 (pack! "voldikss/vim-floaterm" {:req "floaterm"})
+;; Sorting
+(pack! "sQVe/sort.nvim" {:init "sort"})
 
 ;;; ============
 ;;; Text Editing
