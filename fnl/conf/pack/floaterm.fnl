@@ -5,12 +5,10 @@
 (let! floaterm_autoclose 1)
 
 (command! NNN "FloatermNew --width=0.8 --height=0.8 nnn")
-(map! [n] "<C-n>" "<cmd>FloatermNew --width=0.8 --height=0.8 nnn<cr>")
 (map! [n] "<C-t>n" "<cmd>FloatermNew --width=0.8 --height=0.8 nnn<cr>")
 (map! [n] "<C-t><C-n>" "<cmd>FloatermNew --width=0.8 --height=0.8 nnn<cr>")
 
 (command! Broot "FloatermNew --width=0.8 --height=0.8 broot")
-(map! [n] "<C-b>" "<cmd>FloatermNew --width=0.8 --height=0.8 broot<cr>")
 (map! [n] "<C-t>b" "<cmd>FloatermNew --width=0.8 --height=0.8 broot<cr>")
 (map! [n] "<C-t><C-b>" "<cmd>FloatermNew --width=0.8 --height=0.8 broot<cr>")
 
