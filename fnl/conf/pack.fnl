@@ -89,6 +89,8 @@
 ;; Wildmenu
 (pack! "gelguy/wilder.nvim" {:run ":UpdateRemotePlugins"
                              :req "wilder"})
+;; Create missing directories on save
+(pack! "jghauser/mkdir.nvim" {:config #(require "mkdir")})
 ;; Stabilization
 (pack! "luukvbaal/stabilize.nvim" {:init "stabilize"})
 ;; Key-chording help
