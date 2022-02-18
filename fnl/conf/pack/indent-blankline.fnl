@@ -3,7 +3,7 @@
 (setup {:char "│"
         :use_treesitter true
         :filetype_exclude [:terminal :help :packer :NvimTree :fennel :clojure
-                           :lisp :markdown :text]
+                           :lisp :markdown :text :corpus]
         :buftype_exclude [:terminal :nofile]
         :show_current_context true
         :context_patterns [:class :return :function :method :^if :^while
