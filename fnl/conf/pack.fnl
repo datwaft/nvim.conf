@@ -172,6 +172,8 @@
 (pack! "fladson/vim-kitty")
 ;; PlantUML
 (pack! "aklt/plantuml-syntax")
+;; Corpus
+(pack! "datwaft/corpus.vim")
 
 ;;; ==============================
 ;;; Language Server Protocol (LSP)
