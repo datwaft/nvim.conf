@@ -86,9 +86,6 @@
 (pack! "rhysd/conflict-marker.vim")
 ;; Quickfix
 (pack! "kevinhwang91/nvim-bqf")
-;; Wildmenu
-(pack! "gelguy/wilder.nvim" {:run ":UpdateRemotePlugins"
-                             :req "wilder"})
 ;; Create missing directories on save
 (pack! "jghauser/mkdir.nvim" {:config #(require "mkdir")})
 ;; Stabilization
@@ -173,7 +170,8 @@
 ;; PlantUML
 (pack! "aklt/plantuml-syntax")
 ;; Corpus
-(pack! "datwaft/corpus.vim")
+;; (pack! "datwaft/corpus.vim")
+(pack! "~/Projects/vim/corpus.vim")
 
 ;;; ==============================
 ;;; Language Server Protocol (LSP)
