@@ -170,8 +170,7 @@
 ;; PlantUML
 (pack! "aklt/plantuml-syntax")
 ;; Corpus
-;; (pack! "datwaft/corpus.vim")
-(pack! "~/Projects/vim/corpus.vim")
+(pack! "datwaft/corpus.vim")
 
 ;;; ==============================
 ;;; Language Server Protocol (LSP)
