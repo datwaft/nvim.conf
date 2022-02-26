@@ -171,6 +171,8 @@
 (pack! "aklt/plantuml-syntax")
 ;; Corpus
 (pack! "datwaft/corpus.vim")
+;; Tmux
+(pack! "tmux-plugins/vim-tmux")
 
 ;;; ==============================
 ;;; Language Server Protocol (LSP)
