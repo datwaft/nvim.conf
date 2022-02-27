@@ -130,6 +130,8 @@
 (pack! "lambdalisue/gina.vim")
 ;; TMUX
 (pack! "aserowy/tmux.nvim" {:req "tmux"})
+;; Browsers
+(pack! "glacambre/firenvim" {:run #(vim.fn.firenvim#install 0)})
 
 ;;; =====================
 ;;; Files and directories
