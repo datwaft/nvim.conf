@@ -42,7 +42,7 @@
 (fn on-attach [client bufnr]
   (import-macros {: local-set!} :conf.macro.opt)
   (import-macros {: buf-map!} :conf.macro.keybind)
-  (import-macros {: buf-augroup!
+  (import-macros {: augroup!
                   : autocmd!} :conf.macro.event)
 
   (local {:document_formatting has-formatting?
@@ -121,13 +121,13 @@
   ;;; ======
   ;; Format buffer before saving
   (when has-formatting?
-    (buf-augroup! lsp-format-before-saving
-                  (autocmd! BufWritePre <buffer>
-                            #(format-seq-sync! nil 1000 [:null-ls]))))
+    (augroup! lsp-format-before-saving
+              (autocmd! BufWritePre <buffer>
+                        (format-seq-sync! nil 1000 [:null-ls]))))
   ;; Display hints on hover
-  (buf-augroup! lsp-display-hints
-                (autocmd! [CursorHold CursorHoldI] *.rs
-                          #(inlay-hints! {}))))
+  (augroup! lsp-display-hints
+            (autocmd! [CursorHold CursorHoldI] *.rs
+                      (inlay-hints! {}))))
 
 ;;; ==========================
 ;;; Capabilities configuration

@@ -2,4 +2,4 @@
 (import-macros {: autocmd!} :conf.macro.event)
 
 (let! enfocado_style "nature")
-(autocmd! VimEnter * ++nested "colorscheme enfocado")
+(autocmd! VimEnter * [:nested] "colorscheme enfocado")
