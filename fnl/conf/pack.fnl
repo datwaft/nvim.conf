@@ -142,12 +142,6 @@
                                                    "nvim-lua/plenary.nvim"
                                                    "nvim-telescope/telescope-fzy-native.nvim"
                                                    (pack "nvim-telescope/telescope-smart-history.nvim" {:requires ["tami5/sqlite.lua"]})]})
-;; File Explorer
-(pack! "nvim-neo-tree/neo-tree.nvim" {:branch "v1.x"
-                                      :requires ["nvim-lua/plenary.nvim"
-                                                 "kyazdani42/nvim-web-devicons"
-                                                 "MunifTanjim/nui.nvim"]
-                                      :req "neo-tree"})
 
 ;;; =======
 ;;; Preview
