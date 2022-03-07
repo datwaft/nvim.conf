@@ -144,6 +144,8 @@
 (let! netrw_altv 1)
 ;; Set split size
 (let! netrw_winsize 20)
+;; Start with dotfiles hidden
+(let! netrw_list_hide "\\(^\\|\\s\\s\\)\\zs\\.\\S\\+")
 
 ;;; ===========================
 ;;; Miscellaneous configuration
