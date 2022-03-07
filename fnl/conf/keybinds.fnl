@@ -18,6 +18,11 @@
 (map! [n] "<localleader>Q" "<cmd>cclose<cr>"
           "close the quickfix list window")
 
+;;; =====
+;;; NETRW
+;;; =====
+(map! [n] "<C-n>" "<cmd>Vexplore<cr>")
+
 ;;; ========
 ;;; Wildmenu
 ;;; ========

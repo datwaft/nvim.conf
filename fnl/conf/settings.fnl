@@ -131,6 +131,20 @@
 ;; Substitution
 (set! gdefault)
 
+;;; ===================
+;;; NETRW configuration
+;;; ===================
+;; Disable banner
+(let! netrw_banner 0)
+;; Tree style listing
+(let! netrw_liststyle 3)
+;; Open files in the previous window
+(let! netrw_browse_split 4)
+;; Open split to the right
+(let! netrw_altv 1)
+;; Set split size
+(let! netrw_winsize 20)
+
 ;;; ===========================
 ;;; Miscellaneous configuration
 ;;; ===========================
