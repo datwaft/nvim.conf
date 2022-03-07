@@ -1,5 +1,0 @@
-# Undo directory
-undodir.nvim/
-
-# Packer compilation
-plugin/packer_compiled.lua
