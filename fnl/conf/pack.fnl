@@ -133,15 +133,17 @@
 ;; Browsers
 (pack! "glacambre/firenvim" {:run #(vim.fn.firenvim#install 0)})
 
-;;; =====================
-;;; Files and directories
-;;; =====================
+;;; ==========
+;;; Filesystem
+;;; ==========
 ;; Fuzzy Finder
 (pack! "nvim-telescope/telescope.nvim" {:req "telescope"
                                         :requires ["nvim-lua/popup.nvim"
                                                    "nvim-lua/plenary.nvim"
                                                    "nvim-telescope/telescope-fzy-native.nvim"
                                                    (pack "nvim-telescope/telescope-smart-history.nvim" {:requires ["tami5/sqlite.lua"]})]})
+;; Filesystem editing
+(pack! "elihunter173/dirbuf.nvim")
 
 ;;; =======
 ;;; Preview
