@@ -7,4 +7,4 @@
                                 :rgba
                                 :hsl
                                 :hsla])
-(let! Hexokinase_ftDisabled [:packer])
+(let! Hexokinase_ftDisabled [:packer :dirbuf])
