@@ -31,6 +31,10 @@
                                           :requires ["p00f/nvim-ts-rainbow"
                                                      "nvim-treesitter/nvim-treesitter-refactor"
                                                      "JoosepAlviste/nvim-ts-context-commentstring"]})
+;; Dim unused variables and functions
+(pack! "narutoxy/dim.lua" {:init "dim"
+                           :requires ["nvim-treesitter/nvim-treesitter"
+                                      "neovim/nvim-lspconfig"]})
 ;; Treesitter-powered spelling
 (pack! "lewis6991/spellsitter.nvim" {:init "spellsitter"
                                      :requires ["nvim-treesitter/nvim-treesitter"]})
