@@ -23,8 +23,9 @@
 (local sources [formatting.stylua
                 formatting.prettierd
                 formatting.markdownlint
-                formatting.black
                 formatting.sqlformat
+                formatting.black
+                formatting.isort
                 diagnostics.flake8])
 
 (setup {: sources
