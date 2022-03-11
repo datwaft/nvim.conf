@@ -24,7 +24,8 @@
                 formatting.prettierd
                 formatting.markdownlint
                 formatting.black
-                formatting.sqlformat])
+                formatting.sqlformat
+                diagnostics.flake8])
 
 (setup {: sources
         :on_attach on-attach})
