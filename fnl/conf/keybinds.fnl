@@ -21,7 +21,7 @@
 ;;; =====
 ;;; NETRW
 ;;; =====
-(map! [n] "<C-n>" "<cmd>Vexplore<cr>")
+(map! [n] "<C-n>" "<cmd>Lexplore<cr>")
 
 ;;; ========
 ;;; Wildmenu
