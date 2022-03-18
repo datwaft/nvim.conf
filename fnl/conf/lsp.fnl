@@ -185,6 +185,8 @@
 (config.html.setup global-options)
 ;; Vue
 (config.vuels.setup global-options)
+;; Svelte
+(config.svelte.setup global-options)
 ;; Json
 (let [{: json} (require :schemastore)]
   (config.jsonls.setup
