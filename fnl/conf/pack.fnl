@@ -118,6 +118,8 @@
 ;; Snippets
 (pack! "hrsh7th/vim-vsnip" {:req "vsnip"
                             :requires ["rafamadriz/friendly-snippets"]})
+;; Emmet
+(pack! "mattn/emmet-vim" {:req "emmet"})
 ;; Easily exit pairs
 (pack! "abecodes/tabout.nvim" {:req "tabout"
                                :wants "nvim-treesitter"

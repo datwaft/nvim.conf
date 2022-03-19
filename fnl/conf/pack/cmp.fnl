@@ -17,7 +17,7 @@
         :mapping {"<C-b>" (mapping.scroll_docs -4)
                   "<C-f>" (mapping.scroll_docs 4)
                   "<C-space>" (mapping.complete)
-                  "<C-e>" (mapping.abort)
+                  "<C-e>" disable
                   "<up>" disable
                   "<down>" disable
                   "<Tab>" (mapping (mapping.select_next_item {:behavior insert-behavior}) [:i :s])
