@@ -35,9 +35,6 @@
 (pack! "narutoxy/dim.lua" {:init "dim"
                            :requires ["nvim-treesitter/nvim-treesitter"
                                       "neovim/nvim-lspconfig"]})
-;; Treesitter-powered spelling
-(pack! "lewis6991/spellsitter.nvim" {:init "spellsitter"
-                                     :requires ["nvim-treesitter/nvim-treesitter"]})
 ;; Preview substitution
 (pack! "markonm/traces.vim")
 ;; Color code highlight
