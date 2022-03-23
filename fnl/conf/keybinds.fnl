@@ -1,6 +1,11 @@
 (import-macros {: map!} :conf.macro.keybind)
 
+(local {: getbufinfo
+        : getbufvar} vim.fn)
+(local {:cmd cmd!} vim)
+(local {: format} string)
 (fn wildmenumode? [...] (= (vim.fn.wildmenumode ...) 1))
+(fn empty? [xs] (= 0 (length xs)))
 
 ;;; =============
 ;;; Miscellaneous
@@ -18,10 +23,19 @@
 (map! [n] "<localleader>Q" "<cmd>cclose<cr>"
           "close the quickfix list window")
 
-;;; =====
-;;; NETRW
-;;; =====
-(map! [n] "<C-n>" "<cmd>Lexplore<cr>")
+;;; ===================
+;;; Filesystem Explorer
+;;; ===================
+(map! [n] "<C-n>"
+      ;; This mapping checks if there are buffers with the filesystem explorer filetype
+      ;; If there are, every buffer is closed
+      ;; If there are not any, a new one is opened using <cmd>Lexplore<cr>
+      (let [carbon-buffers (icollect [_ {: bufnr} (ipairs (getbufinfo))]
+                                     (let [filetype (getbufvar bufnr "&filetype")]
+                                       (if (= :carbon filetype) bufnr)))]
+        (if (empty? carbon-buffers) (cmd! "Lexplore")
+          (each [_ bufnr (ipairs carbon-buffers)]
+            (cmd! (format "bdelete! %s" bufnr))))))
 
 ;;; ========
 ;;; Wildmenu
