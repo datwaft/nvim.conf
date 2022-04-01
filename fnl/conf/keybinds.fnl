@@ -18,10 +18,10 @@
 ;;; ===============
 ;; Open or focus the quickfix window
 (map! [n] "<localleader>q" "<cmd>copen<cr>"
-          "open or focus the quickfix window")
+      "open or focus the quickfix window")
 ;; Close the quickfix window
 (map! [n] "<localleader>Q" "<cmd>cclose<cr>"
-          "close the quickfix list window")
+      "close the quickfix list window")
 
 ;;; ===================
 ;;; Filesystem Explorer
@@ -31,8 +31,8 @@
       ;; If there are, every buffer is closed
       ;; If there are not any, a new one is opened using <cmd>Lexplore<cr>
       (let [carbon-buffers (icollect [_ {: bufnr} (ipairs (getbufinfo))]
-                                     (let [filetype (getbufvar bufnr "&filetype")]
-                                       (if (= :carbon filetype) bufnr)))]
+                             (let [filetype (getbufvar bufnr "&filetype")]
+                               (if (= :carbon filetype) bufnr)))]
         (if (empty? carbon-buffers) (cmd! "Lexplore")
           (each [_ bufnr (ipairs carbon-buffers)]
             (cmd! (format "bdelete! %s" bufnr))))))
@@ -67,13 +67,13 @@
 ;; Line object
 ; Inner line
 (map! [xo :silent] "il" ":<C-u>normal! g_v^<cr>"
-          "inner line")
+      "inner line")
 ; Around line
 (map! [xo :silent] "al" ":<C-u>normal! $v0<cr>"
-          "around line")
+      "around line")
 ;; Document object
 ; Inner document
 (map! [x :silent] "id" ":<C-u>normal! G$Vgg0<cr>"
-          "inner document")
+      "inner document")
 (map! [o :silent] "id" ":<C-u>normal! GVgg<cr>"
-          "inner document")
+      "inner document")

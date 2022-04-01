@@ -68,10 +68,10 @@
     (if (empty? [...])
       `(vim.api.nvim_create_augroup ,name {})
       (let [statements (icollect [_ statement (ipairs [...])]
-                                 (do
-                                   (assert-compile (list? statement) "expected list for statement")
-                                   (let [[_ events pattern options command ?desc] statement]
-                                     (autocmd-group! name events pattern options command ?desc))))]
+                         (do
+                           (assert-compile (list? statement) "expected list for statement")
+                           (let [[_ events pattern options command ?desc] statement]
+                             (autocmd-group! name events pattern options command ?desc))))]
         `(do
            (vim.api.nvim_create_augroup ,name {})
            ,(unpack statements))))))

@@ -23,10 +23,10 @@
                   "expected table for options" ?options)
   (let [options (or ?options {})
         options (collect [k v (pairs options)]
-                         (if
-                           (= k :req) (values :config (format "require('conf.pack.%s')" v))
-                           (= k :init) (values :config (format "require('%s').setup()" v))
-                           (values k v)))]
+                  (if
+                    (= k :req) (values :config (format "require('conf.pack.%s')" v))
+                    (= k :init) (values :config (format "require('%s').setup()" v))
+                    (values k v)))]
     (doto options
           (tset 1 identifier))))
 
@@ -66,9 +66,9 @@
   "Initializes the plugin manager with the previously declared plugins and
   their options."
   (let [packs (icollect [_ v (ipairs conf/pack)]
-                        `(use ,v))
+                `(use ,v))
         rocks (icollect [_ v (ipairs conf/rock)]
-                        `(use_rocks ,v))]
+                `(use_rocks ,v))]
     `((. (require :packer) :startup)
       #(do
          ,(unpack (icollect [_ v (ipairs packs) :into rocks] v))))))

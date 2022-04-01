@@ -8,7 +8,5 @@
 (map! [i :expr] "<S-Tab>" (if (jumpable-backwards?) "<Plug>(vsnip-jump-prev)"
                             "<S-Tab>"))
 
-(map! [s :expr] "<Tab>" (if (jumpable-forwards?) "<Plug>(vsnip-jump-next)")
-                    "<Tab>")
-(map! [s :expr] "<S-Tab>" (if (jumpable-backwards?) "<Plug>(vsnip-jump-prev)")
-                      "<S-Tab>")
+(map! [s :expr] "<Tab>" (if (jumpable-forwards?) "<Plug>(vsnip-jump-next)") "<Tab>")
+(map! [s :expr] "<S-Tab>" (if (jumpable-backwards?) "<Plug>(vsnip-jump-prev)") "<S-Tab>")

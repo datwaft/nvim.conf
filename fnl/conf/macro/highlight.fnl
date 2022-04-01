@@ -6,7 +6,7 @@
 
 (lambda highlight! [name attributes colors]
   "Defines a highlight group using the vim API.
-  e.g. (highlight! Error [:bold] {:guifg \"#ff0000\"}"
+  e.g. (highlight! Error [:bold] {:guifg \"#ff0000\"})"
   (assert-compile (sym? name) "expected symbol for name" name)
   (assert-compile (tbl? attributes) "expected table for attributes" attributes)
   (assert-compile (tbl? colors) "expected colors for colors" colors)

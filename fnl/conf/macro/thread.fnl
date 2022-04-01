@@ -9,9 +9,9 @@
          ,(unpack
             (accumulate [exprs []
                          _ expr (ipairs [...])]
-                        (doto exprs
-                              (insert binding)
-                              (insert expr))))]
+              (doto exprs
+                    (insert binding)
+                    (insert expr))))]
      ,binding))
 
 {: as->}

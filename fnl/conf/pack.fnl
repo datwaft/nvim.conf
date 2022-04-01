@@ -164,7 +164,7 @@
 ;;; Filetypes
 ;;; =========
 ;; Fennel
-(pack! "bakpakin/fennel.vim")
+(pack! "Olical/aniseed")
 ;; Git
 (pack! "tpope/vim-git")
 (pack! "gisphm/vim-gitignore")

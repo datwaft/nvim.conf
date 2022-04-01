@@ -12,19 +12,19 @@
 
 ;; Search file by name
 (map! [n] "<leader>ff" find-files!
-          "Find a file")
+      "Find a file")
 
 ;; Search file by content
 (map! [n] "<leader>fg" live-grep!
-          "Live grep a file")
+      "Live grep a file")
 
 ;; Search buffer list
 (map! [n] "<leader>fb" buffers!
-          "Find a buffer")
+      "Find a buffer")
 
 ;; Search help tags
 (map! [n] "<leader>fh" help-tags!
-          "Find a help tag")
+      "Find a help tag")
 
 ;; Search quickfix list
 (map! [n] "<leader>fq" quickfix!)

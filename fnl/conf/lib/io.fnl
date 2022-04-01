@@ -17,14 +17,14 @@
 (lambda warn! [s]
   "Print a vim message with a warning format."
   (cmd! (format "echohl WarningMsg
-                 echom %s
-                 echohl None" (double-quote s))))
+                echom %s
+                echohl None" (double-quote s))))
 
 (lambda err! [s]
   "Print a vim message with an error format."
   (cmd! (format "echohl ErrorMsg
-                 echom %s
-                 echohl None" (double-quote s))))
+                echom %s
+                echohl None" (double-quote s))))
 
 {: echo!
  : warn!

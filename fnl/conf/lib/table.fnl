@@ -3,7 +3,7 @@
 
 (fn deep-copy [x]
   (if (table? x) (collect [k v (pairs x)]
-                          (values (deep-copy k) (deep-copy v)))
+                   (values (deep-copy k) (deep-copy v)))
     x))
 
 (fn deep-merge [x1 x2]
@@ -15,8 +15,8 @@
                  (not (table? x2)))) (deep-copy x1)
     _ (accumulate [acc (deep-copy x1)
                    k v (pairs x2)]
-                  (doto acc
-                        (tset k (deep-merge v (?. acc k)))))))
+        (doto acc
+              (tset k (deep-merge v (?. acc k)))))))
 
 {: deep-copy
  : deep-merge}
