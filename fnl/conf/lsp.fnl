@@ -147,6 +147,7 @@
 ;;; ====================
 (local {: deep-merge} (require :conf.lib.table))
 (local config (require :lspconfig))
+(local {: util} config)
 (local {: expand} vim.fn)
 
 ;; Docker
@@ -170,13 +171,20 @@
 ;; Rust
 (config.rust_analyzer.setup global-options)
 ;; Javascript & Typescript
+; Deno
+(config.denols.setup (deep-merge
+                       global-options
+                       {:init_options {:lint true}
+                        :root_dir (util.root_pattern "deno.json")}))
+; Node
 (config.tsserver.setup
   (deep-merge
     global-options
     {:on_attach (fn [client bufnr]
                   (set client.resolved_capabilities.document_formatting false)
                   (set client.resolved_capabilities.document_range_formatting false)
-                  (on-attach client bufnr))}))
+                  (on-attach client bufnr))
+     :root_dir (util.root_pattern "package.json")}))
 ;; ESLint
 (config.eslint.setup global-options)
 ;; CSS
