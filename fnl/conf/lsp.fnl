@@ -184,7 +184,7 @@
 ;; Html
 (config.html.setup global-options)
 ;; Vue
-(config.vuels.setup global-options)
+(config.volar.setup global-options)
 ;; Svelte
 (config.svelte.setup global-options)
 ;; Json
