@@ -161,3 +161,6 @@
 
 ;; LocalLeader
 (let! maplocalleader (escape "<space>"))
+
+;; Markdown
+(let! markdown_fenced_languages ["ts=typescript"])
