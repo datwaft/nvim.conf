@@ -36,7 +36,7 @@
                            :requires ["nvim-treesitter/nvim-treesitter"
                                       "neovim/nvim-lspconfig"]})
 ;; Preview substitution
-(pack! "markonm/traces.vim")
+(pack! "markonm/traces.vim" {:req "traces"})
 ;; Color code highlight
 (pack! "rrethy/vim-hexokinase" {:run "make hexokinase"
                                 :req "hexokinase"})
