@@ -9,6 +9,8 @@
         :help_tags help-tags!
         :quickfix quickfix!
         :loclist loclist!} (require :telescope.builtin))
+(local {: mkdir
+        : expand} vim.fn)
 
 ;; Search file by name
 (map! [n] "<leader>ff" find-files!
@@ -32,6 +34,10 @@
 ;; Search location list
 (map! [n] "<leader>fk" loclist!)
 
+;; Create folder for databases if it doesn't exist
+(local databases-folder (expand "~/.local/share/nvim/databases"))
+(mkdir databases-folder :p)
+
 ;; Configure telescope
 (setup {:defaults {:mappings {:i {"<C-h>" actions.which_key
                                   "<ESC>" actions.close
@@ -39,7 +45,7 @@
                                   "<C-k>" actions.smart_send_to_loclist
                                   "<C-Up>" actions.cycle_history_prev
                                   "<C-Down>" actions.cycle_history_next}}
-                   :history {:path "~/.local/share/nvim/databases/telescope_history.sqlite3"
+                   :history {:path (.. databases-folder "/telescope_history.sqlite3")
                              :limit 100}}})
 (load_extension :fzy_native)
 (load_extension :smart_history)
