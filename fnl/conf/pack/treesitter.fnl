@@ -2,7 +2,7 @@
 (import-macros {: let!} :conf.macro.var)
 (local {: setup} (require :nvim-treesitter.configs))
 
-(setup {:ensure_installed "maintained"
+(setup {:ensure_installed "all"
         :highlight {:enable true}
         :indent {:enable false}
         :rainbow {:enable true
