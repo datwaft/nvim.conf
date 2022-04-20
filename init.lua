@@ -42,6 +42,11 @@ if pcall(require, "hotpot") then
 	-- Setup hotpot.nvim
 	require("hotpot").setup({
 		provide_require_fennel = true,
+		compiler = {
+			modules = {
+				correlate = true,
+			},
+		},
 	})
 	-- Import neovim configuration
 	require("conf")
