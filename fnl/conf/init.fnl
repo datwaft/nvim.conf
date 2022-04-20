@@ -1,3 +1,4 @@
+(require :conf.constants)
 (require :conf.pack)
 (require :conf.settings)
 (require :conf.keybinds)

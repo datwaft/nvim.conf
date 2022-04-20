@@ -23,10 +23,10 @@
            :severity_sort true
            :float {:show_header false
                    :border "single"}})
-  (sign_define :DiagnosticSignError {:text "" :texthl "DiagnosticSignError"})
-  (sign_define :DiagnosticSignWarn {:text "" :texthl "DiagnosticSignWarn"})
-  (sign_define :DiagnosticSignInfo {:text "" :texthl "DiagnosticSignInfo"})
-  (sign_define :DiagnosticSignHint {:text "" :texthl "DiagnosticSignHint"}))
+  (sign_define :DiagnosticSignError {:text conf.icons.error :texthl "DiagnosticSignError"})
+  (sign_define :DiagnosticSignWarn {:text conf.icons.warn :texthl "DiagnosticSignWarn"})
+  (sign_define :DiagnosticSignInfo {:text conf.icons.info :texthl "DiagnosticSignInfo"})
+  (sign_define :DiagnosticSignHint {:text conf.icons.hint :texthl "DiagnosticSignHint"}))
 
 ;;; =======================
 ;;; Aesthetic configuration
