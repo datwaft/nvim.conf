@@ -23,4 +23,4 @@
 
 ;; Create folders if non-existent
 (augroup! create-folders-if-non-existent
-  (autocmd! VimEnter * (mkdir databases-folder :p)))
+  (autocmd! VimEnter * [:once] (mkdir databases-folder :p)))
