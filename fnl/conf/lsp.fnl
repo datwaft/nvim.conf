@@ -22,6 +22,7 @@
            :update_in_insert false
            :severity_sort true
            :float {:show_header false
+                   :source "if_many"
                    :border "single"}})
   (sign_define :DiagnosticSignError {:text conf.icons.error :texthl "DiagnosticSignError"})
   (sign_define :DiagnosticSignWarn {:text conf.icons.warn :texthl "DiagnosticSignWarn"})
