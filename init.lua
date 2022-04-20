@@ -46,5 +46,5 @@ if pcall(require, "hotpot") then
 	-- Import neovim configuration
 	require("conf")
 else
-	print("Unabled to require hotpot")
+	print("Unable to require hotpot")
 end
