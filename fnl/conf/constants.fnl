@@ -14,8 +14,8 @@
               :info ""
               :hint ""})
 
-(global conf {: databases-folder
-              : icons})
+(tset _G :conf {: databases-folder
+                : icons})
 
 ;;; =====
 ;;; Setup
@@ -24,3 +24,14 @@
 ;; Create folders if non-existent
 (augroup! create-folders-if-non-existent
   (autocmd! VimEnter * [:once] (mkdir databases-folder :p)))
+
+;;; =========
+;;; Utilities
+;;; =========
+
+(fn rerequire [module-name]
+  "Require the module ignoring the cache."
+  (tset package.loaded module-name nil)
+  (require module-name))
+
+(tset _G :rerequire rerequire)
