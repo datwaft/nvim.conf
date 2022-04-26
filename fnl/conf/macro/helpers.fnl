@@ -1,3 +1,4 @@
+(local {:sumhexa md5} (require :md5))
 (local {: format} string)
 
 (fn ->str [x]
@@ -27,9 +28,7 @@
   the last one is considered the suffix.
   This function depends on the md5 library and the fennel library."
   (match [...]
-    [prefix object suffix] (let [{: view} (require :fennel)
-                                 {:sumhexa md5} (require :md5)]
-                             (sym (.. prefix (md5 (view object)) suffix)))
+    [prefix object suffix] (sym (.. prefix (md5 (view object)) suffix))
     [prefix object] (gensym-checksum prefix object "")
     [object] (gensym-checksum "" object "")))
 
