@@ -179,6 +179,8 @@
 (pack! "datwaft/corpus.vim")
 ;; Tmux
 (pack! "tmux-plugins/vim-tmux")
+;; Just
+(pack! "NoahTheDuke/vim-just")
 
 ;;; ==============================
 ;;; Language Server Protocol (LSP)
