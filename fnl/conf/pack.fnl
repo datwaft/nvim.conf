@@ -24,7 +24,7 @@
 (pack! "wuelnerdotexe/vim-enfocado" {:as "colorscheme"
                                      :req "colorscheme"})
 ;; Statusline
-(pack! "famiu/feline.nvim" {:req "feline"})
+(pack! "feline-nvim/feline.nvim" {:req "feline"})
 ;; Treesitter
 (pack! "nvim-treesitter/nvim-treesitter" {:run ":TSUpdate"
                                           :req "treesitter"
