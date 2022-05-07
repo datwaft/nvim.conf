@@ -70,8 +70,8 @@
         rocks (icollect [_ v (ipairs conf/rock)]
                 `(use_rocks ,v))]
     `((. (require :packer) :startup)
-      #(do
-         ,(unpack (icollect [_ v (ipairs packs) :into rocks] v))))))
+      (fn [,(sym :use)]
+        ,(unpack (icollect [_ v (ipairs packs) :into rocks] v))))))
 
 {: pack
  : pack!
