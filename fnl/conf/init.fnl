@@ -5,3 +5,4 @@
 (require :conf.commands)
 (require :conf.events)
 (require :conf.lsp)
+(require :conf.health)
