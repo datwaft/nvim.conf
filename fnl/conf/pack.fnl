@@ -181,6 +181,9 @@
 (pack! "tmux-plugins/vim-tmux")
 ;; Just
 (pack! "NoahTheDuke/vim-just")
+;; Svelte
+(pack! "evanleck/vim-svelte" {:requires ["othree/html5.vim"
+                                         "pangloss/vim-javascript"]})
 
 ;;; ==============================
 ;;; Language Server Protocol (LSP)
