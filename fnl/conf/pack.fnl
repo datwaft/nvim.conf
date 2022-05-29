@@ -148,8 +148,6 @@
                                                    "nvim-lua/plenary.nvim"
                                                    "nvim-telescope/telescope-fzy-native.nvim"
                                                    (pack "nvim-telescope/telescope-smart-history.nvim" {:requires ["tami5/sqlite.lua"]})]})
-;; Filesystem explorer
-(pack! "SidOfc/carbon.nvim")
 ;; Filesystem editing
 (pack! "elihunter173/dirbuf.nvim")
 

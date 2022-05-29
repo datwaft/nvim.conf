@@ -30,11 +30,11 @@
       ;; This mapping checks if there are buffers with the filesystem explorer filetype
       ;; If there are, every buffer is closed
       ;; If there are not any, a new one is opened using <cmd>Lexplore<cr>
-      (let [carbon-buffers (icollect [_ {: bufnr} (ipairs (getbufinfo))]
-                             (let [filetype (getbufvar bufnr "&filetype")]
-                               (if (= :carbon filetype) bufnr)))]
-        (if (empty? carbon-buffers) (cmd! "Lexplore")
-          (each [_ bufnr (ipairs carbon-buffers)]
+      (let [explorer-buffers (icollect [_ {: bufnr} (ipairs (getbufinfo))]
+                               (let [filetype (getbufvar bufnr "&filetype")]
+                                 (if (= :netrw filetype) bufnr)))]
+        (if (empty? explorer-buffers) (cmd! "Lexplore")
+          (each [_ bufnr (ipairs explorer-buffers)]
             (cmd! (format "bdelete! %s" bufnr))))))
 
 ;;; ========
