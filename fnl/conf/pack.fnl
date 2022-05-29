@@ -91,8 +91,6 @@
 (pack! "jghauser/mkdir.nvim" {:config #(require "mkdir")})
 ;; Stabilization
 (pack! "luukvbaal/stabilize.nvim" {:init "stabilize"})
-;; Key-chording help
-(pack! "folke/which-key.nvim" {:init "which-key"})
 ;; Terminal
 (pack! "voldikss/vim-floaterm" {:req "floaterm"})
 ;; Sorting
