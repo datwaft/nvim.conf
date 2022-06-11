@@ -26,7 +26,7 @@
                 formatting.sqlformat
                 formatting.black
                 formatting.isort
-                diagnostics.flake8])
+                diagnostics.pylint])
 
 (setup {: sources
         :on_attach on-attach})
