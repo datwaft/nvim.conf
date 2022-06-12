@@ -1,3 +1,3 @@
-(import-macros {: local-set!} :conf.macro.opt)
+(import-macros {: local-set!} :themis.opt)
 
 (local-set! nospell)

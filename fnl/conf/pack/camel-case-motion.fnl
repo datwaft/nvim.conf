@@ -1,4 +1,4 @@
-(import-macros {: map!} :conf.macro.keybind)
+(import-macros {: map!} :themis.keybind)
 
 (map! [nvo] "<leader>w" "<Plug>CamelCaseMotion_w"
       "Go to next CamelCase word")

@@ -1,3 +1,3 @@
-(import-macros {: map!} :conf.macro.keybind)
+(import-macros {: map!} :themis.keybind)
 
 (map! [i] "<C-e>" "<plug>(emmet-expand-abbr)")

@@ -1,4 +1,4 @@
-(import-macros {: let!} :conf.macro.var)
+(import-macros {: let!} :themis.var)
 
 (let! Hexokinase_highlighters [:virtual])
 (let! Hexokinase_optInPatterns [:full_hex

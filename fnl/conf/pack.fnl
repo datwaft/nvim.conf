@@ -1,5 +1,5 @@
 (import-macros {: pack
-                : pack! : unpack!} :conf.macro.pack)
+                : pack! : unpack!} :themis.pack)
 
 (local lisp-ft [:fennel
                 :clojure
@@ -16,18 +16,20 @@
 (pack! "rktjmp/hotpot.nvim")
 ;; Dynamic LISP evaluation
 (pack! "Olical/conjure")
+;; Macros
+(pack! "datwaft/themis.nvim")
 
 ;;; =========
 ;;; Aesthetic
 ;;; =========
 ;; Colorscheme
 (pack! "wuelnerdotexe/vim-enfocado" {:as "colorscheme"
-                                     :req "colorscheme"})
+                                     :require* "conf.pack.colorscheme"})
 ;; Statusline
-(pack! "feline-nvim/feline.nvim" {:req "feline"})
+(pack! "feline-nvim/feline.nvim" {:require* "conf.pack.feline"})
 ;; Treesitter
 (pack! "nvim-treesitter/nvim-treesitter" {:run ":TSUpdate"
-                                          :req "treesitter"
+                                          :require* "conf.pack.treesitter"
                                           :requires ["p00f/nvim-ts-rainbow"
                                                      "nvim-treesitter/nvim-treesitter-refactor"
                                                      "JoosepAlviste/nvim-ts-context-commentstring"]})
@@ -36,16 +38,16 @@
                            :requires ["nvim-treesitter/nvim-treesitter"
                                       "neovim/nvim-lspconfig"]})
 ;; Preview substitution
-(pack! "markonm/traces.vim" {:req "traces"})
+(pack! "markonm/traces.vim" {:require* "conf.pack.traces"})
 ;; Color code highlight
 (pack! "rrethy/vim-hexokinase" {:run "make hexokinase"
-                                :req "hexokinase"})
+                                :require* "conf.pack.hexokinase"})
 ;; Indent lines
-(pack! "lukas-reineke/indent-blankline.nvim" {:req "indent-blankline"})
+(pack! "lukas-reineke/indent-blankline.nvim" {:require* "conf.pack.indent-blankline"})
 ;; Developer icons
-(pack! "kyazdani42/nvim-web-devicons" {:req "devicons"})
+(pack! "kyazdani42/nvim-web-devicons" {:require* "conf.pack.devicons"})
 ;; Highlight matches
-(pack! "kevinhwang91/nvim-hlslens" {:req "hlslens"})
+(pack! "kevinhwang91/nvim-hlslens" {:require* "conf.pack.hlslens"})
 
 ;;; ============
 ;;; Text objects
@@ -55,7 +57,7 @@
 ;; Indent-level text objects
 (pack! "michaeljsmith/vim-indent-object")
 ;; CamelCase text objects
-(pack! "bkad/CamelCaseMotion" {:req "camel-case-motion"})
+(pack! "bkad/CamelCaseMotion" {:require* "conf.pack.camel-case-motion"})
 ;; Whitespace text objects
 (pack! "vim-utils/vim-space")
 
@@ -78,7 +80,7 @@
 ;; Undo-tree
 (pack! "mbbill/undotree")
 ;; Upload to a paste bin
-(pack! "rktjmp/paperplanes.nvim" {:req "paperplanes"})
+(pack! "rktjmp/paperplanes.nvim" {:require* "conf.pack.paperplanes"})
 
 ;;; ===========
 ;;; Enhancement
@@ -88,11 +90,11 @@
 ;; Quickfix
 (pack! "kevinhwang91/nvim-bqf")
 ;; Create missing directories on save
-(pack! "jghauser/mkdir.nvim" {:config #(require "mkdir")})
+(pack! "jghauser/mkdir.nvim" {:require* "mkdir"})
 ;; Stabilization
 (pack! "luukvbaal/stabilize.nvim" {:init "stabilize"})
 ;; Terminal
-(pack! "voldikss/vim-floaterm" {:req "floaterm"})
+(pack! "voldikss/vim-floaterm" {:require* "conf.pack.floaterm"})
 ;; Sorting
 (pack! "sQVe/sort.nvim" {:init "sort"})
 
@@ -103,7 +105,7 @@
 (pack! "eraserhd/parinfer-rust" {:run "cargo build --release"
                                  :ft lisp-ft})
 ;; Completion
-(pack! "hrsh7th/nvim-cmp" {:req "cmp"
+(pack! "hrsh7th/nvim-cmp" {:require* "conf.pack.cmp"
                            :requires ["hrsh7th/cmp-nvim-lsp"
                                       "hrsh7th/cmp-buffer"
                                       "hrsh7th/cmp-path"
@@ -111,12 +113,12 @@
                                       (pack "hrsh7th/cmp-vsnip" {:requires "hrsh7th/vim-vsnip"})
                                       "lukas-reineke/cmp-under-comparator"]})
 ;; Snippets
-(pack! "hrsh7th/vim-vsnip" {:req "vsnip"
+(pack! "hrsh7th/vim-vsnip" {:require* "conf.pack.vsnip"
                             :requires ["rafamadriz/friendly-snippets"]})
 ;; Emmet
-(pack! "mattn/emmet-vim" {:req "emmet"})
+(pack! "mattn/emmet-vim" {:require* "conf.pack.emmet"})
 ;; Easily exit pairs
-(pack! "abecodes/tabout.nvim" {:req "tabout"
+(pack! "abecodes/tabout.nvim" {:require* "conf.pack.tabout"
                                :wants "nvim-treesitter"
                                :after "nvim-cmp"})
 
@@ -124,13 +126,13 @@
 ;;; Integration
 ;;; ===========
 ;; Sudo
-(pack! "lambdalisue/suda.vim" {:req "suda"})
+(pack! "lambdalisue/suda.vim" {:require* "conf.pack.suda"})
 ;; Git
-(pack! "lewis6991/gitsigns.nvim" {:req "gitsigns"
+(pack! "lewis6991/gitsigns.nvim" {:require* "conf.pack.gitsigns"
                                   :requires ["nvim-lua/plenary.nvim"]})
 (pack! "lambdalisue/gina.vim")
 ;; TMUX
-(pack! "aserowy/tmux.nvim" {:req "tmux"})
+(pack! "aserowy/tmux.nvim" {:require* "conf.pack.tmux"})
 ;; Browsers
 (pack! "glacambre/firenvim" {:run #(vim.fn.firenvim#install 0)})
 ;; Conjure with Clj
@@ -141,7 +143,7 @@
 ;;; Filesystem
 ;;; ==========
 ;; Fuzzy Finder
-(pack! "nvim-telescope/telescope.nvim" {:req "telescope"
+(pack! "nvim-telescope/telescope.nvim" {:require* "conf.pack.telescope"
                                         :requires ["nvim-lua/popup.nvim"
                                                    "nvim-lua/plenary.nvim"
                                                    "nvim-telescope/telescope-fzy-native.nvim"
@@ -156,7 +158,7 @@
 (pack! "weirongxu/plantuml-previewer.vim" {:requires ["tyru/open-browser.vim"]
                                            :ft [:plantuml]})
 ;; Markdown
-(pack! "ellisonleao/glow.nvim" {:req "glow"
+(pack! "ellisonleao/glow.nvim" {:require* "conf.pack.glow"
                                 :ft [:markdown]})
 
 ;;; =========
@@ -195,11 +197,11 @@
 ;; Signature
 (pack! "ray-x/lsp_signature.nvim")
 ;; Integrate with non-LSP
-(pack! "jose-elias-alvarez/null-ls.nvim" {:req "null-ls"
+(pack! "jose-elias-alvarez/null-ls.nvim" {:require* "conf.pack.null-ls"
                                           :requires ["nvim-lua/plenary.nvim"
                                                      "neovim/nvim-lspconfig"]})
 ;; Report progress
-(pack! "j-hui/fidget.nvim" {:init "fidget"})
+(pack! "j-hui/fidget.nvim" {:setup* "fidget"})
 
 ;;; ==========
 (unpack!)

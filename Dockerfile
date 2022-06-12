@@ -5,7 +5,7 @@ FROM rust
 
 # Install dependencies
 RUN apt-get update -y && \
-apt-get install -y curl git golang
+  apt-get install -y curl git golang
 
 # Install neovim
 WORKDIR /tmp
@@ -18,6 +18,7 @@ WORKDIR /root/.local/share/nvim/site/pack/packer/start
 RUN git clone https://github.com/wbthomason/packer.nvim
 RUN git clone https://github.com/rktjmp/hotpot.nvim
 RUN git clone https://github.com/Olical/conjure
+RUN git clone https://github.com/datwaft/themis.nvim
 
 # Install neovim plugins that need caching
 # parinfer-rust

@@ -1,6 +1,6 @@
-(import-macros {: let!} :conf.macro.var)
-(import-macros {: map!} :conf.macro.keybind)
-(import-macros {: command!} :conf.macro.cmd)
+(import-macros {: let!} :themis.var)
+(import-macros {: map!} :themis.keybind)
+(import-macros {: command!} :themis.cmd)
 
 (let! floaterm_autoclose 1)
 

@@ -1,4 +1,4 @@
-(import-macros {: buf-map!} :conf.macro.keybind)
+(import-macros {: buf-map!} :themis.keybind)
 
 (local {: line
         : getqflist
