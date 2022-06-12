@@ -1,30 +1,14 @@
-(fn cmd! [...] (vim.cmd ...))
-(local {: format
-        : sub} string)
-
-(fn str? [x]
-  (= :string (type x)))
-
-(lambda double-quote [s]
-  "Add double quotes at the beginning and end of the string."
-  (assert (str? s) "expected string for s")
-  (format "\"%s\"" s))
-
-(lambda echo! [s]
+(lambda echo! [msg]
   "Print a vim message without any format."
-  (cmd! (format "echom %s" (double-quote s))))
+  (vim.notify msg vim.log.levels.INFO))
 
-(lambda warn! [s]
+(lambda warn! [msg]
   "Print a vim message with a warning format."
-  (cmd! (format "echohl WarningMsg
-                echom %s
-                echohl None" (double-quote s))))
+  (vim.notify msg vim.log.levels.WARN))
 
-(lambda err! [s]
+(lambda err! [msg]
   "Print a vim message with an error format."
-  (cmd! (format "echohl ErrorMsg
-                echom %s
-                echohl None" (double-quote s))))
+  (vim.notify msg vim.log.levels.ERROR))
 
 {: echo!
  : warn!

@@ -3,7 +3,7 @@
         :report_info report-info!
         :report_ok report-ok!
         :report_warn report-warn!
-        :report_error report-error!} (require :health))
+        :report_error report-error!} vim.health)
 (local {: format} string)
 
 (lambda executable? [command]
@@ -17,7 +17,7 @@
       (report-warn! (format "%s: the command '%s' is not executable." name command)))))
 
 (lambda check! []
-  (report-start! "LSP Servers Executables")
+  (report-start! "LSP server executables")
   (let [configured-servers (config.available_servers)]
     (if (= 0 (length configured-servers))
       (report-info! "no lsp servers have been configured.")
