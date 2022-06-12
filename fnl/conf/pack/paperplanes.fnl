@@ -1,4 +1,4 @@
-(import-macros {: map!} :conf.macro.keybind)
+(import-macros {: map!} :themis.keybind)
 
 (local {: setup} (require :paperplanes))
 

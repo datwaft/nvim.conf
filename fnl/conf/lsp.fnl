@@ -41,10 +41,10 @@
 ;;; On-attach configuration
 ;;; =======================
 (fn on-attach [client bufnr]
-  (import-macros {: local-set!} :conf.macro.opt)
-  (import-macros {: buf-map!} :conf.macro.keybind)
+  (import-macros {: local-set!} :themis.opt)
+  (import-macros {: buf-map!} :themis.keybind)
   (import-macros {: augroup!
-                  : autocmd!} :conf.macro.event)
+                  : autocmd!} :themis.event)
 
   (local {:document_formatting has-formatting?
           :document_range_formatting has-range-formatting?} client.resolved_capabilities)
@@ -109,7 +109,7 @@
   ;; List references
   (buf-map! [n] "<leader>lr" open-ref-float!)
   ;; List document diagnostics
-  (buf-map! [n] "<leader>ld" (open-diag-float! {:bufnr 0}))
+  (buf-map! [n] "<leader>ld" '(open-diag-float! {:bufnr 0}))
   ;; List workspace diagnostics
   (buf-map! [n] "<leader>lD" open-diag-float!)
   ;; List document symbols
@@ -124,11 +124,11 @@
   (when has-formatting?
     (augroup! lsp-format-before-saving
               (autocmd! BufWritePre <buffer>
-                        (format-seq-sync! nil 1000 [:null-ls]))))
+                        '(format-seq-sync! nil 1000 [:null-ls]))))
   ;; Display hints on hover
   (augroup! lsp-display-hints
             (autocmd! [CursorHold CursorHoldI] *.rs
-                      (inlay-hints! {}))))
+                      '(inlay-hints! {}))))
 
 ;;; ==========================
 ;;; Capabilities configuration

@@ -1,3 +1,3 @@
-(import-macros {: map!} :conf.macro.keybind)
+(import-macros {: map!} :themis.keybind)
 
 (map! [n] "<leader>p" "<cmd>Glow<cr>")

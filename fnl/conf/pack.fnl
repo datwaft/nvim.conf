@@ -1,5 +1,5 @@
 (import-macros {: pack
-                : pack! : unpack!} :conf.macro.pack)
+                : pack! : unpack!} :themis.pack)
 
 (local lisp-ft [:fennel
                 :clojure
@@ -16,6 +16,8 @@
 (pack! "rktjmp/hotpot.nvim")
 ;; Dynamic LISP evaluation
 (pack! "Olical/conjure")
+;; Macros
+(pack! "datwaft/themis.nvim")
 
 ;;; =========
 ;;; Aesthetic

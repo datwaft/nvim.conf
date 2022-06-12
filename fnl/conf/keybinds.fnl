@@ -1,4 +1,4 @@
-(import-macros {: map!} :conf.macro.keybind)
+(import-macros {: map!} :themis.keybind)
 
 (local {: getbufinfo
         : getbufvar} vim.fn)
@@ -30,18 +30,18 @@
       ;; This mapping checks if there are buffers with the filesystem explorer filetype
       ;; If there are, every buffer is closed
       ;; If there are not any, a new one is opened using <cmd>Lexplore<cr>
-      (let [explorer-buffers (icollect [_ {: bufnr} (ipairs (getbufinfo))]
-                               (let [filetype (getbufvar bufnr "&filetype")]
-                                 (if (= :netrw filetype) bufnr)))]
-        (if (empty? explorer-buffers) (cmd! "Lexplore")
-          (each [_ bufnr (ipairs explorer-buffers)]
-            (cmd! (format "bdelete! %s" bufnr))))))
+      '(let [explorer-buffers (icollect [_ {: bufnr} (ipairs (getbufinfo))]
+                                (let [filetype (getbufvar bufnr "&filetype")]
+                                  (if (= :netrw filetype) bufnr)))]
+         (if (empty? explorer-buffers) (cmd! "Lexplore")
+           (each [_ bufnr (ipairs explorer-buffers)]
+             (cmd! (format "bdelete! %s" bufnr))))))
 
 ;;; ========
 ;;; Wildmenu
 ;;; ========
 ;; Close the wildmenu
-(map! [c :expr] "<space>" (if (wildmenumode?) "<C-y>" "<space>"))
+(map! [c] "<space>" '(if (wildmenumode?) "<C-y>" "<space>") :expr)
 
 ;;; ========
 ;;; Movement
@@ -66,14 +66,18 @@
 ;;; ============
 ;; Line object
 ; Inner line
-(map! [xo :silent] "il" ":<C-u>normal! g_v^<cr>"
+(map! [xo] "il" ":<C-u>normal! g_v^<cr>"
+      :silent
       "inner line")
 ; Around line
-(map! [xo :silent] "al" ":<C-u>normal! $v0<cr>"
+(map! [xo] "al" ":<C-u>normal! $v0<cr>"
+      :silent
       "around line")
 ;; Document object
 ; Inner document
-(map! [x :silent] "id" ":<C-u>normal! G$Vgg0<cr>"
+(map! [x] "id" ":<C-u>normal! G$Vgg0<cr>"
+      :silent
       "inner document")
-(map! [o :silent] "id" ":<C-u>normal! GVgg<cr>"
+(map! [o] "id" ":<C-u>normal! GVgg<cr>"
+      :silent
       "inner document")

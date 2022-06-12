@@ -1,4 +1,4 @@
-(import-macros {: set!} :conf.macro.opt)
+(import-macros {: set!} :themis.opt)
 (local {: setup
         : mapping
         :config {: compare

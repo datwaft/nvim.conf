@@ -1,5 +1,5 @@
-(import-macros {: set!} :conf.macro.opt)
-(import-macros {: let!} :conf.macro.var)
+(import-macros {: set!} :themis.opt)
+(import-macros {: let!} :themis.var)
 (local {: setup} (require :nvim-treesitter.configs))
 
 (setup {:ensure_installed "all"
