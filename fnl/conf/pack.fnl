@@ -26,7 +26,8 @@
 (pack! "wuelnerdotexe/vim-enfocado" {:as "colorscheme"
                                      :require* "conf.pack.colorscheme"})
 ;; Statusline
-(pack! "feline-nvim/feline.nvim" {:require* "conf.pack.feline"})
+(pack! "nvim-lualine/lualine.nvim" {:require* "conf.pack.lualine"
+                                    :requires ["kyazdani42/nvim-web-devicons"]})
 ;; Treesitter
 (pack! "nvim-treesitter/nvim-treesitter" {:run ":TSUpdate"
                                           :require* "conf.pack.treesitter"
