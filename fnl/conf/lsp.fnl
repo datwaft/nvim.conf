@@ -44,12 +44,11 @@
   (import-macros {: local-set!} :themis.opt)
   (import-macros {: buf-map!} :themis.keybind)
   (import-macros {: augroup!
+                  : clear!
                   : autocmd!} :themis.event)
+  (local {: contains?} (require :themis.lib.seq))
 
-  (local {:document_formatting has-formatting?
-          :document_range_formatting has-range-formatting?} client.resolved_capabilities)
-  (local {:formatting_seq_sync format-seq-sync!
-          :hover open-doc-float!
+  (local {:hover open-doc-float!
           :declaration goto-declaration!
           :definition goto-definition!
           :type_definition goto-type-definition!
@@ -121,10 +120,13 @@
   ;;; Events
   ;;; ======
   ;; Format buffer before saving
-  (when has-formatting?
+  (when (client.supports_method "textDocument/formatting")
     (augroup! lsp-format-before-saving
-              (autocmd! BufWritePre <buffer>
-                        '(format-seq-sync! nil 1000 [:null-ls]))))
+      (clear! :buffer bufnr)
+      (autocmd! BufWritePre <buffer>
+        '(vim.lsp.buf.format {:filter #(not (contains? [:jsonls :tsserver] $))
+                              :bufnr bufnr})
+        :buffer bufnr)))
   ;; Display hints on hover
   (augroup! lsp-display-hints
             (autocmd! [CursorHold CursorHoldI] *.rs
@@ -181,11 +183,7 @@
 (config.tsserver.setup
   (deep-merge
     global-options
-    {:on_attach (fn [client bufnr]
-                  (set client.resolved_capabilities.document_formatting false)
-                  (set client.resolved_capabilities.document_range_formatting false)
-                  (on-attach client bufnr))
-     :root_dir (util.root_pattern "package.json")}))
+    {:root_dir (util.root_pattern "package.json")}))
 ;; ESLint
 (config.eslint.setup global-options)
 ;; CSS
@@ -201,11 +199,7 @@
   (config.jsonls.setup
     (deep-merge
       global-options
-      {:settings {:json {:schemas (json.schemas)}}
-       :on_attach (fn [client bufnr]
-                    (set client.resolved_capabilities.document_formatting false)
-                    (set client.resolved_capabilities.document_range_formatting false)
-                    (on-attach client bufnr))})))
+      {:settings {:json {:schemas (json.schemas)}}})))
 ;; Yaml
 (config.yamlls.setup global-options)
 ;; Toml
