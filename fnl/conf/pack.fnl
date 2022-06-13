@@ -34,7 +34,7 @@
                                                      "nvim-treesitter/nvim-treesitter-refactor"
                                                      "JoosepAlviste/nvim-ts-context-commentstring"]})
 ;; Dim unused variables and functions
-(pack! "narutoxy/dim.lua" {:init "dim"
+(pack! "narutoxy/dim.lua" {:setup* "dim"
                            :requires ["nvim-treesitter/nvim-treesitter"
                                       "neovim/nvim-lspconfig"]})
 ;; Preview substitution
@@ -65,12 +65,12 @@
 ;;; Actions
 ;;; =======
 ;; Comment
-(pack! "numToStr/Comment.nvim" {:init "Comment"})
+(pack! "numToStr/Comment.nvim" {:setup* "Comment"})
 ;; Surround
 (pack! "machakann/vim-sandwich")
 ;; Increment and decrement numbers
 (pack! "zegervdv/nrpattern.nvim" {:requires ["tpope/vim-repeat"]
-                                  :init "nrpattern"})
+                                  :setup* "nrpattern"})
 
 ;;; ========
 ;;; Commands
@@ -92,11 +92,11 @@
 ;; Create missing directories on save
 (pack! "jghauser/mkdir.nvim" {:require* "mkdir"})
 ;; Stabilization
-(pack! "luukvbaal/stabilize.nvim" {:init "stabilize"})
+(pack! "luukvbaal/stabilize.nvim" {:setup* "stabilize"})
 ;; Terminal
 (pack! "voldikss/vim-floaterm" {:require* "conf.pack.floaterm"})
 ;; Sorting
-(pack! "sQVe/sort.nvim" {:init "sort"})
+(pack! "sQVe/sort.nvim" {:setup* "sort"})
 
 ;;; ============
 ;;; Text Editing
