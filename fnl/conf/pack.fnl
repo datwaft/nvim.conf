@@ -117,10 +117,6 @@
                             :requires ["rafamadriz/friendly-snippets"]})
 ;; Emmet
 (pack! "mattn/emmet-vim" {:require* "conf.pack.emmet"})
-;; Easily exit pairs
-(pack! "abecodes/tabout.nvim" {:require* "conf.pack.tabout"
-                               :wants "nvim-treesitter"
-                               :after "nvim-cmp"})
 
 ;;; ===========
 ;;; Integration
