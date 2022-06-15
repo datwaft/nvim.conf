@@ -172,5 +172,5 @@
 (let! markdown_fenced_languages ["ts=typescript"])
 
 ;; Grep
-(set! grepprg "rg --vimgrep")
+(set! grepprg "rg --vimgrep '$*'")
 (set! grepformat "%f:%l:%c:%m")
