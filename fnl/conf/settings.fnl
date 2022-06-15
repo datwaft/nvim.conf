@@ -170,3 +170,7 @@
 
 ;; Markdown
 (let! markdown_fenced_languages ["ts=typescript"])
+
+;; Grep
+(set! grepprg "rg --line-number --column")
+(set! grepformat "%f:%l:%c:%m")
