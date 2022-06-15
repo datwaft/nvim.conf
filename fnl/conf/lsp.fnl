@@ -124,7 +124,7 @@
     (augroup! lsp-format-before-saving
       (clear! :buffer bufnr)
       (autocmd! BufWritePre <buffer>
-        '(vim.lsp.buf.format {:filter #(not (contains? [:jsonls :tsserver] $))
+        '(vim.lsp.buf.format {:filter (fn [client] (not (contains? [:jsonls :tsserver] client.name)))
                               :bufnr bufnr})
         :buffer bufnr)))
   ;; Display hints on hover
