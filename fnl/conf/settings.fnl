@@ -92,9 +92,6 @@
 ;; Winbar configuration
 (set! winbar "%f")
 
-;; Command-line configuration
-(set! cmdheight 0)
-
 ;; Characters configuration
 ; Show whitespace characters
 (set! list)
