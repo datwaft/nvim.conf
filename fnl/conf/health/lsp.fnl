@@ -5,6 +5,7 @@
         :report_warn report-warn!
         :report_error report-error!} vim.health)
 (local {: format} string)
+(local {: nil?} (require :themis.lib.types))
 
 (lambda executable? [command]
   (= 1 (vim.fn.executable command)))
@@ -12,9 +13,11 @@
 (lambda report! [name]
   (assert (= :string (type name)) "expected string for name")
   (let [command (?. config name :cmd 1)]
-    (if (executable? command)
-      (report-ok! (format "%s: the command '%s' is executable." name command))
-      (report-warn! (format "%s: the command '%s' is not executable." name command)))))
+    (if (nil? command)
+      (report-warn! (format "%s: the command is not defined." name))
+      (if (executable? command)
+        (report-ok! (format "%s: the command '%s' is executable." name command))
+        (report-error! (format "%s: the command '%s' is not executable." name command))))))
 
 (lambda check! []
   (report-start! "LSP server executables")
