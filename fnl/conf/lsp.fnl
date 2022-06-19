@@ -130,7 +130,7 @@
   ;; Display hints on hover
   (augroup! lsp-display-hints
     (autocmd! [CursorHold CursorHoldI] *.rs
-              '(inlay-hints! {}))))
+      '(inlay-hints! {}))))
 
 ;;; ==========================
 ;;; Capabilities configuration
