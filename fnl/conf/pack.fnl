@@ -92,6 +92,7 @@
 (pack! "rhysd/conflict-marker.vim")
 ;; Quickfix
 (pack! "kevinhwang91/nvim-bqf")
+(pack! "https://gitlab.com/yorickpeterse/nvim-pqf.git" {:setup* "pqf"})
 ;; Create missing directories on save
 (pack! "jghauser/mkdir.nvim" {:require* "mkdir"})
 ;; Stabilization
