@@ -13,15 +13,15 @@
 (lambda report! [name]
   (assert (= :string (type name)) "expected string for name")
   (let [command (?. config name :cmd 1)]
-    (if (nil? command)
-      (report-warn! (format "%s: the command is not defined." name))
-      (if (executable? command)
-        (report-ok! (format "%s: the command '%s' is executable." name command))
-        (report-error! (format "%s: the command '%s' is not executable." name command))))))
+    (if
+      (nil? command) (report-warn! (format "%s: the command is not defined." name))
+      (executable? command) (report-ok! (format "%s: the command '%s' is executable." name command))
+      (report-error! (format "%s: the command '%s' is not executable." name command)))))
 
 (lambda check! []
   (report-start! "LSP server executables")
-  (let [configured-servers (config.available_servers)]
+  (let [configured-servers (config.available_servers)
+        configured-servers (doto configured-servers (table.sort))]
     (if (= 0 (length configured-servers))
       (report-info! "no lsp servers have been configured.")
       (each [_ server (ipairs configured-servers)] (report! server)))))
