@@ -13,6 +13,5 @@
         new-list (doto current-list (remove current-item))]
     (setqflist new-list "r")))
 
-(buf-map! [n] "<localleader>q" "<cmd>cclose<cr>"
-          "close the quickfix list window")
+(buf-map! [n] "<localleader>q" "<cmd>cclose<cr>")
 (buf-map! [n] "dd" remove-item)

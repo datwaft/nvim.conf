@@ -122,15 +122,15 @@
   ;; Format buffer before saving
   (when (client.supports_method "textDocument/formatting")
     (augroup! lsp-format-before-saving
-      (clear! :buffer bufnr)
+      (clear! {:buffer bufnr})
       (autocmd! BufWritePre <buffer>
         '(vim.lsp.buf.format {:filter (fn [client] (not (contains? [:jsonls :tsserver] client.name)))
                               :bufnr bufnr})
-        :buffer bufnr)))
+        {:buffer bufnr})))
   ;; Display hints on hover
   (augroup! lsp-display-hints
-            (autocmd! [CursorHold CursorHoldI] *.rs
-                      '(inlay-hints! {}))))
+    (autocmd! [CursorHold CursorHoldI] *.rs
+              '(inlay-hints! {}))))
 
 ;;; ==========================
 ;;; Capabilities configuration

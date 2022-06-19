@@ -1,4 +1,5 @@
 (import-macros {: augroup!
+                : clear!
                 : autocmd!} :themis.event)
 
 (local {: expand
@@ -23,8 +24,9 @@
 
 ;; Create folders if non-existent
 (augroup! create-folders-if-non-existent
+  (clear!)
   (autocmd! VimEnter * '(mkdir databases-folder :p)
-            :once))
+            {:once true}))
 
 ;;; =========
 ;;; Utilities

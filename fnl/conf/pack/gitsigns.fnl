@@ -13,8 +13,10 @@
           :toggle_deleted toggle-deleted!} package.loaded.gitsigns)
 
   ;; Navigation
-  (map! [n] "]c" '(if (vim.opt.diff:get) "]c" "<cmd>Gitsigns next_hunk<cr>") :expr)
-  (map! [n] "[c" '(if (vim.opt.diff:get) "[c" "<cmd>Gitsigns prev_hunk<cr>") :expr)
+  (map! [n] "]c" '(if (vim.opt.diff:get) "]c" "<cmd>Gitsigns next_hunk<cr>")
+        {:expr true})
+  (map! [n] "[c" '(if (vim.opt.diff:get) "[c" "<cmd>Gitsigns prev_hunk<cr>")
+        {:expr true})
   ;; Actions
   (map! [nv] "<leader>hs" "<cmd>Gitsigns stage_hunk<cr>")
   (map! [nv] "<leader>hr" "<cmd>Gitsigns reset_hunk<cr>")

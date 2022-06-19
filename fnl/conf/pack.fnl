@@ -13,7 +13,7 @@
 ;; Plugin Manager
 (pack! "wbthomason/packer.nvim")
 ;; Using Fennel to configure neovim
-(pack! "rktjmp/hotpot.nvim")
+(pack! "rktjmp/hotpot.nvim" {:branch "nightly"})
 ;; Dynamic LISP evaluation
 (pack! "Olical/conjure")
 ;; Macros

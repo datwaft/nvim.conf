@@ -5,14 +5,19 @@
 
 (map! [i] "<Tab>" '(if (jumpable-forwards?)
                      "<Plug>(vsnip-jump-next)"
-                     "<Tab>") :expr)
+                     "<Tab>")
+      {:expr true})
+
 (map! [i] "<S-Tab>" '(if (jumpable-backwards?)
                        "<Plug>(vsnip-jump-prev)"
-                       "<S-Tab>") :expr)
+                       "<S-Tab>")
+      {:expr true})
 
 (map! [s] "<Tab>" '(if (jumpable-forwards?)
                      "<Plug>(vsnip-jump-next)"
-                     "<Tab>") :expr)
+                     "<Tab>")
+      {:expr true})
 (map! [s] "<S-Tab>" '(if (jumpable-backwards?)
                        "<Plug>(vsnip-jump-prev)"
-                       "<S-Tab>") :expr)
+                       "<S-Tab>")
+      {:expr true})

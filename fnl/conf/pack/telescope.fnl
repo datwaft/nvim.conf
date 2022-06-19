@@ -13,20 +13,16 @@
         : expand} vim.fn)
 
 ;; Search file by name
-(map! [n] "<leader>ff" find-files!
-      "Find a file")
+(map! [n] "<leader>ff" find-files!)
 
 ;; Search file by content
-(map! [n] "<leader>fg" live-grep!
-      "Live grep a file")
+(map! [n] "<leader>fg" live-grep!)
 
 ;; Search buffer list
-(map! [n] "<leader>fb" buffers!
-      "Find a buffer")
+(map! [n] "<leader>fb" buffers!)
 
 ;; Search help tags
-(map! [n] "<leader>fh" help-tags!
-      "Find a help tag")
+(map! [n] "<leader>fh" help-tags!)
 
 ;; Search quickfix list
 (map! [n] "<leader>fq" quickfix!)

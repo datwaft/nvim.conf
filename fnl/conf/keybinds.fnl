@@ -17,11 +17,9 @@
 ;;; Quickfix window
 ;;; ===============
 ;; Open or focus the quickfix window
-(map! [n] "<localleader>q" "<cmd>copen<cr>"
-      "open or focus the quickfix window")
+(map! [n] "<localleader>q" "<cmd>copen<cr>")
 ;; Close the quickfix window
-(map! [n] "<localleader>Q" "<cmd>cclose<cr>"
-      "close the quickfix list window")
+(map! [n] "<localleader>Q" "<cmd>cclose<cr>")
 
 ;;; ===================
 ;;; Filesystem Explorer
@@ -41,7 +39,8 @@
 ;;; Wildmenu
 ;;; ========
 ;; Close the wildmenu
-(map! [c] "<space>" '(if (wildmenumode?) "<C-y>" "<space>") :expr)
+(map! [c] "<space>" '(if (wildmenumode?) "<C-y>" "<space>")
+      {:expr true})
 
 ;;; ========
 ;;; Movement
@@ -67,17 +66,13 @@
 ;; Line object
 ; Inner line
 (map! [xo] "il" ":<C-u>normal! g_v^<cr>"
-      :silent
-      "inner line")
+      {:silent true})
 ; Around line
 (map! [xo] "al" ":<C-u>normal! $v0<cr>"
-      :silent
-      "around line")
+      {:silent true})
 ;; Document object
 ; Inner document
 (map! [x] "id" ":<C-u>normal! G$Vgg0<cr>"
-      :silent
-      "inner document")
+      {:silent true})
 (map! [o] "id" ":<C-u>normal! GVgg<cr>"
-      :silent
-      "inner document")
+      {:silent true})
