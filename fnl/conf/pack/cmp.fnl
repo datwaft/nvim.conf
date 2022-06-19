@@ -26,7 +26,7 @@
         :sources [{:name "nvim_lsp"}
                   {:name "vsnip"}
                   {:name "path"}
-                  {:name "buffer"}
+                  {:name "buffer" :option {:keyword_pattern "\\k\\+"}}
                   {:name "tmux"}]
         :sorting {:comparators [compare.offset
                                 compare.exact
