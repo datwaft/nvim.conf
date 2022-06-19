@@ -97,8 +97,6 @@
 (pack! "jghauser/mkdir.nvim" {:require* "mkdir"})
 ;; Stabilization
 (pack! "luukvbaal/stabilize.nvim" {:setup* "stabilize"})
-;; Terminal
-(pack! "voldikss/vim-floaterm" {:require* "conf.pack.floaterm"})
 ;; Sorting
 (pack! "sQVe/sort.nvim" {:setup* "sort"})
 
