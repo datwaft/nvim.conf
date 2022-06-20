@@ -89,7 +89,7 @@
 ;;; Enhancement
 ;;; ===========
 ;; Conflicts
-(pack! "rhysd/conflict-marker.vim")
+(pack! "akinsho/git-conflict.nvim" {:require* "conf.pack.git-conflict"})
 ;; Quickfix
 (pack! "kevinhwang91/nvim-bqf")
 (pack! "https://gitlab.com/yorickpeterse/nvim-pqf.git" {:setup* "pqf"})
