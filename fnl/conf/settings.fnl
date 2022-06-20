@@ -125,7 +125,7 @@
 (set! wildignorecase)
 
 ;; Support fuzzy finding
-(set! path+ "**")
+(set! path ["." "**"])
 
 ;;; ==========================
 ;;; Command-mode configuration
