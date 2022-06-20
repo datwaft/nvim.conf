@@ -138,6 +138,8 @@
 (local capabilities (let [{: update_capabilities} (require :cmp_nvim_lsp)
                           {: make_client_capabilities} vim.lsp.protocol]
                       (update_capabilities (make_client_capabilities))))
+(set capabilities.textDocument.foldingRange {:dynamicRegistration false
+                                             :lineFoldingOnly true})
 
 ;;; =========================
 ;;; Global options definition

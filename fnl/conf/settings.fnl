@@ -105,13 +105,18 @@
 (set! signcolumn "auto:1-9")
 
 ;; Fold configuration
+; Enable folding
+(set! foldenable)
+; Display column for folds
+(set! foldcolumn "1")
+; Fold column characters
+(set! fillchars {:eob " "
+                 :fold " "
+                 :foldopen ""
+                 :foldsep " "
+                 :foldclose ""})
 ; Start with everything unfolded
 (set! foldlevelstart 99)
-; Fold format
-(set! fillchars "fold: ")
-(set! foldtext #(vim.fn.printf "   %-6d%s"
-                               (- vim.v.foldend (+ vim.v.foldstart 1))
-                               (vim.fn.getline vim.v.foldstart)))
 
 ;;; ========================
 ;;; Completion configuration

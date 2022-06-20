@@ -99,6 +99,9 @@
 (pack! "luukvbaal/stabilize.nvim" {:setup* "stabilize"})
 ;; Sorting
 (pack! "sQVe/sort.nvim" {:setup* "sort"})
+;; Folding
+(pack! "kevinhwang91/nvim-ufo" {:setup* "ufo"
+                                :requires ["kevinhwang91/promise-async"]})
 
 ;;; ============
 ;;; Text Editing
