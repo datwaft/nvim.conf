@@ -156,8 +156,7 @@
 (pack! "weirongxu/plantuml-previewer.vim" {:requires ["tyru/open-browser.vim"]
                                            :ft [:plantuml]})
 ;; Markdown
-(pack! "ellisonleao/glow.nvim" {:require* "conf.pack.glow"
-                                :ft [:markdown]})
+(pack! "ellisonleao/glow.nvim" {:ft [:markdown]})
 
 ;;; =========
 ;;; Filetypes
