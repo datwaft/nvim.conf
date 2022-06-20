@@ -21,6 +21,20 @@
 ;; Close the quickfix window
 (map! [n] "<localleader>Q" "<cmd>cclose<cr>")
 
+;;; =========
+;;; Tab pages
+;;; =========
+;; Create a new tab page
+(map! [n] "<C-t>c" "<cmd>tabnew<cr>")
+;; List tabs
+(map! [n] "<C-t>w" "<cmd>tabs<cr>")
+;; Navigate to the next tab page
+(map! [n] "<C-t>n" "<cmd>tabNext<cr>")
+;; Navigate to the previous tab page
+(map! [n] "<C-t>p" "<cmd>tabprevious<cr>")
+;; Kill current tab page
+(map! [n] "<C-t>&" "<cmd>tabclose<cr>")
+
 ;;; ===================
 ;;; Filesystem Explorer
 ;;; ===================
