@@ -124,6 +124,9 @@
 (set! wildcharm (byte (escape "<tab>")))
 (set! wildignorecase)
 
+;; Support fuzzy finding
+(set! path+ "**")
+
 ;;; ==========================
 ;;; Command-mode configuration
 ;;; ==========================
