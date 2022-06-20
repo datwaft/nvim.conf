@@ -131,8 +131,6 @@
 (pack! "lambdalisue/gina.vim")
 ;; TMUX
 (pack! "aserowy/tmux.nvim" {:require* "conf.pack.tmux"})
-;; Browsers
-(pack! "glacambre/firenvim" {:run #(vim.fn.firenvim#install 0)})
 ;; Conjure with Clj
 (pack! "clojure-vim/vim-jack-in" {:requires ["tpope/vim-dispatch"
                                              "radenling/vim-dispatch-neovim"]})
