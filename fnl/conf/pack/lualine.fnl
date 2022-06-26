@@ -1,3 +1,4 @@
 (local {: setup} (require :lualine))
 
-(setup {:options {:globalstatus true}})
+(setup {:options {:globalstatus true
+                  :theme "enfocado"}})
