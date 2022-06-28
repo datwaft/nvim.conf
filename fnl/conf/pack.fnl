@@ -180,6 +180,8 @@
 ;; Svelte
 (pack! "evanleck/vim-svelte" {:requires ["othree/html5.vim"
                                          "pangloss/vim-javascript"]})
+;; Janet
+(pack! "bakpakin/janet.vim")
 
 ;;; ==============================
 ;;; Language Server Protocol (LSP)
