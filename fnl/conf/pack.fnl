@@ -5,7 +5,8 @@
                 :clojure
                 :lisp
                 :racket
-                :scheme])
+                :scheme
+                :janet])
 
 ;;; ==========
 ;;; Essentials
