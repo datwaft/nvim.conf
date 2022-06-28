@@ -14,9 +14,16 @@
               :warn ""
               :info ""
               :hint ""})
+(local lisp-filetypes [:fennel
+                       :clojure
+                       :lisp
+                       :racket
+                       :scheme
+                       :janet])
 
 (tset _G :conf {: databases-folder
-                : icons})
+                : icons
+                : lisp-filetypes})
 
 ;;; =====
 ;;; Setup

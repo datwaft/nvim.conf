@@ -1,13 +1,6 @@
 (import-macros {: pack
                 : pack! : unpack!} :themis.pack)
 
-(local lisp-ft [:fennel
-                :clojure
-                :lisp
-                :racket
-                :scheme
-                :janet])
-
 ;;; ==========
 ;;; Essentials
 ;;; ==========
@@ -109,7 +102,7 @@
 ;;; ============
 ;; Parentheses inference
 (pack! "eraserhd/parinfer-rust" {:run "cargo build --release"
-                                 :ft lisp-ft})
+                                 :ft conf.lisp-filetypes})
 ;; Completion
 (pack! "hrsh7th/nvim-cmp" {:require* "conf.pack.cmp"
                            :requires ["hrsh7th/cmp-nvim-lsp"
