@@ -24,10 +24,10 @@
                                     :requires ["kyazdani42/nvim-web-devicons"]})
 ;; Treesitter
 (pack! "nvim-treesitter/nvim-treesitter" {:run ":TSUpdate"
-                                          :require* "conf.pack.treesitter"
-                                          :requires ["p00f/nvim-ts-rainbow"
-                                                     "nvim-treesitter/nvim-treesitter-refactor"
-                                                     "JoosepAlviste/nvim-ts-context-commentstring"]})
+                                          :require* "conf.pack.treesitter"})
+(pack! "p00f/nvim-ts-rainbow" {:requires ["nvim-treesitter/nvim-treesitter"]})
+(pack! "nvim-treesitter/nvim-treesitter-refactor" {:requires ["nvim-treesitter/nvim-treesitter"]})
+(pack! "JoosepAlviste/nvim-ts-context-commentstring" {:requires ["nvim-treesitter/nvim-treesitter"]})
 ;; Dim unused variables and functions
 (pack! "narutoxy/dim.lua" {:setup* "dim"
                            :requires ["nvim-treesitter/nvim-treesitter"
