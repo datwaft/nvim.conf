@@ -190,6 +190,8 @@
 ;;; ==============================
 ;; Configuration
 (pack! "neovim/nvim-lspconfig")
+;; Typescript
+(pack! "jose-elias-alvarez/typescript.nvim")
 ;; Lua Neovim Development
 (pack! "folke/lua-dev.nvim")
 ;; SchemaStore

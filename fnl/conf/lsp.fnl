@@ -7,6 +7,7 @@
                           :lsp_signature
                           :lsp_extensions
                           :lspconfig
+                          :typescript
                           :cmp_nvim_lsp
                           :schemastore])) (lua :return)))
 
@@ -178,10 +179,10 @@
                        {:init_options {:lint true}
                         :root_dir (util.root_pattern "deno.json")}))
 ; Node
-(config.tsserver.setup
-  (deep-merge
-    global-options
-    {:root_dir (util.root_pattern "package.json")}))
+(let [typescript (require :typescript)]
+  (typescript.setup {:server (deep-merge
+                               global-options
+                               {:root_dir (util.root_pattern "package.json")})}))
 ;; ESLint
 (config.eslint.setup global-options)
 ;; CSS
