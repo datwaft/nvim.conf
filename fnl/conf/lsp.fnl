@@ -163,8 +163,6 @@
 (config.bashls.setup global-options)
 ;; C & C++
 (config.clangd.setup global-options)
-;; Arduino
-(config.arduino_language_server.setup global-options)
 ;; CMake
 (config.cmake.setup global-options)
 ;; Python
