@@ -103,14 +103,15 @@
 ;; Parentheses inference
 (pack! "eraserhd/parinfer-rust" {:run "cargo build --release"
                                  :ft conf.lisp-filetypes})
-;; Completion
-(pack! "hrsh7th/nvim-cmp" {:require* "conf.pack.cmp"
-                           :requires ["hrsh7th/cmp-nvim-lsp"
-                                      "hrsh7th/cmp-buffer"
-                                      "hrsh7th/cmp-path"
-                                      "andersevenrud/cmp-tmux"
-                                      (pack "hrsh7th/cmp-vsnip" {:requires "hrsh7th/vim-vsnip"})
-                                      "lukas-reineke/cmp-under-comparator"]})
+;; ;; Completion
+(pack! "hrsh7th/nvim-cmp" {:require* "conf.pack.cmp"})
+(pack! "hrsh7th/cmp-nvim-lsp" {:requires ["hrsh7th/nvim-cmp"]})
+(pack! "hrsh7th/cmp-buffer" {:requires ["hrsh7th/nvim-cmp"]})
+(pack! "hrsh7th/cmp-path" {:requires ["hrsh7th/nvim-cmp"]})
+(pack! "andersevenrud/cmp-tmux" {:requires ["hrsh7th/nvim-cmp"]})
+(pack! "hrsh7th/cmp-vsnip" {:requires ["hrsh7th/nvim-cmp"
+                                       "hrsh7th/vim-vsnip"]})
+(pack! "lukas-reineke/cmp-under-comparator" {:requires ["hrsh7th/nvim-cmp"]})
 ;; Snippets
 (pack! "hrsh7th/vim-vsnip" {:require* "conf.pack.vsnip"
                             :requires ["rafamadriz/friendly-snippets"]})
