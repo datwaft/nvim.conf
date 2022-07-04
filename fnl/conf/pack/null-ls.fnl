@@ -23,7 +23,6 @@
 (local sources [formatting.stylua
                 formatting.prettierd
                 formatting.markdownlint
-                formatting.sqlformat
                 formatting.black
                 formatting.isort
                 diagnostics.pylint])
