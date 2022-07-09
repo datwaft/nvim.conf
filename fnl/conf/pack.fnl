@@ -89,6 +89,8 @@
 ;;; ===========
 ;;; Enhancement
 ;;; ===========
+;; Change colorscheme depending on MacOS System Appearance
+(pack! "f-person/auto-dark-mode.nvim" {:require* "conf.pack.auto-dark-mode"})
 ;; Conflicts
 (pack! "akinsho/git-conflict.nvim" {:require* "conf.pack.git-conflict"})
 ;; Quickfix
