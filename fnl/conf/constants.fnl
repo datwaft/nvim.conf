@@ -34,14 +34,3 @@
   (clear!)
   (autocmd! VimEnter * '(mkdir databases-folder :p)
             {:once true}))
-
-;;; =========
-;;; Utilities
-;;; =========
-
-(fn rerequire [module-name]
-  "Require the module ignoring the cache."
-  (tset package.loaded module-name nil)
-  (require module-name))
-
-(tset _G :rerequire rerequire)
