@@ -5,13 +5,14 @@ FROM rust
 
 # Install dependencies
 RUN apt-get update -y && \
-  apt-get install -y curl git golang
+  apt-get install -y git golang ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen
 
 # Install neovim
 WORKDIR /tmp
-RUN curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz
-RUN tar xzf nvim-linux64.tar.gz -C /opt
-ENV PATH /opt/nvim-linux64/bin:$PATH
+RUN git clone https://github.com/neovim/neovim
+WORKDIR /tmp/neovim
+RUN make CMAKE_BUILD_TYPE=Release
+RUN make install
 
 # Install essential neovim plugins
 WORKDIR /root/.local/share/nvim/site/pack/packer/start
