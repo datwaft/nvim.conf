@@ -67,6 +67,10 @@ if pcall(require, "hotpot") then
 		vim.fn.stdpath("config") .. "/after/ftplugin/.+",
 		function(path)
 			return path
+		end,
+		vim.fn.stdpath("config") .. "/fnl/conf/health.fnl",
+		function()
+			return vim.fn.stdpath("config") .. "/lua/conf/health.lua"
 		end
 	)
 	-- Import neovim configuration

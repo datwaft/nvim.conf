@@ -7,3 +7,4 @@
 # AOT complation files
 /after/ftdetect/*.lua
 /after/ftplugin/*.lua
+/lua/conf/health.lua
