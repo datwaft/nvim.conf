@@ -56,6 +56,19 @@ if pcall(require, "hotpot") then
 	require("hotpot").setup({
 		provide_require_fennel = true,
 	})
+	-- AOT compile
+	require("hotpot.api.make").build(
+		vim.fn.stdpath("config"),
+		{ verbosity = 0 },
+		vim.fn.stdpath("config") .. "/after/ftdetect/.+",
+		function(path)
+			return path
+		end,
+		vim.fn.stdpath("config") .. "/after/ftplugin/.+",
+		function(path)
+			return path
+		end
+	)
 	-- Import neovim configuration
 	require("conf")
 else

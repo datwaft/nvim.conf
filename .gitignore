@@ -3,3 +3,7 @@
 
 # Packer compilation
 /plugin/packer_compiled.lua
+
+# AOT complation files
+/after/ftdetect/*.lua
+/after/ftplugin/*.lua
