@@ -85,9 +85,6 @@
 ;; Status configuration
 (set! noshowmode)
 
-;; Winbar configuration
-(set! winbar "%f")
-
 ;; Characters configuration
 ; Show whitespace characters
 (set! list)
