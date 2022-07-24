@@ -1,3 +1,6 @@
-local module_name = "conf.after.ftplugin.lua"
-package.loaded[module_name] = nil
-require(module_name)
+local _local_1_ = vim.fn
+local stdpath = _local_1_["stdpath"]
+do end (vim.opt_local.suffixesadd):prepend("/init.lua")
+do end (vim.opt_local.suffixesadd):prepend(".lua")
+do end (vim.opt_local)["includeexpr"] = "substitute(v:fname,'\\\\.','/','g')"
+return nil

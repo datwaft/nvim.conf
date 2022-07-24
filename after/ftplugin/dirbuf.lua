@@ -1,3 +1,3 @@
-local module_name = "conf.after.ftplugin.dirbuf"
-package.loaded[module_name] = nil
-require(module_name)
+vim.opt_local["spell"] = false
+vim.opt_local["listchars"] = {trail = "\194\183", tab = "  ", nbsp = "\194\183"}
+return nil

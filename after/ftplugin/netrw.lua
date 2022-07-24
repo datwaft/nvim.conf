@@ -1,4 +1,1 @@
-local module_name = "conf.after.ftplugin.netrw"
-package.loaded[module_name] = nil
-require(module_name)
-
+return vim.keymap.set({"n"}, "<C-n>", "<cmd>quit<cr>", {buffer = 0, desc = "<cmd>quit<cr>"})

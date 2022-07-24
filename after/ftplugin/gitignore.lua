@@ -1,3 +1,2 @@
-local module_name = "conf.after.ftplugin.gitignore"
-package.loaded[module_name] = nil
-require(module_name)
+vim.opt_local["spell"] = false
+return nil
