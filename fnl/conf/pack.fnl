@@ -11,12 +11,10 @@
 ;;; ==========
 ;;; Essentials
 ;;; ==========
-;; Plugin Manager
+;; Package Management
 (pack! "wbthomason/packer.nvim")
 ;; Using Fennel to configure neovim
 (pack! "rktjmp/hotpot.nvim" {:branch "nightly"})
-;; Dynamic LISP evaluation
-(pack! "Olical/conjure")
 ;; Macros
 (pack! "datwaft/themis.nvim")
 
@@ -110,6 +108,8 @@
 ;; Parentheses inference
 (pack! "eraserhd/parinfer-rust" {:run "cargo build --release"
                                  :ft conf.lisp-filetypes})
+;; Dynamic LISP evaluation
+(pack! "Olical/conjure")
 ;; ;; Completion
 (pack! "hrsh7th/nvim-cmp" {:require* "conf.pack.cmp"})
 (pack! "hrsh7th/cmp-nvim-lsp" {:requires ["hrsh7th/nvim-cmp"]})
