@@ -25,7 +25,8 @@
                 formatting.markdownlint
                 formatting.black
                 formatting.isort
-                diagnostics.pylint])
+                diagnostics.pylint
+                diagnostics.selene])
 
 (setup {: sources
         :on_attach on-attach})
