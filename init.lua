@@ -48,7 +48,6 @@ vim.g.maplocalleader = vim.api.nvim_replace_termcodes("<space>", true, true, tru
 -- Install essential plugins
 assert_installed_plugin("wbthomason/packer.nvim")
 assert_installed_plugin("rktjmp/hotpot.nvim", "nightly")
-assert_installed_plugin("Olical/conjure")
 assert_installed_plugin("datwaft/themis.nvim")
 
 if pcall(require, "hotpot") then
