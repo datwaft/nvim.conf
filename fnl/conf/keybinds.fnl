@@ -2,7 +2,6 @@
 
 (local {: getbufinfo
         : getbufvar} vim.fn)
-(local {:cmd cmd!} vim)
 (local {: format} string)
 (fn wildmenumode? [...] (= (vim.fn.wildmenumode ...) 1))
 (fn empty? [xs] (= 0 (length xs)))

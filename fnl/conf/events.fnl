@@ -7,7 +7,6 @@
 (local {: echo!} (require :conf.lib.io))
 (local {: line
         : mode} vim.fn)
-(fn cmd! [...] (vim.cmd ...))
 (fn bufexists? [...] (= (vim.fn.bufexists ...) 1))
 
 ;;; ======
@@ -22,7 +21,7 @@
   (clear!)
   (autocmd! BufReadPost * '(if (and (> (line "'\"") 1)
                                     (<= (line "'\"") (line "$")))
-                             (cmd! "normal! g'\""))))
+                             (vim.cmd.normal {:args ["g'\""] :bang true}))))
 
 ;;; ======
 ;;; Splits
@@ -41,7 +40,7 @@
   (autocmd! [FocusGained BufEnter CursorHold CursorHoldI] *
             '(if (and (not= :c (mode))
                       (not (bufexists? "[Command Line]")))
-               (cmd! "checktime")))
+               (vim.cmd.checktime)))
   (autocmd! FileChangedShellPost *
             '(echo! "File changed on disk. Buffer reloaded.")))
 
