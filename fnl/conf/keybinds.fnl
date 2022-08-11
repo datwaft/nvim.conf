@@ -34,20 +34,6 @@
 ;; Kill current tab page
 (map! [n] "<C-t>&" "<cmd>tabclose<cr>")
 
-;;; ===================
-;;; Filesystem Explorer
-;;; ===================
-(map! [n] "<C-n>"
-      ;; This mapping checks if there are buffers with the filesystem explorer filetype
-      ;; If there are, every buffer is closed
-      ;; If there are not any, a new one is opened using <cmd>Lexplore<cr>
-      '(let [explorer-buffers (icollect [_ {: bufnr} (ipairs (getbufinfo))]
-                                (let [filetype (getbufvar bufnr "&filetype")]
-                                  (if (= :netrw filetype) bufnr)))]
-         (if (empty? explorer-buffers) (cmd! "Lexplore")
-           (each [_ bufnr (ipairs explorer-buffers)]
-             (cmd! (format "bdelete! %s" bufnr))))))
-
 ;;; ========
 ;;; Wildmenu
 ;;; ========
