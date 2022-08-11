@@ -12,7 +12,7 @@ end
 local function assert_installed_plugin(plugin, branch)
   local _, _, plugin_name = string.find(plugin, [[%S+/(%S+)]])
   local plugin_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/" .. plugin_name
-  if vim.fn.empty(vim.fn.glob(plugin_path)) ~= 0 then
+  if vim.fn.empty(plugin_path) ~= 0 then
     fprint("Couldn't find '%s', cloning new copy to %s", plugin_name, plugin_path)
     if branch ~= nil then
       vim.fn.system({
