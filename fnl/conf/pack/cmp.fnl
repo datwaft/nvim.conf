@@ -16,13 +16,13 @@
                       "<down>" cmp.config.disable
                       "<Tab>" (cmp.mapping
                                 (fn [fallback]
-                                  (if (cmp.visible) (cmp.selext_next_item)
+                                  (if (cmp.visible) (cmp.select_next_item)
                                     (luasnip.expand_or_jumpable) (luasnip.expand_or_jump)
                                     (fallback)))
                                 [:i :s])
                       "<S-Tab>" (cmp.mapping
                                   (fn [fallback]
-                                    (if (cmp.visible) (cmp.selext_prev_item)
+                                    (if (cmp.visible) (cmp.select_prev_item)
                                       (luasnip.jumpable -1) (luasnip.jump -1)
                                       (fallback)))
                                   [:i :s])
