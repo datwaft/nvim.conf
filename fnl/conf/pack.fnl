@@ -1,13 +1,6 @@
 (import-macros {: pack
                 : pack! : unpack!} :themis.pack)
 
-;;; =========================
-;;; Configure Package Manager
-;;; =========================
-; The max_jobs key is set because of wbthomason/packer.nvim#202
-(let [packer (require :packer)]
-  (packer.init {:max_jobs 50}))
-
 ;;; ==========
 ;;; Essentials
 ;;; ==========
