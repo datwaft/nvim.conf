@@ -82,6 +82,8 @@
 ;;; ===========
 ;;; Enhancement
 ;;; ===========
+;; Keybind discoverability
+(pack! "folke/which-key.nvim" {:setup* "which-key"})
 ;; Spell-checking
 (pack! "lewis6991/spellsitter.nvim" {:setup* "spellsitter"})
 ;; Conflicts
