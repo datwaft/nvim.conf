@@ -83,7 +83,7 @@
 ;;; Enhancement
 ;;; ===========
 ;; Spell-checking
-(pack! "lewis6991/spellsitter.nvim")
+(pack! "lewis6991/spellsitter.nvim" {:setup* "spellsitter"})
 ;; Conflicts
 (pack! "akinsho/git-conflict.nvim" {:require* "conf.pack.git-conflict"})
 ;; Quickfix
