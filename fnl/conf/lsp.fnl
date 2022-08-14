@@ -45,12 +45,6 @@
                           :hint_scheme "DiagnosticSignInfo"}
                          bufnr))
 
-  ;;; ==========
-  ;;; Completion
-  ;;; ==========
-  ;; Enable omnifunc-completion
-  (local-set! omnifunc "v:lua.vim.lsp.omnifunc")
-
   ;;; ========
   ;;; Keybinds
   ;;; ========
