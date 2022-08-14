@@ -122,8 +122,6 @@
 ;; Snippets
 (pack! "L3MON4D3/LuaSnip" {:require* "conf.pack.luasnip"
                            :requires ["rafamadriz/friendly-snippets"]})
-;; Emmet
-(pack! "mattn/emmet-vim" {:require* "conf.pack.emmet"})
 
 ;;; ===========
 ;;; Integration

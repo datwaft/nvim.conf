@@ -181,6 +181,8 @@
 (config.cssls.setup global-options)
 ;; Html
 (config.html.setup global-options)
+;; Emmet
+(config.emmet_ls.setup global-options)
 ;; Vue
 (config.volar.setup global-options)
 ;; Svelte
