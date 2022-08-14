@@ -55,7 +55,7 @@
 (set! formatoptions [:q :j])
 
 ;; Spell-checking configuration
-(set! nospell)
+(set! spell)
 (set! spelllang [:en])
 (set! spelloptions [:camel])
 
