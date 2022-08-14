@@ -44,6 +44,13 @@
 ;;; ========
 ;;; Movement
 ;;; ========
+;; Move words with <A-Right> and <A-Left>
+(map! [nvo] "<A-Left>" "b")
+(map! [nvo] "<A-Right>" "e")
+(map! [i] "<A-Left>" "<C-o>b")
+(map! [i] "<A-Right>" "<C-o>e<Right>")
+(map! [c] "<A-Left>" "<S-Left>")
+(map! [c] "<A-Right>" "<S-Right>")
 ;; Move to the beginning
 (map! [nvo] "<C-h>" "^")
 (map! [nvo] "<C-left>" "^")
