@@ -60,7 +60,7 @@ if pcall(require, "hotpot") then
   local configuration_folder = vim.fn.stdpath("config")
   local augroup = vim.api.nvim_create_augroup("enable-diagnostics-for-configuration-folder", {})
   vim.api.nvim_create_autocmd({ "BufEnter", "BufNew" }, {
-    pattern = configuration_folder .. "/*",
+    pattern = configuration_folder .. "/*.fnl",
     group = augroup,
     callback = function()
       local diagnostics = require("hotpot.api.diagnostics")
