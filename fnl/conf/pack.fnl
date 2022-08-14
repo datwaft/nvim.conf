@@ -27,6 +27,8 @@
 ;; Statusline
 (pack! "nvim-lualine/lualine.nvim" {:require* "conf.pack.lualine"
                                     :requires ["kyazdani42/nvim-web-devicons"]})
+;; Better UI (vim.ui.select & vim.ui.input)
+(pack! "stevearc/dressing.nvim")
 ;; Treesitter
 (pack! "nvim-treesitter/nvim-treesitter" {:run ":TSUpdate"
                                           :require* "conf.pack.treesitter"})
