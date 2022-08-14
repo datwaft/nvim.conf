@@ -2,7 +2,7 @@
 ;;; Configuration
 ;;; =============
 (vim.diagnostic.config {:underline {:severity {:min vim.diagnostic.severity.INFO}}
-                        :signs {:severity {:min vim.diagnostic.severity.INFO}}
+                        :signs {:severity {:min vim.diagnostic.severity.HINT}}
                         :virtual_text {:severity {:min vim.diagnostic.severity.INFO}}
                         :float {:show_header false
                                 :source "if_many"

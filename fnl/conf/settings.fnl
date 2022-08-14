@@ -95,7 +95,7 @@
 
 ;; Sign column
 ; Always show sign column
-(set! signcolumn "auto:1-2")
+(set! signcolumn "yes:1")
 
 ;; Fold configuration
 ; Enable folding
