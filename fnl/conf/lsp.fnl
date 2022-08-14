@@ -14,10 +14,10 @@
 ;;; =======================
 ;;; Aesthetic configuration
 ;;; =======================
-(let [{: with
-       : handlers} vim.lsp]
-  (set vim.lsp.handlers.textDocument/signatureHelp (with handlers.signature_help {:border "single"}))
-  (set vim.lsp.handlers.textDocument/hover (with handlers.hover {:border "single"})))
+(set vim.lsp.handlers.textDocument/signatureHelp
+     (vim.lsp.with vim.lsp.handlers.signature_help {:border "single"}))
+(set vim.lsp.handlers.textDocument/hover
+     (vim.lsp.with vim.lsp.handlers.hover {:border "single"}))
 
 ;;; =======================
 ;;; On-attach configuration
@@ -28,19 +28,10 @@
   (import-macros {: augroup!
                   : clear!
                   : autocmd!} :themis.event)
+
   (local {: contains?} (require :themis.lib.seq))
 
-  (local {:hover open-doc-float!
-          :declaration goto-declaration!
-          :definition goto-definition!
-          :type_definition goto-type-definition!
-          :code_action open-code-action-float!
-          :rename rename!} vim.lsp.buf)
-  (local {:inlay_hints inlay-hints!} (require :lsp_extensions))
-  (local {:lsp_implementations open-impl-float!
-          :lsp_references open-ref-float!
-          :lsp_document_symbols open-local-symbol-float!
-          :lsp_workspace_symbols open-workspace-symbol-float!} (require :telescope.builtin))
+  (local telescope (require :telescope.builtin))
 
   ;;; =========
   ;;; Signature
@@ -65,25 +56,25 @@
   ;;; Keybinds
   ;;; ========
   ;; Show documentation
-  (buf-map! [n] "K" open-doc-float!)
+  (buf-map! [n] "K" vim.lsp.buf.hover)
   ;; Open code-actions menu
-  (buf-map! [nv] "<leader>a" open-code-action-float!)
+  (buf-map! [nv] "<leader>a" vim.lsp.buf.code_action)
   ;; Rename symbol
-  (buf-map! [nv] "<leader>rn" rename!)
+  (buf-map! [nv] "<leader>rn" vim.lsp.buf.rename)
   ;; Go to declaration
-  (buf-map! [n] "<leader>gD" goto-declaration!)
+  (buf-map! [n] "<leader>gD" vim.lsp.buf.declaration)
   ;; Go to definition
-  (buf-map! [n] "<leader>gd" goto-definition!)
+  (buf-map! [n] "<leader>gd" vim.lsp.buf.definition)
   ;; Go to type definition
-  (buf-map! [n] "<leader>gt" goto-type-definition!)
+  (buf-map! [n] "<leader>gt" vim.lsp.buf.type_definition)
   ;; List implementations
-  (buf-map! [n] "<leader>li" open-impl-float!)
+  (buf-map! [n] "<leader>li" telescope.lsp_implementations)
   ;; List references
-  (buf-map! [n] "<leader>lr" open-ref-float!)
-  ;; List document symbols
-  (buf-map! [n] "<leader>ls" open-local-symbol-float!)
+  (buf-map! [n] "<leader>lr" telescope.lsp_references)
+  ;; List buffer symbols
+  (buf-map! [n] "<leader>ls" telescope.lsp_document_symbols)
   ;; List workspace symbols
-  (buf-map! [n] "<leader>lS" open-workspace-symbol-float!)
+  (buf-map! [n] "<leader>lS" telescope.lsp_workspace_symbols)
 
   ;;; ======
   ;;; Events
@@ -97,16 +88,16 @@
                               :bufnr bufnr})
         {:buffer bufnr})))
   ;; Display hints on hover
-  (augroup! lsp-display-hints
-    (autocmd! [CursorHold CursorHoldI] *.rs
-      '(inlay-hints! {}))))
+  (let [extensions (require :lsp_extensions)]
+    (augroup! lsp-display-hints
+      (clear!)
+      (autocmd! [CursorHold CursorHoldI] *.rs '(extensions.inlay_hints {})))))
 
 ;;; ==========================
 ;;; Capabilities configuration
 ;;; ==========================
-(local capabilities (let [{: update_capabilities} (require :cmp_nvim_lsp)
-                          {: make_client_capabilities} vim.lsp.protocol]
-                      (update_capabilities (make_client_capabilities))))
+(local capabilities (let [cmp (require :cmp_nvim_lsp)]
+                      (cmp.update_capabilities (vim.lsp.protocol.make_client_capabilities))))
 (set capabilities.textDocument.foldingRange {:dynamicRegistration false
                                              :lineFoldingOnly true})
 
@@ -121,8 +112,6 @@
 ;;; ====================
 (local {: deep-merge} (require :conf.lib.table))
 (local config (require :lspconfig))
-(local {: util} config)
-(local {: expand} vim.fn)
 
 ;; Docker
 (config.dockerls.setup global-options)
@@ -137,7 +126,7 @@
 ;; Python
 (config.pyright.setup (deep-merge
                         global-options
-                        {:settings {:python {:venvPath (expand "$HOME/.pyenv/versions")}}}))
+                        {:settings {:python {:venvPath (vim.fn.expand "$HOME/.pyenv/versions")}}}))
 ;; Rust
 (config.rust_analyzer.setup global-options)
 ;; Javascript & Typescript
