@@ -11,25 +11,6 @@
                           :cmp_nvim_lsp
                           :schemastore])) (lua :return)))
 
-;;; ========================
-;;; Diagnostic configuration
-;;; ========================
-(let [{: config
-       : severity} vim.diagnostic
-      {: sign_define} vim.fn]
-  (config {:underline {:severity {:min severity.INFO}}
-           :signs {:severity {:min severity.INFO}}
-           :virtual_text {:severity {:min severity.INFO}}
-           :update_in_insert false
-           :severity_sort true
-           :float {:show_header false
-                   :source "if_many"
-                   :border "single"}})
-  (sign_define :DiagnosticSignError {:text conf.icons.error :texthl "DiagnosticSignError"})
-  (sign_define :DiagnosticSignWarn {:text conf.icons.warn :texthl "DiagnosticSignWarn"})
-  (sign_define :DiagnosticSignInfo {:text conf.icons.info :texthl "DiagnosticSignInfo"})
-  (sign_define :DiagnosticSignHint {:text conf.icons.hint :texthl "DiagnosticSignHint"}))
-
 ;;; =======================
 ;;; Aesthetic configuration
 ;;; =======================
@@ -55,13 +36,9 @@
           :type_definition goto-type-definition!
           :code_action open-code-action-float!
           :rename rename!} vim.lsp.buf)
-  (local {:open_float open-line-diag-float!
-          :goto_prev goto-diag-prev!
-          :goto_next goto-diag-next!} vim.diagnostic)
   (local {:inlay_hints inlay-hints!} (require :lsp_extensions))
   (local {:lsp_implementations open-impl-float!
           :lsp_references open-ref-float!
-          :diagnostics open-diag-float!
           :lsp_document_symbols open-local-symbol-float!
           :lsp_workspace_symbols open-workspace-symbol-float!} (require :telescope.builtin))
 
@@ -93,11 +70,6 @@
   (buf-map! [nv] "<leader>a" open-code-action-float!)
   ;; Rename symbol
   (buf-map! [nv] "<leader>rn" rename!)
-  ;; Show line diagnostics
-  (buf-map! [n] "<leader>d" open-line-diag-float!)
-  ;; Go to diagnostic
-  (buf-map! [n] "[d" goto-diag-prev!)
-  (buf-map! [n] "]d" goto-diag-next!)
   ;; Go to declaration
   (buf-map! [n] "<leader>gD" goto-declaration!)
   ;; Go to definition
@@ -108,10 +80,6 @@
   (buf-map! [n] "<leader>li" open-impl-float!)
   ;; List references
   (buf-map! [n] "<leader>lr" open-ref-float!)
-  ;; List document diagnostics
-  (buf-map! [n] "<leader>ld" '(open-diag-float! {:bufnr 0}))
-  ;; List workspace diagnostics
-  (buf-map! [n] "<leader>lD" open-diag-float!)
   ;; List document symbols
   (buf-map! [n] "<leader>ls" open-local-symbol-float!)
   ;; List workspace symbols

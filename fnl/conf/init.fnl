@@ -4,4 +4,5 @@
 (require :conf.keybinds)
 (require :conf.commands)
 (require :conf.events)
+(require :conf.diagnostics)
 (require :conf.lsp)
