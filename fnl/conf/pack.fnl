@@ -116,12 +116,12 @@
 (pack! "hrsh7th/cmp-buffer" {:requires ["hrsh7th/nvim-cmp"]})
 (pack! "hrsh7th/cmp-path" {:requires ["hrsh7th/nvim-cmp"]})
 (pack! "andersevenrud/cmp-tmux" {:requires ["hrsh7th/nvim-cmp"]})
-(pack! "hrsh7th/cmp-vsnip" {:requires ["hrsh7th/nvim-cmp"
-                                       "hrsh7th/vim-vsnip"]})
+(pack! "saadparwaiz1/cmp_luasnip" {:requires ["hrsh7th/nvim-cmp"
+                                              "L3MON4D3/LuaSnip"]})
 (pack! "lukas-reineke/cmp-under-comparator" {:requires ["hrsh7th/nvim-cmp"]})
 ;; Snippets
-(pack! "hrsh7th/vim-vsnip" {:require* "conf.pack.vsnip"
-                            :requires ["rafamadriz/friendly-snippets"]})
+(pack! "L3MON4D3/LuaSnip" {:require* "conf.pack.luasnip"
+                           :requires ["rafamadriz/friendly-snippets"]})
 ;; Emmet
 (pack! "mattn/emmet-vim" {:require* "conf.pack.emmet"})
 
