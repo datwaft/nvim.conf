@@ -5,7 +5,6 @@
   (when (not (assert-dependencies!
                :conf.lsp [:lua-dev
                           :lsp_signature
-                          :lsp_extensions
                           :lspconfig
                           :typescript
                           :cmp_nvim_lsp
@@ -86,12 +85,7 @@
       (autocmd! BufWritePre <buffer>
         '(vim.lsp.buf.format {:filter (fn [client] (not (contains? [:jsonls :tsserver] client.name)))
                               :bufnr bufnr})
-        {:buffer bufnr})))
-  ;; Display hints on hover
-  (let [extensions (require :lsp_extensions)]
-    (augroup! lsp-display-hints
-      (clear!)
-      (autocmd! [CursorHold CursorHoldI] *.rs '(extensions.inlay_hints {})))))
+        {:buffer bufnr}))))
 
 ;;; ==========================
 ;;; Capabilities configuration

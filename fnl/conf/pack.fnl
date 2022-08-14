@@ -196,8 +196,6 @@
 (pack! "folke/lua-dev.nvim")
 ;; SchemaStore
 (pack! "b0o/schemastore.nvim")
-;; Extensions
-(pack! "nvim-lua/lsp_extensions.nvim")
 ;; Signature
 (pack! "ray-x/lsp_signature.nvim")
 ;; Integrate with non-LSP
