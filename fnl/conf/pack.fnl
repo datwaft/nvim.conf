@@ -189,7 +189,7 @@
 (pack! "neovim/nvim-lspconfig")
 ;; Installation
 (pack! "williamboman/mason.nvim" {:setup* "mason"})
-(pack! "williamboman/mason-lspconfig.nvim" {:require* "conf.pack.mason"})
+(pack! "williamboman/mason-lspconfig.nvim")
 ;; Typescript
 (pack! "jose-elias-alvarez/typescript.nvim")
 ;; Lua Neovim Development

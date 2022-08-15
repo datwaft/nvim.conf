@@ -95,6 +95,13 @@
 (local global-options {:on_attach on-attach
                        : capabilities})
 
+;;; =============================
+;;; Automatically install servers
+;;; =============================
+(local mason (require :mason-lspconfig))
+
+(mason.setup {:automatic_installation true})
+
 ;;; ====================
 ;;; Client configuration
 ;;; ====================
