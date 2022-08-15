@@ -113,6 +113,7 @@
 (pack! "hrsh7th/nvim-cmp" {:require* "conf.pack.cmp"})
 (pack! "hrsh7th/cmp-nvim-lsp" {:requires ["hrsh7th/nvim-cmp"]})
 (pack! "hrsh7th/cmp-buffer" {:requires ["hrsh7th/nvim-cmp"]})
+(pack! "f3fora/cmp-spell" {:requires ["hrsh7th/nvim-cmp"]})
 (pack! "hrsh7th/cmp-path" {:requires ["hrsh7th/nvim-cmp"]})
 (pack! "andersevenrud/cmp-tmux" {:requires ["hrsh7th/nvim-cmp"]})
 (pack! "saadparwaiz1/cmp_luasnip" {:requires ["hrsh7th/nvim-cmp"

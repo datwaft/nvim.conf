@@ -31,6 +31,7 @@
                       {:name "luasnip"}
                       {:name "path"}
                       {:name "buffer" :option {:keyword_pattern "\\k\\+"}}
+                      {:name "spell"}
                       {:name "tmux"}]
             :sorting {:comparators [cmp.config.compare.offset
                                     cmp.config.compare.exact
