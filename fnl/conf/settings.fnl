@@ -6,6 +6,8 @@
 (local {: stdpath
         : expand} vim.fn)
 
+(fn executable? [...] (= 1 (vim.fn.executable ...)))
+
 (fn escape [combination]
   (vim.api.nvim_replace_termcodes combination true true true))
 
@@ -19,7 +21,9 @@
 ;;; Environment configuration
 ;;; =========================
 ; Define python binary
-(let! python3_host_prog (expand "$HOME/.pyenv/versions/neovim/bin/python"))
+(let! python3_host_prog (if (executable? "python") (vim.fn.exepath "python")
+                          (executable? "python3") (vim.fn.exepath "python3")
+                          nil))
 ; Disable some providers
 (let! loaded_ruby_provider 0)
 (let! loaded_perl_provider 0)
