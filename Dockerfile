@@ -18,7 +18,6 @@ RUN make install
 WORKDIR /root/.local/share/nvim/site/pack/packer/start
 RUN git clone https://github.com/wbthomason/packer.nvim
 RUN git clone https://github.com/rktjmp/hotpot.nvim --branch nightly
-RUN git clone https://github.com/Olical/conjure
 RUN git clone https://github.com/datwaft/themis.nvim
 
 # Install neovim plugins that need caching
