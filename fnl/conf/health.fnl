@@ -14,9 +14,9 @@
   (assert (= :string (type name)) "expected string for name")
   (let [command (?. config name :cmd 1)]
     (if
-      (nil? command) (report-warn! (format "%s: the command is not defined." name))
-      (executable? command) (report-ok! (format "%s: the command '%s' is executable." name command))
-      (report-error! (format "%s: the command '%s' is not executable." name command)))))
+      (nil? command) (report-warn! (format "**%s**: the command is not defined." name))
+      (executable? command) (report-ok! (format "**%s**: the command '_%s_' is executable." name command))
+      (report-error! (format "**%s**: the command '_%s_' is not executable." name command)))))
 
 (lambda check! []
   (report-start! "LSP server executables")
