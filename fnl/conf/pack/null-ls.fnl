@@ -25,7 +25,6 @@
                 formatting.markdownlint
                 formatting.black
                 formatting.isort
-                diagnostics.pylint
                 diagnostics.selene])
 
 (setup {: sources
