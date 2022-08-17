@@ -5,7 +5,7 @@
                         :signs {:severity {:min vim.diagnostic.severity.HINT}}
                         :virtual_text {:severity {:min vim.diagnostic.severity.INFO}}
                         :float {:show_header false
-                                :source "if_many"
+                                :source true
                                 :border "single"}
                         :update_in_insert false
                         :severity_sort true})
