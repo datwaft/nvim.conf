@@ -28,10 +28,6 @@
 (pack! "p00f/nvim-ts-rainbow" {:requires ["nvim-treesitter/nvim-treesitter"]})
 (pack! "nvim-treesitter/nvim-treesitter-refactor" {:requires ["nvim-treesitter/nvim-treesitter"]})
 (pack! "JoosepAlviste/nvim-ts-context-commentstring" {:requires ["nvim-treesitter/nvim-treesitter"]})
-;; Dim unused variables and functions
-(pack! "narutoxy/dim.lua" {:setup* "dim"
-                           :requires ["nvim-treesitter/nvim-treesitter"
-                                      "neovim/nvim-lspconfig"]})
 ;; Preview substitution
 (pack! "markonm/traces.vim" {:require* "conf.pack.traces"})
 ;; Color code highlight
