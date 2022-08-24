@@ -104,8 +104,9 @@
 (pack! "eraserhd/parinfer-rust" {:run "cargo build --release"
                                  :ft conf.lisp-filetypes})
 ;; Dynamic LISP evaluation
-(pack! "Olical/conjure" {:require* "conf.pack.conjure"})
-;; ;; Completion
+(pack! "Olical/conjure" {:require* "conf.pack.conjure"
+                         :ft conf.lisp-filetypes})
+;; Completion
 (pack! "hrsh7th/nvim-cmp" {:require* "conf.pack.cmp"})
 (pack! "hrsh7th/cmp-nvim-lsp" {:requires ["hrsh7th/nvim-cmp"]})
 (pack! "hrsh7th/cmp-buffer" {:requires ["hrsh7th/nvim-cmp"]})
