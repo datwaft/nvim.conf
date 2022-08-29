@@ -7,7 +7,7 @@
 ;; Package Management
 (pack! "wbthomason/packer.nvim")
 ;; Using Fennel to configure neovim
-(pack! "rktjmp/hotpot.nvim" {:branch "nightly"})
+(pack! "rktjmp/hotpot.nvim")
 ;; Macros
 (pack! "datwaft/themis.nvim")
 
