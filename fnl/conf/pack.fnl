@@ -203,7 +203,8 @@
 ;; Report progress
 (pack! "j-hui/fidget.nvim" {:setup* "fidget"})
 ;; Dim unused variables
-(pack! "narutoxy/dim.lua" {:requires ["nvim-treesitter/nvim-treesitter"
+(pack! "narutoxy/dim.lua" {:setup* "dim"
+                           :requires ["nvim-treesitter/nvim-treesitter"
                                       "neovim/nvim-lspconfig"]})
 
 ;;; ==========
