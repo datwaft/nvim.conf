@@ -155,11 +155,10 @@
 (config.vimls.setup global-options)
 ;; Lua
 (let [lua-dev (require :lua-dev)]
+  (lua-dev.setup {})
   (config.sumneko_lua.setup
     (deep-merge
-      (lua-dev.setup {:lspconfig (deep-merge
-                                   global-options
-                                   {:cmd ["lua-language-server"]})})
+      global-options
       {:settings {:Lua {:workspace {:preloadFileSize 500}}}})))
 
 ;;; ------------------------------
