@@ -14,6 +14,49 @@
               :warn ""
               :info ""
               :hint ""})
+(local borders ["┌" "─" "┐" "│" "┘" "─" "└" "│"])
+(local kind-icons {:Namespace ""
+                   :Text " "
+                   :Method " "
+                   :Function " "
+                   :Constructor " "
+                   :Field "ﰠ "
+                   :Variable " "
+                   :Class "ﴯ "
+                   :Interface " "
+                   :Module " "
+                   :Property "ﰠ "
+                   :Unit "塞 "
+                   :Value " "
+                   :Enum " "
+                   :Keyword " "
+                   :Snippet " "
+                   :Color " "
+                   :File " "
+                   :Reference " "
+                   :Folder " "
+                   :EnumMember " "
+                   :Constant " "
+                   :Struct "פּ "
+                   :Event " "
+                   :Operator " "
+                   :TypeParameter " "
+                   :Table ""
+                   :Object " "
+                   :Tag ""
+                   :Array "[]"
+                   :Boolean " "
+                   :Number " "
+                   :Null "ﳠ"
+                   :String " "
+                   :Calendar ""
+                   :Watch " "
+                   :Package ""})
+(local source-labels {:buffer "[Buffer]"
+                      :nvim_lsp "[LSP]"
+                      :luasnip "[LuaSnip]"
+                      :nvim_lua "[Lua]"
+                      :latex_symbols "[LaTeX]"})
 (local lisp-filetypes [:fennel
                        :clojure
                        :lisp
@@ -23,6 +66,9 @@
 
 (tset _G :conf {: databases-folder
                 : icons
+                : borders
+                : kind-icons
+                : source-labels
                 : lisp-filetypes})
 
 ;;; =====

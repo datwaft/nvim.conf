@@ -6,7 +6,26 @@
 
 (set! completeopt [:menu :menuone :noselect])
 
-(cmp.setup {:preselect cmp.PreselectMode.None
+(cmp.setup {:formatting {:fields [:kind :abbr]
+                         :format (fn [entry item]
+                                   ; Define kind icons
+                                   (set item.kind (or (. conf.kind-icons item.kind) ""))
+                                   ; Menu
+                                   (set item.menu (or (. conf.source-labels entry.source.name) ""))
+                                   item)}
+            :window {:completion {:border conf.borders
+                                  :winhighlight (table.concat
+                                                  (icollect [k v (pairs {:Normal :NormalFloat
+                                                                         :FloatBorder :FloatBorder
+                                                                         :Search :None})]
+                                                    (.. k ":" v)) ",")}
+                     :documentation {:border conf.borders}
+                                  :winhighlight (table.concat
+                                                  (icollect [k v (pairs {:Normal :NormalFloat
+                                                                         :FloatBorder :FloatBorder
+                                                                         :Search :None})]
+                                                    (.. k ":" v)) ",")}
+            :preselect cmp.PreselectMode.None
             :snippet {:expand (fn [args] (luasnip.lsp_expand args.body))}
             :mapping {"<C-b>" (cmp.mapping.scroll_docs -4)
                       "<C-f>" (cmp.mapping.scroll_docs 4)
