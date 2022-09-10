@@ -38,6 +38,16 @@
                                   "<C-Up>" actions.cycle_history_prev
                                   "<C-Down>" actions.cycle_history_next}}
                    :history {:path (.. conf.databases-folder "/telescope_history.sqlite3")
-                             :limit 100}}})
+                             :limit 100}
+                   :prompt_prefix "   "
+                   :selection_caret "  "
+                   :layout_config {:horizontal {:prompt_position "top"
+                                                :preview_width 0.55
+                                                :results_width 0.8}
+                                   :vertical {:mirror false}
+                                   :width 0.87
+                                   :height 0.80
+                                   :preview_cutoff 120}
+                   :sorting_strategy "ascending"}})
 (load_extension :fzy_native)
 (load_extension :smart_history)
