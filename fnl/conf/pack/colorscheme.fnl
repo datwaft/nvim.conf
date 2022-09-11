@@ -30,8 +30,8 @@
   (clear!)
   (autocmd! ColorScheme enfocado
             '(do
-               (highlight! FloatBorder [] {:fg colors.dim_0 :bg colors.bg_0})
-               (highlight! NormalFloat [] {:bg colors.bg_0})
+               (highlight! FloatBorder [] {:fg colors.dim_0 :bg colors.bg_0 :blend 10})
+               (highlight! NormalFloat [] {:bg colors.bg_0 :blend 10})
 
                (highlight! PmenuThumb [] {:bg colors.dim_0})
 

@@ -84,6 +84,7 @@
 
 ;; Pseudo-transparecy for floating windows
 (set! winblend 10)
+(set! pumblend 10)
 
 ;; Line number
 (set! number)
