@@ -82,6 +82,9 @@
 ;; True color
 (set! termguicolors)
 
+;; Pseudo-transparecy for floating windows
+(set! winblend 10)
+
 ;; Line number
 (set! number)
 (set! relativenumber)
