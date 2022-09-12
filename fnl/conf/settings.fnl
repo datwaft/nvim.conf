@@ -180,3 +180,12 @@
 ;; Grep
 (set! grepprg "rg --vimgrep")
 (set! grepformat "%f:%l:%c:%m")
+
+;;; ===========================================
+;;; Override configuration for floating windows
+;;; ===========================================
+(let [original vim.lsp.util.open_floating_preview]
+  (fn vim.lsp.util.open_floating_preview [...]
+    (let [(bufnr winid) (original ...)]
+      (vim.api.nvim_win_set_option winid :breakindentopt "")
+      (vim.api.nvim_win_set_option winid :showbreak "NONE"))))
