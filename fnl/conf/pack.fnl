@@ -62,6 +62,8 @@
 ;; Increment and decrement numbers
 (pack! "zegervdv/nrpattern.nvim" {:requires ["tpope/vim-repeat"]
                                   :setup* "nrpattern"})
+;; Edit language injection
+(pack! "AckslD/nvim-FeMaco.lua" {:setup* "femaco"})
 
 ;;; ========
 ;;; Commands
