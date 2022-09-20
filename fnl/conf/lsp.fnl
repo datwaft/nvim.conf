@@ -4,7 +4,6 @@
 (let [{: assert-dependencies!} (require :conf.lib.dep)]
   (when (not (assert-dependencies!
                :conf.lsp [:lua-dev
-                          :lsp_signature
                           :lspconfig
                           :typescript
                           :cmp_nvim_lsp
@@ -31,19 +30,6 @@
   (local {: contains?} (require :themis.lib.seq))
 
   (local telescope (require :telescope.builtin))
-
-  ;;; =========
-  ;;; Signature
-  ;;; =========
-  (let [signature (require :lsp_signature)]
-    (signature.on_attach {:bind true
-                          :doc_lines 0
-                          :floating_window_above_cur_line true
-                          :fix_pos true
-                          :hint_enable false
-                          :hint_prefix "● "
-                          :hint_scheme "DiagnosticSignInfo"}
-                         bufnr))
 
   ;;; ========
   ;;; Keybinds

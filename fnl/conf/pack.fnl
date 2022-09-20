@@ -192,8 +192,6 @@
 (pack! "folke/lua-dev.nvim")
 ;; SchemaStore
 (pack! "b0o/schemastore.nvim")
-;; Signature
-(pack! "ray-x/lsp_signature.nvim")
 ;; Integrate with non-LSP
 (pack! "jose-elias-alvarez/null-ls.nvim" {:require* "conf.pack.null-ls"
                                           :requires ["nvim-lua/plenary.nvim"
