@@ -153,6 +153,9 @@
 ;; PlantUML
 (pack! "weirongxu/plantuml-previewer.vim" {:requires ["tyru/open-browser.vim"]
                                            :ft [:plantuml]})
+;; Markdown
+(pack! "iamcco/markdown-preview.nvim" {:run #(vim.fn.mkdp#util#install)
+                                       :ft [:markdown]})
 
 ;;; =========
 ;;; Filetypes
