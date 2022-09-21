@@ -188,6 +188,8 @@
 (pack! "williamboman/mason-lspconfig.nvim")
 ;; Typescript
 (pack! "jose-elias-alvarez/typescript.nvim")
+;; Signature
+(pack! "ray-x/lsp_signature.nvim")
 ;; Lua Neovim Development
 (pack! "folke/lua-dev.nvim")
 ;; SchemaStore
