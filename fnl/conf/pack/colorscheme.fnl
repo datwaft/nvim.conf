@@ -47,13 +47,7 @@
 
                (highlight! TelescopePreviewTitle [:bold] {:fg colors.bg_1 :bg colors.blue})
                (highlight! TelescopePreviewNormal [] {:bg colors.bg_1})
-               (highlight! TelescopePreviewBorder [] {:fg colors.bg_1 :bg colors.bg_1})
-
-               (highlight! CmpItemAbbrDeprecated [:strikethrough] {:fg colors.dim_0})
-
-               (highlight! CmpItemKindEvent [] {:fg colors.br_magenta})
-               (highlight! CmpItemKindFunction [] {:fg colors.br_green})
-               (highlight! CmpItemKindMethod [] {:fg colors.br_green}))
+               (highlight! TelescopePreviewBorder [] {:fg colors.bg_1 :bg colors.bg_1}))
             {:nested true}))
 
 (let! enfocado_style "nature")
