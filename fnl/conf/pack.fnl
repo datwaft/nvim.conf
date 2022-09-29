@@ -191,6 +191,8 @@
 (pack! "williamboman/mason-lspconfig.nvim")
 ;; Typescript
 (pack! "jose-elias-alvarez/typescript.nvim")
+;; Java
+(pack! "mfussenegger/nvim-jdtls")
 ;; Signature
 (pack! "ray-x/lsp_signature.nvim")
 ;; Lua Neovim Development
