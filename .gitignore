@@ -11,3 +11,4 @@
 /after/ftdetect/*.lua
 /after/ftplugin/*.lua
 /lua/conf/health.lua
+/ftplugin/*.lua

@@ -24,7 +24,10 @@
 (local config {:on_attach on-attach
                :cmd default-config.cmd
                :root_dir (default-config.root_dir)
-               :settings {:java {}}
+               :settings {:java {:configuration {:runtimes [{:name "JavaSE-19" :path "/Library/Java/JavaVirtualMachines/zulu-19.jdk/Contents/Home"}
+                                                            {:name "JavaSE-17" :path "/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"}
+                                                            {:name "JavaSE-11" :path "/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home"}
+                                                            {:name "JavaSE-1.8" :path "/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home"}]}}}
                :init_options {:bundles {}}})
 
 (let [jdtls (require :jdtls)]
