@@ -180,6 +180,8 @@
                                          "pangloss/vim-javascript"]})
 ;; Janet
 (pack! "bakpakin/janet.vim")
+;; XML
+(pack! "amadeus/vim-xml")
 
 ;;; ==============================
 ;;; Language Server Protocol (LSP)
