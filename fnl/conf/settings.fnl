@@ -82,7 +82,7 @@
 ;; True color
 (set! termguicolors)
 
-;; Pseudo-transparecy for floating windows
+;; Pseudo-transparency for floating windows
 (set! winblend 10)
 (set! pumblend 10)
 
