@@ -144,6 +144,8 @@
                                                    "nvim-lua/plenary.nvim"
                                                    "nvim-telescope/telescope-fzy-native.nvim"
                                                    (pack "nvim-telescope/telescope-smart-history.nvim" {:requires ["tami5/sqlite.lua"]})]})
+;; File Tree Viewer
+(pack! "lambdalisue/fern.vim" {:require* "conf.pack.fern"})
 ;; Filesystem editing
 (pack! "elihunter173/dirbuf.nvim")
 
