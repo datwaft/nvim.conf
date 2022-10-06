@@ -199,8 +199,6 @@
 (pack! "jose-elias-alvarez/typescript.nvim")
 ;; Java
 (pack! "mfussenegger/nvim-jdtls")
-;; Python Virtual Environments
-(pack! "HallerPatrick/py_lsp.nvim" {:setup* "py_lsp"})
 ;; Signature
 (pack! "ray-x/lsp_signature.nvim")
 ;; Lua Neovim Development
