@@ -82,6 +82,9 @@
 ;; True color
 (set! termguicolors)
 
+;; Stabilize lines
+(set! splitkeep :screen)
+
 ;; Pseudo-transparency for floating windows
 (set! winblend 10)
 (set! pumblend 10)

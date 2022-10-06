@@ -90,8 +90,6 @@
 (pack! "https://gitlab.com/yorickpeterse/nvim-pqf.git" {:setup* "pqf"})
 ;; Create missing directories on save
 (pack! "jghauser/mkdir.nvim" {:require* "mkdir"})
-;; Stabilization
-(pack! "luukvbaal/stabilize.nvim" {:setup* "stabilize"})
 ;; Sorting
 (pack! "sQVe/sort.nvim" {:setup* "sort"})
 ;; Folding
