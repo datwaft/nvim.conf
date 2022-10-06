@@ -121,9 +121,7 @@
 ;; CMake
 (config.cmake.setup global-options)
 ;; Python
-(config.pyright.setup (deep-merge
-                        global-options
-                        {:settings {:python {:venvPath (vim.fn.expand "$HOME/.pyenv/versions")}}}))
+(config.jedi_language_server.setup global-options)
 ;; Rust
 (config.rust_analyzer.setup global-options)
 ;; Javascript & Typescript
