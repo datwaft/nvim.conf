@@ -127,7 +127,7 @@
 ;; Git
 (pack! "lewis6991/gitsigns.nvim" {:require* "conf.pack.gitsigns"
                                   :requires ["nvim-lua/plenary.nvim"]})
-(pack! "lambdalisue/gina.vim")
+(pack! "lambdalisue/gin.vim" {:requires ["vim-denops/denops.vim"]})
 ;; TMUX
 (pack! "aserowy/tmux.nvim" {:require* "conf.pack.tmux"})
 ;; Conjure with Clj
