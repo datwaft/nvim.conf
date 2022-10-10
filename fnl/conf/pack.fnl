@@ -76,7 +76,8 @@
 ;; Upload to a paste bin
 (pack! "rktjmp/paperplanes.nvim" {:require* "conf.pack.paperplanes"})
 ;; Create snippet
-(pack! "ellisonleao/carbon-now.nvim" {:setup* "carbon-now"})
+(pack! "krivahtoo/silicon.nvim" {:run "./install.sh build"
+                                 :require* "conf.pack.silicon"})
 
 ;;; ===========
 ;;; Enhancement
