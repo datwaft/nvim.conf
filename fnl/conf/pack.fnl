@@ -203,7 +203,7 @@
 ;; Signature
 (pack! "ray-x/lsp_signature.nvim")
 ;; Lua Neovim Development
-(pack! "folke/lua-dev.nvim")
+(pack! "folke/neodev.nvim")
 ;; SchemaStore
 (pack! "b0o/schemastore.nvim")
 ;; Integrate with non-LSP

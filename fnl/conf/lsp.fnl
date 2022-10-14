@@ -3,7 +3,7 @@
 ;;; ====================
 (let [{: assert-dependencies!} (require :conf.lib.dep)]
   (when (not (assert-dependencies!
-               :conf.lsp [:lua-dev
+               :conf.lsp [:neodev
                           :lspconfig
                           :lsp_signature
                           :typescript
@@ -156,8 +156,8 @@
 ;; VimL
 (config.vimls.setup global-options)
 ;; Lua
-(let [lua-dev (require :lua-dev)]
-  (lua-dev.setup {})
+(let [neodev (require :neodev)]
+  (neodev.setup {})
   (config.sumneko_lua.setup
     (deep-merge
       global-options
