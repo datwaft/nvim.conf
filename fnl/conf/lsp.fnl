@@ -86,8 +86,7 @@
 ;;; ==========================
 ;;; Capabilities configuration
 ;;; ==========================
-(local capabilities (let [cmp (require :cmp_nvim_lsp)]
-                      (cmp.update_capabilities (vim.lsp.protocol.make_client_capabilities))))
+(local capabilities (let [cmp (require :cmp_nvim_lsp)] (cmp.default_capabilities)))
 (set capabilities.textDocument.foldingRange {:dynamicRegistration false
                                              :lineFoldingOnly true})
 
