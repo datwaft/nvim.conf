@@ -166,7 +166,7 @@
 ;;; Miscellaneous configuration
 ;;; ===========================
 ;; Diff-mode
-(set! diffopt [:filler :internal :indent-heuristic :algorithm:histogram])
+(set! diffopt+ "linematch:60")
 
 ;; Lazy redraw
 (set! lazyredraw)
