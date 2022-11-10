@@ -120,7 +120,7 @@
 ;; CMake
 (config.cmake.setup global-options)
 ;; Python
-(config.jedi_language_server.setup global-options)
+(config.pyright.setup global-options)
 ;; Rust
 (config.rust_analyzer.setup global-options)
 ;; Javascript & Typescript
