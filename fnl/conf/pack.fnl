@@ -37,7 +37,6 @@
 (pack! "lukas-reineke/indent-blankline.nvim" {:require* "conf.pack.indent-blankline"})
 ;; Developer icons
 (pack! "kyazdani42/nvim-web-devicons" {:require* "conf.pack.devicons"})
-(pack! "lambdalisue/nerdfont.vim")
 ;; Highlight matches
 (pack! "kevinhwang91/nvim-hlslens" {:require* "conf.pack.hlslens"})
 
@@ -148,6 +147,7 @@
 (pack! "lambdalisue/fern.vim" {:require* "conf.pack.fern"
                                :requires ["lambdalisue/fern-git-status.vim"
                                           "lambdalisue/fern-renderer-nerdfont.vim"
+                                          "TheLeoP/fern-renderer-web-devicons.nvim"
                                           "lambdalisue/glyph-palette.vim"]})
 ;; Filesystem editing
 (pack! "elihunter173/dirbuf.nvim")

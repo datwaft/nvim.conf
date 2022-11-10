@@ -4,13 +4,13 @@
                 : clear!
                 : autocmd!} :themis.event)
 
-;; Toggle drawer
+(local fr-web-icons (require :fr-web-icons))
+
 (map! [n] "<C-n>" "<cmd>Fern . -reveal=% -drawer -toggle<cr>")
 
-;; Use nerdfont renderer
-(let! fern#renderer :nerdfont)
+(let! fern#renderer :nvim-web-devicons)
+(let! glyph_palette#palette (fr-web-icons.palette))
 
-;; Add colors to fern buffer
 (augroup! add-colors-to-fern-buffer
   (clear!)
   (autocmd! FileType fern '(vim.fn.glyph_palette#apply)))
