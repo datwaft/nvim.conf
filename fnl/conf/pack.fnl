@@ -28,6 +28,8 @@
 (pack! "p00f/nvim-ts-rainbow" {:requires ["nvim-treesitter/nvim-treesitter"]})
 (pack! "nvim-treesitter/nvim-treesitter-refactor" {:requires ["nvim-treesitter/nvim-treesitter"]})
 (pack! "JoosepAlviste/nvim-ts-context-commentstring" {:requires ["nvim-treesitter/nvim-treesitter"]})
+(pack! "yioneko/nvim-yati" {:tag "*"
+                            :requires ["nvim-treesitter/nvim-treesitter"]})
 ;; Preview substitution
 (pack! "markonm/traces.vim" {:require* "conf.pack.traces"})
 ;; Color code highlight

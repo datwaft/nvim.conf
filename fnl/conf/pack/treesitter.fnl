@@ -5,6 +5,7 @@
 (setup {:ensure_installed "all"
         :highlight {:enable true}
         :indent {:enable false}
+        :yati {:enable true}
         :rainbow {:enable true
                   :extended_mode true}
         :refactor {:highlight_definitions {:enable true}
