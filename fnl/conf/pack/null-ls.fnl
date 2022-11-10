@@ -27,7 +27,8 @@
                 formatting.isort
                 (diagnostics.pylint.with {:prefer_local ".venv/bin"})
                 (diagnostics.mypy.with {:prefer_local ".venv/bin"})
-                diagnostics.selene])
+                diagnostics.selene
+                (require :typescript.extensions.null-ls.code-actions)])
 
 (setup {: sources
         :on_attach on-attach})
