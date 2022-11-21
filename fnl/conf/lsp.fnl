@@ -4,6 +4,7 @@
 (let [{: assert-dependencies!} (require :conf.lib.dep)]
   (when (not (assert-dependencies!
                :conf.lsp [:neodev
+                          :neoconf
                           :lspconfig
                           :lsp_signature
                           :typescript
@@ -102,6 +103,12 @@
 (local mason (require :mason-lspconfig))
 
 (mason.setup {:automatic_installation true})
+
+;;; ======================
+;;; Neoconf initialization
+;;; ======================
+(let [neoconf (require :neoconf)]
+  (neoconf.setup {}))
 
 ;;; ====================
 ;;; Client configuration
