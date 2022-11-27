@@ -61,6 +61,9 @@
 (pack! "numToStr/Comment.nvim" {:setup* "Comment"})
 ;; Surround
 (pack! "machakann/vim-sandwich")
+;; Split or join blocks of code
+(pack! "Wansmer/treesj" {:requires ["nvim-treesitter/nvim-treesitter"]
+                         :require* "conf.pack.treesj"})
 ;; Increment and decrement numbers
 (pack! "zegervdv/nrpattern.nvim" {:requires ["tpope/vim-repeat"]
                                   :setup* "nrpattern"})
