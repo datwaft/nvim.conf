@@ -172,6 +172,8 @@
       {:settings {:Lua {:workspace {:preloadFileSize 500}}}})))
 ;; Gradle
 (config.gradle_ls.setup global-options)
+;; Go
+(config.gopls.setup global-options)
 
 ;;; ------------------------------
 
