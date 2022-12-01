@@ -21,7 +21,8 @@
 (local {:global-options {:on_attach on-attach}} (require :conf.lsp))
 
 (local sources [formatting.stylua
-                formatting.prettierd
+                (formatting.prettierd.with {:condition (fn [utils]
+                                                         (not (utils.root_has_file ["deno.json" "deno.jsonc"])))})
                 formatting.markdownlint
                 formatting.black
                 formatting.isort
