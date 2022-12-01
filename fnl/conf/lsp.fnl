@@ -132,7 +132,12 @@
 (config.rust_analyzer.setup global-options)
 ;; Javascript & Typescript
 (let [typescript (require :typescript)]
-  (typescript.setup {:server global-options}))
+  (typescript.setup {:server (deep-merge
+                               global-options
+                               {:root_dir (config.util.root_pattern "package.json")})}))
+(config.denols.setup (deep-merge
+                       global-options
+                       {:root_dir (config.util.root_pattern "deno.json" "deno.jsonc")}))
 ;; ESLint
 (config.eslint.setup global-options)
 ;; CSS
