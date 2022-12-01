@@ -198,8 +198,6 @@
 ;;; ==============================
 ;; Configuration
 (pack! "neovim/nvim-lspconfig")
-;; Project-side configuration
-(pack! "folke/neoconf.nvim")
 ;; Installation
 (pack! "williamboman/mason.nvim" {:setup* "mason"})
 (pack! "williamboman/mason-lspconfig.nvim")
