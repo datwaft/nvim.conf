@@ -4,6 +4,9 @@
 # Undo directory
 /undodir.nvim/
 
+# Spell directory
+/spell/
+
 # Packer compilation
 /plugin/packer_compiled.lua
 
