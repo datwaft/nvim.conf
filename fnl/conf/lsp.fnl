@@ -132,9 +132,7 @@
 (config.rust_analyzer.setup global-options)
 ;; Javascript & Typescript
 (let [typescript (require :typescript)]
-  (typescript.setup {:server (deep-merge
-                               global-options
-                               {:settings {:typescript {:preferences {:importModuleSpecifierPreference "non-relative"}}}})}))
+  (typescript.setup {:server global-options}))
 ;; ESLint
 (config.eslint.setup global-options)
 ;; CSS
