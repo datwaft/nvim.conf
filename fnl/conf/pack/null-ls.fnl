@@ -18,6 +18,7 @@
                    : hover
                    : completion
                    :code_actions actions}} (require :null-ls))
+(local typescript-actions (require :typescript.extensions.null-ls.code-actions))
 (local {:global-options {:on_attach on-attach}} (require :conf.lsp))
 
 (local sources [formatting.stylua
@@ -29,7 +30,8 @@
                 (diagnostics.pylint.with {:prefer_local ".venv/bin"})
                 (diagnostics.mypy.with {:prefer_local ".venv/bin"})
                 diagnostics.selene
-                (require :typescript.extensions.null-ls.code-actions)])
+                (typescript-actions.with {:condition (fn [utils]
+                                                       (not (utils.root_has_file ["deno.json" "deno.jsonc"])))})])
 
 (setup {: sources
         :on_attach on-attach})
