@@ -122,7 +122,10 @@
 ;; Python
 (config.pyright.setup global-options)
 ;; Rust
-(config.rust_analyzer.setup global-options)
+(config.rust_analyzer.setup (deep-merge global-options
+                                        {:settings {:rust-analyzer {:checkOnSave {:allFeatures true
+                                                                                  :overrideCommand [:cargo :clippy :--workspace :--message-format=json
+                                                                                                    :--all-targets :--all-features]}}}}))
 ;; Javascript & Typescript
 (let [typescript (require :typescript)]
   (typescript.setup {:server (deep-merge
