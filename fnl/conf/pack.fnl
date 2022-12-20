@@ -115,16 +115,14 @@
 ;; Completion
 (pack! "hrsh7th/nvim-cmp" {:require* "conf.pack.cmp"})
 (pack! "hrsh7th/cmp-nvim-lsp" {:requires ["hrsh7th/nvim-cmp"]})
+(pack! "hrsh7th/cmp-nvim-lsp-signature-help" {:requires ["hrsh7th/nvim-cmp"]})
 (pack! "hrsh7th/cmp-buffer" {:requires ["hrsh7th/nvim-cmp"]})
-(pack! "f3fora/cmp-spell" {:requires ["hrsh7th/nvim-cmp"]})
 (pack! "hrsh7th/cmp-path" {:requires ["hrsh7th/nvim-cmp"]})
-(pack! "andersevenrud/cmp-tmux" {:requires ["hrsh7th/nvim-cmp"]})
-(pack! "saadparwaiz1/cmp_luasnip" {:requires ["hrsh7th/nvim-cmp"
-                                              "L3MON4D3/LuaSnip"]})
+(pack! "hrsh7th/cmp-vsnip" {:requires ["hrsh7th/nvim-cmp"]})
 (pack! "lukas-reineke/cmp-under-comparator" {:requires ["hrsh7th/nvim-cmp"]})
 ;; Snippets
-(pack! "L3MON4D3/LuaSnip" {:require* "conf.pack.luasnip"
-                           :requires ["rafamadriz/friendly-snippets"]})
+(pack! "hrsh7th/vim-vsnip")
+(pack! "rafamadriz/friendly-snippets")
 
 ;;; ===========
 ;;; Integration
@@ -207,8 +205,6 @@
 (pack! "jose-elias-alvarez/typescript.nvim")
 ;; Java
 (pack! "mfussenegger/nvim-jdtls")
-;; Signature
-(pack! "ray-x/lsp_signature.nvim")
 ;; Lua Neovim Development
 (pack! "folke/neodev.nvim")
 ;; SchemaStore
