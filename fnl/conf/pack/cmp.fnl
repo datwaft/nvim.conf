@@ -35,7 +35,7 @@
    "<C-Space>" (cmp.mapping.complete)
    "<C-e>"     (cmp.mapping.abort)
    "<Space>"   (cmp.mapping.confirm {:select false})
-   "<CR>"      (cmp.mapping.confirm {:select true})
+   "<CR>"      (cmp.mapping.confirm {:select false})
    "<Tab>"     (cmp.mapping (fn [fallback]
                               (if (cmp.visible) (cmp.select_next_item)
                                 (= (vim.fn.vsnip#available 1) 1) (feedkey "<Plug>(vsnip-expand-or-jump)" "")
