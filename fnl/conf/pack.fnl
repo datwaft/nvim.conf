@@ -120,6 +120,7 @@
 (pack! "hrsh7th/cmp-path" {:requires ["hrsh7th/nvim-cmp"]})
 (pack! "hrsh7th/cmp-vsnip" {:requires ["hrsh7th/nvim-cmp"]})
 (pack! "lukas-reineke/cmp-under-comparator" {:requires ["hrsh7th/nvim-cmp"]})
+(pack! "petertriho/cmp-git" {:requires ["nvim-lua/plenary.nvim"]})
 ;; Snippets
 (pack! "hrsh7th/vim-vsnip")
 (pack! "rafamadriz/friendly-snippets")

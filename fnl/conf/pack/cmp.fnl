@@ -3,6 +3,7 @@
 (local cmp (require :cmp))
 (local under-compare (require :cmp-under-comparator))
 (local cmp-buffer (require :cmp_buffer))
+(local cmp-git (require :cmp_git))
 
 (fn feedkey [key mode]
   (vim.api.nvim_feedkeys (vim.api.nvim_replace_termcodes key true true true) mode true))
@@ -48,7 +49,8 @@
   [[{:name "nvim_lsp"}
     {:name "nvim_lsp_signature_help"}
     {:name "vsnip"}
-    {:name "path"}]
+    {:name "path"}
+    {:name "git"}]
    [{:name "buffer" :option {:keyword_pattern "\\k\\+"}}]])
 
 (local comparators
@@ -73,3 +75,5 @@
             :mapping (cmp.mapping.preset.insert mappings)
             :sources (cmp.config.sources (unpack sources))
             :sorting {:comparators comparators}})
+
+(cmp-git.setup)
