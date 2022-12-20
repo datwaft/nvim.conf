@@ -79,7 +79,7 @@
 ;; Upload to a paste bin
 (pack! "rktjmp/paperplanes.nvim" {:require* "conf.pack.paperplanes"})
 ;; Create snippet
-(pack! "krivahtoo/silicon.nvim" {:run "./install.sh"
+(pack! "krivahtoo/silicon.nvim" {:run "./install.sh build"
                                  :require* "conf.pack.silicon"})
 
 ;;; ===========
