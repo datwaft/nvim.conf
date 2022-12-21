@@ -1,14 +1,17 @@
 CMake
 ESLint
+LTeX
 WIP
 aot
 api
+casey
 clojure
 cmake
 colorcolumn
 colorscheme
 conf
 config
+cpath
 datwaft
 dotfiles
 eslint
@@ -20,6 +23,7 @@ fnl
 ftdetect
 ftplugin
 github
+hererocks
 javascript
 json
 keybind
@@ -31,8 +35,11 @@ netrw
 nvim
 param
 quickfix
+readline
+repl
 rktjmp
 statusline
+svg
 themis
 tmux
 toml
@@ -42,6 +49,7 @@ uml
 vue
 wbthomason
 whitespace
+wikipedia
 wildmenu
 yaml
-LTeX
+yml
