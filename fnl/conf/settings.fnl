@@ -54,8 +54,12 @@
 
 ;; Spell-checking configuration
 (set! spell)
-(set! spelllang [:en])
-(set! spelloptions [:camel])
+(set! spelllang [:en :es])
+(set! spelloptions [:camel :noplainbuffer])
+(let [config-folder (vim.fn.stdpath "config")
+      spell-folder (.. config-folder "/spell")]
+  (set! spellfile+ (.. spell-folder "/en.utf-8.add"))
+  (set! spellfile+ (.. spell-folder "/es.utf-8.add")))
 
 ;; Undo persistence
 (set! undofile)

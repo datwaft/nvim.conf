@@ -97,6 +97,8 @@
 ;; Folding
 (pack! "kevinhwang91/nvim-ufo" {:setup* "ufo"
                                 :requires ["kevinhwang91/promise-async"]})
+;; Sync spell files
+(pack! "micarmst/vim-spellsync")
 
 ;;; ============
 ;;; Text Editing
@@ -131,7 +133,7 @@
 (pack! "lambdalisue/gin.vim" {:requires ["vim-denops/denops.vim"]})
 ;; TMUX
 (pack! "aserowy/tmux.nvim" {:require* "conf.pack.tmux"})
-;; Conjure with Clj
+;; Conjure with Clojure
 (pack! "clojure-vim/vim-jack-in" {:requires ["tpope/vim-dispatch"
                                              "radenling/vim-dispatch-neovim"]})
 
