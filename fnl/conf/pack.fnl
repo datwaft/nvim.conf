@@ -1,13 +1,11 @@
 (import-macros {: pack
                 : pack! : unpack!} :themis.pack)
 
-(vim.cmd.packadd "packer.nvim")
-
 ;;; ==========
 ;;; Essentials
 ;;; ==========
 ;; Package Management
-(pack! "wbthomason/packer.nvim" {:opt true})
+(pack! "wbthomason/packer.nvim")
 ;; Using Fennel to configure neovim
 (pack! "rktjmp/hotpot.nvim")
 ;; Macros
