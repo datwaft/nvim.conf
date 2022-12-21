@@ -12,12 +12,6 @@
   (vim.api.nvim_replace_termcodes combination true true true))
 
 ;;; =========================
-;;; Local variable definition
-;;; =========================
-; Define configuration folder
-(local configuration-folder (stdpath :config))
-
-;;; =========================
 ;;; Environment configuration
 ;;; =========================
 ; Define python binary
@@ -64,7 +58,6 @@
 (set! spelloptions [:camel])
 
 ;; Undo persistence
-(set! undodir (.. configuration-folder "/undodir.nvim"))
 (set! undofile)
 
 ;; CursorHold delay
