@@ -1,34 +1,32 @@
--- A function that applies passes the output of string.format to the print
--- function
----@param string string #template string
-local function fprint(string, ...)
-  print(string.format(string, ...))
+-- Like calling `print(string.format(template, ...))`
+---@param template string #See `string.format` for more information
+local function fprint(template, ...)
+  print(string.format(template, ...))
 end
 
--- A function that verifies if the plugin passed as a parameter is installed,
--- if it isn't it will be installed
----@param plugin string #the plugin, must follow the format `username/repository`
----@param branch string? #the branch of the plugin
-local function assert_installed_plugin(plugin, branch)
-  local _, _, plugin_name = string.find(plugin, [[%S+/(%S+)]])
-  local plugin_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/" .. plugin_name
-  if vim.fn.empty(plugin_path) ~= 0 then
-    fprint("Couldn't find '%s', cloning new copy to %s", plugin_name, plugin_path)
+-- Install plugin if it is not installed
+---@param plugin string #Must follow the pattern `username/repository`
+---@param branch string? #The branch to clone
+local function install_if_not(plugin, branch)
+  local _, _, name = string.find(plugin, [[%S+/(%S+)]])
+  local path = vim.fn.stdpath("data") .. "/site/pack/packer/start/" .. name
+  if not vim.loop.fs_stat(path) then
+    fprint("Couldn't find '%s', cloning new copy to %s", name, path)
     if branch ~= nil then
       vim.fn.system({
         "git",
         "clone",
-        "https://github.com/" .. plugin,
+        "https://github.com/" .. plugin .. ".git",
         "--branch",
         branch,
-        plugin_path,
+        path,
       })
     else
       vim.fn.system({
         "git",
         "clone",
-        "https://github.com/" .. plugin,
-        plugin_path,
+        "https://github.com/" .. plugin .. ".git",
+        path,
       })
     end
   end
@@ -46,9 +44,9 @@ vim.opt.termguicolors = true
 vim.g.maplocalleader = vim.api.nvim_replace_termcodes("<space>", true, true, true)
 
 -- Install essential plugins
-assert_installed_plugin("wbthomason/packer.nvim")
-assert_installed_plugin("rktjmp/hotpot.nvim")
-assert_installed_plugin("datwaft/themis.nvim")
+install_if_not("wbthomason/packer.nvim")
+install_if_not("rktjmp/hotpot.nvim")
+install_if_not("datwaft/themis.nvim")
 
 if pcall(require, "hotpot") then
   -- Setup hotpot.nvim
