@@ -29,7 +29,6 @@
                 formatting.isort
                 (diagnostics.pylint.with {:prefer_local ".venv/bin"})
                 (diagnostics.mypy.with {:prefer_local ".venv/bin"})
-                diagnostics.selene
                 (typescript-actions.with {:condition (fn [utils]
                                                        (not (utils.root_has_file ["deno.json" "deno.jsonc"])))})])
 
