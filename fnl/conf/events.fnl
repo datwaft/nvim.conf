@@ -4,7 +4,6 @@
 (import-macros {: set!
                 : local-set!} :themis.opt)
 
-(local {: echo!} (require :conf.lib.io))
 (local {: line
         : mode} vim.fn)
 (fn bufexists? [...] (= (vim.fn.bufexists ...) 1))
@@ -42,7 +41,7 @@
                       (not (bufexists? "[Command Line]")))
                (vim.cmd.checktime)))
   (autocmd! FileChangedShellPost *
-            '(echo! "File changed on disk. Buffer reloaded.")))
+            '(vim.notify "File changed on disk. Buffer reloaded." vim.log.levels.INFO)))
 
 ;;; ========
 ;;; Terminal

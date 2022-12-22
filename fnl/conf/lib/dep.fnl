@@ -1,4 +1,3 @@
-(local {: warn!} (require :conf.lib.io))
 (local {: format} string)
 
 (fn empty? [xs]
@@ -13,8 +12,8 @@
     (if (empty? not-available) true
       (do
         (each [_ dep (ipairs not-available)]
-          (warn! (format "Could not load %s as %s is not available."
-                         module-name dep)))
+          (vim.notify (format "Could not load %s as %s is not available." module-name dep)
+                      vim.log.levels.WARN))
         false))))
 
 {: assert-dependencies!}

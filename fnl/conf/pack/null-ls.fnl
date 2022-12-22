@@ -1,11 +1,11 @@
 ;;; ====================
 ;;; Dependency assertion
 ;;; ====================
-(local {: warn!} (require :conf.lib.io))
 (fn nil? [x] (= nil x))
 
 (when (nil? (require :conf.lsp))
-  (warn! "Could not load conf.pack.null-ls as conf.lsp could not be loaded.")
+  (vim.notify "Could not load conf.pack.null-ls as conf.lsp could not be loaded."
+              vim.log.levels.WARN)
   (lua :return))
 
 ;;; =============
