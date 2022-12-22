@@ -14,7 +14,6 @@
               :warn ""
               :info ""
               :hint ""})
-(local borders ["┌" "─" "┐" "│" "┘" "─" "└" "│"])
 (local kind-icons {:Namespace ""
                    :Text " "
                    :Method " "
@@ -66,7 +65,6 @@
 
 (tset _G :conf {: databases-folder
                 : icons
-                : borders
                 : kind-icons
                 : source-labels
                 : lisp-filetypes})

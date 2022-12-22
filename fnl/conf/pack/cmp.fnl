@@ -66,10 +66,8 @@
 
 (cmp.setup {:formatting {:fields [:kind :abbr]
                          :format format-item}
-            :window {:completion {:border conf.borders
-                                  :winhighlight highlight}
-                     :documentation {:border conf.borders
-                                     :winhighlight highlight}}
+            :window {:completion {:winhighlight highlight}
+                     :documentation {:winhighlight highlight}}
             :preselect cmp.PreselectMode.None
             :snippet {:expand (fn [args] (vim.fn.vsnip#anonymous args.body))}
             :mapping (cmp.mapping.preset.insert mappings)

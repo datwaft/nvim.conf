@@ -10,14 +10,6 @@
                           :schemastore])) (lua :return)))
 
 ;;; =======================
-;;; Aesthetic configuration
-;;; =======================
-(set vim.lsp.handlers.textDocument/signatureHelp
-     (vim.lsp.with vim.lsp.handlers.signature_help {:border conf.borders}))
-(set vim.lsp.handlers.textDocument/hover
-     (vim.lsp.with vim.lsp.handlers.hover {:border conf.borders}))
-
-;;; =======================
 ;;; On-attach configuration
 ;;; =======================
 (fn on-attach [client bufnr]
