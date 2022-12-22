@@ -4,8 +4,6 @@
 (import-macros {: set!
                 : local-set!} :themis.opt)
 
-(local {: line
-        : mode} vim.fn)
 (fn bufexists? [...] (= (vim.fn.bufexists ...) 1))
 
 ;;; ======
@@ -18,9 +16,7 @@
 ;; Open file on its last cursor position
 (augroup! open-file-on-last-position
   (clear!)
-  (autocmd! BufReadPost * '(if (and (> (line "'\"") 1)
-                                    (<= (line "'\"") (line "$")))
-                             (vim.cmd.normal {:args ["g'\""] :bang true}))))
+  (autocmd! BufReadPost * '(vim.cmd "silent! normal! g`\"zv")))
 
 ;;; ======
 ;;; Splits
@@ -28,7 +24,7 @@
 ;; Resize splits when window is resized
 (augroup! resize-splits-on-resize
   (clear!)
-  (autocmd! VimResized * "wincmd ="))
+  (autocmd! VimResized * '(vim.cmd.wincmd "=")))
 
 ;;; =====
 ;;; Files
@@ -37,7 +33,7 @@
 (augroup! read-file-on-disk-change
   (clear!)
   (autocmd! [FocusGained BufEnter CursorHold CursorHoldI] *
-            '(if (and (not= :c (mode))
+            '(if (and (not= :c (vim.fn.mode))
                       (not (bufexists? "[Command Line]")))
                (vim.cmd.checktime)))
   (autocmd! FileChangedShellPost *
