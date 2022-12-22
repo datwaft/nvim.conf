@@ -6,6 +6,7 @@ Setulc
 Smulx
 Undercurls
 WIP
+XDG
 aot
 api
 casey
@@ -28,6 +29,7 @@ filesystem
 filetype
 filetypes
 fnl
+folke
 fpath
 ftdetect
 ftplugin
@@ -38,9 +40,11 @@ javascript
 json
 keybind
 keybinds
+learncube
 lsp
 lua
 luarocks
+luxon
 neovim
 netrw
 nhdaly
@@ -51,13 +55,17 @@ prettierd
 quickfix
 readline
 repl
+repro
 rktjmp
+rtp
 sdkman
 statusline
+stdpaths
 svg
 themis
 timestamp
 tmux
+tokyonight
 toml
 tpm
 treesitter
