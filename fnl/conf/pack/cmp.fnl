@@ -18,17 +18,6 @@
   ; Return the item
   item)
 
-(local group->highlight
-  {:Normal      :NormalFloat
-   :FloatBorder :FloatBorder
-   :Search      :None})
-
-(local highlight
-  (table.concat
-    (icollect [k v (pairs group->highlight)]
-      (.. k ":" v))
-    ","))
-
 (local mappings
   {"<C-b>"     (cmp.mapping.scroll_docs -4)
    "<C-f>"     (cmp.mapping.scroll_docs 4)
@@ -66,8 +55,6 @@
 
 (cmp.setup {:formatting {:fields [:kind :abbr]
                          :format format-item}
-            :window {:completion {:winhighlight highlight}
-                     :documentation {:winhighlight highlight}}
             :preselect cmp.PreselectMode.None
             :snippet {:expand (fn [args] (vim.fn.vsnip#anonymous args.body))}
             :mapping (cmp.mapping.preset.insert mappings)
