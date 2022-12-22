@@ -1,7 +1,7 @@
 (local {: setup} (require :lualine))
 
 (setup {:options {:globalstatus true
-                  :theme "enfocado"}
+                  :theme "auto"}
         :winbar {:lualine_a [:location]
                  :lualine_b [:progress]
                  :lualine_c [:filename]

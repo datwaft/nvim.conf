@@ -15,8 +15,8 @@
 ;;; Aesthetic
 ;;; =========
 ;; Colorscheme
-(pack! "wuelnerdotexe/vim-enfocado" {:as "colorscheme"
-                                     :require* "conf.pack.colorscheme"})
+(pack! "catppuccin/nvim" {:as "colorscheme"
+                          :require* "conf.pack.colorscheme"})
 ;; Statusline
 (pack! "nvim-lualine/lualine.nvim" {:require* "conf.pack.lualine"
                                     :requires ["kyazdani42/nvim-web-devicons"]})
