@@ -22,14 +22,8 @@
 ;;; ========
 (import-macros {: map!} :themis.keybind)
 
-(local telescope (require :telescope.builtin))
-
 ;; Show line diagnostics
 (map! [n] "<leader>d" vim.diagnostic.open_float)
 ;; Go to diagnostic
 (map! [n] "[d" vim.diagnostic.goto_prev)
 (map! [n] "]d" vim.diagnostic.goto_next)
-;; List buffer diagnostics
-(map! [n] "<leader>ld" '(telescope.diagnostics {:bufnr 0}))
-;; List workspace diagnostics
-(map! [n] "<leader>lD" telescope.diagnostics)
