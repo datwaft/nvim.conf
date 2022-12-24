@@ -1,1 +1,0 @@
-return vim.keymap.set({"n"}, "<C-n>", "<cmd>quit<cr>", {buffer = 0, desc = "<cmd>quit<cr>"})
