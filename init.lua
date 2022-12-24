@@ -3,6 +3,7 @@ local plugins_path = vim.fn.stdpath("data") .. "/lazy"
 -- Bootstrap lazy.nvim
 local lazy_path = plugins_path .. "/lazy.nvim"
 if not vim.loop.fs_stat(lazy_path) then
+  vim.notify("Bootstrapping lazy.nvim...", vim.log.levels.INFO)
   vim.fn.system({
     "git",
     "clone",
@@ -15,6 +16,7 @@ end
 -- Bootstrap hotpot.nvim
 local hotpot_path = plugins_path .. "/hotpot.nvim"
 if not vim.loop.fs_stat(hotpot_path) then
+  vim.notify("Bootstrapping hotpot.nvim...", vim.log.levels.INFO)
   vim.fn.system({
     "git",
     "clone",
@@ -27,6 +29,7 @@ end
 -- Bootstrap themis.nvim
 local themis_path = plugins_path .. "/themis.nvim"
 if not vim.loop.fs_stat(themis_path) then
+  vim.notify("Bootstrapping themis.nvim...", vim.log.levels.INFO)
   vim.fn.system({
     "git",
     "clone",
@@ -58,9 +61,12 @@ require("hotpot").setup({
 })
 
 -- Add plugins to table
-for file in vim.fs.dir(vim.fn.stdpath("config") .. "/fnl/conf/plugins") do
-  file = file:match("^(.*)%.fnl$")
-  plugins[#plugins + 1] = require("conf.plugins." .. file)
+local plugins_path = vim.fn.stdpath("config") .. "/fnl/conf/plugins"
+if vim.loop.fs_stat(plugins_path) then
+  for file in vim.fs.dir(plugins_path) do
+    file = file:match("^(.*)%.fnl$")
+    plugins[#plugins + 1] = require("conf.plugins." .. file)
+  end
 end
 
 -- Configure lazy.nvim
