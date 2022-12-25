@@ -1,3 +1,4 @@
-(import-macros {: pack} :themis.pack)
+(import-macros {: pack} :themis.pack.lazy)
 
-["Olical/aniseed"]
+[;; Fennel
+ (pack "Olical/aniseed" {:ft "fennel"})]

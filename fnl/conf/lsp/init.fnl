@@ -1,11 +1,20 @@
-(import-macros {: pack} :themis.pack)
+(import-macros {: pack} :themis.pack.lazy)
 
 (fn config []
   (local on-attach (require :conf.lsp.on-attach))
-  (local lsp (require :lspconfig)))
+  (local lsp (require :lspconfig))
 
-[(pack "neovim/nvim-lspconfig" {: config})
- (pack "williamboman/mason.nvim" {:config #(let [{: setup} (require :mason)] (setup))})
- (pack "williamboman/mason-lspconfig.nvim" {:config #(let [{: setup} (require :mason-lspconfig)] (setup))
-                                            :dependencies ["neovim/nvim-lspconfig"
-                                                           "williamboman/mason.nvim"]})]
+  ;; Lua
+  (let [neodev (require :neodev)]
+    (neodev.setup {})
+    (lsp.sumneko_lua.setup {:on_attach on-attach
+                            :settings {:Lua {:workspace {:preloadFileSize 500}}}})))
+
+[;; Configuration
+ (pack "neovim/nvim-lspconfig" {: config
+                                :dependencies ["folke/neodev.nvim"
+                                               "williamboman/mason-lspconfig.nvim"]})
+ ;; Installation
+ (pack "williamboman/mason.nvim" {:config true}) 
+ (pack "williamboman/mason-lspconfig.nvim" {:config {:automatic_installation true}
+                                            :dependencies ["williamboman/mason.nvim"]})]

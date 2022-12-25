@@ -1,7 +1,11 @@
-(import-macros {: pack} :themis.pack)
+(import-macros {: pack} :themis.pack.lazy)
 
-[(pack "numToStr/Comment.nvim" {:config #(let [{: setup} (require "Comment")] (setup))})
+[;; Comment
+ (pack "numToStr/Comment.nvim" {:config true})
+ ;; Surround
  "machakann/vim-sandwich"
+ ;; Split or join blocks of code
  (pack "Wansmer/treesj" {:dependencies ["nvim-treesitter/nvim-treesitter"]
-                         :config #(let [{: setup} (require "treesj")] (setup))})
- (pack "AckslD/nvim-FeMaco.lua" {:config #(let [{: setup} (require "femaco")] (setup))})]
+                         :config true})
+ ;; Edit language injection
+ (pack "AckslD/nvim-FeMaco.lua" {:config true})]

@@ -1,4 +1,4 @@
-(import-macros {: pack} :themis.pack)
+(import-macros {: pack} :themis.pack.lazy)
 
 (fn config []
   (local treesitter (require :nvim-treesitter.configs))
