@@ -3,10 +3,12 @@
   "catppuccin": { "branch": "main", "commit": "55f43a952856bc0029e6cef066297c6cfab3451d" },
   "hotpot.nvim": { "branch": "master", "commit": "1002bcdea7af06c5a7bfce0536d96bc4b03ab42e" },
   "lazy.nvim": { "branch": "main", "commit": "434b7d3edd3f9dd485a97edb5b8411e4e7109aea" },
+  "lualine.nvim": { "branch": "master", "commit": "fffbcb829288c3ca366f17cdb8d46aefb5c1d6f3" },
   "nvim-treesitter": { "branch": "master", "commit": "48a3da710369688df80beb2847dabbbd02e2180e" },
   "nvim-treesitter-refactor": { "branch": "master", "commit": "75f5895cc662d61eb919da8050b7a0124400d589" },
   "nvim-ts-context-commentstring": { "branch": "main", "commit": "32d9627123321db65a4f158b72b757bcaef1a3f4" },
   "nvim-ts-rainbow": { "branch": "master", "commit": "064fd6c0a15fae7f876c2c6dd4524ca3fad96750" },
+  "nvim-web-devicons": { "branch": "master", "commit": "05e1072f63f6c194ac6e867b567e6b437d3d4622" },
   "nvim-yati": { "branch": "main", "commit": "8240f369d47c389ac898f87613e0901f126b40f3" },
   "parinfer-rust": { "branch": "master", "commit": "55ce1e0c6e2465ce7f883972bb0feb1e4e8bdfa0" },
   "themis.nvim": { "branch": "main", "commit": "831a6c12dd1a753c0230dde3b549e08ce39013ba" }
