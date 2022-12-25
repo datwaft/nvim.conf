@@ -22,6 +22,7 @@ datwaft
 deno
 dotfiles
 env
+eraserhd
 eslint
 exa
 fennel
@@ -51,6 +52,7 @@ netrw
 nhdaly
 nvim
 param
+parinfer
 powerlevel10k
 prettierd
 quickfix
