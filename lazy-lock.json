@@ -1,10 +1,12 @@
 {
   "CamelCaseMotion": { "branch": "master", "commit": "de439d7c06cffd0839a29045a103fe4b44b15cdc" },
+  "Comment.nvim": { "branch": "master", "commit": "2a165144ffdf6e1fbe7127f39cd185d5d111927f" },
   "aniseed": { "branch": "master", "commit": "9892a40d4cf970a2916a984544b7f984fc12f55c" },
   "catppuccin": { "branch": "main", "commit": "55f43a952856bc0029e6cef066297c6cfab3451d" },
   "hotpot.nvim": { "branch": "master", "commit": "1002bcdea7af06c5a7bfce0536d96bc4b03ab42e" },
   "lazy.nvim": { "branch": "main", "commit": "434b7d3edd3f9dd485a97edb5b8411e4e7109aea" },
   "lualine.nvim": { "branch": "master", "commit": "fffbcb829288c3ca366f17cdb8d46aefb5c1d6f3" },
+  "nvim-FeMaco.lua": { "branch": "main", "commit": "469465fc1adf8bddc2c9bbe549d38304de95e9f7" },
   "nvim-treesitter": { "branch": "master", "commit": "48a3da710369688df80beb2847dabbbd02e2180e" },
   "nvim-treesitter-refactor": { "branch": "master", "commit": "75f5895cc662d61eb919da8050b7a0124400d589" },
   "nvim-ts-context-commentstring": { "branch": "main", "commit": "32d9627123321db65a4f158b72b757bcaef1a3f4" },
@@ -14,6 +16,8 @@
   "parinfer-rust": { "branch": "master", "commit": "55ce1e0c6e2465ce7f883972bb0feb1e4e8bdfa0" },
   "targets.vim": { "branch": "master", "commit": "8d6ff2984cdfaebe5b7a6eee8f226a6dd1226f2d" },
   "themis.nvim": { "branch": "main", "commit": "831a6c12dd1a753c0230dde3b549e08ce39013ba" },
+  "treesj": { "branch": "main", "commit": "9afe7983ce6351936a81d57adac651dc8f16c20b" },
   "vim-indent-object": { "branch": "master", "commit": "5c5b24c959478929b54a9e831a8e2e651a465965" },
+  "vim-sandwich": { "branch": "master", "commit": "c5a2cc438ce6ea2005c556dc833732aa53cae21a" },
   "vim-space": { "branch": "master", "commit": "e6615bd3803b7b874fd9e08295400268739597a1" }
 }
