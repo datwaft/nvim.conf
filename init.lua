@@ -71,6 +71,8 @@ if vim.loop.fs_stat(plugins_path) then
     plugins[#plugins + 1] = require("conf.plugins." .. file)
   end
 end
+-- Add conf.lsp to plugins table
+plugins[#plugins + 1] = require("conf.lsp")
 
 -- Configure lazy.nvim
 require("lazy").setup(plugins)
