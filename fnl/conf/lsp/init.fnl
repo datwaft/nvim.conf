@@ -4,10 +4,14 @@
   (local on-attach (require :conf.lsp.on-attach))
   (local lsp (require :lspconfig))
 
+  (local capabilities (let [cmp (require "cmp_nvim_lsp")]
+                        (cmp.default_capabilities)))
+
   ;; Lua
   (let [neodev (require :neodev)]
     (neodev.setup {})
     (lsp.sumneko_lua.setup {:on_attach on-attach
+                            : capabilities
                             :settings {:Lua {:workspace {:preloadFileSize 500}}}})))
 
 [;; Configuration
