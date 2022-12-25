@@ -1,11 +1,6 @@
 (import-macros {: let!} :themis.var)
 (import-macros {: set!} :themis.opt)
 
-(local {: byte} string)
-
-(local {: stdpath
-        : expand} vim.fn)
-
 (fn executable? [...] (= 1 (vim.fn.executable ...)))
 
 (fn escape [combination]
@@ -123,7 +118,7 @@
 (set! shortmess+ :c)
 
 ;; Command-mode completion
-(set! wildcharm (byte (escape "<tab>")))
+(set! wildcharm (string.byte (escape "<tab>")))
 (set! wildignorecase)
 
 ;; Support fuzzy finding
@@ -139,22 +134,6 @@
 ;; Substitution
 (set! gdefault)
 
-;;; ===================
-;;; NETRW configuration
-;;; ===================
-;; Disable banner
-(let! netrw_banner 0)
-;; Tree style listing
-(let! netrw_liststyle 3)
-;; Open files in the previous window
-(let! netrw_browse_split 4)
-;; Open split to the right
-(let! netrw_altv 1)
-;; Set split size
-(let! netrw_winsize 20)
-;; Start with dotfiles hidden
-(let! netrw_list_hide "\\(^\\|\\s\\s\\)\\zs\\.\\S\\+")
-
 ;;; ===========================
 ;;; Miscellaneous configuration
 ;;; ===========================
@@ -169,9 +148,6 @@
 
 ;; LocalLeader
 (let! maplocalleader (escape "<space>"))
-
-;; Markdown
-(let! markdown_fenced_languages ["ts=typescript"])
 
 ;; Grep
 (set! grepprg "rg --vimgrep")
