@@ -1,4 +1,5 @@
 {
+  "CamelCaseMotion": { "branch": "master", "commit": "de439d7c06cffd0839a29045a103fe4b44b15cdc" },
   "aniseed": { "branch": "master", "commit": "9892a40d4cf970a2916a984544b7f984fc12f55c" },
   "catppuccin": { "branch": "main", "commit": "55f43a952856bc0029e6cef066297c6cfab3451d" },
   "hotpot.nvim": { "branch": "master", "commit": "1002bcdea7af06c5a7bfce0536d96bc4b03ab42e" },
@@ -11,5 +12,8 @@
   "nvim-web-devicons": { "branch": "master", "commit": "05e1072f63f6c194ac6e867b567e6b437d3d4622" },
   "nvim-yati": { "branch": "main", "commit": "8240f369d47c389ac898f87613e0901f126b40f3" },
   "parinfer-rust": { "branch": "master", "commit": "55ce1e0c6e2465ce7f883972bb0feb1e4e8bdfa0" },
-  "themis.nvim": { "branch": "main", "commit": "831a6c12dd1a753c0230dde3b549e08ce39013ba" }
+  "targets.vim": { "branch": "master", "commit": "8d6ff2984cdfaebe5b7a6eee8f226a6dd1226f2d" },
+  "themis.nvim": { "branch": "main", "commit": "831a6c12dd1a753c0230dde3b549e08ce39013ba" },
+  "vim-indent-object": { "branch": "master", "commit": "5c5b24c959478929b54a9e831a8e2e651a465965" },
+  "vim-space": { "branch": "master", "commit": "e6615bd3803b7b874fd9e08295400268739597a1" }
 }
