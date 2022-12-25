@@ -156,9 +156,13 @@
 ;;; ===========================================
 ;;; Override configuration for floating windows
 ;;; ===========================================
-(let [original vim.lsp.util.open_floating_preview]
-  (fn vim.lsp.util.open_floating_preview [...]
-    (let [(bufnr winid) (original ...)]
-      (vim.api.nvim_win_set_option winid :breakindentopt "")
-      (vim.api.nvim_win_set_option winid :showbreak "NONE")
-      (values bufnr winid))))
+;; Extend vim.lsp.util.open_floating_preview
+(local open_floating_preview vim.lsp.util.open_floating_preview)
+(fn vim.lsp.util.open_floating_preview [...]
+  ;; Execute original function
+  (local (bufnr winid) (open_floating_preview ...))
+  ;; Set window-local options
+  (vim.api.nvim_win_set_option winid :breakindentopt "")
+  (vim.api.nvim_win_set_option winid :showbreak "NONE")
+  ;; Return the result of the original function
+  (values bufnr winid))
