@@ -13,7 +13,9 @@
 [;; Configuration
  (pack "neovim/nvim-lspconfig" {: config
                                 :dependencies ["folke/neodev.nvim"
-                                               "williamboman/mason-lspconfig.nvim"]})
+                                               "williamboman/mason-lspconfig.nvim"
+                                               (pack "j-hui/fidget.nvim" {:config true})
+                                               (pack "narutoxy/dim.lua" {:config true})]})
  ;; Installation
  (pack "williamboman/mason.nvim" {:config true}) 
  (pack "williamboman/mason-lspconfig.nvim" {:config {:automatic_installation true}
