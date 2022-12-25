@@ -1,0 +1,7 @@
+{
+  "catppuccin": { "branch": "main", "commit": "55f43a952856bc0029e6cef066297c6cfab3451d" },
+  "hotpot.nvim": { "branch": "master", "commit": "1002bcdea7af06c5a7bfce0536d96bc4b03ab42e" },
+  "lazy.nvim": { "branch": "main", "commit": "434b7d3edd3f9dd485a97edb5b8411e4e7109aea" },
+  "parinfer-rust": { "branch": "master", "commit": "55ce1e0c6e2465ce7f883972bb0feb1e4e8bdfa0" },
+  "themis.nvim": { "branch": "main", "commit": "831a6c12dd1a753c0230dde3b549e08ce39013ba" }
+}
