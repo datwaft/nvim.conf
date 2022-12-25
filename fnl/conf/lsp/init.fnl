@@ -4,8 +4,11 @@
   (local on-attach (require :conf.lsp.on-attach))
   (local lsp (require :lspconfig))
 
-  (local capabilities (let [cmp (require "cmp_nvim_lsp")]
-                        (cmp.default_capabilities)))
+  (local capabilities (let [(ok? cmp) (pcall require "cmp_nvim_lsp")]
+                        (if ok? (cmp.default_capabilities)
+                          (vim.lsp.protocol.make_client_capabilities))))
+  (set capabilities.textDocument.foldingRange {:dynamicRegistration false
+                                               :lineFoldingOnly true})
 
   ;; Lua
   (let [neodev (require :neodev)]
