@@ -43,7 +43,9 @@
       {:name "vsnip"}
       {:name "path"}
       {:name "git"}]
-     [{:name "buffer" :option {:keyword_pattern "\\k\\+"}}]])
+     [{:name "buffer" :option {:keyword_pattern "\\k\\+"}}
+      {:name "spell" :option {:enable_in_context #(let [context (require :cmp.config.context)]
+                                                    (context.in_treesitter_capture "spell"))}}]])
 
   ;;; ===========
   ;;; Comparators
@@ -96,7 +98,8 @@
                        "hrsh7th/cmp-path"
                        (pack "hrsh7th/cmp-vsnip" {:dependencies ["hrsh7th/vim-vsnip"]})
                        "lukas-reineke/cmp-under-comparator"
-                       (pack "petertriho/cmp-git" {:dependencies ["nvim-lua/plenary.nvim"]})]
+                       (pack "petertriho/cmp-git" {:dependencies ["nvim-lua/plenary.nvim"]})
+                       "f3fora/cmp-spell"]
         : config})
  ;; Snippets
  (pack "hrsh7th/vim-vsnip"
