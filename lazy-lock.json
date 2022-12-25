@@ -1,4 +1,5 @@
 {
+  "aniseed": { "branch": "master", "commit": "9892a40d4cf970a2916a984544b7f984fc12f55c" },
   "catppuccin": { "branch": "main", "commit": "55f43a952856bc0029e6cef066297c6cfab3451d" },
   "hotpot.nvim": { "branch": "master", "commit": "1002bcdea7af06c5a7bfce0536d96bc4b03ab42e" },
   "lazy.nvim": { "branch": "main", "commit": "434b7d3edd3f9dd485a97edb5b8411e4e7109aea" },
