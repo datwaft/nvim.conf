@@ -60,6 +60,9 @@ require("hotpot").setup({
   provide_require_fennel = true,
 })
 
+-- Load configuration
+require("conf")
+
 -- Add plugins to table
 local plugins_path = vim.fn.stdpath("config") .. "/fnl/conf/plugins"
 if vim.loop.fs_stat(plugins_path) then
@@ -71,6 +74,3 @@ end
 
 -- Configure lazy.nvim
 require("lazy").setup(plugins)
-
--- Load configuration
-require("conf")
