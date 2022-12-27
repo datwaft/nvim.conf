@@ -10,12 +10,16 @@
   (set capabilities.textDocument.foldingRange {:dynamicRegistration false
                                                :lineFoldingOnly true})
 
+  ;;; ====================
+  ;;; Client configuration
+  ;;; ====================
   ;; Lua
   (let [neodev (require :neodev)]
     (neodev.setup {})
-    (lsp.sumneko_lua.setup {:on_attach on-attach
-                            : capabilities
-                            :settings {:Lua {:workspace {:preloadFileSize 500}}}})))
+    (lsp.sumneko_lua.setup {:on_attach on-attach : capabilities
+                            :settings {:Lua {:workspace {:preloadFileSize 500}}}}))
+  ;; Python
+  (lsp.pyright.setup {:on_attach on-attach : capabilities}))
 
 [;; Configuration
  (pack "neovim/nvim-lspconfig" {: config
