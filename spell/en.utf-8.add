@@ -10,6 +10,7 @@ WIP
 XDG
 aot
 api
+btn
 casey
 catppuccin
 clojure
@@ -36,9 +37,11 @@ fpath
 ftdetect
 ftplugin
 github
+h6
 hererocks
 homebrew
 io
+iter
 javascript
 json
 keybind
@@ -50,6 +53,7 @@ luarocks
 luxon
 neovim
 netrw
+networkidle
 nhdaly
 nvim
 param
@@ -66,6 +70,8 @@ sdkman
 statusline
 stdpaths
 svg
+td
+testid
 themis
 timestamp
 tmux
