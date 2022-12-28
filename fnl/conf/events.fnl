@@ -3,6 +3,7 @@
                 : autocmd!} :themis.event)
 (import-macros {: set!
                 : local-set!} :themis.opt)
+(import-macros {: buf-map!} :themis.keybind)
 
 (fn bufexists? [...] (= (vim.fn.bufexists ...) 1))
 
@@ -33,11 +34,11 @@
 (augroup! read-file-on-disk-change
   (clear!)
   (autocmd! [FocusGained BufEnter CursorHold CursorHoldI] *
-            '(if (and (not= :c (vim.fn.mode))
-                      (not (bufexists? "[Command Line]")))
-               (vim.cmd.checktime)))
+    '(if (and (not= :c (vim.fn.mode))
+              (not (bufexists? "[Command Line]")))
+       (vim.cmd.checktime)))
   (autocmd! FileChangedShellPost *
-            '(vim.notify "File changed on disk. Buffer reloaded." vim.log.levels.INFO)))
+    '(vim.notify "File changed on disk. Buffer reloaded." vim.log.levels.INFO)))
 
 ;;; ========
 ;;; Terminal
@@ -56,3 +57,46 @@
   (autocmd! TermOpen * '(local-set! signcolumn :no))
   ;; Disables colorcolumn on terminal buffers
   (autocmd! TermOpen * '(local-set! colorcolumn [])))
+
+;;; ===============
+;;; Disable 'spell'
+;;; ===============
+(augroup! disable-spell
+  (clear!)
+  (autocmd! FileType [checkhealth gitignore help]
+    '(local-set! nospell)))
+
+;;; ==============
+;;; Disable 'wrap'
+;;; ==============
+(augroup! disable-wrap
+  (clear!)
+  (autocmd! FileType [clojure fennel lisp]
+    '(local-set! nowrap)))
+
+;;; ===========================
+;;; Properly open files with gf
+;;; ===========================
+(augroup! properly-open-files-with-gf
+  (clear!)
+  ;; Fennel
+  (autocmd! FileType [fennel lua]
+    '(do
+       (local-set! path^ (.. (vim.fn.stdpath "config") "/lua"))
+       (local-set! path^ (.. (vim.fn.stdpath "config") "/fnl"))
+       (local-set! suffixesadd^ "/init.fnl")
+       (local-set! suffixesadd^ ".fnl")
+       (local-set! suffixesadd^ "/init.lua")
+       (local-set! suffixesadd^ ".lua")
+       (local-set! includeexpr "tr(v:fname,'.','/')"))))
+
+;;; =================
+;;; Quickfix mappings
+;;; =================
+(augroup! quickfix-mappings
+  (clear!)
+  (autocmd! FileType qf '(buf-map! [n] "<localleader>q" "<cmd>cclose<cr>"))
+  (autocmd! FileType qf '(buf-map! [n] "dd" #(let [current-item (vim.fn.line ".")
+                                                   current-list (vim.fn.getqflist)
+                                                   new-list (doto current-list (table.remove current-item))]
+                                               (vim.fn.setqflist new-list "r")))))
