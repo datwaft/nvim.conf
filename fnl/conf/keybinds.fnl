@@ -11,6 +11,9 @@
 ;;; =============
 ;; Disable highlight on escape
 (map! [n] "<esc>" "<esc><cmd>noh<cr>")
+;; Make `/` and `?` search inside selection
+(map! [x] "/" "<esc>/\\%V")
+(map! [x] "?" "<esc>?\\%V")
 
 ;;; ===============
 ;;; Quickfix window
