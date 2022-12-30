@@ -1,7 +1,9 @@
+:TSUpdate
 CMake
 CSI
 ESLint
 LTeX
+MMM
 Setulc
 Smulx
 Undercurls
@@ -9,6 +11,7 @@ WIP
 XDG
 aot
 api
+btn
 casey
 catppuccin
 clojure
@@ -22,6 +25,7 @@ datwaft
 deno
 dotfiles
 env
+eraserhd
 eslint
 exa
 fennel
@@ -33,10 +37,14 @@ folke
 fpath
 ftdetect
 ftplugin
+fzf
+gf
 github
+h6
 hererocks
 homebrew
 io
+iter
 javascript
 json
 keybind
@@ -48,9 +56,11 @@ luarocks
 luxon
 neovim
 netrw
+networkidle
 nhdaly
 nvim
 param
+parinfer
 powerlevel10k
 prettierd
 quickfix
@@ -63,6 +73,8 @@ sdkman
 statusline
 stdpaths
 svg
+td
+testid
 themis
 timestamp
 tmux
@@ -73,6 +85,7 @@ treesitter
 ui
 uml
 usr
+util
 vue
 wbthomason
 wezterm
@@ -82,4 +95,6 @@ wildmenu
 xclip
 yaml
 yml
+yyyy
+zod
 zsh

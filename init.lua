@@ -1,82 +1,78 @@
--- Like calling `print(string.format(template, ...))`
----@param template string #See `string.format` for more information
-local function fprint(template, ...)
-  print(string.format(template, ...))
+local plugins_path = vim.fn.stdpath("data") .. "/lazy"
+
+-- Bootstrap lazy.nvim
+local lazy_path = plugins_path .. "/lazy.nvim"
+if not vim.loop.fs_stat(lazy_path) then
+  vim.notify("Bootstrapping lazy.nvim...", vim.log.levels.INFO)
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "--single-branch",
+    "https://github.com/folke/lazy.nvim.git",
+    lazy_path,
+  })
+end
+-- Bootstrap hotpot.nvim
+local hotpot_path = plugins_path .. "/hotpot.nvim"
+if not vim.loop.fs_stat(hotpot_path) then
+  vim.notify("Bootstrapping hotpot.nvim...", vim.log.levels.INFO)
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "--single-branch",
+    "https://github.com/rktjmp/hotpot.nvim.git",
+    hotpot_path,
+  })
+end
+-- Bootstrap themis.nvim
+local themis_path = plugins_path .. "/themis.nvim"
+if not vim.loop.fs_stat(themis_path) then
+  vim.notify("Bootstrapping themis.nvim...", vim.log.levels.INFO)
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "--single-branch",
+    "https://github.com/datwaft/themis.nvim.git",
+    themis_path,
+  })
 end
 
--- Install plugin if it is not installed
----@param plugin string #Must follow the pattern `username/repository`
----@param branch string? #The branch to clone
-local function install_if_not(plugin, branch)
-  local _, _, name = string.find(plugin, [[%S+/(%S+)]])
-  local path = vim.fn.stdpath("data") .. "/site/pack/packer/start/" .. name
-  if not vim.loop.fs_stat(path) then
-    fprint("Couldn't find '%s', cloning new copy to %s", name, path)
-    if branch ~= nil then
-      vim.fn.system({
-        "git",
-        "clone",
-        "https://github.com/" .. plugin .. ".git",
-        "--branch",
-        branch,
-        path,
-      })
-    else
-      vim.fn.system({
-        "git",
-        "clone",
-        "https://github.com/" .. plugin .. ".git",
-        path,
-      })
-    end
+-- Add lazy.nvim to rtp
+vim.opt.runtimepath:prepend(lazy_path)
+-- Add hotpot.nvim to rtp
+vim.opt.runtimepath:prepend(hotpot_path)
+-- Add themis.nvim to rtp
+vim.opt.runtimepath:prepend(themis_path)
+
+-- Generate plugins table
+local plugins = {
+  {
+    "rktjmp/hotpot.nvim",
+    dependencies = { "datwaft/themis.nvim" },
+  },
+}
+
+-- Configure hotpot.nvim
+require("hotpot").setup({
+  provide_require_fennel = true,
+})
+
+-- Load configuration
+require("conf")
+
+-- Add plugins to table
+local plugins_path = vim.fn.stdpath("config") .. "/fnl/conf/plugins"
+if vim.loop.fs_stat(plugins_path) then
+  for file in vim.fs.dir(plugins_path) do
+    file = file:match("^(.*)%.fnl$")
+    plugins[#plugins + 1] = require("conf.plugins." .. file)
   end
 end
+-- Add conf.lsp to plugins table
+plugins[#plugins + 1] = require("conf.lsp")
 
--- Set essential options
-vim.opt.expandtab = true
-vim.opt.softtabstop = -1
-vim.opt.shiftwidth = 0
-vim.opt.tabstop = 2
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.mouse = "a"
-vim.opt.termguicolors = true
-vim.g.maplocalleader = vim.api.nvim_replace_termcodes("<space>", true, true, true)
-
--- Install essential plugins
-install_if_not("wbthomason/packer.nvim")
-install_if_not("rktjmp/hotpot.nvim")
-install_if_not("datwaft/themis.nvim")
-
-if pcall(require, "hotpot") then
-  -- Setup hotpot.nvim
-  require("hotpot").setup({
-    enable_hotpot_diagnostics = false,
-    provide_require_fennel = true,
-  })
-  -- AOT compile
-  require("hotpot.api.make").build(
-    vim.fn.stdpath("config"),
-    { verbosity = 0 },
-    vim.fn.stdpath("config") .. "/ftplugin/.+",
-    function(path)
-      return path
-    end,
-    vim.fn.stdpath("config") .. "/after/ftdetect/.+",
-    function(path)
-      return path
-    end,
-    vim.fn.stdpath("config") .. "/after/ftplugin/.+",
-    function(path)
-      return path
-    end,
-    vim.fn.stdpath("config") .. "/fnl/conf/health.fnl",
-    function()
-      return vim.fn.stdpath("config") .. "/lua/conf/health.lua"
-    end
-  )
-  -- Import neovim configuration
-  require("conf")
-else
-  print("Unable to require hotpot")
-end
+-- Configure lazy.nvim
+require("lazy").setup(plugins)

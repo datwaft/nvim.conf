@@ -2,14 +2,11 @@
                 : clear!
                 : autocmd!} :themis.event)
 
-(local {: expand
-        : mkdir} vim.fn)
-
 ;;; =========
 ;;; Constants
 ;;; =========
 
-(local databases-folder (expand "~/.local/share/nvim/databases"))
+(local databases-folder (vim.fn.expand "~/.local/share/nvim/databases"))
 (local icons {:error ""
               :warn ""
               :info ""
@@ -76,5 +73,5 @@
 ;; Create folders if non-existent
 (augroup! create-folders-if-non-existent
   (clear!)
-  (autocmd! VimEnter * '(mkdir databases-folder :p)
+  (autocmd! VimEnter * '(vim.fn.mkdir databases-folder :p)
             {:once true}))
