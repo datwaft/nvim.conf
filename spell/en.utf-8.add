@@ -3,6 +3,7 @@ CMake
 CSI
 ESLint
 LTeX
+MMM
 Setulc
 Smulx
 Undercurls
@@ -36,6 +37,7 @@ folke
 fpath
 ftdetect
 ftplugin
+fzf
 gf
 github
 h6
@@ -93,4 +95,6 @@ wildmenu
 xclip
 yaml
 yml
+yyyy
+zod
 zsh
