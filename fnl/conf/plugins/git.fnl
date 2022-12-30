@@ -31,4 +31,5 @@
   (map! [ox] "ih" ":<C-U>Gitsigns select_hunk<cr>"))
 
 [(pack "lewis6991/gitsigns.nvim" {:config {:on_attach git-signs-on-attach}})
- (pack "lambdalisue/gin.vim" {:dependencies ["vim-denops/denops.vim"]})]
+ (pack "lambdalisue/gin.vim" {:dependencies ["vim-denops/denops.vim"]})
+ (pack "akinsho/git-conflict.nvim" {:config {:disable_diagnostics true}})]
