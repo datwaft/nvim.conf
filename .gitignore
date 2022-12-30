@@ -1,5 +1,2 @@
 # MacOS files
 .DS_Store
-
-# Packer compilation
-/plugin/packer_compiled.lua
