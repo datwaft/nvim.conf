@@ -11,6 +11,6 @@
                   (map! [nvo] "<leader>e" "<Plug>CamelCaseMotion_e")
                   (map! [xo] "i<leader>w" "<Plug>CamelCaseMotion_ie"))})
  ;; Around and inner
- (pack "echasnovski/mini.ai" {:config #(. (require :mini.ai) :setup)})
+ (pack "echasnovski/mini.ai" {:config #((. (require :mini.ai) :setup))})
  ;; Whitespace
  "vim-utils/vim-space"]
