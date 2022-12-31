@@ -8,4 +8,6 @@
  (pack "Wansmer/treesj" {:dependencies ["nvim-treesitter/nvim-treesitter"]
                          :config true})
  ;; Edit language injection
- (pack "AckslD/nvim-FeMaco.lua" {:config true})]
+ (pack "AckslD/nvim-FeMaco.lua" {:config true})
+ ;; Align text interactively
+ (pack "echasnovski/mini.align" {:config #((. (require :mini.align) :setup))})]
