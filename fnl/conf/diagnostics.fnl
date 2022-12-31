@@ -27,3 +27,5 @@
 ;; Go to diagnostic
 (map! [n] "[d" vim.diagnostic.goto_prev)
 (map! [n] "]d" vim.diagnostic.goto_next)
+;; List diagnostics
+(map! [n] "<leader>ld" vim.diagnostic.setqflist)
