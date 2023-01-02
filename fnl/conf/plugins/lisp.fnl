@@ -1,5 +1,4 @@
 (import-macros {: pack} :themis.pack.lazy)
 
-(;; Parentheses inference
- pack "eraserhd/parinfer-rust" {:build "cargo build --release"
-                                :ft conf.lisp-filetypes})
+[;; Parentheses inference
+ (pack "gpanders/nvim-parinfer" {:ft conf.lisp-filetypes})]
