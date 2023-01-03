@@ -90,6 +90,15 @@
        (local-set! suffixesadd^ ".lua")
        (local-set! includeexpr "tr(v:fname,'.','/')"))))
 
+;;; ===============
+;;; Set 'formatprg'
+;;; ===============
+(augroup! set-formatprg
+  (clear!)
+  ;; Fennel
+  (autocmd! FileType [fennel]
+    '(local-set! formatprg "fnlfmt - | tail -r | tail -n +2 | tail -r")))
+
 ;;; =================
 ;;; Quickfix mappings
 ;;; =================
