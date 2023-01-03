@@ -48,7 +48,8 @@
   ;;; Extensions
   ;;; ==========
   (telescope.load_extension "fzf")
-  (telescope.load_extension "smart_history"))
+  (telescope.load_extension "smart_history")
+  (telescope.load_extension "notify"))
 
 (fn fern-config []
   ;;; ========
