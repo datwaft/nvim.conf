@@ -34,6 +34,7 @@ filetype
 filetypes
 fnl
 folke
+formatprg
 fpath
 ftdetect
 ftplugin
