@@ -2,7 +2,8 @@
 
 (fn wilder-setup []
   (local wilder (require :wilder))
-  (wilder.setup {:modes [":" "/" "?"]})
+  (wilder.setup {:modes [":" "/" "?"]
+                 :accept_key "<space>"})
   (wilder.set_option "use_python_remote_plugin" 0)
   (wilder.set_option :pipeline
                      [(wilder.branch (wilder.cmdline_pipeline {:fuzzy 1
