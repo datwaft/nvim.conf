@@ -62,6 +62,9 @@
 ;; CursorHold delay
 (set! updatetime 500)
 
+;; External configuration file
+(set! exrc)
+
 ;;; ======================
 ;;; Terminal configuration
 ;;; ======================
