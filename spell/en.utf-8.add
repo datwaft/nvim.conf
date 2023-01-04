@@ -6,7 +6,6 @@ LTeX
 MMM
 Setulc
 Smulx
-Undercurls
 WIP
 XDG
 aot
@@ -55,6 +54,7 @@ lsp
 lua
 luarocks
 luxon
+neovide
 neovim
 netrw
 networkidle
@@ -85,6 +85,7 @@ tpm
 treesitter
 ui
 uml
+undercurls
 usr
 util
 vue
