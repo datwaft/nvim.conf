@@ -16,9 +16,9 @@
 ;; Change scale dynamically
 (local delta 1.10)
 (let! neovide_scale_factor 1.0)
-(map! [n] "<C-=>" #(let! neovide_scale_factor (* vim.g.neovide_scale_factor delta)))
-(map! [n] "<D-=>" #(let! neovide_scale_factor (* vim.g.neovide_scale_factor delta)))
-(map! [n] "<C-->" #(let! neovide_scale_factor (* vim.g.neovide_scale_factor (/ 1 delta))))
-(map! [n] "<D-->" #(let! neovide_scale_factor (* vim.g.neovide_scale_factor (/ 1 delta))))
+(map! [invo] "<C-=>" #(let! neovide_scale_factor (* vim.g.neovide_scale_factor delta)))
+(map! [invo] "<D-=>" #(let! neovide_scale_factor (* vim.g.neovide_scale_factor delta)))
+(map! [invo] "<C-->" #(let! neovide_scale_factor (* vim.g.neovide_scale_factor (/ 1 delta))))
+(map! [invo] "<D-->" #(let! neovide_scale_factor (* vim.g.neovide_scale_factor (/ 1 delta))))
 ;; Paste
 (map! [i] "<D-v>" "<C-r>+")
