@@ -37,6 +37,7 @@
   "mini.align": { "branch": "main", "commit": "19a06c5b6127f358fc8b56be715567e223047192" },
   "mini.comment": { "branch": "main", "commit": "a0f543e7846f67d10cbed5f2dce72eb26d0ca96b" },
   "mini.surround": { "branch": "main", "commit": "aeeb1c4ce4d1c66211bdc74b131c11b8fcbae65e" },
+  "mini.test": { "branch": "main", "commit": "af9307403800f2f9a42e893bfa60721ec39a4280" },
   "mkdir.nvim": { "branch": "main", "commit": "c55d1dee4f099528a1853b28bb28caa802eba217" },
   "neodev.nvim": { "branch": "main", "commit": "258b83f48405c6b530c09dd96950693664dc6bc0" },
   "null-ls.nvim": { "branch": "main", "commit": "6830a1ed04f89e6d556cb6bcc200433173004307" },
