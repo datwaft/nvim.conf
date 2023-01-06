@@ -1,4 +1,5 @@
 :TSUpdate
+CMD
 CMake
 CSI
 ESLint
@@ -43,6 +44,7 @@ github
 h6
 hererocks
 homebrew
+hy
 io
 iter
 javascript
@@ -100,4 +102,3 @@ yml
 yyyy
 zod
 zsh
-CMD
