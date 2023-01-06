@@ -58,7 +58,8 @@
                        :lisp
                        :racket
                        :scheme
-                       :janet])
+                       :janet
+                       :hy])
 
 (tset _G :conf {: databases-folder
                 : icons
