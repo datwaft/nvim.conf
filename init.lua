@@ -58,6 +58,11 @@ local plugins = {
 -- Configure hotpot.nvim
 require("hotpot").setup({
   provide_require_fennel = true,
+  compiler = {
+    modules = {
+      correlate = true,
+    },
+  },
 })
 
 -- Load configuration
