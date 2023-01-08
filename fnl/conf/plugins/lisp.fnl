@@ -3,7 +3,11 @@
 [;; Parentheses inference
  (pack "gpanders/nvim-parinfer" {:ft conf.lisp-filetypes})
  ;; Interactive evaluation
- (pack "Olical/conjure" {:ft conf.lisp-filetypes})
+ (pack "Olical/conjure" {:ft conf.lisp-filetypes
+                         :conf #(do
+                                  (import-macros {: let!} :themis.var)
+                                  ;; Set client for scheme
+                                  (let! conjure#filetype#scheme "conjure.client.guile.socket"))})
  ;; Clojure interactive evaluation
  (pack "clojure-vim/vim-jack-in" {:ft "clojure"
                                   :dependencies ["tpope/vim-dispatch"
