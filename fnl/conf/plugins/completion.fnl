@@ -1,10 +1,8 @@
 (import-macros {: pack} :themis.pack.lazy)
 
-(fn feedkey [key mode]
-  (vim.api.nvim_feedkeys (vim.api.nvim_replace_termcodes key true true true) mode true))
-
 (fn config []
   (local cmp (require :cmp))
+  (local luasnip (require :luasnip))
 
   ;;; =======
   ;;; Options
@@ -27,11 +25,11 @@
      "<CR>"      (cmp.mapping.confirm {:select false})
      "<Tab>"     (cmp.mapping (fn [fallback]
                                 (if (cmp.visible) (cmp.select_next_item)
-                                    (= (vim.fn.vsnip#available 1) 1) (feedkey "<Plug>(vsnip-expand-or-jump)" "")
+                                    (luasnip.expand_or_jumpable) (luasnip.expand_or_jump)
                                     (fallback))) [:i :s])
      "<S-Tab>"   (cmp.mapping (fn [fallback]
                                 (if (cmp.visible) (cmp.select_prev_item)
-                                    (= (vim.fn.vsnip#jumpable -1) 1) (feedkey "<Plug>(vsnip-jump-prev)" "")
+                                    (luasnip.jumpable -1) (luasnip.jump -1)
                                     (fallback))) [:i :s])})
 
   ;;; =======
@@ -40,7 +38,7 @@
   (local sources
     [[{:name "nvim_lsp"}
       {:name "nvim_lsp_signature_help"}
-      {:name "vsnip"}
+      {:name "luasnip"}
       {:name "path"}
       {:name "git"}]
      [{:name "buffer" :option {:keyword_pattern "\\k\\+"}}
@@ -82,7 +80,7 @@
   (cmp.setup {:formatting {:fields [:kind :abbr]
                            :format format-item}
               :preselect cmp.PreselectMode.None
-              :snippet {:expand (fn [args] (vim.fn.vsnip#anonymous args.body))}
+              :snippet {:expand #(luasnip.lsp_expand $.body)}
               :mapping (cmp.mapping.preset.insert mappings)
               :sources (cmp.config.sources (unpack sources))
               :sorting {:comparators comparators}})
@@ -96,11 +94,12 @@
                        "hrsh7th/cmp-nvim-lsp-signature-help"
                        "hrsh7th/cmp-buffer"
                        "hrsh7th/cmp-path"
-                       (pack "hrsh7th/cmp-vsnip" {:dependencies ["hrsh7th/vim-vsnip"]})
+                       (pack "saadparwaiz1/cmp_luasnip" {:dependencies ["L3MON4D3/LuaSnip"]})
                        "lukas-reineke/cmp-under-comparator"
                        (pack "petertriho/cmp-git" {:dependencies ["nvim-lua/plenary.nvim"]})
                        "f3fora/cmp-spell"]
         : config})
  ;; Snippets
- (pack "hrsh7th/vim-vsnip"
-       {:dependencies ["rafamadriz/friendly-snippets"]})]
+ (pack "L3MON4D3/LuaSnip"
+       {:dependencies ["rafamadriz/friendly-snippets"]
+        :config #((. (require :luasnip.loaders.from_vscode) :lazy_load))})]
