@@ -13,11 +13,14 @@
      :playground {:enable true}
      :query_linter {:enable true
                     :use_virtual_text true
-                    :lint_events ["BufWrite" "CursorHold"]}}))
+                    :lint_events ["BufWrite" "CursorHold"]}
+     :rainbow {:enable true
+               :extended_mode true}}))
 
 (pack "nvim-treesitter/nvim-treesitter" {:build ":TSUpdate"
                                          :dependencies ["JoosepAlviste/nvim-ts-context-commentstring"
                                                         "yioneko/nvim-yati"
                                                         "nvim-treesitter/nvim-treesitter-refactor"
-                                                        "nvim-treesitter/playground"]
+                                                        "nvim-treesitter/playground"
+                                                        "mrjones2014/nvim-ts-rainbow"]
                                          : config})
