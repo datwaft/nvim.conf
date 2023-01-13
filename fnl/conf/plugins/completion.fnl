@@ -39,7 +39,7 @@
       {:name "luasnip"}
       {:name "path"}
       {:name "git"}]
-     [{:name "buffer" :option {:keyword_pattern "\\k\\+"}}
+     [{:name "buffer" :option {:keyword_pattern :\k\+}}
       {:name "spell" :option {:enable_in_context #(let [context (require :cmp.config.context)]
                                                     (context.in_treesitter_capture "spell"))}}]])
 
