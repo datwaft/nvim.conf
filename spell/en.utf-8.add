@@ -2,6 +2,7 @@
 CMD
 CMake
 CSI
+CTRL
 ESLint
 LTeX
 MMM
@@ -73,6 +74,7 @@ repro
 rktjmp
 rtp
 sdkman
+selenized
 statusline
 stdpaths
 svg
