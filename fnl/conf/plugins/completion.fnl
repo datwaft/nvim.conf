@@ -23,14 +23,12 @@
      "<C-e>"     (cmp.mapping.abort)
      "<Space>"   (cmp.mapping.confirm {:select false})
      "<CR>"      (cmp.mapping.confirm {:select false})
-     "<Tab>"     (cmp.mapping (fn [fallback]
-                                (if (cmp.visible) (cmp.select_next_item)
-                                    (luasnip.expand_or_jumpable) (luasnip.expand_or_jump)
-                                    (fallback))) [:i :s])
-     "<S-Tab>"   (cmp.mapping (fn [fallback]
-                                (if (cmp.visible) (cmp.select_prev_item)
-                                    (luasnip.jumpable -1) (luasnip.jump -1)
-                                    (fallback))) [:i :s])})
+     "<Tab>"     (cmp.mapping #(if (cmp.visible) (cmp.select_next_item)
+                                 (luasnip.expand_or_jumpable) (luasnip.expand_or_jump)
+                                 ($)))
+     "<S-Tab>"   (cmp.mapping #(if (cmp.visible) (cmp.select_prev_item)
+                                 (luasnip.jumpable -1) (luasnip.jump -1)
+                                 ($)))})
 
   ;;; =======
   ;;; Sources
