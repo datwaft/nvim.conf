@@ -110,9 +110,12 @@
                                                "jose-elias-alvarez/typescript.nvim"
                                                "b0o/schemastore.nvim"]})
  ;; Installation
- (pack "williamboman/mason.nvim" {:config true}) 
+ (pack "williamboman/mason.nvim" {:config true})
  (pack "williamboman/mason-lspconfig.nvim" {:config {:automatic_installation true}
                                             :dependencies ["williamboman/mason.nvim"]})
+ (pack "jay-babu/mason-null-ls.nvim" {:config {:automatic_installation true}
+                                      :dependencies ["williamboman/mason.nvim"
+                                                     "jose-elias-alvarez/null-ls.nvim"]})
  ;; Non-LSP integration
  (pack "jose-elias-alvarez/null-ls.nvim" {:config null-config
                                           :dependencies ["nvim-lua/plenary.nvim"]})]
