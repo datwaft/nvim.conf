@@ -5,8 +5,8 @@
  ;; Undo-Tree
  "mbbill/undotree"
  ;; Upload to paste-bin
- (pack "rktjmp/paperplanes.nvim" {:config {:register "+"
-                                           :provider "0x0.st"}})
+ (pack "rktjmp/paperplanes.nvim" {:opts {:register "+"
+                                         :provider "0x0.st"}})
  ;; Create snippet
  (pack "krivahtoo/silicon.nvim" {:build "./install.sh build"
                                  :config #(let [silicon (require :silicon)]
