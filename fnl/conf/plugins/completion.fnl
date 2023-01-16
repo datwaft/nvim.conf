@@ -24,7 +24,7 @@
      "<Space>"   (cmp.mapping.confirm {:select false})
      "<CR>"      (cmp.mapping.confirm {:select false})
      "<Tab>"     (cmp.mapping #(if (cmp.visible) (cmp.select_next_item)
-                                 (luasnip.expand_or_jumpable) (luasnip.expand_or_jump)
+                                 (luasnip.expand_or_locally_jumpable) (luasnip.expand_or_jump)
                                  ($)))
      "<S-Tab>"   (cmp.mapping #(if (cmp.visible) (cmp.select_prev_item)
                                  (luasnip.jumpable -1) (luasnip.jump -1)
