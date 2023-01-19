@@ -2,8 +2,6 @@
 
 [;; Better UI
  "stevearc/dressing.nvim"
- ;; Better notifications
- (pack "rcarriga/nvim-notify" {:config #(set vim.notify (require :notify))})
  ;; Preview substitution
  (pack "markonm/traces.vim" {:config #(do (import-macros {: let!} :themis.var)
                                         (let! traces_abolish_integration 1))})
