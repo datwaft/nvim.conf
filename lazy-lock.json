@@ -1,7 +1,7 @@
 {
   "CamelCaseMotion": { "branch": "master", "commit": "de439d7c06cffd0839a29045a103fe4b44b15cdc" },
   "LuaSnip": { "branch": "master", "commit": "af60ac12fa1349dbad479fc1e95d5aea977c0c37" },
-  "catppuccin": { "branch": "main", "commit": "b17cfa01cf0517cc3614602df39e8433dc116fab" },
+  "catppuccin": { "branch": "main", "commit": "e1fc2c3ade0d8872665d7570c493bbd5e11919c7" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
   "cmp-git": { "branch": "main", "commit": "6bcb61c0a5ec2e0d522ece7c8fb3e009f1c79261" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "59224771f91b86d1de12570b4070fe4ad7cd1eeb" },
