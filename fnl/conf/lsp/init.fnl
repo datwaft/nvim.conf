@@ -42,7 +42,8 @@
   ;; Typescript
   (let [typescript (require :typescript)]
     (typescript.setup {:server {:on_attach on-attach : capabilities
-                                :root_dir (lsp.util.root_pattern "package.json")}}))
+                                :root_dir (lsp.util.root_pattern "package.json")
+                                :single_file_support false}}))
   (lsp.denols.setup {:on_attach on-attach : capabilities
                      :root_dir (lsp.util.root_pattern "deno.json" "deno.jsonc")})
   ;; ESLint
