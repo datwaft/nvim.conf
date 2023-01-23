@@ -7,12 +7,5 @@
  ;; Upload to paste-bin
  (pack "rktjmp/paperplanes.nvim" {:opts {:register "+"
                                          :provider "0x0.st"}})
- ;; Create snippet
- (pack "krivahtoo/silicon.nvim" {:build "./install.sh build"
-                                 :config #(let [silicon (require :silicon)]
-                                            (silicon.setup {:font "JetBrains Mono=31"
-                                                            :theme "Monokai Extended"
-                                                            :background "#fff0"
-                                                            :line_number true}))})
  ;; Run tests
  (pack "echasnovski/mini.test" {:config #((. (require :mini.test) :setup))})]
