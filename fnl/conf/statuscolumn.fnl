@@ -28,43 +28,46 @@
           vim.v.relnum))
       (use-numberwidth)))
 
-(fn sign-name-from-group [bufnr lnum group]
-  "Obtain the first sign name for the buffer and line number specified.
-  Uses the group name to filter the signs."
-  (let [group-signs (vim.fn.sign_getplaced bufnr {: group : lnum})]
-    (?. group-signs 1 :signs 1 :name)))
+(fn get-signs [bufnr lnum]
+  "Obtain a list of signs.
+  @return {:name   string
+           :text   string
+           :texthl string}[]"
+  (let [placed-signs (vim.fn.sign_getplaced bufnr {:group "*" : lnum})
+        placed-signs (. placed-signs 1 :signs)
+        defined-signs (icollect [_ sign (ipairs placed-signs)]
+                        (vim.fn.sign_getdefined sign.name))]
+       (icollect [_ [sign] (ipairs defined-signs)]
+         sign)))
+
+(fn get-signs-for [bufnr lnum partial-name]
+  "Obtain a list of signs.
+  Filters by `partial-name`.
+  @return {:name   string
+           :text   string
+           :texthl string}[]"
+  (icollect [_ sign (ipairs (get-signs bufnr lnum))]
+    (when (sign.name:find partial-name) sign)))
 
 (fn _G.gitsign []
   "Git decoration component for 'statuscolumn'."
-  (local name->sign
-    {:GitSignsAdd          "│"
-     :GitSignsChange       "│"
-     :GitSignsChangedelete "_"
-     :GitSignsDelete       "‾"
-     :GitSignsTopdelete    "~"
-     :GitSignsUntracked    "┆"})
-  (let [name (sign-name-from-group (vim.fn.bufnr) vim.v.lnum
-                                   :gitsigns_vimfn_signs_)]
-    (if (not= name nil)
-      (.. "%#" name "#" (. name->sign name) "%*")
-      " ")))
+  (let [signs (get-signs-for (vim.fn.bufnr) vim.v.lnum "GitSign")
+        sign (. signs 1)]
+    (if (= nil sign) "  "
+      (.. "%#" sign.texthl "#" sign.text "%*"))))
 
 (fn _G.diagnostics []
-  (local name->sign
-    {:DiagnosticSignError conf.icons.error
-     :DiagnosticSignWarn  conf.icons.warn
-     :DiagnosticSignInfo  conf.icons.info
-     :DiagnosticSignHint  conf.icons.hint
-     :DiagnosticSignOk    conf.icons.ok})
-  (let [name (sign-name-from-group (vim.fn.bufnr) vim.v.lnum "*")]
-    (if (and (not= nil name) (vim.startswith name "DiagnosticSign"))
-      (.. "%#" name "#" (. name->sign name) "%*")
-      "  ")))
+  "Diagnostics component for 'statuscolumn'."
+  (let [signs (get-signs-for (vim.fn.bufnr) vim.v.lnum "DiagnosticSign")
+        sign (. signs 1)]
+    (if (= nil sign) "  "
+      (.. "%#" sign.texthl "#" sign.text "%*"))))
 
 (fn _G.statuscolumn []
+  "An 'statuscolumn'."
   (.. "%="
       "%{%v:lua.diagnostics()%}"
-      "%{v:lua.linenumber()}"    " "
-      "%{%v:lua.gitsign()%}"     " "))
+      "%{v:lua.linenumber()} "
+      "%{%v:lua.gitsign()%}"))
 
 (set! statuscolumn "%!v:lua.statuscolumn()")
