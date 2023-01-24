@@ -52,7 +52,10 @@ javascript
 json
 keybind
 keybinds
+kube
 learncube
+localhost
+loopback
 lsp
 lua
 luarocks
@@ -71,6 +74,7 @@ powerlevel10k
 prettierd
 quickfix
 readline
+relativenumber
 repl
 repro
 rktjmp
@@ -108,6 +112,3 @@ yml
 yyyy
 zod
 zsh
-localhost
-loopback
-kube
