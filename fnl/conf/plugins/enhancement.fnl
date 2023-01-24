@@ -7,4 +7,7 @@
  ;; Sorting
  (pack "sQVe/sort.nvim" {:config true})
  ;; Sync spell files
- "micarmst/vim-spellsync"]
+ "micarmst/vim-spellsync"
+ ;; Pairs matching
+ (pack "andymass/vim-matchup" {:init #(do (import-macros {: let!} :themis.var)
+                                        (let! matchup_matchparen_offscreen {:method "popup"}))})]

@@ -15,12 +15,14 @@
                     :use_virtual_text true
                     :lint_events ["BufWrite" "CursorHold"]}
      :rainbow {:enable true
-               :extended_mode true}}))
+               :extended_mode true}
+     :matchup {:enable true}}))
 
 (pack "nvim-treesitter/nvim-treesitter" {:build ":TSUpdate"
                                          :dependencies ["JoosepAlviste/nvim-ts-context-commentstring"
                                                         "yioneko/nvim-yati"
                                                         "nvim-treesitter/nvim-treesitter-refactor"
                                                         "nvim-treesitter/playground"
-                                                        "mrjones2014/nvim-ts-rainbow"]
+                                                        "mrjones2014/nvim-ts-rainbow"
+                                                        "andymass/vim-matchup"]
                                          : config})
