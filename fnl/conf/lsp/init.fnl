@@ -35,10 +35,8 @@
   (lsp.pyright.setup {:on_attach on-attach : capabilities})
   ;; Rust
   (lsp.rust_analyzer.setup {:on_attach on-attach : capabilities
-                            :settings {:rust-analyzer {:checkOnSave {:allFeatures true
-                                                                     :overrideCommand [:cargo :clippy
-                                                                                       :--workspace :--message-format=json
-                                                                                       :--all-targets :--all-features]}}}})
+                            :settings {:rust-analyzer {:cargo {:allFeatures true}
+                                                       :checkOnSave {:command "clippy"}}}})
   ;; Typescript
   (let [typescript (require :typescript)]
     (typescript.setup {:server {:on_attach on-attach : capabilities
