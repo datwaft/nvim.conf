@@ -11,6 +11,21 @@
 
   (set! completeopt [:menu :menuone :noselect])
 
+  ;; ======
+  ;; Events
+  ;; ======
+  (import-macros {: augroup!
+                  : clear!
+                  : autocmd!} :themis.event)
+
+  (augroup! unlink-snipper-on-mode-change
+    (clear!)
+    (autocmd! ModeChanged ["s:n" "i:*"]
+      #(when (and (?. luasnip :session :current_nodes $.buf)
+                  (not (?. luasnip :session :jump_active)))
+         (luasnip.unlink_current))
+      {:desc "Forget the current snippet when leaving insert mode"}))
+
   ;;; ========
   ;;; Mappings
   ;;; ========
