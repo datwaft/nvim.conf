@@ -42,6 +42,10 @@
         signs (if opts.filter-name-by
                 (icollect [_ sign (ipairs signs)]
                   (when (sign.name:find opts.filter-name-by) sign))
+                signs)
+        signs (if opts.filter-not-name-by
+                (icollect [_ sign (ipairs signs)]
+                  (when (not (sign.name:find opts.filter-not-name-by)) sign))
                 signs)]
     signs))
 
@@ -103,8 +107,8 @@
               "%*")))
       opts.after)))
 
-(lambda diagnostics-col [bufnr lnum ?opts]
-  "Diagnostics component for 'statuscolumn'."
+(lambda symbols-col [bufnr lnum ?opts]
+  "Symbols component for 'statuscolumn'."
   (local opts (or ?opts {}))
   (set opts.before (or opts.before ""))
   (set opts.after (or opts.after ""))
@@ -114,7 +118,7 @@
     nil ; Do not display anything
     (..
       opts.before
-      (let [signs (get-signs bufnr lnum {:filter-name-by "DiagnosticSign"})
+      (let [signs (get-signs bufnr lnum {:filter-not-name-by "GitSign"})
             sign (. signs 1)]
         (if (= nil sign) (fill WIDTH)
           (.. "%#" sign.texthl "#"
@@ -128,13 +132,13 @@
   "An 'statuscolumn'."
   (local bufnr (vim.fn.bufnr))
   (local lnum vim.v.lnum)
-  (let [diagnostics (diagnostics-col bufnr lnum {:before " "})
+  (let [symbols (symbols-col bufnr lnum {:before " "})
         linenumber (linenumber-col {:before " " :after " "})
         gitsigns (gitsigns-col bufnr lnum {:after " "})]
     (.. "%="
-        (or diagnostics "")
+        (or symbols "")
         (if (and
-              (not= nil diagnostics)
+              (not= nil symbols)
               (or (= nil linenumber) (= nil gitsigns))) " "
           "")
         (or linenumber "")
