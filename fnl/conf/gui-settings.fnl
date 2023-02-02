@@ -6,7 +6,7 @@
 ;;; Configuration
 ;;; =============
 ;; Font
-(set! guifont ["Victor Mono:h13"])
+(set! guifont ["SF Mono:h13"])
 
 ;; Set default scale
 (let! neovide_scale_factor 1.0)
