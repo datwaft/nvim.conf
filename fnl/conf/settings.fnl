@@ -156,6 +156,9 @@
 (set! grepprg "rg --vimgrep")
 (set! grepformat "%f:%l:%c:%m")
 
+;; NETRW
+(let! netrw_silent 1)
+
 ;;; ===========================================
 ;;; Override configuration for floating windows
 ;;; ===========================================
