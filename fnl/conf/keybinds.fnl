@@ -1,10 +1,6 @@
 (import-macros {: map!} :themis.keybind)
 
-(local {: getbufinfo
-        : getbufvar} vim.fn)
-(local {: format} string)
 (fn wildmenumode? [...] (= (vim.fn.wildmenumode ...) 1))
-(fn empty? [xs] (= 0 (length xs)))
 
 ;;; =============
 ;;; Miscellaneous
