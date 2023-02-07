@@ -79,5 +79,5 @@
 ;; Create folders if non-existent
 (augroup! create-folders-if-non-existent
   (clear!)
-  (autocmd! VimEnter * '(vim.fn.mkdir databases-folder :p)
+  (autocmd! VimEnter * #(vim.fn.mkdir databases-folder :p)
             {:once true}))

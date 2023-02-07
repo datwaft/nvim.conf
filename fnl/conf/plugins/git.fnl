@@ -7,11 +7,11 @@
   (local gs (require :gitsigns))
 
   ;; Navigation
-  (map! [n] "]c" '(if (set! diff?) "]c"
+  (map! [n] "]c" #(if (set! diff?) "]c"
                     (do (vim.schedule #(gs.next_hunk))
                       "<Ignore>"))
         {:expr true})
-  (map! [n] "[c" '(if (set! diff?) "[c"
+  (map! [n] "[c" #(if (set! diff?) "[c"
                     (do (vim.schedule #(gs.prev_hunk))
                       "<Ignore>"))
         {:expr true})
@@ -22,10 +22,10 @@
   (map! [n] "<leader>hu" gs.undo_stage_hunk)
   (map! [n] "<leader>hR" gs.reset_buffer)
   (map! [n] "<leader>hp" gs.preview_hunk)
-  (map! [n] "<leader>hb" '(gs.blame_line {:full true}))
+  (map! [n] "<leader>hb" #(gs.blame_line {:full true}))
   (map! [n] "<leader>tb" gs.toggle_current_line_blame)
   (map! [n] "<leader>hd" gs.diffthis)
-  (map! [n] "<leader>hD" '(gs.diffthis "~"))
+  (map! [n] "<leader>hD" #(gs.diffthis "~"))
   (map! [n] "<leader>td" gs.toggle_deleted)
   ;; Text object
   (map! [ox] "ih" ":<C-U>Gitsigns select_hunk<cr>"))

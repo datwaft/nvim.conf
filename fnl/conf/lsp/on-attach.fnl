@@ -27,7 +27,7 @@
   (buf-map! [n] "<leader>a" vim.lsp.buf.code_action)
   ;; Format buffer
   (when (client.supports_method "textDocument/formatting")
-    (buf-map! [n] "<leader>f" '(format! bufnr true)))
+    (buf-map! [n] "<leader>f" #(format! bufnr true)))
 
   ;;; ======
   ;;; Events
@@ -40,4 +40,4 @@
   (when (client.supports_method "textDocument/formatting")
     (augroup! format-before-saving
       (clear! {:buffer bufnr})
-      (autocmd! BufWritePre <buffer> '(format! bufnr) {:buffer bufnr}))))
+      (autocmd! BufWritePre <buffer> #(format! bufnr) {:buffer bufnr}))))

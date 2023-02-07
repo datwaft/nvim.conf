@@ -37,7 +37,7 @@
 ;;; Wildmenu
 ;;; ========
 ;; Close the wildmenu
-(map! [c] "<space>" '(if (wildmenumode?) "<C-y>" "<space>")
+(map! [c] "<space>" #(if (wildmenumode?) "<C-y>" "<space>")
       {:expr true})
 
 ;;; ========

@@ -77,7 +77,7 @@
 
   (augroup! add-colors-to-fern-buffer
     (clear!)
-    (autocmd! FileType fern '(vim.fn.glyph_palette#apply))))
+    (autocmd! FileType fern #(vim.fn.glyph_palette#apply))))
 
 
 [;; Fuzzy-finding
