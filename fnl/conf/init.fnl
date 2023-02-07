@@ -5,4 +5,3 @@
 (require :conf.keybinds)
 (require :conf.events)
 (require :conf.diagnostics)
-(require :conf.statuscolumn)
