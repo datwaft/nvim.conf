@@ -22,8 +22,8 @@
      "<ESC>"    actions.close
      "<C-q>"    actions.smart_send_to_qflist
      "<C-k>"    actions.smart_send_to_loclist
-     "<C-Up>"   actions.cycle_history_prev
-     "<C-Down>" actions.cycle_history_next})
+     "<M-Up>"   actions.cycle_history_prev
+     "<M-Down>" actions.cycle_history_next})
 
   ;;; =============
   ;;; Configuration
