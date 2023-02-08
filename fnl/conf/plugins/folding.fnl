@@ -12,6 +12,8 @@
   (set! foldlevelstart 99)
   (set! foldenable true)
 
+  (set! foldcolumn "0")
+
   ;;; ========
   ;;; Mappings
   ;;; ========
