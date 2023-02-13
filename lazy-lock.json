@@ -42,7 +42,7 @@
   "mini.surround": { "branch": "main", "commit": "6a4f31e2a380439315729f561d7e7898bde1fd52" },
   "mini.test": { "branch": "main", "commit": "c1030834efb70b44cf772eb105d59e095e3a1a15" },
   "mkdir.nvim": { "branch": "main", "commit": "c55d1dee4f099528a1853b28bb28caa802eba217" },
-  "neodev.nvim": { "branch": "main", "commit": "fc9a4ccedcbae14454d66d5050bef077c40ab5e5" },
+  "neodev.nvim": { "branch": "main", "commit": "8c32d8b4e765de26b27b76f0072e7c12038cde52" },
   "null-ls.nvim": { "branch": "main", "commit": "9d811bb6ed44cf766f4bda8a47fd65fdfbdcaa7d" },
   "nvim-FeMaco.lua": { "branch": "main", "commit": "469465fc1adf8bddc2c9bbe549d38304de95e9f7" },
   "nvim-bqf": { "branch": "main", "commit": "7a278012efb0a12bc49ecc3e16ec5591c41fae88" },
