@@ -1,7 +1,14 @@
 (import-macros {: pack} :themis.pack.lazy)
 
+(fn contains? [tbl val]
+  (accumulate [is? false
+               _ it (ipairs tbl)
+               &until is?]
+    (= it val)))
+
 (fn config []
   (local treesitter (require :nvim-treesitter.configs))
+  (local parsers (require :nvim-treesitter.parsers))
   (treesitter.setup
     {:ensure_installed "all"
      :highlight {:enable true}
@@ -14,7 +21,9 @@
      :query_linter {:enable true
                     :use_virtual_text true
                     :lint_events ["BufWrite" "CursorHold"]}
-     :rainbow {:enable conf.lisp-filetypes
+     :rainbow {:enable true
+               :disable (icollect [_ language (ipairs (parsers.available_parsers))]
+                          (when (not (contains? conf.lisp-filetypes language)) language))
                :extended_mode true}
      :matchup {:enable true}}))
 
