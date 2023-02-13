@@ -14,7 +14,7 @@
      :query_linter {:enable true
                     :use_virtual_text true
                     :lint_events ["BufWrite" "CursorHold"]}
-     :rainbow {:enable true
+     :rainbow {:enable conf.lisp-filetypes
                :extended_mode true}
      :matchup {:enable true}}))
 
