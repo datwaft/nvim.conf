@@ -4,6 +4,7 @@ CMake
 CSI
 CTRL
 ESLint
+LLVM
 LTeX
 MMM
 Setulc
@@ -72,6 +73,7 @@ nhdaly
 nvim
 param
 parinfer
+passthrough
 powerlevel10k
 prettierd
 quickfix
@@ -114,4 +116,3 @@ yml
 yyyy
 zod
 zsh
-passthrough
