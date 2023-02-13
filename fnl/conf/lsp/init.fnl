@@ -16,8 +16,8 @@
   ;; Lua
   (let [neodev (require :neodev)]
     (neodev.setup {})
-    (lsp.sumneko_lua.setup {:on_attach on-attach : capabilities
-                            :settings {:Lua {:workspace {:preloadFileSize 500}}}}))
+    (lsp.lua_ls.setup {:on_attach on-attach : capabilities
+                       :settings {:Lua {:workspace {:preloadFileSize 500}}}}))
   ;; Json
   (lsp.jsonls.setup {:on_attach on-attach : capabilities
                      :settings {:json {:schemas (let [{: json} (require :schemastore)] (json.schemas))}}})
