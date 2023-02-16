@@ -28,7 +28,9 @@
   ;; Bash
   (lsp.bashls.setup {:on_attach on-attach : capabilities})
   ;; C & C++
-  (lsp.clangd.setup {:on_attach on-attach : capabilities})
+  (lsp.clangd.setup {:on_attach on-attach : capabilities
+                     :cmd ["clangd"
+                           "--clang-tidy"]})
   ;; CMake
   (lsp.cmake.setup {:on_attach on-attach : capabilities})
   ;; Python
