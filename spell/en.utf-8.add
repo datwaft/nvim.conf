@@ -57,6 +57,7 @@ keybind
 keybinds
 kube
 learncube
+llvm
 localhost
 loopback
 lsp
@@ -86,6 +87,7 @@ rtp
 sdkman
 selenized
 sqlite
+src
 statusline
 stdpaths
 svg
@@ -96,6 +98,7 @@ timestamp
 tmux
 tokyonight
 toml
+toolchain
 tpm
 treesitter
 ui
