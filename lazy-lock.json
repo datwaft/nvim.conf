@@ -38,6 +38,7 @@
   "mini.test": { "branch": "main", "commit": "c1030834efb70b44cf772eb105d59e095e3a1a15" },
   "mkdir.nvim": { "branch": "main", "commit": "c55d1dee4f099528a1853b28bb28caa802eba217" },
   "neodev.nvim": { "branch": "main", "commit": "a81e749d0fe8429cd340b2e40f274b344bef42ac" },
+  "netman.nvim": { "branch": "v1.1", "commit": "86339d3ce5c6c52a2d2132d633db32a8a2407e76" },
   "null-ls.nvim": { "branch": "main", "commit": "a82aa08c0063843926947f3688b0e61fd71db680" },
   "nvim-FeMaco.lua": { "branch": "main", "commit": "469465fc1adf8bddc2c9bbe549d38304de95e9f7" },
   "nvim-bqf": { "branch": "main", "commit": "7a278012efb0a12bc49ecc3e16ec5591c41fae88" },
