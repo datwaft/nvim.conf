@@ -50,36 +50,6 @@
   (telescope.load_extension "fzf")
   (telescope.load_extension "smart_history"))
 
-(fn fern-config []
-  ;;; ========
-  ;;; Keybinds
-  ;;; ========
-  (import-macros {: map!} :themis.keybind)
-
-  (map! [n] "<C-n>" "<cmd>Fern . -reveal=% -drawer -toggle<cr>")
-
-  ;;; =============
-  ;;; Configuration
-  ;;; =============
-  (import-macros {: let!} :themis.var)
-
-  (local fr-web-icons (require :fr-web-icons))
-
-  (let! fern#renderer :nvim-web-devicons)
-  (let! glyph_palette#palette (fr-web-icons.palette))
-
-  ;;; ======
-  ;;; Events
-  ;;; ======
-  (import-macros {: augroup!
-                  : clear!
-                  : autocmd!} :themis.event)
-
-  (augroup! add-colors-to-fern-buffer
-    (clear!)
-    (autocmd! FileType fern #(vim.fn.glyph_palette#apply))))
-
-
 [;; Fuzzy-finding
  (pack "nvim-telescope/telescope.nvim"
        {:dependencies ["nvim-lua/plenary.nvim"
@@ -87,11 +57,4 @@
                              {:build "make"})
                        (pack "nvim-telescope/telescope-smart-history.nvim"
                              {:dependencies "tami5/sqlite.lua"})]
-        :config telescope-config})
- ;; File-tree
- (pack "lambdalisue/fern.vim"
-       {:dependencies ["lambdalisue/fern-git-status.vim"
-                       "lambdalisue/fern-renderer-nerdfont.vim"
-                       "TheLeoP/fern-renderer-web-devicons.nvim"
-                       "lambdalisue/glyph-palette.vim"]
-        :config fern-config})]
+        :config telescope-config})]
