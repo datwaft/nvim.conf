@@ -7,10 +7,15 @@ ESLint
 LLVM
 LTeX
 MMM
+SIGTRAP
 Setulc
 Smulx
 TTY
+WIFEXITED
+WIFSIGNALED
+WIFSTOPPED
 WIP
+WSTOPSIG
 XDG
 aot
 api
@@ -18,6 +23,7 @@ bashrc
 btn
 casey
 catppuccin
+ceil
 clojure
 cmake
 colorcolumn
@@ -59,6 +65,7 @@ kube
 learncube
 llvm
 localhost
+log10
 loopback
 lsp
 lua
@@ -77,6 +84,8 @@ parinfer
 passthrough
 powerlevel10k
 prettierd
+printf
+ptrace
 quickfix
 readline
 relativenumber
