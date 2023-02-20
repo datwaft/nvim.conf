@@ -39,6 +39,7 @@ env
 eraserhd
 eslint
 exa
+execvp
 fennel
 filesystem
 filetype
@@ -83,6 +84,7 @@ nvim
 param
 parinfer
 passthrough
+pid
 powerlevel10k
 prettierd
 printf
@@ -111,6 +113,7 @@ toml
 toolchain
 tpm
 treesitter
+u
 ui
 uml
 undercurls
