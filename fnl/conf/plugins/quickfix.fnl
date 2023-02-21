@@ -5,4 +5,4 @@
                                 :dependencies ["junegunn/fzf"
                                                "nvim-treesitter/nvim-treesitter"]})
  ;; Aesthetic enhancement
- {:url "git@gitlab.com:yorickpeterse/nvim-pqf.git" :config true}]
+ {:url "https://gitlab.com/yorickpeterse/nvim-pqf.git" :config true}]
