@@ -1,12 +1,16 @@
 :TSUpdate
 CMD
 CMake
+CRLF
 CSI
 CTRL
 ESLint
+LF
+LFS
 LLVM
 LTeX
 MMM
+OSC52
 SIGTRAP
 Setulc
 Smulx
