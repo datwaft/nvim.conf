@@ -1,9 +1,11 @@
 :TSUpdate
+Abreu
 CMD
 CMake
 CRLF
 CSI
 CTRL
+Chaves
 ESLint
 LF
 LFS
@@ -11,6 +13,7 @@ LLVM
 LTeX
 MMM
 OSC52
+Ortíz
 SIGTRAP
 Setulc
 Smulx
@@ -105,6 +108,7 @@ sdkman
 selenized
 sqlite
 src
+stackoverflow
 statusline
 stdpaths
 svg
@@ -137,4 +141,3 @@ yml
 yyyy
 zod
 zsh
-stackoverflow
