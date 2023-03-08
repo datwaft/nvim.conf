@@ -25,9 +25,11 @@ WIFSTOPPED
 WIP
 WSTOPSIG
 XDG
+\x1b
 aot
 api
 auth
+aws
 bashrc
 btn
 buf
@@ -44,6 +46,7 @@ cpath
 datwaft
 deno
 dotfiles
+ebs
 env
 eraserhd
 eslint
@@ -65,6 +68,7 @@ github
 h6
 hererocks
 homebrew
+hvm
 hy
 io
 iter
@@ -132,6 +136,7 @@ undercurls
 usr
 util
 v3.7.0
+virtualization
 vue
 wbthomason
 wezterm
