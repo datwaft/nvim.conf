@@ -1,3 +1,4 @@
+.md
 :TSUpdate
 Abreu
 CMD
@@ -29,6 +30,7 @@ api
 auth
 bashrc
 btn
+buf
 casey
 catppuccin
 ceil
@@ -81,7 +83,6 @@ lsp
 lua
 luarocks
 luxon
-.md
 metaclass
 mrjones2014
 neovide
@@ -112,6 +113,7 @@ src
 stackoverflow
 statusline
 stdpaths
+strikethrough
 svg
 td
 testid
@@ -142,4 +144,3 @@ yml
 yyyy
 zod
 zsh
-buf
