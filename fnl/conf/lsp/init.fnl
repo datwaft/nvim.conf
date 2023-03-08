@@ -69,7 +69,9 @@
   ;; VimL
   (lsp.vimls.setup {:on_attach on-attach : capabilities})
   ;; Go
-  (lsp.gopls.setup {:on_attach on-attach : capabilities}))
+  (lsp.gopls.setup {:on_attach on-attach : capabilities})
+  ;; R
+  (lsp.r_language_server.setup {:on_attach on-attach : capabilities}))
 
 (fn null-config []
   (local on-attach (require :conf.lsp.on-attach))
