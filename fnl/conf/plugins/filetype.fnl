@@ -7,8 +7,15 @@
  ;; Guile
  {:url "https://gitlab.com/HiPhish/guile.vim.git"}
  ;; LaTeX
- (pack "lervag/vimtex")
+ (pack "lervag/vimtex" {:init #(do (import-macros {: let!} :themis.var)
+                                 (let! vimtex_view_method "skim")
+                                 (let! vimtex_compiler_latexmk {:options ["-shell-escape"
+                                                                          "-verbose"
+                                                                          "-file-line-error"
+                                                                          "-synctex=1"
+                                                                          "-interaction=nonstopmode"]}))})
  ;; General
  (pack "sheerun/vim-polyglot" {:init #(do (import-macros {: let!} :themis.var)
                                         (let! polyglot_disabled ["fennel"
-                                                                 "autoindent" "sensible"]))})]
+                                                                 "autoindent" "sensible"
+                                                                 "rnoweb"]))})]

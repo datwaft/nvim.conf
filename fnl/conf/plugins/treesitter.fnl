@@ -11,7 +11,8 @@
   (local parsers (require :nvim-treesitter.parsers))
   (treesitter.setup
     {:ensure_installed "all"
-     :highlight {:enable true}
+     :highlight {:enable true
+                 :disable [:latex :rnoweb]}
      :context_commentstring {:enable true}
      :indent {:enable false}
      :yati {:enable true}
