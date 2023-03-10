@@ -63,7 +63,7 @@
 ;;; ===============
 (augroup! disable-spell
   (clear!)
-  (autocmd! FileType [checkhealth gitignore help qf]
+  (autocmd! FileType [checkhealth gitignore help qf man]
     #(local-set! nospell)))
 
 ;;; ==============
