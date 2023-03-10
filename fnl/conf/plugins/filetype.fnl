@@ -14,6 +14,8 @@
                                                                           "-file-line-error"
                                                                           "-synctex=1"
                                                                           "-interaction=nonstopmode"]}))})
+ ;; R
+ (pack "jalvesaq/Nvim-R")
  ;; General
  (pack "sheerun/vim-polyglot" {:init #(do (import-macros {: let!} :themis.var)
                                         (let! polyglot_disabled ["fennel"

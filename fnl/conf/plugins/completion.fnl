@@ -51,6 +51,7 @@
   (local sources
     [[{:name "nvim_lsp"}
       {:name "nvim_lsp_signature_help"}
+      {:name "cmp_nvim_r"}
       {:name "treesitter"}
       {:name "luasnip"}
       {:name "path"}
@@ -112,7 +113,8 @@
                        "lukas-reineke/cmp-under-comparator"
                        (pack "petertriho/cmp-git" {:dependencies ["nvim-lua/plenary.nvim"]})
                        "f3fora/cmp-spell"
-                       "ray-x/cmp-treesitter"]
+                       "ray-x/cmp-treesitter"
+                       (pack "jalvesaq/cmp-nvim-r" {:dependencies ["jalvesaq/Nvim-R"]})]
         : config})
  ;; Snippets
  (pack "L3MON4D3/LuaSnip"

@@ -1,11 +1,13 @@
 {
   "CamelCaseMotion": { "branch": "master", "commit": "de439d7c06cffd0839a29045a103fe4b44b15cdc" },
   "LuaSnip": { "branch": "master", "commit": "836d4f5a9970819b60b1010fd8709a2ff88416d8" },
+  "Nvim-R": { "branch": "master", "commit": "f34eebfab6692483f2ee721abdb3d757be79fc7e" },
   "catppuccin": { "branch": "main", "commit": "90c4d1c6e1f8dd2cff9962b36a70b1e681947621" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
   "cmp-git": { "branch": "main", "commit": "a798a25b21e7204597f56029af2e8a17d65e2518" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "0e6b2ed705ddcff9738ec4ea838141654f12eeef" },
   "cmp-nvim-lsp-signature-help": { "branch": "main", "commit": "3d8912ebeb56e5ae08ef0906e3a54de1c66b92f1" },
+  "cmp-nvim-r": { "branch": "main", "commit": "0f891f0e38f68f94ee621016fcdeb309883fd6bb" },
   "cmp-path": { "branch": "main", "commit": "91ff86cd9c29299a64f968ebb45846c485725f23" },
   "cmp-spell": { "branch": "master", "commit": "60584cb75e5e8bba5a0c9e4c3ab0791e0698bffa" },
   "cmp-treesitter": { "branch": "master", "commit": "b40178b780d547bcf131c684bc5fd41af17d05f2" },
