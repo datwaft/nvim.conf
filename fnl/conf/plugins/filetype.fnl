@@ -15,7 +15,8 @@
                                                                           "-synctex=1"
                                                                           "-interaction=nonstopmode"]}))})
  ;; R
- (pack "jalvesaq/Nvim-R")
+ (pack "jalvesaq/Nvim-R" {:init #(do (import-macros {: let!} :themis.var)
+                                   (let! R_assign 0))})
  ;; General
  (pack "sheerun/vim-polyglot" {:init #(do (import-macros {: let!} :themis.var)
                                         (let! polyglot_disabled ["fennel"
