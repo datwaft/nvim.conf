@@ -22,4 +22,6 @@
                                            (autocmd! TextYankPost * #(if (= vim.v.event.regname "+")
                                                                        (osc52.copy_register "+")
                                                                        (= vim.v.event.regname "*")
-                                                                       (osc52.copy_register "*")))))})]
+                                                                       (osc52.copy_register "*")))))})
+ ;; Support image pasting
+ (pack "ekickx/clipboard-image.nvim")]
