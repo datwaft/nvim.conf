@@ -15,9 +15,9 @@
 ;;; Quickfix window
 ;;; ===============
 ;; Open or focus the quickfix window
-(map! [n] "<localleader>q" "<cmd>copen<cr>")
+(map! [n] "<leader>q" "<cmd>copen<cr>")
 ;; Close the quickfix window
-(map! [n] "<localleader>Q" "<cmd>cclose<cr>")
+(map! [n] "<leader>Q" "<cmd>cclose<cr>")
 
 ;;; =========
 ;;; Tab pages

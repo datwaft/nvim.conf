@@ -104,7 +104,7 @@
 ;;; =================
 (augroup! quickfix-mappings
   (clear!)
-  (autocmd! FileType qf #(buf-map! [n] "<localleader>q" "<cmd>cclose<cr>"))
+  (autocmd! FileType qf #(buf-map! [n] "<leader>q" "<cmd>cclose<cr>"))
   (autocmd! FileType qf #(buf-map! [n] "dd" #(let [current-item (vim.fn.line ".")
                                                    current-list (vim.fn.getqflist)
                                                    new-list (doto current-list (table.remove current-item))]
