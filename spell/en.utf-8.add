@@ -1,4 +1,5 @@
 .Rmd
+.csv
 .md
 2BUA8C4S2C.com.1password
 :TSUpdate
@@ -33,6 +34,8 @@ WIFSTOPPED
 WIP
 WSTOPSIG
 XDG
+\IEEEPARstart
+\longtable
 \x1b
 aot
 api
@@ -76,6 +79,7 @@ fzf
 gf
 ggplot2
 github
+graficar
 h6
 hererocks
 homebrew
@@ -93,6 +97,7 @@ linuxbrew
 llvm
 localhost
 log10
+longtable
 loopback
 lsp
 lua
@@ -106,6 +111,7 @@ netrw
 networkidle
 nhdaly
 nvim
+pagebreak
 param
 parinfer
 passthrough
@@ -131,6 +137,8 @@ stdpaths
 stopband
 strikethrough
 svg
+tbl
+tbl-cap
 td
 testid
 themis
@@ -162,5 +170,3 @@ yml
 yyyy
 zod
 zsh
-.csv
-graficar
