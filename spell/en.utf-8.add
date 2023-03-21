@@ -11,6 +11,7 @@ CSI
 CTRL
 Chaves
 ESLint
+Engelschall
 GR40
 IQR
 Ismeca
@@ -19,6 +20,7 @@ LFS
 LLVM
 LTeX
 MMM
+NOTREACHED
 OSC52
 Ortíz
 S21
@@ -27,6 +29,7 @@ Setulc
 Smulx
 Stpbnd
 TTY
+USENIX
 VTek
 WIFEXITED
 WIFSIGNALED
@@ -39,6 +42,7 @@ XDG
 \x1b
 aot
 api
+args
 auth
 aws
 bashrc
@@ -129,6 +133,7 @@ rktjmp
 rtp
 sdkman
 selenized
+setjmp
 sqlite
 src
 stackoverflow
