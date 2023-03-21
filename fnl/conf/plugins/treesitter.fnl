@@ -9,6 +9,8 @@
 (fn config []
   (local treesitter (require :nvim-treesitter.configs))
   (local parsers (require :nvim-treesitter.parsers))
+  (local rainbow (require :ts-rainbow))
+
   (treesitter.setup
     {:ensure_installed "all"
      :highlight {:enable true
@@ -23,9 +25,8 @@
                     :use_virtual_text true
                     :lint_events ["BufWrite" "CursorHold"]}
      :rainbow {:enable true
-               :disable (icollect [_ language (ipairs (parsers.available_parsers))]
-                          (when (not (contains? conf.lisp-filetypes language)) language))
-               :extended_mode true}
+               :query "rainbow-parens"
+               :strategy rainbow.strategy.global}
      :matchup {:enable true}}))
 
 (pack "nvim-treesitter/nvim-treesitter" {:build ":TSUpdate"
@@ -33,6 +34,6 @@
                                                         "yioneko/nvim-yati"
                                                         "nvim-treesitter/nvim-treesitter-refactor"
                                                         "nvim-treesitter/playground"
-                                                        "mrjones2014/nvim-ts-rainbow"
+                                                        "HiPhish/nvim-ts-rainbow2"
                                                         "andymass/vim-matchup"]
                                          : config})
