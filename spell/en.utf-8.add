@@ -1,5 +1,6 @@
 .Rmd
 .csv
+.jpeg
 .md
 2BUA8C4S2C.com.1password
 :TSUpdate
@@ -13,6 +14,7 @@ Chaves
 ESLint
 Engelschall
 GR40
+Galton
 IQR
 Ismeca
 LF
@@ -89,6 +91,7 @@ hererocks
 homebrew
 hvm
 hy
+img/
 io
 iter
 javascript
@@ -107,13 +110,17 @@ lsp
 lua
 luarocks
 luxon
+mdframed
+mega.nz
 metaclass
 mrjones2014
+ncol
 neovide
 neovim
 netrw
 networkidle
 nhdaly
+nrow
 nvim
 pagebreak
 param
