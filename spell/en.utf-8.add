@@ -29,6 +29,7 @@ Ortíz
 S21
 SIGTRAP
 Setulc
+Shapiro–Wilk
 Smirnov
 Smulx
 Stpbnd
@@ -57,6 +58,7 @@ callout
 casey
 catppuccin
 ceil
+chisq
 clojure
 cmake
 colorcolumn
@@ -90,6 +92,7 @@ gf
 ggplot2
 github
 graficar
+gtk
 h6
 hererocks
 homebrew
@@ -145,6 +148,7 @@ rtp
 sdkman
 selenized
 setjmp
+shapiro
 sqlite
 src
 stackoverflow
@@ -166,7 +170,6 @@ toml
 toolchain
 tpm
 treesitter
-u
 ui
 uml
 undercurls
@@ -183,6 +186,7 @@ wildmenu
 xclip
 yaml
 yml
+youtu.be
 yyyy
 zod
 zsh
