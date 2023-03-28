@@ -26,13 +26,16 @@ MMM
 NOTREACHED
 OSC52
 Ortíz
+PFSSO
 S21
 SIGTRAP
+SSHSession
 Setulc
 Shapiro–Wilk
 Smirnov
 Smulx
 Stpbnd
+TOKENMODE
 TTY
 USENIX
 VTek
@@ -152,6 +155,7 @@ shapiro
 soa
 sqlite
 src
+ssm
 stackoverflow
 statusline
 stdpaths
