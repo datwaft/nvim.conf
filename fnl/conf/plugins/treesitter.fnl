@@ -25,6 +25,8 @@
                     :use_virtual_text true
                     :lint_events ["BufWrite" "CursorHold"]}
      :rainbow {:enable true
+               :disable (icollect [_ language (ipairs (parsers.available_parsers))]
+                          (when (not (contains? conf.lisp-filetypes language)) language))
                :query "rainbow-parens"
                :strategy rainbow.strategy.global}
      :matchup {:enable true}}))
