@@ -53,7 +53,10 @@
   ;; HTML
   (lsp.html.setup {:on_attach on-attach : capabilities})
   ;; Emmet
-  (lsp.emmet_ls.setup {:on_attach on-attach : capabilities})
+  (lsp.emmet_ls.setup {:on_attach on-attach : capabilities
+                       :filetypes ["html" "typescriptreact" "javascriptreact"
+                                   "css" "sass" "scss" "less" "eruby"
+                                   "xml"]})
   ;; Vue
   (lsp.volar.setup {:on_attach on-attach : capabilities})
   ;; Svelte
