@@ -73,6 +73,7 @@ a:ver100-blinkon0
 aot
 api
 args
+async
 auth
 aws
 b0o
@@ -99,6 +100,8 @@ conf
 config
 conventionalcommits
 cpath
+cpp
+cpptools
 csi
 css
 cwd
@@ -133,8 +136,10 @@ fpath
 ftdetect
 ftplugin
 fzf
+gd
 gf
 ggplot2
+gi
 github
 gitlab
 graficar
@@ -159,8 +164,10 @@ janet
 javascript
 javascriptreact
 jay-babu
+jeff-hykin
 jose-elias-alvarez
 json
+jsonls
 keybind
 keybinds
 kube
@@ -182,6 +189,7 @@ mdframed
 mega.nz
 metaclass
 mrjones2014
+ms-vscode
 narutoxy
 nbsp
 ncol
@@ -215,6 +223,7 @@ repro
 rg
 rizsotto
 rktjmp
+rn
 rtp
 schemastore
 scss
@@ -232,6 +241,7 @@ startinsert
 statusline
 stdpaths
 stopband
+streetsidesoftware
 strikethrough
 svg
 tabclose
@@ -252,6 +262,7 @@ toml
 toolchain
 tpm
 treesitter
+tsserver
 typescriptreact
 ui
 uml
