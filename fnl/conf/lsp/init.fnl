@@ -28,9 +28,7 @@
   ;; Bash
   (lsp.bashls.setup {:on_attach on-attach : capabilities})
   ;; C & C++
-  (lsp.clangd.setup {:on_attach on-attach : capabilities
-                     :cmd ["clangd"
-                           "--clang-tidy"]})
+  (lsp.clangd.setup {:on_attach on-attach : capabilities})
   ;; CMake
   (lsp.cmake.setup {:on_attach on-attach : capabilities})
   ;; Python
@@ -99,7 +97,8 @@
        (diagnostics.pylint.with {:prefer_local ".venv/bin"})
        (diagnostics.mypy.with {:prefer_local ".venv/bin"})
        (typescript-actions.with {:condition (fn [utils]
-                                              (not (utils.root_has_file ["deno.json" "deno.jsonc"])))})]))
+                                              (not (utils.root_has_file ["deno.json" "deno.jsonc"])))})
+       formatting.clang_format]))
 
   ;;; =====
   ;;; Setup

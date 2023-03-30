@@ -2,7 +2,7 @@
 
 (fn format! [bufnr ?async?]
   (vim.lsp.buf.format {: bufnr
-                       :filter #(not (contains? [:jsonls :tsserver] $.name))
+                       :filter #(not (contains? [:jsonls :tsserver :clangd] $.name))
                        :async ?async?}))
 
 (fn on-attach [client bufnr]
