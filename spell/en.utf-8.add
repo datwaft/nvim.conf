@@ -40,6 +40,7 @@ Smulx
 Stpbnd
 TOKENMODE
 TTY
+Toshio
 USENIX
 VTek
 WIFEXITED
@@ -58,6 +59,7 @@ args
 auth
 aws
 bashrc
+boxv
 btn
 buf
 callout
@@ -97,10 +99,13 @@ fzf
 gf
 ggplot2
 github
+gitlab
 graficar
 gtk
+gtk4builder.rng
 h6
 hererocks
+hexpand
 homebrew
 hvm
 hy
@@ -169,6 +174,7 @@ tbl
 tbl-cap
 td
 testid
+tfe3
 themis
 tibble
 timestamp
@@ -184,6 +190,7 @@ undercurls
 usr
 util
 v3.7.0
+vexpand
 virtualization
 vue
 wbthomason
