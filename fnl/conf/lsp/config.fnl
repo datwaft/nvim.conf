@@ -11,7 +11,7 @@
   ;; With default configuration
   ;; --------------------------
   (local with-default [:dockerls :rnix :bashls :clangd :cmake :pyright
-                       :eslint :cssls :html :volar :svelte :yamlls :taplo
+                       :eslint :cssls :html :volar :svelte :taplo
                        :lemminx :clojure_lsp :vimls :gopls :r_language_server])
   (each [_ server (ipairs with-default)]
     ((. lsp server :setup) {:on_attach on-attach
@@ -43,4 +43,7 @@
   (lsp.emmet_ls.setup {:on_attach on-attach : capabilities
                        :filetypes ["html" "typescriptreact" "javascriptreact"
                                    "css" "sass" "scss" "less" "eruby"
-                                   "xml"]}))
+                                   "xml"]})
+  ; YAML
+  (lsp.yamlls.setup {:on_attach on-attach : capabilities
+                     :settings {:yaml {:keyOrdering false}}}))
