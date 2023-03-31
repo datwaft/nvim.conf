@@ -79,6 +79,7 @@ async
 auth
 aws
 b0o
+bashls
 bashrc
 boxv
 breakindentopt
@@ -106,12 +107,14 @@ cpp
 cpptools
 csi
 css
+cssls
 cwd
 darwin
 dataframe
 datwaft
 deno
 dir
+dockerls
 dotfiles
 dplyr
 ebs
@@ -144,6 +147,7 @@ ggplot2
 gi
 github
 gitlab
+gopls
 graficar
 gtk
 gtk4builder.rng
@@ -174,6 +178,7 @@ keybind
 keybinds
 kube
 learncube
+lemminx
 linematch
 linuxbrew
 llvm
@@ -216,6 +221,7 @@ prettierd
 printf
 prog
 ptrace
+pyright
 python3
 quickfix
 readline
@@ -226,6 +232,7 @@ rg
 rizsotto
 rktjmp
 rn
+rnix
 rtp
 schemastore
 scss
@@ -249,6 +256,7 @@ svg
 tabclose
 tabnew
 tabprevious
+taplo
 tbl
 tbl-cap
 td
@@ -277,6 +285,7 @@ v3.7.0
 v:fname
 vexpand
 vimgrep
+vimls
 virtualization
 vue
 wbthomason
@@ -290,6 +299,7 @@ xclip
 xml
 xml-stripblanks
 yaml
+yamlls
 yml
 youtu.be
 yyyy
