@@ -7,6 +7,7 @@ $v0<cr>
 .jsonc
 .md
 .tgz
+.txt
 .venv
 2BUA8C4S2C.com.1password
 :TSUpdate
@@ -15,6 +16,7 @@ $v0<cr>
 <esc>
 <leader>ld
 Abreu
+Anova
 CMD
 CMake
 CRLF
