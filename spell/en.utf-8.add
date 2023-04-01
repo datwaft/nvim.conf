@@ -43,6 +43,8 @@ LLVM
 LTeX
 MMM
 NOTREACHED
+Nv
+NvChad
 OSC52
 Ortíz
 PFSSO
@@ -81,10 +83,12 @@ aws
 b0o
 bashls
 bashrc
+blankline
 boxv
 breakindentopt
 btn
 buf
+buftype
 callout
 casey
 catppuccin
@@ -98,6 +102,7 @@ cmake
 cmd
 cmp
 colorcolumn
+colorizer
 colorscheme
 conf
 config
@@ -147,6 +152,7 @@ ggplot2
 gi
 github
 gitlab
+globalstatus
 gopls
 graficar
 gtk
@@ -189,9 +195,13 @@ loopback
 lsp
 lspconfig
 lua
+lualine
+lualine.nvim
 luarocks
 luasnip
+lukas
 luxon
+markonm
 mdframed
 mega.nz
 metaclass
@@ -206,10 +216,13 @@ neovim
 netrw
 networkidle
 nhdaly
+nofile
 noh
 noplainbuffer
 nrow
 nvim
+nvim-lualine
+nvim-web-devicons
 ok
 pagebreak
 param
@@ -220,11 +233,14 @@ powerlevel10k
 prettierd
 printf
 prog
+projekt0n
 ptrace
 pyright
 python3
+qf
 quickfix
 readline
+reineke
 relativenumber
 repl
 repro
@@ -249,6 +265,7 @@ stackoverflow
 startinsert
 statusline
 stdpaths
+stevearc
 stopband
 streetsidesoftware
 strikethrough
@@ -287,6 +304,7 @@ vexpand
 vimgrep
 vimls
 virtualization
+virtualtext
 vue
 wbthomason
 wezterm
@@ -294,6 +312,7 @@ whitespace
 wikipedia
 wildmenu
 williamboman
+winbar
 www
 xclip
 xml
