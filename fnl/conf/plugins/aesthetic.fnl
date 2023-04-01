@@ -14,4 +14,7 @@
                                                                         :markdown :text
                                                                         :TelescopePrompt :TelescopeResults
                                                                         (unpack conf.lisp-filetypes)]
-                                                     :buftype_exclude [:terminal :nofile]}})]
+                                                     :buftype_exclude [:terminal :nofile]}})
+ ;; Icons
+ (pack "projekt0n/circles.nvim" {:config true
+                                 :dependencies ["nvim-tree/nvim-web-devicons"]})]
