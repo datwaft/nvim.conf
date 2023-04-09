@@ -12,7 +12,8 @@
  (pack "williamboman/mason.nvim" {:config true})
  (pack "williamboman/mason-lspconfig.nvim" {:opts {:automatic_installation true}
                                             :dependencies ["williamboman/mason.nvim"]})
- (pack "jay-babu/mason-null-ls.nvim" {:opts {:automatic_installation true}
+ (pack "jay-babu/mason-null-ls.nvim" {:opts {:automatic_installation true
+                                             :automatic_setup false}
                                       :dependencies ["williamboman/mason.nvim"
                                                      "jose-elias-alvarez/null-ls.nvim"]})
  ;; Non-LSP integration
