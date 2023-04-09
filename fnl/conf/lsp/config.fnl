@@ -12,7 +12,8 @@
   ;; --------------------------
   (local with-default [:dockerls :rnix :bashls :clangd :cmake :pyright
                        :eslint :cssls :html :volar :svelte :taplo
-                       :lemminx :clojure_lsp :vimls :gopls :r_language_server])
+                       :lemminx :clojure_lsp :vimls :gopls :r_language_server
+                       :jdtls])
   (each [_ server (ipairs with-default)]
     ((. lsp server :setup) {:on_attach on-attach
                             :capabilities capabilities}))
