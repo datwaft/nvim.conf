@@ -18,6 +18,7 @@ $v0<cr>
 <cr>
 <esc>
 <leader>ld
+<localleader>
 Abreu
 Anova
 CMD
@@ -49,6 +50,7 @@ NOTREACHED
 Nv
 NvChad
 OSC52
+Olical
 Ortíz
 PFSSO
 S21
@@ -77,6 +79,7 @@ XDG
 \longtable
 \x1b
 a:ver100-blinkon0
+andymass/vim-matchup
 aot
 api
 args
@@ -126,6 +129,8 @@ dockerls
 dotfiles
 dplyr
 ebs
+ee
+ekickx
 env
 eob
 eraserhd
@@ -171,6 +176,7 @@ hvm
 hy
 il
 img/
+init
 init.fnl
 init.lua
 io
@@ -181,7 +187,9 @@ javascriptreact
 jay-babu
 jdtls
 jeff-hykin
+jghauser
 jose-elias-alvarez
+jpalardy
 json
 jsonls
 keybind
@@ -193,6 +201,7 @@ linematch
 linuxbrew
 llvm
 localhost
+localleader
 log10
 longtable
 loopback
@@ -209,6 +218,8 @@ markonm
 mdframed
 mega.nz
 metaclass
+micarmst
+mkdir
 mrjones2014
 ms-vscode
 narutoxy
@@ -226,13 +237,16 @@ noplainbuffer
 nrow
 nvim
 nvim-lualine
+nvim-osc52
 nvim-web-devicons
+ojroques/nvim-osc52
 ok
 pagebreak
 param
 parinfer
 passthrough
 pid
+popup
 powerlevel10k
 prettierd
 printf
@@ -244,6 +258,7 @@ pyright
 python3
 qf
 quickfix
+radenling
 readline
 reineke
 relativenumber
@@ -255,6 +270,7 @@ rktjmp
 rn
 rnix
 rtp
+sQVe
 schemastore
 scss
 sdkman
@@ -307,6 +323,8 @@ v1
 v3.7.0
 v:fname
 vexpand
+vim-matchup
+vim-spellsync
 vimgrep
 vimls
 virtualization
