@@ -7,7 +7,8 @@
                                                (pack "j-hui/fidget.nvim" {:config true})
                                                (pack "narutoxy/dim.lua" {:config true})
                                                "jose-elias-alvarez/typescript.nvim"
-                                               "b0o/schemastore.nvim"]})
+                                               "b0o/schemastore.nvim"
+                                               (pack "Fildo7525/pretty_hover" {:config true})]})
  ;; Installation
  (pack "williamboman/mason.nvim" {:config true})
  (pack "williamboman/mason-lspconfig.nvim" {:opts {:automatic_installation true}
