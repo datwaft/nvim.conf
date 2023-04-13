@@ -6,7 +6,7 @@
 ;;; Configuration
 ;;; =============
 ;; Font
-(set! guifont ["IBM Plex Mono:h13"])
+(set! guifont ["JetBrains Mono:h11"])
 
 ;; Set default scale
 (let! neovide_scale_factor 1.0)
