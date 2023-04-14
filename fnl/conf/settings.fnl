@@ -1,5 +1,6 @@
 (import-macros {: let!} :themis.var)
 (import-macros {: set!} :themis.opt)
+(import-macros {: extend-fn} :themis.fn)
 
 (fn executable? [...] (= 1 (vim.fn.executable ...)))
 
@@ -163,12 +164,6 @@
 ;;; Override configuration for floating windows
 ;;; ===========================================
 ;; Extend vim.lsp.util.open_floating_preview
-(local open_floating_preview vim.lsp.util.open_floating_preview)
-(fn vim.lsp.util.open_floating_preview [...]
-  ;; Execute original function
-  (local (bufnr winid) (open_floating_preview ...))
-  ;; Set window-local options
+(extend-fn vim.lsp.util.open_floating_preview [_ winid]
   (vim.api.nvim_win_set_option winid :breakindentopt "")
-  (vim.api.nvim_win_set_option winid :showbreak "NONE")
-  ;; Return the result of the original function
-  (values bufnr winid))
+  (vim.api.nvim_win_set_option winid :showbreak "NONE"))
