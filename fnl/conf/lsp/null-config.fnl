@@ -13,15 +13,13 @@
            :code_actions actions} null.builtins
           typescript-actions (require :typescript.extensions.null-ls.code-actions)]
       [formatting.stylua
-       (formatting.prettierd.with {:condition (fn [utils]
-                                                (not (utils.root_has_file ["deno.json" "deno.jsonc"])))})
+       formatting.prettierd
        formatting.markdownlint
        formatting.black
        formatting.isort
        (diagnostics.pylint.with {:prefer_local ".venv/bin"})
        (diagnostics.mypy.with {:prefer_local ".venv/bin"})
-       (typescript-actions.with {:condition (fn [utils]
-                                              (not (utils.root_has_file ["deno.json" "deno.jsonc"])))})
+       typescript-actions
        formatting.clang_format]))
 
   ;;; =====
