@@ -215,6 +215,7 @@ globalstatus
 gopls
 graficar
 graficó
+groupwise
 gtk
 gtk4builder.rng
 gui
@@ -264,6 +265,7 @@ localleader
 log10
 longtable
 loopback
+lsmeans
 lsp
 lspconfig
 lua
@@ -358,6 +360,7 @@ stdpaths
 stevearc
 sthe
 stopband
+str
 streetsidesoftware
 strikethrough
 svg
