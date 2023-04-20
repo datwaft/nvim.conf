@@ -10,7 +10,7 @@
   ;; --------------------------
   ;; With default configuration
   ;; --------------------------
-  (local with-default [:dockerls :rnix :bashls :clangd :cmake :pyright
+  (local with-default [:dockerls :rnix :bashls :cmake :pyright
                        :eslint :cssls :html :volar :svelte :taplo
                        :lemminx :clojure_lsp :vimls :gopls :r_language_server
                        :jdtls])
@@ -21,6 +21,9 @@
   ;; ------------------------------
   ;; With exceptional configuration
   ;; ------------------------------
+  ; Clang
+  (lsp.clangd.setup {:on_attach on-attach : capabilities
+                     :cmd ["clangd" "--offset-encoding=utf-16"]})
   ; Lua
   (let [neodev (require :neodev)]
     (neodev.setup {})
