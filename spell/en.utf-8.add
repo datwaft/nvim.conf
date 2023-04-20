@@ -61,7 +61,6 @@ Khatib
 Khoury
 Kolmogorov
 Kühn
-L3MON4D3/LuaSnip
 LF
 LFS
 LLVM
@@ -121,7 +120,6 @@ Zoox
 \longtable
 \x1b
 a:ver100-blinkon0
-andymass/vim-matchup
 anova
 aot
 api
@@ -232,7 +230,6 @@ hui
 hvm
 hy
 il
-img/
 init
 init.fnl
 init.lua
@@ -304,7 +301,6 @@ nvim
 nvim-lualine
 nvim-osc52
 nvim-web-devicons
-ojroques/nvim-osc52
 ok
 osc52
 pagebreak
@@ -390,6 +386,7 @@ ui
 uml
 undercurls
 usr
+utf-16
 utf-8
 util
 v1
