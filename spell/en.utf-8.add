@@ -127,6 +127,7 @@ Zoox
 \longtable
 \x1b
 a:ver100-blinkon0
+andymass
 anova
 aot
 api
@@ -253,6 +254,7 @@ jay-babu
 jdtls
 jeff-hykin
 jghauser
+jmbuhr
 jose-elias-alvarez
 jpalardy
 js
@@ -260,6 +262,7 @@ json
 jsonls
 keybind
 keybinds
+keymap
 kube
 learncube
 lemminx
@@ -312,6 +315,7 @@ nvim
 nvim-lualine
 nvim-osc52
 nvim-web-devicons
+ojroques
 ok
 osc52
 pagebreak
