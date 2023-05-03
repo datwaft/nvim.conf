@@ -24,6 +24,7 @@ Aarón
 Abreu
 Adrien
 Anova
+CIRCBUF
 CLD
 CMD
 CMake
@@ -214,6 +215,7 @@ gd
 gf
 ggplot2
 gi
+gitcommit
 github
 gitlab
 globalstatus
@@ -237,6 +239,7 @@ hui
 hvm
 hy
 il
+img
 init
 init.fnl
 init.lua
@@ -272,6 +275,7 @@ loopback
 lsmeans
 lsp
 lspconfig
+ltex
 lua
 lualine
 lualine.nvim
@@ -311,11 +315,13 @@ nvim-web-devicons
 ok
 osc52
 pagebreak
+pandoc
 param
 parinfer
 passthrough
 petertriho
 pid
+plaintex
 polipéptidos
 popup
 powerlevel10k
@@ -342,6 +348,8 @@ rizsotto
 rktjmp
 rn
 rnix
+rnoweb
+rst
 rtp
 sQVe
 saadparwaiz1
@@ -377,6 +385,7 @@ tbl
 tbl-cap
 td
 testid
+tex
 texthl
 tfe3
 themis
