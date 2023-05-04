@@ -47,7 +47,6 @@
   ; YAML
   (lsp.yamlls.setup {:on_attach on-attach : capabilities
                      :settings {:yaml {:keyOrdering false}}})
-  ; LTeX
-  (lsp.ltex.setup {:on_attach on-attach : capabilities
-                   :filetypes ["bib" "gitcommit" "markdown" "org" "plaintex"
-                               "rst" "rnoweb" "tex" "pandoc" "quarto"]}))
+  ; Markdown & Quarto
+  (lsp.marksman.setup {:on_attach on-attach : capabilities
+                       :filetypes ["markdown" "quarto"]}))
