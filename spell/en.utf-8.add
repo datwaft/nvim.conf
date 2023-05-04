@@ -12,6 +12,7 @@ $v0<cr>
 .tgz
 .txt
 .venv
+1440x900
 2BUA8C4S2C.com.1password
 :TSUpdate
 <cmd>
@@ -20,6 +21,7 @@ $v0<cr>
 <leader>ld
 <localleader>
 ADN
+APUs
 Aarón
 Abreu
 Adrien
@@ -53,6 +55,7 @@ Gallinat
 Galton
 Gleich
 Graficamos
+Graficando
 GtkButton
 GtkGrid
 GtkWindow
@@ -72,6 +75,7 @@ LFS
 LLVM
 LTeX
 Lcd
+Levene
 Lindenberger
 MEM
 MMM
@@ -194,10 +198,14 @@ exa
 execvp
 expr
 f3fora
+fb
 fennel
+fg
+fh
 filesystem
 filetype
 filetypes
+fk
 fn
 fnl
 fnlfmt
@@ -208,6 +216,7 @@ foldsep
 folke
 formatprg
 fpath
+fq
 freetype
 ftdetect
 ftplugin
@@ -221,6 +230,7 @@ github
 gitlab
 globalstatus
 gopls
+graficamos
 graficar
 graficó
 groupwise
@@ -234,7 +244,11 @@ hererocks
 hexpand
 hoc
 homebrew
+homocedastica
 homocedasticidad
+homocedástica
+homocedásticas
+homocedásticos
 hrsh7th
 hui
 hvm
@@ -330,6 +344,7 @@ polipéptidos
 popup
 powerlevel10k
 prefrontal
+preprocesamiento
 prettierd
 printf
 println
@@ -339,6 +354,7 @@ ptrace
 pyright
 python3
 qf
+quartil
 quickfix
 radenling
 rafamadriz
@@ -358,6 +374,7 @@ rtp
 sQVe
 saadparwaiz1
 schemastore
+scriptsize
 scss
 sdkman
 selenized
