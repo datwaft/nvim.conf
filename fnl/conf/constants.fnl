@@ -6,7 +6,7 @@
 ;;; Constants
 ;;; =========
 
-(local databases-folder (vim.fn.expand "~/.local/share/nvim/databases"))
+(local databases-folder (.. (vim.fn.stdpath "data") "/databases"))
 
 (local icons {:error " "
               :warn  " "
