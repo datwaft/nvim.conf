@@ -58,4 +58,4 @@
                        (pack "nvim-telescope/telescope-smart-history.nvim"
                              {:dependencies "tami5/sqlite.lua"})]
         :config telescope-config})
- (pack "miversen33/netman.nvim" {:branch "v1.1"})]
+ (pack "miversen33/netman.nvim")]
