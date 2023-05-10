@@ -32,7 +32,7 @@
   (buf-map! [n] "<leader>a" vim.lsp.buf.code_action)
   ;; Format buffer
   (when (client.supports_method "textDocument/formatting")
-    (buf-map! [n] "<leader>f" #(format! bufnr true)))
+    (buf-map! [vn] "<leader>f" #(format! bufnr true)))
 
   ;;; ======
   ;;; Events
