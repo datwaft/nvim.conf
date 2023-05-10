@@ -1,10 +1,13 @@
 (local {: contains?} (require :themis.lib.seq))
 
 (fn format! [bufnr ?async?]
+  (vim.lsp.buf.format {: bufnr
+                       :filter #(not (contains? [:jsonls :tsserver] $.name))
+                       :async ?async?}))
+
+(fn autoformat! [bufnr ?async?]
   (when (not vim.g.lsp_autoformat_disable)
-    (vim.lsp.buf.format {: bufnr
-                         :filter #(not (contains? [:jsonls :tsserver] $.name))
-                         :async ?async?})))
+    (format! bufnr ?async?)))
 
 (fn on-attach [client bufnr]
   ;;; ========
@@ -42,4 +45,4 @@
   (when (client.supports_method "textDocument/formatting")
     (augroup! format-before-saving
       (clear! {:buffer bufnr})
-      (autocmd! BufWritePre <buffer> #(format! bufnr) {:buffer bufnr}))))
+      (autocmd! BufWritePre <buffer> #(autoformat! bufnr) {:buffer bufnr}))))
