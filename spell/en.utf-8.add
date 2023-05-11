@@ -42,6 +42,7 @@ DATETIME
 DLPFC
 DS
 Denilson
+ES5
 ESLint
 Engelschall
 Enum
@@ -63,6 +64,7 @@ GtkWindow
 Haier
 IBM Plex Mono
 IQR
+ISC
 Inconsolata
 Ismeca
 Jürgen
@@ -116,6 +118,7 @@ USENIX
 Ulman
 Universitätsklinikum
 Universitätsmedizin
+Url
 VBM8
 VIH
 VTek
@@ -137,6 +140,7 @@ andymass
 anova
 aot
 api
+arcsight
 args
 async
 auth
@@ -188,6 +192,7 @@ dirname
 dockerls
 dotfiles
 dplyr
+e2e
 ebs
 ee
 ekickx
@@ -261,6 +266,7 @@ init
 init.fnl
 init.lua
 io
+iso
 iter
 jalvesaq
 janet
@@ -280,8 +286,10 @@ keybind
 keybinds
 keymap
 kube
+lang
 learncube
 lemminx
+li
 linematch
 linuxbrew
 llvm
@@ -313,6 +321,7 @@ mkdir
 monofactorial
 mrjones2014
 ms-vscode
+multcomp
 multijugador
 narutoxy
 nbsp
@@ -362,6 +371,7 @@ quartil
 quickfix
 radenling
 rafamadriz
+rcompanion
 readline
 reineke
 relativenumber
