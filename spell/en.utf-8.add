@@ -141,6 +141,7 @@ anova
 aot
 api
 arcsight
+arg
 args
 async
 auth
@@ -350,9 +351,11 @@ pandoc
 param
 parinfer
 passthrough
+pbrt
 petertriho
 pid
 plaintex
+png
 polipéptidos
 popup
 powerlevel10k
@@ -395,6 +398,7 @@ selenized
 setjmp
 shapiro
 showbreak
+shuf
 soa
 sqlite
 src
