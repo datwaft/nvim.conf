@@ -157,6 +157,7 @@ breakindentopt
 btn
 buf
 buftype
+bvh
 callout
 casey
 catppuccin
@@ -249,6 +250,7 @@ gui
 h11
 h13
 h6
+halton
 hererocks
 hexpand
 hoc
@@ -284,6 +286,7 @@ jpalardy
 js
 json
 jsonls
+kdtree
 keybind
 keybinds
 keymap
@@ -402,6 +405,7 @@ shapiro
 showbreak
 shuf
 soa
+sobol
 sqlite
 src
 ssm
