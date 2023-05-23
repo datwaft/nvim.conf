@@ -129,6 +129,7 @@ WIFEXITED
 WIFSIGNALED
 WIFSTOPPED
 WIP
+WSL
 WSTOPSIG
 XDG
 Zoox
@@ -148,6 +149,7 @@ async
 auth
 aws
 b0o
+basename
 bashls
 bashrc
 bioinformática
@@ -207,6 +209,7 @@ eslint
 exa
 execvp
 expr
+exr
 f3fora
 fb
 fennel
@@ -235,6 +238,7 @@ gd
 gf
 ggplot2
 gi
+gitattributes
 gitcommit
 github
 gitlab
@@ -350,6 +354,7 @@ nvim-web-devicons
 ojroques
 ok
 osc52
+outfile
 pagebreak
 pandoc
 param
@@ -400,6 +405,7 @@ scriptsize
 scss
 sdkman
 selenized
+setfiletype
 setjmp
 shapiro
 showbreak
