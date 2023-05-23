@@ -109,3 +109,10 @@
                                                    current-list (vim.fn.getqflist)
                                                    new-list (doto current-list (table.remove current-item))]
                                                (vim.fn.setqflist new-list "r")))))
+
+;;; =========
+;;; Filetypes
+;;; =========
+(augroup! custom-filetypes
+  (clear!)
+  (autocmd! [BufNewFile BufRead] .gitattributes "setfiletype gitattributes"))
