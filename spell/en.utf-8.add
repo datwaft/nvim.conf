@@ -94,6 +94,7 @@ Powershell
 Prefrontal
 Roush
 Rui
+Rustpi
 Ryuta
 S21
 SIGTRAP
@@ -132,6 +133,7 @@ WIP
 WSL
 WSTOPSIG
 XDG
+ZKOS
 Zoox
 \IEEEPARstart
 \lipsum
@@ -255,6 +257,7 @@ h11
 h13
 h6
 halton
+heiser2005secure
 hererocks
 hexpand
 hoc
@@ -291,14 +294,17 @@ js
 json
 jsonls
 kdtree
+kernelspace
 keybind
 keybinds
 keymap
+klabnik2023rust
 kube
 lang
 learncube
 lemminx
 li
+liang2021rustpi
 linematch
 linuxbrew
 llvm
@@ -390,6 +396,7 @@ reineke
 relativenumber
 repl
 repro
+restivo2020zero
 rg
 rizsotto
 rktjmp
@@ -454,6 +461,7 @@ typescriptreact
 ui
 uml
 undercurls
+userspace
 usr
 utf-16
 utf-8
@@ -491,6 +499,8 @@ yyyy
 zod
 zsh
 zv
+µ-kernel
+µ-kernels
 λ
 
 
