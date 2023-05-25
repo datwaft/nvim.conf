@@ -62,7 +62,9 @@ GtkButton
 GtkGrid
 GtkWindow
 Haier
+Homoscedasticity
 IBM Plex Mono
+IPv6
 IQR
 ISC
 Inconsolata
@@ -89,6 +91,7 @@ NvChad
 OSC52
 Olical
 Ortíz
+PBRTv3
 PFSSO
 Powershell
 Prefrontal
@@ -212,7 +215,9 @@ exa
 execvp
 expr
 exr
+f16
 f3fora
+f8
 fb
 fennel
 fg
@@ -298,6 +303,8 @@ kernelspace
 keybind
 keybinds
 keymap
+killeroo
+killeroos
 klabnik2023rust
 kube
 lang
@@ -306,6 +313,7 @@ lemminx
 li
 liang2021rustpi
 linematch
+linux
 linuxbrew
 llvm
 ln
@@ -383,6 +391,7 @@ prog
 projekt0n
 ptrace
 pwsh
+px
 pyright
 python3
 qf
