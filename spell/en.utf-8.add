@@ -39,6 +39,7 @@ Ctrl
 D3
 DARTEL
 DATETIME
+DDR4
 DLPFC
 DS
 Denilson
@@ -51,6 +52,7 @@ Fantasque
 Fildo7525
 Firas
 G$Vgg0
+G1
 GR40
 GVgg
 Gallinat
@@ -74,6 +76,7 @@ Kawashima
 Khatib
 Khoury
 Kolmogorov
+Kruskal-Wallis 
 Kühn
 LF
 LFS
@@ -81,6 +84,7 @@ LLVM
 LTeX
 Lcd
 Levene
+Levene's
 Lindenberger
 MEM
 MMM
@@ -95,6 +99,7 @@ PBRTv3
 PFSSO
 Powershell
 Prefrontal
+RMSE
 Roush
 Rui
 Rustpi
@@ -135,6 +140,7 @@ WIFSTOPPED
 WIP
 WSL
 WSTOPSIG
+Wilcoxon
 XDG
 ZKOS
 Zoox
@@ -143,6 +149,8 @@ Zoox
 \longtable
 \x1b
 a:ver100-blinkon0
+agrawala1976approach
+al2020measuring
 andymass
 anova
 aot
@@ -159,6 +167,7 @@ bashls
 bashrc
 bioinformática
 blankline
+boras2020performance
 boxv
 breakindentopt
 btn
@@ -222,6 +231,7 @@ fb
 fennel
 fg
 fh
+field2002design
 filesystem
 filetype
 filetypes
@@ -241,6 +251,7 @@ freetype
 ftdetect
 ftplugin
 fzf
+garcia1996comprehensive
 gd
 gf
 ggplot2
@@ -262,6 +273,7 @@ h11
 h13
 h6
 halton
+heidelberger1984computer
 heiser2005secure
 hererocks
 hexpand
@@ -272,6 +284,7 @@ homocedasticidad
 homocedástica
 homocedásticas
 homocedásticos
+homoscedasticity
 hrsh7th
 hui
 hvm
@@ -294,10 +307,12 @@ jeff-hykin
 jghauser
 jmbuhr
 jose-elias-alvarez
+joy2015performance
 jpalardy
 js
 json
 jsonls
+kavas2001comparing
 kdtree
 kernelspace
 keybind
@@ -382,6 +397,8 @@ png
 polipéptidos
 popup
 powerlevel10k
+praptodinoyo2019performance
+praptodiyono2019performance
 prefrontal
 preprocesamiento
 prettierd
@@ -407,6 +424,8 @@ repl
 repro
 restivo2020zero
 rg
+ristov2013performance
+rivera2023lecture
 rizsotto
 rktjmp
 rn
@@ -416,6 +435,7 @@ rst
 rtp
 sQVe
 saadparwaiz1
+salah2010performance
 schemastore
 scriptsize
 scss
@@ -443,7 +463,10 @@ stopband
 str
 streetsidesoftware
 strikethrough
+subcap
+sulaiman2021comparison
 svg
+synthetization
 tabclose
 tabnew
 tabprevious
