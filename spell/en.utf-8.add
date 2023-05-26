@@ -178,6 +178,7 @@ callout
 casey
 catppuccin
 cclose
+cd
 ceil
 chisq
 clangd
@@ -289,6 +290,7 @@ hrsh7th
 hui
 hvm
 hy
+iamcco
 il
 img
 init
@@ -375,6 +377,7 @@ nofile
 noh
 noplainbuffer
 noselect
+npm
 nrow
 nvim
 nvim-lualine
@@ -393,6 +396,7 @@ pbrt
 petertriho
 pid
 plaintex
+plantuml
 png
 polipéptidos
 popup
@@ -490,6 +494,7 @@ tpope
 treesitter
 tsserver
 typescriptreact
+tyru
 ui
 uml
 undercurls
@@ -513,6 +518,7 @@ virtualtext
 vscode
 vue
 wbthomason
+weirongxu
 wezterm
 whitespace
 wikipedia
