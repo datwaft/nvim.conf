@@ -46,4 +46,7 @@
                      :settings {:yaml {:keyOrdering false}}})
   ; Markdown & Quarto
   (lsp.marksman.setup {:on_attach on-attach : capabilities
-                       :filetypes ["markdown" "quarto"]}))
+                       :filetypes ["markdown" "quarto"]})
+  ; Swift
+  (lsp.sourcekit.setup {:on_attach on-attach : capabilities
+                        :filetypes ["swift"]}))
