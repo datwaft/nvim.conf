@@ -18,7 +18,7 @@
   "denops.vim": { "branch": "main", "commit": "3b489d50ba2e034c829a09475a4002176bffbef7" },
   "dressing.nvim": { "branch": "master", "commit": "f16d7586fcdd8b2e3850d0abb7e46f944125cc25" },
   "fennel.vim": { "branch": "main", "commit": "c6a9c035ca108cbb24273d96cd6277fb8fbc60b4" },
-  "fidget.nvim": { "branch": "main", "commit": "f1c375ba68839eaa4a65efdf2aa078c0da0548fe" },
+  "fidget.nvim": { "branch": "main", "commit": "0ba1e16d07627532b6cae915cc992ecac249fb97" },
   "friendly-snippets": { "branch": "main", "commit": "49ca2a0e0e26427b550b1f64272d7fe7e4d7d51b" },
   "fzf": { "branch": "master", "commit": "d0b7780239dd9f9e2bf6c252e03b463990a966bd" },
   "gin.vim": { "branch": "main", "commit": "55f267edff5509b96d4273300ef2b4e5babfb975" },
