@@ -6,12 +6,14 @@ $v0<cr>
 %s
 .Rmd
 .csv
+.ideavimrc
 .jpeg
 .jsonc
 .md
 .tgz
 .txt
 .venv
+.vimrc
 1440x900
 2BUA8C4S2C.com.1password
 :TSUpdate
@@ -312,6 +314,7 @@ killeroo
 killeroos
 klabnik2023rust
 kube
+kubectl
 kubic
 lang
 learncube
@@ -441,6 +444,7 @@ showbreak
 shuf
 soa
 sobol
+sourcekit
 sqlite
 src
 ssm
@@ -488,6 +492,7 @@ tyru
 ui
 uml
 undercurls
+url
 userspace
 usr
 utf-16
@@ -522,6 +527,8 @@ yamlls
 yml
 youtu.be
 yyyy
+zig
+zls
 zod
 zsh
 zv
@@ -568,9 +575,3 @@ zv
 ﰠ
 ﳠ
 ﴯ
-url
-zls
-zig
-sourcekit
-.vimrc
-.ideavimrc
