@@ -25,7 +25,8 @@
   (let [neodev (require :neodev)]
     (neodev.setup {})
     (lsp.lua_ls.setup {:on_attach on-attach : capabilities
-                       :settings {:Lua {:workspace {:preloadFileSize 500}}}}))
+                       :settings {:Lua {:workspace {:preloadFileSize 500}
+                                        :hint {:enable true}}}}))
   ; Json
   (lsp.jsonls.setup {:on_attach on-attach : capabilities
                      :settings {:json {:schemas (let [{: json} (require :schemastore)] (json.schemas))}}})
