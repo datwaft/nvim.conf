@@ -35,8 +35,18 @@
                             :settings {:rust-analyzer {:cargo {:allFeatures true}
                                                        :checkOnSave {:command "clippy"}}}})
   ; Typescript
-  (let [typescript (require :typescript)]
-    (typescript.setup {:server {:on_attach on-attach : capabilities}}))
+  (let [typescript (require :typescript)
+        inlay-hints-config {:includeInlayParameterNameHints "all"
+                            :includeInlayParameterNameHintsWhenArgumentMatchesName false
+                            :includeInlayFunctionParameterTypeHints true
+                            :includeInlayVariableTypeHints true
+                            :includeInlayVariableTypeHintsWhenTypeMatchesName false
+                            :includeInlayPropertyDeclarationTypeHints true
+                            :includeInlayFunctionLikeReturnTypeHints true
+                            :includeInlayEnumMemberValueHints true}]
+    (typescript.setup {:server {:on_attach on-attach : capabilities
+                                :settings {:typescript {:inlayHints inlay-hints-config}
+                                           :javascript {:inlayHints inlay-hints-config}}}}))
   ; Emmet
   (lsp.emmet_ls.setup {:on_attach on-attach : capabilities
                        :filetypes ["html" "typescriptreact" "javascriptreact"
