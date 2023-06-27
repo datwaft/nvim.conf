@@ -19,7 +19,8 @@
        formatting.isort
        (diagnostics.pylint.with {:prefer_local ".venv/bin"})
        (diagnostics.mypy.with {:prefer_local ".venv/bin"})
-       typescript-actions]))
+       typescript-actions
+       formatting.fourmolu]))
 
   ;;; =====
   ;;; Setup
