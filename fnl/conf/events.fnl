@@ -59,12 +59,18 @@
   (autocmd! TermOpen * #(local-set! colorcolumn [])))
 
 ;;; ===============
-;;; Disable 'spell'
+;;; Control 'spell'
 ;;; ===============
+;; Always disable 'spell'
 (augroup! disable-spell
   (clear!)
   (autocmd! FileType [checkhealth gitignore help qf man]
     #(local-set! nospell)))
+;; Always enable 'spell'
+(augroup! enable-spell
+  (clear!)
+  (autocmd! FileType [markdown latex quarto]
+    #(local-set! spell)))
 
 ;;; ==============
 ;;; Disable 'wrap'

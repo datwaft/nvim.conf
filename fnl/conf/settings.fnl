@@ -49,7 +49,7 @@
 (set! formatoptions [:q :j])
 
 ;; Spell-checking configuration
-(set! spell)
+(set! nospell)
 (set! spelllang [:en :es])
 (set! spelloptions [:camel :noplainbuffer])
 (let [config-folder (vim.fn.stdpath "config")
