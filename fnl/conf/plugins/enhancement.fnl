@@ -8,9 +8,6 @@
  (pack "sQVe/sort.nvim" {:config true})
  ;; Sync spell files
  "micarmst/vim-spellsync"
- ;; Pairs matching
- (pack "andymass/vim-matchup" {:init #(do (import-macros {: let!} :themis.var)
-                                        (let! matchup_matchparen_offscreen {:method "popup"}))})
  ;; Support OSC52 on yank to system clipboard
  (pack "ojroques/nvim-osc52" {:config #(do (import-macros {: augroup!
                                                            : clear!

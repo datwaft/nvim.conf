@@ -28,14 +28,12 @@
                :disable (icollect [_ language (ipairs (parsers.available_parsers))]
                           (when (not (contains? conf.lisp-filetypes language)) language))
                :query "rainbow-parens"
-               :strategy rainbow.strategy.global}
-     :matchup {:enable true}}))
+               :strategy rainbow.strategy.global}}))
 
 (pack "nvim-treesitter/nvim-treesitter" {:build ":TSUpdate"
                                          :dependencies ["JoosepAlviste/nvim-ts-context-commentstring"
                                                         "yioneko/nvim-yati"
                                                         "nvim-treesitter/nvim-treesitter-refactor"
                                                         "nvim-treesitter/playground"
-                                                        "HiPhish/nvim-ts-rainbow2"
-                                                        "andymass/vim-matchup"]
+                                                        "HiPhish/nvim-ts-rainbow2"]
                                          : config})

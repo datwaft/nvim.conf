@@ -81,7 +81,6 @@
   "vim-hy": { "branch": "master", "commit": "dbd001668db9deae19a8f631a38a9d96ef441c27" },
   "vim-indent-object": { "branch": "master", "commit": "5c5b24c959478929b54a9e831a8e2e651a465965" },
   "vim-jack-in": { "branch": "master", "commit": "4cefab20f02c44249499f43200442a3176315acd" },
-  "vim-matchup": { "branch": "master", "commit": "3c4ccc489002fe72b5d2e2ffc4b3b5a7d3ab65d8" },
   "vim-polyglot": { "branch": "master", "commit": "bc8a81d3592dab86334f27d1d43c080ebf680d42" },
   "vim-slime": { "branch": "main", "commit": "a096a2969fcb807fd5c6a75d943c6227dd9e6a38" },
   "vim-space": { "branch": "master", "commit": "e6615bd3803b7b874fd9e08295400268739597a1" },
