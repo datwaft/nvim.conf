@@ -40,31 +40,6 @@
 (map! [c] "<space>" #(if (wildmenumode?) "<C-y>" "<space>")
       {:expr true})
 
-;;; ========
-;;; Movement
-;;; ========
-;; Move words with <A-Right> and <A-Left>
-(map! [nvo] "<A-Left>" "b")
-(map! [nvo] "<A-Right>" "e")
-(map! [i] "<A-Left>" "<C-o>b")
-(map! [i] "<A-Right>" "<C-o>e<Right>")
-(map! [c] "<A-Left>" "<S-Left>")
-(map! [c] "<A-Right>" "<S-Right>")
-;; Move to the beginning
-(map! [nvo] "<C-h>" "^")
-(map! [nvo] "<C-left>" "^")
-(map! [i] "<C-h>" "<C-o>^")
-(map! [i] "<C-left>" "<C-o>^")
-(map! [c] "<C-h>" "<home>")
-(map! [c] "<C-left>" "<home>")
-;; Move to the end
-(map! [nvo] "<C-l>" "$")
-(map! [nvo] "<C-right>" "$")
-(map! [i] "<C-l>" "<C-o>$")
-(map! [i] "<C-right>" "<C-o>$")
-(map! [c] "<C-l>" "<end>")
-(map! [c] "<C-right>" "<end>")
-
 ;;; ============
 ;;; Text objects
 ;;; ============
