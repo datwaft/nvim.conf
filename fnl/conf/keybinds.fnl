@@ -23,15 +23,16 @@
 ;;; Tab pages
 ;;; =========
 ;; Create a new tab page
-(map! [n] "<C-t>c" "<cmd>tabnew<cr>")
+(map! [n] "<C-t>n" "<cmd>tabnew<cr>")
 ;; List tabs
-(map! [n] "<C-t>w" "<cmd>tabs<cr>")
+(map! [n] "<C-t>s" "<cmd>tabs<cr>")
 ;; Navigate to the next tab page
-(map! [n] "<C-t>n" "<cmd>tabNext<cr>")
+(map! [n] "<C-t>]" "<cmd>tabNext<cr>")
 ;; Navigate to the previous tab page
-(map! [n] "<C-t>p" "<cmd>tabprevious<cr>")
+(map! [n] "<C-t>[" "<cmd>tabprevious<cr>")
 ;; Kill current tab page
-(map! [n] "<C-t>&" "<cmd>tabclose<cr>")
+(map! [n] "<C-t>w" "<cmd>tabclose<cr>")
+(map! [n] "<C-t>q" "<cmd>tabclose<cr>")
 
 ;;; ========
 ;;; Wildmenu
