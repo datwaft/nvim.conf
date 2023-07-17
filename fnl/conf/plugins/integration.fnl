@@ -24,4 +24,6 @@
   (map! [n] "<C-w>l" smart-splits.move_cursor_right))
 
 [;; TMUX
-  (pack "mrjones2014/smart-splits.nvim" {: config})]
+ (pack "mrjones2014/smart-splits.nvim" {: config})
+ ;; Discord
+ (pack "andweeb/presence.nvim")]

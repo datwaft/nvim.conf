@@ -61,6 +61,7 @@
   "plantuml-previewer.vim": { "branch": "master", "commit": "1dd4d0f2b09cd80a217f76d82f93830dbbe689b3" },
   "playground": { "branch": "master", "commit": "2b81a018a49f8e476341dfcb228b7b808baba68b" },
   "plenary.nvim": { "branch": "master", "commit": "267282a9ce242bbb0c5dc31445b6d353bed978bb" },
+  "presence.nvim": { "branch": "main", "commit": "87c857a56b7703f976d3a5ef15967d80508df6e6" },
   "pretty_hover": { "branch": "master", "commit": "55b2deedc4cc27ef5c87cc447c787b9ad10422b7" },
   "promise-async": { "branch": "main", "commit": "e94f35161b8c5d4a4ca3b6ff93dd073eb9214c0e" },
   "schemastore.nvim": { "branch": "main", "commit": "cd5c2a0db954011fcbeac7bbbc0c7ae9e23626e3" },
