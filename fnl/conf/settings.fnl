@@ -21,12 +21,6 @@
 ;;; ====================
 ;;; Editor configuration
 ;;; ====================
-;; File configuration
-; Do not write backups
-(set! nowritebackup)
-; Do not create swap files
-(set! noswapfile)
-
 ;; Indentation configuration
 ; Use spaces instead of tabs
 (set! expandtab)
