@@ -135,9 +135,6 @@
 (set! ignorecase)
 (set! smartcase)
 
-;; Substitution
-(set! gdefault)
-
 ;;; ===========================
 ;;; Miscellaneous configuration
 ;;; ===========================
