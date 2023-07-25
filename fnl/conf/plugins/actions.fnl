@@ -3,7 +3,7 @@
 [;; Comment
  (pack "echasnovski/mini.comment" {:config #((. (require :mini.comment) :setup))})
  ;; Surround
- (pack "echasnovski/mini.surround" {:config #((. (require :mini.surround) :setup))})
+ (pack "machakann/vim-sandwich")
  ;; Split or join blocks of code
  (pack "Wansmer/treesj" {:dependencies ["nvim-treesitter/nvim-treesitter"]
                          :config true})
