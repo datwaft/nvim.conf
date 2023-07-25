@@ -39,9 +39,6 @@
 ; Show character after wrap
 (set! showbreak "↳ ")
 
-;; Formatting configuration
-(set! formatoptions [:q :j])
-
 ;; Spell-checking configuration
 (set! nospell)
 (set! spelllang [:en :es])
