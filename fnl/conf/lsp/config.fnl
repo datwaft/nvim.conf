@@ -51,7 +51,7 @@
   (lsp.emmet_ls.setup {:on_attach on-attach : capabilities
                        :filetypes ["html" "typescriptreact" "javascriptreact"
                                    "css" "sass" "scss" "less" "eruby"
-                                   "xml"]})
+                                   "xml" "svelte"]})
   ; YAML
   (lsp.yamlls.setup {:on_attach on-attach : capabilities
                      :settings {:yaml {:keyOrdering false}}})
