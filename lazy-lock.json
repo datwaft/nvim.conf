@@ -40,6 +40,7 @@
   "mkdir.nvim": { "branch": "main", "commit": "c55d1dee4f099528a1853b28bb28caa802eba217" },
   "neodev.nvim": { "branch": "main", "commit": "2973d6c56cbde46c04e12476bb40eefd516d5f35" },
   "netman.nvim": { "branch": "main", "commit": "cd5b2c4802d2014df1bc1d07c37aa2271e6ba725" },
+  "nfnl": { "branch": "main", "commit": "d4469819fbeb73de6892edae8e2694889710b1df" },
   "null-ls.nvim": { "branch": "main", "commit": "db09b6c691def0038c456551e4e2772186449f35" },
   "nvim-FeMaco.lua": { "branch": "main", "commit": "c06f8befe4b9438aa4f4b763e70d77cabf5093f1" },
   "nvim-bqf": { "branch": "main", "commit": "60ebdf05c273e8e7f420851c6a33bbd731a1de8d" },

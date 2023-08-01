@@ -26,4 +26,6 @@
 [;; TMUX
  (pack "mrjones2014/smart-splits.nvim" {: config})
  ;; Discord
- (pack "andweeb/presence.nvim")]
+ (pack "andweeb/presence.nvim")
+ ;; nfnl
+ (pack "Olical/nfnl")]
