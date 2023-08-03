@@ -27,10 +27,6 @@
     (lsp.lua_ls.setup {:on_attach on-attach : capabilities
                        :settings {:Lua {:workspace {:preloadFileSize 500}
                                         :hint {:enable true}}}}))
-  ; Fennel
-  (lsp.fennel_language_server.setup {:on_attach on-attach : capabilities
-                                     :settings {:fennel {:workspace {:library (vim.api.nvim_list_runtime_paths)}
-                                                         :diagnostics {:globals ["vim"]}}}})
   ; Json
   (lsp.jsonls.setup {:on_attach on-attach : capabilities
                      :settings {:json {:schemas (let [{: json} (require :schemastore)] (json.schemas))}}})
