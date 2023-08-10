@@ -105,6 +105,10 @@
 ; Start with everything unfolded
 (set! foldlevelstart 99)
 
+;; Scroll configuration
+; Scroll by screen lines and not by text lines
+(set! smoothscroll)
+
 ;;; ========================
 ;;; Completion configuration
 ;;; ========================
