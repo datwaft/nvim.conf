@@ -39,6 +39,9 @@
                        :filetypes ["html" "typescriptreact" "javascriptreact"
                                    "css" "sass" "scss" "less" "eruby"
                                    "xml" "svelte"]})
+  ; Typescript
+  (let [typescript-tools (require :typescript-tools)]
+    (typescript-tools.setup {:on_attach on-attach}))
   ; YAML
   (lsp.yamlls.setup {:on_attach on-attach : capabilities
                      :settings {:yaml {:keyOrdering false}}})
