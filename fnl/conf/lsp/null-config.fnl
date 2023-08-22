@@ -10,8 +10,7 @@
            : diagnostics
            : hover
            : completion
-           :code_actions actions} null.builtins
-          typescript-actions (require :typescript.extensions.null-ls.code-actions)]
+           :code_actions actions} null.builtins]
       [formatting.stylua
        formatting.prettierd
        formatting.markdownlint
@@ -19,7 +18,6 @@
        formatting.isort
        (diagnostics.pylint.with {:prefer_local ".venv/bin"})
        (diagnostics.mypy.with {:prefer_local ".venv/bin"})
-       typescript-actions
        formatting.fourmolu]))
 
   ;;; =====

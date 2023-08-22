@@ -6,7 +6,6 @@
                                                "williamboman/mason-lspconfig.nvim"
                                                (pack "j-hui/fidget.nvim" {:config true
                                                                           :tag "legacy"})
-                                               "jose-elias-alvarez/typescript.nvim"
                                                "b0o/schemastore.nvim"
                                                (pack "Fildo7525/pretty_hover" {:config true})]})
  ;; Installation
