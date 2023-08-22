@@ -22,8 +22,7 @@
   (import-macros {: buf-map!} :themis.keybind)
 
   ;; Show documentation
-  (let [pretty-hover (require :pretty_hover)]
-    (buf-map! [n] "K" pretty-hover.hover))
+  (buf-map! [n] "K" vim.lsp.buf.hover)
   ;; Go to definition
   (buf-map! [n] "gd" vim.lsp.buf.definition)
   ;; Go to declaration

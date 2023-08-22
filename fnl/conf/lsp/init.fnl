@@ -7,7 +7,6 @@
                                                (pack "j-hui/fidget.nvim" {:config true
                                                                           :tag "legacy"})
                                                "b0o/schemastore.nvim"
-                                               (pack "Fildo7525/pretty_hover" {:config true})
                                                (pack "pmizio/typescript-tools.nvim" {:dependencies ["nvim-lua/plenary.nvim"]})]})
  ;; Installation
  (pack "williamboman/mason.nvim" {:config true})
