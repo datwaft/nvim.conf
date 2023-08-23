@@ -43,7 +43,7 @@
                                  (feedkeys! "<Esc>" "x"))))
   ;; Toggle inlay hints
   (when (client.supports_method "textDocument/inlayHint")
-    (buf-map! [n] "<leader>g" #(vim.lsp.buf.inlay_hint bufnr)))
+    (buf-map! [n] "<leader>g" #(vim.lsp.inlay_hint bufnr)))
 
   ;;; ============
   ;;; Capabilities
@@ -51,7 +51,7 @@
 
   ;; Enable inlay hints
   (when (client.supports_method "textDocument/inlayHint")
-    (vim.lsp.buf.inlay_hint bufnr true))
+    (vim.lsp.inlay_hint bufnr true))
 
   ;;; ======
   ;;; Events
