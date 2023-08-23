@@ -8,7 +8,7 @@
 
 (fn format! [bufnr ?async?]
   (vim.lsp.buf.format {: bufnr
-                       :filter #(not (contains? [:jsonls :tsserver] $.name))
+                       :filter #(not (contains? [:jsonls :tsserver :typescript-tools] $.name))
                        :async ?async?}))
 
 (fn autoformat! [bufnr ?async?]
