@@ -10,10 +10,9 @@
   ;; --------------------------
   ;; With default configuration
   ;; --------------------------
-  (local with-default [:dockerls :rnix :bashls :cmake :jedi_language_server
-                       :eslint :cssls :html :volar :svelte :taplo
-                       :lemminx :clojure_lsp :vimls :gopls :r_language_server
-                       :jdtls :clangd :zls :hls])
+  (local with-default [:dockerls :rnix :bashls :cmake :eslint :cssls :html
+                       :volar :svelte :taplo :lemminx :clojure_lsp :vimls
+                       :gopls :r_language_server :jdtls :clangd :zls :hls])
   (each [_ server (ipairs with-default)]
     ((. lsp server :setup) {:on_attach on-attach
                             :capabilities capabilities}))
@@ -50,4 +49,20 @@
                        :filetypes ["markdown" "quarto"]})
   ; Swift
   (lsp.sourcekit.setup {:on_attach on-attach : capabilities
-                        :filetypes ["swift"]}))
+                        :filetypes ["swift"]})
+  ; Python
+  (lsp.pylsp.setup {:on_attach on-attach : capabilities
+                    :settings {:pylsp {:plugins {; Formatting
+                                                 :black {:enabled true}
+                                                 :autopep8 {:enabled false}
+                                                 :yapf {:enabled false}
+                                                 ; Linting
+                                                 :pylint {:enabled true :executable "pylint"}
+                                                 :pyflakes {:enabled false}
+                                                 :pycodestyle {:enabled false}
+                                                 ; Typing
+                                                 :pylsp_mypy {:enabled true}
+                                                 ; Auto-completion
+                                                 :jedi_completion {:fuzzy true}
+                                                 ; Import sorting
+                                                 :pyls_isort {:enabled true}}}}}))
