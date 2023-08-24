@@ -10,7 +10,7 @@
   ;; --------------------------
   ;; With default configuration
   ;; --------------------------
-  (local with-default [:dockerls :rnix :bashls :cmake :pyright
+  (local with-default [:dockerls :rnix :bashls :cmake :jedi_language_server
                        :eslint :cssls :html :volar :svelte :taplo
                        :lemminx :clojure_lsp :vimls :gopls :r_language_server
                        :jdtls :clangd :zls :hls])
