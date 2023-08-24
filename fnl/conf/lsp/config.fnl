@@ -57,7 +57,9 @@
                                                  :autopep8 {:enabled false}
                                                  :yapf {:enabled false}
                                                  ; Linting
-                                                 :pylint {:enabled true :executable "pylint"}
+                                                 :pylint {:enabled true
+                                                          :executable "pylint"
+                                                          :args ["--disable=missing-function-docstring,missing-module-docstring,invalid-name"]}
                                                  :pyflakes {:enabled false}
                                                  :pycodestyle {:enabled false}
                                                  ; Typing
