@@ -1,5 +1,8 @@
 local plugins_path = vim.fn.stdpath("data") .. "/lazy"
 
+-- Enable bytecode cache
+vim.loader.enable()
+
 -- Bootstrap lazy.nvim
 local lazy_path = plugins_path .. "/lazy.nvim"
 if not vim.loop.fs_stat(lazy_path) then
