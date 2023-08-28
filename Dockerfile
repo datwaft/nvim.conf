@@ -1,12 +1,11 @@
 FROM ubuntu
 
 # Install dependencies
-RUN apt-get update -y && \
-  apt-get install -y git golang ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen
+RUN apt-get update -y && apt-get install -y build-essential git ninja-build gettext cmake unzip curl wget \
+  nodejs npm python3 cargo
 
 # Install neovim
-WORKDIR /tmp
-RUN git clone https://github.com/neovim/neovim
+RUN git clone https://github.com/neovim/neovim /tmp/neovim
 WORKDIR /tmp/neovim
 RUN make CMAKE_BUILD_TYPE=Release
 RUN make install
@@ -19,6 +18,9 @@ RUN git clone --filter=blob:none --single-branch https://github.com/datwaft/them
 
 # Deploy configuration
 COPY . /root/.config/nvim
+
+# Install plugins
+RUN nvim --headless "+Lazy! sync" +qa
 
 # Finish
 WORKDIR /root/.config/nvim
