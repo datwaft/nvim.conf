@@ -1,11 +1,5 @@
 (local {: contains?} (require :themis.lib.seq))
 
-(fn escape [combination]
-  (vim.api.nvim_replace_termcodes combination true true true))
-
-(fn feedkeys! [lhs mode]
-  (vim.api.nvim_feedkeys (escape lhs) mode false))
-
 (fn format! [bufnr ?async?]
   (vim.lsp.buf.format {: bufnr
                        :filter #(not (contains? [:jsonls :tsserver :typescript-tools] $.name))
@@ -35,12 +29,6 @@
   (buf-map! [n] "<leader>rn" vim.lsp.buf.rename)
   ;; Apply code actions
   (buf-map! [n] "<leader>a" vim.lsp.buf.code_action)
-  ;; Format buffer
-  (when (client.supports_method "textDocument/formatting")
-    (buf-map! [n] "<leader>f" #(format! bufnr true))
-    (buf-map! [x] "<leader>f" #(do
-                                 (format! bufnr true)
-                                 (feedkeys! "<Esc>" "x"))))
   ;; Toggle inlay hints
   (when (client.supports_method "textDocument/inlayHint")
     (buf-map! [n] "<leader>g" #(vim.lsp.inlay_hint bufnr)))
