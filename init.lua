@@ -3,7 +3,7 @@ local plugins_path = vim.fn.stdpath("data") .. "/lazy"
 ---@param name string
 local function install_plugin(name)
   ---@type unknown, unknown, string, string
-  local _, _, owner, repo = string.find(name, "(.+)/(.+)")
+  local _, _, owner, repo = name:find([[(.+)/(.+)]])
   local path = ("%s/%s"):format(plugins_path, repo)
 
   if not vim.loop.fs_stat(path) then
