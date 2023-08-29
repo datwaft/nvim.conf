@@ -1,62 +1,33 @@
 local plugins_path = vim.fn.stdpath("data") .. "/lazy"
 
+---@param name string
+local function install_plugin(name)
+  ---@type unknown, unknown, string, string
+  local _, _, owner, repo = string.find(name, "(.+)/(.+)")
+  local path = ("%s/%s"):format(plugins_path, repo)
+
+  if not vim.loop.fs_stat(path) then
+    vim.notify(("Installing %s/%s..."):format(owner, repo), vim.log.levels.INFO)
+    vim.fn.system({
+      "git",
+      "clone",
+      "--filter=blob:none",
+      "--single-branch",
+      ("https://github.com/%s/%s.git"):format(owner, repo),
+      path,
+    })
+  end
+
+  vim.opt.runtimepath:prepend(path)
+end
+
 -- Enable bytecode cache
 vim.loader.enable()
 
--- Bootstrap lazy.nvim
-local lazy_path = plugins_path .. "/lazy.nvim"
-if not vim.loop.fs_stat(lazy_path) then
-  vim.notify("Bootstrapping lazy.nvim...", vim.log.levels.INFO)
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "--single-branch",
-    "https://github.com/folke/lazy.nvim.git",
-    lazy_path,
-  })
-end
--- Bootstrap hotpot.nvim
-local hotpot_path = plugins_path .. "/hotpot.nvim"
-if not vim.loop.fs_stat(hotpot_path) then
-  vim.notify("Bootstrapping hotpot.nvim...", vim.log.levels.INFO)
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "--single-branch",
-    "https://github.com/rktjmp/hotpot.nvim.git",
-    hotpot_path,
-  })
-end
--- Bootstrap themis.nvim
-local themis_path = plugins_path .. "/themis.nvim"
-if not vim.loop.fs_stat(themis_path) then
-  vim.notify("Bootstrapping themis.nvim...", vim.log.levels.INFO)
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "--single-branch",
-    "https://github.com/datwaft/themis.nvim.git",
-    themis_path,
-  })
-end
-
--- Add lazy.nvim to rtp
-vim.opt.runtimepath:prepend(lazy_path)
--- Add hotpot.nvim to rtp
-vim.opt.runtimepath:prepend(hotpot_path)
--- Add themis.nvim to rtp
-vim.opt.runtimepath:prepend(themis_path)
-
--- Generate plugins table
-local plugins = {
-  {
-    "rktjmp/hotpot.nvim",
-    dependencies = { "datwaft/themis.nvim" },
-  },
-}
+-- Install essential plugins
+install_plugin("folke/lazy.nvim")
+install_plugin("rktjmp/hotpot.nvim")
+install_plugin("datwaft/themis.nvim")
 
 -- Configure hotpot.nvim
 require("hotpot").setup({
@@ -68,19 +39,27 @@ require("hotpot").setup({
   },
 })
 
+-- Generate plugins table
+local plugins = {
+  {
+    "rktjmp/hotpot.nvim",
+    dependencies = { "datwaft/themis.nvim" },
+  },
+}
+
 -- Load configuration
 require("conf")
 
--- Add plugins to table
+-- Add conf.plugins.* to plugins list
 local plugins_path = vim.fn.stdpath("config") .. "/fnl/conf/plugins"
 if vim.loop.fs_stat(plugins_path) then
   for file in vim.fs.dir(plugins_path) do
     file = file:match("^(.*)%.fnl$")
-    plugins[#plugins + 1] = require("conf.plugins." .. file)
+    table.insert(plugins, require("conf.plugins." .. file))
   end
 end
 -- Add conf.lsp to plugins table
-plugins[#plugins + 1] = require("conf.lsp")
+table.insert(plugins, require("conf.lsp"))
 
 -- Configure lazy.nvim
 require("lazy").setup(plugins)
