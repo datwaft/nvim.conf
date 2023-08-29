@@ -31,7 +31,7 @@
   (buf-map! [n] "<leader>a" vim.lsp.buf.code_action)
   ;; Toggle inlay hints
   (when (client.supports_method "textDocument/inlayHint")
-    (buf-map! [n] "<leader>g" #(vim.lsp.inlay_hint bufnr)))
+    (buf-map! [n] "<leader>th" #(vim.lsp.inlay_hint bufnr)))
 
   ;;; ============
   ;;; Capabilities
