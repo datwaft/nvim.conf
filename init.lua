@@ -51,9 +51,9 @@ local plugins = {
 require("conf")
 
 -- Add conf.plugins.* to plugins list
-local plugins_path = vim.fn.stdpath("config") .. "/fnl/conf/plugins"
-if vim.loop.fs_stat(plugins_path) then
-  for file in vim.fs.dir(plugins_path) do
+local plugins_folder = vim.fn.stdpath("config") .. "/fnl/conf/plugins"
+if vim.loop.fs_stat(plugins_folder) then
+  for file in vim.fs.dir(plugins_folder) do
     file = file:match("^(.*)%.fnl$")
     table.insert(plugins, require("conf.plugins." .. file))
   end
