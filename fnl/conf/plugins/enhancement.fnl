@@ -24,4 +24,8 @@
  (pack "ekickx/clipboard-image.nvim")
  ;; Undofile
  (pack "kevinhwang91/nvim-fundo" {:build #(let [fundo (require :fundo)] (fundo.install))
-                                  :config true})]
+                                  :config true})
+ ;; Remove bad habits
+ (pack "m4xshen/hardtime.nvim" {:dependencies ["MunifTanjim/nui.nvim"
+                                               "nvim-lua/plenary.nvim"]
+                                :config true})]
