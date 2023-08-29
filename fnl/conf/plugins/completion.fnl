@@ -18,7 +18,7 @@
                   : clear!
                   : autocmd!} :themis.event)
 
-  (augroup! unlink-snipper-on-mode-change
+  (augroup! unlink-snippet-on-mode-change
     (clear!)
     (autocmd! ModeChanged ["s:n" "i:*"]
       #(when (and (?. luasnip :session :current_nodes $.buf)
