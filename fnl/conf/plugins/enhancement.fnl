@@ -20,8 +20,6 @@
                                                      #(case vim.v.event.regname
                                                         "+" (osc52.copy_register "+")
                                                         "*" (osc52.copy_register "*")))))})
- ;; Support image pasting
- (pack "ekickx/clipboard-image.nvim")
  ;; Undofile
  (pack "kevinhwang91/nvim-fundo" {:build #(let [fundo (require :fundo)] (fundo.install))
                                   :config true})
