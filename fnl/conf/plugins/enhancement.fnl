@@ -22,8 +22,4 @@
                                                         "*" (osc52.copy_register "*")))))})
  ;; Undofile
  (pack "kevinhwang91/nvim-fundo" {:build #(let [fundo (require :fundo)] (fundo.install))
-                                  :config true})
- ;; Remove bad habits
- (pack "m4xshen/hardtime.nvim" {:dependencies ["MunifTanjim/nui.nvim"
-                                               "nvim-lua/plenary.nvim"]
-                                :config true})]
+                                  :config true})]
