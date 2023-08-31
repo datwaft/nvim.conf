@@ -136,9 +136,6 @@
 ;; Diff-mode
 (set! diffopt+ "linematch:60")
 
-;; Lazy redraw
-(set! lazyredraw)
-
 ;; Timeout for mappings
 (set! timeoutlen 500)
 
