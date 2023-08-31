@@ -18,4 +18,7 @@
                                                      "jose-elias-alvarez/null-ls.nvim"]})
  ;; Non-LSP integration
  (pack "jose-elias-alvarez/null-ls.nvim" {:config (require :conf.lsp.null-config)
-                                          :dependencies ["nvim-lua/plenary.nvim"]})]
+                                          :dependencies ["nvim-lua/plenary.nvim"]})
+ ;; Dim unused elements
+ (pack "zbirenbaum/neodim" {:event "LspAttach"
+                            :opts {:blend_color "#1e1e2e"}})]

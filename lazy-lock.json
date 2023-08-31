@@ -39,6 +39,7 @@
   "mini.test": { "branch": "main", "commit": "a9e23fd2033ada30a53a32d1c73629351c2750f3" },
   "mkdir.nvim": { "branch": "main", "commit": "c55d1dee4f099528a1853b28bb28caa802eba217" },
   "neodev.nvim": { "branch": "main", "commit": "183f5a7357397260b631d6cccceccc3621b50f78" },
+  "neodim": { "branch": "master", "commit": "36fcfe7793da6135bdcc20889dc84e051e08644b" },
   "netman.nvim": { "branch": "main", "commit": "cd5b2c4802d2014df1bc1d07c37aa2271e6ba725" },
   "nfnl": { "branch": "main", "commit": "9fd29f394a57e14e573850defd288ea263876cbf" },
   "null-ls.nvim": { "branch": "main", "commit": "0010ea927ab7c09ef0ce9bf28c2b573fc302f5a7" },
