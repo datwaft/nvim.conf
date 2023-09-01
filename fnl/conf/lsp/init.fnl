@@ -21,4 +21,5 @@
                                           :dependencies ["nvim-lua/plenary.nvim"]})
  ;; Dim unused elements
  (pack "zbirenbaum/neodim" {:event "LspAttach"
-                            :opts {:blend_color "#1e1e2e"}})]
+                            :opts {:alpha 0.6
+                                   :blend_color "#1e1e2e"}})]
