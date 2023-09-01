@@ -16,8 +16,4 @@
  ;; Interactive evaluation for LISP
  (pack "Olical/conjure" {:init #(do (import-macros {: let!} :themis.var)
                                   ;; Set client for scheme
-                                  (let! conjure#filetype#scheme "conjure.client.guile.socket"))})
- ;; Clojure interactive evaluation
- (pack "clojure-vim/vim-jack-in" {:ft "clojure"
-                                  :dependencies ["tpope/vim-dispatch"
-                                                 "radenling/vim-dispatch-neovim"]})]
+                                  (let! conjure#filetype#scheme "conjure.client.guile.socket"))})]
