@@ -22,4 +22,7 @@
                                                         "*" (osc52.copy_register "*")))))})
  ;; Undofile
  (pack "kevinhwang91/nvim-fundo" {:build #(let [fundo (require :fundo)] (fundo.install))
-                                  :config true})]
+                                  :config true})
+ ;; Autopairs
+ (pack "cohama/lexima.vim" {:init #(do (import-macros {: let!} :themis.var)
+                                     (let! lexima_enable_basic_rules 1))})]
