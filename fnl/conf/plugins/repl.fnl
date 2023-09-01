@@ -14,8 +14,7 @@
                                      (map! [x] "<C-c><C-c>" "<plug>SlimeRegionSend")
                                      (map! [n] "<C-c><C-c>" "<plug>SlimeParagraphSend"))})
  ;; Interactive evaluation for LISP
- (pack "Olical/conjure" {:ft conf.lisp-filetypes
-                         :init #(do (import-macros {: let!} :themis.var)
+ (pack "Olical/conjure" {:init #(do (import-macros {: let!} :themis.var)
                                   ;; Set client for scheme
                                   (let! conjure#filetype#scheme "conjure.client.guile.socket"))})
  ;; Clojure interactive evaluation
