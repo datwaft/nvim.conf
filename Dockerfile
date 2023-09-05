@@ -1,8 +1,19 @@
 FROM ubuntu
 
 # Install dependencies
-RUN apt-get update -y && apt-get install -y build-essential git ninja-build gettext cmake unzip curl wget \
-  nodejs npm python3 cargo
+RUN apt-get update -y && apt-get install -y \
+  build-essential \
+  cargo \
+  cmake \
+  curl \
+  gettext \
+  git \
+  ninja-build \
+  nodejs \
+  npm \
+  python3 \
+  unzip \
+  wget
 
 # Install neovim
 RUN git clone https://github.com/neovim/neovim /tmp/neovim
