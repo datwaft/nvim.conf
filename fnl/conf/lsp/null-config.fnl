@@ -11,8 +11,7 @@
            : hover
            : completion
            :code_actions actions} null.builtins]
-      [formatting.stylua
-       formatting.prettierd
+      [formatting.prettierd
        formatting.markdownlint
        formatting.fourmolu]))
 
