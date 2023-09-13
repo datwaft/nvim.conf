@@ -60,23 +60,6 @@
       {:name "spell" :option {:enable_in_context #(let [context (require :cmp.config.context)]
                                                     (context.in_treesitter_capture "spell"))}}]])
 
-  ;;; ===========
-  ;;; Comparators
-  ;;; ===========
-  (local cmp-buffer (require :cmp_buffer))
-  (local under-compare (require :cmp-under-comparator))
-
-  (local comparators
-    [(fn [...] (cmp-buffer:compare_locality ...))
-     cmp.config.compare.offset
-     cmp.config.compare.exact
-     cmp.config.compare.score
-     under-compare.under
-     cmp.config.compare.kind
-     cmp.config.compare.sort_text
-     cmp.config.compare.length
-     cmp.config.compare.order])
-
   ;;; =========
   ;;; Aesthetic
   ;;; =========
@@ -97,8 +80,7 @@
               :preselect cmp.PreselectMode.None
               :snippet {:expand #(luasnip.lsp_expand $.body)}
               :mapping (cmp.mapping.preset.insert mappings)
-              :sources (cmp.config.sources (unpack sources))
-              :sorting {:comparators comparators}})
+              :sources (cmp.config.sources (unpack sources))})
 
   (let [cmp-git (require :cmp_git)]
     (cmp-git.setup)))
