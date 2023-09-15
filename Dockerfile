@@ -1,4 +1,4 @@
-FROM ubuntu AS build
+FROM ubuntu AS build-nvim
 # Install dependencies
 RUN apt-get update -y && apt-get install -y \
   cmake \
@@ -7,7 +7,8 @@ RUN apt-get update -y && apt-get install -y \
   gettext \
   git \
   ninja-build \
-  unzip
+  unzip \
+  && rm -rf /var/lib/apt/lists/*
 # Build neovim
 RUN git clone https://github.com/neovim/neovim /tmp/neovim
 WORKDIR /tmp/neovim
@@ -19,9 +20,23 @@ FROM ubuntu AS run
 # Install dependencies
 RUN apt-get update -y && apt-get install -y \
   build-essential \
-  git
+  fd-find \
+  git \
+  nodejs \
+  npm \
+  python3 \
+  python3-pip \
+  ripgrep \
+  && rm -rf /var/lib/apt/lists/*
+RUN npm install --global \
+  @fsouza/prettierd \
+  neovim \
+  prettier \
+  tree-sitter-cli
+RUN pip3 install \
+  neovim
 # Install neovim
-COPY --from=build /tmp/neovim/build/nvim*.deb /tmp/nvim.deb
+COPY --from=build-nvim /tmp/neovim/build/nvim*.deb /tmp/nvim.deb
 RUN dpkg -i /tmp/nvim.deb
 # Clone essential plugins
 WORKDIR /root/.local/share/nvim/lazy
@@ -32,7 +47,9 @@ RUN git clone https://github.com/datwaft/themis.nvim.git
 # Deploy configuration
 COPY . /root/.config/nvim/
 # Install plugins
-RUN nvim --headless "+Lazy! sync" +qa
+RUN nvim --headless +"Lazy! sync" +qa
+# Install tree-sitter parsers
+RUN nvim --headless +"TSUpdateSync" +qa
 # Finish
 WORKDIR /root/.config/nvim
 CMD ["nvim"]
