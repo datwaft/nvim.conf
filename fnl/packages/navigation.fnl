@@ -1,36 +1,33 @@
-(import-macros {: pack} :themis.pack.lazy)
-
-(fn telescope-config []
-  (import-macros {: map!} :themis.keybind)
-
+(fn config []
   (local telescope (require :telescope))
   (local builtin (require :telescope.builtin))
   (local actions (require :telescope.actions))
 
-  ;;; ========
-  ;;; Mappings
-  ;;; ========
+  ;; Mappings
   (map! [n] "<leader>ff" builtin.find_files)
   (map! [n] "<leader>fg" builtin.live_grep)
   (map! [n] "<leader>fb" builtin.buffers)
   (map! [n] "<leader>fh" builtin.help_tags)
   (map! [n] "<leader>fq" builtin.quickfix)
-  (map! [n] "<leader>fk" builtin.loclist)
+  (map! [n] "<leader>fl" builtin.loclist)
 
-  (local keybinds
-    {"<C-h>"    actions.which_key
-     "<ESC>"    actions.close
-     "<C-q>"    actions.smart_send_to_qflist
-     "<C-k>"    actions.smart_send_to_loclist
-     "<M-Up>"   actions.cycle_history_prev
-     "<M-Down>" actions.cycle_history_next})
+  (local mappings
+    {:i {"<C-h>"    actions.which_key
+         "<Esc>"    actions.close
+         "<C-q>"    actions.smart_send_to_qflist
+         "<C-k>"    actions.smart_send_to_loclist
+         "<M-Up>"   actions.cycle_history_prev
+         "<M-Down>" actions.cycle_history_next}})
 
-  ;;; =============
-  ;;; Configuration
-  ;;; =============
-  (local history-database (.. conf.databases-folder "/telescope_history.sqlite3"))
+  ;; Configuration
+  (local databases-folder (.. (vim.fn.stdpath :data) "/databases"))
+  (local history-database (.. databases-folder "/telescope_history.sqlite3"))
 
-  (telescope.setup {:defaults {:mappings {:i keybinds}
+  (augroup! create-folders-if-non-existent
+    (clear!)
+    (autocmd! VimEnter * #(vim.fn.mkdir databases-folder :p) {:once true}))
+
+  (telescope.setup {:defaults {: mappings
                                :history {:path history-database
                                          :limit 100}
                                :prompt_prefix "   "
@@ -44,9 +41,7 @@
                                                :preview_cutoff 120}
                                :sorting_strategy "ascending"}})
 
-  ;;; ==========
-  ;;; Extensions
-  ;;; ==========
+  ;; Extensions
   (telescope.load_extension "fzf")
   (telescope.load_extension "smart_history"))
 
@@ -56,6 +51,8 @@
                        (pack "nvim-telescope/telescope-fzf-native.nvim"
                              {:build "make"})
                        (pack "nvim-telescope/telescope-smart-history.nvim"
-                             {:dependencies "tami5/sqlite.lua"})]
-        :config telescope-config})
- (pack "miversen33/netman.nvim")]
+                             {:dependencies "tami5/sqlite.lua"})
+                       "nvim-tree/nvim-web-devicons"]
+        : config
+        :branch "0.1.x"})
+ ]
