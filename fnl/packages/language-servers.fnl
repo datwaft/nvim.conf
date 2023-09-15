@@ -4,10 +4,11 @@
   (local lsp (require :lspconfig))
 
   ;; Configure some language servers with the default configuration
-  (let [servers [:lua_ls :dockerls :rnix :bashls :cmake :eslint :cssls :html
-                 :volar :svelte :taplo :lemminx :clojure_lsp :vimls :gopls
-                 :r_language_server :jdtls :clangd :zls :hls :emmet_ls :jsonls
-                 :rust_analyzer :yamlls]]
+  (let [servers [:bashls :clangd :clojure_lsp :cmake :cssls :dockerls
+                 :emmet_ls :eslint :gopls :hls :html :jdtls :jsonls
+                 :lemminx :lua_ls :r_language_server :rnix :ruby_ls
+                 :rust_analyzer :svelte :taplo :vimls :volar :yamlls
+                 :zls]]
     (each [_ server (ipairs servers)]
       ((. lsp server :setup) {: capabilities})))
 
