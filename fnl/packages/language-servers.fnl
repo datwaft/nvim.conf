@@ -12,7 +12,7 @@
     (each [_ server (ipairs servers)]
       ((. lsp server :setup) {: capabilities})))
 
-  ; Python
+  ;; Python
   (lsp.pylsp.setup
     {: capabilities
      :settings {:pylsp {:plugins {;; Formatting
@@ -29,12 +29,19 @@
                                   ;; Auto-completion
                                   :jedi_completion {:fuzzy true}
                                   ;; Import sorting
-                                  :pyls_isort {:enabled true}}}}}))
+                                  :pyls_isort {:enabled true}}}}})
+  ;; JSON
+  (let [schemastore (require :schemastore)]
+    (lsp.jsonls.setup
+      {: capabilities
+       :settings {:json {:schemas (schemastore.json.schemas)
+                         :validate {:enable true}}}})))
 
 [;; Configuration
  (pack "neovim/nvim-lspconfig"
        {: config
-        :dependencies [(pack "j-hui/fidget.nvim" {:config true :tag "legacy"})]})
+        :dependencies [(pack "j-hui/fidget.nvim" {:config true :tag "legacy"})
+                       "b0o/schemastore.nvim"]})
  ;; Typescript
  (pack "pmizio/typescript-tools.nvim"
        {:dependencies ["nvim-lua/plenary.nvim"
