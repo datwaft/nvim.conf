@@ -6,6 +6,7 @@
                       "JoosepAlviste/nvim-ts-context-commentstring"]
        :opts {:ensure_installed "all"
               :highlight {:enable true}
+              :indent {:enable true}
               :format {:enable true}
               :refactor {:smart_rename {:enable true
                                         :keymaps {:smart_rename "<localleader>rn"}}}
