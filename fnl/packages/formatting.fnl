@@ -5,7 +5,8 @@
                                  :javascriptreact [[:prettierd :prettier]]
                                  :html            [[:prettierd :prettier]]
                                  :json            [[:prettierd :prettier]]
-                                 :jsonc           [[:prettierd :prettier]]}
+                                 :jsonc           [[:prettierd :prettier]]
+                                 :css             [[:prettierd :prettier]]}
               :format_on_save {:lsp_fallback true
                                :timeout 500
                                :quiet true}}})
