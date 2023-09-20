@@ -19,4 +19,8 @@
 
   ;; Enable inlay hints by default
   (when (client.supports_method "textDocument/inlayHint")
-    (vim.lsp.inlay_hint bufnr true)))
+    (vim.lsp.inlay_hint bufnr true))
+
+  ;; Disable semantic tokens on dockerls
+  (if (= :dockerls client.name)
+    (set client.server_capabilities.semanticTokensProvider nil)))
