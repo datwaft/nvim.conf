@@ -25,4 +25,6 @@
                                               :main "ibl"
                                               :opts {:scope {:show_start false
                                                              :show_end false}}})
+ ;; Make delimiters have different colors depending on nesting level
+ "HiPhish/rainbow-delimiters.nvim"
  ]

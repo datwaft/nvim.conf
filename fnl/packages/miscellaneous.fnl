@@ -1,6 +1,4 @@
-[;; Make delimiters have different colors depending on nesting level
- "HiPhish/rainbow-delimiters.nvim"
- ;; Autopairs
+[;; Autopairs
  (pack "cohama/lexima.vim" {:init #(let! lexima_enable_basic_rules 1)})
  ;; Discover mappings
  (pack "folke/which-key.nvim" {:config true})
