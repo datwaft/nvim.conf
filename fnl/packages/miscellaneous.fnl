@@ -12,4 +12,6 @@
  (pack "kevinhwang91/nvim-fundo" {:build #(let [fundo (require :fundo)] (fundo.install))
                                   :dependencies ["kevinhwang91/promise-async"]
                                   :config true})
+ ;; Better parentheses match
+ "andymass/vim-matchup"
  ]

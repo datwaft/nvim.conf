@@ -57,6 +57,7 @@
   "undotree": { "branch": "master", "commit": "0e11ba7325efbbb3f3bebe06213afa3e7ec75131" },
   "vim-abolish": { "branch": "master", "commit": "cb3dcb220262777082f63972298d57ef9e9455ec" },
   "vim-indent-object": { "branch": "master", "commit": "5c5b24c959478929b54a9e831a8e2e651a465965" },
+  "vim-matchup": { "branch": "master", "commit": "6dbe108230c7dbbf00555b7d4d9f6a891837ef07" },
   "vim-polyglot": { "branch": "master", "commit": "bc8a81d3592dab86334f27d1d43c080ebf680d42" },
   "vim-sandwich": { "branch": "master", "commit": "c5a2cc438ce6ea2005c556dc833732aa53cae21a" },
   "vim-space": { "branch": "master", "commit": "e6615bd3803b7b874fd9e08295400268739597a1" },
