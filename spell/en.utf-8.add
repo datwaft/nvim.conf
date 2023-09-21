@@ -24,6 +24,7 @@ $v0<cr>
 <localleader>
 APUs
 Anova
+Autopairs
 BCI
 Bavelier
 CIRCBUF
@@ -135,6 +136,7 @@ Url
 VBM8
 VIH
 VTek
+Vulkan
 WIFEXITED
 WIFSIGNALED
 WIFSTOPPED
@@ -584,4 +586,3 @@ zv
 ﰠ
 ﳠ
 ﴯ
-Autopairs
