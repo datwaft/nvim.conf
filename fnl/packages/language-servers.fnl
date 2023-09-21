@@ -11,6 +11,11 @@
     (each [_ server (ipairs servers)]
       ((. lsp server :setup) {: capabilities})))
 
+  ;; Lua
+  (lsp.lua_ls.setup
+    {: capabilities
+     :settings {:Lua {:telemetry {:enable false}
+                      :hint {:enable true}}}})
   ;; Python
   (lsp.pylsp.setup
     {: capabilities
