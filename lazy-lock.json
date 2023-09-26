@@ -63,5 +63,6 @@
   "vim-sandwich": { "branch": "master", "commit": "c5a2cc438ce6ea2005c556dc833732aa53cae21a" },
   "vim-space": { "branch": "master", "commit": "e6615bd3803b7b874fd9e08295400268739597a1" },
   "vim-spellsync": { "branch": "master", "commit": "27e103f2d283a1f6e24cc99dbdcd624713aff277" },
+  "vimtex": { "branch": "master", "commit": "d7221267f5642e5904a45a8e661f751dff26c1a9" },
   "which-key.nvim": { "branch": "main", "commit": "7ccf476ebe0445a741b64e36c78a682c1c6118b7" }
 }
