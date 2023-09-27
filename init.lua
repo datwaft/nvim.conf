@@ -60,7 +60,7 @@ require("hotpot").setup({
 -- Generate packages table
 local packages = {
   { "rktjmp/hotpot.nvim", dependencies = { "datwaft/themis.nvim" } },
-  { "catppuccin/nvim",    name = "catppuccin" },
+  { "catppuccin/nvim",    name = "catppuccin",                     priority = 1000 },
 }
 
 -- Populate plugins table with packages.* modules
