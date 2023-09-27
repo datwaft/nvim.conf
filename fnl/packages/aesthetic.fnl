@@ -26,5 +26,5 @@
                                               :opts {:scope {:show_start false
                                                              :show_end false}}})
  ;; Make delimiters have different colors depending on nesting level
- (pack "HiPhish/rainbow-delimiters.nvim" {:branch "use-children"})
+ "HiPhish/rainbow-delimiters.nvim"
  ]
