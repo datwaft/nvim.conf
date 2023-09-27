@@ -6,7 +6,8 @@
                       "JoosepAlviste/nvim-ts-context-commentstring"
                       "andymass/vim-matchup"]
        :opts {:ensure_installed "all"
-              :highlight {:enable true}
+              :highlight {:enable true
+                          :disable [:latex]}
               :indent {:enable true}
               :format {:enable true}
               :refactor {:smart_rename {:enable true
