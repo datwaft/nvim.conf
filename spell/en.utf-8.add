@@ -255,6 +255,7 @@ folke
 formatprg
 fpath
 fq
+frametitle
 freetype
 ftdetect
 ftplugin
@@ -453,6 +454,7 @@ setjmp
 shapiro
 showbreak
 shuf
+singleline
 soa
 sobol
 sourcekit
@@ -514,6 +516,7 @@ v1
 v3.7.0
 v:fname
 vexpand
+victorkristof
 vim-matchup
 vim-spellsync
 vimgrep
@@ -587,5 +590,3 @@ zv
 ﰠ
 ﳠ
 ﴯ
-frametitle
-singleline
