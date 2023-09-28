@@ -21,8 +21,7 @@
  (pack "NvChad/nvim-colorizer.lua" {:opts {:user_default_options {:mode "virtualtext"
                                                                   :names false}}})
  ;; Indentation lines
- (pack "lukas-reineke/indent-blankline.nvim" {:branch "v3"
-                                              :main "ibl"
+ (pack "lukas-reineke/indent-blankline.nvim" {:main "ibl"
                                               :opts {:scope {:show_start false
                                                              :show_end false}}})
  ;; Make delimiters have different colors depending on nesting level
