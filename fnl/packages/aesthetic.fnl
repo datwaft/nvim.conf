@@ -25,12 +25,4 @@
                                               :opts {:scope {:enabled false}}})
  ;; Make delimiters have different colors depending on nesting level
  "HiPhish/rainbow-delimiters.nvim"
- ;; Change theme based on system theme
- (pack "f-person/auto-dark-mode.nvim"
-       {:opts {:set_dark_mode #(do
-                                 (set! background :dark)
-                                 (vim.cmd.colorscheme :catppuccin))
-               :set_light_mode #(do
-                                  (set! background :light)
-                                  (vim.cmd.colorscheme :catppuccin))}})
  ]
