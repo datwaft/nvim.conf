@@ -22,8 +22,7 @@
                                                                   :names false}}})
  ;; Indentation lines
  (pack "lukas-reineke/indent-blankline.nvim" {:main "ibl"
-                                              :opts {:scope {:show_start false
-                                                             :show_end false}}})
+                                              :opts {:scope {:enabled false}}})
  ;; Make delimiters have different colors depending on nesting level
  "HiPhish/rainbow-delimiters.nvim"
  ;; Change theme based on system theme
