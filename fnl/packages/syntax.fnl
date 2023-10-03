@@ -9,6 +9,8 @@
                                                           "-file-line-error"
                                                           "-synctex=1"
                                                           "-interaction=nonstopmode"]}))})
+ ;; Ansible
+ "mfussenegger/nvim-ansible"
  ;; General
  (pack "sheerun/vim-polyglot"
        {:init #(let! polyglot_disabled ["fennel" "autoindent" "sensible"])})
