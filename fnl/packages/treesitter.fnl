@@ -1,7 +1,14 @@
+(fn config [plugin opts]
+  (set! foldmethod :expr)
+  (set! foldexpr "v:lua.vim.treesitter.foldexpr()")
+  (set! foldtext "v:lua.vim.treesitter.foldtext()")
+  (set! nofoldenable)
+  (let [treesitter (require :nvim-treesitter.configs)]
+    (treesitter.setup opts)))
+
 (pack "nvim-treesitter/nvim-treesitter"
       {:build ":TSUpdate"
-       :config #(let [treesitter (require :nvim-treesitter.configs)]
-                  (treesitter.setup $2))
+       : config
        :dependencies ["nvim-treesitter/nvim-treesitter-refactor"
                       "JoosepAlviste/nvim-ts-context-commentstring"
                       "andymass/vim-matchup"]
