@@ -166,6 +166,7 @@ async
 auth
 aws
 b0o
+b7332fba
 basename
 bashls
 bashrc
@@ -237,6 +238,8 @@ f16
 f3fora
 f8
 fb
+fba
+fd
 fennel
 fg
 fh
@@ -365,6 +368,7 @@ metaclass
 micarmst
 miversen33
 mkdir
+modname
 monofactorial
 mrjones2014
 ms-vscode
@@ -384,6 +388,7 @@ nofile
 noh
 noplainbuffer
 noselect
+nospell
 npm
 nrow
 nvim
@@ -502,6 +507,7 @@ toolchain
 tpm
 tpope
 treesitter
+tset
 tsserver
 typescriptreact
 tyru
@@ -519,6 +525,7 @@ v3.7.0
 v:fname
 vexpand
 victorkristof
+vim
 vim-matchup
 vim-spellsync
 vimgrep
@@ -592,4 +599,3 @@ zv
 ﰠ
 ﳠ
 ﴯ
-modname
