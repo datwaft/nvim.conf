@@ -37,13 +37,6 @@ install_package("f-person/auto-dark-mode.nvim")
 
 -- Set colorscheme
 vim.cmd.colorscheme("catppuccin")
-local function auto_dark_mode_setup()
-  local auto_dark_mode = require("auto-dark-mode")
-  auto_dark_mode.setup({
-    update_interval = 100,
-  })
-end
-auto_dark_mode_setup()
 
 -- Configure hotpot.nvim
 require("hotpot").setup({
@@ -69,7 +62,7 @@ require("hotpot").setup({
 local packages = {
   { "rktjmp/hotpot.nvim",           dependencies = { "datwaft/themis.nvim" } },
   { "catppuccin/nvim",              name = "catppuccin",                     priority = 1000 },
-  { "f-person/auto-dark-mode.nvim", setup = auto_dark_mode_setup },
+  { "f-person/auto-dark-mode.nvim", config = true },
 }
 
 -- Populate plugins table with packages.* modules
