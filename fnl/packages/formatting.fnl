@@ -6,7 +6,8 @@
                                  :html            [[:prettierd :prettier]]
                                  :json            [[:prettierd :prettier]]
                                  :jsonc           [[:prettierd :prettier]]
-                                 :css             [[:prettierd :prettier]]}
+                                 :css             [[:prettierd :prettier]]
+                                 :bib             [:bibtex-tidy]}
               :format_on_save {:lsp_fallback true
                                :timeout 500
                                :quiet true}}})
