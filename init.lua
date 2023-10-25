@@ -45,7 +45,9 @@ require("hotpot").setup({
     ---@param source string
     ---@param module { path: string, modname: string, macro: boolean }
     preprocessor = function(source, module)
-      if not module.macro and module.path and module.path:match("config/nvim") then
+      local path = module.path
+      local macro = module.macro
+      if not macro and path and path:match("config/nvim") then
         return "(import-macros {: set! : local-set!} :themis.opt)\n"
             .. "(import-macros {: let!} :themis.var)\n"
             .. "(import-macros {: map! : buf-map!} :themis.keybind)\n"
