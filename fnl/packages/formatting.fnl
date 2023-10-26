@@ -7,7 +7,9 @@
                                  :json            [[:prettierd :prettier]]
                                  :jsonc           [[:prettierd :prettier]]
                                  :css             [[:prettierd :prettier]]
-                                 :bib             [:bibtex-tidy]}
+                                 :bib             [:bibtex-tidy]
+                                 :tex             [:latexindent]}
+              :formatters {:latexindent {:prepend_args ["-l"]}}
               :format_on_save {:lsp_fallback true
                                :timeout 500
                                :quiet true}}})
