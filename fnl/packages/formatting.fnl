@@ -9,7 +9,7 @@
                                  :css             [[:prettierd :prettier]]
                                  :bib             [:bibtex-tidy]
                                  :tex             [:latexindent]}
-              :formatters {:latexindent {:prepend_args ["-l"]}}
+              :formatters {:latexindent {:prepend_args ["-l" "-m"]}}
               :format_on_save {:lsp_fallback true
                                :timeout 500
                                :quiet true}}})
