@@ -1,6 +1,7 @@
 (fn config []
   (local cmp (require :cmp))
   (local luasnip (require :luasnip))
+  (local context (require :cmp.config.context))
 
   ;; Events
   (augroup! unlink-snippet-on-mode-change
@@ -29,9 +30,17 @@
                                       ($)))})
 
   ;; Sources
+  (fn inside-string []
+    (or (context.in_treesitter_capture "string")
+        (context.in_syntax_group "String")))
+  (fn inside-comment []
+    (or (context.in_treesitter_capture "comment")
+        (context.in_syntax_group "Comment")))
   (local sources
          [[{:name "nvim_lsp"}
-           {:name "luasnip"}
+           {:name "luasnip"
+            :entry_filter #(and (not (inside-string))
+                                (not (inside-comment)))}
            {:name "path"}]
           [{:name "buffer" :option {:keyword_pattern :\k\+}}]])
 
