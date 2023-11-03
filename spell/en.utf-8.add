@@ -23,6 +23,7 @@ $v0<cr>
 <leader>ld
 <localleader>
 APUs
+Acc
 Anova
 Autopairs
 BCI
@@ -31,11 +32,14 @@ CIRCBUF
 CLD
 CMD
 CMake
+CN
 CRLF
 CSI
 CTRL
 Charité
 Chaves
+Conv
+ConvNext
 Ctrl
 D3
 DARTEL
@@ -49,6 +53,7 @@ ESLint
 Engelschall
 Enum
 Eppendorf
+FC
 Fantasque
 Fildo7525
 Firas
@@ -87,10 +92,14 @@ LTeX
 Lcd
 Levene
 Lindenberger
+MCC
 MEM
 MMM
+MRR
+Matplotlib
 NOTREACHED
 NVGP
+NVIDIA
 Nouchi
 Nv
 NvChad
@@ -104,7 +113,9 @@ Powerlevel
 Powerlevel10k
 Powershell
 Prefrontal
+PyTorch
 RMSE
+RTX
 Roush
 Rui
 Rustpi
@@ -116,6 +127,8 @@ SPM8
 SSHSession
 Setulc
 Shapiro–Wilk
+SimCLR
+Sklearn
 Smirnov
 Smulx
 Snaipe
@@ -125,6 +138,7 @@ Struct
 TERMINFO
 TOKENMODE
 TTY
+Torchvision
 Toshio
 Treuille
 Tukey
@@ -154,6 +168,7 @@ Zoox
 a:ver100-blinkon0
 agrawala1976approach
 al2020measuring
+alchorneoides
 andymass
 anova
 ansible
@@ -162,6 +177,7 @@ api
 arcsight
 arg
 args
+astrantia
 async
 augroup
 auth
@@ -171,6 +187,7 @@ b7332fba
 basename
 bashls
 bashrc
+bassia
 blankline
 boras2020performance
 boxv
@@ -181,6 +198,7 @@ buftype
 bvh
 calc
 callout
+carica
 casey
 catppuccin
 cclose
@@ -200,6 +218,8 @@ colorscheme
 conf
 config
 conventionalcommits
+cordia
+courbaril
 cpath
 cpp
 cpptools
@@ -278,6 +298,7 @@ github
 gitlab
 globalstatus
 gopls
+grayscale
 groupplots
 groupwise
 gtk
@@ -299,6 +320,8 @@ hrsh7th
 hui
 hvm
 hy
+hyeronima
+hymenaea
 iamcco
 ie
 il
@@ -318,6 +341,7 @@ jdtls
 jeff-hykin
 jghauser
 jmbuhr
+jonquilla
 jose-elias-alvarez
 joy2015performance
 jpalardy
@@ -404,7 +428,9 @@ opensuse
 osc52
 outfile
 overfitting
+pachypodium
 pagebreak
+panamensis
 pandoc
 param
 parinfer
@@ -425,6 +451,7 @@ printf
 println
 prog
 projekt0n
+prostrata
 ptrace
 pwsh
 px
@@ -450,6 +477,7 @@ rktjmp
 rn
 rnix
 rnoweb
+rosulatum
 rst
 rtp
 sQVe
@@ -465,9 +493,11 @@ setjmp
 shapiro
 showbreak
 shuf
+simclr
 singleline
 soa
 sobol
+softmax
 sourcekit
 sqlite
 src
