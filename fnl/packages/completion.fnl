@@ -37,19 +37,30 @@
     (or (context.in_treesitter_capture "comment")
         (context.in_syntax_group "Comment")))
   (local sources
-         [[{:name "nvim_lsp"}
-           {:name "luasnip"
-            :entry_filter #(and (not (inside-string))
-                                (not (inside-comment)))}
-           {:name "path"}]
-          [{:name "buffer" :option {:keyword_pattern :\k\+}}]])
+    {:lsp     {:name "nvim_lsp"}
+     :luasnip {:name "luasnip"
+               :entry_filter #(and (not (inside-string))
+                                   (not (inside-comment)))}
+     :path    {:name "path"}
+     :buffer  {:name "buffer"
+               :option {:keyword_pattern :\k\+}}
+     :vimtex  {:name "vimtex"}
+     })
 
   ;; nvim-cmp setup
   (cmp.setup
     {:preselect cmp.PreselectMode.None
      :snippet {:expand #(luasnip.lsp_expand $.body)}
-     :sources (cmp.config.sources (unpack sources))
-     :mapping (cmp.mapping.preset.insert mappings)}))
+     :sources (cmp.config.sources [sources.lsp
+                                   sources.luasnip
+                                   sources.path]
+                                  [sources.buffer])
+     :mapping (cmp.mapping.preset.insert mappings)})
+  (cmp.setup.filetype "tex"
+    {:sources (cmp.config.sources [sources.vimtex
+                                   sources.luasnip
+                                   sources.path]
+                                  [sources.buffer])}))
 
 [;; Completion
  (pack "hrsh7th/nvim-cmp"
@@ -59,6 +70,7 @@
                        (pack "hrsh7th/cmp-nvim-lsp" {:dependencies ["neovim/nvim-lspconfig"]})
                        "hrsh7th/cmp-buffer"
                        "hrsh7th/cmp-path"
+                       "micangl/cmp-vimtex"
                        ]
        : config})
  ;; Snippets
