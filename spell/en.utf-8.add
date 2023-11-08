@@ -26,6 +26,7 @@ APUs
 Acc
 Anova
 Autopairs
+BCE
 BCI
 Bavelier
 CIRCBUF
@@ -36,11 +37,13 @@ CN
 CRLF
 CSI
 CTRL
+Chargaff
 Charité
 Chaves
 Conv
 ConvNext
 Ctrl
+Cyrene
 D3
 DARTEL
 DATETIME
@@ -63,6 +66,7 @@ G4
 GHCup
 GR40
 GVgg
+Galilei
 Gallinat
 Galton
 Gleich
@@ -97,6 +101,7 @@ MEM
 MMM
 MRR
 Matplotlib
+Mukkaw
 NOTREACHED
 NVGP
 NVIDIA
@@ -108,6 +113,7 @@ OSC52
 Olical
 PBRTv3
 PFSSO
+Pavlov
 Pouget
 Powerlevel
 Powerlevel10k
@@ -206,6 +212,7 @@ cd
 ceil
 chainable
 chisq
+chitons
 clangd
 clippy
 clojure
@@ -503,6 +510,7 @@ sqlite
 src
 ssm
 stackoverflow
+stades
 startinsert
 statusline
 stderr
@@ -531,6 +539,7 @@ testid
 tex
 texthl
 tfe3
+th
 themis
 tibble
 timestamp
@@ -548,6 +557,7 @@ tyru
 ui
 uml
 undercurls
+underfull
 url
 userspace
 usr
