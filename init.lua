@@ -48,11 +48,11 @@ require("hotpot").setup({
       local macro = module.macro
       if not macro and path and path:match("config/nvim") then
         return "(import-macros {: set! : local-set!} :themis.opt)\n"
-            .. "(import-macros {: let!} :themis.var)\n"
-            .. "(import-macros {: map! : buf-map!} :themis.keybind)\n"
-            .. "(import-macros {: augroup! : autocmd! : clear!} :themis.event)\n"
-            .. "(import-macros {: pack} :themis.pack.lazy)\n"
-            .. source
+          .. "(import-macros {: let!} :themis.var)\n"
+          .. "(import-macros {: map! : buf-map!} :themis.keybind)\n"
+          .. "(import-macros {: augroup! : autocmd! : clear!} :themis.event)\n"
+          .. "(import-macros {: pack} :themis.pack.lazy)\n"
+          .. source
       end
       return source
     end,
@@ -61,8 +61,17 @@ require("hotpot").setup({
 
 -- Generate packages table
 local packages = {
-  { "rktjmp/hotpot.nvim", dependencies = { "datwaft/themis.nvim" } },
-  { "catppuccin/nvim",    name = "catppuccin",                     priority = 1000 },
+  {
+    "rktjmp/hotpot.nvim",
+    dependencies = {
+      "datwaft/themis.nvim",
+    },
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+  },
 }
 
 -- Populate plugins table with packages.* modules
