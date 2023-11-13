@@ -1,6 +1,6 @@
-(fn setup [plugin opts]
+(fn config [plugin opts]
   (set! formatexpr "v:lua.require('conform').formatexpr()")
-  ((. setup (require plugin)) opts))
+  ((. (require "conform") :setup) opts))
 
 (pack "stevearc/conform.nvim"
       {:opts {:formatters_by_ft {:javascript      [[:prettierd :prettier]]
@@ -18,4 +18,4 @@
               :format_on_save {:lsp_fallback true
                                :timeout 500
                                :quiet true}}
-       : setup})
+       : config})
