@@ -37,6 +37,7 @@ CN
 CRLF
 CSI
 CTRL
+Camelcase
 Chargaff
 Charité
 Chaves
@@ -440,6 +441,7 @@ pagebreak
 panamensis
 pandoc
 param
+paredit
 parinfer
 passthrough
 pbrt
