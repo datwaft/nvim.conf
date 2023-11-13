@@ -33,7 +33,6 @@ install_package("folke/lazy.nvim")
 install_package("rktjmp/hotpot.nvim")
 install_package("datwaft/themis.nvim")
 install_package("catppuccin/nvim", "catppuccin")
-install_package("f-person/auto-dark-mode.nvim")
 
 -- Set colorscheme
 vim.cmd.colorscheme("catppuccin")
@@ -62,9 +61,8 @@ require("hotpot").setup({
 
 -- Generate packages table
 local packages = {
-  { "rktjmp/hotpot.nvim",           dependencies = { "datwaft/themis.nvim" } },
-  { "catppuccin/nvim",              name = "catppuccin",                     priority = 1000 },
-  { "f-person/auto-dark-mode.nvim", config = true },
+  { "rktjmp/hotpot.nvim", dependencies = { "datwaft/themis.nvim" } },
+  { "catppuccin/nvim",    name = "catppuccin",                     priority = 1000 },
 }
 
 -- Populate plugins table with packages.* modules
