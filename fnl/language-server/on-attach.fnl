@@ -15,11 +15,12 @@
   (map! [n] "<leader>a" vim.lsp.buf.code_action {:buffer bufnr})
   ;; Toggle inlay hints
   (when (client.supports_method "textDocument/inlayHint")
-    (map! [n] "<leader>th" #(vim.lsp.inlay_hint bufnr) {:buffer bufnr}))
+    (map! [n] "<leader>th" #(vim.lsp.inlay_hint.enable bufnr (not (vim.lsp.inlay_hint.is_enabled bufnr)))
+          {:buffer bufnr}))
 
   ;; Enable inlay hints by default
   (when (client.supports_method "textDocument/inlayHint")
-    (vim.lsp.inlay_hint bufnr true))
+    (vim.lsp.inlay_hint.enable bufnr true))
 
   ;; Disable semantic tokens on dockerls
   (if (= :dockerls client.name)
