@@ -51,7 +51,7 @@
 [;; Configuration
  (pack "neovim/nvim-lspconfig"
        {: config
-        :dependencies [(pack "j-hui/fidget.nvim" {:config true :tag "legacy"})
+        :dependencies [(pack "j-hui/fidget.nvim" {:config true})
                        "b0o/schemastore.nvim"
                        (pack "folke/neodev.nvim" {:config true})]})
  ;; Typescript
