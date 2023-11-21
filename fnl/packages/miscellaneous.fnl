@@ -16,4 +16,6 @@
                                   :config true})
  ;; Better parentheses match
  "andymass/vim-matchup"
+ ;; Multiple 'commentstring' support
+ "JoosepAlviste/nvim-ts-context-commentstring"
  ]
