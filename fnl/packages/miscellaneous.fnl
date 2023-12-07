@@ -1,7 +1,5 @@
 [;; Autopairs
- (pack "altermo/ultimate-autopair.nvim" {:event [:InsertEnter :CmdlineEnter]
-                                         :branch "v0.6"
-                                         :config true})
+ "cohama/lexima.vim"
  ;; Discover mappings
  (pack "folke/which-key.nvim" {:config true})
  ;; Create directories when saving if necessary
