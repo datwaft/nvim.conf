@@ -42,8 +42,6 @@ RUN dpkg -i /tmp/nvim.deb
 WORKDIR /root/.local/share/nvim/lazy
 RUN git clone https://github.com/catppuccin/nvim catppuccin
 RUN git clone https://github.com/folke/lazy.nvim
-RUN git clone https://github.com/rktjmp/hotpot.nvim
-RUN git clone https://github.com/datwaft/themis.nvim.git
 # Deploy configuration
 COPY . /root/.config/nvim/
 # Install plugins

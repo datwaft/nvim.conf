@@ -1,5 +1,204 @@
+-----------
+-- Settings
+-----------
+-- Enable bytecode cache
+vim.loader.enable()
+-- Set <leader> to '\'
+vim.g.mapleader = [[\]]
+-- Set <localleader> to <SPACE>
+vim.g.maplocalleader = [[ ]]
+-- Indentation
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 0
+vim.opt.tabstop = 2
+-- Wrapping
+vim.opt.linebreak = true
+vim.opt.breakindent = true
+vim.opt.breakindentopt = { "shift:2" }
+vim.opt.showbreak = "↳ "
+-- Undo persistence
+vim.opt.undofile = true
+-- Enable local configuration
+vim.opt.exrc = true
+-- Enable true color support
+vim.opt.termguicolors = true
+-- Line numbers
+vim.opt.number = true
+vim.opt.relativenumber = true
+-- Scrolling
+vim.opt.splitkeep = "screen"
+vim.opt.smoothscroll = true
+-- Command-line
+vim.opt.showmode = false
+-- Whitespace
+vim.opt.list = true
+vim.opt.listchars = {
+  trail = "·",
+  tab = "→ ",
+  nbsp = "·",
+}
+-- Sign column
+vim.opt.signcolumn = "yes:1"
+-- Insert-mode completion
+vim.opt.shortmess:append("c")
+-- Grep
+vim.opt.grepprg = "rg --vimgrep"
+vim.opt.grepformat = "%f:%l:%c:%m"
+
+---------------
+-- Autocommands
+---------------
+-- Open files on the last position
+vim.api.nvim_create_autocmd("BufReadPost", {
+  callback = function()
+    vim.cmd([[silent! normal! g`"zv]])
+  end,
+})
+-- Resize splits on window resize
+vim.api.nvim_create_autocmd("VimResized", {
+  callback = function()
+    vim.cmd.wincmd("=")
+  end,
+})
+-- Set some options on the terminal
+vim.api.nvim_create_autocmd("TermOpen", {
+  callback = function()
+    -- Start on insert mode
+    vim.cmd.startinsert()
+    -- Disable line numbers
+    vim.opt_local.number = false
+    vim.opt_local.relativenumber = false
+    -- Disable spell checking
+    vim.opt_local.spell = false
+    -- Disable sign column
+    vim.opt_local.signcolumn = "no"
+    -- Disable colorcolumn
+    vim.opt_local.colorcolumn = {}
+  end,
+})
+-- Always disable 'spell' on some filetypes
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = {
+    "checkhealth",
+    "gitignore",
+    "help",
+    "qf",
+    "man",
+  },
+  callback = function()
+    vim.opt_local.spell = false
+  end,
+})
+-- Always enable 'spell' on some filetypes
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = {
+    "markdown",
+    "latex",
+    "quarto",
+  },
+  callback = function()
+    vim.opt_local.spell = true
+  end,
+})
+
+-----------
+-- Keybinds
+-----------
+-- Disable hightlights with <ESC>
+vim.keymap.set("n", "<ESC>", "<ESC><CMD>nohlsearch<CR>")
+-- Make `/` and `?` search inside selection
+vim.keymap.set("x", "/", [[<ESC>/\%V]])
+vim.keymap.set("x", "?", [[<ESC>?\%V]])
+-- Make mappings similar to TMUX mappings for Vim tabs
+vim.keymap.set("n", "<C-t>n", "<CMD>tabnew<CR>")
+vim.keymap.set("n", "<C-t>s", "<CMD>tabs<CR>")
+vim.keymap.set("n", "<C-t>[", "<CMD>tabnext<CR>")
+vim.keymap.set("n", "<C-t>]", "<CMD>tabprevious<CR>")
+vim.keymap.set("n", "<C-t>w", "<CMD>tabclose<CR>")
+vim.keymap.set("n", "<C-t>q", "<CMD>tabclose<CR>")
+-- Close wildmenu using <SPACE>
+vim.keymap.set("c", "<SPACE>", function()
+  return vim.fn.wildmenumode() == 1 and "<C-y>" or "<SPACE>"
+end, { expr = true })
+
+---------------
+-- Text objects
+---------------
+-- Line text objects
+vim.keymap.set({ "x", "o" }, "il", ":<C-u>normal! g_v^<CR>", { silent = true })
+vim.keymap.set({ "x", "o" }, "al", ":<C-u>normal! $v0<CR>", { silent = true })
+-- Document text objects
+vim.keymap.set("x", "id", ":<C-u>normal! G$Vgg0<CR>", { silent = true })
+vim.keymap.set("o", "id", ":<C-u>normal! GVgg<CR>", { silent = true })
+
+--------------
+-- Diagnostics
+--------------
+-- Configure diagnostics
+vim.diagnostic.config({
+  underline = { severity = { min = vim.diagnostic.severity.INFO } },
+  signs = { severity = { min = vim.diagnostic.severity.HINT } },
+  virtual_text = { severity = { min = vim.diagnostic.severity.INFO } },
+  float = { show_header = false, source = true },
+  update_in_insert = false,
+  severity_sort = true,
+})
+-- Set diagnostic signs
+vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
+vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
+vim.fn.sign_define("DiagnosticSignHint", { text = " ", texthl = "DiagnosticSignHint" })
+vim.fn.sign_define("DiagnosticSignOk", { text = " ", texthl = "DiagnosticSignOk" })
+-- Keybind for showing line diagnostics
+vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float)
+-- Keybind for going to diagnostics
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+-- Keybind for listing diagnostics
+vim.keymap.set("n", "<leader>ld", vim.diagnostic.setqflist)
+
+---------------------------------
+-- LSP keybinds and configuration
+---------------------------------
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    local bufnr = args.buf
+
+    assert(client ~= nil)
+
+    -- Show documentation
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
+    -- Go to definition
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr })
+    -- Go to declaration
+    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = bufnr })
+    -- Go to implementation
+    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = bufnr })
+    -- Go to references
+    vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = bufnr })
+    -- Rename symbol under cursor
+    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr })
+    -- Apply code actions
+    vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, { buffer = bufnr })
+    -- Toggle inlay hints
+    if client.supports_method("textDocument/inlayHint") then
+      vim.keymap.set("n", "<leader>th", function()
+        vim.lsp.inlay_hint.enable(bufnr, not vim.lsp.inlay_hint.is_enabled(bufnr))
+      end, { buffer = bufnr })
+    end
+
+    -- Enable inlay hints by default
+    vim.lsp.inlay_hint.enable(bufnr, true)
+  end,
+})
+
+--------------------------
+-- lazy.nvim configuration
+--------------------------
 local packages_path = vim.fn.stdpath("data") .. "/lazy"
 
+-- Helper function to install packages before lazy.nvim is loaded
 ---@param name string
 ---@param alias string?
 local function install_package(name, alias)
@@ -10,84 +209,22 @@ local function install_package(name, alias)
   if not vim.loop.fs_stat(path) then
     vim.notify(("Installing %s/%s..."):format(owner, repo), vim.log.levels.INFO)
 
-    local command = {
+    vim.fn.system({
       "git",
       "clone",
       "--filter=blob:none",
       "--single-branch",
       ("https://github.com/%s/%s.git"):format(owner, repo),
       path,
-    }
-
-    vim.fn.system(command)
+    })
   end
 
   vim.opt.runtimepath:prepend(path)
 end
 
--- Enable bytecode cache
-vim.loader.enable()
-
--- Install essential plugins
 install_package("folke/lazy.nvim")
-install_package("rktjmp/hotpot.nvim")
-install_package("datwaft/themis.nvim")
 install_package("catppuccin/nvim", "catppuccin")
 
--- Set colorscheme
 vim.cmd.colorscheme("catppuccin")
 
--- Configure hotpot.nvim
-require("hotpot").setup({
-  enable_hotpot_diagnostics = false,
-  compiler = {
-    ---@param source string
-    ---@param module { path: string, modname: string, macro: boolean }
-    preprocessor = function(source, module)
-      local path = module.path
-      local macro = module.macro
-      if not macro and path and path:match("config/nvim") then
-        return "(import-macros {: set! : local-set!} :themis.opt)\n"
-          .. "(import-macros {: let!} :themis.var)\n"
-          .. "(import-macros {: map! : buf-map!} :themis.keybind)\n"
-          .. "(import-macros {: augroup! : autocmd! : clear!} :themis.event)\n"
-          .. "(import-macros {: pack} :themis.pack.lazy)\n"
-          .. source
-      end
-      return source
-    end,
-  },
-})
-
--- Generate packages table
-local packages = {
-  {
-    "rktjmp/hotpot.nvim",
-    dependencies = {
-      "datwaft/themis.nvim",
-    },
-  },
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    priority = 1000,
-  },
-}
-
--- Populate plugins table with packages.* modules
-local packages_folder = vim.fn.stdpath("config") .. "/fnl/packages"
-if vim.loop.fs_stat(packages_folder) then
-  for file in vim.fs.dir(packages_folder) do
-    file = file:match("^(.*)%.fnl$")
-    table.insert(packages, require("packages." .. file))
-  end
-end
-
--- Load configuration
-require("options")
-require("mappings")
-require("events")
-require("diagnostics")
-
--- Configure lazy.nvim
-require("lazy").setup(packages)
+require("lazy").setup("packages", { change_detection = { notify = false } })

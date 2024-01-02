@@ -6,6 +6,7 @@ $v0<cr>
 %s
 .Rmd
 .csv
+.gitignore
 .ideavimrc
 .jpeg
 .jsonc
@@ -29,6 +30,7 @@ Autopairs
 BCE
 BCI
 Bavelier
+CCNA
 CIRCBUF
 CLD
 CMD
@@ -52,6 +54,7 @@ DDR4
 DLPFC
 DS
 Denilson
+Django
 ES5
 ESLint
 Engelschall
@@ -87,7 +90,9 @@ Kawashima
 Khatib
 Khoury
 Kolmogorov
+Kotlin
 Kruskal-Wallis
+Kubernetes
 Kühn
 LF
 LFS
@@ -103,6 +108,7 @@ MMM
 MRR
 Matplotlib
 Mukkaw
+NDG
 NOTREACHED
 NVGP
 NVIDIA
@@ -116,6 +122,7 @@ Olical
 PBRTv3
 PFSSO
 Pavlov
+PostgreSQL
 Pouget
 Powerlevel
 Powerlevel10k
@@ -136,6 +143,7 @@ SPM8
 SSHSession
 Setulc
 Shapiro–Wilk
+Shorthands
 SimCLR
 Sklearn
 Smirnov
@@ -147,6 +155,7 @@ Struct
 TERMINFO
 TOKENMODE
 TTY
+TekDatum
 Torchvision
 Toshio
 Treuille
@@ -167,6 +176,7 @@ WIFSTOPPED
 WIP
 WSL
 WSTOPSIG
+WebdriverIO
 Wikilarge
 Wilcoxon
 XDG
@@ -174,6 +184,7 @@ XGBoost
 ZKOS
 Zoox
 \IEEEPARstart
+\hfill
 \href
 \lipsum
 \longtable
@@ -190,6 +201,7 @@ api
 arcsight
 arg
 args
+asd
 astrantia
 async
 augroup
@@ -251,6 +263,7 @@ darwin
 dataframe
 dateplot
 datwaft
+david.guevara.sanchez09@gmail.com
 deno
 desc
 devel
@@ -343,6 +356,7 @@ hvm
 hy
 hyeronima
 hymenaea
+iBT
 iamcco
 ie
 il
@@ -388,6 +402,7 @@ li
 liang2021rustpi
 libcontainers
 linematch
+linkedin
 linux
 linuxbrew
 llvm
@@ -408,6 +423,7 @@ luarocks
 luasnip
 lukas
 luxon
+mailto
 markonm
 mdframed
 mega.nz
@@ -459,6 +475,7 @@ param
 parbox
 paredit
 parinfer
+parseable
 passthrough
 pbrt
 petertriho
@@ -485,6 +502,7 @@ python3
 qf
 quartil
 quickfix
+qwe
 radenling
 rafamadriz
 rcompanion
@@ -579,6 +597,7 @@ uml
 undercurls
 underfull
 url
+urls
 userspace
 usr
 utf-16
@@ -621,6 +640,7 @@ zls
 zod
 zsh
 zv
+zxc
 µ
 µ-kernel
 µ-kernels
@@ -664,6 +684,3 @@ zv
 ﰠ
 ﳠ
 ﴯ
-qwe
-asd
-zxc
