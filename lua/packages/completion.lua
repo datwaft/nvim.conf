@@ -1,8 +1,12 @@
+-- Check if cursor is inside an string
+---@return boolean
 local function is_inside_string()
   local context = require("cmp.config.context")
   return context.in_treesitter_capture("string") or context.in_syntax_group("String")
 end
 
+-- Check if cursor is inside a comment
+---@return boolean
 local function is_inside_comment()
   local context = require("cmp.config.context")
   return context.in_treesitter_capture("comment") or context.in_syntax_group("Comment")
