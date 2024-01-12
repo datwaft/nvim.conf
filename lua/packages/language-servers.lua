@@ -95,6 +95,7 @@ return {
       { "j-hui/fidget.nvim", config = true },
       "b0o/schemastore.nvim",
       { "folke/neodev.nvim", config = true },
+      "folke/neoconf.nvim",
     },
   },
   -- Typescript
@@ -112,4 +113,6 @@ return {
       blend_color = "#1e1e2e",
     },
   },
+  -- Project-local settings
+  { "folke/neoconf.nvim", config = true },
 }
