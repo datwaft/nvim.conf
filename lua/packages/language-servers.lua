@@ -79,7 +79,7 @@ local function config(self, opts)
     settings = {
       yaml = {
         schemaStore = { enable = false, url = "" },
-        schemas = require("schemastore").json.schemas(),
+        schemas = require("schemastore").yaml.schemas(),
       },
     },
   })
