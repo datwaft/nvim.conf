@@ -20,6 +20,8 @@ return {
     },
     format_on_save = {
       quiet = true,
+      lsp_fallback = true,
+      timeout = 500,
     },
   },
   init = function()
