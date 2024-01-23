@@ -3,6 +3,8 @@
 local function config(self, opts)
   local lsp = require("lspconfig")
 
+  local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
   -- Configure some language servers with the default configuration
   for _, server in ipairs({
     "ansiblels",
@@ -30,7 +32,7 @@ local function config(self, opts)
     "volar",
     "zls",
   }) do
-    lsp[server].setup({})
+    lsp[server].setup({ capabilities = capabilities })
   end
 
   -- Lua
@@ -41,6 +43,7 @@ local function config(self, opts)
         hint = { enable = true },
       },
     },
+    capabilities = capabilities,
   })
   -- Python
   lsp.pylsp.setup({
@@ -64,6 +67,7 @@ local function config(self, opts)
         },
       },
     },
+    capabilities = capabilities,
   })
   -- JSON
   lsp.jsonls.setup({
@@ -73,6 +77,7 @@ local function config(self, opts)
         validate = { enable = true },
       },
     },
+    capabilities = capabilities,
   })
   -- YAML
   lsp.yamlls.setup({
@@ -82,6 +87,7 @@ local function config(self, opts)
         schemas = require("schemastore").yaml.schemas(),
       },
     },
+    capabilities = capabilities,
   })
 end
 
@@ -96,6 +102,7 @@ return {
       "b0o/schemastore.nvim",
       { "folke/neodev.nvim", config = true },
       "folke/neoconf.nvim",
+      "hrsh7th/cmp-nvim-lsp",
     },
   },
   -- Typescript
