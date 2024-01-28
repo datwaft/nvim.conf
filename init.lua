@@ -16,6 +16,9 @@ vim.opt.linebreak = true
 vim.opt.breakindent = true
 vim.opt.breakindentopt = { "shift:2" }
 vim.opt.showbreak = "↳ "
+-- Folding
+vim.opt.foldtext = ""
+vim.opt.foldlevel = 99
 -- Undo persistence
 vim.opt.undofile = true
 -- Enable local configuration
