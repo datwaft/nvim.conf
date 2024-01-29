@@ -208,7 +208,7 @@ local function install_package(name, alias)
   local _, _, owner, repo = name:find([[(.+)/(.+)]])
   local path = ("%s/%s"):format(packages_path, alias or repo)
 
-  if not vim.loop.fs_stat(path) then
+  if not vim.uv.fs_stat(path) then
     vim.notify(("Installing %s/%s..."):format(owner, repo), vim.log.levels.INFO)
 
     vim.fn.system({
