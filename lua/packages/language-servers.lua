@@ -20,6 +20,7 @@ local function config(self, opts)
     "hls",
     "html",
     "jdtls",
+    "kotlin_language_server",
     "lemminx",
     "lua_ls",
     "r_language_server",
