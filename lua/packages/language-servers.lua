@@ -71,33 +71,21 @@ local function config(self, opts)
   })
   -- VueJS
   lsp.volar.setup({
-    ---@param config object
-    ---@param root_dir string
-    on_new_config = function(config, root_dir)
+    ---@param new_config object
+    ---@param new_root_dir string
+    on_new_config = function(new_config, new_root_dir)
       local util = require("lspconfig.util")
-      local node_global
-      do
-        local handle = io.open("npm list -g")
-        assert(handle ~= nil)
-        node_global = handle:read("*l")
-        handle:close()
-      end
-      ---@type string
-      local global_typescript = node_global .. "/node_modules/typescript/lib"
-      ---@type string
-      local local_typescript
-      ---@param path string
-      ---@return string | nil
-      local function check_dir(path)
-        local_typescript = util.path.join(path, "node_modules", "typescript", "lib")
-        if util.path.exists(local_typescript) then
-          return path
-        end
-      end
-      if util.search_ancestors(root_dir, check_dir) then
-        config.init_options.typescript.tsdk = local_typescript
-      else
-        config.init_options.typescript.tsdk = global_typescript
+
+      local global_node = util.path.join(vim.env.HOME, ".asdf", "installs", "nodejs", "20.7.0", "lib", "node_modules")
+      local local_node = util.find_node_modules_ancestor(new_root_dir)
+
+      local global_typescript = util.path.join(global_node, "node_modules", "typescript", "lib")
+      local local_typescript = util.path.join(local_node, "node_modules", "typescript", "lib")
+
+      if util.path.exists(local_typescript) then
+        new_config.init_options.typescript.tsdk = local_typescript
+      elseif util.path.exists(global_typescript) then
+        new_config.init_options.typescript.tsdk = global_typescript
       end
     end,
   })
