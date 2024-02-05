@@ -76,11 +76,27 @@ local function config(self, opts)
     on_new_config = function(new_config, new_root_dir)
       local util = require("lspconfig.util")
 
-      local global_node = util.path.join(vim.env.HOME, ".asdf", "installs", "nodejs", "20.7.0", "lib", "node_modules")
+      -- Read file synchronously
+      -- See |uv_fs_t|
+      ---@param path string
+      ---@return string
+      local function read_file(path)
+        local fd = assert(vim.uv.fs_open(path, "r", 438))
+        local stat = assert(vim.uv.fs_fstat(fd))
+        local data = assert(vim.uv.fs_read(fd, stat.size))
+        assert(vim.uv.fs_close(fd))
+        return data
+      end
+
+      -- Here we are assuming you are using asdf for managing the global node version
+      local tool_versions = read_file(vim.env.HOME .. "/.tool-versions")
+      local node_version = tool_versions:match("nodejs (%S+)")
+
+      local global_node = vim.env.HOME .. "/.asdf/installs/nodejs/" .. node_version .. "/lib/node_modules"
       local local_node = util.find_node_modules_ancestor(new_root_dir)
 
-      local global_typescript = util.path.join(global_node, "node_modules", "typescript", "lib")
-      local local_typescript = util.path.join(local_node, "node_modules", "typescript", "lib")
+      local global_typescript = global_node .. "/typescript/lib"
+      local local_typescript = local_node .. "/typescript/lib"
 
       if util.path.exists(local_typescript) then
         new_config.init_options.typescript.tsdk = local_typescript
