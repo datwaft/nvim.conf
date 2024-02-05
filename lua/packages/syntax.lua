@@ -18,6 +18,8 @@ return {
       }
     end,
   },
+  -- KDL
+  "imsnif/kdl.vim",
   -- Ansible
   "mfussenegger/nvim-ansible",
   -- General
