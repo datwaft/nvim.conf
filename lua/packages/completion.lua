@@ -94,6 +94,9 @@ return {
   {
     "hrsh7th/nvim-cmp",
     config = config,
+    init = function()
+      vim.opt.completeopt = { "menu", "menuone", "noselect" }
+    end,
     dependencies = {
       -- Snippets
       { "saadparwaiz1/cmp_luasnip", dependencies = { "L3MON4D3/LuaSnip" } },
