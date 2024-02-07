@@ -48,7 +48,7 @@ local function config(self, opts)
     }, {
       sources.buffer,
     }),
-    mapping = cmp.mapping.preset.insert({
+    mapping = {
       -- Scrolling
       ["<C-b>"] = cmp.mapping.scroll_docs(-4),
       ["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -59,7 +59,7 @@ local function config(self, opts)
       ["<CR>"] = cmp.mapping.confirm({ select = false }),
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
-          cmp.select_next_item()
+          cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
         elseif require("luasnip").expand_or_jumpable() then
           require("luasnip").expand_or_jump()
         else
@@ -68,14 +68,14 @@ local function config(self, opts)
       end, { "i", "s" }),
       ["<S-Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
-          cmp.select_prev_item()
+          cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
         elseif require("luasnip").jumpable(-1) then
           require("luasnip").jump(-1)
         else
           fallback()
         end
       end, { "i", "s" }),
-    }),
+    },
   })
 
   cmp.setup.filetype("tex", {
