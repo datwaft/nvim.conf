@@ -17,6 +17,16 @@ end
 local function config(self, opts)
   local cmp = require("cmp")
 
+  vim.api.nvim_create_autocmd("ModeChanged", {
+    pattern = { "s:n", "i:*" },
+    callback = function(args)
+      local luasnip = require("luasnip")
+      if luasnip.session.current_nodes[args.buf] and not luasnip.session.jump_active then
+        luasnip.unlink_current()
+      end
+    end,
+  })
+
   ---@type table<string, cmp.SourceConfig>
   local sources = {
     lsp = { name = "nvim_lsp" },
