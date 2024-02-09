@@ -28,6 +28,7 @@ local function config(self, opts)
     "ruby_ls",
     "rust_analyzer",
     "svelte",
+    "tailwindcss",
     "taplo",
     "vimls",
     "zls",
