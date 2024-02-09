@@ -14,6 +14,7 @@ return {
       tex = { "latexindent" },
       typescript = { { "prettierd", "prettier" } },
       typescriptreact = { { "prettierd", "prettier" } },
+      vue = { { "prettierd", "prettier" } },
     },
     formatters = {
       latexindent = { prepend_args = { "-l", "-m" } },
