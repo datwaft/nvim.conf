@@ -209,14 +209,16 @@ local function install_package(name, alias)
   if not vim.uv.fs_stat(path) then
     vim.notify(("Installing %s/%s..."):format(owner, repo), vim.log.levels.INFO)
 
-    vim.fn.system({
-      "git",
-      "clone",
-      "--filter=blob:none",
-      "--single-branch",
-      ("https://github.com/%s/%s.git"):format(owner, repo),
-      path,
-    })
+    vim
+      .system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "--single-branch",
+        ("https://github.com/%s/%s.git"):format(owner, repo),
+        path,
+      })
+      :wait()
   end
 
   vim.opt.runtimepath:prepend(path)
