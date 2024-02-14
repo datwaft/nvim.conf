@@ -164,10 +164,8 @@ vim.keymap.set("n", "<leader>ld", vim.diagnostic.setqflist)
 ---------------------------------
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
-    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
     local bufnr = args.buf
-
-    assert(client ~= nil)
 
     -- Show documentation
     vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
