@@ -25,6 +25,7 @@ local function config(self, opts)
     "lua_ls",
     "r_language_server",
     "rnix",
+    "robotframework_ls",
     "ruby_ls",
     "rust_analyzer",
     "svelte",
