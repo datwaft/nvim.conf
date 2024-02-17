@@ -23,8 +23,6 @@ vim.opt.foldlevel = 99
 vim.opt.undofile = true
 -- Enable local configuration
 vim.opt.exrc = true
--- Enable true color support
-vim.opt.termguicolors = true
 -- Line numbers
 vim.opt.number = true
 vim.opt.relativenumber = true
