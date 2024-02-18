@@ -22,6 +22,8 @@ return {
   "imsnif/kdl.vim",
   -- Ansible
   "mfussenegger/nvim-ansible",
+  -- Go modules
+  "johejo/gomod.vim",
   -- General
   {
     "sheerun/vim-polyglot",
