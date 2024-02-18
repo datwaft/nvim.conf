@@ -188,6 +188,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     -- Enable inlay hints by default
     vim.lsp.inlay_hint.enable(bufnr, true)
+
+    -- Disable semantic highlighting for some LSPs
+    for _, name in ipairs({ "dockerls" }) do
+      if client.name == name then
+        client.server_capabilities.semanticTokensProvider = nil
+      end
+    end
   end,
 })
 
