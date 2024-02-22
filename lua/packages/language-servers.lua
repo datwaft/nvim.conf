@@ -9,7 +9,6 @@ local function config(self, opts)
   for _, server in ipairs({
     "ansiblels",
     "bashls",
-    "clangd",
     "clojure_lsp",
     "cmake",
     "cssls",
@@ -37,6 +36,17 @@ local function config(self, opts)
     lsp[server].setup({ capabilities = capabilities })
   end
 
+  -- C languages
+  lsp.clang_d.setup({
+    filetypes = {
+      "c",
+      "cpp",
+      "objc",
+      "objcpp",
+      "cuda",
+    },
+    capabilities = capabilities,
+  })
   -- Lua
   lsp.lua_ls.setup({
     settings = {
