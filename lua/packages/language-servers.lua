@@ -37,7 +37,7 @@ local function config(self, opts)
   end
 
   -- C languages
-  lsp.clang_d.setup({
+  lsp.clangd.setup({
     filetypes = {
       "c",
       "cpp",
