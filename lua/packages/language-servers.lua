@@ -22,10 +22,12 @@ local function config(self, opts)
     "kotlin_language_server",
     "lemminx",
     "lua_ls",
+    "pyright",
     "r_language_server",
     "rnix",
     "robotframework_ls",
     "ruby_ls",
+    "ruff_lsp",
     "rust_analyzer",
     "svelte",
     "tailwindcss",
@@ -53,30 +55,6 @@ local function config(self, opts)
       Lua = {
         telemetry = { enable = false },
         hint = { enable = true },
-      },
-    },
-    capabilities = capabilities,
-  })
-  -- Python
-  lsp.pylsp.setup({
-    settings = {
-      pylsp = {
-        plugins = {
-          -- Formatting
-          black = { enabled = true },
-          autopep8 = { enabled = false },
-          yapf = { enabled = false },
-          -- Linting
-          pylint = { enabled = true, executable = "pylint" },
-          pyflakes = { enabled = false },
-          pycodestyle = { enabled = false },
-          -- Typing
-          pylsp_mypy = { enabled = true },
-          -- Auto-completion
-          jedi_completion = { fuzzy = true },
-          -- Import sorting
-          pyls_isort = { enabled = true },
-        },
       },
     },
     capabilities = capabilities,
