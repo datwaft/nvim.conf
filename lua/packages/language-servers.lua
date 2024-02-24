@@ -49,6 +49,20 @@ local function config(self, opts)
     },
     capabilities = capabilities,
   })
+  -- Python
+  lsp.pyright.setup({
+    settings = {
+      pyright = {
+        disableOrganizeImports = true,
+      },
+      python = {
+        analysis = {
+          ignore = { "*" },
+        },
+      },
+    },
+    capabilities = capabilities,
+  })
   -- Lua
   lsp.lua_ls.setup({
     settings = {

@@ -195,6 +195,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
         client.server_capabilities.semanticTokensProvider = nil
       end
     end
+    -- Disable hover for some LSPs
+    for _, name in ipairs({ "ruff_lsp" }) do
+      if client.name == name then
+        client.server_capabilities.hoverProvider = nil
+      end
+    end
   end,
 })
 
