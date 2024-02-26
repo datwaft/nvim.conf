@@ -15,6 +15,7 @@ return {
   -- REPL integration
   {
     "jpalardy/vim-slime",
+    lazy = false,
     init = function(self)
       vim.g.slime_target = "tmux"
       vim.g.slime_paste_file = vim.fn.tempname()
@@ -24,7 +25,14 @@ return {
       }
       vim.g.slime_dont_ask_default = 1
       vim.g.slime_bracketed_paste = 1
+      vim.g.slime_no_mappings = 1
     end,
+    keys = {
+      { mode = "x", "<C-s>", "<Plug>SlimeRegionSend" },
+      { mode = "n", "<C-s>", "<Plug>SlimeMotionSend" },
+      { mode = "n", "<C-s>s", "<Plug>SlimeLineSend" },
+      { mode = "n", "<C-s><C-s>", "<Plug>SlimeLineSend" },
+    },
   },
   -- TMUX integration
   {
