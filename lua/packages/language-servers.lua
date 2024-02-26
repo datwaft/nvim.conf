@@ -162,4 +162,10 @@ return {
   },
   -- Project-local settings
   { "folke/neoconf.nvim", config = true },
+  -- Support LSP file operations
+  {
+    "antosha417/nvim-lsp-file-operations",
+    dependencies = { "nvim-lua/plenary.nvim", "nvim-neo-tree/neo-tree.nvim" },
+    config = true,
+  },
 }

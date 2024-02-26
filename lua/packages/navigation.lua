@@ -77,4 +77,25 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = true,
   },
+  -- Sidebar
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
+    },
+    lazy = false,
+    opts = {
+      close_if_last_window = true,
+      filesystem = {
+        follow_current_file = { enabled = true },
+        use_libuv_file_watcher = true,
+      },
+    },
+    keys = {
+      { "<C-n>", "<cmd>Neotree toggle<cr>" },
+    },
+  },
 }
