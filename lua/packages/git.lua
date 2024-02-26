@@ -44,7 +44,7 @@ return {
         vim.keymap.set("n", "<leader>hD", function()
           gs.diffthis("~")
         end)
-        vim.keymap.set("n", "<leader>td", gs.toggle_deleted)
+        vim.keymap.set("n", "<leader>tD", gs.toggle_deleted)
 
         vim.keymap.set({ "o", "x" }, "ih", ":<C-u>Gitsigns select_hunk<CR>")
       end,

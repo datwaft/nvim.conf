@@ -156,6 +156,14 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
 -- Keybind for listing diagnostics
 vim.keymap.set("n", "<leader>ld", vim.diagnostic.setqflist)
+-- Keybind for toggling diagnostics
+vim.keymap.set("n", "<leader>td", function()
+  if vim.diagnostic.is_disabled() then
+    vim.diagnostic.enable()
+  else
+    vim.diagnostic.disable()
+  end
+end)
 
 ---------------------------------
 -- LSP keybinds and configuration
