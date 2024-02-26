@@ -17,6 +17,7 @@ return {
     "jpalardy/vim-slime",
     init = function(self)
       vim.g.slime_target = "tmux"
+      vim.g.slime_paste_file = vim.fn.tempname()
       vim.g.slime_default_config = {
         socket_name = vim.fn.split(vim.env.TMUX, ",")[1],
         target_pane = "{last}",
