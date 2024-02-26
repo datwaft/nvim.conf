@@ -58,6 +58,7 @@
   "vim-matchup": { "branch": "master", "commit": "2d660e4aa7c566014c667af2cda0458043527902" },
   "vim-polyglot": { "branch": "master", "commit": "bc8a81d3592dab86334f27d1d43c080ebf680d42" },
   "vim-sandwich": { "branch": "master", "commit": "2ce54d26564e66a675685c8a3331388b2747a26b" },
+  "vim-slime": { "branch": "main", "commit": "1feef68f237cb840a7220f83c24b6c60bf914eb5" },
   "vim-space": { "branch": "master", "commit": "e6615bd3803b7b874fd9e08295400268739597a1" },
   "vim-spellsync": { "branch": "master", "commit": "210ca6a81243ec4a38404d599f5eb288ca71b700" },
   "vimtex": { "branch": "master", "commit": "afac40289eed684ab1301390dcd246b1609f8119" },
