@@ -22,6 +22,7 @@ local function config(self, opts)
     "kotlin_language_server",
     "lemminx",
     "lua_ls",
+    "ocamllsp",
     "pyright",
     "r_language_server",
     "rnix",
