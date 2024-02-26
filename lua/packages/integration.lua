@@ -32,6 +32,7 @@ return {
       { mode = "n", "<C-s>", "<Plug>SlimeMotionSend" },
       { mode = "n", "<C-s>s", "<Plug>SlimeLineSend" },
       { mode = "n", "<C-s><C-s>", "<Plug>SlimeLineSend" },
+      { mode = "n", "<C-s>c", "<Plug>SlimeConfig" },
     },
   },
   -- TMUX integration
