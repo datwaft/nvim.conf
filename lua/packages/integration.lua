@@ -40,7 +40,7 @@ return {
     "mrjones2014/smart-splits.nvim",
     version = ">=1.0.0",
     config = true,
-    lazy = false,
+    event = "VeryLazy",
     ---@type fun(self: LazyPlugin, keys: string[]):string|LazyKeys[]|string[])
     keys = function()
       local ss = require("smart-splits")
