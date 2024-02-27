@@ -20,7 +20,6 @@ local function config(self, opts)
     "html",
     "jdtls",
     "kotlin_language_server",
-    "lemminx",
     "lua_ls",
     "ocamllsp",
     "pyright",
