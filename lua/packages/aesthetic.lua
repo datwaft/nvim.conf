@@ -41,4 +41,21 @@ return {
   },
   -- Indentation lines
   { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = { scope = { enabled = false } } },
+  -- Status column
+  {
+    "luukvbaal/statuscol.nvim",
+    opts = function()
+      local builtin = require("statuscol.builtin")
+      return {
+        segments = {
+          { sign = { namespace = { "diagnostic" } } },
+          {
+            text = { " ", builtin.lnumfunc, " " },
+            condition = { builtin.not_empty, true, builtin.not_empty },
+          },
+          { sign = { namespace = { "gitsigns" }, auto = true, wrap = true } },
+        },
+      }
+    end,
+  },
 }
