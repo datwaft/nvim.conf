@@ -62,6 +62,6 @@
   "vim-slime": { "branch": "main", "commit": "1feef68f237cb840a7220f83c24b6c60bf914eb5" },
   "vim-space": { "branch": "master", "commit": "e6615bd3803b7b874fd9e08295400268739597a1" },
   "vim-spellsync": { "branch": "master", "commit": "210ca6a81243ec4a38404d599f5eb288ca71b700" },
-  "vimtex": { "branch": "master", "commit": "afac40289eed684ab1301390dcd246b1609f8119" },
+  "vimtex": { "branch": "master", "commit": "2bb7cdc17c0ac18266e4c96083290956169c1c38" },
   "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" }
 }
