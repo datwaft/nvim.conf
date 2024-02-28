@@ -45,6 +45,8 @@ vim.opt.shortmess:append("c")
 -- Grep
 vim.opt.grepprg = "rg --vimgrep"
 vim.opt.grepformat = "%f:%l:%c:%m"
+-- Mouse
+vim.opt.mousemodel = "extend"
 
 ---------------
 -- Autocommands
