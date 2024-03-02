@@ -51,6 +51,13 @@ vim.keymap.set({ "n", "v", "o", "c", "i" }, "<MiddleMouse>", "<Nop>")
 vim.keymap.set({ "n", "v", "o", "c", "i" }, "<MiddleDrag>", "<Nop>")
 vim.keymap.set({ "n", "v", "o", "c", "i" }, "<MiddleRelease>", "<Nop>")
 
+------------
+-- Providers
+------------
+vim.g.python3_host_prog = "~/.asdf/shims/python3"
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+
 ---------------
 -- Autocommands
 ---------------
