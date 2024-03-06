@@ -20,6 +20,8 @@ return {
   },
   -- Ansible
   "mfussenegger/nvim-ansible",
+  -- ARM ASM
+  "ARM9/arm-syntax-vim",
   -- General
   {
     "sheerun/vim-polyglot",
