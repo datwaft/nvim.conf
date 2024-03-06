@@ -7,7 +7,7 @@ return {
     opts = {
       options = {
         globalstatus = true,
-        disabled_filetypes = { winbar = { "qf" } },
+        disabled_filetypes = { winbar = { "qf", "neo-tree" } },
       },
       winbar = {
         lualine_a = { "location" },

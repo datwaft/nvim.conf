@@ -90,6 +90,7 @@ return {
     opts = {
       close_if_last_window = true,
       filesystem = {
+        hijack_netrw_behavior = "disabled",
         follow_current_file = { enabled = true },
         use_libuv_file_watcher = true,
       },
