@@ -48,7 +48,7 @@ return {
       local builtin = require("statuscol.builtin")
       return {
         segments = {
-          { sign = { namespace = { "diagnostic" } } },
+          { sign = { namespace = { "diagnostic" } }, condition = { builtin.not_empty } },
           {
             text = { " ", builtin.lnumfunc, " " },
             condition = { builtin.not_empty, true, builtin.not_empty },
