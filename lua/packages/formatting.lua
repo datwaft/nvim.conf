@@ -18,6 +18,18 @@ return {
     },
     formatters = {
       latexindent = { prepend_args = { "-l", "-m" } },
+      prettier = {
+        ---@param ctx conform.Context
+        condition = function(ctx)
+          return #vim.fs.find("biome.json", { upward = true, stop = vim.uv.os_homedir(), path = ctx.dirname }) == 0
+        end,
+      },
+      prettierd = {
+        ---@param ctx conform.Context
+        condition = function(ctx)
+          return #vim.fs.find("biome.json", { upward = true, stop = vim.uv.os_homedir(), path = ctx.dirname }) == 0
+        end,
+      },
     },
     format_on_save = function(bufnr)
       if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
