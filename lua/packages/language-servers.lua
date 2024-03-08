@@ -9,6 +9,7 @@ local function config(self, opts)
   for _, server in ipairs({
     "ansiblels",
     "bashls",
+    "biome",
     "clojure_lsp",
     "cmake",
     "cssls",
