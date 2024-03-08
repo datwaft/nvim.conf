@@ -221,6 +221,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
         client.server_capabilities.hoverProvider = nil
       end
     end
+    -- Disable formatting for some LSPs
+    for _, name in ipairs({ "jsonls" }) do
+      if client.name == name then
+        client.server_capabilities.documentFormattingProvider = nil
+        client.server_capabilities.documentRangeFormattingProvider = nil
+      end
+    end
   end,
 })
 
