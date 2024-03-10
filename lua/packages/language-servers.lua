@@ -169,4 +169,13 @@ return {
     dependencies = { "nvim-lua/plenary.nvim", "nvim-neo-tree/neo-tree.nvim" },
     config = true,
   },
+  -- Open 'textDocument/documentLink' with gx
+  {
+    "icholy/lsplinks.nvim",
+    config = true,
+    lazy = false,
+    keys = function()
+      return { { "gx", require("lsplinks").gx } }
+    end,
+  },
 }
