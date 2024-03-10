@@ -41,7 +41,6 @@ return {
     version = ">=1.0.0",
     config = true,
     event = "VeryLazy",
-    ---@type fun(self: LazyPlugin, keys: string[]):string|LazyKeys[]|string[])
     keys = function()
       local ss = require("smart-splits")
       return {

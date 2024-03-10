@@ -15,7 +15,6 @@ return {
       require("telescope").load_extension("fzf")
       require("telescope").load_extension("smart_history")
     end,
-    ---@type fun(self: LazyPlugin, keys: string[]):string|LazyKeys[]|string[])
     keys = function(self, keys)
       local builtin = require("telescope.builtin")
       return {
