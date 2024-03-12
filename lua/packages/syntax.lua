@@ -22,6 +22,8 @@ return {
   "mfussenegger/nvim-ansible",
   -- ARM ASM
   "ARM9/arm-syntax-vim",
+  -- Gleam
+  "gleam-lang/gleam.vim",
   -- General
   {
     "sheerun/vim-polyglot",
