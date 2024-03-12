@@ -16,6 +16,7 @@ local function config(self, opts)
     "dockerls",
     "emmet_language_server",
     "eslint",
+    "gleam",
     "gopls",
     "hls",
     "html",
