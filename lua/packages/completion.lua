@@ -65,8 +65,8 @@ local function config(self, opts)
       -- Completion
       ["<C-Space>"] = cmp.mapping.complete(),
       ["<C-e>"] = cmp.mapping.abort(),
-      ["<Space>"] = cmp.mapping.confirm({ select = false }),
-      ["<CR>"] = cmp.mapping.confirm({ select = false }),
+      ["<Space>"] = cmp.mapping.confirm({ select = false, behavior = cmp.ConfirmBehavior.Replace }),
+      ["<CR>"] = cmp.mapping.confirm({ select = false, behavior = cmp.ConfirmBehavior.Replace }),
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
