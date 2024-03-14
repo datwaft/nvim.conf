@@ -3,7 +3,6 @@ return {
   "stevearc/conform.nvim",
   opts = {
     formatters_by_ft = {
-      bib = { "bibtext-tidy" },
       css = { { "prettierd", "prettier" } },
       html = { { "prettierd", "prettier" } },
       javascript = { { "prettierd", "prettier" } },
@@ -68,4 +67,16 @@ return {
       end
     end, { desc = "Toggle format on save", bang = true })
   end,
+  dependencies = {
+    {
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
+      dependencies = { "williamboman/mason.nvim" },
+      opts = { ensure_installed = {
+        "prettierd",
+        "prettier",
+        "stylua",
+        "latexindent",
+      } },
+    },
+  },
 }
