@@ -145,7 +145,17 @@ return {
       { "folke/neodev.nvim", config = true },
       "folke/neoconf.nvim",
       "hrsh7th/cmp-nvim-lsp",
+      {
+        "williamboman/mason-lspconfig.nvim",
+        dependencies = { "williamboman/mason.nvim" },
+        opts = { automatic_installation = true },
+      },
     },
+  },
+  -- Automatic installation
+  {
+    "williamboman/mason.nvim",
+    config = true,
   },
   -- Typescript
   {
