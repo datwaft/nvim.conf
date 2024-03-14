@@ -70,8 +70,7 @@ return {
     end,
   },
   {
-    -- TODO: use main branch when https://github.com/zapling/mason-conform.nvim/pull/1z is merged
-    "datwaft/mason-conform.nvim",
+    "zapling/mason-conform.nvim",
     dependencies = { "stevearc/conform.nvim", "williamboman/mason.nvim" },
     config = true,
   },
