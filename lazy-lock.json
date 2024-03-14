@@ -18,7 +18,7 @@
   "gleam.vim": { "branch": "master", "commit": "d2f6d0b0399ab6d76b4a17b77ffec590fb2ec1c2" },
   "indent-blankline.nvim": { "branch": "master", "commit": "3d08501caef2329aba5121b753e903904088f7e6" },
   "lazy.nvim": { "branch": "main", "commit": "83493db50a434a4c5c648faf41e2ead80f96e478" },
-  "leetcode.nvim": { "branch": "master", "commit": "05d4153787fab5c6163150d2a0acf29cd1ef297f" },
+  "leetcode.nvim": { "branch": "master", "commit": "765cc76df77072e3ff4c3fdc256b9a244af73b6d" },
   "lsplinks.nvim": { "branch": "master", "commit": "75ab851bb1df778d2ae371bd3ca2df1153b93c33" },
   "lua-async-await": { "branch": "main", "commit": "645ad2bc4432d455e84eae6ebdc7e5cbdf337b95" },
   "lualine.nvim": { "branch": "master", "commit": "26dac2fcadb6e622790ab08e36d0dba3d3765398" },
@@ -75,6 +75,6 @@
   "vim-slime": { "branch": "main", "commit": "1feef68f237cb840a7220f83c24b6c60bf914eb5" },
   "vim-space": { "branch": "master", "commit": "e6615bd3803b7b874fd9e08295400268739597a1" },
   "vim-spellsync": { "branch": "master", "commit": "210ca6a81243ec4a38404d599f5eb288ca71b700" },
-  "vimtex": { "branch": "master", "commit": "a1b752417250f0838ea7b3acefc87611c26ef991" },
+  "vimtex": { "branch": "master", "commit": "9ce62bbf7ea8f6bb232bbff5549cd7745a3fd918" },
   "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" }
 }
