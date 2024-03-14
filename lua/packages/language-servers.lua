@@ -145,6 +145,7 @@ return {
       { "folke/neodev.nvim", config = true },
       "folke/neoconf.nvim",
       "hrsh7th/cmp-nvim-lsp",
+      "nvim-java/nvim-java",
       {
         "williamboman/mason-lspconfig.nvim",
         dependencies = { "williamboman/mason.nvim" },
@@ -155,12 +156,31 @@ return {
   -- Automatic installation
   {
     "williamboman/mason.nvim",
-    config = true,
+    opts = {
+      registries = {
+        "github:nvim-java/mason-registry",
+        "github:mason-org/mason-registry",
+      },
+    },
   },
   -- Typescript
   {
     "pmizio/typescript-tools.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    config = true,
+  },
+  -- Java
+  {
+    "nvim-java/nvim-java",
+    dependencies = {
+      "nvim-java/lua-async-await",
+      "nvim-java/nvim-java-core",
+      "nvim-java/nvim-java-test",
+      "nvim-java/nvim-java-dap",
+      "MunifTanjim/nui.nvim",
+      "mfussenegger/nvim-dap",
+      "williamboman/mason.nvim",
+    },
     config = true,
   },
   -- Dim unused elements
