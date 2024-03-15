@@ -29,4 +29,6 @@ return {
   },
   -- Space text objects
   "vim-utils/vim-space",
+  -- Parinfer
+  { "eraserhd/parinfer-rust", build = "cargo build --release" },
 }
