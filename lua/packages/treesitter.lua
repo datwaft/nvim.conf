@@ -3,6 +3,7 @@ return {
   "nvim-treesitter/nvim-treesitter",
   dependencies = {
     "nvim-treesitter/nvim-treesitter-refactor",
+    "nvim-treesitter/nvim-treesitter-textobjects",
     "andymass/vim-matchup",
   },
   build = ":TSUpdate",
@@ -16,9 +17,19 @@ return {
     highlight = { enable = true, disable = { "latex", "tmux" } },
     indent = { enable = true },
     format = { enable = true },
+    matchup = { enable = true },
     refactor = {
       smart_rename = { enable = true, keymaps = { smart_rename = "<localleader>rn" } },
     },
-    matchup = { enable = true },
+    textobjects = {
+      select = {
+        enable = true,
+        lookahead = true,
+        keymaps = {
+          ["as"] = "@statement.outer",
+          ["aS"] = "@statement.top",
+        },
+      },
+    },
   },
 }
