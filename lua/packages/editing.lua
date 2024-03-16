@@ -37,6 +37,4 @@ return {
     ft = { "fennel" },
     config = true,
   },
-  -- Autopairs
-  { "cohama/lexima.vim", ft = { "fennel" } },
 }
