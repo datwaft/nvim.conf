@@ -42,6 +42,12 @@ local function config(self, opts)
       option = { keyword_pattern = [[\k\+]] },
     },
     vimtex = { name = "vimtex" },
+    omni = {
+      name = "omni",
+      option = {
+        disable_omnifuncs = { "v:lua.vim.lsp.omnifunc", "vimtex#complete#omnifunc" },
+      },
+    },
   }
 
   cmp.setup({
@@ -53,6 +59,7 @@ local function config(self, opts)
     },
     sources = cmp.config.sources({
       sources.lsp,
+      sources.omni,
       sources.luasnip,
       sources.path,
     }, {
@@ -115,6 +122,7 @@ return {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "micangl/cmp-vimtex",
+      "hrsh7th/cmp-omni",
     },
   },
   {
