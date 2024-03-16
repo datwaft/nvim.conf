@@ -29,6 +29,12 @@ return {
   },
   -- Space text objects
   "vim-utils/vim-space",
-  -- Parinfer
-  { "eraserhd/parinfer-rust", build = "cargo build --release" },
+  -- Paredit
+  { "julienvincent/nvim-paredit", config = true },
+  {
+    "julienvincent/nvim-paredit-fennel",
+    dependencies = { "julienvincent/nvim-paredit" },
+    ft = { "fennel" },
+    config = true,
+  },
 }
