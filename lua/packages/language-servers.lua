@@ -24,7 +24,7 @@ local function config(self, opts)
     "kotlin_language_server",
     "lua_ls",
     "ocamllsp",
-    "pyright",
+    "basedpyright",
     "r_language_server",
     "rnix",
     "robotframework_ls",
@@ -48,20 +48,6 @@ local function config(self, opts)
       "objc",
       "objcpp",
       "cuda",
-    },
-    capabilities = capabilities,
-  })
-  -- Python
-  lsp.pyright.setup({
-    settings = {
-      pyright = {
-        disableOrganizeImports = true,
-      },
-      python = {
-        analysis = {
-          ignore = { "*" },
-        },
-      },
     },
     capabilities = capabilities,
   })
