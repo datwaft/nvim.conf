@@ -232,7 +232,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 -------------------------
--- filetype configuration
+-- Filetype configuration
 -------------------------
 vim.filetype.add({ filename = { ["go.mod"] = "gomod" } })
 vim.filetype.add({ pattern = { [".*/queries/.*/*.%.scm"] = "query" } })
