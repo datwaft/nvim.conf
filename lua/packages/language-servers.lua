@@ -153,7 +153,13 @@ return {
   {
     "pmizio/typescript-tools.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    config = true,
+    opts = {
+      settings = {
+        tsserver_file_preferences = {
+          disableSuggestions = true,
+        },
+      },
+    },
   },
   -- Java
   {
