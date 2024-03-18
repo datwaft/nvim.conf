@@ -25,11 +25,4 @@ return {
   "ARM9/arm-syntax-vim",
   -- Gleam
   "gleam-lang/gleam.vim",
-  -- General
-  {
-    "sheerun/vim-polyglot",
-    init = function()
-      vim.g.polyglot_disabled = { "fennel", "autoindent", "sensible" }
-    end,
-  },
 }
