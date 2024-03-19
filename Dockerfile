@@ -33,7 +33,6 @@ COPY --from=build-nvim /tmp/neovim/build/nvim*.deb /tmp/nvim.deb
 RUN dpkg -i /tmp/nvim.deb
 # Clone essential plugins
 WORKDIR /root/.local/share/nvim/lazy
-RUN git clone https://github.com/catppuccin/nvim catppuccin
 RUN git clone https://github.com/folke/lazy.nvim
 # Deploy configuration
 COPY . /root/.config/nvim/
