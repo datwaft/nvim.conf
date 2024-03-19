@@ -42,4 +42,3 @@ RUN nvim --headless +"Lazy! sync" +qa
 RUN nvim --headless +"TSUpdateSync" +qa
 # Finish
 WORKDIR /root/.config/nvim
-CMD ["nvim"]
