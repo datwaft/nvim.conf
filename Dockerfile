@@ -28,13 +28,6 @@ RUN apt-get update -y && apt-get install -y \
   python3-pip \
   ripgrep \
   && rm -rf /var/lib/apt/lists/*
-RUN npm install --global \
-  @fsouza/prettierd \
-  neovim \
-  prettier \
-  tree-sitter-cli
-RUN pip3 install \
-  neovim
 # Install neovim
 COPY --from=build-nvim /tmp/neovim/build/nvim*.deb /tmp/nvim.deb
 RUN dpkg -i /tmp/nvim.deb
