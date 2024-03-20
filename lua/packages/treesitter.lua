@@ -29,6 +29,8 @@ return {
         keymaps = {
           ["as"] = "@statement.outer",
           ["aS"] = "@statement.top",
+          ["ic"] = "@cell.inner",
+          ["ac"] = "@cell.outer",
         },
       },
     },
