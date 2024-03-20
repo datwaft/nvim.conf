@@ -169,6 +169,15 @@ return {
     },
     config = true,
   },
+  -- Dim unused elements
+  {
+    "zbirenbaum/neodim",
+    event = "LspAttach",
+    opts = {
+      alpha = 0.6,
+      blend_color = "#1e1e2e",
+    },
+  },
   -- Project-local settings
   { "folke/neoconf.nvim", config = true },
   -- Support LSP file operations
