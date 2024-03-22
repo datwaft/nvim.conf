@@ -12,9 +12,7 @@ local function is_inside_comment()
   return context.in_treesitter_capture("comment") or context.in_syntax_group("Comment")
 end
 
----@param self LazyPlugin
----@param opts table
-local function config(self, opts)
+local function config()
   local cmp = require("cmp")
 
   vim.api.nvim_create_autocmd("ModeChanged", {

@@ -1,6 +1,4 @@
----@param self LazyPlugin
----@param opts table
-local function config(self, opts)
+local function config()
   local lsp = require("lspconfig")
 
   local capabilities = require("cmp_nvim_lsp").default_capabilities()

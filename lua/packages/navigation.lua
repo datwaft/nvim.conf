@@ -10,12 +10,12 @@ return {
       { "nvim-telescope/telescope-smart-history.nvim", dependencies = { "tami5/sqlite.lua" } },
       "nvim-tree/nvim-web-devicons",
     },
-    config = function(self, opts)
+    config = function(_, opts)
       require("telescope").setup(opts)
       require("telescope").load_extension("fzf")
       require("telescope").load_extension("smart_history")
     end,
-    keys = function(self, keys)
+    keys = function()
       local builtin = require("telescope.builtin")
       return {
         { "<leader>ff", builtin.find_files },
@@ -26,7 +26,7 @@ return {
         { "<leader>fl", builtin.loclist },
       }
     end,
-    opts = function(self, opts)
+    opts = function()
       local actions = require("telescope.actions")
       return {
         defaults = {
@@ -61,7 +61,7 @@ return {
         },
       }
     end,
-    init = function(self)
+    init = function()
       vim.api.nvim_create_autocmd("VimEnter", {
         callback = function()
           vim.fn.mkdir(vim.fn.stdpath("data") .. "/databases", "p")
