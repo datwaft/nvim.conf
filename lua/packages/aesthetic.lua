@@ -9,6 +9,22 @@ return {
         globalstatus = true,
         disabled_filetypes = { winbar = { "qf", "neo-tree" } },
       },
+      sections = {
+        lualine_a = { "mode" },
+        lualine_b = { "branch", "diff", "diagnostics" },
+        lualine_c = { "filename" },
+        lualine_x = { "encoding", "fileformat", "filetype", "PencilMode" },
+        lualine_y = { "progress" },
+        lualine_z = { "location" },
+      },
+      inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = { "filename" },
+        lualine_x = { "location" },
+        lualine_y = {},
+        lualine_z = {},
+      },
       winbar = {
         lualine_a = { "location" },
         lualine_b = { "progress" },
