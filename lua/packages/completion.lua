@@ -39,7 +39,6 @@ local function config()
       name = "buffer",
       option = { keyword_pattern = [[\k\+]] },
     },
-    vimtex = { name = "vimtex" },
     omni = {
       name = "omni",
       option = {
@@ -92,16 +91,6 @@ local function config()
       end, { "i", "s" }),
     },
   })
-
-  cmp.setup.filetype("tex", {
-    sources = cmp.config.sources({
-      sources.vimtex,
-      sources.luasnip,
-      sources.path,
-    }, {
-      sources.buffer,
-    }),
-  })
 end
 
 ---@type LazySpec
@@ -119,7 +108,6 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
-      "micangl/cmp-vimtex",
       "hrsh7th/cmp-omni",
     },
   },
