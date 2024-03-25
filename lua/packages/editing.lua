@@ -37,4 +37,6 @@ return {
     ft = { "fennel" },
     config = true,
   },
+  -- Better writing support
+  "preservim/vim-pencil",
 }
