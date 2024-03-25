@@ -38,5 +38,15 @@ return {
     config = true,
   },
   -- Better writing support
-  "preservim/vim-pencil",
+  {
+    "preservim/vim-pencil",
+    init = function()
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "markdown", "text", "tex" },
+        callback = function()
+          vim.fn["pencil#init"]()
+        end,
+      })
+    end,
+  },
 }
