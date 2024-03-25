@@ -6,6 +6,7 @@ local function config()
   -- Configure some language servers with the default configuration
   for _, server in ipairs({
     "ansiblels",
+    "basedpyright",
     "bashls",
     "biome",
     "clojure_lsp",
@@ -22,7 +23,6 @@ local function config()
     "kotlin_language_server",
     "lua_ls",
     "ocamllsp",
-    "basedpyright",
     "r_language_server",
     "rnix",
     "robotframework_ls",
@@ -32,6 +32,7 @@ local function config()
     "svelte",
     "tailwindcss",
     "taplo",
+    "texlab",
     "vimls",
     "zls",
   }) do
