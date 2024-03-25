@@ -11,13 +11,11 @@ return {
         json = { { "prettierd", "prettier" } },
         jsonc = { { "prettierd", "prettier" } },
         lua = { "stylua" },
-        tex = { "latexindent" },
         typescript = { { "prettierd", "prettier" } },
         typescriptreact = { { "prettierd", "prettier" } },
         vue = { { "prettierd", "prettier" } },
       },
       formatters = {
-        latexindent = { prepend_args = { "-l", "-m" } },
         prettier = {
           ---@param ctx conform.Context
           condition = function(ctx)
