@@ -21,7 +21,6 @@
   "lazy.nvim": { "branch": "main", "commit": "08954f723bf2d442ea020551e3acc956f4dc6dc7" },
   "leetcode.nvim": { "branch": "master", "commit": "765cc76df77072e3ff4c3fdc256b9a244af73b6d" },
   "lsplinks.nvim": { "branch": "master", "commit": "eda2acee14c0e39d9efbadb5d067a7cda2a5cc31" },
-  "ltex-extra.nvim": { "branch": "master", "commit": "42dd3572cb09b52a137e91e515f2dff5eb631b1e" },
   "lua-async-await": { "branch": "main", "commit": "645ad2bc4432d455e84eae6ebdc7e5cbdf337b95" },
   "lualine.nvim": { "branch": "master", "commit": "b5e8bb642138f787a2c1c5aedc2a78cb2cebbd67" },
   "mason-conform.nvim": { "branch": "main", "commit": "c41b19222db71b016e55c64454b5e03441f56859" },

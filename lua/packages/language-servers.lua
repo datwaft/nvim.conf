@@ -116,13 +116,6 @@ local function config()
     },
     capabilities = capabilities,
   })
-  -- ltex-ls
-  lsp.ltex.setup({
-    capabilities = capabilities,
-    on_attach = function()
-      require("ltex_extra").setup({ load_langs = { "en-US", "es" } })
-    end,
-  })
 end
 
 ---@type LazySpec
@@ -138,7 +131,6 @@ return {
       "folke/neoconf.nvim",
       "hrsh7th/cmp-nvim-lsp",
       "nvim-java/nvim-java",
-      "barreiroleo/ltex-extra.nvim",
       {
         "williamboman/mason-lspconfig.nvim",
         dependencies = { "williamboman/mason.nvim" },
