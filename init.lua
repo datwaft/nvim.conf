@@ -38,6 +38,10 @@ vim.opt.listchars = {
   tab = "→ ",
   nbsp = "·",
 }
+-- Spell-checking
+vim.opt.spell = false
+vim.opt.spelllang = { "en", "es" }
+vim.opt.spelloptions = "camel"
 -- Sign column
 vim.opt.signcolumn = "yes:1"
 -- Insert-mode completion
