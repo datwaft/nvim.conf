@@ -102,6 +102,17 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.spell = false
   end,
 })
+-- Always enable 'spell' on some filetypes
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = {
+    "markdown",
+    "tex",
+    "quarto",
+  },
+  callback = function()
+    vim.opt_local.spell = true
+  end,
+})
 
 -----------
 -- Keybinds
