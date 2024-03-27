@@ -1,7 +1,21 @@
 ---@type LazySpec
 return {
   -- Comment operations
-  { "echasnovski/mini.comment", config = true },
+  {
+    "numToStr/Comment.nvim",
+    opts = function()
+      return {
+        pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+      }
+    end,
+    dependencies = {
+      "JoosepAlviste/nvim-ts-context-commentstring",
+      opts = { enable_autocmd = false },
+      init = function()
+        vim.g.skip_ts_context_commentstring_module = true
+      end,
+    },
+  },
   -- Surround operations
   "machakann/vim-sandwich",
   -- Subversion and coercion operations
