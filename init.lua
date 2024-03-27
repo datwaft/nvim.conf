@@ -200,7 +200,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- Go to references
     vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = bufnr })
     -- Rename symbol under cursor
-    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr })
+    vim.keymap.set("n", "<leader>rn", function()
+      return ":IncRename " .. vim.fn.expand("<cword>")
+    end, { expr = true, buffer = bufnr })
     -- Apply code actions
     vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, { buffer = bufnr })
     -- Toggle inlay hints
