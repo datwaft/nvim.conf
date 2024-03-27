@@ -39,13 +39,6 @@ return {
   },
   -- Enhance vim.ui.select & vim.ui.input
   { "stevearc/dressing.nvim", opts = { input = { enabled = false } } },
-  -- Preview substitution
-  {
-    "markonm/traces.vim",
-    init = function()
-      vim.g.traces_abolish_integration = 1
-    end,
-  },
   -- Preview ranges
   { "winston0410/range-highlight.nvim", dependencies = { "winston0410/cmd-parser.nvim" }, config = true },
   -- Highlight color codes
