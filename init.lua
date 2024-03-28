@@ -121,7 +121,7 @@ vim.api.nvim_create_autocmd("FileType", {
 -----------
 -- Keybinds
 -----------
--- Disable hightlights with <ESC>
+-- Disable highlights with <ESC>
 vim.keymap.set("n", "<ESC>", "<ESC><CMD>nohlsearch<CR>")
 -- Make `/` and `?` search inside selection
 vim.keymap.set("x", "/", [[<ESC>/\%V]])
