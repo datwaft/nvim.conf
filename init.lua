@@ -41,6 +41,11 @@ vim.opt.listchars = {
 -- Spell-checking
 vim.opt.spell = true
 vim.opt.spelllang = { "en", "es", "programming" }
+vim.opt.spellfile = {
+  vim.fn.stdpath("config") .. "/spell/en.utf-8.add",
+  vim.fn.stdpath("config") .. "/spell/es.utf-8.add",
+  vim.fn.stdpath("config") .. "/spell/programming.utf-8.add",
+}
 vim.opt.spelloptions = "camel"
 vim.opt.spellcapcheck = ""
 -- Sign column
