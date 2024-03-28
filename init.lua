@@ -42,6 +42,7 @@ vim.opt.listchars = {
 vim.opt.spell = true
 vim.opt.spelllang = { "en", "es", "programming" }
 vim.opt.spelloptions = "camel"
+vim.opt.spellcapcheck = ""
 -- Sign column
 vim.opt.signcolumn = "yes:1"
 -- Insert-mode completion
