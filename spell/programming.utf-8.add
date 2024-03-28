@@ -17,6 +17,7 @@ keybind
 keybinds
 luarocks
 neovide
+netrw
 nvim
 paredit
 statusline
