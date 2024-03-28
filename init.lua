@@ -40,7 +40,7 @@ vim.opt.listchars = {
 }
 -- Spell-checking
 vim.opt.spell = true
-vim.opt.spelllang = { "en", "es" }
+vim.opt.spelllang = { "en", "es", "programming" }
 vim.opt.spelloptions = "camel"
 -- Sign column
 vim.opt.signcolumn = "yes:1"
