@@ -24,6 +24,7 @@ return {
         { "<leader>fh", builtin.help_tags },
         { "<leader>fq", builtin.quickfix },
         { "<leader>fl", builtin.loclist },
+        { "z=", builtin.spell_suggest },
       }
     end,
     opts = function()
