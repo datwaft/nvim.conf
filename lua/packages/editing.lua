@@ -22,16 +22,18 @@ return {
   "tpope/vim-abolish",
   -- Undo-tree
   "mbbill/undotree",
-  -- Indent text object
-  "michaeljsmith/vim-indent-object",
-  -- CamelCase text object
+  -- Indent and subword text objects
   {
-    "bkad/CamelCaseMotion",
+    "chrisgrieser/nvim-various-textobjs",
     keys = {
-      { "<leader>w", "<Plug>CamelCaseMotion_w", mode = { "n", "v", "o" } },
-      { "<leader>b", "<Plug>CamelCaseMotion_b", mode = { "n", "v", "o" } },
-      { "<leader>e", "<Plug>CamelCaseMotion_e", mode = { "n", "v", "o" } },
-      { "i<leader>w", "<Plug>CamelCaseMotion_ie", mode = { "x", "o" } },
+      -- Indentation
+      { mode = { "o", "x" }, "ii", "<cmd>lua require('various-textobjs').indentation('inner', 'inner')<CR>" },
+      { mode = { "o", "x" }, "ai", "<cmd>lua require('various-textobjs').indentation('outer', 'inner')<CR>" },
+      { mode = { "o", "x" }, "iI", "<cmd>lua require('various-textobjs').indentation('inner', 'inner')<CR>" },
+      { mode = { "o", "x" }, "aI", "<cmd>lua require('various-textobjs').indentation('outer', 'outer')<CR>" },
+      -- Subword
+      { mode = { "o", "x" }, "as", "<cmd>lua require('various-textobjs').subword('outer')<cr>" },
+      { mode = { "o", "x" }, "is", "<cmd>lua require('various-textobjs').subword('inner')<cr>" },
     },
   },
   -- Around and inner text objects
