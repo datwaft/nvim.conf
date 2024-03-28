@@ -276,6 +276,9 @@ local function install_package(name, alias)
 end
 
 install_package("folke/lazy.nvim")
+install_package("catppuccin/nvim", "catppuccin")
+
+vim.cmd.colorscheme("catppuccin-mocha")
 
 require("lazy").setup("packages", {
   change_detection = { notify = false },
