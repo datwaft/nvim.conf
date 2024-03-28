@@ -45,6 +45,15 @@ local function config()
         disable_omnifuncs = { "v:lua.vim.lsp.omnifunc", "vimtex#complete#omnifunc" },
       },
     },
+    spell = {
+      name = "spell",
+      option = {
+        keep_all_entries = false,
+        enable_in_context = function()
+          return require("cmp.config.context").in_treesitter_capture("spell")
+        end,
+      },
+    },
   }
 
   cmp.setup({
@@ -61,6 +70,7 @@ local function config()
       sources.path,
     }, {
       sources.buffer,
+      sources.spell,
     }),
     mapping = {
       -- Scrolling
@@ -109,6 +119,7 @@ return {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-omni",
+      "f3fora/cmp-spell",
     },
   },
   {
