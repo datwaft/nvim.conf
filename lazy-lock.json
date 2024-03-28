@@ -11,6 +11,7 @@
   "cmp-path": { "branch": "main", "commit": "91ff86cd9c29299a64f968ebb45846c485725f23" },
   "cmp_luasnip": { "branch": "master", "commit": "05a9ab28b53f71d1aece421ef32fee2cb857a843" },
   "conform.nvim": { "branch": "master", "commit": "9d5ba06d6ee7418c674f498634617416d15b6239" },
+  "diagflow.nvim": { "branch": "main", "commit": "6d2ad945ddbc46f42a0a2e7618975a5f3d2e7dbe" },
   "dressing.nvim": { "branch": "master", "commit": "18e5beb3845f085b6a33c24112b37988f3f93c06" },
   "fennel.vim": { "branch": "main", "commit": "c6a9c035ca108cbb24273d96cd6277fb8fbc60b4" },
   "fidget.nvim": { "branch": "main", "commit": "933db4596e4bab1b09b6d48a10e21819e4cc458f" },
