@@ -39,7 +39,7 @@ vim.opt.listchars = {
   nbsp = "·",
 }
 -- Spell-checking
-vim.opt.spell = false
+vim.opt.spell = true
 vim.opt.spelllang = { "en", "es" }
 vim.opt.spelloptions = "camel"
 -- Sign column
