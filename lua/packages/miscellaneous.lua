@@ -8,6 +8,14 @@ return {
   { "sQVe/sort.nvim", config = true },
   -- Sync spell files
   "micarmst/vim-spellsync",
+  -- Add programming dictionary
+  {
+    "psliwka/vim-dirtytalk",
+    build = ":DirtytalkUpdate",
+    config = function()
+      vim.opt.spelllang:append("programming")
+    end,
+  },
   -- Never invalidate undo files
   {
     "kevinhwang91/nvim-fundo",
