@@ -8,6 +8,8 @@ return {
   { "sQVe/sort.nvim", config = true },
   -- Sync spell files
   "micarmst/vim-spellsync",
+  -- Install spell files without netrw
+  "cuducos/spellfile.nvim",
   -- Add programming dictionary
   {
     "psliwka/vim-dirtytalk",
