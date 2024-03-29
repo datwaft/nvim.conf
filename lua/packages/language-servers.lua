@@ -186,6 +186,4 @@ return {
       return { { "gx", require("lsplinks").gx } }
     end,
   },
-  -- Stop inactive servers
-  { "Zeioth/garbage-day.nvim", dependencies = "neovim/nvim-lspconfig", event = "VeryLazy", config = true },
 }
