@@ -12,6 +12,13 @@ local function is_inside_comment()
   return context.in_treesitter_capture("comment") or context.in_syntax_group("Comment")
 end
 
+-- Check if cursor is inside an spell-checking zone
+---@return boolean
+local function is_inside_spell()
+  local context = require("cmp.config.context")
+  return context.in_treesitter_capture("spell") or context.in_syntax_group("Spell")
+end
+
 local function config()
   local cmp = require("cmp")
 
@@ -49,10 +56,9 @@ local function config()
       name = "spell",
       option = {
         keep_all_entries = false,
-        enable_in_context = function()
-          return require("cmp.config.context").in_treesitter_capture("spell")
-        end,
+        enable_in_context = is_inside_spell,
       },
+      max_item_count = 5,
     },
   }
 
