@@ -16,7 +16,7 @@
   "fennel.vim": { "branch": "main", "commit": "c6a9c035ca108cbb24273d96cd6277fb8fbc60b4" },
   "fidget.nvim": { "branch": "main", "commit": "933db4596e4bab1b09b6d48a10e21819e4cc458f" },
   "friendly-snippets": { "branch": "main", "commit": "dcd4a586439a1c81357d5b9d26319ae218cc9479" },
-  "fzf": { "branch": "master", "commit": "7de87a9b2c643ab6a1329666b283cab4ba9cb08e" },
+  "fzf": { "branch": "master", "commit": "07ac90d798eb5f7c4a72a46cc6e9b296cb1a3b2d" },
   "gitsigns.nvim": { "branch": "main", "commit": "70584ff9aae8078b64430c574079d79620b8f06d" },
   "gleam.vim": { "branch": "master", "commit": "6739d8b656adb5d2807675b7652afb6e257b2b1c" },
   "inc-rename.nvim": { "branch": "main", "commit": "0f853910da9bb2a09d0ef2454db55935f554f16f" },
