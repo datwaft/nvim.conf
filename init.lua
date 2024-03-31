@@ -143,6 +143,38 @@ vim.keymap.set("n", "<C-t>q", "<CMD>tabclose<CR>")
 vim.keymap.set("c", "<SPACE>", function()
   return vim.fn.wildmenumode() == 1 and "<C-y>" or "<SPACE>"
 end, { expr = true })
+-- Make `j` work with wrapped lines
+vim.keymap.set({ "n", "v" }, "j", function()
+  if vim.v.count == 0 then
+    return "gj"
+  else
+    return "j"
+  end
+end, { expr = true })
+-- Make `k` work with wrapped lines
+vim.keymap.set({ "n", "v" }, "k", function()
+  if vim.v.count == 0 then
+    return "gk"
+  else
+    return "k"
+  end
+end, { expr = true })
+-- Make `<Up>` work with wrapped lines
+vim.keymap.set({ "n", "v" }, "<Up>", function()
+  if vim.v.count == 0 then
+    return "gk"
+  else
+    return "<Up>"
+  end
+end, { expr = true })
+-- Make `<Down>` work with wrapped lines
+vim.keymap.set({ "n", "v" }, "<Down>", function()
+  if vim.v.count == 0 then
+    return "gj"
+  else
+    return "<Down>"
+  end
+end, { expr = true })
 
 ---------------
 -- Text objects
