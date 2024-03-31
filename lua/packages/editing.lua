@@ -53,17 +53,4 @@ return {
     ft = { "fennel" },
     config = true,
   },
-  -- Better writing support
-  {
-    "preservim/vim-pencil",
-    init = function()
-      vim.g["pencil#wrapModeDefault"] = "soft"
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = { "markdown", "text", "tex" },
-        callback = function()
-          vim.fn["pencil#init"]()
-        end,
-      })
-    end,
-  },
 }
