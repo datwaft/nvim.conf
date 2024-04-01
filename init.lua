@@ -192,7 +192,18 @@ vim.keymap.set({ "x", "o" }, "id", ":<C-u>normal! G$vgg0<CR>", { silent = true }
 vim.diagnostic.config({
   underline = { severity = { min = vim.diagnostic.severity.INFO } },
   signs = { severity = { min = vim.diagnostic.severity.HINT } },
-  virtual_text = { severity = { min = vim.diagnostic.severity.INFO } },
+  virtual_text = {
+    severity = { min = vim.diagnostic.severity.INFO },
+    prefix = "",
+    format = function(diagnostic)
+      return ({
+        [vim.diagnostic.severity.ERROR] = " ",
+        [vim.diagnostic.severity.WARN] = " ",
+        [vim.diagnostic.severity.INFO] = " ",
+        [vim.diagnostic.severity.HINT] = " ",
+      })[diagnostic.severity] .. " " .. diagnostic.message .. " "
+    end,
+  },
   float = { show_header = false, source = true },
   update_in_insert = false,
   severity_sort = true,
