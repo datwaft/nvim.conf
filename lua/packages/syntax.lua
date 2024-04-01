@@ -2,6 +2,23 @@
 return {
   -- Fennel
   "jaawerth/fennel.vim",
+  -- LaTeX
+  {
+    "lervag/vimtex",
+    init = function()
+      vim.g.vimtex_view_method = "skim"
+      vim.g.vimtex_compiler_latexmk = {
+        options = {
+          "-shell-escape",
+          "-verbose",
+          "-file-line-error",
+          "-synctex=1",
+          "-interaction=nonstopmode",
+        },
+      }
+      vim.g.vimtex_syntax_conceal_disable = 1
+    end,
+  },
   -- Ansible
   "mfussenegger/nvim-ansible",
   -- ARM ASM
