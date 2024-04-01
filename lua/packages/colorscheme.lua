@@ -4,7 +4,20 @@ return {
   name = "catppuccin",
   lazy = false,
   priority = 1000,
-  config = function()
+  config = function(_, opts)
+    require("catppuccin").setup(opts)
     vim.cmd.colorscheme("catppuccin-mocha")
   end,
+  ---@type CatppuccinOptions
+  opts = {
+    custom_highlights = function(_)
+      return {
+        DiagnosticVirtualTextError = { style = {} },
+        DiagnosticVirtualTextWarn = { style = {} },
+        DiagnosticVirtualTextInfo = { style = {} },
+        DiagnosticVirtualTextHint = { style = {} },
+        DiagnosticVirtualTextOk = { style = {} },
+      }
+    end,
+  },
 }
