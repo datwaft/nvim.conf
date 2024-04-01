@@ -16,7 +16,7 @@ return {
     end,
     opts = {
       ensure_installed = "all",
-      highlight = { enable = true, disable = { "tmux" } },
+      highlight = { enable = true, disable = { "latex", "tmux" } },
       indent = { enable = true },
       format = { enable = true },
       matchup = { enable = true },
