@@ -18,11 +18,12 @@ keybinds
 luarocks
 neovide
 netrw
+num
 nvim
 paredit
 statusline
+subword
+underfull
 uv_fs_t
 wezterm
 wildmenu
-subword
-num
