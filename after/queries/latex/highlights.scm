@@ -1,6 +1,10 @@
 ;; extends
 ;; vi:nospell:
 
+;; ==============
+;; SPELL-CHECKING
+;; ==============
+
 ;; \renewcommand
 (new_command_definition) @nospell
 ;; \definecolor
@@ -29,3 +33,13 @@
  (#eq? @_command_name "\\setcounter"))
 ;; \newenvironment
 (ERROR . "\\newenvironment" @nospell)
+
+;; ==========
+;; HIGHLIGHTS
+;; ==========
+
+;; \generic_command{\generic_command}
+(generic_command
+  arg: (curly_group
+         (generic_command
+           command: (command_name) @function)))
