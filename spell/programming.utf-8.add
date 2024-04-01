@@ -21,6 +21,7 @@ netrw
 num
 nvim
 paredit
+shellcheck
 statusline
 subword
 underfull
