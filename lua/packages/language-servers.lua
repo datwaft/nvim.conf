@@ -32,7 +32,6 @@ local function config()
     "svelte",
     "tailwindcss",
     "taplo",
-    "texlab",
     "vimls",
     "zls",
   }) do
