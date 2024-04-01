@@ -33,6 +33,8 @@
  (#eq? @_command_name "\\setcounter"))
 ;; \newenvironment
 (ERROR . "\\newenvironment" @nospell)
+;; Any math environment
+(math_environment) @nospell
 
 ;; ==========
 ;; HIGHLIGHTS
