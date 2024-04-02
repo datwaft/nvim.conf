@@ -109,6 +109,7 @@ local function config()
       sources.path,
     }, {
       sources.buffer,
+      sources.spell,
     }),
   })
 end
