@@ -15,6 +15,7 @@ local function config()
     "dockerls",
     "emmet_language_server",
     "eslint",
+    "fennel_ls",
     "gleam",
     "gopls",
     "hls",
