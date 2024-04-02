@@ -303,7 +303,7 @@ local packages_path = vim.fn.stdpath("data") .. "/lazy"
 ---@param alias string?
 local function install_package(name, alias)
   ---@type unknown, unknown, string, string
-  local _, _, owner, repo = name:find([[(.+)/(.+)]])
+  local _, _, owner, repo = name:find("(.+)/(.+)")
   local path = ("%s/%s"):format(packages_path, alias or repo)
 
   if not vim.uv.fs_stat(path) then
