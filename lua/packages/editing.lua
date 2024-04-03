@@ -53,4 +53,11 @@ return {
     ft = { "fennel" },
     config = true,
   },
+  -- Paste images
+  {
+    "HakonHarnes/img-clip.nvim",
+    event = "VeryLazy",
+    config = true,
+    keys = { { "<leader>p", "<cmd>PasteImage<cr>", desc = "Paste image from system clipboard" } },
+  },
 }
