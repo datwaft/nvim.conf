@@ -124,6 +124,13 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.spell = true
   end,
 })
+-- Always enable 'conceallevel' on some filetypes
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "html" },
+  callback = function()
+    vim.opt_local.conceallevel = 2
+  end,
+})
 
 -----------
 -- Keybinds
