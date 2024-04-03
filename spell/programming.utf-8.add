@@ -1,4 +1,6 @@
 <localleader>
+CMD
+CTRL
 MANPAGER
 REPL
 TERMINFO
@@ -8,6 +10,7 @@ autocommand
 autocommands
 catppuccin
 colorcolumn
+colorscheme
 filetype
 filetypes
 fzf
@@ -21,6 +24,7 @@ netrw
 num
 nvim
 paredit
+secnumdepth
 shellcheck
 statusline
 subword
@@ -28,4 +32,3 @@ underfull
 uv_fs_t
 wezterm
 wildmenu
-secnumdepth
