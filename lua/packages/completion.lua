@@ -55,7 +55,6 @@ local function config()
       },
       max_item_count = 5,
     },
-    fish = { name = "fish" },
   }
 
   cmp.setup({
@@ -123,17 +122,6 @@ local function config()
       sources.spell,
     }),
   })
-
-  cmp.setup.filetype("fish", {
-    sources = cmp.config.sources({
-      sources.fish,
-      sources.luasnip,
-      sources.path,
-    }, {
-      sources.buffer,
-      sources.spell,
-    }),
-  })
 end
 
 ---@type LazySpec
@@ -155,7 +143,6 @@ return {
       "hrsh7th/cmp-path",
       "micangl/cmp-vimtex",
       "f3fora/cmp-spell",
-      "mtoohey31/cmp-fish",
     },
   },
   {
