@@ -59,6 +59,16 @@ local function config()
   }
 
   cmp.setup({
+    ---@diagnostic disable-next-line: missing-fields
+    formatting = {
+      format = require("lspkind").cmp_format({
+        mode = "symbol_text",
+        maxwidth = function()
+          return math.floor(0.45 * vim.opt.columns:get())
+        end,
+        ellipsis_char = "…",
+      }),
+    },
     preselect = cmp.PreselectMode.None,
     snippet = {
       expand = function(args)
@@ -135,6 +145,8 @@ return {
       vim.opt.completeopt = { "menu", "menuone", "noselect" }
     end,
     dependencies = {
+      -- Icons
+      "onsails/lspkind.nvim",
       -- Snippets
       { "saadparwaiz1/cmp_luasnip", dependencies = { "L3MON4D3/LuaSnip" } },
       -- Sources
