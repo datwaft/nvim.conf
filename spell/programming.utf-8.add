@@ -11,6 +11,9 @@ autocommands
 catppuccin
 colorcolumn
 colorscheme
+conceallevel
+datwaft
+datwaft's
 filetype
 filetypes
 fzf
@@ -20,6 +23,7 @@ keybind
 keybinds
 luarocks
 neovide
+neovim
 netrw
 num
 nvim
@@ -32,4 +36,3 @@ underfull
 uv_fs_t
 wezterm
 wildmenu
-conceallevel
