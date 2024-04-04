@@ -193,6 +193,20 @@ vim.keymap.set({ "x", "o" }, "al", ":<C-u>normal! $v0<CR>", { silent = true })
 -- Document text objects
 vim.keymap.set({ "x", "o" }, "id", ":<C-u>normal! G$vgg0<CR>", { silent = true })
 
+--------
+-- Icons
+--------
+vim.g.icons = {
+  error = " ",
+  warn = " ",
+  info = " ",
+  hint = " ",
+  ok = " ",
+  added = " ",
+  modified = " ",
+  removed = " ",
+}
+
 --------------
 -- Diagnostics
 --------------
@@ -205,10 +219,10 @@ vim.diagnostic.config({
     prefix = "",
     format = function(diagnostic)
       return ({
-        [vim.diagnostic.severity.ERROR] = " ",
-        [vim.diagnostic.severity.WARN] = " ",
-        [vim.diagnostic.severity.INFO] = " ",
-        [vim.diagnostic.severity.HINT] = " ",
+        [vim.diagnostic.severity.ERROR] = vim.g.icons.error,
+        [vim.diagnostic.severity.WARN] = vim.g.icons.warn,
+        [vim.diagnostic.severity.INFO] = vim.g.icons.info,
+        [vim.diagnostic.severity.HINT] = vim.g.icons.hint,
       })[diagnostic.severity] .. " " .. diagnostic.message .. " "
     end,
   },
@@ -217,11 +231,11 @@ vim.diagnostic.config({
   severity_sort = true,
 })
 -- Set diagnostic signs
-vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
-vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
-vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
-vim.fn.sign_define("DiagnosticSignHint", { text = " ", texthl = "DiagnosticSignHint" })
-vim.fn.sign_define("DiagnosticSignOk", { text = " ", texthl = "DiagnosticSignOk" })
+vim.fn.sign_define("DiagnosticSignError", { text = vim.g.icons.error, texthl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignWarn", { text = vim.g.icons.warn, texthl = "DiagnosticSignWarn" })
+vim.fn.sign_define("DiagnosticSignInfo", { text = vim.g.icons.info, texthl = "DiagnosticSignInfo" })
+vim.fn.sign_define("DiagnosticSignHint", { text = vim.g.icons.hint, texthl = "DiagnosticSignHint" })
+vim.fn.sign_define("DiagnosticSignOk", { text = vim.g.icons.ok, texthl = "DiagnosticSignOk" })
 -- Keybind for showing line diagnostics
 vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float)
 -- Keybind for going to diagnostics

@@ -14,10 +14,10 @@ return {
         {
           "diagnostics",
           symbols = {
-            error = " ",
-            warn = " ",
-            info = " ",
-            hint = " ",
+            error = vim.g.icons.error,
+            warn = vim.g.icons.warn,
+            info = vim.g.icons.info,
+            hint = vim.g.icons.hint,
           },
         },
       },
@@ -26,9 +26,9 @@ return {
         {
           "diff",
           symbols = {
-            added = " ",
-            modified = " ",
-            removed = " ",
+            added = vim.g.icons.added,
+            modified = vim.g.icons.modified,
+            removed = vim.g.icons.removed,
           },
         },
       },
