@@ -1,4 +1,4 @@
-# datwaft`s neovim configuration
+# datwaft's neovim configuration
 
 ## How to install git hooks?
 
