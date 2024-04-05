@@ -63,6 +63,8 @@ return {
 
       dapui.setup()
 
+      vim.keymap.set({ "n", "v" }, "<localleader>K", '<cmd>lua require("dapui").eval()<cr>')
+
       dap.listeners.before.attach.dapui = function()
         dapui.open()
       end
@@ -76,5 +78,13 @@ return {
         dapui.close()
       end
     end,
+  },
+  {
+    "LiadOz/nvim-dap-repl-highlights",
+    config = true,
+    build = ":TSUpdate dap_repl",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
   },
 }
