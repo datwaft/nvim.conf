@@ -49,6 +49,17 @@ return {
           dap.set_breakpoint(nil, nil, opts.fargs[1])
         end
       end, { nargs = "?", bang = true, desc = "Set or toggle a breakpoint" })
+      -- Keybinds
+      vim.keymap.set("n", "<localleader>gc", dap.continue)
+      vim.keymap.set("n", "<localleader>go", dap.step_over)
+      vim.keymap.set("n", "<localleader>gi", dap.step_into)
+      vim.keymap.set("n", "<localleader>gO", dap.step_out)
+      vim.keymap.set("n", "<localleader>tb", dap.toggle_breakpoint)
+      vim.keymap.set("n", "<localleader>tl", function()
+        dap.toggle_breakpoint(nil, nil, vim.fn.input("Log point message: "))
+      end)
+      vim.keymap.set("n", "<localleader>Rl", dap.run_last)
+      vim.keymap.set("n", "<localleader>Rc", dap.run_to_cursor)
     end,
   },
   {
