@@ -108,6 +108,7 @@ vim.api.nvim_create_autocmd("FileType", {
     "qf",
     "man",
     "editorconfig",
+    "query",
   },
   callback = function()
     vim.opt_local.spell = false
