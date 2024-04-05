@@ -222,6 +222,13 @@ _G.icons = {
     modified = " ",
     removed = " ",
   },
+  debug = {
+    breakpoint = " ",
+    condition = "󱨇 ",
+    log = " ",
+    stopped = " ",
+    rejected = " ",
+  },
 }
 
 --------------
