@@ -98,4 +98,12 @@ return {
       "nvim-treesitter/nvim-treesitter",
     },
   },
+  {
+    "theHamsta/nvim-dap-virtual-text",
+    config = true,
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      "nvim-treesitter/nvim-treesitter",
+    },
+  },
 }
