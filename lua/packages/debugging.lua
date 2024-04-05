@@ -58,8 +58,8 @@ return {
       vim.keymap.set("n", "<localleader>tl", function()
         dap.toggle_breakpoint(nil, nil, vim.fn.input("Log point message: "))
       end)
-      vim.keymap.set("n", "<localleader>Rl", dap.run_last)
-      vim.keymap.set("n", "<localleader>Rc", dap.run_to_cursor)
+      vim.keymap.set("n", "<localleader>rl", dap.run_last)
+      vim.keymap.set("n", "<localleader>rc", dap.run_to_cursor)
     end,
   },
   {
