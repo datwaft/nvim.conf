@@ -29,6 +29,7 @@ netrw
 num
 nvim
 paredit
+rsync
 secnumdepth
 shellcheck
 statusline
