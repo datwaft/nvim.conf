@@ -25,6 +25,7 @@ return {
             text = { " ", builtin.lnumfunc, " " },
             condition = { builtin.not_empty, true, builtin.not_empty },
           },
+          { sign = { namespace = { "dap" }, auto = true }, condition = { builtin.not_empty } },
           { sign = { namespace = { "gitsigns" }, auto = true, wrap = true } },
         },
       }
