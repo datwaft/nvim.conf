@@ -35,10 +35,10 @@ return {
     dap.configurations.cpp = configs.lldb
     dap.configurations.rust = configs.lldb
     -- Define signs
-    vim.fn.sign_define("DapBreakpoint", { text = icons.debug.breakpoint, texthl = "DapBreakpoint" })
-    vim.fn.sign_define("DapBreakpointCondition", { text = icons.debug.condition, texthl = "DapBreakpointCondition" })
-    vim.fn.sign_define("DapLogPoint", { text = icons.debug.log, texthl = "DapLogPoint" })
-    vim.fn.sign_define("DapStopped", { text = icons.debug.stopped, texthl = "DapStopped" })
-    vim.fn.sign_define("DapBreakpointRejected", { text = icons.debug.rejected, texthl = "DapBreakpointRejected" })
+    define_sign("DapBreakpoint", icons.debug.breakpoint)
+    define_sign("DapBreakpointCondition", icons.debug.condition)
+    define_sign("DapLogPoint", icons.debug.log)
+    define_sign("DapStopped", icons.debug.stopped)
+    define_sign("DapBreakpointRejected", icons.debug.rejected)
   end,
 }
