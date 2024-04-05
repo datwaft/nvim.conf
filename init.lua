@@ -226,7 +226,7 @@ _G.icons = {
     breakpoint = " ",
     condition = "󱨇 ",
     log = " ",
-    stopped = " ",
+    stopped = " ",
     rejected = " ",
   },
 }
