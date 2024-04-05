@@ -1,3 +1,15 @@
+----------
+-- Helpers
+----------
+
+-- Helper to define a sign with its `name` as `texthl`
+---@param name string
+---@param text string
+---@return -1|0
+function _G.define_sign(name, text)
+  return vim.fn.sign_define(name, { text = text, texthl = name })
+end
+
 -----------
 -- Settings
 -----------
@@ -236,11 +248,11 @@ vim.diagnostic.config({
   severity_sort = true,
 })
 -- Set diagnostic signs
-vim.fn.sign_define("DiagnosticSignError", { text = icons.diagnostic.error, texthl = "DiagnosticSignError" })
-vim.fn.sign_define("DiagnosticSignWarn", { text = icons.diagnostic.warn, texthl = "DiagnosticSignWarn" })
-vim.fn.sign_define("DiagnosticSignInfo", { text = icons.diagnostic.info, texthl = "DiagnosticSignInfo" })
-vim.fn.sign_define("DiagnosticSignHint", { text = icons.diagnostic.hint, texthl = "DiagnosticSignHint" })
-vim.fn.sign_define("DiagnosticSignOk", { text = icons.diagnostic.ok, texthl = "DiagnosticSignOk" })
+define_sign("DiagnosticSignError", icons.diagnostic.error)
+define_sign("DiagnosticSignWarn", icons.diagnostic.warn)
+define_sign("DiagnosticSignInfo", icons.diagnostic.info)
+define_sign("DiagnosticSignHint", icons.diagnostic.hint)
+define_sign("DiagnosticSignOk", icons.diagnostic.ok)
 -- Keybind for showing line diagnostics
 vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float)
 -- Keybind for going to diagnostics
