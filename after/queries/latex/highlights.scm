@@ -1,5 +1,4 @@
 ;; extends
-;; vi:nospell:
 
 ;; ==============
 ;; SPELL-CHECKING

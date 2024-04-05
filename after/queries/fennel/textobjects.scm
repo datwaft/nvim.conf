@@ -1,3 +1,3 @@
-; extends
+;; extends
 
 (program (list) @statement.top)
