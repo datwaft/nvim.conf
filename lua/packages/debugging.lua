@@ -3,6 +3,34 @@ local adapters = {}
 ---@type table<string, Configuration[]>
 local configs = {}
 
+---@param opts? table
+local function find_executable(opts)
+  local pickers = require("telescope.pickers")
+  local finders = require("telescope.finders")
+  local conf = require("telescope.config").values
+  local actions = require("telescope.actions")
+  local action_state = require("telescope.actions.state")
+
+  opts = opts or {}
+
+  return coroutine.create(function(coro)
+    pickers
+      .new(opts, {
+        prompt_title = "Find Executable",
+        finder = finders.new_oneshot_job({ "fd", "--hidden", "--no-ignore", "--type", "x" }, {}),
+        soter = conf.generic_sorter(opts),
+        attach_mappings = function(buffer_number)
+          actions.select_default:replace(function()
+            actions.close(buffer_number)
+            coroutine.resume(coro, action_state.get_selected_entry()[1])
+          end)
+          return true
+        end,
+      })
+      :find()
+  end)
+end
+
 adapters.lldb = {
   type = "executable",
   command = "/opt/homebrew/opt/llvm/bin/lldb-vscode",
@@ -15,7 +43,7 @@ configs.lldb = {
     type = "lldb",
     request = "launch",
     program = function()
-      return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+      return find_executable()
     end,
     cwd = "${workspaceFolder}",
     stopOnEntry = false,
@@ -27,6 +55,7 @@ configs.lldb = {
 return {
   {
     "mfussenegger/nvim-dap",
+    dependencies = { "nvim-telescope/telescope.nvim" },
     config = function()
       local dap = require("dap")
       -- Configure adapters
