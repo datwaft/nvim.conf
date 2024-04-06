@@ -93,7 +93,7 @@ end
 
 adapters.lldb = {
   type = "executable",
-  command = "/opt/homebrew/opt/llvm/bin/lldb-vscode",
+  command = "lldb-vscode",
   name = "lldb",
 }
 adapters.debugpy = {
