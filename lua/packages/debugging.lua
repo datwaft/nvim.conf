@@ -47,7 +47,7 @@ local function get_arguments()
     vim.ui.input(
       {
         prompt = "Arguments: ",
-        default = "./",
+        default = "",
         highlight = treesitter_highlight_for("bash"),
       },
       ---@param input? string
