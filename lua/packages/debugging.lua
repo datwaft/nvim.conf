@@ -142,6 +142,7 @@ return {
       vim.keymap.set("n", "<localleader>gi", dap.step_into)
       vim.keymap.set("n", "<localleader>gO", dap.step_out)
       vim.keymap.set("n", "<localleader>tb", dap.toggle_breakpoint)
+      vim.keymap.set("n", "<localleader>cb", dap.clear_breakpoints)
       vim.keymap.set("n", "<localleader>tl", function()
         dap.toggle_breakpoint(nil, nil, vim.fn.input("Log point message: "))
       end)
