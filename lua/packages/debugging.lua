@@ -154,7 +154,7 @@ return {
           program = command,
           args = args,
         })
-      end, { complete = "file", nargs = "*", desc = "Debug command line script" })
+      end, { complete = "file", nargs = "+", desc = "Debug command line script" })
       -- Keybinds
       vim.keymap.set("n", "<localleader>gc", dap.continue)
       vim.keymap.set("n", "<localleader>go", dap.step_over)
