@@ -113,7 +113,6 @@ configs.lldb = {
 return {
   {
     "mfussenegger/nvim-dap",
-    dependencies = { "nvim-telescope/telescope.nvim" },
     config = function()
       local dap = require("dap")
       -- Configure adapters
