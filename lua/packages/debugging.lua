@@ -107,24 +107,21 @@ adapters.debugpy = {
 }
 
 configs.lldb = {
-  {
-    name = "Launch LLDB",
-    type = "lldb",
-    request = "launch",
-    program = find_executable,
-    args = get_arguments,
-    cwd = "${workspaceFolder}",
-    stopOnEntry = false,
-  },
+  name = "Launch LLDB",
+  type = "lldb",
+  request = "launch",
+  program = find_executable,
+  args = get_arguments,
+  cwd = "${workspaceFolder}",
+  stopOnEntry = false,
 }
+
 configs.debugpy = {
-  {
-    name = "Launch debugpy",
-    type = "debugpy",
-    request = "launch",
-    program = "${file}",
-    console = "externalTerminal",
-  },
+  name = "Launch debugpy",
+  type = "debugpy",
+  request = "launch",
+  program = "${file}",
+  console = "externalTerminal",
 }
 
 ---@type LazySpec
@@ -136,10 +133,10 @@ return {
       -- Configure adapters
       dap.adapters = adapters
       -- Configure configurations
-      dap.configurations.c = configs.lldb
-      dap.configurations.cpp = configs.lldb
-      dap.configurations.rust = configs.lldb
-      dap.configurations.python = configs.debugpy
+      dap.configurations.c = { configs.lldb }
+      dap.configurations.cpp = { configs.lldb }
+      dap.configurations.rust = { configs.lldb }
+      dap.configurations.python = { configs.debugpy }
       -- Configure default external terminal
       dap.defaults.fallback.force_external_terminal = true
       dap.defaults.fallback.external_terminal = {
