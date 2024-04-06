@@ -158,8 +158,8 @@ return {
       -- Configure default external terminal
       dap.defaults.fallback.force_external_terminal = true
       dap.defaults.fallback.external_terminal = {
-        command = "tmux",
-        args = { "split-window", "-d", "-h", "-c", "#{pane_current_path}" },
+        command = "tmux-auto-split",
+        args = { "-d", "-c", "#{pane_current_path}" },
       }
       -- Define signs
       define_sign("DapBreakpoint", icons.debug.breakpoint)
