@@ -1,3 +1,19 @@
+---@param lang string
+local function treesitter_highlight_for(lang)
+  ---@param input string
+  return function(input)
+    local parser = vim.treesitter.get_string_parser(input, lang)
+    local tree = parser:parse()[1]
+    local query = assert(vim.treesitter.query.get(lang, "highlights"))
+    local highlights = {}
+    for id, node in query:iter_captures(tree:root(), input) do
+      local _, cstart, _, cend = node:range()
+      table.insert(highlights, { cstart, cend, "@" .. query.captures[id] })
+    end
+    return highlights
+  end
+end
+
 ---@type table<string, Adapter>
 local adapters = {}
 ---@type table<string, Configuration[]>
@@ -11,18 +27,7 @@ local function find_executable()
         prompt = "Executable: ",
         default = "./",
         completion = "shellcmd",
-        ---@param input string
-        highlight = function(input)
-          local parser = vim.treesitter.get_string_parser(input, "bash")
-          local tree = parser:parse()[1]
-          local query = assert(vim.treesitter.query.get("bash", "highlights"))
-          local highlights = {}
-          for id, node in query:iter_captures(tree:root(), input) do
-            local _, cstart, _, cend = node:range()
-            table.insert(highlights, { cstart, cend, "@" .. query.captures[id] })
-          end
-          return highlights
-        end,
+        highlight = treesitter_highlight_for("bash"),
       },
       ---@param input? string
       function(input)
@@ -30,6 +35,27 @@ local function find_executable()
           coroutine.resume(coro, dap.ABORT)
         else
           coroutine.resume(coro, input)
+        end
+      end
+    )
+  end)
+end
+
+local function get_arguments()
+  local dap = require("dap")
+  return coroutine.create(function(coro)
+    vim.ui.input(
+      {
+        prompt = "Arguments: ",
+        default = "./",
+        highlight = treesitter_highlight_for("bash"),
+      },
+      ---@param input? string
+      function(input)
+        if input == nil or input:match("^%s*$") then
+          coroutine.resume(coro, dap.ABORT)
+        else
+          coroutine.resume(coro, vim.fn.split(input, " "))
         end
       end
     )
@@ -47,12 +73,10 @@ configs.lldb = {
     name = "Launch LLDB",
     type = "lldb",
     request = "launch",
-    program = function()
-      return find_executable()
-    end,
+    program = find_executable,
+    args = get_arguments,
     cwd = "${workspaceFolder}",
     stopOnEntry = false,
-    args = {},
   },
 }
 
