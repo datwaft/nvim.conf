@@ -3,31 +3,36 @@ local adapters = {}
 ---@type table<string, Configuration[]>
 local configs = {}
 
----@param opts? table
-local function find_executable(opts)
-  local pickers = require("telescope.pickers")
-  local finders = require("telescope.finders")
-  local conf = require("telescope.config").values
-  local actions = require("telescope.actions")
-  local action_state = require("telescope.actions.state")
-
-  opts = opts or {}
-
+local function find_executable()
+  local dap = require("dap")
   return coroutine.create(function(coro)
-    pickers
-      .new(opts, {
-        prompt_title = "Find Executable",
-        finder = finders.new_oneshot_job({ "fd", "--hidden", "--no-ignore", "--type", "x" }, {}),
-        soter = conf.generic_sorter(opts),
-        attach_mappings = function(buffer_number)
-          actions.select_default:replace(function()
-            actions.close(buffer_number)
-            coroutine.resume(coro, action_state.get_selected_entry()[1])
-          end)
-          return true
+    vim.ui.input(
+      {
+        prompt = "Executable: ",
+        default = "./",
+        completion = "shellcmd",
+        ---@param input string
+        highlight = function(input)
+          local parser = vim.treesitter.get_string_parser(input, "bash")
+          local tree = parser:parse()[1]
+          local query = assert(vim.treesitter.query.get("bash", "highlights"))
+          local highlights = {}
+          for id, node in query:iter_captures(tree:root(), input) do
+            local _, cstart, _, cend = node:range()
+            table.insert(highlights, { cstart, cend, "@" .. query.captures[id] })
+          end
+          return highlights
         end,
-      })
-      :find()
+      },
+      ---@param input? string
+      function(input)
+        if input == nil or input:match("^%s*$") then
+          coroutine.resume(coro, dap.ABORT)
+        else
+          coroutine.resume(coro, input)
+        end
+      end
+    )
   end)
 end
 
