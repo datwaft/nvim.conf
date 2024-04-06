@@ -85,7 +85,7 @@ local function get_arguments()
       },
       ---@param input? string
       function(input)
-        coroutine.resume(coro, split_by_whitespace(input or ""))
+        coroutine.resume(coro, split_by_whitespace(vim.fn.expand(input or "")))
       end
     )
   end)
@@ -136,6 +136,25 @@ return {
           dap.set_breakpoint(nil, nil, opts.fargs[1])
         end
       end, { nargs = "?", bang = true, desc = "Set or toggle a breakpoint" })
+      -- Define command for debugging a command line script
+      vim.api.nvim_create_user_command("Debug", function(opts)
+        local input = split_by_whitespace(vim.fn.expand(opts.args))
+        local command = input[1]
+        table.remove(input, 1)
+        local args = input
+        local ft = vim.opt_local.filetype:get()
+        if dap.configurations[ft] == nil or dap.configurations[ft][1] == nil then
+          vim.notify(("Couldn't find a configuration for ft=%s"):format(ft), vim.log.levels.ERROR)
+          return
+        end
+        dap.run({
+          name = dap.configurations[ft][1].name,
+          type = dap.configurations[ft][1].type,
+          request = dap.configurations[ft][1].request,
+          program = command,
+          args = args,
+        })
+      end, { complete = "file", nargs = "*", desc = "Debug command line script" })
       -- Keybinds
       vim.keymap.set("n", "<localleader>gc", dap.continue)
       vim.keymap.set("n", "<localleader>go", dap.step_over)
