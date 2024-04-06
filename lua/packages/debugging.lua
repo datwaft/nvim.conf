@@ -14,6 +14,40 @@ local function treesitter_highlight_for(lang)
   end
 end
 
+-- Split input by whitespace taking into account strings
+---@param input string
+---@source https://stackoverflow.com/a/28674661
+local function split_by_whitespace(input)
+  local lpeg = require("lpeg")
+  local P, S, C, Cc, Ct = lpeg.P, lpeg.S, lpeg.C, lpeg.Cc, lpeg.Ct
+
+  local function token(id, patt)
+    return Ct(Cc(id) * C(patt))
+  end
+
+  local singleq = P("'") * ((1 - S("'\r\n\f\\")) + (P("\\") * 1)) ^ 0 * "'"
+  local doubleq = P('"') * ((1 - S('"\r\n\f\\')) + (P("\\") * 1)) ^ 0 * '"'
+
+  local white = token("whitespace", S("\r\n\f\t ") ^ 1)
+  local word = token("word", (1 - S("' \r\n\f\t\"")) ^ 1)
+
+  local string = token("string", singleq + doubleq)
+
+  local tokens = Ct((string + white + word) ^ 0)
+
+  local output = {}
+  for _, tok in ipairs(lpeg.match(tokens, input)) do
+    if tok[1] ~= "whitespace" then
+      if tok[1] == "string" then
+        table.insert(output, tok[2]:sub(2, -2))
+      else
+        table.insert(output, tok[2])
+      end
+    end
+  end
+  return output
+end
+
 ---@type table<string, Adapter>
 local adapters = {}
 ---@type table<string, Configuration[]>
@@ -55,7 +89,7 @@ local function get_arguments()
         if input == nil or input:match("^%s*$") then
           coroutine.resume(coro, dap.ABORT)
         else
-          coroutine.resume(coro, vim.fn.split(input, " "))
+          coroutine.resume(coro, split_by_whitespace(input))
         end
       end
     )
