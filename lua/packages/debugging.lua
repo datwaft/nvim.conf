@@ -116,7 +116,7 @@ adapters.debugpy = {
 }
 
 configs.lldb = {
-  name = "Launch LLDB",
+  name = "Launch lldb",
   type = "lldb",
   request = "launch",
   program = find_executable,
