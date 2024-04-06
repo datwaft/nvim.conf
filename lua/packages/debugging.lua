@@ -159,7 +159,7 @@ return {
       dap.defaults.fallback.force_external_terminal = true
       dap.defaults.fallback.external_terminal = {
         command = "tmux",
-        args = { "split-window", "-h", "-c", "#{pane_current_path}" },
+        args = { "split-window", "-d", "-h", "-c", "#{pane_current_path}" },
       }
       -- Define signs
       define_sign("DapBreakpoint", icons.debug.breakpoint)
