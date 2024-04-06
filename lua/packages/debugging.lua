@@ -96,6 +96,15 @@ adapters.lldb = {
   command = "/opt/homebrew/opt/llvm/bin/lldb-vscode",
   name = "lldb",
 }
+adapters.debugpy = {
+  type = "executable",
+  command = "python3",
+  args = { "-m", "debugpy.adapter" },
+  name = "debugpy",
+  options = {
+    source_filetype = "python",
+  },
+}
 
 configs.lldb = {
   {
@@ -106,6 +115,14 @@ configs.lldb = {
     args = get_arguments,
     cwd = "${workspaceFolder}",
     stopOnEntry = false,
+  },
+}
+configs.debugpy = {
+  {
+    name = "Launch debugpy",
+    type = "debugpy",
+    request = "launch",
+    program = "${file}",
   },
 }
 
@@ -121,6 +138,7 @@ return {
       dap.configurations.c = configs.lldb
       dap.configurations.cpp = configs.lldb
       dap.configurations.rust = configs.lldb
+      dap.configurations.python = configs.debugpy
       -- Define signs
       define_sign("DapBreakpoint", icons.debug.breakpoint)
       define_sign("DapBreakpointCondition", icons.debug.condition)
