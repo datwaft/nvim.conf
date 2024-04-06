@@ -50,7 +50,7 @@ end
 
 ---@type table<string, Adapter>
 local adapters = {}
----@type table<string, Configuration[]>
+---@type table<string, Configuration>
 local configs = {}
 
 local function find_executable()
@@ -92,15 +92,24 @@ local function get_arguments()
 end
 
 adapters.lldb = {
+  name = "lldb",
   type = "executable",
   command = "lldb-vscode",
-  name = "lldb",
+}
+adapters.codelldb = {
+  name = "codelldb",
+  type = "server",
+  port = "${port}",
+  executable = {
+    command = "codelldb",
+    args = { "--port", "${port}" },
+  },
 }
 adapters.debugpy = {
+  name = "debugpy",
   type = "executable",
   command = "python3",
   args = { "-m", "debugpy.adapter" },
-  name = "debugpy",
   options = {
     source_filetype = "python",
   },
@@ -115,7 +124,16 @@ configs.lldb = {
   cwd = "${workspaceFolder}",
   stopOnEntry = false,
 }
-
+configs.codelldb = {
+  name = "Launch codelldb",
+  type = "codelldb",
+  request = "launch",
+  program = find_executable,
+  args = get_arguments,
+  cwd = "${workspaceFolder}",
+  stopOnEntry = false,
+  console = "externalTerminal",
+}
 configs.debugpy = {
   name = "Launch debugpy",
   type = "debugpy",
@@ -133,9 +151,9 @@ return {
       -- Configure adapters
       dap.adapters = adapters
       -- Configure configurations
-      dap.configurations.c = { configs.lldb }
-      dap.configurations.cpp = { configs.lldb }
-      dap.configurations.rust = { configs.lldb }
+      dap.configurations.c = { configs.codelldb }
+      dap.configurations.cpp = { configs.codelldb }
+      dap.configurations.rust = { configs.codelldb }
       dap.configurations.python = { configs.debugpy }
       -- Configure default external terminal
       dap.defaults.fallback.force_external_terminal = true
@@ -174,6 +192,8 @@ return {
           request = dap.configurations[ft][1].request,
           program = command,
           args = args,
+          ---@diagnostic disable-next-line: undefined-field
+          terminal = dap.configurations[ft][1].terminal,
         })
       end, { complete = "file", nargs = "+", desc = "Debug command line script" })
       -- Keybinds
