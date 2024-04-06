@@ -76,7 +76,6 @@ local function find_executable()
 end
 
 local function get_arguments()
-  local dap = require("dap")
   return coroutine.create(function(coro)
     vim.ui.input(
       {
@@ -86,11 +85,7 @@ local function get_arguments()
       },
       ---@param input? string
       function(input)
-        if input == nil or input:match("^%s*$") then
-          coroutine.resume(coro, dap.ABORT)
-        else
-          coroutine.resume(coro, split_by_whitespace(input))
-        end
+        coroutine.resume(coro, split_by_whitespace(input or ""))
       end
     )
   end)
