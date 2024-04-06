@@ -123,6 +123,7 @@ configs.debugpy = {
     type = "debugpy",
     request = "launch",
     program = "${file}",
+    console = "externalTerminal",
   },
 }
 
@@ -139,6 +140,12 @@ return {
       dap.configurations.cpp = configs.lldb
       dap.configurations.rust = configs.lldb
       dap.configurations.python = configs.debugpy
+      -- Configure default external terminal
+      dap.defaults.fallback.force_external_terminal = true
+      dap.defaults.fallback.external_terminal = {
+        command = "tmux",
+        args = { "split-window", "-h", "-c", "#{pane_current_path}" },
+      }
       -- Define signs
       define_sign("DapBreakpoint", icons.debug.breakpoint)
       define_sign("DapBreakpointCondition", icons.debug.condition)
