@@ -5,7 +5,18 @@ return {
   opts = {
     options = {
       globalstatus = true,
-      disabled_filetypes = { winbar = { "qf", "neo-tree" } },
+      disabled_filetypes = {
+        winbar = {
+          "qf",
+          "neo-tree",
+          "dapui_watches",
+          "dapui_stacks",
+          "dapui_breakpoints",
+          "dapui_scopes",
+          "dapui_console",
+          "dap-repl",
+        },
+      },
     },
     sections = {
       lualine_a = { "mode" },
