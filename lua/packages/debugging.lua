@@ -105,8 +105,8 @@ adapters.codelldb = {
     args = { "--port", "${port}" },
   },
 }
-adapters.debugpy = {
-  name = "debugpy",
+adapters.python = {
+  name = "python",
   type = "executable",
   command = "python3",
   args = { "-m", "debugpy.adapter" },
@@ -134,9 +134,9 @@ configs.codelldb = {
   stopOnEntry = false,
   console = "externalTerminal",
 }
-configs.debugpy = {
+configs.python = {
   name = "Launch debugpy",
-  type = "debugpy",
+  type = "python",
   request = "launch",
   program = "${file}",
   console = "externalTerminal",
@@ -154,7 +154,7 @@ return {
       dap.configurations.c = { configs.codelldb }
       dap.configurations.cpp = { configs.codelldb }
       dap.configurations.rust = { configs.codelldb }
-      dap.configurations.python = { configs.debugpy }
+      dap.configurations.python = { configs.python }
       -- Configure default external terminal
       dap.defaults.fallback.force_external_terminal = true
       dap.defaults.fallback.external_terminal = {
