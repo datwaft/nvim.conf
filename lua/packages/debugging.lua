@@ -141,6 +141,13 @@ configs.python = {
   program = "${file}",
   console = "externalTerminal",
 }
+configs.pwa_node = {
+  name = "Launch pwa-node",
+  type = "pwa-node",
+  request = "launch",
+  program = "${file}",
+  cwd = "${workspaceFolder}",
+}
 
 ---@type LazySpec
 return {
@@ -155,6 +162,8 @@ return {
       dap.configurations.cpp = { configs.codelldb }
       dap.configurations.rust = { configs.codelldb }
       dap.configurations.python = { configs.python }
+      dap.configurations.javascript = { configs.pwa_node }
+      dap.configurations.typescript = { configs.pwa_node }
       -- Configure default external terminal
       dap.defaults.fallback.force_external_terminal = true
       dap.defaults.fallback.external_terminal = {
@@ -258,5 +267,20 @@ return {
     "jay-babu/mason-nvim-dap.nvim",
     dependencies = { "mfussenegger/nvim-dap", "williamboman/mason.nvim" },
     opts = { automatic_installation = true },
+  },
+  {
+    "mxsdev/nvim-dap-vscode-js",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      {
+        "microsoft/vscode-js-debug",
+        opt = true,
+        build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
+      },
+    },
+    opts = {
+      debugger_path = vim.fn.stdpath("data") .. "/lazy/vscode-js-debug",
+      adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" },
+    },
   },
 }
