@@ -1,14 +1,15 @@
 ---@type LazySpec
 return {
   -- Surround operations
-  "machakann/vim-sandwich",
+  { "machakann/vim-sandwich", event = "VeryLazy" },
   -- Subversion and coercion operations
-  "tpope/vim-abolish",
+  { "tpope/vim-abolish", event = "VeryLazy" },
   -- Undo-tree
-  "mbbill/undotree",
+  { "mbbill/undotree", event = "VeryLazy" },
   -- Indent and subword text objects
   {
     "chrisgrieser/nvim-various-textobjs",
+    event = "VeryLazy",
     keys = {
       -- Indentation
       { mode = { "o", "x" }, "ii", "<cmd>lua require('various-textobjs').indentation('inner', 'inner')<CR>" },
@@ -23,14 +24,15 @@ return {
   -- Around and inner text objects
   {
     "echasnovski/mini.ai",
+    event = "VeryLazy",
     opts = {
       mappings = { around_last = "", inside_last = "" },
     },
   },
   -- Space text objects
-  "vim-utils/vim-space",
+  { "vim-utils/vim-space", event = "VeryLazy" },
   -- Paredit
-  { "julienvincent/nvim-paredit", config = true },
+  { "julienvincent/nvim-paredit", event = "VeryLazy", config = true },
   {
     "julienvincent/nvim-paredit-fennel",
     dependencies = { "julienvincent/nvim-paredit" },
