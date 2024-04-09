@@ -153,6 +153,7 @@ configs.pwa_node = {
 return {
   {
     "mfussenegger/nvim-dap",
+    event = "VeryLazy",
     config = function()
       local dap = require("dap")
       -- Configure adapters
@@ -221,6 +222,7 @@ return {
   },
   {
     "rcarriga/nvim-dap-ui",
+    event = "VeryLazy",
     dependencies = {
       "mfussenegger/nvim-dap",
       "nvim-neotest/nvim-nio",
@@ -249,6 +251,7 @@ return {
   },
   {
     "LiadOz/nvim-dap-repl-highlights",
+    event = "VeryLazy",
     config = true,
     build = ":TSUpdate dap_repl",
     dependencies = {
@@ -257,6 +260,7 @@ return {
   },
   {
     "theHamsta/nvim-dap-virtual-text",
+    event = "VeryLazy",
     config = true,
     dependencies = {
       "mfussenegger/nvim-dap",
@@ -265,11 +269,13 @@ return {
   },
   {
     "jay-babu/mason-nvim-dap.nvim",
+    event = "VeryLazy",
     dependencies = { "mfussenegger/nvim-dap", "williamboman/mason.nvim" },
     opts = { automatic_installation = true },
   },
   {
     "mxsdev/nvim-dap-vscode-js",
+    event = "VeryLazy",
     dependencies = {
       "mfussenegger/nvim-dap",
       {
