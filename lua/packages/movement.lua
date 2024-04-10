@@ -11,7 +11,6 @@ return {
   },
   {
     "chrisgrieser/nvim-spider",
-    dependencies = { "vhyrro/luarocks.nvim" },
     keys = {
       { mode = { "n", "o", "x" }, "w", "<cmd>lua require('spider').motion('w')<cr>", desc = "spider-w" },
       { mode = { "n", "o", "x" }, "e", "<cmd>lua require('spider').motion('e')<cr>", desc = "spider-e" },
