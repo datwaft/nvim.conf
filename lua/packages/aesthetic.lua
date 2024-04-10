@@ -19,24 +19,6 @@ return {
   },
   -- Indentation lines
   { "lukas-reineke/indent-blankline.nvim", main = "ibl", event = "VeryLazy", opts = { scope = { enabled = false } } },
-  -- Status column
-  {
-    "luukvbaal/statuscol.nvim",
-    opts = function()
-      local builtin = require("statuscol.builtin")
-      return {
-        segments = {
-          { sign = { namespace = { "diagnostic" } }, condition = { builtin.not_empty } },
-          {
-            text = { " ", builtin.lnumfunc, " " },
-            condition = { builtin.not_empty, true, builtin.not_empty },
-          },
-          { sign = { namespace = { "dap" }, auto = true }, condition = { builtin.not_empty } },
-          { sign = { namespace = { "gitsigns" }, auto = true, wrap = true } },
-        },
-      }
-    end,
-  },
   -- Experimental UI enhancements
   {
     "folke/noice.nvim",
