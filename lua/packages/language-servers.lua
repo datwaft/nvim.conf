@@ -15,7 +15,6 @@ local function config()
     "dockerls",
     "emmet_language_server",
     "eslint",
-    "fennel_ls",
     "gleam",
     "gopls",
     "hls",
@@ -58,6 +57,12 @@ local function config()
         hint = { enable = true },
       },
     },
+    capabilities = capabilities,
+  })
+  -- Fennel
+  lsp.fennel_ls.setup({
+    root_dir = require("lspconfig.util").root_pattern(".git/", "fnl/", ".nfnl.fnl"),
+    settings = { ["fennel-ls"] = { ["extra-globals"] = "vim" } },
     capabilities = capabilities,
   })
   -- VueJS
