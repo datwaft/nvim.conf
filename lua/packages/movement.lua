@@ -3,11 +3,11 @@ return {
   {
     "ggandor/leap.nvim",
     dependencies = "tpope/vim-repeat",
-    config = function()
-      vim.keymap.set({ "n", "x", "o" }, "m", "<Plug>(leap-forward)")
-      vim.keymap.set({ "n", "x", "o" }, "M", "<Plug>(leap-backward)")
-      vim.keymap.set({ "n", "x", "o" }, "gm", "<Plug>(leap-from-window)")
-    end,
+    keys = {
+      { mode = { "n", "o", "x" }, "m", "<Plug>(leap-forward)" },
+      { mode = { "n", "o", "x" }, "M", "<Plug>(leap-backward)" },
+      { mode = { "n", "o", "x" }, "gm", "<Plug>(leap-from-window)" },
+    },
   },
   {
     "chrisgrieser/nvim-spider",
