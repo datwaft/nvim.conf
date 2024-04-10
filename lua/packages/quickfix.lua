@@ -9,5 +9,5 @@ return {
       "nvim-treesitter/nvim-treesitter",
     },
   },
-  { url = "https://gitlab.com/yorickpeterse/nvim-pqf.git", event = "VeryLazy", config = true },
+  { "yorickpeterse/nvim-pqf", event = "VeryLazy", config = true },
 }
