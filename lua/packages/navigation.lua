@@ -64,6 +64,7 @@ return {
     end,
     init = function()
       vim.api.nvim_create_autocmd("VimEnter", {
+        group = vim.api.nvim_create_augroup("mkdir-databases", {}),
         callback = function()
           vim.fn.mkdir(vim.fn.stdpath("data") .. "/databases", "p")
         end,

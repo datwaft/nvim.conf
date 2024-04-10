@@ -23,6 +23,7 @@ local function config()
   local cmp = require("cmp")
 
   vim.api.nvim_create_autocmd("ModeChanged", {
+    group = vim.api.nvim_create_augroup("clear-snippets-on-mode-change", {}),
     pattern = { "s:n", "i:*" },
     callback = function(args)
       local luasnip = require("luasnip")

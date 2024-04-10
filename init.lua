@@ -85,18 +85,17 @@ vim.g.loaded_ruby_provider = 0
 ---------------
 -- Open files on the last position
 vim.api.nvim_create_autocmd("BufReadPost", {
-  callback = function()
-    vim.cmd([[silent! normal! g`"zv]])
-  end,
+  group = vim.api.nvim_create_augroup("open-file-last-position", {}),
+  command = [[silent! normal! g`"zv]],
 })
 -- Resize splits on window resize
 vim.api.nvim_create_autocmd("VimResized", {
-  callback = function()
-    vim.cmd.wincmd("=")
-  end,
+  group = vim.api.nvim_create_augroup("resize-splits-on-resize", {}),
+  command = "wincmd =",
 })
 -- Set some options on the terminal
 vim.api.nvim_create_autocmd("TermOpen", {
+  group = vim.api.nvim_create_augroup("terminal-options", {}),
   callback = function()
     -- Start on insert mode
     vim.cmd.startinsert()
@@ -113,6 +112,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
 })
 -- Always disable 'spell' on some filetypes
 vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("disable-spell", {}),
   pattern = {
     "checkhealth",
     "gitignore",
@@ -128,6 +128,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 -- Always enable 'spell' on some filetypes
 vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("enable-spell", {}),
   pattern = {
     "markdown",
     "tex",
@@ -139,6 +140,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 -- Always enable 'conceallevel' on some filetypes
 vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("enable-spell", {}),
   pattern = { "html" },
   callback = function()
     vim.opt_local.conceallevel = 2
@@ -280,6 +282,7 @@ end)
 -- LSP keybinds and configuration
 ---------------------------------
 vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("lsp-attach-config", {}),
   callback = function(args)
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
     local bufnr = args.buf
