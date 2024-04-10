@@ -10,5 +10,4 @@ return {
     },
   },
   { "yorickpeterse/nvim-pqf", event = "VeryLazy", config = true },
-  { "stefandtw/quickfix-reflector.vim", event = "VeryLazy" },
 }
