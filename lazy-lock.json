@@ -78,6 +78,7 @@
   "vim-abolish": { "branch": "master", "commit": "dcbfe065297d31823561ba787f51056c147aa682" },
   "vim-dirtytalk": { "branch": "master", "commit": "9423461a19bbe176291f202fa210e3ec8851b6cc" },
   "vim-matchup": { "branch": "master", "commit": "2d660e4aa7c566014c667af2cda0458043527902" },
+  "vim-qf": { "branch": "master", "commit": "7e65325651ff5a0b06af8df3980d2ee54cf10e14" },
   "vim-repeat": { "branch": "master", "commit": "24afe922e6a05891756ecf331f39a1f6743d3d5a" },
   "vim-sandwich": { "branch": "master", "commit": "74cf93d58ccc567d8e2310a69860f1b93af19403" },
   "vim-slime": { "branch": "main", "commit": "87988b173b7642e6a5124f9e5559148c4159d076" },
