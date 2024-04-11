@@ -10,5 +10,10 @@ return {
     },
   },
   { "yorickpeterse/nvim-pqf", event = "VeryLazy", config = true },
-  "romainl/vim-qf",
+  {
+    "romainl/vim-qf",
+    init = function()
+      vim.keymap.set("n", "<C-q>", "<Plug>(qf_qf_toggle)")
+    end,
+  },
 }
