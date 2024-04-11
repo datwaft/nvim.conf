@@ -343,7 +343,7 @@ vim.filetype.add({ filename = { [".ignore"] = "gitignore" } })
 vim.filetype.add({ pattern = { ["queries/.*%.scm"] = "query" } })
 vim.filetype.add({ pattern = { ["%.husky/.*"] = "sh" } })
 vim.filetype.add({ extension = { ["gitconfig"] = "gitconfig" } })
-vim.filetype.add({ pattern = { ["%.env(%.%w+)"] = "sh" } })
+vim.filetype.add({ pattern = { ["%.env%..*"] = "sh" } })
 
 --------------------------
 -- lazy.nvim configuration
