@@ -32,6 +32,7 @@ local function config()
     "svelte",
     "tailwindcss",
     "taplo",
+    "tsserver",
     "vimls",
     "zls",
   }) do
@@ -146,12 +147,6 @@ return {
   -- Automatic installation
   {
     "williamboman/mason.nvim",
-    config = true,
-  },
-  -- Typescript
-  {
-    "pmizio/typescript-tools.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     config = true,
   },
   -- Project-local settings
