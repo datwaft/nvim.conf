@@ -1,6 +1,7 @@
 <localleader>
 CMD
 CTRL
+EX_DATAERR
 MANPAGER
 REPL
 TERMINFO
@@ -26,6 +27,7 @@ luarocks
 neovide
 neovim
 netrw
+noqa
 num
 nvim
 paredit
@@ -34,10 +36,10 @@ secnumdepth
 shellcheck
 statusline
 subword
+texthl
+tracebacks
 underfull
+url
 uv_fs_t
 wezterm
 wildmenu
-EX_DATAERR
-texthl
-url
