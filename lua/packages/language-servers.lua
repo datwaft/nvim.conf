@@ -26,7 +26,6 @@ local function config()
     "r_language_server",
     "rnix",
     "robotframework_ls",
-    "ruby_ls",
     "ruff_lsp",
     "rust_analyzer",
     "svelte",
