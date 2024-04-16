@@ -31,8 +31,8 @@ local function config()
     "svelte",
     "tailwindcss",
     "taplo",
-    "tsserver",
     "vimls",
+    "vtsls",
     "zls",
   }) do
     lsp[server].setup({ capabilities = capabilities })
