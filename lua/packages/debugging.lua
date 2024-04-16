@@ -211,6 +211,8 @@ return {
       vim.keymap.set("n", "<localleader>go", dap.step_over)
       vim.keymap.set("n", "<localleader>gi", dap.step_into)
       vim.keymap.set("n", "<localleader>gO", dap.step_out)
+      vim.keymap.set("n", "<localleader>gs", dap.close)
+      vim.keymap.set("n", "<localleader>gS", dap.terminate)
       vim.keymap.set("n", "<localleader>tb", dap.toggle_breakpoint)
       vim.keymap.set("n", "<localleader>cb", dap.clear_breakpoints)
       vim.keymap.set("n", "<localleader>tl", function()
