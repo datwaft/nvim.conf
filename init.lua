@@ -227,9 +227,9 @@ _G.icons = {
   debug = {
     breakpoint = "󱓻 ",
     condition = "󱨇 ",
-    log = " ",
-    stopped = " ",
-    rejected = " ",
+    log = "󱨈 ",
+    stopped = " ",
+    rejected = " ",
   },
 }
 
