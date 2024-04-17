@@ -251,7 +251,7 @@ return {
       end
 
       vim.api.nvim_create_autocmd("FileType", {
-        group = vim.api.nvim_create_augroup("winfixbuf-dapui", {}),
+        group = vim.api.nvim_create_augroup("winfixbuf-dapui", { clear = true }),
         pattern = {
           "dapui_watches",
           "dapui_stacks",
