@@ -225,7 +225,7 @@ _G.icons = {
     removed = " ",
   },
   debug = {
-    breakpoint = " ",
+    breakpoint = "󱓻 ",
     condition = "󱨇 ",
     log = " ",
     stopped = " ",
