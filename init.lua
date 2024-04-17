@@ -271,10 +271,10 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
 vim.keymap.set("n", "<leader>ld", vim.diagnostic.setqflist)
 -- Keybind for toggling diagnostics
 vim.keymap.set("n", "<leader>td", function()
-  if vim.diagnostic.is_disabled() then
-    vim.diagnostic.enable()
+  if vim.diagnostic.is_enabled(0) then
+    vim.diagnostic.enable(0, false)
   else
-    vim.diagnostic.disable()
+    vim.diagnostic.enable(0, true)
   end
 end)
 
