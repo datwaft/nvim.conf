@@ -1,7 +1,5 @@
 ---@type LazySpec
 return {
-  -- Discover mappings
-  { "folke/which-key.nvim", config = true },
   -- Create directories when saving if necessary
   "jghauser/mkdir.nvim",
   -- Enhanced sorting
