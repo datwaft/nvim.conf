@@ -203,7 +203,7 @@ return {
           program = command,
           args = args,
           ---@diagnostic disable-next-line: undefined-field
-          terminal = dap.configurations[ft][1].terminal,
+          console = dap.configurations[ft][1].console,
         })
       end, { complete = "file", nargs = "+", desc = "Debug command line script" })
       -- Keybinds
@@ -249,6 +249,21 @@ return {
       dap.listeners.before.event_exited.dapui = function()
         dapui.close()
       end
+
+      vim.api.nvim_create_autocmd("FileType", {
+        group = vim.api.nvim_create_augroup("winfixbuf-dapui", {}),
+        pattern = {
+          "dapui_watches",
+          "dapui_stacks",
+          "dapui_breakpoints",
+          "dapui_scopes",
+          "dapui_console",
+          "dap-repl",
+        },
+        callback = function()
+          vim.opt_local.winfixbuf = true
+        end,
+      })
     end,
   },
   {
