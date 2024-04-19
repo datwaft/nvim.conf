@@ -271,11 +271,7 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
 vim.keymap.set("n", "<leader>ld", vim.diagnostic.setqflist)
 -- Keybind for toggling diagnostics
 vim.keymap.set("n", "<leader>td", function()
-  if vim.diagnostic.is_enabled(0) then
-    vim.diagnostic.enable(0, false)
-  else
-    vim.diagnostic.enable(0, true)
-  end
+  vim.diagnostic.enable(not vim.diagnostic.is_enabled({ bufnr = 0 }), { bufnr = 0 })
 end)
 
 ---------------------------------
@@ -306,12 +302,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- Toggle inlay hints
     if client.supports_method("textDocument/inlayHint") then
       vim.keymap.set("n", "<leader>th", function()
-        vim.lsp.inlay_hint.enable(bufnr, not vim.lsp.inlay_hint.is_enabled(bufnr))
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(bufnr), { bufnr = bufnr })
       end, { buffer = bufnr })
     end
 
     -- Enable inlay hints by default
-    vim.lsp.inlay_hint.enable(bufnr, true)
+    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 
     -- Disable semantic highlighting for some LSPs
     for _, name in ipairs({ "dockerls" }) do
