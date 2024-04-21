@@ -34,10 +34,10 @@ return {
     keys = function()
       local ss = require("smart-splits")
       return {
-        { "<C-w>h", ss.move_cursor_left },
-        { "<C-w>j", ss.move_cursor_down },
-        { "<C-w>k", ss.move_cursor_up },
-        { "<C-w>l", ss.move_cursor_right },
+        { "<A-h>", ss.move_cursor_left },
+        { "<A-j>", ss.move_cursor_down },
+        { "<A-k>", ss.move_cursor_up },
+        { "<A-l>", ss.move_cursor_right },
       }
     end,
   },
