@@ -11,10 +11,11 @@ return {
   },
   -- Highlight color codes
   {
-    "NvChad/nvim-colorizer.lua",
+    "brenoprata10/nvim-highlight-colors",
     event = "VeryLazy",
     opts = {
-      user_default_options = { mode = "virtualtext", names = false },
+      render = "virtual",
+      enable_tailwind = true,
     },
   },
   -- Indentation lines
