@@ -29,7 +29,6 @@ local function config()
     "ruff_lsp",
     "rust_analyzer",
     "svelte",
-    "tailwindcss",
     "taplo",
     "vimls",
     "vtsls",
