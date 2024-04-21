@@ -20,6 +20,7 @@ filetype
 filetypes
 fzf
 gx
+hjkl
 homebrew
 iff
 keybind
@@ -39,6 +40,8 @@ statusline
 subword
 texthl
 tracebacks
+undercurl
+undercurls
 underfull
 url
 uv_fs_t
