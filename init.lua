@@ -213,23 +213,23 @@ vim.keymap.set({ "x", "o" }, "id", ":<C-u>normal! G$vgg0<CR>", { silent = true }
 --------
 _G.icons = {
   diagnostic = {
-    error = " ",
-    warn = " ",
-    info = " ",
-    hint = " ",
-    ok = " ",
+    error = "󱎘",
+    warn = "󱈸",
+    info = "󰙎",
+    hint = "󰌵",
+    ok = "󰸞",
   },
   git = {
-    added = " ",
-    modified = " ",
-    removed = " ",
+    added = "+",
+    modified = "~",
+    removed = "-",
   },
   debug = {
-    breakpoint = "󱓻 ",
-    condition = "󱨇 ",
-    log = "󱨈 ",
-    stopped = " ",
-    rejected = " ",
+    breakpoint = "󰍡",
+    condition = "󰍩",
+    log = "󰍣",
+    stopped = "󰍥",
+    rejected = "󱙎",
   },
 }
 
