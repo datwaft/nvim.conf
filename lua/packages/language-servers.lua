@@ -31,7 +31,6 @@ local function config()
     "svelte",
     "taplo",
     "vimls",
-    "vtsls",
     "zls",
   }) do
     lsp[server].setup({ capabilities = capabilities })
@@ -62,6 +61,23 @@ local function config()
   lsp.fennel_ls.setup({
     root_dir = require("lspconfig.util").root_pattern(".git/", "fnl/", ".nfnl.fnl"),
     settings = { ["fennel-ls"] = { ["extra-globals"] = "vim" } },
+    capabilities = capabilities,
+  })
+  -- JavaScript
+  require("lspconfig.configs").vtsls = require("vtsls").lspconfig
+  lsp.vtsls.setup({
+    settings = {
+      typescript = {
+        inlayHints = {
+          parameterNames = { enabled = "literals" },
+          parameterTypes = { enabled = true },
+          variableTypes = { enabled = true },
+          propertyDeclarationTypes = { enabled = true },
+          functionLikeReturnTypes = { enabled = true },
+          enumMemberValues = { enabled = true },
+        },
+      },
+    },
     capabilities = capabilities,
   })
   -- VueJS
@@ -140,6 +156,7 @@ return {
         dependencies = { "williamboman/mason.nvim" },
         opts = { automatic_installation = true },
       },
+      "yioneko/nvim-vtsls",
     },
   },
   -- Automatic installation
