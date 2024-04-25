@@ -153,7 +153,7 @@ return {
     "neovim/nvim-lspconfig",
     config = config,
     dependencies = {
-      { "j-hui/fidget.nvim", config = true },
+      { "j-hui/fidget.nvim", opts = { notification = { window = { winblend = 0 } } } },
       "b0o/schemastore.nvim",
       { "folke/neodev.nvim", config = true },
       "folke/neoconf.nvim",

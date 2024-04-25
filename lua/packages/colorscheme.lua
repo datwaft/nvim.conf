@@ -19,5 +19,6 @@ return {
         DiagnosticVirtualTextOk = { style = {} },
       }
     end,
+    transparent_background = true,
   },
 }
