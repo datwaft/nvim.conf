@@ -1,3 +1,5 @@
+-- For some reason there are lots of warnings for missing fields in this file when neodev is active.
+---@diagnostic disable: missing-fields
 local function config()
   local lsp = require("lspconfig")
 
@@ -59,7 +61,9 @@ local function config()
   })
   -- Fennel
   lsp.fennel_ls.setup({
-    root_dir = require("lspconfig.util").root_pattern(".git/", "fnl/", ".nfnl.fnl"),
+    root_dir = function(filename, _)
+      return vim.fs.root(filename, { ".git", "fnl", ".nfnl.fnl" })
+    end,
     settings = { ["fennel-ls"] = { ["extra-globals"] = "vim" } },
     capabilities = capabilities,
   })
