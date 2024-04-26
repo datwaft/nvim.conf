@@ -6,7 +6,6 @@ return {
     dependencies = {
       "nvim-treesitter/nvim-treesitter-refactor",
       "nvim-treesitter/nvim-treesitter-textobjects",
-      "nvim-treesitter/nvim-treesitter-context",
       "andymass/vim-matchup",
     },
     build = ":TSUpdate",
