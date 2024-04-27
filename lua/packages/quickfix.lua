@@ -8,6 +8,11 @@ return {
       "junegunn/fzf",
       "nvim-treesitter/nvim-treesitter",
     },
+    opts = {
+      preview = {
+        winblend = 0,
+      },
+    },
   },
   { "yorickpeterse/nvim-pqf", event = "VeryLazy", config = true },
   {
