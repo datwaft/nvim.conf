@@ -295,14 +295,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = bufnr })
     -- Go to type definition
     vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { buffer = bufnr })
-    -- Go to super-types
-    vim.keymap.set("n", "gT", function()
-      vim.lsp.buf.typehierarchy("supertypes")
-    end, { buffer = bufnr })
-    -- Go to sub-types
-    vim.keymap.set("n", "gst", function()
-      vim.lsp.buf.typehierarchy("subtypes")
-    end, { buffer = bufnr })
     -- Rename symbol under cursor
     vim.keymap.set("n", "<leader>rn", function()
       return ":IncRename " .. vim.fn.expand("<cword>")
