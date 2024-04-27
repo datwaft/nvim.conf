@@ -7,7 +7,7 @@ return {
     "brenoprata10/nvim-highlight-colors",
     event = "VeryLazy",
     opts = {
-      render = "virtual",
+      render = "foreground",
       enable_tailwind = true,
     },
   },
