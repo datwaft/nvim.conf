@@ -17,7 +17,7 @@ return {
         vue = { { "prettierd", "prettier" } },
       },
       formatters = {
-        latexindent = { prepend_args = { "-l", "-m" } },
+        latexindent = { prepend_args = { "-l", "-m", "--logfile=/dev/null" } },
         prettier = {
           ---@param ctx conform.Context
           condition = function(ctx)
