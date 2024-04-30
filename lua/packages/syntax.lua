@@ -15,4 +15,6 @@ return {
   "mfussenegger/nvim-ansible",
   -- ARM ASM
   "ARM9/arm-syntax-vim",
+  -- Kitty
+  "fladson/vim-kitty",
 }
