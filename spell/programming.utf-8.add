@@ -14,6 +14,7 @@ colorcolumn
 colorscheme
 combobox
 conceallevel
+config
 datwaft
 datwaft's
 dotfiles
@@ -22,6 +23,7 @@ filetype
 filetypes
 fzf
 gx
+headful
 hjkl
 homebrew
 iff
