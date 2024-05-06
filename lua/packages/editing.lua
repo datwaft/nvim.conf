@@ -5,7 +5,7 @@ return {
   -- Subversion and coercion operations
   { "tpope/vim-abolish", event = "VeryLazy" },
   -- Undo-tree
-  { "mbbill/undotree", event = "VeryLazy" },
+  { "mbbill/undotree", keys = { { "<C-w>u", "<cmd>UndotreeToggle<cr>" } } },
   -- Indent and subword text objects
   {
     "chrisgrieser/nvim-various-textobjs",
