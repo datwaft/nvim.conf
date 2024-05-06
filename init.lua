@@ -287,10 +287,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr })
     -- Go to declaration
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = bufnr })
-    -- Go to implementation
-    vim.keymap.set("n", "<C-w>i", vim.lsp.buf.implementation, { buffer = bufnr })
     -- Go to type definition
     vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { buffer = bufnr })
+    -- List all implementations
+    vim.keymap.set("n", "<C-w>i", vim.lsp.buf.implementation, { buffer = bufnr })
+    -- List all symbols
+    vim.keymap.set("n", "<C-w>S", vim.lsp.buf.document_symbol, { buffer = bufnr })
     -- Rename symbol under cursor
     vim.keymap.set("n", "crn", function()
       return ":IncRename " .. vim.fn.expand("<cword>")
