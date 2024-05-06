@@ -15,6 +15,7 @@ return {
           "dapui_scopes",
           "dapui_console",
           "dap-repl",
+          "aerial",
         },
       },
     },

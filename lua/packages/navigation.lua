@@ -100,4 +100,16 @@ return {
       { "<C-w>f", "<cmd>Neotree toggle<cr>" },
     },
   },
+  -- Outline
+  {
+    "stevearc/aerial.nvim",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = true,
+    init = function()
+      vim.keymap.set("n", "gO", "<cmd>AerialToggle!<cr>")
+    end,
+  },
 }
