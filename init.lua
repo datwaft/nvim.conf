@@ -267,13 +267,8 @@ define_sign("DiagnosticSignWarn", icons.diagnostic.warn)
 define_sign("DiagnosticSignInfo", icons.diagnostic.info)
 define_sign("DiagnosticSignHint", icons.diagnostic.hint)
 define_sign("DiagnosticSignOk", icons.diagnostic.ok)
--- Keybind for showing line diagnostics
-vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float)
--- Keybind for going to diagnostics
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
 -- Keybind for listing diagnostics
-vim.keymap.set("n", "<leader>ld", vim.diagnostic.setqflist)
+vim.keymap.set("n", "<C-w>D", vim.diagnostic.setqflist)
 -- Keybind for toggling diagnostics
 vim.keymap.set("n", "<leader>td", function()
   vim.diagnostic.enable(not vim.diagnostic.is_enabled({ bufnr = 0 }), { bufnr = 0 })
@@ -288,24 +283,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
     local bufnr = args.buf
 
-    -- Show documentation
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
     -- Go to definition
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr })
     -- Go to declaration
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = bufnr })
     -- Go to implementation
     vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = bufnr })
-    -- Go to references
-    vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = bufnr })
     -- Go to type definition
     vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { buffer = bufnr })
     -- Rename symbol under cursor
-    vim.keymap.set("n", "<leader>rn", function()
+    vim.keymap.set("n", "crn", function()
       return ":IncRename " .. vim.fn.expand("<cword>")
     end, { expr = true, buffer = bufnr })
-    -- Apply code actions
-    vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, { buffer = bufnr })
     -- Toggle inlay hints
     if client.supports_method("textDocument/inlayHint") then
       vim.keymap.set("n", "<leader>th", function()
