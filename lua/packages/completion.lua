@@ -69,6 +69,10 @@ local function config()
         ellipsis_char = "…",
       }),
     },
+    window = {
+      completion = cmp.config.window.bordered(border),
+      documentation = cmp.config.window.bordered(border),
+    },
     preselect = cmp.PreselectMode.None,
     snippet = {
       expand = function(args)

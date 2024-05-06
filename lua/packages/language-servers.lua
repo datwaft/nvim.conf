@@ -4,6 +4,10 @@ local function config()
   local lsp = require("lspconfig")
 
   local capabilities = require("cmp_nvim_lsp").default_capabilities()
+  local handlers = {
+    ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+    ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
+  }
 
   -- Configure some language servers with the default configuration
   for _, server in ipairs({
@@ -35,7 +39,7 @@ local function config()
     "vimls",
     "zls",
   }) do
-    lsp[server].setup({ capabilities = capabilities })
+    lsp[server].setup({ capabilities = capabilities, handlers = handlers })
   end
 
   -- C languages
@@ -48,6 +52,7 @@ local function config()
       "cuda",
     },
     capabilities = capabilities,
+    handlers = handlers,
   })
   -- Lua
   lsp.lua_ls.setup({
@@ -58,6 +63,7 @@ local function config()
       },
     },
     capabilities = capabilities,
+    handlers = handlers,
   })
   -- Fennel
   lsp.fennel_ls.setup({
@@ -66,6 +72,7 @@ local function config()
     end,
     settings = { ["fennel-ls"] = { ["extra-globals"] = "vim" } },
     capabilities = capabilities,
+    handlers = handlers,
   })
   -- JavaScript
   require("lspconfig.configs").vtsls = require("vtsls").lspconfig
@@ -91,6 +98,7 @@ local function config()
       },
     },
     capabilities = capabilities,
+    handlers = handlers,
   })
   -- VueJS
   lsp.volar.setup({
@@ -137,6 +145,7 @@ local function config()
       },
     },
     capabilities = capabilities,
+    handlers = handlers,
   })
   -- YAML
   lsp.yamlls.setup({
@@ -147,6 +156,7 @@ local function config()
       },
     },
     capabilities = capabilities,
+    handlers = handlers,
   })
 end
 

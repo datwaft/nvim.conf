@@ -232,6 +232,7 @@ _G.icons = {
     rejected = "󱙎",
   },
 }
+_G.border = "rounded"
 
 --------------
 -- Diagnostics
@@ -252,7 +253,11 @@ vim.diagnostic.config({
       })[diagnostic.severity] .. " " .. diagnostic.message .. " "
     end,
   },
-  float = { show_header = false, source = true },
+  float = {
+    show_header = false,
+    source = true,
+    border = border,
+  },
   update_in_insert = false,
   severity_sort = true,
 })
