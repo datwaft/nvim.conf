@@ -288,7 +288,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- Go to declaration
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = bufnr })
     -- Go to implementation
-    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = bufnr })
+    vim.keymap.set("n", "<C-w>i", vim.lsp.buf.implementation, { buffer = bufnr })
     -- Go to type definition
     vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { buffer = bufnr })
     -- Rename symbol under cursor
