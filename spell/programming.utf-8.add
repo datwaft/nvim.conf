@@ -7,6 +7,7 @@ REPL
 TERMINFO
 VueJS
 asdf
+auth
 autocommand
 autocommands
 catppuccin
@@ -21,12 +22,14 @@ dotfiles
 eslint
 filetype
 filetypes
+fixup
 fzf
 gx
 headful
 hjkl
 homebrew
 iff
+javascript
 keybind
 keybinds
 luarocks
@@ -43,6 +46,8 @@ secnumdepth
 shellcheck
 statusline
 subword
+tesult
+tesults
 texthl
 tracebacks
 undercurl
