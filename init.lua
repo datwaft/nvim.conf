@@ -381,5 +381,5 @@ install_package("folke/lazy.nvim")
 require("lazy").setup("packages", {
   change_detection = { notify = false },
   dev = { path = "~/Developer/Git/" },
-  ui = { backdrop = 100 },
+  ui = { backdrop = 100, border = border },
 })
