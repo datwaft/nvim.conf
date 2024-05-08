@@ -187,7 +187,12 @@ return {
   -- Automatic installation
   {
     "williamboman/mason.nvim",
-    config = true,
+    ---@type MasonSettings
+    opts = {
+      ui = {
+        border = border,
+      },
+    },
   },
   -- Project-local settings
   { "folke/neoconf.nvim", config = true },
