@@ -6,6 +6,7 @@ MANPAGER
 REPL
 TERMINFO
 VueJS
+args
 asdf
 auth
 autocommand
@@ -20,6 +21,7 @@ datwaft
 datwaft's
 dotfiles
 eslint
+execa
 filetype
 filetypes
 fixup
@@ -30,6 +32,7 @@ hjkl
 homebrew
 iff
 javascript
+js
 keybind
 keybinds
 luarocks
@@ -50,6 +53,8 @@ tesult
 tesults
 texthl
 tracebacks
+typings
+ui
 undercurl
 undercurls
 underfull
