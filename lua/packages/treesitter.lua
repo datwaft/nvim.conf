@@ -37,9 +37,4 @@ return {
       },
     },
   },
-  {
-    "datwaft/tree-sitter-corpus",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-    build = ":TSUpdate corpus",
-  },
 }
