@@ -46,7 +46,7 @@ return {
         end)
         vim.keymap.set("n", "<leader>tD", gs.toggle_deleted)
 
-        vim.keymap.set({ "o", "x" }, "ih", ":<C-u>Gitsigns select_hunk<CR>")
+        vim.keymap.set({ "o", "x" }, "ih", ":<C-u>Gitsigns select_hunk<CR>", { silent = true })
       end,
     },
   },
