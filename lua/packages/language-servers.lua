@@ -211,10 +211,4 @@ return {
       return { { "gx", require("lsplinks").gx } }
     end,
   },
-  -- Dim unused parameters
-  {
-    "askfiy/lsp_extra_dim",
-    event = "LspAttach",
-    opts = { disable_diagnostic_style = "all" },
-  },
 }
