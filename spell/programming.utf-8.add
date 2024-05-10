@@ -36,6 +36,8 @@ js
 keybind
 keybinds
 luarocks
+luxon
+mui
 neodev
 neovide
 neovim
@@ -48,6 +50,7 @@ rsync
 secnumdepth
 shellcheck
 statusline
+str
 subword
 tesult
 tesults
@@ -59,6 +62,7 @@ undercurl
 undercurls
 underfull
 url
+urls
 uv_fs_t
 wezterm
 wildmenu
