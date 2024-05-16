@@ -13,6 +13,7 @@ autocommand
 autocommands
 backend
 catppuccin
+cdo
 colorcolumn
 colorscheme
 combobox
@@ -48,6 +49,7 @@ noqa
 num
 nvim
 paredit
+quickfix
 rsync
 secnumdepth
 shellcheck
