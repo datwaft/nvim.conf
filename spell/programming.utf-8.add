@@ -32,6 +32,7 @@ headful
 hjkl
 homebrew
 iff
+io
 javascript
 js
 keybind
@@ -51,6 +52,8 @@ rsync
 secnumdepth
 shellcheck
 statusline
+stderr
+stdout
 str
 subword
 tesult
