@@ -56,6 +56,7 @@ local function config()
       },
       max_item_count = 5,
     },
+    dadbod = { name = "vim-dadbod-completion" },
   }
 
   cmp.setup({
@@ -127,6 +128,17 @@ local function config()
       sources.spell,
     }),
   })
+
+  cmp.setup.filetype({ "sql", "mysql", "plsql" }, {
+    sources = cmp.config.sources({
+      sources.dadbod,
+      sources.luasnip,
+      sources.path,
+    }, {
+      sources.buffer,
+      sources.spell,
+    }),
+  })
 end
 
 ---@type LazySpec
@@ -148,6 +160,7 @@ return {
       "hrsh7th/cmp-path",
       "micangl/cmp-vimtex",
       "f3fora/cmp-spell",
+      "kristijanhusak/vim-dadbod-completion",
     },
   },
   {
