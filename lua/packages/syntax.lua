@@ -17,4 +17,11 @@ return {
   "ARM9/arm-syntax-vim",
   -- Kitty
   "fladson/vim-kitty",
+  -- chezmoi
+  {
+    "alker0/chezmoi.vim",
+    init = function()
+      vim.g["chezmoi#use_tmp_buffer"] = true
+    end,
+  },
 }
