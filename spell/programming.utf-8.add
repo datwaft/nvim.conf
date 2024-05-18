@@ -25,6 +25,8 @@ datwaft's
 dotfiles
 eslint
 execa
+eza
+fd
 filetype
 filetypes
 fixup
@@ -73,3 +75,5 @@ urls
 uv_fs_t
 wezterm
 wildmenu
+zoxide
+zsh
