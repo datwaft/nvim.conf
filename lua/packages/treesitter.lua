@@ -13,6 +13,7 @@ return {
     init = function()
       vim.opt.foldmethod = "expr"
       vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+      vim.treesitter.language.register("bash", "zsh")
     end,
     opts = {
       ensure_installed = "all",
