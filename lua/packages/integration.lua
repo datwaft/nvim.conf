@@ -1,7 +1,5 @@
 ---@type LazySpec
 return {
-  -- Discord integration
-  { "andweeb/presence.nvim", event = "VeryLazy" },
   -- REPL integration
   {
     "jpalardy/vim-slime",
