@@ -152,9 +152,6 @@ vim.api.nvim_create_autocmd("FileType", {
 -----------
 -- Disable highlights with <ESC>
 vim.keymap.set("n", "<ESC>", "<ESC><CMD>nohlsearch<CR>")
--- Make `/` and `?` search inside selection
-vim.keymap.set("x", "/", [[<ESC>/\%V]])
-vim.keymap.set("x", "?", [[<ESC>?\%V]])
 -- Make mappings similar to TMUX mappings for Vim tabs
 vim.keymap.set("n", "<C-t>n", "<CMD>tabnew<CR>")
 vim.keymap.set("n", "<C-t>s", "<CMD>tabs<CR>")
