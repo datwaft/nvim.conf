@@ -1,5 +1,7 @@
 ---@type LazySpec
 return {
+  -- Enhance commenting
+  { "folke/ts-comments.nvim", event = "VeryLazy", config = true },
   -- Surround operations
   { "machakann/vim-sandwich", event = "VeryLazy" },
   -- Subversion and coercion operations
