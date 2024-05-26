@@ -18,10 +18,12 @@ chezmoi
 colorcolumn
 colorscheme
 combobox
+completers
 conceallevel
 config
 datwaft
 datwaft's
+devicons
 dotfiles
 eslint
 execa
@@ -77,4 +79,3 @@ wezterm
 wildmenu
 zoxide
 zsh
-completers
