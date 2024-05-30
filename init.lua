@@ -282,10 +282,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
     local bufnr = args.buf
 
-    -- Show signature help on insert mode
-    vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, { buffer = bufnr })
-    -- Apply refactoring action
-    vim.keymap.set("n", "crr", vim.lsp.buf.code_action, { buffer = bufnr })
     -- Go to definition
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr })
     -- Go to declaration
@@ -299,7 +295,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- List all symbols
     vim.keymap.set("n", "<C-w>S", vim.lsp.buf.document_symbol, { buffer = bufnr })
     -- Rename symbol under cursor
-    vim.keymap.set("n", "crn", function()
+    vim.keymap.set("n", "grn", function()
       return ":IncRename " .. vim.fn.expand("<cword>")
     end, { expr = true, buffer = bufnr })
     -- Toggle inlay hints
