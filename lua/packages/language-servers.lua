@@ -23,7 +23,6 @@ local function config()
     "cssls",
     "dockerls",
     "emmet_language_server",
-    "eslint",
     "gleam",
     "gopls",
     "hls",
