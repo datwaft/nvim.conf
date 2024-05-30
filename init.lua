@@ -237,7 +237,15 @@ _G.border = "rounded"
 -- Configure diagnostics
 vim.diagnostic.config({
   underline = { severity = { min = vim.diagnostic.severity.INFO } },
-  signs = { severity = { min = vim.diagnostic.severity.HINT } },
+  signs = {
+    severity = { min = vim.diagnostic.severity.HINT },
+    text = {
+      [vim.diagnostic.severity.ERROR] = icons.diagnostic.error,
+      [vim.diagnostic.severity.WARN] = icons.diagnostic.warn,
+      [vim.diagnostic.severity.INFO] = icons.diagnostic.info,
+      [vim.diagnostic.severity.HINT] = icons.diagnostic.hint,
+    },
+  },
   virtual_text = {
     severity = { min = vim.diagnostic.severity.INFO },
     prefix = "",
@@ -258,12 +266,6 @@ vim.diagnostic.config({
   update_in_insert = false,
   severity_sort = true,
 })
--- Set diagnostic signs
-define_sign("DiagnosticSignError", icons.diagnostic.error)
-define_sign("DiagnosticSignWarn", icons.diagnostic.warn)
-define_sign("DiagnosticSignInfo", icons.diagnostic.info)
-define_sign("DiagnosticSignHint", icons.diagnostic.hint)
-define_sign("DiagnosticSignOk", icons.diagnostic.ok)
 -- Keybind for listing diagnostics
 vim.keymap.set("n", "<C-w>D", vim.diagnostic.setqflist)
 -- Keybind for toggling diagnostics
