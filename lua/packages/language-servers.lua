@@ -1,5 +1,3 @@
--- For some reason there are lots of warnings for missing fields in this file when neodev is active.
----@diagnostic disable: missing-fields
 local function config()
   local lsp = require("lspconfig")
 
@@ -105,7 +103,7 @@ local function config()
   })
   -- VueJS
   lsp.volar.setup({
-    ---@param new_config object
+    ---@param new_config any
     ---@param new_root_dir string
     on_new_config = function(new_config, new_root_dir)
       local util = require("lspconfig.util")
@@ -172,7 +170,19 @@ return {
     dependencies = {
       { "j-hui/fidget.nvim", opts = { notification = { window = { winblend = 0 } } } },
       "b0o/schemastore.nvim",
-      { "folke/neodev.nvim", config = true },
+      {
+        "folke/lazydev.nvim",
+        ft = "lua",
+        opts = {
+          library = {
+            vim.env.LAZY .. "/luvit-meta/library",
+            vim.env.LAZY .. "/lazy.nvim",
+          },
+        },
+        dependencies = {
+          { "Bilal2453/luvit-meta", lazy = true },
+        },
+      },
       "folke/neoconf.nvim",
       "hrsh7th/cmp-nvim-lsp",
       { "smjonas/inc-rename.nvim", config = true },
@@ -187,7 +197,6 @@ return {
   -- Automatic installation
   {
     "williamboman/mason.nvim",
-    ---@type MasonSettings
     opts = {
       ui = {
         border = border,
