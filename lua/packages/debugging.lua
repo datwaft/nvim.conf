@@ -15,11 +15,10 @@ local function treesitter_highlight_for(lang)
 end
 
 -- Split input by whitespace taking into account strings
+-- See <https://stackoverflow.com/a/28674661>
 ---@param input string
----@source https://stackoverflow.com/a/28674661
 local function split_by_whitespace(input)
-  local lpeg = require("lpeg")
-  local P, S, C, Cc, Ct = lpeg.P, lpeg.S, lpeg.C, lpeg.Cc, lpeg.Ct
+  local P, S, C, Cc, Ct = vim.lpeg.P, vim.lpeg.S, vim.lpeg.C, vim.lpeg.Cc, vim.lpeg.Ct
 
   local function token(id, patt)
     return Ct(Cc(id) * C(patt))
@@ -36,7 +35,9 @@ local function split_by_whitespace(input)
   local tokens = Ct((string + white + word) ^ 0)
 
   local output = {}
-  for _, tok in ipairs(lpeg.match(tokens, input)) do
+  local match = assert(tokens:match(input))
+  assert(type(match) == "table")
+  for _, tok in ipairs(match) do
     if tok[1] ~= "whitespace" then
       if tok[1] == "string" then
         table.insert(output, tok[2]:sub(2, -2))
@@ -48,9 +49,9 @@ local function split_by_whitespace(input)
   return output
 end
 
----@type table<string, Adapter>
+---@type table<string, dap.Adapter>
 local adapters = {}
----@type table<string, Configuration>
+---@type table<string, dap.Configuration>
 local configs = {}
 
 local function find_executable()
