@@ -57,6 +57,7 @@ local function config()
       max_item_count = 5,
     },
     dadbod = { name = "vim-dadbod-completion" },
+    lazydev = { name = "lazydev" },
   }
 
   cmp.setup({
@@ -118,6 +119,18 @@ local function config()
     },
   })
 
+  cmp.setup.filetype("lua", {
+    sources = cmp.config.sources({
+      sources.lazydev,
+      sources.lsp,
+      sources.luasnip,
+      sources.path,
+    }, {
+      sources.buffer,
+      sources.spell,
+    }),
+  })
+
   cmp.setup.filetype("tex", {
     sources = cmp.config.sources({
       sources.vimtex,
@@ -161,6 +174,7 @@ return {
       "micangl/cmp-vimtex",
       "f3fora/cmp-spell",
       "kristijanhusak/vim-dadbod-completion",
+      "folke/lazydev.nvim",
     },
   },
   {

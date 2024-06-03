@@ -175,8 +175,8 @@ return {
         ft = "lua",
         opts = {
           library = {
-            vim.env.LAZY .. "/luvit-meta/library",
-            vim.env.LAZY .. "/lazy.nvim",
+            "luvit-meta/library",
+            "lazy.nvim",
           },
         },
         dependencies = {
