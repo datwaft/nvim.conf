@@ -53,7 +53,7 @@
   "nvim-paredit": { "branch": "master", "commit": "8dd4ffd6ee0d798026f9ad6cf04344560207b9f1" },
   "nvim-paredit-fennel": { "branch": "master", "commit": "fcf4b2dfcb73add63538057d0d627fb2c9ca75ce" },
   "nvim-pqf": { "branch": "main", "commit": "148ee2ca8b06d83fd9bf6f9b9497724ad39a07d6" },
-  "nvim-spider": { "branch": "main", "commit": "b2f2af0563bb631864cab262d483118f3610e662" },
+  "nvim-spider": { "branch": "main", "commit": "509e56268d10dd8d2000189b55e9b07064a15336" },
   "nvim-treesitter": { "branch": "master", "commit": "5a8e9644c49f992f47bacd7900f4404df6fd9d38" },
   "nvim-treesitter-refactor": { "branch": "master", "commit": "65ad2eca822dfaec2a3603119ec3cc8826a7859e" },
   "nvim-treesitter-textobjects": { "branch": "master", "commit": "fd41b7ccc5490a3a99c734d1ee418b68d06c48a9" },
