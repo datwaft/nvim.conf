@@ -29,8 +29,6 @@ return {
     event = "VeryLazy",
     config = true,
   },
-  -- Space text objects
-  { "vim-utils/vim-space", event = "VeryLazy" },
   -- Paredit
   { "julienvincent/nvim-paredit", event = "VeryLazy", config = true },
   {
