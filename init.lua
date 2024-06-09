@@ -200,8 +200,8 @@ end, { expr = true })
 -- Text objects
 ---------------
 -- Line text objects
-vim.keymap.set({ "x", "o" }, "il", ":<C-u>normal! g_v^<CR>", { silent = true })
-vim.keymap.set({ "x", "o" }, "al", ":<C-u>normal! $v0<CR>", { silent = true })
+vim.keymap.set({ "x", "o" }, "iL", ":<C-u>normal! g_v^<CR>", { silent = true })
+vim.keymap.set({ "x", "o" }, "aL", ":<C-u>normal! $v0<CR>", { silent = true })
 -- Document text objects
 vim.keymap.set({ "x", "o" }, "id", ":<C-u>normal! G$vgg0<CR>", { silent = true })
 
