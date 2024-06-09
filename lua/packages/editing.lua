@@ -27,7 +27,16 @@ return {
   {
     "echasnovski/mini.ai",
     event = "VeryLazy",
-    config = true,
+    opts = function()
+      local spec_treesitter = require("mini.ai").gen_spec.treesitter
+      return {
+        custom_textobjects = {
+          s = spec_treesitter({ a = "@statement.outer", i = "@statement.outer" }),
+          S = spec_treesitter({ a = "@statement.top", i = "@statement.top" }),
+          c = spec_treesitter({ a = "@cell.outer", i = "@cell.inner" }),
+        },
+      }
+    end,
   },
   -- Paredit
   { "julienvincent/nvim-paredit", event = "VeryLazy", config = true },
