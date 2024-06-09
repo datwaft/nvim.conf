@@ -27,9 +27,7 @@ return {
   {
     "echasnovski/mini.ai",
     event = "VeryLazy",
-    opts = {
-      mappings = { around_last = "", inside_last = "" },
-    },
+    config = true,
   },
   -- Space text objects
   { "vim-utils/vim-space", event = "VeryLazy" },
