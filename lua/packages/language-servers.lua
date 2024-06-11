@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 local function config()
   local lsp = require("lspconfig")
 
@@ -169,6 +170,7 @@ return {
     config = config,
     dependencies = {
       { "j-hui/fidget.nvim", opts = { notification = { window = { winblend = 0 } } } },
+      { "DNLHC/glance.nvim", opts = { border = { enable = true } } },
       "b0o/schemastore.nvim",
       {
         "folke/lazydev.nvim",
