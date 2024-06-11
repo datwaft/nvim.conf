@@ -12,6 +12,15 @@ return {
       { [[<C-k>]], "<cmd>lua require('fzf-lua').commands()<cr>" },
       { [[<F1>]], "<cmd>lua require('fzf-lua').helptags()<cr>" },
     },
+    opts = {
+      defaults = {
+        no_header = true,
+        no_header_i = true,
+      },
+      winopts = {
+        border = border,
+      },
+    },
   },
   -- File manipulation
   {

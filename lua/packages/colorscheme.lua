@@ -11,13 +11,14 @@ return {
   ---@type CatppuccinOptions
   opts = {
     kitty = true,
-    custom_highlights = function(_)
+    custom_highlights = function(colors)
       return {
         DiagnosticVirtualTextError = { style = {} },
         DiagnosticVirtualTextWarn = { style = {} },
         DiagnosticVirtualTextInfo = { style = {} },
         DiagnosticVirtualTextHint = { style = {} },
         DiagnosticVirtualTextOk = { style = {} },
+        FzfLuaBorder = { fg = colors.blue },
       }
     end,
     transparent_background = true,
