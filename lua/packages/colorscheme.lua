@@ -10,6 +10,7 @@ return {
   end,
   ---@type CatppuccinOptions
   opts = {
+    kitty = true,
     custom_highlights = function(_)
       return {
         DiagnosticVirtualTextError = { style = {} },
