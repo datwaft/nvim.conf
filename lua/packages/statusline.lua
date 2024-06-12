@@ -26,7 +26,11 @@ return {
         Align,
         Ruler,
       },
-      winbar = { FileName },
+      winbar = {
+        fallthrough = false,
+        { condition = conditions.is_not_active, FileName, hl = { fg = "overlay0", bold = false, force = true } },
+        FileName,
+      },
       opts = {
         colors = require("catppuccin.palettes").get_palette("mocha"),
         disable_winbar_cb = function(args)
