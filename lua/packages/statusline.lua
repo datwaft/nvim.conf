@@ -9,12 +9,13 @@ return {
     Git = require("packages.statusline.git")
     Diagnostics = require("packages.statusline.diagnostics")
     AttachedLSP = require("packages.statusline.attached-lsp")
+    Ruler = require("packages.statusline.ruler")
 
     Space = { provider = " " }
     Align = { provider = "%=" }
 
     return {
-      statusline = { FileName, Space, Git, Space, Diagnostics, Align, AttachedLSP, Align },
+      statusline = { FileName, Space, Git, Space, Diagnostics, Align, AttachedLSP, Align, Ruler },
       winbar = { FileName },
       opts = {
         colors = require("catppuccin.palettes").get_palette("mocha"),
