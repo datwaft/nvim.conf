@@ -16,6 +16,7 @@ return utils.insert({
     end
     return filename
   end,
+  hl = { fg = "text", bold = true },
 }, {
   condition = function()
     return vim.bo.modified
