@@ -7,11 +7,13 @@ return {
 
     FileName = require("packages.statusline.filename")
     Git = require("packages.statusline.git")
+    AttachedLSP = require("packages.statusline.attached-lsp")
+
     Space = { provider = " " }
     Align = { provider = "%=" }
 
     return {
-      statusline = { FileName, Space, Git },
+      statusline = { FileName, Space, Git, Align, AttachedLSP, Align },
       winbar = { FileName },
       opts = {
         colors = require("catppuccin.palettes").get_palette("mocha"),
