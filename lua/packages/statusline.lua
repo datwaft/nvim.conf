@@ -15,7 +15,17 @@ return {
     Align = { provider = "%=" }
 
     return {
-      statusline = { FileName, Space, Git, Space, Diagnostics, Align, AttachedLSP, Align, Ruler },
+      statusline = {
+        FileName,
+        { condition = conditions.is_git_repo, Space },
+        Git,
+        Space,
+        Diagnostics,
+        Align,
+        AttachedLSP,
+        Align,
+        Ruler,
+      },
       winbar = { FileName },
       opts = {
         colors = require("catppuccin.palettes").get_palette("mocha"),
