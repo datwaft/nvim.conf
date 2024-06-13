@@ -289,11 +289,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { buffer = bufnr })
     vim.keymap.set("n", "gT", "<cmd>Glance type_definitions<cr>", { buffer = bufnr })
     -- List all implementations
-    vim.keymap.set("n", "<C-w>i", vim.lsp.buf.implementation, { buffer = bufnr })
-    vim.keymap.set("n", "<C-w>I", "<cmd>Glance implementations<cr>", { buffer = bufnr })
+    vim.keymap.set("n", "<C-w>i", "<cmd>Glance implementations<cr>", { buffer = bufnr })
+    vim.keymap.set("n", "<C-w>I", vim.lsp.buf.implementation, { buffer = bufnr })
     -- List all references
-    vim.keymap.set("n", "<C-w>r", vim.lsp.buf.references, { buffer = bufnr })
-    vim.keymap.set("n", "<C-w>R", "<cmd>Glance references<cr>", { buffer = bufnr })
+    vim.keymap.set("n", "<C-w>r", "<cmd>Glance references<cr>", { buffer = bufnr })
+    vim.keymap.set("n", "<C-w>R", vim.lsp.buf.references, { buffer = bufnr })
     -- List all symbols
     vim.keymap.set("n", "<C-w>S", vim.lsp.buf.document_symbol, { buffer = bufnr })
     -- Rename symbol under cursor
