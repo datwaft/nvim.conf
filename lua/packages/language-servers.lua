@@ -160,6 +160,12 @@ local function config()
     capabilities = capabilities,
     handlers = handlers,
   })
+  -- GraphQL
+  lsp.graphql.setup({
+    filetypes = { "graphql", "typescript", "javascript", "typescriptreact", "javascriptreact" },
+    capabilities = capabilities,
+    handlers = handlers,
+  })
 end
 
 ---@type LazySpec
