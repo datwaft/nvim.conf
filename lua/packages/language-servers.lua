@@ -162,14 +162,6 @@ local function config()
   })
   -- GraphQL
   lsp.graphql.setup({
-    -- This is a workaround while the graphql LSP is broken
-    -- See https://github.com/graphql/graphiql/issues/3538#issuecomment-2146345681
-    cmd = {
-      vim.fn.expand("~/.local/share/nvim/graphiql/packages/graphql-language-service-cli/bin/graphql.js"),
-      "server",
-      "-m",
-      "stream",
-    },
     filetypes = { "graphql", "typescript", "javascript", "typescriptreact", "javascriptreact" },
     capabilities = capabilities,
     handlers = handlers,
