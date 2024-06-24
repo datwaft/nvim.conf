@@ -30,6 +30,7 @@ eslint
 execa
 eza
 fd
+filechooser
 filetype
 filetypes
 fixup
@@ -37,6 +38,7 @@ fzf
 graphql
 gx
 headful
+hh:mm
 hjkl
 homebrew
 iff
