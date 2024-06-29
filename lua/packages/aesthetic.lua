@@ -1,7 +1,14 @@
 ---@type LazySpec
 return {
   -- Enhance vim.ui.select & vim.ui.input
-  { "stevearc/dressing.nvim", event = "VeryLazy", opts = { input = { enabled = false } } },
+  {
+    "stevearc/dressing.nvim",
+    event = "VeryLazy",
+    opts = {
+      input = { enabled = false },
+      select = { backend = { "builtin" } },
+    },
+  },
   -- Highlight color codes
   {
     "brenoprata10/nvim-highlight-colors",
