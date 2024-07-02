@@ -341,6 +341,7 @@ vim.filetype.add({ pattern = { ["queries/.*%.scm"] = "query" } })
 vim.filetype.add({ pattern = { ["%.husky/.*"] = "sh" } })
 vim.filetype.add({ extension = { ["gitconfig"] = "gitconfig" } })
 vim.filetype.add({ pattern = { ["%.env%..*"] = "sh" } })
+vim.filetype.add({ extension = { ["add"] = "conf" } })
 
 --------------------------
 -- lazy.nvim configuration
