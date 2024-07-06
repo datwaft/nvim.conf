@@ -80,6 +80,7 @@ local function config()
   require("lspconfig.configs").vtsls = require("vtsls").lspconfig
   lsp.vtsls.setup({
     settings = {
+      vtsls = { autoUseWorkspaceTsdk = true },
       javascript = {
         inlayHints = {
           parameterNames = { enabled = "literals" },
