@@ -27,6 +27,7 @@ return {
 
         vim.keymap.set("n", "ghd", gs.preview_hunk, { buffer = bufnr })
         vim.keymap.set("n", "ghp", gs.preview_hunk, { buffer = bufnr })
+        vim.keymap.set("n", "<C-w>p", gs.preview_hunk, { buffer = bufnr })
 
         vim.keymap.set("n", "<leader>tb", gs.toggle_current_line_blame, { buffer = bufnr })
         vim.keymap.set("n", "<leader>tD", gs.toggle_deleted, { buffer = bufnr })
