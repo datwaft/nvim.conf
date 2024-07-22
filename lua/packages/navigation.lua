@@ -47,7 +47,7 @@ return {
     },
     keys = {
       { "<C-n>", "<cmd>Neotree<cr>" },
-      { "<C-w>f", "<cmd>Neotree<cr>" },
+      { "<C-w>f", "<cmd>Neotree toggle<cr>" },
     },
   },
   -- Outline
