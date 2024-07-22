@@ -5,17 +5,17 @@ return {
     ---@type conform.setupOpts
     opts = {
       formatters_by_ft = {
-        css = { { "biome-check", "prettierd", "prettier" } },
-        html = { { "biome-check", "prettierd", "prettier" } },
-        javascript = { { "biome-check", "prettierd", "prettier" } },
-        javascriptreact = { { "biome-check", "prettierd", "prettier" } },
-        json = { { "biome-check", "prettierd", "prettier" } },
-        jsonc = { { "biome-check", "prettierd", "prettier" } },
+        css = { "biome-check", "prettierd", "prettier", stop_after_first = true },
+        html = { "biome-check", "prettierd", "prettier", stop_after_first = true },
+        javascript = { "biome-check", "prettierd", "prettier", stop_after_first = true },
+        javascriptreact = { "biome-check", "prettierd", "prettier", stop_after_first = true },
+        json = { "biome-check", "prettierd", "prettier", stop_after_first = true },
+        jsonc = { "biome-check", "prettierd", "prettier", stop_after_first = true },
         lua = { "stylua" },
         tex = { "latexindent" },
-        typescript = { { "biome-check", "prettierd", "prettier" } },
-        typescriptreact = { { "biome-check", "prettierd", "prettier" } },
-        vue = { { "biome-check", "prettierd", "prettier" } },
+        typescript = { "biome-check", "prettierd", "prettier", stop_after_first = true },
+        typescriptreact = { "biome-check", "prettierd", "prettier", stop_after_first = true },
+        vue = { "biome-check", "prettierd", "prettier", stop_after_first = true },
       },
       formatters = {
         latexindent = { prepend_args = { "-l", "-m", "--logfile=/dev/null" } },
