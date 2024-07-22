@@ -12,6 +12,7 @@ return {
         json = { "biome-check", "prettierd", "prettier", stop_after_first = true },
         jsonc = { "biome-check", "prettierd", "prettier", stop_after_first = true },
         lua = { "stylua" },
+        sql = { "sql_formatter" },
         tex = { "latexindent" },
         typescript = { "biome-check", "prettierd", "prettier", stop_after_first = true },
         typescriptreact = { "biome-check", "prettierd", "prettier", stop_after_first = true },
