@@ -297,9 +297,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- List all symbols
     vim.keymap.set("n", "<C-w>S", vim.lsp.buf.document_symbol, { buffer = bufnr })
     -- Rename symbol under cursor
-    vim.keymap.set("n", "grn", function()
-      return ":IncRename " .. vim.fn.expand("<cword>")
-    end, { expr = true, buffer = bufnr })
+    vim.keymap.set("n", "grn", vim.lsp.buf.rename, { buffer = bufnr })
     -- Toggle inlay hints
     if client.supports_method("textDocument/inlayHint") then
       vim.keymap.set("n", "<leader>th", function()

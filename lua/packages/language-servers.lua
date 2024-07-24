@@ -194,7 +194,6 @@ return {
       },
       "folke/neoconf.nvim",
       "hrsh7th/cmp-nvim-lsp",
-      { "smjonas/inc-rename.nvim", config = true },
       {
         "williamboman/mason-lspconfig.nvim",
         dependencies = { "williamboman/mason.nvim" },
