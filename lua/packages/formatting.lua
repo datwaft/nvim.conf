@@ -35,6 +35,7 @@ return {
             return #vim.fs.find("biome.json", { upward = true, stop = vim.uv.os_homedir(), path = ctx.dirname }) == 0
           end,
         },
+        sleek = { prepend_args = { "--indent-spaces", "2" } },
       },
       format_on_save = {
         quiet = true,
