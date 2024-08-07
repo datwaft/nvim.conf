@@ -11,6 +11,8 @@ return {
       { [[<C-l>]], "<cmd>lua require('fzf-lua').live_grep()<cr>" },
       { [[<C-k>]], "<cmd>lua require('fzf-lua').commands()<cr>" },
       { [[<F1>]], "<cmd>lua require('fzf-lua').helptags()<cr>" },
+      { [[<C-t>]], "<cmd>lua require('fzf-lua').complete_path()<cr>", mode = "i" },
+      { [[<C-x><C-f>]], "<cmd>lua require('fzf-lua').complete_path()<cr>", mode = "i" },
     },
     opts = {
       defaults = {
