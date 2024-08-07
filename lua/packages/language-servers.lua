@@ -102,6 +102,9 @@ local function config()
     },
     capabilities = capabilities,
     handlers = handlers,
+    on_attach = function(client, bufnr)
+      require("twoslash-queries").attach(client, bufnr)
+    end,
   })
   -- VueJS
   lsp.volar.setup({
@@ -200,6 +203,7 @@ return {
         opts = { automatic_installation = true },
       },
       "yioneko/nvim-vtsls",
+      "marilari88/twoslash-queries.nvim",
     },
   },
   -- Automatic installation
