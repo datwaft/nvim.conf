@@ -1,4 +1,6 @@
 <localleader>
+API
+APIs
 CMD
 CTRL
 EX_DATAERR
@@ -7,6 +9,8 @@ Mailosaur
 REPL
 TERMINFO
 VueJS
+api
+apis
 args
 asdf
 atuin
