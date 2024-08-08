@@ -1,0 +1,28 @@
+snippet describe "test.describe('...', () => { ... })" b
+	test.describe("${1:}", () => {
+		${0:${VISUAL}}
+	});
+snippet test "test('...', async () => { ... })" b
+	test("${1:}", async () => {
+		${0:${VISUAL}}
+	});
+snippet it "test('...', async () => { ... })" b
+	test("${1:}", async () => {
+		${0:${VISUAL}}
+	});
+snippet before "test.before(async () => { ... })" b
+	test.before(async () => {
+		${0:${VISUAL}}
+	});
+snippet after "test.after(async () => { ... })" b
+	test.after(async () => {
+		${0:${VISUAL}}
+	});
+snippet beforeEach "test.beforeEach(async () => { ... })" b
+	test.beforeEach(async () => {
+		${0:${VISUAL}}
+	});
+snippet afterEach "test.afterEach(async () => { ... })" b
+	test.afterEach(async () => {
+		${0:${VISUAL}}
+	});
