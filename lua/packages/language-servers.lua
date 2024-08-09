@@ -34,7 +34,7 @@ local function config()
     "rnix",
     "robotframework_ls",
     "ruby_lsp",
-    "ruff_lsp",
+    "ruff",
     "rust_analyzer",
     "svelte",
     "taplo",
