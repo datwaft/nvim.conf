@@ -19,6 +19,7 @@ return {
         DiagnosticVirtualTextHint = { style = {} },
         DiagnosticVirtualTextOk = { style = {} },
         FzfLuaBorder = { fg = colors.blue },
+        QuickFixLineNr = { fg = colors.peach },
       }
     end,
     transparent_background = true,
