@@ -6,9 +6,6 @@ return {
     ---@module "quicker"
     ---@type quicker.SetupOptions
     opts = {
-      opts = {
-        winfixbuf = true,
-      },
       keys = {
         {
           ">",
