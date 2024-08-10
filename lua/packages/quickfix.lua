@@ -24,10 +24,4 @@ return {
       },
     },
   },
-  {
-    "romainl/vim-qf",
-    init = function()
-      vim.g.qf_auto_resize = 0
-    end,
-  },
 }
