@@ -1,24 +1,28 @@
 ---@type LazySpec
 return {
-  {
-    "kevinhwang91/nvim-bqf",
-    ft = "qf",
-    event = "VeryLazy",
-    dependencies = {
-      "junegunn/fzf",
-      "nvim-treesitter/nvim-treesitter",
-    },
+  "stevearc/quicker.nvim",
+  lazy = false,
+  ---@module "quicker"
+  ---@type quicker.SetupOptions
+  opts = {
     opts = {
-      preview = {
-        winblend = 0,
+      winfixbuf = true,
+    },
+    keys = {
+      {
+        ">",
+        function()
+          require("quicker").expand({ before = 2, after = 2, add_to_existing = true })
+        end,
+        desc = "Expand quickfix context",
+      },
+      {
+        "<",
+        function()
+          require("quicker").collapse()
+        end,
+        desc = "Collapse quickfix context",
       },
     },
-  },
-  { "yorickpeterse/nvim-pqf", event = "VeryLazy", config = true },
-  {
-    "romainl/vim-qf",
-    init = function()
-      vim.keymap.set("n", "<C-q>", "<Plug>(qf_qf_toggle)")
-    end,
   },
 }
