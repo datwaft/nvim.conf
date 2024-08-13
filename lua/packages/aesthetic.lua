@@ -1,6 +1,6 @@
 ---@type LazySpec
 return {
-  -- Enhance vim.ui.select & vim.ui.input
+  -- Enhance vim.ui.select
   {
     "stevearc/dressing.nvim",
     event = "VeryLazy",
