@@ -38,15 +38,6 @@ return {
       }
     end,
   },
-  -- Paredit
-  { "julienvincent/nvim-paredit", event = "VeryLazy", config = true },
-  {
-    -- TODO: change to upstream when https://github.com/julienvincent/nvim-paredit-fennel/pull/1 is merged
-    "datwaft/nvim-paredit-fennel",
-    dependencies = { "julienvincent/nvim-paredit" },
-    ft = { "fennel" },
-    config = true,
-  },
   -- Paste images
   {
     "HakonHarnes/img-clip.nvim",
