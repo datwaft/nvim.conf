@@ -6,7 +6,6 @@ CTRL
 EX_DATAERR
 MANPAGER
 Mailosaur
-parinfer
 REPL
 TERMINFO
 VueJS
@@ -61,10 +60,12 @@ neodev
 neovide
 neovim
 netrw
+nfnl
 noqa
 num
 nvim
 paredit
+parinfer
 quickfix
 rsync
 secnumdepth
