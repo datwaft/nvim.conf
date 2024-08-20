@@ -30,6 +30,8 @@ config
 datwaft
 datwaft's
 devicons
+dialog
+dialogs
 dotfiles
 dropdown
 eslint
