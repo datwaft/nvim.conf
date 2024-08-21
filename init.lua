@@ -196,6 +196,9 @@ vim.keymap.set({ "n", "v" }, "<Down>", function()
     return "<Down>"
   end
 end, { expr = true })
+-- Do not jump with <S-Up> and <S-Down>
+vim.keymap.set({ "i", "n", "v" }, "<S-Up>", "<Up>", { remap = true })
+vim.keymap.set({ "i", "n", "v" }, "<S-Down>", "<Down>", { remap = true })
 
 ---------------
 -- Text objects
