@@ -199,6 +199,9 @@ end, { expr = true })
 -- Do not jump with <S-Up> and <S-Down>
 vim.keymap.set({ "i", "n", "v" }, "<S-Up>", "<Up>", { remap = true })
 vim.keymap.set({ "i", "n", "v" }, "<S-Down>", "<Down>", { remap = true })
+-- Use <M-Left> and <M-Right> for moving between words
+vim.keymap.set({ "c", "i", "n", "v" }, "<M-Left>", "<S-Left>")
+vim.keymap.set({ "c", "i", "n", "v" }, "<M-Right>", "<S-Right>")
 
 ---------------
 -- Text objects
