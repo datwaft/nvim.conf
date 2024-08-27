@@ -23,6 +23,7 @@ local function config()
     "html",
     "jdtls",
     "lua_ls",
+    "ocamllsp",
     "ruby_lsp",
     "ruff",
     "rust_analyzer",
@@ -190,7 +191,7 @@ return {
       {
         "williamboman/mason-lspconfig.nvim",
         dependencies = { "williamboman/mason.nvim" },
-        opts = { automatic_installation = true },
+        opts = { automatic_installation = { exclude = "ocamllsp" } },
       },
       "yioneko/nvim-vtsls",
       "marilari88/twoslash-queries.nvim",
