@@ -331,7 +331,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       end
     end
     -- Disable formatting for some LSPs
-    for _, name in ipairs({ "jsonls", "biome", "tsserver", "vtsls" }) do
+    for _, name in ipairs({ "jsonls", "biome", "tsserver", "vtsls", "basedpyright" }) do
       if client.name == name then
         client.server_capabilities.documentFormattingProvider = nil
         client.server_capabilities.documentRangeFormattingProvider = nil
