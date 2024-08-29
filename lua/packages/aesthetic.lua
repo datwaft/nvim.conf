@@ -44,6 +44,9 @@ return {
   -- Render images
   {
     "3rd/image.nvim",
+    dependencies = {
+      "leafo/magick",
+    },
     config = true,
   },
 }
