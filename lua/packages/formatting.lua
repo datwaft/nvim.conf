@@ -17,6 +17,8 @@ return {
         typescript = { "biome-check", "prettierd", "prettier", stop_after_first = true },
         typescriptreact = { "biome-check", "prettierd", "prettier", stop_after_first = true },
         vue = { "biome-check", "prettierd", "prettier", stop_after_first = true },
+        markdown = { "injected" },
+        quarto = { "injected" },
       },
       formatters = {
         latexindent = { prepend_args = { "-l", "-m", "--logfile=/dev/null" } },
