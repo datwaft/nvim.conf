@@ -24,4 +24,9 @@ return {
       vim.g["chezmoi#use_tmp_buffer"] = true
     end,
   },
+  -- Jupyter Notebooks
+  {
+    "GCBallesteros/jupytext.nvim",
+    config = true,
+  },
 }
