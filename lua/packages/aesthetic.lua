@@ -41,4 +41,9 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
     config = true,
   },
+  -- Render images
+  {
+    "3rd/image.nvim",
+    config = true,
+  },
 }
