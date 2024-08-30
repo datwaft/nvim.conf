@@ -296,7 +296,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr })
     vim.keymap.set("n", "gD", "<cmd>Glance definitions<cr>", { buffer = bufnr })
     -- Go to type definition
-    vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { buffer = bufnr })
+    vim.keymap.set("n", "gt", function()
+      vim.lsp.buf.type_definition({
+        on_list = function(t)
+          vim.lsp.util.jump_to_location(t.items[1].user_data, "utf-8", true)
+        end,
+      })
+    end, { buffer = bufnr })
     vim.keymap.set("n", "gT", "<cmd>Glance type_definitions<cr>", { buffer = bufnr })
     -- List all implementations
     vim.keymap.set("n", "<C-w>i", "<cmd>Glance implementations<cr>", { buffer = bufnr })
