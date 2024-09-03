@@ -90,5 +90,5 @@
   "vim-slime": { "branch": "main", "commit": "f6bbbeb8f18393f2177cdcef764f3e0e1d7e9328" },
   "vim-spellsync": { "branch": "master", "commit": "210ca6a81243ec4a38404d599f5eb288ca71b700" },
   "vimtex": { "branch": "master", "commit": "ec3b648af5092372ddd72404fb5db46b2f78beb5" },
-  "vscode-js-debug": { "branch": "main", "commit": "4b4cd50ead5413ce1f04796c6993c71a8f698f1f" }
+  "vscode-js-debug": { "branch": "main", "commit": "714bff34cf10eb76b426fb4349c2f4e5af35b204" }
 }
