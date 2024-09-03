@@ -21,8 +21,6 @@ return {
     dependencies = { "kevinhwang91/promise-async" },
     config = true,
   },
-  -- Better parentheses match
-  "andymass/vim-matchup",
   -- Automatic fennel compilation
   { "Olical/nfnl", ft = "fennel" },
 }
