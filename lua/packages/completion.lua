@@ -48,14 +48,6 @@ local function config()
       option = { keyword_pattern = [[\k\+]] },
     },
     vimtex = { name = "vimtex" },
-    spell = {
-      name = "spell",
-      option = {
-        keep_all_entries = false,
-        enable_in_context = is_inside_spell,
-      },
-      max_item_count = 5,
-    },
     dadbod = { name = "vim-dadbod-completion" },
     lazydev = { name = "lazydev" },
   }
@@ -87,7 +79,6 @@ local function config()
       sources.path,
     }, {
       sources.buffer,
-      sources.spell,
     }),
     mapping = {
       -- Scrolling
@@ -127,7 +118,6 @@ local function config()
       sources.path,
     }, {
       sources.buffer,
-      sources.spell,
     }),
   })
 
@@ -138,7 +128,6 @@ local function config()
       sources.path,
     }, {
       sources.buffer,
-      sources.spell,
     }),
   })
 
@@ -149,7 +138,6 @@ local function config()
       sources.path,
     }, {
       sources.buffer,
-      sources.spell,
     }),
   })
 end
@@ -172,7 +160,6 @@ return {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "micangl/cmp-vimtex",
-      "f3fora/cmp-spell",
       "kristijanhusak/vim-dadbod-completion",
       "folke/lazydev.nvim",
     },
