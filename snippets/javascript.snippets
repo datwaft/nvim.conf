@@ -10,8 +10,8 @@ snippet it "test('...', async ({}) => { ... })" b
 	test("${1:}", async ({${2:}}) => {
 		${0:${VISUAL}}
 	});
-snippet step "test.step('...', async () => { ... })" b
-	test.step("${1:}", async () => {
+snippet step "await test.step('...', async () => { ... })" b
+	await test.step("${1:}", async () => {
 		${0:${VISUAL}}
 	});
 snippet before "test.before(async ({}) => { ... })" b
