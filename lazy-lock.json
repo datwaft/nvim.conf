@@ -45,7 +45,7 @@
   "nui.nvim": { "branch": "main", "commit": "61574ce6e60c815b0a0c4b5655b8486ba58089a1" },
   "nvim-ansible": { "branch": "main", "commit": "9c3b4a771b8c8d7b4f2171466464d978cb3846f7" },
   "nvim-cmp": { "branch": "main", "commit": "ae644feb7b67bf1ce4260c231d1d4300b19c6f30" },
-  "nvim-dap": { "branch": "master", "commit": "281a2e4cd1e7a17cea7ecb1745d84a8ab1249925" },
+  "nvim-dap": { "branch": "master", "commit": "20a4859ebde1c9bc8e96f8cc11a20667e7fdd516" },
   "nvim-dap-repl-highlights": { "branch": "master", "commit": "a7512fc0a0de0c0be8d58983939856dda6f72451" },
   "nvim-dap-ui": { "branch": "master", "commit": "1c351e4e417d4691da12948b6ecf966936a56d28" },
   "nvim-dap-virtual-text": { "branch": "master", "commit": "484995d573c0f0563f6a66ebdd6c67b649489615" },
@@ -68,7 +68,7 @@
   "promise-async": { "branch": "main", "commit": "119e8961014c9bfaf1487bf3c2a393d254f337e2" },
   "quarto-nvim": { "branch": "main", "commit": "eed598983fa4040eed77191f69462c1348770b8a" },
   "quicker.nvim": { "branch": "master", "commit": "308088ebcec33f9ed551714e52390206b8f62ed6" },
-  "schemastore.nvim": { "branch": "main", "commit": "fe8b332804c77c810243494406e3e8014f338009" },
+  "schemastore.nvim": { "branch": "main", "commit": "3436c0514e8c46162d0480c187e2cfcefecdffc6" },
   "smart-splits.nvim": { "branch": "master", "commit": "1a2b268a7ec7aeef879cdd15973339010ec134f7" },
   "sort.nvim": { "branch": "main", "commit": "c789da6968337d2a61104a929880b5f144e02855" },
   "tiny-devicons-auto-colors.nvim": { "branch": "main", "commit": "a39fa4c92268832f6034306793b8acbfec2a7549" },
@@ -89,5 +89,5 @@
   "vim-slime": { "branch": "main", "commit": "f6bbbeb8f18393f2177cdcef764f3e0e1d7e9328" },
   "vim-spellsync": { "branch": "master", "commit": "210ca6a81243ec4a38404d599f5eb288ca71b700" },
   "vimtex": { "branch": "master", "commit": "ec3b648af5092372ddd72404fb5db46b2f78beb5" },
-  "vscode-js-debug": { "branch": "main", "commit": "f7a1450dc7c2eee5ec456f872c1a79ee1ba1f7d5" }
+  "vscode-js-debug": { "branch": "main", "commit": "9419f572e768563273aca4e28179d8d5413cf5e0" }
 }
