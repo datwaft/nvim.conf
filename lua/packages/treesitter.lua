@@ -5,6 +5,7 @@ return {
     event = "VeryLazy",
     dependencies = {
       "nvim-treesitter/nvim-treesitter-refactor",
+      "andymass/vim-matchup",
     },
     build = ":TSUpdate",
     main = "nvim-treesitter.configs",
@@ -18,6 +19,7 @@ return {
       highlight = { enable = true, disable = { "latex", "tmux" } },
       indent = { enable = true },
       format = { enable = true },
+      matchup = { enable = true },
       refactor = {
         smart_rename = { enable = true, keymaps = { smart_rename = "<localleader>rn" } },
       },
