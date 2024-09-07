@@ -28,6 +28,7 @@ local function config()
     "ruff",
     "rust_analyzer",
     "svelte",
+    "tailwindcss",
     "taplo",
     "vimls",
     "zls",
