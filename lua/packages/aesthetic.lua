@@ -9,15 +9,6 @@ return {
       select = { backend = { "builtin" } },
     },
   },
-  -- Highlight color codes
-  {
-    "brenoprata10/nvim-highlight-colors",
-    event = "VeryLazy",
-    opts = {
-      render = "virtual",
-      enable_tailwind = true,
-    },
-  },
   -- Indentation lines
   { "lukas-reineke/indent-blankline.nvim", main = "ibl", event = "VeryLazy", opts = { scope = { enabled = false } } },
   -- Colorscheme colors in devicons
