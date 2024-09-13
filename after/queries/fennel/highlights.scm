@@ -26,7 +26,53 @@
    call: (symbol) @_tset
    .
    item: _
-   item: (string) @variable.member 
+   item: (string) @variable.member
    item: _
    .)
  (#eq? @_tset "tset"))
+
+;; (map! [n] "<leader>f" "<cmd>echo Hello World<cr>" "@string.documentation.fennel")
+((list
+   call: (symbol) @call
+   .
+   item: _
+   item: _
+   item: _
+   item: (string) @string.documentation.fennel
+   .)
+ (#eq? @call "map!"))
+
+;; (map! [n] "<leader>f" "<cmd>echo Hello World<cr>" {} "@string.documentation.fennel")
+((list
+   call: (symbol) @call
+   .
+   item: _
+   item: _
+   item: _
+   item: _
+   item: (string) @string.documentation.fennel
+   .)
+ (#eq? @call "map!"))
+
+;; (autocmd! VimOpen * "wincmd =" "@string.documentation.fennel")
+((list
+   call: (symbol) @call
+   .
+   item: _
+   item: _
+   item: _
+   item: (string) @string.documentation.fennel
+   .)
+ (#eq? @call "autocmd!"))
+
+;; (autocmd! VimOpen * "wincmd =" {} "@string.documentation.fennel")
+((list
+   call: (symbol) @call
+   .
+   item: _
+   item: _
+   item: _
+   item: _
+   item: (string) @string.documentation.fennel
+   .)
+ (#eq? @call "autocmd!"))
