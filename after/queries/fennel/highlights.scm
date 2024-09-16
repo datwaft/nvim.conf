@@ -1,56 +1,43 @@
 ;; extends
 
-;; {:variable.member something}
+;; {"@variable.member" <any>}
 (table_pair
   key: (string) @variable.member)
 
-;; (. something :variable.member :variable.member ...)
-((list
-   call: (symbol) @_dot
-   .
-   item: _
-   item: (string) @variable.member)
- (#eq? @_dot "."))
+;; (. <any> "@variable.member" ...)
+(list
+  call: (symbol) @_call
+  (#eq? @_call ".")
+  .
+  item: (_)
+  item: (string) @variable.member)
 
-;; (: something :function.method.call something)
-((list
-   call: (symbol) @_colon
-   .
-   _
-   .
-   item: (string) @function.method.call)
- (#eq? @_colon ":"))
+;; (: <any> "@function.method.call" <any>)
+(list
+  call: (symbol) @_call
+  (#eq? @_call ":")
+  .
+  (_)
+  .
+  item: (string) @function.method.call)
 
-;; (tset something :variable.member ... something)
-((list
-   call: (symbol) @_tset
-   .
-   item: _
-   item: (string) @variable.member
-   item: _
-   .)
- (#eq? @_tset "tset"))
+;; (tset <any> "@variable.member" ... <any>)
+(list
+  call: (symbol) @_call
+  (#eq? @_call "tset")
+  .
+  item: (_)
+  .
+  item: (string) @variable.member)
 
 ;; (map! [n] "<leader>f" "<cmd>echo Hello World<cr>" "@string.documentation.fennel")
-;; (map! [n] "<leader>f" "<cmd>echo Hello World<cr>" {} "@string.documentation.fennel")
-((list
-   call: (symbol) @call
-   .
-   item: _
-   item: _
-   item: _
-   item: (string) @string.documentation
-   .)
- (#eq? @call "map!"))
-
 ;; (autocmd! VimOpen * "wincmd =" "@string.documentation.fennel")
-;; (autocmd! VimOpen * "wincmd =" {} "@string.documentation.fennel")
-((list
-   call: (symbol) @call
-   .
-   item: _
-   item: _
-   item: _
-   item: (string) @string.documentation
-   .)
- (#eq? @call "autocmd!"))
+(list
+  call: (symbol) @_call
+  (#any-of? @_call "map!" "autocmd!")
+  .
+  item: (_)
+  item: (_)
+  item: (_)
+  item: (string) @string.documentation
+  .)

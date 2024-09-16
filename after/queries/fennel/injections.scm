@@ -1,23 +1,25 @@
 ;; extends
 
 ;; (set! grepprg "bash")
-((list
+(list
   .
-  call: (symbol) @_set
+  call: (symbol) @_call
+  (#eq? @_call "set!")
   .
   item: [(symbol) @_grepprg (string (string_content) @_grepprg)]
+  (#eq? @_grepprg "grepprg")
   .
-  item: (string (string_content) @injection.content))
- (#set! injection.language "bash")
- (#eq? @_set "set!")
- (#eq? @_grepprg "grepprg"))
+  item: (string
+          (string_content) @injection.content
+          (#set! injection.language "bash")))
 
 ;; (autocmd! VimOpen * "vim")
-((list
-   call: (symbol) @call
-   item: _
-   item: _
-   .
-   item: (string (string_content) @injection.content))
- (#set! injection.language "vim")
- (#eq? @call "autocmd!"))
+(list
+  call: (symbol) @_call
+  (#eq? @_call "autocmd!")
+  item: (_)
+  item: (_)
+  .
+  item: (string
+          (string_content) @injection.content
+          (#set! injection.language "vim")))
