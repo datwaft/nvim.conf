@@ -39,7 +39,7 @@
    item: _
    item: _
    item: _
-   item: (string) @string.documentation.fennel
+   item: (string) @string.documentation
    .)
  (#eq? @call "map!"))
 
@@ -51,6 +51,6 @@
    item: _
    item: _
    item: _
-   item: (string) @string.documentation.fennel
+   item: (string) @string.documentation
    .)
  (#eq? @call "autocmd!"))
