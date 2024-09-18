@@ -39,5 +39,9 @@ return {
       "leafo/magick",
     },
     config = true,
+    enabled = function()
+      local success = pcall(require, "magick")
+      return success
+    end,
   },
 }
