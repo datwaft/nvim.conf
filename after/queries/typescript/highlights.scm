@@ -1,23 +1,22 @@
 ;; extends
 
-;; Playwright's `test("something", async () => {})`
+;; test("@spell @string.documentation")
 (call_expression
-  function: (identifier) @identifier
+  function: (identifier) @_test (#eq? @_test "test")
   arguments:
   (arguments
     .
-    (string (string_fragment) @spell))
-  (#eq? @identifier "test"))
+    [(string (string_fragment) @spell) @string.documentation
+     (template_string (string_fragment) @spell) @string.documentation]))
 
-;; Playwright's `test.describe("something", async () => {})`
+;; test.describe("@spell @string.documentation")
 (call_expression
   function:
-    (member_expression
-      object: (identifier) @identifier
-      property: (property_identifier) @property_identifier)
+  (member_expression
+    object: (identifier) @_test (#eq? @_test "test")
+    property: (property_identifier) @_property (#any-of? @_property "describe" "step"))
   arguments:
-    (arguments
-      .
-      (string (string_fragment) @spell))
-  (#eq? @identifier "test")
-  (#eq? @property_identifier "describe"))
+  (arguments
+    .
+    [(string (string_fragment) @spell) @string.documentation
+     (template_string (string_fragment) @spell) @string.documentation]))
