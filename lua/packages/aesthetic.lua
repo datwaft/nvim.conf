@@ -11,6 +11,21 @@ return {
   },
   -- Indentation lines
   { "lukas-reineke/indent-blankline.nvim", main = "ibl", event = "VeryLazy", opts = { scope = { enabled = false } } },
+  -- Colorscheme colors in devicons
+  {
+    "rachartier/tiny-devicons-auto-colors.nvim",
+    dependencies = {
+      { "nvim-tree/nvim-web-devicons", config = true },
+      { "catppuccin/nvim", name = "catppuccin" },
+    },
+    event = "VeryLazy",
+    opts = function()
+      local theme_colors = require("catppuccin.palettes").get_palette("mocha")
+      return {
+        colors = theme_colors,
+      }
+    end,
+  },
   -- Highlight NOTE and the like
   {
     "folke/todo-comments.nvim",
