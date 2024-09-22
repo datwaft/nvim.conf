@@ -1,4 +1,5 @@
 {
+  "Brewfile.vim": { "branch": "master", "commit": "f13b98b92f2e9b9e38f3b1d45d41e19049d671df" },
   "LuaSnip": { "branch": "master", "commit": "03c8e67eb7293c404845b3982db895d59c0d1538" },
   "aerial.nvim": { "branch": "master", "commit": "140f48fb068d21c02e753c63f7443649e55576f0" },
   "arm-syntax-vim": { "branch": "master", "commit": "84ee5c476bbfde87dd6b5fb9f6f207fbce335a73" },

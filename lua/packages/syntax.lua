@@ -17,6 +17,8 @@ return {
   "ARM9/arm-syntax-vim",
   -- Kitty
   "fladson/vim-kitty",
+  -- Brewfile
+  "bfontaine/Brewfile.vim",
   -- chezmoi
   {
     "alker0/chezmoi.vim",
