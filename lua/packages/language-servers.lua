@@ -192,7 +192,7 @@ return {
       {
         "williamboman/mason-lspconfig.nvim",
         dependencies = { "williamboman/mason.nvim" },
-        opts = { automatic_installation = { exclude = "ocamllsp" } },
+        opts = { automatic_installation = true },
       },
       "yioneko/nvim-vtsls",
       "marilari88/twoslash-queries.nvim",
