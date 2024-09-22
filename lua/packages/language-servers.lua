@@ -24,7 +24,6 @@ local function config()
     "jdtls",
     "lua_ls",
     "ocamllsp",
-    "ruby_lsp",
     "ruff",
     "rust_analyzer",
     "svelte",
