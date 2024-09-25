@@ -4,7 +4,7 @@
 (call_expression
   function: (member_expression
               property: (property_identifier) @_locator
-              (#eq? @_locator "locator"))
+              (#any-of? @_locator "locator" "frameLocator"))
   arguments: (arguments
                [(string (string_fragment) @injection.content)
                 (template_string (string_fragment) @injection.content)]
