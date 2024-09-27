@@ -8,4 +8,5 @@
   arguments: (arguments
                [(string (string_fragment) @injection.content)
                 (template_string (string_fragment) @injection.content)]
-               (#set! injection.language "css")))
+               (#set! injection.language "css")
+               (#set! injection.combined)))
