@@ -16,6 +16,7 @@ local function config()
     "basedpyright",
     "bashls",
     "biome",
+    "clangd",
     "cmake",
     "cssls",
     "dockerls",
@@ -35,18 +36,6 @@ local function config()
     lsp[server].setup({ capabilities = capabilities, handlers = handlers })
   end
 
-  -- C languages
-  lsp.clangd.setup({
-    filetypes = {
-      "c",
-      "cpp",
-      "objc",
-      "objcpp",
-      "cuda",
-    },
-    capabilities = capabilities,
-    handlers = handlers,
-  })
   -- Lua
   lsp.lua_ls.setup({
     settings = {
