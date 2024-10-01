@@ -212,17 +212,6 @@ return {
       return { { "gx", require("lsplinks").gx } }
     end,
   },
-  -- Enhance code actions select
-  {
-    "Chaitanyabsprip/fastaction.nvim",
-    ---@module "fastaction"
-    ---@type FastActionConfig
-    opts = {
-      popup = {
-        border = border,
-      },
-    },
-  },
   -- LSP in embedded code
   {
     "jmbuhr/otter.nvim",

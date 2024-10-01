@@ -14,7 +14,6 @@
   "conjure": { "branch": "master", "commit": "6d2bc7f7b24c2c43d54f263bee7b9b08aef5d1a1" },
   "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
   "dressing.nvim": { "branch": "master", "commit": "1b7921eecc65af1baf8ac1dc06f0794934cbcfb2" },
-  "fastaction.nvim": { "branch": "main", "commit": "0a908a55e69814c5ef5b9f20dca7657c8639ee2c" },
   "fennel.vim": { "branch": "main", "commit": "c6a9c035ca108cbb24273d96cd6277fb8fbc60b4" },
   "fidget.nvim": { "branch": "main", "commit": "d855eed8a06531a7e8fd0684889b2943f373c469" },
   "friendly-snippets": { "branch": "main", "commit": "00ba9dd3df89509f95437b8d595553707c46d5ea" },
