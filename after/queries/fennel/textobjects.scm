@@ -1,3 +1,4 @@
-;; extends
+; extends
 
-(program (list) @statement.top)
+(program
+  (list) @statement.top)

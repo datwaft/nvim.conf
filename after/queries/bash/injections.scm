@@ -1,6 +1,6 @@
-;; extends
+; extends
 
-;; zsh-defer -c '<bash code>'
+; zsh-defer -c '<bash code>'
 (command
   name: (command_name) @_zsh_defer
   (#eq? @_zsh_defer "zsh-defer")

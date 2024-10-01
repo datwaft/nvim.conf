@@ -1,46 +1,50 @@
-;; extends
+; extends
 
-;; ==============
-;; SPELL-CHECKING
-;; ==============
-
-;; \renewcommand
+; ==============
+; SPELL-CHECKING
+; ==============
+; \renewcommand
 (new_command_definition) @nospell
-;; \definecolor
+
+; \definecolor
 (color_definition) @nospell
-;; \lstset
+
+; \lstset
 ((generic_command
-   command: (command_name) @_command_name
-   arg:
-   (curly_group) @nospell)
- (#eq? @_command_name "\\lstset"))
-;; \usefont
+  command: (command_name) @_command_name
+  arg: (curly_group) @nospell)
+  (#eq? @_command_name "\\lstset"))
+
+; \usefont
 ((generic_command
-   command: (command_name) @_command_name
-   arg:
-   (curly_group
-     (text) @nospell))
- (#eq? @_command_name "\\usefont"))
-;; \begin{lstlisting}
+  command: (command_name) @_command_name
+  arg: (curly_group
+    (text) @nospell))
+  (#eq? @_command_name "\\usefont"))
+
+; \begin{lstlisting}
 (listing_environment) @nospell
-;; \setcounter
+
+; \setcounter
 ((generic_command
-   command: (command_name) @_command_name
-   arg:
-   (curly_group
-     (text) @nospell))
- (#eq? @_command_name "\\setcounter"))
-;; \newenvironment
-(ERROR . "\\newenvironment" @nospell)
-;; Any math environment
+  command: (command_name) @_command_name
+  arg: (curly_group
+    (text) @nospell))
+  (#eq? @_command_name "\\setcounter"))
+
+; \newenvironment
+(ERROR
+  .
+  "\\newenvironment" @nospell)
+
+; Any math environment
 (math_environment) @nospell
 
-;; ==========
-;; HIGHLIGHTS
-;; ==========
-
-;; \generic_command{\generic_command}
+; ==========
+; HIGHLIGHTS
+; ==========
+; \generic_command{\generic_command}
 (generic_command
   arg: (curly_group
-         (generic_command
-           command: (command_name) @function)))
+    (generic_command
+      command: (command_name) @function)))
