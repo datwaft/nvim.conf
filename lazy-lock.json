@@ -40,7 +40,7 @@
   "mkdir.nvim": { "branch": "main", "commit": "c55d1dee4f099528a1853b28bb28caa802eba217" },
   "neo-tree.nvim": { "branch": "v3.x", "commit": "a77af2e764c5ed4038d27d1c463fa49cd4794e07" },
   "neoconf.nvim": { "branch": "main", "commit": "d222cd70d143859dec77166181e9b96a87d36113" },
-  "neogit": { "branch": "master", "commit": "c3ff049446e0920d02a5828c4e3619243d3c6e15" },
+  "neogit": { "branch": "master", "commit": "a8dd1509a7fc6bf92ca60f21e33393f685ab70aa" },
   "nfnl": { "branch": "main", "commit": "60b2ab7051cf2f631bc03274b56061136d1f9177" },
   "nui.nvim": { "branch": "main", "commit": "b58e2bfda5cea347c9d58b7f11cf3012c7b3953f" },
   "nvim-ansible": { "branch": "main", "commit": "9c3b4a771b8c8d7b4f2171466464d978cb3846f7" },
