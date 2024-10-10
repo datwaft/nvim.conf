@@ -66,4 +66,10 @@ return {
       { "<C-w>q", "<cmd>DBUIToggle<cr>" },
     },
   },
+  -- Jupyter Kernel
+  {
+    "benlubas/molten-nvim",
+    version = "^1.0.0",
+    build = ":UpdateRemotePlugins",
+  },
 }
