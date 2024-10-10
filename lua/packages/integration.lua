@@ -71,5 +71,13 @@ return {
     "benlubas/molten-nvim",
     version = "^1.0.0",
     build = ":UpdateRemotePlugins",
+    keys = {
+      { mode = "x", "<localleader>e", ":<C-u>MoltenEvaluateVisual<cr>" },
+      { mode = "n", "<C-w>o", "<cmd>noautocmd MoltenEnterOutput<cr>" },
+      { mode = "n", "<leader>im", "<cmd>MoltenInit<cr>" },
+      { mode = "n", "<localleader>e", "<cmd>MoltenEvaluateOperator<cr>" },
+      { mode = "n", "<localleader>ee", "<cmd>MoltenEvaluateLine<cr>" },
+      { mode = "n", "<localleader>er", "<cmd>MoltenReevaluateCell<cr>" },
+    },
   },
 }
