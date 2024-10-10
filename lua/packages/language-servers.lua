@@ -24,7 +24,6 @@ local function config()
     "html",
     "jdtls",
     "lua_ls",
-    "ocamllsp",
     "ruff",
     "rust_analyzer",
     "svelte",
