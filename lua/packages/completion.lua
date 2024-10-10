@@ -1,12 +1,17 @@
 ---@type LazySpec
 return {
   "saghen/blink.cmp",
-  version = "v0.*",
+  build = "cargo build --release",
   lazy = false,
   dependencies = "rafamadriz/friendly-snippets",
   opts = {
     highlight = {
       use_nvim_cmp_as_default = true,
+    },
+    windows = {
+      autocomplete = {
+        preselect = false,
+      },
     },
     nerd_font_variant = "mono",
     keymap = {
