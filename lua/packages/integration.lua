@@ -69,15 +69,21 @@ return {
   -- Jupyter Kernel
   {
     "benlubas/molten-nvim",
+    dependencies = { "3rd/image.nvim" },
     version = "^1.0.0",
     build = ":UpdateRemotePlugins",
-    keys = {
-      { mode = "x", "<localleader>e", ":<C-u>MoltenEvaluateVisual<cr>" },
-      { mode = "n", "<C-w>o", "<cmd>noautocmd MoltenEnterOutput<cr>" },
-      { mode = "n", "<leader>im", "<cmd>MoltenInit<cr>" },
-      { mode = "n", "<localleader>e", "<cmd>MoltenEvaluateOperator<cr>" },
-      { mode = "n", "<localleader>ee", "<cmd>MoltenEvaluateLine<cr>" },
-      { mode = "n", "<localleader>er", "<cmd>MoltenReevaluateCell<cr>" },
-    },
+    init = function()
+      vim.g.molten_output_virt_lines = true
+      vim.g.molten_image_location = "virt"
+      vim.g.molten_image_provider = "image.nvim"
+      vim.g.molten_wrap_output = true
+      vim.g.molten_virt_lines_off_by_1 = true
+      vim.keymap.set("x", "<localleader>e", ":<C-u>MoltenEvaluateVisual<cr>", { silent = true })
+      vim.keymap.set("n", "<C-w>o", "<cmd>noautocmd MoltenEnterOutput<cr>", { silent = true })
+      vim.keymap.set("n", "<leader>im", "<cmd>MoltenInit<cr>", { silent = true })
+      vim.keymap.set("n", "<localleader>E", "<cmd>MoltenEvaluateOperator<cr>", { silent = true })
+      vim.keymap.set("n", "<localleader>ee", "<cmd>MoltenEvaluateLine<cr>", { silent = true })
+      vim.keymap.set("n", "<localleader>er", "<cmd>MoltenReevaluateCell<cr>", { silent = true })
+    end,
   },
 }

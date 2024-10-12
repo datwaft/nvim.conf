@@ -115,6 +115,7 @@ vim.api.nvim_create_autocmd("FileType", {
     "man",
     "editorconfig",
     "query",
+    "molten_output",
   },
   callback = function()
     vim.opt_local.spell = false
