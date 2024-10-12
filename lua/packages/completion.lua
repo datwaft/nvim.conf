@@ -10,7 +10,7 @@ return {
     },
     windows = {
       autocomplete = {
-        preselect = false,
+        selection = "manual",
       },
     },
     nerd_font_variant = "mono",
