@@ -5,7 +5,6 @@ local function config()
   -- Add borders to LSP windows
   require("lspconfig.ui.windows").default_options.border = border
 
-  local capabilities = require("cmp_nvim_lsp").default_capabilities()
   local handlers = {
     ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
     ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
@@ -32,7 +31,7 @@ local function config()
     "vimls",
     "zls",
   }) do
-    lsp[server].setup({ capabilities = capabilities, handlers = handlers })
+    lsp[server].setup({ handlers = handlers })
   end
 
   -- Lua
@@ -43,7 +42,6 @@ local function config()
         hint = { enable = true },
       },
     },
-    capabilities = capabilities,
     handlers = handlers,
   })
   -- Fennel
@@ -52,7 +50,6 @@ local function config()
       return vim.fs.root(filename, { ".git", "fnl", ".nfnl.fnl" })
     end,
     settings = { ["fennel-ls"] = { ["extra-globals"] = "vim" } },
-    capabilities = capabilities,
     handlers = handlers,
   })
   -- JavaScript
@@ -79,7 +76,6 @@ local function config()
         },
       },
     },
-    capabilities = capabilities,
     handlers = handlers,
     on_attach = function(client, bufnr)
       require("twoslash-queries").attach(client, bufnr)
@@ -129,7 +125,6 @@ local function config()
         validate = { enable = true },
       },
     },
-    capabilities = capabilities,
     handlers = handlers,
   })
   -- YAML
@@ -140,13 +135,11 @@ local function config()
         schemas = require("schemastore").yaml.schemas(),
       },
     },
-    capabilities = capabilities,
     handlers = handlers,
   })
   -- GraphQL
   lsp.graphql.setup({
     filetypes = { "graphql", "typescript", "javascript", "typescriptreact", "javascriptreact" },
-    capabilities = capabilities,
     handlers = handlers,
   })
 end
@@ -175,7 +168,6 @@ return {
         },
       },
       "folke/neoconf.nvim",
-      "hrsh7th/cmp-nvim-lsp",
       {
         "williamboman/mason-lspconfig.nvim",
         dependencies = { "williamboman/mason.nvim" },
