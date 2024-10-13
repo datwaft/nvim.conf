@@ -17,8 +17,8 @@ return {
         typescript = { "biome-check", "prettierd", "prettier", stop_after_first = true },
         typescriptreact = { "biome-check", "prettierd", "prettier", stop_after_first = true },
         vue = { "biome-check", "prettierd", "prettier", stop_after_first = true },
-        markdown = { "injected" },
-        quarto = { "injected" },
+        python = { "ruff_format", "ruff_organize_imports" },
+        ["*"] = { "injected" },
       },
       formatters = {
         latexindent = { prepend_args = { "-l", "-m", "--logfile=/dev/null" } },
@@ -40,8 +40,7 @@ return {
         sleek = { prepend_args = { "--indent-spaces", "2" } },
       },
       format_on_save = {
-        quiet = true,
-        lsp_fallback = true,
+        lsp_format = "fallback",
         timeout = 500,
       },
     },
