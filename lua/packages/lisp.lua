@@ -11,4 +11,6 @@ return {
   },
   -- Parinfer
   { "gpanders/nvim-parinfer" },
+  -- Paredit
+  { "julienvincent/nvim-paredit", config = true },
 }
