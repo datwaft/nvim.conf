@@ -49,9 +49,9 @@ local function config()
   -- Fennel
   lsp.fennel_ls.setup({
     root_dir = function(filename, _)
-      return vim.fs.root(filename, { ".git", "fnl", ".nfnl.fnl" })
+      return vim.fs.root(filename, { ".git", "flsproject.fnl", "fnl", ".nfnl.fnl" })
     end,
-    settings = { ["fennel-ls"] = { ["extra-globals"] = "vim" } },
+    settings = { ["fennel-ls"] = { ["extra-globals"] = "vim icons border" } },
     capabilities = capabilities,
     handlers = handlers,
   })

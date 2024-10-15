@@ -135,7 +135,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 -- Always enable 'conceallevel' on some filetypes
 vim.api.nvim_create_autocmd("FileType", {
-  group = vim.api.nvim_create_augroup("enable-spell", { clear = true }),
+  group = vim.api.nvim_create_augroup("enable-conceal", { clear = true }),
   pattern = { "html" },
   callback = function()
     vim.opt_local.conceallevel = 2
@@ -388,4 +388,5 @@ require("lazy").setup("packages", {
   change_detection = { notify = false },
   dev = { path = "~/Developer/Git/" },
   ui = { backdrop = 100, border = border },
+  install = { colorscheme = { "catppuccin-mocha" } },
 })

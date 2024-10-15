@@ -19,13 +19,6 @@ return {
   "fladson/vim-kitty",
   -- Brewfile
   "bfontaine/Brewfile.vim",
-  -- chezmoi
-  {
-    "alker0/chezmoi.vim",
-    init = function()
-      vim.g["chezmoi#use_tmp_buffer"] = true
-    end,
-  },
   -- Jupyter Notebooks
   {
     "GCBallesteros/jupytext.nvim",
