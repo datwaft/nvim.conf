@@ -55,6 +55,7 @@ hjkl
 homebrew
 iff
 io
+ipc
 javascript
 js
 keybind
@@ -73,6 +74,7 @@ nvim
 opam
 paredit
 parinfer
+qa
 quickfix
 readonly
 rsync
