@@ -217,6 +217,7 @@ return {
     ---@module "fastaction"
     ---@type FastActionConfig
     opts = {
+      dismiss_keys = { "j", "k", "<c-c>", "q", "<esc>" },
       popup = {
         border = border,
       },
