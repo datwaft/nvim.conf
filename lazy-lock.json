@@ -41,7 +41,7 @@
   "molten-nvim": { "branch": "main", "commit": "66ee5c0a0fbe3e014b867d04db44592f2d3eb30f" },
   "neo-tree.nvim": { "branch": "v3.x", "commit": "a77af2e764c5ed4038d27d1c463fa49cd4794e07" },
   "neoconf.nvim": { "branch": "main", "commit": "a5af8418318f2bcc7513d52b001d68d551bf3b55" },
-  "neogit": { "branch": "master", "commit": "f33bb52d8edbbcfafbec399e8532fa430f556990" },
+  "neogit": { "branch": "master", "commit": "9f504c720b5a5d5a08625bf6197c8ef799b2205c" },
   "nfnl": { "branch": "main", "commit": "60b2ab7051cf2f631bc03274b56061136d1f9177" },
   "nui.nvim": { "branch": "main", "commit": "b58e2bfda5cea347c9d58b7f11cf3012c7b3953f" },
   "nvim-ansible": { "branch": "main", "commit": "44dabdaa8a9193b7f564a8408ed6d7107705030a" },
