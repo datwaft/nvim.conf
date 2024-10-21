@@ -145,8 +145,7 @@ end
 ---@type LazySpec
 return {
   {
-    "yioneko/nvim-cmp",
-    branch = "perf-up",
+    "hrsh7th/nvim-cmp",
     config = config,
     init = function()
       vim.opt.completeopt = { "menu", "menuone", "noselect" }
