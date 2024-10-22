@@ -17,6 +17,7 @@ return {
         typescript = { "biome-check", "prettierd", "prettier", stop_after_first = true },
         typescriptreact = { "biome-check", "prettierd", "prettier", stop_after_first = true },
         vue = { "biome-check", "prettierd", "prettier", stop_after_first = true },
+        graphql = { "biome-check", "prettierd", "prettier", stop_after_first = true },
         python = { "ruff_format", "ruff_organize_imports" },
         ["*"] = { "injected" },
       },
