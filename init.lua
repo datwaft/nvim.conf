@@ -293,7 +293,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "gt", function()
       vim.lsp.buf.type_definition({
         on_list = function(t)
-          vim.lsp.util.jump_to_location(t.items[1].user_data, "utf-8", true)
+          vim.lsp.util.show_document(t.items[1].user_data, "utf-8", { focus = true })
         end,
       })
     end, { buffer = bufnr })
