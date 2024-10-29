@@ -19,6 +19,8 @@ vim.loader.enable()
 vim.g.mapleader = [[\]]
 -- Set <localleader> to <SPACE>
 vim.g.maplocalleader = [[ ]]
+-- Swap
+vim.opt.swapfile = false
 -- Indentation
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 0
