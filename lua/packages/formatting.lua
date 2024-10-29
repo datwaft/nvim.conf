@@ -4,6 +4,8 @@ return {
     "stevearc/conform.nvim",
     ---@type conform.setupOpts
     opts = {
+      notify_on_error = true,
+      notify_no_formatters = false,
       formatters_by_ft = {
         css = { "biome-check", "prettierd", "prettier", stop_after_first = true },
         html = { "biome-check", "prettierd", "prettier", stop_after_first = true },
@@ -24,21 +26,8 @@ return {
       },
       formatters = {
         latexindent = { prepend_args = { "-l", "-m", "--logfile=/dev/null" } },
-        ["biome-check"] = {
-          condition = function(_, ctx)
-            return #vim.fs.find("biome.json", { upward = true, stop = vim.uv.os_homedir(), path = ctx.dirname }) == 1
-          end,
-        },
-        prettier = {
-          condition = function(_, ctx)
-            return #vim.fs.find("biome.json", { upward = true, stop = vim.uv.os_homedir(), path = ctx.dirname }) == 0
-          end,
-        },
-        prettierd = {
-          condition = function(_, ctx)
-            return #vim.fs.find("biome.json", { upward = true, stop = vim.uv.os_homedir(), path = ctx.dirname }) == 0
-          end,
-        },
+        biome = { require_cwd = true },
+        ["biome-check"] = { require_cwd = true },
         sleek = { prepend_args = { "--indent-spaces", "2" } },
         xmlformat = { prepend_args = { "--selfclose" } },
       },
