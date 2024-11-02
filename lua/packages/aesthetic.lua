@@ -29,9 +29,6 @@ return {
   -- Render images
   {
     "3rd/image.nvim",
-    dependencies = {
-      "leafo/magick",
-    },
     opts = {
       backend = "kitty",
       max_width = 100,
