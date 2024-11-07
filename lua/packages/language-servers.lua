@@ -2,14 +2,7 @@
 local function config()
   local lsp = require("lspconfig")
 
-  -- Add borders to LSP windows
-  require("lspconfig.ui.windows").default_options.border = border
-
   local capabilities = require("cmp_nvim_lsp").default_capabilities()
-  local handlers = {
-    ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
-    ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
-  }
 
   -- Configure some language servers with the default configuration
   for _, server in ipairs({
@@ -32,7 +25,7 @@ local function config()
     "vimls",
     "zls",
   }) do
-    lsp[server].setup({ capabilities = capabilities, handlers = handlers })
+    lsp[server].setup({ capabilities = capabilities })
   end
 
   -- Lua
@@ -44,7 +37,6 @@ local function config()
       },
     },
     capabilities = capabilities,
-    handlers = handlers,
   })
   -- Fennel
   lsp.fennel_ls.setup({
@@ -53,7 +45,6 @@ local function config()
     end,
     settings = { ["fennel-ls"] = { ["extra-globals"] = "vim icons border" } },
     capabilities = capabilities,
-    handlers = handlers,
   })
   -- JavaScript
   require("lspconfig.configs").vtsls = require("vtsls").lspconfig
@@ -80,7 +71,7 @@ local function config()
       },
     },
     capabilities = capabilities,
-    handlers = handlers,
+
     on_attach = function(client, bufnr)
       require("twoslash-queries").attach(client, bufnr)
     end,
@@ -130,7 +121,6 @@ local function config()
       },
     },
     capabilities = capabilities,
-    handlers = handlers,
   })
   -- YAML
   lsp.yamlls.setup({
@@ -141,13 +131,11 @@ local function config()
       },
     },
     capabilities = capabilities,
-    handlers = handlers,
   })
   -- GraphQL
   lsp.graphql.setup({
     filetypes = { "graphql", "typescript", "javascript", "typescriptreact", "javascriptreact" },
     capabilities = capabilities,
-    handlers = handlers,
   })
 end
 

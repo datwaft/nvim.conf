@@ -285,6 +285,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
     local bufnr = args.buf
 
+    -- Show hover documentation
+    vim.keymap.set("n", "K", function()
+      vim.lsp.buf.hover({ border = border })
+    end, { buffer = bufnr })
+    -- Show signature help
+    vim.keymap.set("i", "<C-s>", function()
+      vim.lsp.buf.signature_help({ border = border })
+    end, { buffer = bufnr })
     -- Code actions
     vim.keymap.set("n", "gra", "<cmd>lua require('fastaction').code_action()<cr>", { buffer = bufnr })
     vim.keymap.set("v", "gra", "<esc><cmd>lua require('fastaction').code_action()<cr>", { buffer = bufnr })
