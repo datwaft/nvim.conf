@@ -8,6 +8,8 @@ return {
   { "tpope/vim-abolish", event = "VeryLazy" },
   -- Undo-tree
   { "mbbill/undotree", keys = { { "<C-w>u", "<cmd>UndotreeToggle<cr>" } } },
+  -- Print-debugging
+  { "andrewferrier/debugprint.nvim", config = true },
   -- Indent and subword text objects
   {
     "chrisgrieser/nvim-various-textobjs",
