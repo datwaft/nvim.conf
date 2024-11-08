@@ -1,5 +1,33 @@
 ---@type LazySpec
 return {
+  -- Statusline
+  {
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {
+      options = {
+        globalstatus = true,
+      },
+      sections = {
+        lualine_a = { "mode" },
+        lualine_b = { "branch", { "diff", symbols = icons.git }, { "diagnostics", symbols = icons.diagnostic } },
+        lualine_c = { "filename" },
+        lualine_x = { "encoding", "fileformat", "filetype" },
+        lualine_y = { "progress" },
+        lualine_z = { "location" },
+      },
+      winbar = {
+        lualine_a = { "location" },
+        lualine_b = { "progress" },
+        lualine_c = { "filename" },
+      },
+      inactive_winbar = {
+        lualine_a = { "location" },
+        lualine_b = { "progress" },
+        lualine_c = { "filename" },
+      },
+    },
+  },
   -- Enhance vim.ui.select
   {
     "stevearc/dressing.nvim",
