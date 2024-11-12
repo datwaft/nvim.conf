@@ -7,6 +7,9 @@ return {
     opts = {
       options = {
         globalstatus = true,
+        disabled_filetypes = {
+          winbar = { "qf", "neo-tree", "aerial" },
+        },
       },
       sections = {
         lualine_a = { "mode" },
