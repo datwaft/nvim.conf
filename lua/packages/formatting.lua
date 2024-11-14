@@ -21,6 +21,7 @@ return {
         vue = { "biome-check", "prettierd", "prettier", stop_after_first = true },
         graphql = { "biome-check", "prettierd", "prettier", stop_after_first = true },
         python = { "ruff_format", "ruff_organize_imports" },
+        yaml = { "prettierd", "prettier", stop_after_first = true },
         xml = { "xmlformat" },
         ["*"] = { "injected" },
       },
