@@ -6,6 +6,9 @@ LLM
 SEM
 TTD
 UFD
+adgroup
+datetime
+datetimes
 geo-location
 geo-locations
 ha'pennies
@@ -18,4 +21,4 @@ passthrough
 recurse
 subtable
 threepences
-adgroup
+timezones
