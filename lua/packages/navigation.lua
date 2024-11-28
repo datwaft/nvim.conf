@@ -7,7 +7,6 @@ return {
     keys = {
       { [[<C-\>]], "<cmd>lua require('fzf-lua').buffers()<cr>" },
       { [[<C-p>]], "<cmd>lua require('fzf-lua').files()<cr>" },
-      { [[<C-g>]], "<cmd>lua require('fzf-lua').grep()<cr>" },
       { [[<C-l>]], "<cmd>lua require('fzf-lua').live_grep()<cr>" },
       { [[<C-k>]], "<cmd>lua require('fzf-lua').commands()<cr>" },
       { [[<F1>]], "<cmd>lua require('fzf-lua').helptags()<cr>" },
