@@ -16,7 +16,7 @@
 ; test.something("@spell @string.documentation")
 (call_expression
   function: (member_expression
-              object: (identifier) @_test)
+    object: (identifier) @_test)
   (#eq? @_test "test")
   arguments: (arguments
     .
