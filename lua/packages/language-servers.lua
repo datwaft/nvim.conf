@@ -137,6 +137,17 @@ local function config()
     filetypes = { "graphql", "typescript", "javascript", "typescriptreact", "javascriptreact" },
     capabilities = capabilities,
   })
+  -- Queries
+  lsp.ts_query_ls.setup({
+    settings = {
+      parser_install_directories = {
+        vim.fn.stdpath("data") .. "/lazy/nvim-treesitter/parser/",
+      },
+      language_retrieval_patterns = {
+        "languages/src/([^/]+)/[^/]+\\.scm$",
+      },
+    },
+  })
 end
 
 ---@type LazySpec
