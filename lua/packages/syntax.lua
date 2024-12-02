@@ -55,4 +55,6 @@ return {
       "nvim-treesitter/nvim-treesitter",
     },
   },
+  -- Jinja
+  "Glench/Vim-Jinja2-Syntax",
 }

@@ -361,6 +361,7 @@ vim.filetype.add({ extension = { ["gitconfig"] = "gitconfig" } })
 vim.filetype.add({ pattern = { ["%.env%..*"] = "sh" } })
 vim.filetype.add({ extension = { ["add"] = "conf" } })
 vim.filetype.add({ pattern = { ["%.default%-%w+%-packages"] = "conf" } })
+vim.filetype.add({ extension = { ["jinja"] = "jinja", ["jinja2"] = "jinja", ["j2"] = "jinja" } })
 
 --------------------------
 -- lazy.nvim configuration

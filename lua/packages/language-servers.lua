@@ -16,6 +16,7 @@ local function config()
     "emmet_language_server",
     "html",
     "jdtls",
+    "jinja_lsp",
     "lua_ls",
     "ruff",
     "rust_analyzer",
