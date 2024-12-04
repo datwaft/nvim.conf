@@ -328,6 +328,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- Disable inlay hints by default
     vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })
 
+    -- Use LSP-provided folding if possible
+    if client:supports_method("textDocument/foldingRange") then
+      vim.wo.foldmethod = "expr"
+      vim.wo.foldexpr = "v:lua.vim.lsp.foldexpr()"
+    end
+
     -- Disable semantic highlighting for some LSPs
     for _, name in ipairs({ "dockerls" }) do
       if client.name == name then
