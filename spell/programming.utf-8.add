@@ -4,6 +4,7 @@ APIs
 Brewfile
 CMD
 CTRL
+EAPI
 EX_DATAERR
 MANPAGER
 Mailosaur
