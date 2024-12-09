@@ -106,9 +106,9 @@ local function config()
       local global_typescript = global_node .. "/typescript/lib"
       local local_typescript = local_node .. "/typescript/lib"
 
-      if util.path.exists(local_typescript) then
+      if vim.uv.fs_stat(local_typescript) then
         new_config.init_options.typescript.tsdk = local_typescript
-      elseif util.path.exists(global_typescript) then
+      elseif vim.uv.fs_stat(global_typescript) then
         new_config.init_options.typescript.tsdk = global_typescript
       end
     end,
