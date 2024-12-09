@@ -36,5 +36,23 @@ return {
       end,
     },
   },
-  "sindrets/diffview.nvim",
+  {
+    "sindrets/diffview.nvim",
+    ---@type fun(): DiffviewConfig
+    opts = function()
+      local actions = require("diffview.actions")
+      return {
+        keymaps = {
+          view = {
+            { "n", "<C-n>", actions.focus_files, { desc = "Bring focus to the file panel" } },
+            { "n", "<C-w>f", actions.toggle_files, { desc = "Toggle the file panel." } },
+          },
+          file_panel = {
+            { "n", "<C-n>", actions.focus_files, { desc = "Bring focus to the file panel" } },
+            { "n", "<C-w>f", actions.toggle_files, { desc = "Toggle the file panel." } },
+          },
+        },
+      }
+    end,
+  },
 }

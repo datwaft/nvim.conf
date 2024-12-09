@@ -52,6 +52,8 @@ vim.opt.listchars = {
   tab = "→ ",
   nbsp = "·",
 }
+-- Diffs
+vim.opt.fillchars:append({ diff = "/" })
 -- Spell-checking
 vim.opt.spell = true
 vim.opt.spelllang = { "programming", "en", "es" }
