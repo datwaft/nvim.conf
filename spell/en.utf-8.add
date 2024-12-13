@@ -3,6 +3,7 @@ CPV
 GDN
 Kleene
 LLM
+PPT
 SEM
 TTD
 UFD
@@ -20,6 +21,7 @@ hardcodes
 hardcoding
 mille
 passthrough
+powerpoint
 recurse
 stackoverflow
 subtable
