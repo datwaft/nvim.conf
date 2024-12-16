@@ -43,11 +43,6 @@ return {
         list = {
           selection = "manual",
         },
-        menu = {
-          draw = {
-            treesitter = { "lsp" },
-          },
-        },
         accept = {
           auto_brackets = {
             enabled = false,
