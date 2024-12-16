@@ -48,6 +48,11 @@ return {
             treesitter = { "lsp" },
           },
         },
+        accept = {
+          auto_brackets = {
+            enabled = false,
+          },
+        },
       },
       snippets = {
         expand = function(snippet)
