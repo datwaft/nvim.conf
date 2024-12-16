@@ -17,4 +17,16 @@ return {
       { mode = { "n", "o", "x" }, "b", "<cmd>lua require('spider').motion('b')<cr>", desc = "spider-b" },
     },
   },
+  {
+    "aaronik/treewalker.nvim",
+    opts = {
+      highlight = true,
+    },
+    keys = {
+      { mode = { "n" }, "<S-Up>", "<cmd>Treewalker Up<cr>" },
+      { mode = { "n" }, "<S-Down>", "<cmd>Treewalker Down<cr>" },
+      { mode = { "n" }, "<S-Left>", "<cmd>Treewalker Left<cr>" },
+      { mode = { "n" }, "<S-Right>", "<cmd>Treewalker Right<cr>" },
+    },
+  },
 }
