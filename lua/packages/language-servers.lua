@@ -2,7 +2,7 @@
 local function config()
   local lsp = require("lspconfig")
 
-  local capabilities = require("cmp_nvim_lsp").default_capabilities()
+  local capabilities = require("blink.cmp").get_lsp_capabilities()
 
   -- Configure some language servers with the default configuration
   for _, server in ipairs({
@@ -175,7 +175,6 @@ return {
         },
       },
       "folke/neoconf.nvim",
-      "hrsh7th/cmp-nvim-lsp",
       {
         "williamboman/mason-lspconfig.nvim",
         dependencies = { "williamboman/mason.nvim" },
