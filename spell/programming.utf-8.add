@@ -61,6 +61,7 @@ javascript
 js
 keybind
 keybinds
+lazydev
 listbox
 luarocks
 luxon
@@ -77,6 +78,7 @@ nvim
 opam
 paredit
 parinfer
+popup
 qa
 quickfix
 readonly
@@ -110,4 +112,3 @@ zsh
 ε
 Ꝗ
 ꝗ
-lazydev
