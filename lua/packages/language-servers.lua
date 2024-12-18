@@ -82,8 +82,6 @@ local function config()
     ---@param new_config any
     ---@param new_root_dir string
     on_new_config = function(new_config, new_root_dir)
-      local util = require("lspconfig.util")
-
       -- Read file synchronously
       -- See |uv_fs_t|
       ---@param path string
@@ -101,7 +99,7 @@ local function config()
       local node_version = tool_versions:match("nodejs (%S+)")
 
       local global_node = vim.env.HOME .. "/.asdf/installs/nodejs/" .. node_version .. "/lib/node_modules"
-      local local_node = util.find_node_modules_ancestor(new_root_dir)
+      local local_node = vim.fs.dirname(vim.fs.find("node_modules", { path = new_root_dir, upward = true })[1])
 
       local global_typescript = global_node .. "/typescript/lib"
       local local_typescript = local_node .. "/typescript/lib"
