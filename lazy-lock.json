@@ -2,6 +2,7 @@
   "Brewfile.vim": { "branch": "master", "commit": "f13b98b92f2e9b9e38f3b1d45d41e19049d671df" },
   "LuaSnip": { "branch": "master", "commit": "03c8e67eb7293c404845b3982db895d59c0d1538" },
   "Vim-Jinja2-Syntax": { "branch": "master", "commit": "2c17843b074b06a835f88587e1023ceff7e2c7d1" },
+  "academic.nvim": { "branch": "main", "commit": "d66c44bd0ecd6791c27debea40268fc9701cef04" },
   "aerial.nvim": { "branch": "master", "commit": "1160fb7a15a34b03b7381d95d45560712b5f19d0" },
   "arm-syntax-vim": { "branch": "master", "commit": "84ee5c476bbfde87dd6b5fb9f6f207fbce335a73" },
   "blink.cmp": { "branch": "main", "commit": "8a092ce8630a885ba8b3e60c85fd06a6930d3af1" },

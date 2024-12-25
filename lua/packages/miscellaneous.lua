@@ -11,6 +11,8 @@ return {
     "psliwka/vim-dirtytalk",
     build = ":DirtytalkUpdate",
   },
+  -- Add academic dictionary
+  "ficcdaf/academic.nvim",
   -- Never invalidate undo files
   {
     "kevinhwang91/nvim-fundo",
