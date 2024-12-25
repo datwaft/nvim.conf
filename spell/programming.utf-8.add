@@ -78,6 +78,7 @@ nvim
 opam
 paredit
 parinfer
+passwordless
 popup
 qa
 quickfix
