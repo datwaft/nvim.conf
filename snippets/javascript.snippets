@@ -14,12 +14,12 @@ snippet step "await test.step('...', async () => { ... })" b
 	await test.step("${1:}", async () => {
 		${0:${VISUAL}}
 	});
-snippet beforeAll "test.beforeAll(async ({}) => { ... })" b
-	test.beforeAll(async ({${2:}}) => {
+snippet before "test.before(async ({}) => { ... })" b
+	test.before(async ({${2:}}) => {
 		${0:${VISUAL}}
 	});
-snippet afterAll "test.afterAll(async ({}) => { ... })" b
-	test.afterAll(async ({${2:}}) => {
+snippet after "test.after(async ({}) => { ... })" b
+	test.after(async ({${2:}}) => {
 		${0:${VISUAL}}
 	});
 snippet beforeEach "test.beforeEach(async ({}) => { ... })" b
