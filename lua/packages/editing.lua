@@ -31,8 +31,13 @@ return {
     event = "VeryLazy",
     opts = function()
       local spec_treesitter = require("mini.ai").gen_spec.treesitter
+      local spec_argument = require("mini.ai").gen_spec.argument
       return {
         custom_textobjects = {
+          a = spec_argument({
+            brackets = { "%b()", "%b[]", "%b{}", "%b<>" },
+            exclude_regions = { '%b""', "%b''", "%b()", "%b[]", "%b{}", "%b<>" },
+          }),
           s = spec_treesitter({ a = "@statement.outer", i = "@statement.outer" }),
           S = spec_treesitter({ a = "@statement.top", i = "@statement.top" }),
           c = spec_treesitter({ a = "@cell.outer", i = "@cell.inner" }),
