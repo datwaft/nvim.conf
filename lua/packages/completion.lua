@@ -12,7 +12,7 @@ return {
         nerd_font_variant = "mono",
       },
       sources = {
-        default = { "lsp", "path", "luasnip", "buffer", "dadbod", "lazydev" },
+        default = { "lsp", "path", "snippets", "buffer", "dadbod", "lazydev" },
         cmdline = {},
         providers = {
           dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
@@ -41,24 +41,13 @@ return {
       },
       completion = {
         keyword = { range = "full" },
-        list = { selection = "manual" },
+        list = { selection = { auto_insert = false, preselect = false } },
         accept = { auto_brackets = { enabled = false } },
         documentation = { auto_show = true, auto_show_delay_ms = 100 },
         ghost_text = { enabled = true },
       },
       snippets = {
-        expand = function(snippet)
-          require("luasnip").lsp_expand(snippet)
-        end,
-        active = function(filter)
-          if filter and filter.direction then
-            return require("luasnip").jumpable(filter.direction)
-          end
-          return require("luasnip").in_snippet()
-        end,
-        jump = function(direction)
-          require("luasnip").jump(direction)
-        end,
+        preset = "luasnip",
       },
     },
     dependencies = { "rafamadriz/friendly-snippets", "L3MON4D3/LuaSnip" },
