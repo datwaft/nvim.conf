@@ -14,6 +14,7 @@ local function config()
     "cssls",
     "dockerls",
     "emmet_language_server",
+    "gh_actions_ls",
     "html",
     "jdtls",
     "jinja_lsp",
