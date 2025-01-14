@@ -74,4 +74,8 @@ return {
       return success
     end,
   },
+  -- Rainbow delimiters
+  {
+    "HiPhish/rainbow-delimiters.nvim",
+  },
 }
