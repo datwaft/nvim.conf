@@ -77,6 +77,8 @@ vim.opt.mousescroll = "ver:2,hor:0"
 vim.keymap.set({ "n", "v", "o", "c", "i" }, "<MiddleMouse>", "<Nop>")
 vim.keymap.set({ "n", "v", "o", "c", "i" }, "<MiddleDrag>", "<Nop>")
 vim.keymap.set({ "n", "v", "o", "c", "i" }, "<MiddleRelease>", "<Nop>")
+-- Link identification
+vim.opt.isfname:append("*")
 
 ---------------
 -- Autocommands
