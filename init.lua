@@ -243,9 +243,9 @@ _G.border = "rounded"
 --------------
 -- Configure diagnostics
 vim.diagnostic.config({
-  underline = { severity = { min = vim.diagnostic.severity.INFO } },
+  underline = { severity = { min = vim.diagnostic.severity.HINT } },
   signs = {
-    severity = { min = vim.diagnostic.severity.HINT },
+    severity = { min = vim.diagnostic.severity.INFO },
     text = {
       [vim.diagnostic.severity.ERROR] = icons.diagnostic.error,
       [vim.diagnostic.severity.WARN] = icons.diagnostic.warn,

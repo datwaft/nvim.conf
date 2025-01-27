@@ -39,6 +39,7 @@ return {
         DiagnosticVirtualTextInfo = { style = {} },
         DiagnosticVirtualTextHint = { style = {} },
         DiagnosticVirtualTextOk = { style = {} },
+        DiagnosticUnderlineHint = { sp = colors.overlay0, style = { "underdotted" } },
         FzfLuaBorder = { fg = colors.blue },
         QuickFixLineNr = { fg = colors.peach },
         RainbowDelimiterRed = { fg = dim_color(colors.red, 0.5), style = { "bold" } },
