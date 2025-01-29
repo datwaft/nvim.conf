@@ -253,17 +253,9 @@ vim.diagnostic.config({
       [vim.diagnostic.severity.HINT] = icons.diagnostic.hint,
     },
   },
-  virtual_text = {
+  virtual_lines = {
     severity = { min = vim.diagnostic.severity.INFO },
-    prefix = "",
-    format = function(diagnostic)
-      return ({
-        [vim.diagnostic.severity.ERROR] = icons.diagnostic.error,
-        [vim.diagnostic.severity.WARN] = icons.diagnostic.warn,
-        [vim.diagnostic.severity.INFO] = icons.diagnostic.info,
-        [vim.diagnostic.severity.HINT] = icons.diagnostic.hint,
-      })[diagnostic.severity] .. " " .. diagnostic.message .. " "
-    end,
+    current_line = true,
   },
   float = {
     show_header = false,
