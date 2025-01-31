@@ -16,6 +16,7 @@ return {
     end,
     opts = {
       ensure_installed = "all",
+      ignore_install = { "mlir" },
       highlight = { enable = true, disable = { "latex", "tmux" } },
       indent = { enable = true },
       matchup = { enable = true },
