@@ -253,10 +253,7 @@ vim.diagnostic.config({
       [vim.diagnostic.severity.HINT] = icons.diagnostic.hint,
     },
   },
-  virtual_lines = {
-    severity = { min = vim.diagnostic.severity.INFO },
-    current_line = true,
-  },
+  virtual_lines = false,
   float = {
     show_header = false,
     source = true,
@@ -268,8 +265,14 @@ vim.diagnostic.config({
 -- Keybind for listing diagnostics
 vim.keymap.set("n", "<C-w>D", vim.diagnostic.setqflist)
 -- Keybind for toggling diagnostics
+vim.g.enable_diagnostic_virtual_lines = false
 vim.keymap.set("n", "<leader>td", function()
-  vim.diagnostic.enable(not vim.diagnostic.is_enabled({ bufnr = 0 }), { bufnr = 0 })
+  vim.g.enable_diagnostic_virtual_lines = not vim.g.enable_diagnostic_virtual_lines
+  if vim.g.enable_diagnostic_virtual_lines then
+    vim.diagnostic.config({ virtual_lines = { severity = { min = vim.diagnostic.severity.INFO } } })
+  else
+    vim.diagnostic.config({ virtual_lines = false })
+  end
 end)
 
 ---------------------------------
