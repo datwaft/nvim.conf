@@ -401,9 +401,11 @@ end
 
 install_package("folke/lazy.nvim")
 
-require("lazy").setup("packages", {
-  change_detection = { notify = false },
-  dev = { path = "~/Developer/Git/" },
-  ui = { backdrop = 100, border = border },
+require("lazy").setup({
+  spec = {
+    { import = "packages" },
+  },
   install = { colorscheme = { "catppuccin-mocha" } },
+  change_detection = { notify = false },
+  ui = { backdrop = 100, border = border },
 })
