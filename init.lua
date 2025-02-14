@@ -151,6 +151,8 @@ vim.api.nvim_create_autocmd("FileType", {
 -----------
 -- Keybinds
 -----------
+-- Go to folder with -
+vim.keymap.set("n", "-", "<CMD>e %:h<CR>")
 -- Disable highlights with <ESC>
 vim.keymap.set("n", "<ESC>", "<ESC><CMD>nohlsearch<CR>")
 -- Make mappings similar to TMUX mappings for Vim tabs
