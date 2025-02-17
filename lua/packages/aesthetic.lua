@@ -41,7 +41,14 @@ return {
     },
   },
   -- Indentation lines
-  { "lukas-reineke/indent-blankline.nvim", main = "ibl", event = "VeryLazy", opts = { scope = { enabled = false } } },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    event = "VeryLazy",
+    ---@module "ibl"
+    ---@type ibl.config
+    opts = { scope = { enabled = false } },
+  },
   -- Colorscheme colors in devicons
   {
     "rachartier/tiny-devicons-auto-colors.nvim",
