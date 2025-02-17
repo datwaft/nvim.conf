@@ -11,9 +11,9 @@ return {
       appearance = {
         nerd_font_variant = "mono",
       },
+      cmdline = { enabled = false },
       sources = {
         default = { "lsp", "path", "snippets", "buffer", "dadbod", "lazydev" },
-        cmdline = {},
         providers = {
           dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
           lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", fallbacks = { "lazy_dev" } },
