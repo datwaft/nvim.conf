@@ -23,14 +23,11 @@ return {
         vim.keymap.set("n", "ghr", gs.reset_hunk, { buffer = bufnr })
         vim.keymap.set("n", "ghR", gs.reset_buffer, { buffer = bufnr })
 
-        vim.keymap.set("n", "ghu", gs.undo_stage_hunk, { buffer = bufnr })
+        vim.keymap.set("n", "<C-w>p", gs.preview_hunk_inline, { buffer = bufnr })
+        vim.keymap.set("n", "<C-w>P", gs.preview_hunk, { buffer = bufnr })
 
-        vim.keymap.set("n", "ghd", gs.preview_hunk, { buffer = bufnr })
-        vim.keymap.set("n", "ghp", gs.preview_hunk, { buffer = bufnr })
-        vim.keymap.set("n", "<C-w>p", gs.preview_hunk, { buffer = bufnr })
-
+        vim.keymap.set("n", "<C-w>b", gs.blame_line, { buffer = bufnr })
         vim.keymap.set("n", "<leader>tb", gs.toggle_current_line_blame, { buffer = bufnr })
-        vim.keymap.set("n", "<leader>tD", gs.toggle_deleted, { buffer = bufnr })
 
         vim.keymap.set({ "o", "x" }, "ih", ":<C-u>Gitsigns select_hunk<CR>", { silent = true, buffer = bufnr })
       end,
