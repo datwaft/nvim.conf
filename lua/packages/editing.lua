@@ -58,4 +58,29 @@ return {
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = true,
   },
+  -- Multiple cursors
+  {
+    "jake-stewart/multicursor.nvim",
+    config = function(_, opts)
+      local mc = require("multicursor-nvim")
+      mc.setup(opts)
+
+      vim.keymap.set({ "n", "x" }, "<M-Up>", function() mc.lineAddCursor(-1) end)
+      vim.keymap.set({ "n", "x" }, "<M-Down>", function() mc.lineAddCursor(1) end)
+      vim.keymap.set({ "n", "x" }, "<M-Left>", mc.nextCursor)
+      vim.keymap.set({ "n", "x" }, "<M-Right>", mc.prevCursor)
+      vim.keymap.set("n", "<ESC>", function()
+        if not mc.cursorsEnabled() then
+          mc.enableCursors()
+        elseif mc.hasCursors() then
+          mc.clearCursors()
+        end
+        vim.cmd.nohlsearch()
+      end)
+      vim.keymap.set({ "n", "x" }, "<C-q>", mc.toggleCursor)
+      vim.keymap.set({ "n", "x" }, "<C-Q>", mc.duplicateCursors)
+      vim.keymap.set({ "n", "x" }, "<C-i>", mc.jumpForward)
+      vim.keymap.set({ "n", "x" }, "<C-o>", mc.jumpBackward)
+    end,
+  },
 }
