@@ -59,8 +59,6 @@ return {
       { "nvim-tree/nvim-web-devicons", config = true },
     },
     config = true,
-    init = function()
-      vim.keymap.set("n", "gO", "<cmd>AerialToggle!<cr>")
-    end,
+    init = function() vim.keymap.set("n", "gO", "<cmd>AerialToggle!<cr>") end,
   },
 }

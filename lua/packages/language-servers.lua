@@ -41,9 +41,7 @@ local function config()
   })
   -- Fennel
   lsp.fennel_ls.setup({
-    root_dir = function(filename, _)
-      return vim.fs.root(filename, { ".git", "flsproject.fnl", "fnl", ".nfnl.fnl" })
-    end,
+    root_dir = function(filename, _) return vim.fs.root(filename, { ".git", "flsproject.fnl", "fnl", ".nfnl.fnl" }) end,
     settings = { ["fennel-ls"] = { ["extra-globals"] = "vim icons border" } },
     capabilities = capabilities,
   })
@@ -73,9 +71,7 @@ local function config()
     },
     capabilities = capabilities,
 
-    on_attach = function(client, bufnr)
-      require("twoslash-queries").attach(client, bufnr)
-    end,
+    on_attach = function(client, bufnr) require("twoslash-queries").attach(client, bufnr) end,
   })
   -- VueJS
   lsp.volar.setup({
@@ -209,9 +205,7 @@ return {
     "icholy/lsplinks.nvim",
     config = true,
     lazy = false,
-    keys = function()
-      return { { "gx", require("lsplinks").gx } }
-    end,
+    keys = function() return { { "gx", require("lsplinks").gx } } end,
   },
   -- Enhance code actions select
   {

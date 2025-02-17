@@ -43,9 +43,7 @@ local function new_notebook(filename)
   end
 end
 
-vim.api.nvim_create_user_command("NewNotebook", function(opts)
-  new_notebook(opts.args)
-end, {
+vim.api.nvim_create_user_command("NewNotebook", function(opts) new_notebook(opts.args) end, {
   nargs = 1,
   complete = "file",
 })

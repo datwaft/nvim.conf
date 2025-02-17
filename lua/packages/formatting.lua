@@ -37,9 +37,7 @@ return {
         timeout = 500,
       },
     },
-    init = function()
-      vim.opt.formatexpr = [[v:lua.require("conform").formatexpr()]]
-    end,
+    init = function() vim.opt.formatexpr = [[v:lua.require("conform").formatexpr()]] end,
   },
   {
     "zapling/mason-conform.nvim",

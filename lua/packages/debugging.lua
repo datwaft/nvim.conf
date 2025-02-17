@@ -20,9 +20,7 @@ end
 local function split_by_whitespace(input)
   local P, S, C, Cc, Ct = vim.lpeg.P, vim.lpeg.S, vim.lpeg.C, vim.lpeg.Cc, vim.lpeg.Ct
 
-  local function token(id, patt)
-    return Ct(Cc(id) * C(patt))
-  end
+  local function token(id, patt) return Ct(Cc(id) * C(patt)) end
 
   local singleq = P("'") * ((1 - S("'\r\n\f\\")) + (P("\\") * 1)) ^ 0 * "'"
   local doubleq = P('"') * ((1 - S('"\r\n\f\\')) + (P("\\") * 1)) ^ 0 * '"'
@@ -85,9 +83,7 @@ local function get_arguments()
         highlight = treesitter_highlight_for("bash"),
       },
       ---@param input? string
-      function(input)
-        coroutine.resume(coro, split_by_whitespace(vim.fn.expand(input or "")))
-      end
+      function(input) coroutine.resume(coro, split_by_whitespace(vim.fn.expand(input or ""))) end
     )
   end)
 end
@@ -216,12 +212,12 @@ return {
       vim.keymap.set("n", "<localleader>gS", dap.terminate)
       vim.keymap.set("n", "<localleader>tb", dap.toggle_breakpoint)
       vim.keymap.set("n", "<localleader>cb", dap.clear_breakpoints)
-      vim.keymap.set("n", "<localleader>tl", function()
-        dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
-      end)
-      vim.keymap.set("n", "<localleader>tc", function()
-        dap.set_breakpoint(vim.fn.input("Condition: "), nil, nil)
-      end)
+      vim.keymap.set(
+        "n",
+        "<localleader>tl",
+        function() dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: ")) end
+      )
+      vim.keymap.set("n", "<localleader>tc", function() dap.set_breakpoint(vim.fn.input("Condition: "), nil, nil) end)
       vim.keymap.set("n", "<localleader>rl", dap.run_last)
       vim.keymap.set("n", "<localleader>rc", dap.run_to_cursor)
     end,
@@ -241,18 +237,10 @@ return {
 
       vim.keymap.set({ "n", "v" }, "<localleader>K", '<cmd>lua require("dapui").eval()<cr>')
 
-      dap.listeners.before.attach.dapui = function()
-        dapui.open()
-      end
-      dap.listeners.before.launch.dapui = function()
-        dapui.open()
-      end
-      dap.listeners.before.event_terminated.dapui = function()
-        dapui.close()
-      end
-      dap.listeners.before.event_exited.dapui = function()
-        dapui.close()
-      end
+      dap.listeners.before.attach.dapui = function() dapui.open() end
+      dap.listeners.before.launch.dapui = function() dapui.open() end
+      dap.listeners.before.event_terminated.dapui = function() dapui.close() end
+      dap.listeners.before.event_exited.dapui = function() dapui.close() end
 
       vim.api.nvim_create_autocmd("FileType", {
         group = vim.api.nvim_create_augroup("winfixbuf-dapui", { clear = true }),
@@ -264,9 +252,7 @@ return {
           "dapui_console",
           "dap-repl",
         },
-        callback = function()
-          vim.opt_local.winfixbuf = true
-        end,
+        callback = function() vim.opt_local.winfixbuf = true end,
       })
     end,
   },

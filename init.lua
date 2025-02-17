@@ -6,9 +6,7 @@
 ---@param name string
 ---@param text string
 ---@return -1|0
-function _G.define_sign(name, text)
-  return vim.fn.sign_define(name, { text = text, texthl = name })
-end
+function _G.define_sign(name, text) return vim.fn.sign_define(name, { text = text, texthl = name }) end
 
 -----------
 -- Settings
@@ -123,9 +121,7 @@ vim.api.nvim_create_autocmd("FileType", {
     "query",
     "molten_output",
   },
-  callback = function()
-    vim.opt_local.spell = false
-  end,
+  callback = function() vim.opt_local.spell = false end,
 })
 -- Always enable 'spell' on some filetypes
 vim.api.nvim_create_autocmd("FileType", {
@@ -135,17 +131,13 @@ vim.api.nvim_create_autocmd("FileType", {
     "tex",
     "quarto",
   },
-  callback = function()
-    vim.opt_local.spell = true
-  end,
+  callback = function() vim.opt_local.spell = true end,
 })
 -- Always enable 'conceallevel' on some filetypes
 vim.api.nvim_create_autocmd("FileType", {
   group = vim.api.nvim_create_augroup("enable-conceal", { clear = true }),
   pattern = { "html" },
-  callback = function()
-    vim.opt_local.conceallevel = 2
-  end,
+  callback = function() vim.opt_local.conceallevel = 2 end,
 })
 
 -----------
@@ -163,9 +155,12 @@ vim.keymap.set("n", "<C-t>]", "<CMD>tabprevious<CR>")
 vim.keymap.set("n", "<C-t>w", "<CMD>tabclose<CR>")
 vim.keymap.set("n", "<C-t>q", "<CMD>tabclose<CR>")
 -- Close wildmenu using <SPACE>
-vim.keymap.set("c", "<SPACE>", function()
-  return vim.fn.wildmenumode() == 1 and "<C-y>" or "<SPACE>"
-end, { expr = true })
+vim.keymap.set(
+  "c",
+  "<SPACE>",
+  function() return vim.fn.wildmenumode() == 1 and "<C-y>" or "<SPACE>" end,
+  { expr = true }
+)
 -- Make `j` work with wrapped lines
 vim.keymap.set({ "n", "v" }, "j", function()
   if vim.v.count == 0 then
@@ -287,13 +282,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local bufnr = args.buf
 
     -- Show hover documentation
-    vim.keymap.set("n", "K", function()
-      vim.lsp.buf.hover({ border = border })
-    end, { buffer = bufnr })
+    vim.keymap.set("n", "K", function() vim.lsp.buf.hover({ border = border }) end, { buffer = bufnr })
     -- Show signature help
-    vim.keymap.set("i", "<C-s>", function()
-      vim.lsp.buf.signature_help({ border = border })
-    end, { buffer = bufnr })
+    vim.keymap.set("i", "<C-s>", function() vim.lsp.buf.signature_help({ border = border }) end, { buffer = bufnr })
     -- Code actions
     vim.keymap.set({ "n", "x" }, "gra", "<cmd>lua require('fastaction').code_action()<cr>", { buffer = bufnr })
     -- Go to definition
@@ -302,9 +293,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- Go to type definition
     vim.keymap.set("n", "gt", function()
       vim.lsp.buf.type_definition({
-        on_list = function(t)
-          vim.lsp.util.show_document(t.items[1].user_data, "utf-8", { focus = true })
-        end,
+        on_list = function(t) vim.lsp.util.show_document(t.items[1].user_data, "utf-8", { focus = true }) end,
       })
     end, { buffer = bufnr })
     vim.keymap.set("n", "gT", "<cmd>Glance type_definitions<cr>", { buffer = bufnr })
@@ -320,9 +309,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "grn", vim.lsp.buf.rename, { buffer = bufnr })
     -- Toggle inlay hints
     if client:supports_method("textDocument/inlayHint") then
-      vim.keymap.set("n", "<leader>th", function()
-        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
-      end, { buffer = bufnr })
+      vim.keymap.set(
+        "n",
+        "<leader>th",
+        function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }), { bufnr = bufnr }) end,
+        { buffer = bufnr }
+      )
     end
 
     -- Disable inlay hints by default

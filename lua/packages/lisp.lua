@@ -5,9 +5,7 @@ return {
     "Olical/conjure",
     ft = { "clojure", "fennel" },
     lazy = true,
-    init = function()
-      vim.g["conjure#mapping#doc_word"] = false
-    end,
+    init = function() vim.g["conjure#mapping#doc_word"] = false end,
   },
   -- Parinfer
   { "gpanders/nvim-parinfer" },
