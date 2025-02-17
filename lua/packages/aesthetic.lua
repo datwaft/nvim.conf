@@ -33,11 +33,11 @@ return {
   },
   -- Enhance vim.ui.select
   {
-    "stevearc/dressing.nvim",
-    event = "VeryLazy",
+    "folke/snacks.nvim",
+    ---@module "snacks"
+    ---@type snacks.Config
     opts = {
-      input = { enabled = false },
-      select = { backend = { "builtin" } },
+      picker = {},
     },
   },
   -- Indentation lines
