@@ -219,12 +219,4 @@ return {
       },
     },
   },
-  -- LSP in embedded code
-  {
-    "jmbuhr/otter.nvim",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-    },
-    config = true,
-  },
 }

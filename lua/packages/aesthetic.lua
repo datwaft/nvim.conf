@@ -31,13 +31,15 @@ return {
       },
     },
   },
-  -- Enhance vim.ui.select
   {
     "folke/snacks.nvim",
     ---@module "snacks"
     ---@type snacks.Config
     opts = {
+      -- Enhance vim.ui.select
       picker = {},
+      -- Display images
+      image = {},
     },
   },
   -- Indentation lines
@@ -62,23 +64,6 @@ return {
       return {
         colors = theme_colors,
       }
-    end,
-  },
-  -- Render images
-  {
-    "3rd/image.nvim",
-    opts = {
-      backend = "kitty",
-      max_width = 100,
-      max_height = 12,
-      max_height_window_percentage = math.huge,
-      max_width_window_percentage = math.huge,
-      window_overlap_clear_enabled = true,
-      window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
-    },
-    enabled = function()
-      local success = pcall(require, "magick")
-      return success
     end,
   },
   -- Rainbow delimiters

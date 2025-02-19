@@ -23,11 +23,9 @@ return {
         python = { "ruff_format", "ruff_organize_imports" },
         yaml = { "prettierd", "prettier", stop_after_first = true },
         xml = { "xmlformat" },
-        ["*"] = { "injected" },
       },
       formatters = {
         latexindent = { prepend_args = { "-l", "-m", "--logfile=/dev/null" } },
-        biome = { require_cwd = true },
         ["biome-check"] = { require_cwd = true },
         sleek = { prepend_args = { "--indent-spaces", "2" } },
         xmlformat = { prepend_args = { "--selfclose" } },
