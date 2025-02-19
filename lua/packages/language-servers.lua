@@ -71,40 +71,6 @@ local function config()
 
     on_attach = function(client, bufnr) require("twoslash-queries").attach(client, bufnr) end,
   })
-  -- VueJS
-  lsp.volar.setup({
-    ---@param new_config any
-    ---@param new_root_dir string
-    on_new_config = function(new_config, new_root_dir)
-      -- Read file synchronously
-      -- See |uv_fs_t|
-      ---@param path string
-      ---@return string
-      local function read_file(path)
-        local fd = assert(vim.uv.fs_open(path, "r", 438))
-        local stat = assert(vim.uv.fs_fstat(fd))
-        local data = assert(vim.uv.fs_read(fd, stat.size))
-        assert(vim.uv.fs_close(fd))
-        return data
-      end
-
-      -- Here we are assuming you are using asdf for managing the global node version
-      local tool_versions = read_file(vim.env.HOME .. "/.tool-versions")
-      local node_version = tool_versions:match("nodejs (%S+)")
-
-      local global_node = vim.env.HOME .. "/.asdf/installs/nodejs/" .. node_version .. "/lib/node_modules"
-      local local_node = vim.fs.dirname(vim.fs.find("node_modules", { path = new_root_dir, upward = true })[1])
-
-      local global_typescript = global_node .. "/typescript/lib"
-      local local_typescript = local_node .. "/typescript/lib"
-
-      if vim.uv.fs_stat(local_typescript) then
-        new_config.init_options.typescript.tsdk = local_typescript
-      elseif vim.uv.fs_stat(global_typescript) then
-        new_config.init_options.typescript.tsdk = global_typescript
-      end
-    end,
-  })
   -- JSON
   lsp.jsonls.setup({
     settings = {
