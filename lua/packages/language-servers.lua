@@ -21,7 +21,6 @@ local function config()
     "rust_analyzer",
     "svelte",
     "taplo",
-    "texlab",
     "vimls",
     "zls",
   }) do
