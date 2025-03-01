@@ -61,4 +61,21 @@ return {
     config = true,
     init = function() vim.keymap.set("n", "gO", "<cmd>AerialToggle!<cr>") end,
   },
+  -- Symbols
+  {
+    "bassamsdata/namu.nvim",
+    opts = {
+      namu_symbols = {
+        enable = true,
+        options = {
+          display = {
+            padding = 1,
+          },
+          window = {
+            border = border,
+          },
+        },
+      },
+    },
+  },
 }

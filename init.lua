@@ -307,7 +307,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "<C-w>r", "<cmd>Glance references<cr>", { buffer = bufnr })
     vim.keymap.set("n", "<C-w>R", vim.lsp.buf.references, { buffer = bufnr })
     -- List all symbols
-    vim.keymap.set("n", "<C-w>S", vim.lsp.buf.document_symbol, { buffer = bufnr })
+    vim.keymap.set("n", "<C-w>S", "<cmd>Namu symbols<cr>", { buffer = bufnr })
     -- Rename symbol under cursor
     vim.keymap.set("n", "grn", vim.lsp.buf.rename, { buffer = bufnr })
     -- Toggle inlay hints

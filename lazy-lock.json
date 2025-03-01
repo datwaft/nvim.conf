@@ -33,6 +33,7 @@
   "mini.ai": { "branch": "main", "commit": "6e01c0e5a15554852546fac9853960780ac52ed4" },
   "mkdir.nvim": { "branch": "main", "commit": "c55d1dee4f099528a1853b28bb28caa802eba217" },
   "multicursor.nvim": { "branch": "main", "commit": "7497aedc0ea7d0397d7d924b619a5feb585c80d1" },
+  "namu.nvim": { "branch": "main", "commit": "d6a977bfd4e509edbc8d63fb9b09219ef1a01724" },
   "neo-tree.nvim": { "branch": "v3.x", "commit": "e96fd85bf18bc345dab332b345098fa5460dffac" },
   "neoconf.nvim": { "branch": "main", "commit": "21483cfdde74fdbd6493b0f7b3b01cfd174199a4" },
   "neotest": { "branch": "master", "commit": "dddbe8fe358b05b2b7e54fe4faab50563171a76d" },
