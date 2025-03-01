@@ -41,6 +41,7 @@ vim.opt.relativenumber = true
 -- Scrolling
 vim.opt.splitkeep = "screen"
 vim.opt.smoothscroll = true
+vim.opt.scrolloff = 7
 -- Command-line
 vim.opt.showmode = false
 -- Whitespace
