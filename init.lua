@@ -317,8 +317,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
       )
     end
 
-    -- Disable inlay hints by default
-    vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })
+    -- Enable inlay hints by default
+    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 
     -- Use LSP-provided folding if possible
     if client:supports_method("textDocument/foldingRange") then
