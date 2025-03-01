@@ -25,7 +25,6 @@ return {
         xml = { "xmlformat" },
       },
       formatters = {
-        latexindent = { prepend_args = { "-l", "-m", "--logfile=/dev/null" } },
         ["biome-check"] = { require_cwd = true },
         sleek = { prepend_args = { "--indent-spaces", "2" } },
         xmlformat = { prepend_args = { "--selfclose" } },

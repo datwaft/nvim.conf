@@ -21,12 +21,32 @@ local function config()
     "rust_analyzer",
     "svelte",
     "taplo",
+    "texlab",
     "vimls",
     "zls",
   }) do
     lsp[server].setup({ capabilities = capabilities })
   end
 
+  -- LaTeX
+  lsp.texlab.setup({
+    settings = {
+      texlab = {
+        build = {
+          executable = "tectonic",
+          args = {
+            "-X",
+            "compile",
+            "%f",
+            "--synctex",
+            "--keep-logs",
+            "--keep-intermediates",
+          },
+        },
+      },
+    },
+    capabilities = capabilities,
+  })
   -- Lua
   lsp.lua_ls.setup({
     settings = {
