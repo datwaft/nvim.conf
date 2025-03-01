@@ -200,6 +200,8 @@ vim.keymap.set({ "i", "n", "v" }, "<S-Down>", "<Down>", { remap = true })
 -- Use <M-Left> and <M-Right> for moving between words
 vim.keymap.set({ "c", "i", "n", "v" }, "<M-Left>", "<S-Left>")
 vim.keymap.set({ "c", "i", "n", "v" }, "<M-Right>", "<S-Right>")
+-- Search on selected text
+vim.keymap.set("x", "g/", "<Esc>/\\%V")
 
 ---------------
 -- Text objects
@@ -329,15 +331,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     -- Disable semantic highlighting for some LSPs
     for _, name in ipairs({ "dockerls" }) do
-      if client.name == name then
-        client.server_capabilities.semanticTokensProvider = nil
-      end
+      if client.name == name then client.server_capabilities.semanticTokensProvider = nil end
     end
     -- Disable hover for some LSPs
     for _, name in ipairs({ "ruff_lsp" }) do
-      if client.name == name then
-        client.server_capabilities.hoverProvider = nil
-      end
+      if client.name == name then client.server_capabilities.hoverProvider = nil end
     end
     -- Disable formatting for some LSPs
     for _, name in ipairs({ "jsonls", "biome", "tsserver", "vtsls", "basedpyright" }) do
