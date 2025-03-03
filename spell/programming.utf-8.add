@@ -5,6 +5,7 @@ Brewfile
 CMD
 CTRL
 EAPI
+ENOTFOUND
 EX_DATAERR
 MANPAGER
 Mailosaur
@@ -23,6 +24,7 @@ autocommands
 backend
 catppuccin
 cdo
+ceil
 chezmoi
 colorcolumn
 colorscheme
@@ -51,6 +53,7 @@ fixup
 frontend
 frontends
 fzf
+getaddrinfo
 graphql
 gx
 headful
