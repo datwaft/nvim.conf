@@ -93,6 +93,7 @@ quickfix
 readonly
 rsync
 secnumdepth
+sharding
 shellcheck
 statusline
 stderr
