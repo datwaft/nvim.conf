@@ -62,6 +62,34 @@ local function config()
     settings = { ["fennel-ls"] = { ["extra-globals"] = "vim icons border" } },
     capabilities = capabilities,
   })
+  -- JavaScript
+  require("lspconfig.configs").vtsls = require("vtsls").lspconfig
+  lsp.vtsls.setup({
+    settings = {
+      vtsls = { autoUseWorkspaceTsdk = true },
+      javascript = {
+        inlayHints = {
+          parameterNames = { enabled = "literals" },
+          variableTypes = { enabled = true },
+          propertyDeclarationTypes = { enabled = true },
+          functionLikeReturnTypes = { enabled = true },
+          enumMemberValues = { enabled = true },
+        },
+      },
+      typescript = {
+        inlayHints = {
+          parameterNames = { enabled = "literals" },
+          variableTypes = { enabled = true },
+          propertyDeclarationTypes = { enabled = true },
+          functionLikeReturnTypes = { enabled = true },
+          enumMemberValues = { enabled = true },
+        },
+      },
+    },
+    capabilities = capabilities,
+
+    on_attach = function(client, bufnr) require("twoslash-queries").attach(client, bufnr) end,
+  })
   -- JSON
   lsp.jsonls.setup({
     settings = {
@@ -134,6 +162,8 @@ return {
         dependencies = { "williamboman/mason.nvim" },
         opts = { automatic_installation = true },
       },
+      "yioneko/nvim-vtsls",
+      "marilari88/twoslash-queries.nvim",
     },
   },
   -- Automatic installation
@@ -171,11 +201,5 @@ return {
         border = border,
       },
     },
-  },
-  -- Typescript
-  {
-    "pmizio/typescript-tools.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    opts = {},
   },
 }
