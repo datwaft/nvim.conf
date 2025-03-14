@@ -78,29 +78,8 @@ local function config()
   -- JavaScript
   require("lspconfig.configs").vtsls = require("vtsls").lspconfig
   lsp.vtsls.setup({
-    settings = {
-      vtsls = { autoUseWorkspaceTsdk = true },
-      javascript = {
-        inlayHints = {
-          parameterNames = { enabled = "literals" },
-          variableTypes = { enabled = true },
-          propertyDeclarationTypes = { enabled = true },
-          functionLikeReturnTypes = { enabled = true },
-          enumMemberValues = { enabled = true },
-        },
-      },
-      typescript = {
-        inlayHints = {
-          parameterNames = { enabled = "literals" },
-          variableTypes = { enabled = true },
-          propertyDeclarationTypes = { enabled = true },
-          functionLikeReturnTypes = { enabled = true },
-          enumMemberValues = { enabled = true },
-        },
-      },
-    },
+    settings = { vtsls = { autoUseWorkspaceTsdk = true } },
     capabilities = capabilities,
-
     on_attach = function(client, bufnr) require("twoslash-queries").attach(client, bufnr) end,
   })
   -- JSON
