@@ -6,7 +6,6 @@ local function config()
 
   -- Configure some language servers with the default configuration
   for _, server in ipairs({
-    "basedpyright",
     "bashls",
     "biome",
     "clangd",
@@ -27,6 +26,20 @@ local function config()
     lsp[server].setup({ capabilities = capabilities })
   end
 
+  -- Python
+  lsp.basedpyright.setup({
+    -- See https://docs.basedpyright.com/v1.28.1/configuration/language-server-settings/#based-settings
+    settings = {
+      basedpyright = {
+        analysis = {
+          inlayHints = {
+            callArgumentNames = false,
+          },
+        },
+      },
+    },
+    capabilities = capabilities,
+  })
   -- LaTeX
   lsp.texlab.setup({
     settings = {
