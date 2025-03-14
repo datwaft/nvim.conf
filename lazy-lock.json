@@ -5,7 +5,7 @@
   "Vim-Jinja2-Syntax": { "branch": "master", "commit": "2c17843b074b06a835f88587e1023ceff7e2c7d1" },
   "aerial.nvim": { "branch": "master", "commit": "2204cf08791449a6a2fd2ef187a29112eeefd989" },
   "arm-syntax-vim": { "branch": "master", "commit": "84ee5c476bbfde87dd6b5fb9f6f207fbce335a73" },
-  "blink.cmp": { "branch": "main", "commit": "0075a2d6591dc249d3c149a027cf49fc4754d096" },
+  "blink.cmp": { "branch": "main", "commit": "d3607d2daa4fd4f06e8f9c22e1b2a272fdd7fc30" },
   "catppuccin": { "branch": "main", "commit": "5b5e3aef9ad7af84f463d17b5479f06b87d5c429" },
   "conform.nvim": { "branch": "master", "commit": "db8a4a9edb217067b1d7a2e0362c74bfe9cc944d" },
   "conjure": { "branch": "main", "commit": "c5f427c33786a024c58d7105e2244f5f14c64fea" },
