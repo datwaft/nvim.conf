@@ -39,7 +39,7 @@ return {
       -- Enhance vim.ui.select
       picker = {},
       -- Display images
-      image = { doc = { inline = false } },
+      image = { doc = { inline = false, float = false } },
     },
   },
   -- Indentation lines
