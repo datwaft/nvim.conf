@@ -18,9 +18,6 @@ return {
         no_header = true,
         no_header_i = true,
       },
-      winopts = {
-        border = border,
-      },
     },
   },
   -- File manipulation
@@ -70,9 +67,6 @@ return {
         options = {
           display = {
             padding = 1,
-          },
-          window = {
-            border = border,
           },
         },
       },

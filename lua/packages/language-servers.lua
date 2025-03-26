@@ -161,11 +161,7 @@ return {
   -- Automatic installation
   {
     "williamboman/mason.nvim",
-    opts = {
-      ui = {
-        border = border,
-      },
-    },
+    config = true,
   },
   -- Project-local settings
   { "folke/neoconf.nvim", config = true },
@@ -189,9 +185,6 @@ return {
     ---@type FastActionConfig
     opts = {
       dismiss_keys = { "j", "k", "<c-c>", "q", "<esc>" },
-      popup = {
-        border = border,
-      },
     },
   },
 }

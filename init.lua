@@ -236,7 +236,7 @@ _G.icons = {
     rejected = "󱙎",
   },
 }
-_G.border = "rounded"
+vim.opt.winborder = "rounded"
 
 --------------
 -- Diagnostics
@@ -257,7 +257,6 @@ vim.diagnostic.config({
   float = {
     show_header = false,
     source = true,
-    border = border,
   },
   update_in_insert = false,
   severity_sort = true,
@@ -285,9 +284,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local bufnr = args.buf
 
     -- Show hover documentation
-    vim.keymap.set("n", "K", function() vim.lsp.buf.hover({ border = border }) end, { buffer = bufnr })
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
     -- Show signature help
-    vim.keymap.set("i", "<C-s>", function() vim.lsp.buf.signature_help({ border = border }) end, { buffer = bufnr })
+    vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, { buffer = bufnr })
     -- Code actions
     vim.keymap.set({ "n", "x" }, "gra", "<cmd>lua require('fastaction').code_action()<cr>", { buffer = bufnr })
     -- Go to definition
@@ -400,5 +399,5 @@ require("lazy").setup({
   },
   install = { colorscheme = { "catppuccin-mocha" } },
   change_detection = { notify = false },
-  ui = { backdrop = 100, border = border },
+  ui = { backdrop = 100 },
 })
