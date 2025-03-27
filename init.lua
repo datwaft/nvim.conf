@@ -82,6 +82,12 @@ vim.opt.isfname:append("*")
 ---------------
 -- Autocommands
 ---------------
+-- Open quickfix window when populated
+vim.api.nvim_create_autocmd("QuickFixCmdPost", {
+  group = vim.api.nvim_create_augroup("open-quickfix-when-populated", { clear = true }),
+  pattern = "grep",
+  command = "botright cwindow",
+})
 -- Open files on the last position
 vim.api.nvim_create_autocmd("BufReadPost", {
   group = vim.api.nvim_create_augroup("open-file-last-position", { clear = true }),
