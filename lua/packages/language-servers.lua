@@ -97,7 +97,9 @@ local function config()
     settings = {
       yaml = {
         schemaStore = { enable = false, url = "" },
-        schemas = require("schemastore").yaml.schemas(),
+        schemas = vim.tbl_extend("error", require("schemastore").yaml.schemas(), {
+          ["https://www.artillery.io/schema.json"] = { "*.load-test.yml", "*.load-test.yaml" },
+        }),
       },
     },
     capabilities = capabilities,
