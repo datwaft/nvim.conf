@@ -189,4 +189,12 @@ return {
       dismiss_keys = { "j", "k", "<c-c>", "q", "<esc>" },
     },
   },
+  -- LSP in embedded code
+  {
+    "jmbuhr/otter.nvim",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = true,
+  },
 }
