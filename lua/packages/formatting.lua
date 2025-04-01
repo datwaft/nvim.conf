@@ -22,6 +22,7 @@ return {
         python = { "ruff_format", "ruff_organize_imports" },
         yaml = { "prettierd", "prettier", stop_after_first = true },
         xml = { "xmlformat" },
+        markdown = { "injected" },
       },
       formatters = {
         ["biome-check"] = { require_cwd = true },
