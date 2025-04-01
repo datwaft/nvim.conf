@@ -15,7 +15,6 @@ return {
         jsonc = { "biome-check", "prettierd", "prettier", stop_after_first = true },
         lua = { "stylua" },
         sql = { "sleek" },
-        tex = { "latexindent" },
         typescript = { "biome-check", "prettierd", "prettier", stop_after_first = true },
         typescriptreact = { "biome-check", "prettierd", "prettier", stop_after_first = true },
         vue = { "biome-check", "prettierd", "prettier", stop_after_first = true },
