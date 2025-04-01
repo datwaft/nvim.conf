@@ -12,4 +12,10 @@ return {
   "bfontaine/Brewfile.vim",
   -- Jinja
   "Glench/Vim-Jinja2-Syntax",
+  -- Jupyter Notebooks
+  {
+    "goerz/jupytext.nvim",
+    version = "0.2.0",
+    config = true,
+  },
 }
