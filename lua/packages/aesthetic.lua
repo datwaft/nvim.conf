@@ -70,4 +70,9 @@ return {
   {
     "HiPhish/rainbow-delimiters.nvim",
   },
+  -- Highlight spaces on selection
+  {
+    "mcauley-penney/visual-whitespace.nvim",
+    config = true,
+  },
 }

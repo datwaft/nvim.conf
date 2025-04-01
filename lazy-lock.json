@@ -86,5 +86,6 @@
   "vim-sandwich": { "branch": "master", "commit": "74cf93d58ccc567d8e2310a69860f1b93af19403" },
   "vim-slime": { "branch": "main", "commit": "9bc2e13f8441b09fd7352a11629a4da0ea4cb058" },
   "vim-spellsync": { "branch": "master", "commit": "ea9f431483ceb40ede8bd5b126a03eccd49b1bc0" },
+  "visual-whitespace.nvim": { "branch": "main", "commit": "2bdf159a49a8ed4e715b81d6e0f975dcc1751c53" },
   "vscode-js-debug": { "branch": "main", "commit": "2fbe263844bdb97af58ea8bb3c194388349d1405" }
 }

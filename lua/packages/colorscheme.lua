@@ -49,6 +49,7 @@ return {
         RainbowDelimiterGreen = { fg = dim_color(colors.green, 0.5), style = { "bold" } },
         RainbowDelimiterViolet = { fg = dim_color(colors.mauve, 0.5), style = { "bold" } },
         RainbowDelimiterCyan = { fg = dim_color(colors.teal, 0.5), style = { "bold" } },
+        VisualNonText = { fg = colors.overlay0, bg = colors.surface1 },
       }
     end,
     transparent_background = true,
