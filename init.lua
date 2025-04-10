@@ -138,7 +138,11 @@ vim.api.nvim_create_autocmd("FileType", {
     "tex",
     "quarto",
   },
-  callback = function() vim.opt_local.spell = true end,
+  callback = function()
+    local win_id = vim.api.nvim_get_current_win()
+    local config = vim.api.nvim_win_get_config(win_id)
+    if config.relative == "" then vim.opt_local.spell = true end
+  end,
 })
 -- Always enable 'conceallevel' on some filetypes
 vim.api.nvim_create_autocmd("FileType", {
