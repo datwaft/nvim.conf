@@ -26,6 +26,7 @@ authblk
 autocommand
 autocommands
 backend
+breaklines
 caparace
 catppuccin
 cdo
@@ -74,6 +75,7 @@ jupytext
 jwt
 keybind
 keybinds
+kura
 lazydev
 listbox
 luarocks
@@ -102,6 +104,7 @@ rsync
 secnumdepth
 sharding
 shellcheck
+slurm
 statusline
 stderr
 stdout
