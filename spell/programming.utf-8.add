@@ -5,6 +5,7 @@ APIs
 Brewfile
 CMD
 CTRL
+Cramer GAN
 EAPI
 ENOTFOUND
 EX_DATAERR
