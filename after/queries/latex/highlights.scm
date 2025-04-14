@@ -8,3 +8,10 @@
   arg: (curly_group) @nospell
   .
   arg: (curly_group) @nospell .)
+
+; \texttt{<code>}
+(generic_command
+  command: (command_name) @command
+  (#eq? @command "\\texttt")
+  arg: (curly_group
+    _ @nospell))
