@@ -296,7 +296,6 @@ vim.lsp.enable({
   "cssls",
   "dockerls",
   "fennel_ls",
-  "gh_actions_ls",
   "graphql",
   "html",
   "jdtls",
