@@ -287,6 +287,81 @@ end)
 ---------------------------------
 -- LSP keybinds and configuration
 ---------------------------------
+vim.lsp.enable({
+  "basedpyright",
+  "bashls",
+  "biome",
+  "clangd",
+  "cmake",
+  "cssls",
+  "dockerls",
+  "fennel_ls",
+  "gh_actions_ls",
+  "graphql",
+  "html",
+  "jdtls",
+  "jinja_lsp",
+  "jsonls",
+  "lua_ls",
+  "ruff",
+  "rust_analyzer",
+  "svelte",
+  "taplo",
+  "texlab",
+  "ts_query_ls",
+  "vimls",
+  "vtsls",
+  "yamlls",
+})
+
+vim.lsp.config("basedpyright", {
+  -- See https://docs.basedpyright.com/v1.28.1/configuration/language-server-settings/#based-settings
+  settings = {
+    basedpyright = {
+      analysis = {
+        inlayHints = {
+          callArgumentNames = false,
+        },
+      },
+    },
+  },
+})
+
+vim.lsp.config("texlab", {
+  settings = {
+    texlab = {
+      build = {
+        executable = "tectonic",
+        args = { "-X", "compile", "%f", "--synctex", "--keep-logs", "--keep-intermediates" },
+      },
+    },
+  },
+})
+
+vim.lsp.config("lua_ls", {
+  settings = {
+    Lua = {
+      telemetry = { enable = false },
+      hint = { enable = true },
+    },
+  },
+})
+
+vim.lsp.config("vtsls", {
+  settings = { vtsls = { autoUseWorkspaceTsdk = true } },
+})
+
+vim.lsp.config("ts_query_ls", {
+  settings = {
+    parser_install_directories = {
+      vim.fn.stdpath("data") .. "/lazy/nvim-treesitter/parser/",
+    },
+    language_retrieval_patterns = {
+      "languages/src/([^/]+)/[^/]+\\.scm$",
+    },
+  },
+})
+
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("lsp-attach-config", { clear = true }),
   callback = function(args)
@@ -368,7 +443,6 @@ vim.filetype.add({ pattern = { ["%.env%..*"] = "sh" } })
 vim.filetype.add({ extension = { ["add"] = "conf" } })
 vim.filetype.add({ pattern = { ["%.default%-%w+%-packages"] = "conf" } })
 vim.filetype.add({ extension = { ["jinja"] = "jinja", ["jinja2"] = "jinja", ["j2"] = "jinja" } })
-vim.filetype.add({ pattern = { [".*/%.github[%w/]+workflows[%w/]+.*%.ya?ml"] = "yaml.github" } })
 
 --------------------------
 -- lazy.nvim configuration
