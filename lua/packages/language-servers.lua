@@ -111,4 +111,15 @@ return {
       })
     end,
   },
+  -- Environment variables
+  {
+    "t3ntxcl3s/ecolog.nvim",
+    lazy = false,
+    opts = {
+      integrations = {
+        blink_cmp = true,
+      },
+      preferred_environment = "qa",
+    },
+  },
 }

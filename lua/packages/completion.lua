@@ -13,10 +13,11 @@ return {
       },
       cmdline = { enabled = false },
       sources = {
-        default = { "lsp", "path", "snippets", "buffer", "dadbod", "lazydev" },
+        default = { "ecolog", "lsp", "path", "snippets", "buffer", "dadbod", "lazydev" },
         providers = {
           dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
           lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", fallbacks = { "lazy_dev" } },
+          ecolog = { name = "ecolog", module = "ecolog.integrations.cmp.blink_cmp" },
         },
       },
       keymap = {
