@@ -68,8 +68,16 @@ vim.opt.signcolumn = "yes:1"
 -- Insert-mode completion
 vim.opt.shortmess:append("c")
 -- Grep
-vim.opt.grepprg = "rg --vimgrep"
+vim.opt.grepprg = "rg --vimgrep --smart-case --hidden --glob='!.git/*'"
 vim.opt.grepformat = "%f:%l:%c:%m"
+-- Find
+function _G.findfunc(file_pattern, _)
+  -- if first character is '*' then fuzzy search
+  if file_pattern:sub(1, 1) == "*" then file_pattern = file_pattern:gsub(".", ".*%0") .. ".*" end
+  local cmd = 'fd  --color=never --full-path --type file --hidden --exclude=".git" "' .. file_pattern .. '"'
+  return vim.fn.systemlist(cmd)
+end
+vim.opt.findfunc = "v:lua.findfunc"
 -- Mouse
 vim.opt.mousemodel = "extend"
 vim.opt.mousescroll = "ver:2,hor:0"
