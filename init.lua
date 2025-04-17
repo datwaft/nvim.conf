@@ -296,6 +296,7 @@ end)
 -- LSP keybinds and configuration
 ---------------------------------
 vim.lsp.enable({
+  "autotools_ls",
   "basedpyright",
   "bashls",
   "biome",
