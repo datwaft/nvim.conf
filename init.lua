@@ -94,7 +94,9 @@ vim.opt.isfname:append("*")
 vim.api.nvim_create_autocmd("QuickFixCmdPost", {
   group = vim.api.nvim_create_augroup("open-quickfix-when-populated", { clear = true }),
   pattern = "grep",
-  command = "botright cwindow",
+  callback = function()
+    vim.defer_fn(function() vim.cmd("botright cwindow") end, 10)
+  end,
 })
 -- Open files on the last position
 vim.api.nvim_create_autocmd("BufReadPost", {
