@@ -8,7 +8,6 @@ return {
       { [[<C-\>]], "<cmd>lua require('fzf-lua').buffers()<cr>" },
       { [[<C-p>]], "<cmd>lua require('fzf-lua').files()<cr>" },
       { [[<C-l>]], "<cmd>lua require('fzf-lua').live_grep()<cr>" },
-      { [[<C-k>]], "<cmd>lua require('fzf-lua').commands()<cr>" },
       { [[<F1>]], "<cmd>lua require('fzf-lua').helptags()<cr>" },
       { [[<C-t>]], "<cmd>lua require('fzf-lua').complete_path()<cr>", mode = "i" },
       { [[<C-x><C-f>]], "<cmd>lua require('fzf-lua').complete_path()<cr>", mode = "i" },
