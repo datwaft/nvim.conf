@@ -19,7 +19,12 @@ return {
           yaml = {
             schemaStore = { enable = false, url = "" },
             schemas = vim.tbl_extend("error", require("schemastore").yaml.schemas(), {
-              ["https://www.artillery.io/schema.json"] = { "*.load-test.yml", "*.load-test.yaml" },
+              ["https://www.artillery.io/schema.json"] = {
+                "*.load-test.yml",
+                "*.test.yml",
+                "*.load-test.yaml",
+                "*.test.yaml",
+              },
             }),
           },
         },
