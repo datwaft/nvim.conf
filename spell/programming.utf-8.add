@@ -97,6 +97,7 @@ opam
 paredit
 parinfer
 passwordless
+pnpx
 popup
 pthreads
 qa
