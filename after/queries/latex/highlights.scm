@@ -15,3 +15,10 @@
   (#eq? @command "\\texttt")
   arg: (curly_group
     _ @nospell))
+
+; \lstinline{<code>}
+(generic_command
+  command: (command_name) @command
+  (#eq? @command "\\lstinline")
+  arg: (curly_group
+    _ @nospell))
