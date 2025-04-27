@@ -3,7 +3,47 @@ return {
   -- Enhance commenting
   { "folke/ts-comments.nvim", event = "VeryLazy", config = true },
   -- Surround operations
-  { "machakann/vim-sandwich", event = "VeryLazy" },
+  {
+    "machakann/vim-sandwich",
+    config = function()
+      ---@param is_open boolean
+      function _G.latex_sandwich_bun(is_open)
+        if is_open then
+          local name = vim.fn.input("LaTeX func: ")
+          if name == "" then error("OperatorSandwichCancel") end
+          return "\\" .. name .. "{"
+        else
+          return "}"
+        end
+      end
+
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "tex", "plaintex", "latex", "markdown" },
+        callback = function()
+          vim.fn["sandwich#util#addlocal"]({
+            {
+              buns = {
+                "v:lua.latex_sandwich_bun(v:true)",
+                "v:lua.latex_sandwich_bun(v:false)",
+              },
+              expr = 1,
+              input = { "f" },
+              kind = { "add", "replace" },
+              nesting = 1,
+              match_syntax = 1,
+            },
+            {
+              buns = { [[\\\h\k*{]], [[}]] },
+              regex = 1,
+              input = { "f" },
+              kind = { "delete", "replace", "textobj", "query" },
+              nesting = 1,
+            },
+          })
+        end,
+      })
+    end,
+  },
   -- Subversion and coercion operations
   { "tpope/vim-abolish", event = "VeryLazy" },
   -- Undo-tree
