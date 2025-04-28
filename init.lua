@@ -26,7 +26,7 @@ vim.opt.tabstop = 2
 -- Wrapping
 vim.opt.linebreak = true
 vim.opt.breakindent = true
-vim.opt.breakindentopt = { "shift:2" }
+vim.opt.breakindentopt = { "shift:0" }
 vim.opt.showbreak = "↳ "
 -- Folding
 vim.opt.foldtext = ""
