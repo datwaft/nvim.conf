@@ -3,7 +3,9 @@ AdCellerant's
 CPM
 CPV
 Cherenkov
+Cholesky
 GDN
+GEMM
 Himmelblau
 KNN
 Kleene
@@ -12,10 +14,12 @@ LLM
 PPT
 PRD
 SEM
+Smilei
 T-SNE
 TTD
 UFD
 Vendasta
+Verlet
 adgroup
 datetime
 datetimes
@@ -29,12 +33,14 @@ hardcoded
 hardcodes
 hardcoding
 hubspot
+manycore
 mille
 passthrough
 pmax
 powerpoint
 rect
 recurse
+runtime's
 scikit
 sem
 shorthand
@@ -42,5 +48,7 @@ shorthands
 stackoverflow
 subtable
 superlinear
+taskloop
 threepences
 timezones
+worksharing

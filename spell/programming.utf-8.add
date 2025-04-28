@@ -113,6 +113,7 @@ stderr
 stdout
 str
 subword
+taskloop
 tesult
 tesults
 texthl
