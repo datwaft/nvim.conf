@@ -22,3 +22,12 @@
   (#eq? @command "\\lstinline")
   arg: (curly_group
     _ @nospell))
+
+; \WarningFilter{package}{<warning>}
+(generic_command
+  command: (command_name) @command
+  (#eq? @command "\\WarningFilter")
+  arg: (curly_group
+    _ @nospell)
+  arg: (curly_group
+    _ @nospell))
