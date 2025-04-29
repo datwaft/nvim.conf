@@ -423,6 +423,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.wo.foldexpr = "v:lua.vim.lsp.foldexpr()"
     end
 
+    -- Use LSP-provided color if possible
+    if client:supports_method("textDocument/documentColor") then vim.lsp.document_color.enable(true, bufnr) end
+
     -- Disable semantic highlighting for some LSPs
     for _, name in ipairs({ "dockerls" }) do
       if client.name == name then client.server_capabilities.semanticTokensProvider = nil end
