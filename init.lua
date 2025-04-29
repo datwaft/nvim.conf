@@ -187,7 +187,7 @@ vim.keymap.set({ "n", "v" }, "j", function()
   if vim.v.count == 0 then
     return "gj"
   else
-    return "j"
+    return "m'" .. vim.v.count .. "j"
   end
 end, { expr = true })
 -- Make `k` work with wrapped lines
@@ -195,7 +195,7 @@ vim.keymap.set({ "n", "v" }, "k", function()
   if vim.v.count == 0 then
     return "gk"
   else
-    return "k"
+    return "m'" .. vim.v.count .. "k"
   end
 end, { expr = true })
 -- Make `<Up>` work with wrapped lines
@@ -203,7 +203,7 @@ vim.keymap.set({ "n", "v" }, "<Up>", function()
   if vim.v.count == 0 then
     return "gk"
   else
-    return "<Up>"
+    return "m'" .. vim.v.count .. "<Up>"
   end
 end, { expr = true })
 -- Make `<Down>` work with wrapped lines
@@ -211,7 +211,7 @@ vim.keymap.set({ "n", "v" }, "<Down>", function()
   if vim.v.count == 0 then
     return "gj"
   else
-    return "<Down>"
+    return "m'" .. vim.v.count .. "<Down>"
   end
 end, { expr = true })
 -- Do not jump with <S-Up> and <S-Down>
