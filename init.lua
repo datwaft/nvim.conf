@@ -86,6 +86,8 @@ vim.keymap.set({ "n", "v", "o", "c", "i" }, "<MiddleDrag>", "<Nop>")
 vim.keymap.set({ "n", "v", "o", "c", "i" }, "<MiddleRelease>", "<Nop>")
 -- Link identification
 vim.opt.isfname:append("*")
+vim.opt.isfname:append("[")
+vim.opt.isfname:append("]")
 
 ---------------
 -- Autocommands
@@ -93,7 +95,6 @@ vim.opt.isfname:append("*")
 -- Open quickfix window when populated
 vim.api.nvim_create_autocmd("QuickFixCmdPost", {
   group = vim.api.nvim_create_augroup("open-quickfix-when-populated", { clear = true }),
-  pattern = "grep",
   callback = function()
     vim.defer_fn(function() vim.cmd("botright cwindow") end, 10)
   end,
