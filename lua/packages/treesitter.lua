@@ -21,4 +21,8 @@ return {
       matchup = { enable = true },
     },
   },
+  {
+    "bezhermoso/tree-sitter-ghostty",
+    build = "make nvim_install",
+  },
 }
