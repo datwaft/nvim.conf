@@ -425,7 +425,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 
     -- Use LSP-provided color if possible
-    if client:supports_method("textDocument/documentColor") then vim.lsp.document_color.enable(true, bufnr) end
+    vim.lsp.document_color.enable(true, bufnr)
 
     -- Disable semantic highlighting for some LSPs
     for _, name in ipairs({ "dockerls" }) do
