@@ -497,5 +497,5 @@ require("lazy").setup({
   },
   install = { colorscheme = { "catppuccin-mocha" } },
   change_detection = { notify = false },
-  ui = { backdrop = 100 },
+  ui = { backdrop = 100, border = vim.o.winborder },
 })
