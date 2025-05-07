@@ -165,6 +165,8 @@ vim.api.nvim_create_autocmd("FileType", {
 -----------
 -- Keybinds
 -----------
+-- Remove word with <M-BS>
+vim.keymap.set({ "i", "c", "t" }, "<M-BS>", "<C-w>")
 -- Go to folder with -
 vim.keymap.set("n", "-", "<CMD>e %:h<CR>")
 -- Disable highlights with <ESC>
