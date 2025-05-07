@@ -36,7 +36,7 @@
   "mkdir.nvim": { "branch": "main", "commit": "c55d1dee4f099528a1853b28bb28caa802eba217" },
   "multicursor.nvim": { "branch": "main", "commit": "0e00ce4c272e3191b5e07cab36bd49aa32fca675" },
   "namu.nvim": { "branch": "main", "commit": "dce3d5cb82ee6104babac14b1692e746821722d3" },
-  "neo-tree.nvim": { "branch": "v3.x", "commit": "1ef260eb4f54515fe121a2267b477efb054d108a" },
+  "neo-tree.nvim": { "branch": "v3.x", "commit": "f481de16a0eb59c985abac8985e3f2e2f75b4875" },
   "neoconf.nvim": { "branch": "main", "commit": "698aa83e28b22018e31993d70c53cece6d9a4292" },
   "neotest": { "branch": "master", "commit": "f0edc1dafdb04ae51a3863c1c5e4268d7462931b" },
   "neotest-playwright": { "branch": "master", "commit": "6266945039dac27a354de33d2f2a66e75485d5e9" },
