@@ -57,10 +57,7 @@ return {
     end,
   },
   -- LSP installation
-  {
-    "williamboman/mason.nvim",
-    config = true,
-  },
+  { "mason-org/mason.nvim", config = true },
   -- Project-local settings
   { "folke/neoconf.nvim", config = true },
   -- Support LSP file operations
