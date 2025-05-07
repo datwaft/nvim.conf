@@ -73,6 +73,7 @@ return {
       local spec_treesitter = require("mini.ai").gen_spec.treesitter
       local spec_argument = require("mini.ai").gen_spec.argument
       return {
+        n_lines = 500,
         custom_textobjects = {
           a = spec_argument({
             brackets = { "%b()", "%b[]", "%b{}", "%b<>" },
