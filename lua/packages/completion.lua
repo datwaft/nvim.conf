@@ -27,12 +27,11 @@ return {
       },
       cmdline = { enabled = false },
       sources = {
-        default = { "ecolog", "lsp", "path", "snippets", "buffer", "dadbod", "lazydev", "tmux", "spell" },
+        default = { "ecolog", "lsp", "path", "snippets", "buffer", "dadbod", "lazydev", "spell" },
         providers = {
           dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
           lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", fallbacks = { "lazy_dev" } },
           ecolog = { name = "ecolog", module = "ecolog.integrations.cmp.blink_cmp" },
-          tmux = { module = "blink-cmp-tmux", name = "tmux" },
           spell = { name = "Spell", module = "blink-cmp-spell", opts = { enable_in_context = is_in_spell } },
         },
       },
@@ -81,7 +80,6 @@ return {
     dependencies = {
       "rafamadriz/friendly-snippets",
       "L3MON4D3/LuaSnip",
-      "mgalliou/blink-cmp-tmux",
       "ribru17/blink-cmp-spell",
     },
   },
