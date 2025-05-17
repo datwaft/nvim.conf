@@ -33,7 +33,7 @@ return {
     "mrjones2014/smart-splits.nvim",
     version = ">=1.0.0",
     config = true,
-    event = "VeryLazy",
+    lazy = false,
     keys = function()
       local ss = require("smart-splits")
       return {
