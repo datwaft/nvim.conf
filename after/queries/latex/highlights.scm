@@ -31,3 +31,12 @@
     _ @nospell)
   arg: (curly_group
     _ @nospell))
+
+; \setCJKmainfont{<file>}
+; \setCJKsansfont{<file>}
+; \setCJKmonofont{<file>}
+(generic_command
+  command: (command_name) @command
+  (#any-of? @command "\\setCJKmainfont" "\\setCJKsansfont" "\\setCJKmonofont")
+  arg: (curly_group
+    _ @nospell))
