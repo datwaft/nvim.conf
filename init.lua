@@ -13,8 +13,6 @@ function _G.define_sign(name, text) return vim.fn.sign_define(name, { text = tex
 -----------
 -- Enable experimental bytecode cache
 vim.loader.enable()
--- Enable experimental command-mode parser
-require("vim._extui").enable({})
 -- Set <leader> to '\'
 vim.g.mapleader = [[\]]
 -- Set <localleader> to <SPACE>
