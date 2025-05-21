@@ -9,9 +9,11 @@ Cholesky
 Czarnul
 DLPOLY
 Dongarra
+FFT
 GDN
 GEMM
 Himmelblau
+ICPP
 KNL
 KNN
 Kleene
@@ -64,3 +66,4 @@ threepences
 timestep
 timezones
 worksharing
+µs
