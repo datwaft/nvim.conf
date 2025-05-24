@@ -257,15 +257,6 @@ return {
     end,
   },
   {
-    "LiadOz/nvim-dap-repl-highlights",
-    event = "VeryLazy",
-    config = true,
-    build = ":TSUpdate dap_repl",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-    },
-  },
-  {
     "theHamsta/nvim-dap-virtual-text",
     event = "VeryLazy",
     config = true,
