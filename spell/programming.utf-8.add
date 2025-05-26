@@ -14,6 +14,7 @@ MPI
 Mailosaur
 PCA
 REPL
+RMSprop
 TERMINFO
 VueJS
 \imgcaption
@@ -43,6 +44,7 @@ combobox
 completers
 conceallevel
 config
+conv
 creds
 datwaft
 datwaft's
@@ -97,6 +99,7 @@ noqa
 num
 nvim
 opam
+optuna
 paredit
 parinfer
 passwordless
@@ -106,6 +109,7 @@ pthreads
 qa
 quickfix
 readonly
+rmsprop
 rsync
 secnumdepth
 sharding
@@ -141,5 +145,6 @@ zsh
 Σ
 δ
 ε
+η
 Ꝗ
 ꝗ
