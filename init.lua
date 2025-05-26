@@ -55,7 +55,7 @@ vim.opt.listchars = {
 vim.opt.fillchars:append({ diff = "/" })
 -- Spell-checking
 vim.opt.spell = true
-vim.opt.spelllang = { "programming", "en", "es", "cjk" }
+vim.opt.spelllang = { "programming", "en", "es", "cjk", "el" }
 vim.opt.spellfile = {
   vim.fn.stdpath("config") .. "/spell/programming.utf-8.add",
   vim.fn.stdpath("config") .. "/spell/en.utf-8.add",
