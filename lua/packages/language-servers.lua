@@ -78,9 +78,7 @@ return {
     "Chaitanyabsprip/fastaction.nvim",
     ---@module "fastaction"
     ---@type FastActionConfig
-    opts = {
-      dismiss_keys = { "j", "k", "<c-c>", "q", "<esc>" },
-    },
+    opts = { dismiss_keys = { "<c-c>" } }, -- Until https://github.com/Chaitanyabsprip/fastaction.nvim/issues/40 is fixed
   },
   -- LSP in embedded code
   {
