@@ -14,7 +14,6 @@ return {
         json = { "biome-check", "prettierd", "prettier", stop_after_first = true },
         jsonc = { "biome-check", "prettierd", "prettier", stop_after_first = true },
         lua = { "stylua" },
-        sql = { "sleek" },
         typescript = { "biome-check", "prettierd", "prettier", stop_after_first = true },
         typescriptreact = { "biome-check", "prettierd", "prettier", stop_after_first = true },
         vue = { "biome-check", "prettierd", "prettier", stop_after_first = true },
@@ -26,7 +25,6 @@ return {
       },
       formatters = {
         ["biome-check"] = { require_cwd = true },
-        sleek = { prepend_args = { "--indent-spaces", "2" } },
         xmlformat = { prepend_args = { "--selfclose" } },
       },
       format_on_save = {
