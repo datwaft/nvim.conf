@@ -71,6 +71,7 @@ vim.opt.shortmess:append("c")
 vim.opt.grepprg = "rg --vimgrep --smart-case --hidden --glob='!.git/*'"
 vim.opt.grepformat = "%f:%l:%c:%m"
 -- Find
+---@param file_pattern string
 function _G.findfunc(file_pattern, _)
   -- if first character is '*' then fuzzy search
   if file_pattern:sub(1, 1) == "*" then file_pattern = file_pattern:gsub(".", ".*%0") .. ".*" end
