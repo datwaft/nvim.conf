@@ -26,6 +26,9 @@ return {
       formatters = {
         ["biome-check"] = { require_cwd = true },
         xmlformat = { prepend_args = { "--selfclose" } },
+        prettierd = {
+          condition = function(_, context) return vim.fn.fnamemodify(context.filename, ":e") ~= "ipynb" end,
+        },
       },
       format_on_save = {
         lsp_format = "fallback",
