@@ -106,22 +106,40 @@ return {
       local mc = require("multicursor-nvim")
       mc.setup(opts)
 
+      -- Add cursor above/below current cursor
       vim.keymap.set({ "n", "x" }, "<M-Up>", function() mc.lineAddCursor(-1) end)
       vim.keymap.set({ "n", "x" }, "<M-Down>", function() mc.lineAddCursor(1) end)
-      vim.keymap.set({ "n", "x" }, "<M-Left>", mc.nextCursor)
-      vim.keymap.set({ "n", "x" }, "<M-Right>", mc.prevCursor)
-      vim.keymap.set("n", "<ESC>", function()
-        if not mc.cursorsEnabled() then
-          mc.enableCursors()
-        elseif mc.hasCursors() then
-          mc.clearCursors()
-        end
-        vim.cmd.nohlsearch()
+
+      -- Keybinds enabled only when there are multiple cursors
+      mc.addKeymapLayer(function(set_keymap)
+        set_keymap({ "n", "x" }, "<M-Left>", mc.prevCursor)
+        set_keymap({ "n", "x" }, "<M-Right>", mc.nextCursor)
+
+        set_keymap({ "n", "x" }, "<leader>x", mc.deleteCursor)
+
+        set_keymap("n", "<ESC>", function()
+          if not mc.cursorsEnabled() then
+            mc.enableCursors()
+          else
+            mc.clearCursors()
+          end
+        end)
       end)
+
+      -- Add cursor using operators
+      vim.keymap.set("n", "ga", mc.operator)
+
+      -- Add/remove cursors
       vim.keymap.set({ "n", "x" }, "<C-q>", mc.toggleCursor)
-      vim.keymap.set({ "n", "x" }, "<C-Q>", mc.duplicateCursors)
-      vim.keymap.set({ "n", "x" }, "<C-i>", mc.jumpForward)
-      vim.keymap.set({ "n", "x" }, "<C-o>", mc.jumpBackward)
+
+      -- Mouse keybinds
+      vim.keymap.set("n", "<C-LeftMouse>", mc.handleMouse)
+      vim.keymap.set("n", "<C-LeftDrag>", mc.handleMouseDrag)
+      vim.keymap.set("n", "<C-LeftRelease>", mc.handleMouseRelease)
+
+      -- Visual-mode mappings
+      vim.keymap.set("x", "I", mc.insertVisual)
+      vim.keymap.set("x", "A", mc.appendVisual)
     end,
   },
 }
