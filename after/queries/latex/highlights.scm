@@ -32,14 +32,17 @@
   arg: (curly_group
     _ @nospell))
 
+; \setmainfont{<file>}
+; \setmathfont{<file>}
 ; \setCJKmainfont{<file>}
 ; \setCJKsansfont{<file>}
 ; \setCJKmonofont{<file>}
 (generic_command
   command: (command_name) @command
-  (#any-of? @command "\\setCJKmainfont" "\\setCJKsansfont" "\\setCJKmonofont")
+  (#any-of? @command
+    "\\setmainfont" "\\setmathfont" "\\setCJKmainfont" "\\setCJKsansfont" "\\setCJKmonofont")
   arg: (curly_group
-    _ @nospell))
+    _ @nospell @string.special.path))
 
 ; \newtcolorbox{<name>}{<config>}
 (generic_command
