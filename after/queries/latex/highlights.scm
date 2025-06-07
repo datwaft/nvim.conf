@@ -23,7 +23,7 @@
   arg: (curly_group
     _ @nospell))
 
-; \WarningFilter{package}{<warning>}
+; \WarningFilter{<package>}{<warning>}
 (generic_command
   command: (command_name) @command
   (#eq? @command "\\WarningFilter")
@@ -38,5 +38,14 @@
 (generic_command
   command: (command_name) @command
   (#any-of? @command "\\setCJKmainfont" "\\setCJKsansfont" "\\setCJKmonofont")
+  arg: (curly_group
+    _ @nospell))
+
+; \newtcolorbox{<name>}{<config>}
+(generic_command
+  command: (command_name) @command
+  (#eq? @command "\\newtcolorbox")
+  arg: (curly_group
+    _ @nospell)
   arg: (curly_group
     _ @nospell))
