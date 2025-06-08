@@ -376,6 +376,10 @@ vim.lsp.config("ts_query_ls", {
   },
 })
 
+vim.lsp.config("taplo", {
+  root_markers = { ".taplo.toml", "taplo.toml", ".git", "starship.toml" },
+})
+
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("lsp-attach-config", { clear = true }),
   callback = function(args)
