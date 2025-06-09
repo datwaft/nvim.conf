@@ -10,6 +10,7 @@ Cramer GAN
 EAPI
 ENOTFOUND
 EX_DATAERR
+IWYU
 MANPAGER
 MPI
 Mailosaur
@@ -109,6 +110,7 @@ parinfer
 passwordless
 pnpx
 popup
+pragma
 pthreads
 qa
 quickfix
