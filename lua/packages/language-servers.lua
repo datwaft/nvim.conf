@@ -32,7 +32,7 @@ return {
     end,
   },
   -- LSP loading notifications
-  { "j-hui/fidget.nvim", opts = { notification = { window = { winblend = 0 } } } },
+  { "j-hui/fidget.nvim", config = true },
   -- Inspect definitions
   { "DNLHC/glance.nvim", opts = { border = { enable = true } } },
   -- Load Lua types lazily
