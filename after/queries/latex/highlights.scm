@@ -52,3 +52,10 @@
     _ @nospell)
   arg: (curly_group
     _ @nospell))
+
+; \email{<name>}
+(generic_command
+  command: (command_name) @command
+  (#eq? @command "\\email")
+  arg: (curly_group
+    _ @nospell))
