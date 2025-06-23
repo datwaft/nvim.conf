@@ -57,14 +57,19 @@ hardcoded
 hardcodes
 hardcoding
 hubspot
+hyperthreading
+linearized
 manycore
 mille
+monospaced
 passthrough
 pmax
 powerpoint
+pragmas
 rect
 recurse
 runtime's
+runtimes
 scikit
 sem
 shorthand
@@ -77,4 +82,5 @@ taskloop
 threepences
 timestep
 timezones
+unicode
 worksharing
