@@ -43,6 +43,7 @@ catppuccin
 cdo
 ceil
 chezmoi
+chunksize
 colorcolumn
 colorscheme
 columnheader
@@ -72,6 +73,7 @@ frontend
 frontends
 fzf
 getaddrinfo
+grainsize
 graphql
 gx
 headful
@@ -104,6 +106,7 @@ netrw
 nfnl
 noqa
 num
+numtasks
 nvim
 opam
 optuna
@@ -129,6 +132,7 @@ stdout
 str
 subword
 taskloop
+taskloops
 tesult
 tesults
 texthl
