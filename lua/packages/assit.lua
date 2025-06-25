@@ -1,27 +1,39 @@
 ---@type LazySpec
 return {
-  "yetone/avante.nvim",
-  build = "make",
-  opts = {
-    provider = "gemini",
-    providers = {
-      ---@module "avante"
-      ---@type AvanteProvider
-      gemini = {
-        api_key_name = "cmd:op read 'op://Private/Gemini API Key/password'",
+  {
+    "milanglacier/minuet-ai.nvim",
+    opts = {
+      virtualtext = {
+        auto_trigger_ft = { "*" },
+        auto_trigger_ignore_ft = { "qf", "neo-tree", "aerial", "Avante", "AvanteInput", "AvanteSelectedFiles" },
+        keymap = {
+          accept = "<leader>A",
+          accept_line = "<leader>a",
+          accept_n_lines = "<leader>z",
+          prev = "<leader>[",
+          next = "<leader>]",
+          dismiss = "<leader>e",
+        },
       },
-    },
-    behaviour = {
-      enable_cursor_planning_mode = true,
-    },
-  },
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    "MunifTanjim/nui.nvim",
-    {
-      "MeanderingProgrammer/render-markdown.nvim",
-      opts = { file_types = { "Avante" } },
-      ft = { "Avante" },
+      provider = "gemini",
+      provider_options = {
+        gemini = {
+          optional = {
+            generationConfig = {
+              maxOutputTokens = 256,
+              thinkingConfig = {
+                thinkingBudget = 0,
+              },
+            },
+            safetySettings = {
+              {
+                category = "HARM_CATEGORY_DANGEROUS_CONTENT",
+                threshold = "BLOCK_ONLY_HIGH",
+              },
+            },
+          },
+        },
+      },
     },
   },
 }
