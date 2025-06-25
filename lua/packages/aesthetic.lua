@@ -8,7 +8,7 @@ return {
       options = {
         globalstatus = true,
         disabled_filetypes = {
-          winbar = { "qf", "neo-tree", "aerial" },
+          winbar = { "qf", "neo-tree", "aerial", "Avante", "AvanteInput", "AvanteSelectedFiles" },
         },
       },
       sections = {

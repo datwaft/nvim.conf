@@ -27,12 +27,23 @@ return {
       },
       cmdline = { enabled = false },
       sources = {
-        default = { "ecolog", "lsp", "path", "snippets", "buffer", "dadbod", "lazydev", "spell" },
+        default = {
+          "avante",
+          "ecolog",
+          "lsp",
+          "path",
+          "snippets",
+          "buffer",
+          "dadbod",
+          "lazydev",
+          "spell",
+        },
         providers = {
           dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
           lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", fallbacks = { "lazy_dev" } },
           ecolog = { name = "ecolog", module = "ecolog.integrations.cmp.blink_cmp" },
           spell = { name = "Spell", module = "blink-cmp-spell", opts = { enable_in_context = is_in_spell } },
+          avante = { name = "Avante", module = "blink-cmp-avante" },
         },
       },
       keymap = {
@@ -81,6 +92,7 @@ return {
       "rafamadriz/friendly-snippets",
       "L3MON4D3/LuaSnip",
       "ribru17/blink-cmp-spell",
+      "Kaiser-Yang/blink-cmp-avante",
     },
   },
   -- Snippets
