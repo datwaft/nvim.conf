@@ -1,3 +1,14 @@
+local function parrot_status()
+  local status_info = require("parrot.config").get_status_info()
+  local status = ""
+  if status_info.is_chat then
+    status = status_info.prov.chat.name
+  else
+    status = status_info.prov.command.name
+  end
+  return string.format("%s(%s)", status, status_info.model)
+end
+
 ---@type LazySpec
 return {
   -- Statusline
@@ -14,7 +25,7 @@ return {
       sections = {
         lualine_a = { "mode" },
         lualine_b = { "branch", { "diff", symbols = icons.git }, { "diagnostics", symbols = icons.diagnostic } },
-        lualine_c = { "filename" },
+        lualine_c = { "filename", parrot_status },
         lualine_x = { "encoding", "fileformat", "filetype" },
         lualine_y = { "progress" },
         lualine_z = { "location" },
