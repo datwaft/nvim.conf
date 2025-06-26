@@ -21,7 +21,7 @@ return {
             command = { temperature = 0.8, topP = 1, topK = 10, maxOutputTokens = 8192 },
           },
           topic = {
-            model = "gemini-2.0-flash",
+            model = "gemini-2.5-flash-lite-preview-06-17",
             params = { maxOutputTokens = 64 },
           },
           headers = function(self)
@@ -31,6 +31,7 @@ return {
             }
           end,
           models = {
+            "gemini-2.5-flash",
             "gemini-2.0-flash-lite",
             "gemini-2.5-flash",
             "gemini-2.5-pro",
@@ -78,6 +79,12 @@ return {
           end,
         },
       },
+      chat_user_prefix = "[USER]:",
+      llm_prefix = "[LLM] - ",
+    },
+    keys = {
+      { mode = "n", "<C-w>c", "<cmd>PrtChatToggle<cr>" },
+      { mode = "x", "<C-w>c", ":PrtChatPaste<cr>" },
     },
   },
 }
