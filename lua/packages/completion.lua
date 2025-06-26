@@ -34,6 +34,9 @@ return {
           ecolog = { name = "ecolog", module = "ecolog.integrations.cmp.blink_cmp" },
           spell = { name = "Spell", module = "blink-cmp-spell", opts = { enable_in_context = is_in_spell } },
         },
+        per_filetype = {
+          codecompanion = { "codecompanion" },
+        },
       },
       keymap = {
         -- Scrolling
