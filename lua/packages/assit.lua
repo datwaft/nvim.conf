@@ -7,9 +7,7 @@ return {
         auto_trigger_ft = { "*" },
         auto_trigger_ignore_ft = { "qf", "neo-tree", "aerial", "Avante", "AvanteInput", "AvanteSelectedFiles" },
         keymap = {
-          accept = "<leader>A",
-          accept_line = "<leader>a",
-          accept_n_lines = "<leader>z",
+          accept = "<M-right>",
           prev = "<leader>[",
           next = "<leader>]",
           dismiss = "<leader>e",
