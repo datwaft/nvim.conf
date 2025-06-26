@@ -22,7 +22,7 @@ return {
         gemini = function()
           return require("codecompanion.adapters").extend("gemini", {
             env = {
-              api_key = "cmd:op read 'op://Private/Gemini API Key/password' --no-newline",
+              api_key = "cmd:op item get 'Gemini API Key' --reveal --fields password",
             },
           })
         end,
