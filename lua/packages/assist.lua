@@ -24,6 +24,17 @@ return {
             env = {
               api_key = "cmd:op item get 'Gemini API Key' --reveal --fields password",
             },
+            schema = {
+              model = {
+                default = "gemini-2.5-flash",
+                choices = {
+                  ["gemini-2.5-pro"] = { opts = { can_reason = true, has_vision = true } },
+                  ["gemini-2.5-flash"] = { opts = { can_reason = true, has_vision = true } },
+                  ["gemini-2.0-flash"] = { opts = { has_vision = true } },
+                  ["gemini-2.0-flash-lite"] = { opts = { has_vision = true } },
+                },
+              },
+            },
           })
         end,
       },
