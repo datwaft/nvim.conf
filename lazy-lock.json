@@ -12,6 +12,7 @@
   "conform.nvim": { "branch": "master", "commit": "973f3cb73887d510321653044791d7937c7ec0fa" },
   "conjure": { "branch": "main", "commit": "dbdc4ad7ac0fb47ee1d48132fbe9f0d35d5f43dd" },
   "debugprint.nvim": { "branch": "main", "commit": "c0aea0b91bcc533d36dfcc331f545478b67aefa3" },
+  "dial.nvim": { "branch": "master", "commit": "78bd73aaf2b9c8f80715a878feaf56f7ffa8b6ff" },
   "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
   "ecolog.nvim": { "branch": "main", "commit": "4dfe49f930e646edff7b6a89f61586ec7b8d6ff1" },
   "fastaction.nvim": { "branch": "main", "commit": "9bf0c368565023914c120562473dc5a5c179ee8c" },
