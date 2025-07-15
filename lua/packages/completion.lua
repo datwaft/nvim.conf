@@ -35,9 +35,6 @@ return {
           spell = { name = "Spell", module = "blink-cmp-spell", opts = { enable_in_context = is_in_spell } },
           copilot = { name = "copilot", module = "blink-copilot", score_offset = 100, async = true },
         },
-        per_filetype = {
-          codecompanion = { "codecompanion" },
-        },
       },
       keymap = {
         -- Scrolling
