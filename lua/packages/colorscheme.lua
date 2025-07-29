@@ -21,37 +21,23 @@ end
 
 ---@type LazySpec
 return {
-  "catppuccin/nvim",
-  name = "catppuccin",
+  "rose-pine/neovim",
+  name = "rose-pine",
   lazy = false,
   priority = 1000,
   config = function(_, opts)
-    require("catppuccin").setup(opts)
-    vim.cmd.colorscheme("catppuccin-mocha")
+    require("rose-pine").setup(opts)
+    vim.cmd.colorscheme("rose-pine")
   end,
-  ---@type CatppuccinOptions
   opts = {
-    kitty = true,
-    custom_highlights = function(colors)
-      return {
-        DiagnosticVirtualTextError = { style = {} },
-        DiagnosticVirtualTextWarn = { style = {} },
-        DiagnosticVirtualTextInfo = { style = {} },
-        DiagnosticVirtualTextHint = { style = {} },
-        DiagnosticVirtualTextOk = { style = {} },
-        DiagnosticUnderlineHint = { sp = colors.overlay0, style = { "underdotted" } },
-        FzfLuaBorder = { fg = colors.blue },
-        QuickFixLineNr = { fg = colors.peach },
-        RainbowDelimiterRed = { fg = dim_color(colors.red, 0.5), style = { "bold" } },
-        RainbowDelimiterYellow = { fg = dim_color(colors.yellow, 0.5), style = { "bold" } },
-        RainbowDelimiterBlue = { fg = dim_color(colors.blue, 0.5), style = { "bold" } },
-        RainbowDelimiterOrange = { fg = dim_color(colors.peach, 0.5), style = { "bold" } },
-        RainbowDelimiterGreen = { fg = dim_color(colors.green, 0.5), style = { "bold" } },
-        RainbowDelimiterViolet = { fg = dim_color(colors.mauve, 0.5), style = { "bold" } },
-        RainbowDelimiterCyan = { fg = dim_color(colors.teal, 0.5), style = { "bold" } },
-        VisualNonText = { fg = colors.overlay0, bg = colors.surface1 },
-      }
-    end,
-    transparent_background = true,
+    highlight_groups = {
+      RainbowDelimiterRed = { fg = dim_color("#eb6f92", 0.6) },
+      RainbowDelimiterYellow = { fg = dim_color("#f6c177", 0.6) },
+      RainbowDelimiterBlue = { fg = dim_color("#31748f", 0.6) },
+      RainbowDelimiterOrange = { fg = dim_color("#ebbcba", 0.6) },
+      RainbowDelimiterGreen = { fg = dim_color("#9ccfd8", 0.6) },
+      RainbowDelimiterViolet = { fg = dim_color("#c4a7e7", 0.6) },
+      RainbowDelimiterCyan = { fg = dim_color("#403d52", 0.6) },
+    },
   },
 }

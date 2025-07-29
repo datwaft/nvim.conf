@@ -260,7 +260,7 @@ _G.icons = {
     rejected = "󱙎",
   },
 }
-vim.opt.winborder = "rounded"
+vim.opt.winborder = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" }
 
 --------------
 -- Diagnostics

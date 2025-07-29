@@ -6,6 +6,7 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons", "AndreM222/copilot-lualine" },
     opts = {
       options = {
+        theme = "rose-pine",
         globalstatus = true,
         disabled_filetypes = {
           winbar = { "qf", "neo-tree", "aerial", "Avante", "AvanteInput", "AvanteSelectedFiles" },
@@ -70,28 +71,8 @@ return {
     ---@type ibl.config
     opts = { scope = { enabled = false } },
   },
-  -- Colorscheme colors in devicons
-  {
-    "rachartier/tiny-devicons-auto-colors.nvim",
-    dependencies = {
-      { "nvim-tree/nvim-web-devicons", config = true },
-      { "catppuccin/nvim", name = "catppuccin" },
-    },
-    event = "VeryLazy",
-    opts = function()
-      local theme_colors = require("catppuccin.palettes").get_palette("mocha")
-      return {
-        colors = theme_colors,
-      }
-    end,
-  },
   -- Rainbow delimiters
   {
     "HiPhish/rainbow-delimiters.nvim",
-  },
-  -- Highlight spaces on selection
-  {
-    "mcauley-penney/visual-whitespace.nvim",
-    config = true,
   },
 }
