@@ -22,18 +22,25 @@ return {
             symbols = {
               status = {
                 icons = {
-                  enabled = "",
-                  sleep = "",
-                  disabled = "",
-                  warning = "",
-                  unknown = "",
+                  enabled = " ",
+                  sleep = " ",
+                  disabled = " ",
+                  warning = " ",
+                  unknown = " ",
                 },
               },
             },
             show_colors = true,
           },
           "encoding",
-          "fileformat",
+          {
+            "fileformat",
+            symbols = {
+              unix = " ",
+              dos = " ",
+              mac = " ",
+            },
+          },
           "filetype",
         },
         lualine_y = { "progress" },
