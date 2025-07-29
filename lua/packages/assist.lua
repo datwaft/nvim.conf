@@ -2,11 +2,9 @@
 return {
   {
     "zbirenbaum/copilot.lua",
-    cmp = "Copilot",
-    event = "InsertEnter",
     opts = {
       suggestion = {
-        enabled = false,
+        enabled = true,
         auto_trigger = true,
       },
       panel = {
