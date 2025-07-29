@@ -73,15 +73,6 @@ return {
     lazy = false,
     keys = function() return { { "gx", require("lsplinks").gx } } end,
   },
-  -- Enhance code actions select
-  {
-    "Chaitanyabsprip/fastaction.nvim",
-    ---@module "fastaction"
-    ---@type FastActionConfig
-    opts = {
-      dismiss_keys = { "j", "k", "<c-c>", "q", "<esc>" },
-    },
-  },
   -- LSP in embedded code
   {
     "jmbuhr/otter.nvim",
