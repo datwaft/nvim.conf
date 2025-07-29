@@ -391,7 +391,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- Show signature help
     vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, { buffer = bufnr })
     -- Code actions
-    vim.keymap.set({ "n", "x" }, "gra", "<cmd>lua require('fastaction').code_action()<cr>", { buffer = bufnr })
+    vim.keymap.set({ "n", "x" }, "gra", vim.lsp.buf.code_action, { buffer = bufnr })
     -- Go to definition
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr })
     vim.keymap.set("n", "gD", "<cmd>Glance definitions<cr>", { buffer = bufnr })
