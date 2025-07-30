@@ -1,6 +1,6 @@
 ---@param color string e.g. "#12fa56"
----@param factor number e.g. 0.7
-local function dim_color(color, factor)
+---@return [number, number, number]
+local function hex_to_rgb(color)
   -- We first extract the number as an `integer`
   ---@type unknown, unknown, string
   local _, _, hex = color:find("^#(%w+)$")
@@ -9,14 +9,29 @@ local function dim_color(color, factor)
   local r = bit.rshift(bit.band(number, 0xFF0000), 16)
   local g = bit.rshift(bit.band(number, 0x00FF00), 8)
   local b = bit.band(number, 0x0000FF)
-  -- We then dim each color by a factor
-  r = math.floor(r * factor)
-  g = math.floor(g * factor)
-  b = math.floor(b * factor)
-  -- We then convert those RGB components into an `integer` again
-  local dimmed_color = bit.lshift(r, 16) + bit.lshift(g, 8) + b
+  return { r, g, b }
+end
+
+---@param color [number, number, number] e.g. { 18, 250, 86 }
+---@return string
+local function rgb_to_hex(color)
+  -- We convert the RGB components into an `integer`
+  local number = bit.lshift(color[1], 16) + bit.lshift(color[2], 8) + color[3]
   -- And finally we return the `integer` converted into a hex string
-  return ("#%06x"):format(dimmed_color)
+  return ("#%06x"):format(number)
+end
+
+---@param color string e.g. "#12fa56"
+---@param background string e.g. "#12fa56"
+---@param alpha number e.g. 0.7
+---@return string
+local function blend(color, background, alpha)
+  local fg = hex_to_rgb(color)
+  local bg = hex_to_rgb(background)
+  local r = math.floor((alpha * fg[1]) + ((1 - alpha) * bg[1]) + 0.5)
+  local g = math.floor((alpha * fg[2]) + ((1 - alpha) * bg[2]) + 0.5)
+  local b = math.floor((alpha * fg[3]) + ((1 - alpha) * bg[3]) + 0.5)
+  return rgb_to_hex({ r, g, b })
 end
 
 ---@type LazySpec
@@ -29,15 +44,18 @@ return {
     require("rose-pine").setup(opts)
     vim.cmd.colorscheme("rose-pine")
   end,
-  opts = {
-    highlight_groups = {
-      RainbowDelimiterRed = { fg = dim_color("#eb6f92", 0.6) },
-      RainbowDelimiterYellow = { fg = dim_color("#f6c177", 0.6) },
-      RainbowDelimiterBlue = { fg = dim_color("#31748f", 0.6) },
-      RainbowDelimiterOrange = { fg = dim_color("#ebbcba", 0.6) },
-      RainbowDelimiterGreen = { fg = dim_color("#9ccfd8", 0.6) },
-      RainbowDelimiterViolet = { fg = dim_color("#c4a7e7", 0.6) },
-      RainbowDelimiterCyan = { fg = dim_color("#403d52", 0.6) },
-    },
-  },
+  opts = function()
+    local palette = require("rose-pine.palette")
+    return {
+      highlight_groups = {
+        RainbowDelimiterRed = { fg = blend(palette.love, palette.base, 0.45) },
+        RainbowDelimiterYellow = { fg = blend(palette.gold, palette.base, 0.45) },
+        RainbowDelimiterBlue = { fg = blend(palette.pine, palette.base, 0.45) },
+        RainbowDelimiterOrange = { fg = blend(palette.rose, palette.base, 0.45) },
+        RainbowDelimiterGreen = { fg = blend(palette.foam, palette.base, 0.45) },
+        RainbowDelimiterViolet = { fg = blend(palette.iris, palette.base, 0.45) },
+        RainbowDelimiterCyan = { fg = blend(palette.highlight_med, palette.base, 0.45) },
+      },
+    }
+  end,
 }
