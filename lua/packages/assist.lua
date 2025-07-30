@@ -8,8 +8,8 @@ return {
         auto_trigger = true,
       },
       panel = {
-        enabled = false,
-        auto_trigger = true,
+        enabled = true,
+        auto_refresh = true,
       },
     },
     init = function()
