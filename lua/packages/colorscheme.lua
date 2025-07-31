@@ -54,7 +54,7 @@ return {
         RainbowDelimiterOrange = { fg = blend(palette.rose, palette.base, 0.45) },
         RainbowDelimiterGreen = { fg = blend(palette.foam, palette.base, 0.45) },
         RainbowDelimiterViolet = { fg = blend(palette.iris, palette.base, 0.45) },
-        RainbowDelimiterCyan = { fg = blend(palette.highlight_med, palette.base, 0.45) },
+        RainbowDelimiterCyan = { fg = blend(palette.text, palette.base, 0.45) },
       },
     }
   end,
