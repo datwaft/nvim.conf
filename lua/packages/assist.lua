@@ -22,5 +22,16 @@ return {
         callback = function() vim.b.copilot_suggestion_hidden = false end,
       })
     end,
+    keys = function()
+      local suggestion = require("copilot.suggestion")
+      return {
+        {
+          mode = "i",
+          expr = true,
+          "<M-Right>",
+          function() return suggestion.is_visible() and suggestion.accept() or "<M-Right>" end,
+        },
+      }
+    end,
   },
 }
