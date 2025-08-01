@@ -10,7 +10,7 @@
   "conform.nvim": { "branch": "master", "commit": "973f3cb73887d510321653044791d7937c7ec0fa" },
   "conjure": { "branch": "main", "commit": "0ac12d481141555cc4baa0ad656b590ed30d2090" },
   "copilot-lualine": { "branch": "main", "commit": "6bc29ba1fcf8f0f9ba1f0eacec2f178d9be49333" },
-  "copilot.lua": { "branch": "master", "commit": "b6fe6bb76db51a97980a6fafd19a8655781ddc15" },
+  "copilot.lua": { "branch": "master", "commit": "4c98663ba12db653bc1127ed4c124cdde89f8ca8" },
   "debugprint.nvim": { "branch": "main", "commit": "51fe57cc5243d67b5a85c43a06eb69a76bdb9964" },
   "dial.nvim": { "branch": "master", "commit": "78bd73aaf2b9c8f80715a878feaf56f7ffa8b6ff" },
   "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
