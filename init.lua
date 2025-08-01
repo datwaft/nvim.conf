@@ -425,12 +425,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- Enable inlay hints by default
     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 
-    -- Use LSP-provided folding if possible
-    if client:supports_method("textDocument/foldingRange") then
-      vim.wo.foldmethod = "expr"
-      vim.wo.foldexpr = "v:lua.vim.lsp.foldexpr()"
-    end
-
     -- Use LSP-provided color if possible
     vim.lsp.document_color.enable(true, bufnr)
 
