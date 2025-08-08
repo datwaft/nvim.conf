@@ -80,24 +80,22 @@ return {
       "nvim-treesitter/nvim-treesitter",
     },
     config = true,
-    -- See https://github.com/jmbuhr/otter.nvim/wiki/Configuration-recipes
     init = function()
       vim.api.nvim_create_autocmd("InsertEnter", {
         group = vim.api.nvim_create_augroup("otter-autostart", { clear = true }),
         pattern = { "*.md" },
         callback = function()
-          local ok, parser = pcall(vim.treesitter.get_parser)
-          if not ok or parser == nil then return end
+          local parser = vim.treesitter.get_parser(0)
+          if not parser then return end
 
           local otter = require("otter")
-          local extensions = require("otter.tools.extensions")
-          local attached = {}
+          vim.b.otter_parsers_attached = vim.b.otter_parsers_attached or {}
 
           local line, column = vim.fn.line(".") - 1, vim.fn.col(".")
           local language = parser:language_for_range({ line, column, line, column + 1 }):lang()
-
-          if extensions[language] and not vim.tbl_contains(attached, language) then
-            table.insert(attached, language)
+          if language == parser:lang() then return end
+          if not vim.b.otter_parsers_attached[language] then
+            vim.b.otter_parsers_attached[language] = true
             vim.schedule(function() otter.activate({ language }, true, true) end)
           end
         end,
