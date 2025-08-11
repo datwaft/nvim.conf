@@ -82,11 +82,4 @@ return {
   {
     "HiPhish/rainbow-delimiters.nvim",
   },
-  -- Better markdown highlighting
-  {
-    "MeanderingProgrammer/render-markdown.nvim",
-    ---@module 'render-markdown'
-    ---@type render.md.UserConfig
-    opts = {},
-  },
 }
