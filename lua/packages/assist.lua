@@ -34,4 +34,26 @@ return {
       }
     end,
   },
+  {
+    "NickvanDyke/opencode.nvim",
+    lazy = false,
+    ---@module "opencode"
+    ---@type opencode.Opts
+    opts = {},
+    keys = {
+      { "<leader>oA", function() require("opencode").ask() end, desc = "Ask opencode" },
+      {
+        mode = "n",
+        "<leader>oa",
+        function() require("opencode").ask("@cursor: ") end,
+        desc = "Ask opencode about this",
+      },
+      {
+        mode = "v",
+        "<leader>oa",
+        function() require("opencode").ask("@selection: ") end,
+        desc = "Ask opencode about selection",
+      },
+    },
+  },
 }
