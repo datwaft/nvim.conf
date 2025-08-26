@@ -39,7 +39,9 @@ return {
     lazy = false,
     ---@module "opencode"
     ---@type opencode.Opts
-    opts = {},
+    opts = {
+      on_opencode_not_found = function() return false end,
+    },
     keys = {
       { "<leader>oA", function() require("opencode").ask() end, desc = "Ask opencode" },
       {
