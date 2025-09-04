@@ -421,12 +421,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
         { buffer = bufnr }
       )
     end
-
     -- Enable inlay hints by default
     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 
     -- Use LSP-provided color if possible
     vim.lsp.document_color.enable(true, bufnr)
+
+    -- Enable formatting on-type if possible
+    vim.lsp.on_type_formatting.enable(true, { client_id = client.id })
 
     -- Disable semantic highlighting for some LSPs
     for _, name in ipairs({ "dockerls" }) do
