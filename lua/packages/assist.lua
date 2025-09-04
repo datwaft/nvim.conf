@@ -37,11 +37,13 @@ return {
   {
     "NickvanDyke/opencode.nvim",
     lazy = false,
-    ---@module "opencode"
-    ---@type opencode.Opts
-    opts = {
-      on_opencode_not_found = function() return false end,
-    },
+    init = function()
+      ---@module "opencode"
+      ---@type opencode.Opts
+      vim.g.opencode_opts = {
+        on_opencode_not_found = function() return false end,
+      }
+    end,
     keys = {
       { "<leader>oA", function() require("opencode").ask() end, desc = "Ask opencode" },
       {
