@@ -33,6 +33,7 @@ Mathur
 NMR
 PPT
 PRD
+Portmore
 Raphson
 SEM
 SWTES
@@ -43,6 +44,7 @@ UFD
 Vendasta
 Verlet
 Yarkhan
+ad-hoc
 adgroup
 checkpointing
 datetime
@@ -84,4 +86,3 @@ timestep
 timezones
 unicode
 worksharing
-Portmore
