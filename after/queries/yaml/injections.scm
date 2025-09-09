@@ -12,3 +12,13 @@
         value: (block_node
           (block_scalar) @injection.content
           (#set! injection.language "graphql"))))))
+
+; Github Actions queries
+([
+  (string_scalar)
+  (block_scalar)
+  (double_quote_scalar)
+  (single_quote_scalar)
+] @injection.content
+  (#lua-match? @injection.content "[$]{{.*}}")
+  (#set! injection.language "ghactions"))

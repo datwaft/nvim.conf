@@ -23,6 +23,21 @@ return {
           end
         end,
       })
+
+      -- Custom parsers
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "TSUpdate",
+        callback = function()
+          require("nvim-treesitter.parsers").ghactions = {
+            tier = 1,
+            install_info = {
+              url = "https://github.com/rmuir/tree-sitter-ghactions",
+              queries = "queries",
+              revision = "main",
+            },
+          }
+        end,
+      })
     end,
   },
   {
