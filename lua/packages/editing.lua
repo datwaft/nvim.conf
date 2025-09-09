@@ -67,7 +67,7 @@ return {
   },
   -- Around and inner text objects
   {
-    "echasnovski/mini.ai",
+    "nvim-mini/mini.ai",
     event = "VeryLazy",
     opts = function()
       local spec_treesitter = require("mini.ai").gen_spec.treesitter
@@ -85,6 +85,11 @@ return {
         },
       }
     end,
+  },
+  -- Align text interactively
+  {
+    "nvim-mini/mini.align",
+    config = true,
   },
   -- Paste images
   {
