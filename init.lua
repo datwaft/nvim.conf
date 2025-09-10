@@ -226,6 +226,28 @@ vim.keymap.set({ "c", "i", "n", "v" }, "<M-Left>", "<S-Left>")
 vim.keymap.set({ "c", "i", "n", "v" }, "<M-Right>", "<S-Right>")
 -- Search on selected text
 vim.keymap.set("x", "g/", "<Esc>/\\%V")
+-- Copy current file path to clipboard
+vim.keymap.set("n", "<leader>l", function()
+  vim.fn.setreg("+", vim.fn.expand("%:."))
+  vim.notify(("'%s' was copied to clipboard"):format(vim.fn.getreg("+")), vim.log.levels.INFO)
+end, { silent = true })
+-- Copy current location to clipboard
+vim.keymap.set("x", "<leader>l", function()
+  local path = vim.fn.expand("%:.")
+
+  local srow = vim.fn.line("v")
+  local erow = vim.fn.line(".")
+  if srow > erow then
+    srow, erow = erow, srow
+  end
+
+  if srow == erow then
+    vim.fn.setreg("+", ("%s:%d"):format(path, srow))
+  else
+    vim.fn.setreg("+", ("%s:%d-%d"):format(path, srow, erow))
+  end
+  vim.notify(("'%s' was copied to clipboard"):format(vim.fn.getreg("+")), vim.log.levels.INFO)
+end, { silent = true })
 
 ---------------
 -- Text objects
