@@ -1,6 +1,5 @@
 {
   "Brewfile.vim": { "branch": "master", "commit": "022eea619c2280d34f92c5daba19191f43be0c78" },
-  "FixCursorHold.nvim": { "branch": "master", "commit": "1900f89dc17c603eec29960f57c00bd9ae696495" },
   "LuaSnip": { "branch": "master", "commit": "458560534a73f7f8d7a11a146c801db00b081df0" },
   "Vim-Jinja2-Syntax": { "branch": "master", "commit": "2c17843b074b06a835f88587e1023ceff7e2c7d1" },
   "aerial.nvim": { "branch": "master", "commit": "c7cbbad40c2065fccfd1f1863bb2c08180c0533d" },
@@ -43,8 +42,6 @@
   "namu.nvim": { "branch": "main", "commit": "6759df3cddb1d6d11442b953f8b63e64350229f3" },
   "neo-tree.nvim": { "branch": "v3.x", "commit": "f1deac7ecec88c28a250d890ba7bb35843e69cbd" },
   "neoconf.nvim": { "branch": "main", "commit": "630a6f1ab2ae5b1add5425ba6e780e3f7f900bd8" },
-  "neotest": { "branch": "master", "commit": "2cf3544fb55cdd428a9a1b7154aea9c9823426e8" },
-  "neotest-playwright": { "branch": "master", "commit": "6266945039dac27a354de33d2f2a66e75485d5e9" },
   "nfnl": { "branch": "main", "commit": "1003f43e3420475e181ce7cf609648a5e9ce35ca" },
   "nui.nvim": { "branch": "main", "commit": "de740991c12411b663994b2860f1a4fd0937c130" },
   "nvim-ansible": { "branch": "main", "commit": "bba61168b7aef735e7f950fdfece5ef6c388eacf" },
