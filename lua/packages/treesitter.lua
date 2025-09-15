@@ -17,6 +17,10 @@ return {
 
           if vim.treesitter.query.get(lang, "highlights") then vim.treesitter.start(args.buf) end
 
+          if vim.treesitter.query.get(lang, "indents") then
+            vim.opt_local.indentexpr = 'v:lua.require("nvim-treesitter").indentexpr()'
+          end
+
           if vim.treesitter.query.get(lang, "folds") then
             vim.opt_local.foldmethod = "expr"
             vim.opt_local.foldexpr = "v:lua.vim.treesitter.foldexpr()"
