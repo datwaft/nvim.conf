@@ -21,6 +21,7 @@
   "ghostty.nvim": { "branch": "master", "commit": "86114c996e87108c3e7e5d4d5596581914374a77" },
   "gitsigns.nvim": { "branch": "main", "commit": "f780609807eca1f783a36a8a31c30a48fbe150c5" },
   "glance.nvim": { "branch": "master", "commit": "bf86d8b79dce808e65fdb6e9269d0b4ed6d2eefc" },
+  "image.nvim": { "branch": "master", "commit": "446a8a5cc7a3eae3185ee0c697732c32a5547a0b" },
   "img-clip.nvim": { "branch": "main", "commit": "f33f3af9ba50f99d70f8fcb1a8575750ada4ea4a" },
   "indent-blankline.nvim": { "branch": "master", "commit": "005b56001b2cb30bfa61b7986bc50657816ba4ba" },
   "jupytext.nvim": { "branch": "master", "commit": "2e86acfa4345f611c86f57116db0c06ffecb721d" },
