@@ -69,6 +69,8 @@ return {
   {
     "nvim-mini/mini.ai",
     event = "VeryLazy",
+    -- Version locked until https://github.com/nvim-mini/mini.nvim/issues/2006 is fixed.
+    commit = "4b5348fac5912f1957f4c012c2e0ab0c4b865386",
     opts = function()
       local spec_treesitter = require("mini.ai").gen_spec.treesitter
       local spec_argument = require("mini.ai").gen_spec.argument
