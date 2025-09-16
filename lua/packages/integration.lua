@@ -114,6 +114,7 @@ return {
     dependencies = {
       {
         "3rd/image.nvim",
+        cond = function() return not vim.g.neovide end,
         opts = {
           backend = "kitty",
           max_width = 100,
