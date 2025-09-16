@@ -42,6 +42,19 @@ return {
   priority = 1000,
   config = function(_, opts)
     require("rose-pine").setup(opts)
+
+    -- Override some highlight groups that cannot be overridden using `highlight_groups`
+    vim.api.nvim_create_autocmd("ColorScheme", {
+      group = vim.api.nvim_create_augroup("colorscheme-override", { clear = true }),
+      callback = function()
+        local palette = require("rose-pine.palette")
+        vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", {
+          sp = palette.muted,
+          underdotted = true,
+        })
+      end,
+    })
+
     vim.cmd.colorscheme("rose-pine")
   end,
   opts = function()
