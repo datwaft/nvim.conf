@@ -31,6 +31,7 @@ return {
           ecolog = { name = "ecolog", module = "ecolog.integrations.cmp.blink_cmp" },
           spell = { name = "Spell", module = "blink-cmp-spell", opts = { enable_in_context = is_in_spell } },
           snippets = { should_show_items = function(ctx) return ctx.trigger.initial_kind ~= "trigger_character" end },
+          path = { opts = { get_cwd = function() return vim.fn.getcwd() end } },
         },
       },
       keymap = {
