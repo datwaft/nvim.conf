@@ -22,9 +22,6 @@ return {
     ---@module "blink.cmp"
     ---@type blink.cmp.Config
     opts = {
-      appearance = {
-        nerd_font_variant = "mono",
-      },
       cmdline = { enabled = false },
       sources = {
         default = { "ecolog", "lsp", "path", "snippets", "buffer", "dadbod", "lazydev", "spell" },
@@ -33,6 +30,7 @@ return {
           lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", fallbacks = { "lazy_dev" } },
           ecolog = { name = "ecolog", module = "ecolog.integrations.cmp.blink_cmp" },
           spell = { name = "Spell", module = "blink-cmp-spell", opts = { enable_in_context = is_in_spell } },
+          snippets = { should_show_items = function(ctx) return ctx.trigger.initial_kind ~= "trigger_character" end },
         },
       },
       keymap = {
