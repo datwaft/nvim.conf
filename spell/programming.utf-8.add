@@ -34,6 +34,7 @@ async
 atuin
 auth
 authblk
+autocmd
 autocommand
 autocommands
 backend
@@ -54,6 +55,7 @@ conceallevel
 config
 conv
 creds
+csv
 datwaft
 datwaft's
 defaultdict
@@ -87,6 +89,7 @@ ipc
 ipython
 javascript
 js
+jupyter
 jupytext
 jwt
 keybind
@@ -156,4 +159,3 @@ zod
 zoxide
 zsh
 ρ
-autocmd
