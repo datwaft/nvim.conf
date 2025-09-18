@@ -35,7 +35,7 @@
   "mason-conform.nvim": { "branch": "main", "commit": "48da2ebd5efbaf8a99566eadc3ece82d523f03c5" },
   "mason-nvim-dap.nvim": { "branch": "main", "commit": "86389a3dd687cfaa647b6f44731e492970034baa" },
   "mason.nvim": { "branch": "main", "commit": "7dc4facca9702f95353d5a1f87daf23d78e31c2a" },
-  "mini.ai": { "branch": "main", "commit": "4b5348fac5912f1957f4c012c2e0ab0c4b865386" },
+  "mini.ai": { "branch": "main", "commit": "dcd346a3eda9121e917950680e5eb59f59f78aae" },
   "mini.align": { "branch": "main", "commit": "ab6777ca0fdfe8e4cfe931e3b0b5d98c719c3c1d" },
   "mkdir.nvim": { "branch": "main", "commit": "c55d1dee4f099528a1853b28bb28caa802eba217" },
   "molten-nvim": { "branch": "main", "commit": "4e1c9997cb53b9d3236c5d6462d80119250ed5b7" },
