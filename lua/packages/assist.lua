@@ -3,6 +3,9 @@ return {
   {
     "zbirenbaum/copilot.lua",
     opts = {
+      filetypes = {
+        fennel = false,
+      },
       suggestion = {
         enabled = true,
         auto_trigger = true,
