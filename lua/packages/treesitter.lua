@@ -8,6 +8,7 @@ return {
     init = function()
       vim.treesitter.language.register("bash", "zsh")
       vim.treesitter.language.register("bash", "sh")
+      vim.treesitter.language.register("fennel", "fnl")
 
       vim.api.nvim_create_autocmd("FileType", {
         group = vim.api.nvim_create_augroup("tree-sitter-enable", { clear = true }),
