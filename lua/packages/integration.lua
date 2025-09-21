@@ -74,6 +74,10 @@ return {
               local kernels = vim.fn.MoltenAvailableKernels()
 
               ---@param path string
+              ---@return boolean
+              local function file_exists(path) return vim.uv.fs_stat(path) ~= nil end
+
+              ---@param path string
               ---@return string
               local function read_file(path)
                 local fd = assert(vim.uv.fs_open(path, "r", 438))
@@ -93,10 +97,17 @@ return {
               if not ok or not vim.tbl_contains(kernels, kernel_name) then
                 kernel_name = nil
                 local venv = vim.env.VIRTUAL_ENV or vim.env.CONDA_PREFIX
-                if venv ~= nil then kernel_name = string.match(venv, "/.+/(.+)") end
+                if venv ~= nil then kernel_name = venv:match("/.+/(.+)") end
               end
 
-              if kernel_name ~= nil and vim.tbl_contains(kernels, kernel_name) then vim.cmd.MoltenInit(kernel_name) end
+              if kernel_name ~= nil then
+                local kernel_file = vim.fn.expand(("./.%s-kernel.json"):format(kernel_name))
+                if file_exists(kernel_file) then
+                  vim.cmd.MoltenInit(kernel_file)
+                elseif vim.tbl_contains(kernels, kernel_name) then
+                  vim.cmd.MoltenInit(kernel_name)
+                end
+              end
               vim.cmd.MoltenImportOutput()
             end)
           end
