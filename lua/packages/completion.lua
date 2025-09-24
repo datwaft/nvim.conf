@@ -53,6 +53,26 @@ return {
           "snippet_backward",
           "fallback",
         },
+        ["<M-l>"] = {
+          function()
+            local suggestion = require("copilot.suggestion")
+            if suggestion.is_visible() then
+              suggestion.accept()
+              return true
+            end
+          end,
+          "fallback",
+        },
+        ["<M-Right>"] = {
+          function()
+            local suggestion = require("copilot.suggestion")
+            if suggestion.is_visible() then
+              suggestion.accept()
+              return true
+            end
+          end,
+          "fallback",
+        },
       },
       completion = {
         keyword = { range = "full" },
