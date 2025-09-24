@@ -250,6 +250,28 @@ vim.keymap.set("x", "<leader>l", function()
   end
   vim.notify(("'%s' was copied to clipboard"):format(vim.fn.getreg("+")), vim.log.levels.INFO)
 end, { silent = true })
+-- Copy current file path to clipboard modified to work with playwright
+vim.keymap.set("n", "<leader>L", function()
+  vim.fn.setreg("+", vim.fn.expand("%:p:~:.:s?tests/??"))
+  vim.notify(("'%s' was copied to clipboard"):format(vim.fn.getreg("+")), vim.log.levels.INFO)
+end, { silent = true })
+-- Copy current location to clipboard modified to work with playwright
+vim.keymap.set("x", "<leader>L", function()
+  local path = vim.fn.expand("%:p:~:.:s?tests/??")
+
+  local srow = vim.fn.line("v")
+  local erow = vim.fn.line(".")
+  if srow > erow then
+    srow, erow = erow, srow
+  end
+
+  if srow == erow then
+    vim.fn.setreg("+", ("%s:%d"):format(path, srow))
+  else
+    vim.fn.setreg("+", ("%s:%d-%d"):format(path, srow, erow))
+  end
+  vim.notify(("'%s' was copied to clipboard"):format(vim.fn.getreg("+")), vim.log.levels.INFO)
+end, { silent = true })
 
 ---------------
 -- Text objects
