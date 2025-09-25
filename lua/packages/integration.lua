@@ -121,6 +121,15 @@ return {
           if require("molten.status").initialized() == "Molten" then vim.cmd.MoltenExportOutput({ bang = true }) end
         end,
       })
+
+      vim.api.nvim_create_autocmd("FileType", {
+        group = vim.api.nvim_create_augroup("molten-filetype", { clear = true }),
+        pattern = { "molten_output" },
+        callback = function()
+          vim.opt_local.readonly = true
+          vim.opt_local.list = false
+        end,
+      })
     end,
     dependencies = {
       {
