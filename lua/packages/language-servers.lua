@@ -118,4 +118,10 @@ return {
       preferred_environment = "qa",
     },
   },
+  -- Code Lens
+  {
+    "oribarilan/lensline.nvim",
+    event = "LspAttach",
+    opts = {},
+  },
 }
