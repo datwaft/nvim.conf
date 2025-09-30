@@ -70,7 +70,7 @@
   "rose-pine": { "branch": "main", "commit": "72a04c4065345b51b56aed4859ea1d884f734097" },
   "schemastore.nvim": { "branch": "main", "commit": "c8af3f44c68757344b4dcb82e2ac48892b1be765" },
   "smart-splits.nvim": { "branch": "master", "commit": "2b5dda43b3de5d13b56c4606f7d19db78637e527" },
-  "snacks.nvim": { "branch": "main", "commit": "bfc98ad198f436cbdf9fd6577ecc9066770991bc" },
+  "snacks.nvim": { "branch": "main", "commit": "ff3c49a19af63fba731a557c966d15c6b2e0bf37" },
   "sort.nvim": { "branch": "main", "commit": "bb92140e1b96d62339bd5ab5b6df1eecca0d5da6" },
   "tree-sitter-ghostty": { "branch": "main", "commit": "2a9ae7233b6707e84b3a79c8778427f58aa4b6d0" },
   "treesj": { "branch": "main", "commit": "4770492244ccecdc9b01e0e81fa8f2f6b4a23841" },
