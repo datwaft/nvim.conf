@@ -122,6 +122,17 @@ return {
   {
     "oribarilan/lensline.nvim",
     event = "LspAttach",
-    opts = {},
+    opts = {
+      profiles = {
+        {
+          name = "minimal",
+          style = {
+            placement = "inline",
+            prefix = "",
+            render = "focused",
+          },
+        },
+      },
+    },
   },
 }
