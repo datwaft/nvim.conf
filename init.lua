@@ -354,6 +354,7 @@ vim.lsp.enable({
   "biome",
   "clangd",
   "cmake",
+  "copilot",
   "cssls",
   "dockerls",
   "fennel_ls",
@@ -467,14 +468,22 @@ vim.api.nvim_create_autocmd("LspAttach", {
         { buffer = bufnr }
       )
     end
+    -- Toggle inline completion
+    vim.keymap.set(
+      "n",
+      "<leader>ti",
+      function()
+        vim.lsp.inline_completion.enable(not vim.lsp.inline_completion.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
+      end,
+      { buffer = bufnr }
+    )
+
     -- Enable inlay hints by default
     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-
     -- Use LSP-provided color if possible
     vim.lsp.document_color.enable(true, bufnr)
-
-    -- Enable formatting on-type if possible
-    vim.lsp.on_type_formatting.enable(true, { client_id = client.id })
+    -- Enable inline completion if possible
+    vim.lsp.inline_completion.enable(true, { bufnr = bufnr })
 
     -- Disable semantic highlighting for some LSPs
     for _, name in ipairs({ "dockerls" }) do
