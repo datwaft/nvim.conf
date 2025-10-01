@@ -3,7 +3,7 @@ return {
   -- Statusline
   {
     "nvim-lualine/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons", "AndreM222/copilot-lualine" },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
       options = {
         theme = "rose-pine",
@@ -17,21 +17,6 @@ return {
         lualine_b = { "branch", { "diff", symbols = icons.git }, { "diagnostics", symbols = icons.diagnostic } },
         lualine_c = { "filename" },
         lualine_x = {
-          {
-            "copilot",
-            symbols = {
-              status = {
-                icons = {
-                  enabled = " ",
-                  sleep = " ",
-                  disabled = " ",
-                  warning = " ",
-                  unknown = " ",
-                },
-              },
-            },
-            show_colors = true,
-          },
           "encoding",
           {
             "fileformat",
