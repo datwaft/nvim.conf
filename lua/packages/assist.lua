@@ -2,6 +2,7 @@
 return {
   "folke/sidekick.nvim",
   lazy = false,
+  ---@type sidekick.Config
   opts = {},
   keys = {
     {
@@ -17,19 +18,13 @@ return {
     },
     {
       "<c-.>",
-      function() require("sidekick.cli").focus() end,
+      function() require("sidekick.cli").focus({ name = "codex" }) end,
       mode = { "n", "x", "i", "t" },
       desc = "Sidekick Switch Focus",
     },
     {
-      "<leader>aa",
-      function() require("sidekick.cli").toggle({ name = "codex", focus = true }) end,
-      mode = { "n", "v" },
-      desc = "Sidekick Toggle CLI",
-    },
-    {
-      "<leader>ap",
-      function() require("sidekick.cli").select_prompt() end,
+      "<leader>a",
+      function() require("sidekick.cli").ask({ name = "codex", focus = true }) end,
       mode = { "n", "v" },
       desc = "Sidekick Ask Prompt",
     },
