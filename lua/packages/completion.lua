@@ -44,10 +44,10 @@ return {
         ["<Space>"] = { "accept", "fallback" },
         ["<CR>"] = { "accept", "fallback" },
         ["<Tab>"] = {
-          "select_next",
           "snippet_forward",
           function() return require("sidekick").nes_jump_or_apply() end,
           function() return vim.lsp.inline_completion.get() end,
+          "select_next",
           "fallback",
         },
         ["<S-Tab>"] = {

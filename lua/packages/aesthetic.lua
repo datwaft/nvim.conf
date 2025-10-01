@@ -9,7 +9,7 @@ return {
         theme = "rose-pine",
         globalstatus = true,
         disabled_filetypes = {
-          winbar = { "qf", "neo-tree", "aerial", "Avante", "AvanteInput", "AvanteSelectedFiles" },
+          winbar = { "qf", "neo-tree", "aerial", "Avante", "AvanteInput", "AvanteSelectedFiles", "sidekick_terminal" },
         },
       },
       sections = {
@@ -17,6 +17,21 @@ return {
         lualine_b = { "branch", { "diff", symbols = icons.git }, { "diagnostics", symbols = icons.diagnostic } },
         lualine_c = { "filename" },
         lualine_x = {
+          {
+            function() return " " end,
+            color = function()
+              local status = require("sidekick.status").get()
+              if status then
+                if status.kind == "Error" then return "DiagnosticError" end
+                if status.busy then return "DiagnosticWarn" end
+                return "Special"
+              end
+            end,
+            cond = function()
+              local status = require("sidekick.status")
+              return status.get() ~= nil
+            end,
+          },
           "encoding",
           {
             "fileformat",
