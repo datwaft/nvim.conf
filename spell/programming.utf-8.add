@@ -67,6 +67,7 @@ dotfiles
 dropdown
 eslint
 execa
+extkeys
 eza
 fd
 filechooser
@@ -77,6 +78,7 @@ frontend
 frontends
 fzf
 getaddrinfo
+ghostty
 grainsize
 graphql
 gx
