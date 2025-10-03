@@ -45,14 +45,22 @@ return {
         ["<CR>"] = { "accept", "fallback" },
         ["<Tab>"] = {
           "snippet_forward",
-          function() return require("sidekick").nes_jump_or_apply() end,
-          function() return vim.lsp.inline_completion.get() end,
           "select_next",
           "fallback",
         },
         ["<S-Tab>"] = {
           "select_prev",
           "snippet_backward",
+          "fallback",
+        },
+        ["<right>"] = {
+          function() return require("sidekick").nes_jump_or_apply() end,
+          function() return vim.lsp.inline_completion.get() end,
+          "fallback",
+        },
+        ["l"] = {
+          function() return require("sidekick").nes_jump_or_apply() end,
+          function() return vim.lsp.inline_completion.get() end,
           "fallback",
         },
       },

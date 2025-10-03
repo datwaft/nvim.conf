@@ -17,6 +17,28 @@ return {
       mode = { "i", "n" },
     },
     {
+      "<right>",
+      function()
+        if require("sidekick").nes_jump_or_apply() then return end
+        if vim.lsp.inline_completion.get() then return end
+        return "<right>"
+      end,
+      expr = true,
+      desc = "Goto/Apply Next Edit Suggestion",
+      mode = { "i", "n" },
+    },
+    {
+      "l",
+      function()
+        if require("sidekick").nes_jump_or_apply() then return end
+        if vim.lsp.inline_completion.get() then return end
+        return "l"
+      end,
+      expr = true,
+      desc = "Goto/Apply Next Edit Suggestion",
+      mode = { "i", "n" },
+    },
+    {
       "<c-.>",
       function() require("sidekick.cli").focus({ name = "codex" }) end,
       mode = { "n", "x", "i", "t" },
