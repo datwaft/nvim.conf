@@ -119,21 +119,4 @@ return {
       preferred_environment = "qa",
     },
   },
-  -- Code Lens
-  {
-    "oribarilan/lensline.nvim",
-    event = "LspAttach",
-    opts = {
-      profiles = {
-        {
-          name = "minimal",
-          style = {
-            placement = "inline",
-            prefix = "",
-            render = "focused",
-          },
-        },
-      },
-    },
-  },
 }
