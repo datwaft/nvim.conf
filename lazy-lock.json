@@ -31,6 +31,7 @@
   "lsplinks.nvim": { "branch": "master", "commit": "94d729170e95298ce86ba41ef66f8756f6062b34" },
   "lualine.nvim": { "branch": "master", "commit": "b8c23159c0161f4b89196f74ee3a6d02cdc3a955" },
   "luvit-meta": { "branch": "main", "commit": "0ea4ff636c5bb559ffa78108561d0976f4de9682" },
+  "markview.nvim": { "branch": "main", "commit": "de79a7626d54d7785436105ef72f37ee8fe8fa16" },
   "mason-conform.nvim": { "branch": "main", "commit": "48da2ebd5efbaf8a99566eadc3ece82d523f03c5" },
   "mason-nvim-dap.nvim": { "branch": "main", "commit": "86389a3dd687cfaa647b6f44731e492970034baa" },
   "mason.nvim": { "branch": "main", "commit": "ad7146aa61dcaeb54fa900144d768f040090bff0" },
