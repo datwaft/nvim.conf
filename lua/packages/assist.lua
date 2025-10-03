@@ -24,8 +24,8 @@ return {
     },
     {
       "<leader>a",
-      function() require("sidekick.cli").ask({ name = "codex", focus = true }) end,
-      mode = { "n", "v" },
+      function() require("sidekick.cli").send({ name = "codex", focus = true, msg = "{this}" }) end,
+      mode = { "n", "x" },
       desc = "Sidekick Ask Prompt",
     },
   },

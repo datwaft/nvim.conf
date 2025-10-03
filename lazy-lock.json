@@ -56,6 +56,7 @@
   "nvim-parinfer": { "branch": "master", "commit": "3968e669d9f02589aa311d33cb475b16b27c5fbb" },
   "nvim-spider": { "branch": "main", "commit": "220efa63c20830a9bf0593a57366b96dd5790212" },
   "nvim-treesitter": { "branch": "main", "commit": "99bd52ba56a4b7c9a8cc50a6140180755e76fac6" },
+  "nvim-treesitter-textobjects": { "branch": "main", "commit": "1b2d85d3de6114c4bcea89ffb2cd1ce9e3a19931" },
   "nvim-various-textobjs": { "branch": "main", "commit": "237763835b65bdc64f0e19a31c040321813e4333" },
   "nvim-web-devicons": { "branch": "master", "commit": "b8221e42cf7287c4dcde81f232f58d7b947c210d" },
   "oil.nvim": { "branch": "master", "commit": "919e155fdf38e9148cdb5304faaaf53c20d703ea" },

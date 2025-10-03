@@ -68,7 +68,7 @@ return {
   -- Around and inner text objects
   {
     "nvim-mini/mini.ai",
-    event = "VeryLazy",
+    dependencies = { { "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" } },
     opts = function()
       local spec_treesitter = require("mini.ai").gen_spec.treesitter
       local spec_argument = require("mini.ai").gen_spec.argument
