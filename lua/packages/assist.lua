@@ -36,7 +36,7 @@ return {
       end,
       expr = true,
       desc = "Goto/Apply Next Edit Suggestion",
-      mode = { "i", "n" },
+      mode = { "n" },
     },
     {
       "<c-.>",
