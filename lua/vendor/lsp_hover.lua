@@ -33,24 +33,10 @@ hover.config = {
 
   lua_ls = {
     condition = function(client_name) return client_name == "lua_ls" end,
-
-    winopts = {
-      footer_pos = "right",
-      footer = {
-        { " 󰢱 LuaLS ", "@function" },
-      },
-    },
   },
 
   basedpyright = {
     condition = function(client_name) return client_name == "basedpyright" end,
-
-    winopts = {
-      footer_pos = "right",
-      footer = {
-        { " 󰌠 BasedPyright ", "@constant" },
-      },
-    },
   },
 }
 
