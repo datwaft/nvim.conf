@@ -557,5 +557,3 @@ require("lazy").setup({
   change_detection = { notify = false },
   ui = { backdrop = 100, border = vim.opt.winborder:get() },
 })
-
-require("vendor.lsp_hover").setup()
