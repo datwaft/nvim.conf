@@ -14,21 +14,6 @@ return {
         { "<C-w>j", ss.move_cursor_down },
         { "<C-w>k", ss.move_cursor_up },
         { "<C-w>l", ss.move_cursor_right },
-        -- OPT+hjkl
-        { "<M-h>", ss.move_cursor_left },
-        { "<M-j>", ss.move_cursor_down },
-        { "<M-k>", ss.move_cursor_up },
-        { "<M-l>", ss.move_cursor_right },
-        -- OPT+HJKL
-        { "<M-H>", ss.move_cursor_left },
-        { "<M-J>", ss.move_cursor_down },
-        { "<M-K>", ss.move_cursor_up },
-        { "<M-L>", ss.move_cursor_right },
-        -- OPT+SHIFT+ARROW
-        { "<M-S-Left>", ss.move_cursor_left },
-        { "<M-S-Down>", ss.move_cursor_down },
-        { "<M-S-Up>", ss.move_cursor_up },
-        { "<M-S-Right>", ss.move_cursor_right },
       }
     end,
   },
