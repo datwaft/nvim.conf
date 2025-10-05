@@ -137,6 +137,13 @@ vim.api.nvim_create_autocmd("TermOpen", {
     vim.opt_local.colorcolumn = {}
   end,
 })
+-- When entering the terminal start in insert mode
+vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
+  group = vim.api.nvim_create_augroup("terminal-enter", { clear = true }),
+  callback = function(args)
+    if vim.bo[args.buf].buftype == "terminal" then vim.cmd.startinsert() end
+  end,
+})
 -- Always disable 'spell' on some filetypes
 vim.api.nvim_create_autocmd("FileType", {
   group = vim.api.nvim_create_augroup("disable-spell", { clear = true }),
@@ -189,6 +196,13 @@ vim.keymap.set("n", "<C-t>[", "<CMD>tabnext<CR>")
 vim.keymap.set("n", "<C-t>]", "<CMD>tabprevious<CR>")
 vim.keymap.set("n", "<C-t>w", "<CMD>tabclose<CR>")
 vim.keymap.set("n", "<C-t>q", "<CMD>tabclose<CR>")
+-- Enter normal mode in terminal with <ESC><ESC>
+vim.keymap.set("t", "<ESC><ESC>", [[<C-\><C-n>]])
+-- Navigate between windows using <C-w>hjkl in terminal mode
+vim.keymap.set("t", "<C-w>h", [[<C-\><C-n><cmd>wincmd h<cr>]])
+vim.keymap.set("t", "<C-w>j", [[<C-\><C-n><cmd>wincmd j<cr>]])
+vim.keymap.set("t", "<C-w>k", [[<C-\><C-n><cmd>wincmd k<cr>]])
+vim.keymap.set("t", "<C-w>l", [[<C-\><C-n><cmd>wincmd l<cr>]])
 -- Close wildmenu using <SPACE>
 vim.keymap.set(
   "c",
