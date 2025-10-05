@@ -9,7 +9,16 @@ return {
         theme = "rose-pine",
         globalstatus = true,
         disabled_filetypes = {
-          winbar = { "qf", "neo-tree", "aerial", "Avante", "AvanteInput", "AvanteSelectedFiles", "sidekick_terminal" },
+          winbar = {
+            "qf",
+            "neo-tree",
+            "aerial",
+            "Avante",
+            "AvanteInput",
+            "AvanteSelectedFiles",
+            "sidekick_terminal",
+            "REPL",
+          },
         },
       },
       sections = {
