@@ -6,37 +6,26 @@ return {
   opts = {},
   keys = {
     {
-      "<tab>",
+      "<M-l>",
       function()
         if require("sidekick").nes_jump_or_apply() then return end
         if vim.lsp.inline_completion.get() then return end
-        return "<tab>"
+        return "<M-l>"
       end,
       expr = true,
       desc = "Goto/Apply Next Edit Suggestion",
       mode = { "i", "n" },
     },
     {
-      "<right>",
+      "<M-Right>",
       function()
         if require("sidekick").nes_jump_or_apply() then return end
         if vim.lsp.inline_completion.get() then return end
-        return "<right>"
+        return "<M-Right>"
       end,
       expr = true,
       desc = "Goto/Apply Next Edit Suggestion",
       mode = { "i", "n" },
-    },
-    {
-      "l",
-      function()
-        if require("sidekick").nes_jump_or_apply() then return end
-        if vim.lsp.inline_completion.get() then return end
-        return "l"
-      end,
-      expr = true,
-      desc = "Goto/Apply Next Edit Suggestion",
-      mode = { "n" },
     },
     {
       "<c-.>",
