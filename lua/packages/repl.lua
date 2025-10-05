@@ -1,33 +1,27 @@
 ---@type LazySpec
 return {
   {
-    "milanglacier/yarepl.nvim",
-    opts = {
-      metas = {
-        ipython = {
-          cmd = function() return vim.b.repl_ipython_cmd or vim.g.repl_ipython_cmd or "ipython" end,
-        },
-      },
-    },
+    "jpalardy/vim-slime",
+    event = "VeryLazy",
     init = function()
+      vim.g.slime_target = "tmux"
+      vim.g.slime_default_config = {
+        socket_name = vim.fn.split(vim.env.TMUX, ",")[1],
+        target_pane = "{last}",
+      }
+      vim.g.slime_dont_ask_default = 1
+      vim.g.slime_bracketed_paste = 1
+      vim.g.slime_no_mappings = 1
+
       vim.api.nvim_create_autocmd("FileType", {
-        group = vim.api.nvim_create_augroup("yarepl-keybinds", { clear = true }),
+        group = vim.api.nvim_create_augroup("vim-slime-keybinds", { clear = true }),
         callback = function()
           if vim.bo.buftype ~= "nofile" then
-            vim.keymap.set("x", "<C-s>", "<Plug>(REPLSendVisual)", { buffer = true })
-            vim.keymap.set("n", "<C-s>", "<Plug>(REPLSendOperator)", { buffer = true })
-            vim.keymap.set("n", "<C-s>s", "<Plug>(REPLSendLine)", { buffer = true })
-            vim.keymap.set("n", "<C-s><C-s>", "<Plug>(REPLSendLine)", { buffer = true })
-            if vim.b.repl_default or vim.g.repl_default then
-              vim.keymap.set(
-                "n",
-                "<C-s>I",
-                ("<Plug>(REPLStart-%s)"):format(vim.b.repl_default or vim.g.repl_default),
-                { buffer = true }
-              )
-            else
-              vim.keymap.set("n", "<C-s>I", "<Plug>(REPLStart)", { buffer = true })
-            end
+            vim.keymap.set("x", "<C-s>", "<Plug>SlimeRegionSend", { buffer = true })
+            vim.keymap.set("n", "<C-s>", "<Plug>SlimeMotionSend", { buffer = true })
+            vim.keymap.set("n", "<C-s>s", "<Plug>SlimeLineSend", { buffer = true })
+            vim.keymap.set("n", "<C-s><C-s>", "<Plug>SlimeLineSend", { buffer = true })
+            vim.keymap.set("n", "<C-s>c", "<Plug>SlimeConfig", { buffer = true })
           end
         end,
       })
