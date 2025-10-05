@@ -33,6 +33,14 @@ vim.opt.showbreak = "↳ "
 -- Folding
 vim.opt.foldtext = ""
 vim.opt.foldlevel = 99
+vim.opt.foldcolumn = "1"
+vim.opt.fillchars = {
+  fold = " ",
+  foldclose = "",
+  foldopen = "",
+  foldsep = " ",
+  foldinner = " ",
+}
 -- Undo persistence
 vim.opt.undofile = true
 -- Enable local configuration
