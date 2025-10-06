@@ -14,7 +14,7 @@ function _G.define_sign(name, text) return vim.fn.sign_define(name, { text = tex
 -- Enable experimental bytecode cache
 vim.loader.enable()
 -- Enable experimental command line
-require("vim._extui").enable({})
+if not vim.g.vscode then require("vim._extui").enable({}) end
 -- Set <leader> to '\'
 vim.g.mapleader = [[\]]
 -- Set <localleader> to <SPACE>
@@ -573,7 +573,9 @@ install_package("folke/lazy.nvim")
 
 require("lazy").setup({
   spec = {
-    { import = "packages" },
+    { import = "packages", cond = function() return not vim.g.vscode end },
+    { import = "packages.editing", cond = function() return vim.g.vscode end },
+    { import = "packages.movement", cond = function() return vim.g.vscode end },
   },
   install = { colorscheme = { "catppuccin-mocha" } },
   change_detection = { notify = false },

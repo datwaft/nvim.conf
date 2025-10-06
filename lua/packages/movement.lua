@@ -10,6 +10,7 @@ return {
   },
   {
     "aaronik/treewalker.nvim",
+    cond = function() return not vim.g.vscode end,
     opts = {
       highlight = true,
     },
