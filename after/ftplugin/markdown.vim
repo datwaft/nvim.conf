@@ -11,5 +11,5 @@ function SlimeOverride_EscapeText_markdown(text)
     return substitute(dedented_lines, add_eol_pat, "\n", "g")
   end
 endfunction
-let b:slime_python_ipython = 1
+let b:slime_python_ipython = 0
 let b:slime_dispatch_ipython_pause = 100
