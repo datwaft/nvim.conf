@@ -29,15 +29,9 @@ return {
     },
     {
       "<c-.>",
-      function() require("sidekick.cli").focus({ name = "codex" }) end,
-      mode = { "n", "x", "i", "t" },
-      desc = "Sidekick Switch Focus",
-    },
-    {
-      "<leader>a",
-      function() require("sidekick.cli").send({ name = "codex", focus = true, msg = "{this}" }) end,
+      function() require("sidekick.cli").send({ focus = true, msg = "{this}" }) end,
       mode = { "n", "x" },
-      desc = "Sidekick Ask Prompt",
+      desc = "Sidekick Send This",
     },
   },
 }
