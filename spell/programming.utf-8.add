@@ -81,6 +81,7 @@ frontends
 fzf
 getaddrinfo
 ghostty
+globbing
 grainsize
 graphql
 gx
