@@ -1,18 +1,3 @@
---- Checks if inside a `@spell` area
-local function is_in_spell()
-  local curpos = vim.api.nvim_win_get_cursor(0)
-  local captures = vim.treesitter.get_captures_at_pos(0, curpos[1] - 1, curpos[2] - 1)
-  local in_spell_capture = false
-  for _, cap in ipairs(captures) do
-    if cap.capture == "spell" then
-      in_spell_capture = true
-    elseif cap.capture == "nospell" then
-      return false
-    end
-  end
-  return in_spell_capture
-end
-
 ---@type LazySpec
 return {
   -- Completion
@@ -24,12 +9,11 @@ return {
     opts = {
       cmdline = { enabled = false },
       sources = {
-        default = { "ecolog", "lsp", "path", "snippets", "buffer", "dadbod", "lazydev", "spell" },
+        default = { "ecolog", "lsp", "path", "snippets", "buffer", "dadbod", "lazydev" },
         providers = {
           dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
           lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", fallbacks = { "lazy_dev" } },
           ecolog = { name = "ecolog", module = "ecolog.integrations.cmp.blink_cmp" },
-          spell = { name = "Spell", module = "blink-cmp-spell", opts = { enable_in_context = is_in_spell } },
           snippets = { should_show_items = function(ctx) return ctx.trigger.initial_kind ~= "trigger_character" end },
           path = { opts = { get_cwd = function() return vim.fn.getcwd() end } },
         },
@@ -89,7 +73,6 @@ return {
     dependencies = {
       "rafamadriz/friendly-snippets",
       "L3MON4D3/LuaSnip",
-      "ribru17/blink-cmp-spell",
     },
   },
   -- Snippets
