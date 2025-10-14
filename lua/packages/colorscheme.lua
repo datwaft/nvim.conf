@@ -69,6 +69,7 @@ return {
         RainbowDelimiterViolet = { fg = blend(palette.iris, palette.base, 0.45) },
         RainbowDelimiterCyan = { fg = blend(palette.text, palette.base, 0.45) },
         MarkviewCode = { bg = palette.surface },
+        Character = { fg = palette.iris },
       },
     }
   end,
