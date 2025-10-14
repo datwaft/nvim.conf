@@ -504,8 +504,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
     -- Use LSP-provided color if possible
     vim.lsp.document_color.enable(true, bufnr)
-    -- Enable inline completion if possible
-    vim.lsp.inline_completion.enable(true, { bufnr = bufnr })
+    -- Enable inline completion if possible (except on some filetypes)
+    local enable_inline = not vim.list_contains({ "fennel" }, vim.bo[bufnr].filetype)
+    vim.lsp.inline_completion.enable(enable_inline, { bufnr = bufnr })
 
     -- Disable semantic highlighting for some LSPs
     for _, name in ipairs({ "dockerls" }) do

@@ -34,4 +34,10 @@ return {
       desc = "Sidekick Send This",
     },
   },
+  init = function()
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = { "markdown" },
+      callback = function() vim.b.sidekick_nes = false end,
+    })
+  end,
 }
