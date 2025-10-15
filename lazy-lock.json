@@ -25,7 +25,7 @@
   "lazydev.nvim": { "branch": "main", "commit": "e28ce52fc7ff79fcb76f0e79ee6fb6182fca90b9" },
   "live-preview.nvim": { "branch": "main", "commit": "bd099b730a9462cbcb1d0ea0b3b2205c084f573d" },
   "lsplinks.nvim": { "branch": "master", "commit": "94d729170e95298ce86ba41ef66f8756f6062b34" },
-  "lualine.nvim": { "branch": "master", "commit": "b8c23159c0161f4b89196f74ee3a6d02cdc3a955" },
+  "lualine.nvim": { "branch": "master", "commit": "85d1fb91560de44f03849ff554a1d1e9072f5d74" },
   "luvit-meta": { "branch": "main", "commit": "0ea4ff636c5bb559ffa78108561d0976f4de9682" },
   "markview.nvim": { "branch": "main", "commit": "c93ea99d96b4bfda5b7c7d0dfca9c26edf6e78f0" },
   "mason-conform.nvim": { "branch": "main", "commit": "48da2ebd5efbaf8a99566eadc3ece82d523f03c5" },
