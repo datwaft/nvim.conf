@@ -3,7 +3,11 @@ return {
   "folke/sidekick.nvim",
   lazy = false,
   ---@type sidekick.Config
-  opts = {},
+  opts = {
+    nes = {
+      enabled = false,
+    },
+  },
   keys = {
     {
       "<M-l>",
