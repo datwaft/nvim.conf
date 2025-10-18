@@ -25,6 +25,7 @@ Himmelblau
 Himmelblau's
 ICPP
 IQR
+IRL
 KNL
 KNN
 Kleene
@@ -32,12 +33,14 @@ LDR
 LLM
 Lim
 MAPE
+MDP
 Massimo
 Mathur
 NMR
 PPT
 PRD
 Portmore
+RL
 Raphson
 SEM
 SWTES
@@ -55,6 +58,7 @@ checkpointing
 datetime
 datetimes
 donut
+dron
 dropdowns
 geo-location
 geo-locations
