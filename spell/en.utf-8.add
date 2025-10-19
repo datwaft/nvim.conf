@@ -14,6 +14,7 @@ CPV
 Chaudhary
 Cherenkov
 Cholesky
+Cramér's
 Czarnul
 DLPOLY
 Dongarra
@@ -73,6 +74,7 @@ linearized
 manycore
 mille
 monospaced
+overfitting
 passthrough
 pmax
 powerpoint
@@ -80,6 +82,7 @@ pragmas
 presale
 rect
 recurse
+regressor
 requestor
 runtime's
 runtimes
