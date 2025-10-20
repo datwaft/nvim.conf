@@ -54,6 +54,7 @@ Verlet
 Yarkhan
 ad-hoc
 adgroup
+allowlist
 boxplots
 checkpointing
 datetime
@@ -87,6 +88,7 @@ requestor
 runtime's
 runtimes
 scikit
+scrollback
 sem
 shorthand
 shorthands
