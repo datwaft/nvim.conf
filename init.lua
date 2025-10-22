@@ -507,6 +507,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- Enable inline completion if possible (except on some filetypes)
     local enable_inline = not vim.list_contains({ "fennel" }, vim.bo[bufnr].filetype)
     vim.lsp.inline_completion.enable(enable_inline, { bufnr = bufnr })
+    -- Enable linked editing range if possible
+    if client:supports_method("textDocument/linkedEditingRange") then
+      vim.lsp.linked_editing_range.enable(true, { client_id = client.id })
+    end
 
     -- Disable semantic highlighting for some LSPs
     for _, name in ipairs({ "dockerls" }) do
