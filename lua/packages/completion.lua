@@ -58,17 +58,6 @@ return {
       snippets = {
         preset = "luasnip",
       },
-      fuzzy = {
-        sorts = {
-          function(a, b)
-            local sort = require("blink.cmp.fuzzy.sort")
-            if a.source_id == "spell" and b.source_id == "spell" then return sort.label(a, b) end
-          end,
-          "score",
-          "kind",
-          "label",
-        },
-      },
     },
     dependencies = {
       "rafamadriz/friendly-snippets",
