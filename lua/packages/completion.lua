@@ -54,6 +54,17 @@ return {
         accept = { auto_brackets = { enabled = false } },
         documentation = { auto_show = true, auto_show_delay_ms = 100 },
         ghost_text = { enabled = true },
+        menu = {
+          draw = {
+            columns = { { "kind_icon" }, { "label", gap = 1 } },
+            components = {
+              label = {
+                text = function(ctx) return require("colorful-menu").blink_components_text(ctx) end,
+                highlight = function(ctx) return require("colorful-menu").blink_components_highlight(ctx) end,
+              },
+            },
+          },
+        },
       },
       snippets = {
         preset = "luasnip",
@@ -62,6 +73,7 @@ return {
     dependencies = {
       "rafamadriz/friendly-snippets",
       "L3MON4D3/LuaSnip",
+      { "xzbdmw/colorful-menu.nvim", opts = {} },
     },
   },
   -- Snippets

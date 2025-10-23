@@ -5,6 +5,7 @@
   "aerial.nvim": { "branch": "master", "commit": "5e687b5a14004fa2dd9eccbee042b96869fe1557" },
   "arm-syntax-vim": { "branch": "master", "commit": "84ee5c476bbfde87dd6b5fb9f6f207fbce335a73" },
   "blink.cmp": { "branch": "main", "commit": "327fff91fe6af358e990be7be1ec8b78037d2138" },
+  "colorful-menu.nvim": { "branch": "master", "commit": "d5b97d247528be308b6b69d96b5950a30e470f3d" },
   "conform.nvim": { "branch": "master", "commit": "9fd3d5e0b689ec1bf400c53cbbec72c6fdf24081" },
   "conjure": { "branch": "main", "commit": "4e0601be2ecd0f59e294b3f3d53c19b9f9285645" },
   "debugprint.nvim": { "branch": "main", "commit": "ece265d9a65b55511cce3aaa5e46f39d58b4340e" },
