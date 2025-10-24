@@ -3,7 +3,7 @@
 local function hex_to_rgb(color)
   -- We first extract the number as an `integer`
   ---@type unknown, unknown, string
-  local _, _, hex = color:find("^#(%w+)$")
+  local _, _, hex = color:find("^#(%x+)$")
   local number = tonumber(hex, 16)
   -- Then we extract the RGB components
   local r = bit.rshift(bit.band(number, 0xFF0000), 16)
@@ -45,6 +45,7 @@ return {
 
     -- Override some highlight groups that cannot be overridden using `highlight_groups`
     vim.api.nvim_create_autocmd("ColorScheme", {
+      pattern = "rose-pine",
       group = vim.api.nvim_create_augroup("colorscheme-override", { clear = true }),
       callback = function()
         local palette = require("rose-pine.palette")
