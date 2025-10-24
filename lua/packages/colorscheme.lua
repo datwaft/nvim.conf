@@ -71,6 +71,8 @@ return {
         MarkviewCode = { bg = palette.surface },
         Character = { fg = palette.iris },
         BlinkCmpDocBorder = { bg = palette.highlight_low },
+        QuickFixLine = { bg = palette.overlay, inherit = false },
+        QuickFixFilename = { fg = palette.iris },
       },
     }
   end,
