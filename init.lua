@@ -582,7 +582,7 @@ require("lazy").setup({
     { import = "packages.editing", cond = function() return vim.g.vscode end },
     { import = "packages.movement", cond = function() return vim.g.vscode end },
   },
-  install = { colorscheme = { "catppuccin-mocha" } },
+  install = { colorscheme = { "rose-pine" } },
   change_detection = { notify = false },
   ui = { backdrop = 100, border = vim.opt.winborder:get() },
 })
