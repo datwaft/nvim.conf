@@ -27,6 +27,7 @@ Vuser
 Vusers
 XK
 XT
+YYYY-MM-DD
 \imgcaption
 \imgfig
 \textwidth
@@ -146,6 +147,7 @@ taskloops
 tesult
 tesults
 texthl
+timestamp
 tracebacks
 treesitter
 typings
