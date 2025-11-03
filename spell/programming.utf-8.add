@@ -95,7 +95,9 @@ io
 ipc
 ipython
 javascript
+jj
 js
+jujutsu
 jupyter
 jupytext
 jwt
@@ -158,6 +160,7 @@ underfull
 url
 urls
 uv_fs_t
+vcs
 wezterm
 wideorbit
 wildmenu
