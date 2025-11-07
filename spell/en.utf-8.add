@@ -3,6 +3,7 @@ ACCE
 ACCED
 ACF
 ADF
+AIC
 Acc
 Ackley
 AdCellerant
@@ -17,11 +18,13 @@ Cholesky
 Cramér's
 Czarnul
 DLPOLY
+Davies–Bouldin
 Dongarra
 FFT
 GDN
 GEMM
 GFS
+GMM
 Himmelblau
 Himmelblau's
 ICPP
@@ -51,6 +54,7 @@ TTD
 UFD
 Vendasta
 Verlet
+WCSS
 YNAB
 Yarkhan
 ad-hoc

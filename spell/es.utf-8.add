@@ -20,11 +20,14 @@ autovalor
 autovector
 bayesianas
 centroide
+centroides
+clústeres
 colinealidad
 computacionalmente
 contextualmente
 correctitud
 covarianza
+covarianzas
 desbalanceadas
 desbalanceado
 diferenciable
@@ -37,10 +40,12 @@ entregables
 exa-escala
 febreros
 gaussiana
+gaussianas
 gaussiano
 grafica
 graficación
 graficada
+graficamos
 graficando
 graficar
 grafique
@@ -76,6 +81,7 @@ resiliencia
 retropropaga
 retropropagación
 riesgoso
+separabilidad
 sobreajuste
 sobrerepresentar
 subespacio
