@@ -156,6 +156,7 @@ vim.api.nvim_create_autocmd("FileType", {
     "editorconfig",
     "query",
     "molten_output",
+    "jjdescription",
   },
   callback = function() vim.opt_local.spell = false end,
 })
