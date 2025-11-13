@@ -2,12 +2,14 @@
 <localleader>
 API
 APIs
+AUC
 Brewfile
 CMA-ES
 CMD
 CTRL
 Cramer GAN
 EAPI
+EIF
 ENOTFOUND
 EX_DATAERR
 IMB
@@ -21,6 +23,7 @@ PCA
 REPL
 RMSE
 RMSprop
+ROC
 TERMINFO
 VueJS
 Vuser
@@ -31,6 +34,7 @@ YYYY-MM-DD
 \imgcaption
 \imgfig
 \textwidth
+allowframebreaks
 api
 apis
 args
