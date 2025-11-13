@@ -59,3 +59,10 @@
   (#eq? @command "\\email")
   arg: (curly_group
     _ @nospell))
+
+; \lstset{<name>}
+(generic_command
+  command: (command_name) @command
+  (#eq? @command "\\lstset")
+  arg: (curly_group
+    _ @nospell))
