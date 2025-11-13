@@ -75,7 +75,7 @@ return {
       -- Enhance vim.ui.select
       picker = {},
       -- Enable image viewer
-      image = { math = { enabled = false } },
+      image = { doc = { enabled = false } },
     },
   },
   -- Indentation lines
