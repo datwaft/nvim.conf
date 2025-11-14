@@ -5,7 +5,7 @@ return {
   ---@type sidekick.Config
   opts = {
     nes = {
-      enabled = false,
+      enabled = true,
     },
   },
   keys = {
