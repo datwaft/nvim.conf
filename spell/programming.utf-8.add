@@ -137,6 +137,7 @@ pthreads
 qa
 quickfix
 readonly
+revset
 rmsprop
 rsync
 secnumdepth
