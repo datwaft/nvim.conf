@@ -39,7 +39,7 @@
   "multicursor.nvim": { "branch": "main", "commit": "a6cf4e7daaf10a6b14bb7838caf779f0de5070cd" },
   "namu.nvim": { "branch": "main", "commit": "51d2c1de7dcdab8c0b712cd9463e392039efa5e2" },
   "neo-tree.nvim": { "branch": "v3.x", "commit": "f3df514fff2bdd4318127c40470984137f87b62e" },
-  "neoconf.nvim": { "branch": "main", "commit": "39d1876fee050c1f5ccb2963efa5615370019a01" },
+  "neoconf.nvim": { "branch": "main", "commit": "c0842110f687e5a0695208c51d04579dcf2244f0" },
   "nfnl": { "branch": "main", "commit": "fecf731e02bc51d88372c4f992fe1ef0c19c02ae" },
   "nui.nvim": { "branch": "main", "commit": "de740991c12411b663994b2860f1a4fd0937c130" },
   "nvim-ansible": { "branch": "main", "commit": "bba61168b7aef735e7f950fdfece5ef6c388eacf" },
