@@ -23,7 +23,15 @@ return {
       },
       sections = {
         lualine_a = { "mode" },
-        lualine_b = { "branch", { "diff", symbols = icons.git }, { "diagnostics", symbols = icons.diagnostic } },
+        lualine_b = {
+          "jj-vcs",
+          {
+            "branch",
+            cond = function() return not require("lualine.components.jj-vcs.jj_branch").is_jj_workspace() end,
+          },
+          { "diff", symbols = icons.git },
+          { "diagnostics", symbols = icons.diagnostic },
+        },
         lualine_c = { "filename" },
         lualine_x = {
           {
