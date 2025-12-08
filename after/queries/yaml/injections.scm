@@ -22,3 +22,13 @@
 ] @injection.content
   (#lua-match? @injection.content "[$]{{.*}}")
   (#set! injection.language "ghactions"))
+
+; Nested yaml under `blocks: |`
+(block_mapping_pair
+  key: (flow_node
+    (plain_scalar) @key)
+  (#eq? @key "blocks")
+  value: (block_node
+    (block_scalar) @injection.content
+    (#offset! @injection.content 0 1 0 0))
+  (#set! injection.language "yaml"))
