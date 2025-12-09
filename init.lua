@@ -393,8 +393,8 @@ vim.lsp.enable({
   "taplo",
   "texlab",
   "ts_query_ls",
+  "tsgo",
   "vimls",
-  "vtsls",
   "yamlls",
 })
 
