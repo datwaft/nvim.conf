@@ -3,9 +3,11 @@
 API
 APIs
 AUC
+Ai
 Brewfile
 CMA-ES
 CMD
+CODEOWNERS
 CTRL
 Cramer GAN
 EAPI
@@ -181,4 +183,3 @@ zod
 zoxide
 zsh
 ρ
-Ai
