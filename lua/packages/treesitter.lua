@@ -33,13 +33,20 @@ return {
       vim.api.nvim_create_autocmd("User", {
         pattern = "TSUpdate",
         callback = function()
-          require("nvim-treesitter.parsers").ghactions = {
+          local parsers = require("nvim-treesitter.parsers")
+          parsers.ghactions = {
             tier = 1,
             install_info = {
               url = "https://github.com/rmuir/tree-sitter-ghactions",
               queries = "queries",
               revision = "main",
             },
+          }
+          parsers.comment.install_info = {
+            url = "https://github.com/OXY2DEV/tree-sitter-comment",
+            files = { "src/parser.c" },
+            revision = "main",
+            queries = "queries/",
           }
         end,
       })
