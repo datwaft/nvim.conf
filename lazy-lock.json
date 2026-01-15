@@ -11,7 +11,6 @@
   "conjure": { "branch": "main", "commit": "67705566318002cc0a88b075f695518a43aa0ca7" },
   "debugprint.nvim": { "branch": "main", "commit": "1f5de64ac5d0d0ca20a1a535e1ab2fe2c7d4359f" },
   "dial.nvim": { "branch": "master", "commit": "f2634758455cfa52a8acea6f142dcd6271a1bf57" },
-  "ecolog.nvim": { "branch": "main", "commit": "9a52280f8ebc5e7fc9cb5f81df512d47016e208b" },
   "fastaction.nvim": { "branch": "main", "commit": "b147d91727cb35be4f722f17e7d4ed5b4a5801d8" },
   "fennel.vim": { "branch": "main", "commit": "c6a9c035ca108cbb24273d96cd6277fb8fbc60b4" },
   "fidget.nvim": { "branch": "main", "commit": "7fa433a83118a70fe24c1ce88d5f0bd3453c0970" },

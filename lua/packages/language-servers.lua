@@ -112,20 +112,4 @@ return {
       })
     end,
   },
-  -- Environment variables
-  {
-    "t3ntxcl3s/ecolog.nvim",
-    lazy = false,
-    keys = {
-      { "<C-K>", "<cmd>EcologPeek<cr>" },
-      { "<leader>es", "<cmd>EcologSelect<cr>" },
-    },
-    opts = {
-      integrations = {
-        blink_cmp = true,
-        lsp = true,
-      },
-      preferred_environment = "qa",
-    },
-  },
 }
