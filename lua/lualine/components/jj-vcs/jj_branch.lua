@@ -15,6 +15,8 @@ local sep = package.config:sub(1, 1)
 -- Use file watch for non Windows and poll for Windows.
 -- Windows doesn't like file watch for some reason.
 local file_changed = assert(sep ~= "\\" and vim.uv.new_fs_event() or vim.uv.new_fs_poll())
+-- check if jj executable is available
+local jj_available = vim.fn.executable("jj") == 1
 
 -- Revset to find closest ancestor bookmark (fallback to trunk)
 local closest_bookmark_revset = "heads(::@ & bookmarks()) | trunk()"
@@ -107,6 +109,8 @@ end
 ---@param dir_path string|nil directory to search from
 ---@return string|nil workspace root or nil
 function M.find_workspace(dir_path)
+  if not jj_available then return nil end
+
   -- Get file dir so we can search from that dir
   local file_dir = dir_path or vim.fn.expand("%:p:h")
 
