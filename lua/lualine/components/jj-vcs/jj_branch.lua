@@ -122,7 +122,9 @@ function M.find_workspace(dir_path)
   end
 
   -- Extract correct file dir from terminals
-  if file_dir and file_dir:match("term://.*") then file_dir = vim.fn.expand(file_dir:gsub("term://(.+)//.+", "%1")) end
+  if file_dir and file_dir:match("term://.*") then
+    file_dir = vim.fn.expand(file_dir:gsub("term://(.+)//.+", "%1")) --[[@as string]]
+  end
 
   -- Check cache first
   if workspace_cache[file_dir] ~= nil then
