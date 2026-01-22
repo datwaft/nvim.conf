@@ -23,6 +23,7 @@ DLPOLY
 Davies-Bouldin
 Dongarra
 FFT
+Filesets
 GDN
 GEMM
 GFS
@@ -84,6 +85,7 @@ hardcoding
 hubspot
 hyperthreading
 linearized
+longwinded
 manycore
 mille
 monospaced
@@ -115,9 +117,8 @@ threepences
 timestep
 timezones
 unicode
-whitelabel
-worksharing
-uploader
 untrack
-longwinded
-Filesets
+uploader
+whitelabel
+wildcard
+worksharing
