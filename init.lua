@@ -157,6 +157,7 @@ vim.api.nvim_create_autocmd("FileType", {
     "query",
     "molten_output",
     "jjdescription",
+    "codediff-explorer",
   },
   callback = function() vim.opt_local.spell = false end,
 })
