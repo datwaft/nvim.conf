@@ -372,6 +372,7 @@ end)
 -- LSP keybinds and configuration
 ---------------------------------
 vim.lsp.enable({
+  "actionsls",
   "autotools_ls",
   "basedpyright",
   "bashls",
@@ -541,6 +542,8 @@ vim.filetype.add({ pattern = { ["%.env%..*"] = "sh" } })
 vim.filetype.add({ extension = { ["add"] = "conf" } })
 vim.filetype.add({ pattern = { ["%.default%-%w+%-packages"] = "conf" } })
 vim.filetype.add({ extension = { ["jinja"] = "jinja", ["jinja2"] = "jinja", ["j2"] = "jinja" } })
+vim.filetype.add({ pattern = { [".*/%.github/workflows/.*%.ya?ml"] = "yaml.ghactions" } })
+vim.filetype.add({ pattern = { [".*/%.github/actions/.*/action%.ya?ml"] = "yaml.ghactions" } })
 
 --------------------------
 -- lazy.nvim configuration
