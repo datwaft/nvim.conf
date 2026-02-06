@@ -14,7 +14,7 @@ function _G.define_sign(name, text) return vim.fn.sign_define(name, { text = tex
 -- Enable experimental bytecode cache
 vim.loader.enable()
 -- Enable experimental command line
-if not vim.g.vscode then require("vim._extui").enable({}) end
+if not vim.g.vscode then require("vim._core.ui2").enable({}) end
 -- Set <leader> to '\'
 vim.g.mapleader = [[\]]
 -- Set <localleader> to <SPACE>
