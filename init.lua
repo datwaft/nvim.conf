@@ -490,6 +490,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
         { buffer = bufnr }
       )
     end
+    -- Run codelens
+    vim.keymap.set("n", "grl", function() vim.lsp.codelens.run({ client_id = client.id }) end, { buffer = bufnr })
+    -- Toggle codelens
+    vim.keymap.set(
+      "n",
+      "<leader>tl",
+      function() vim.lsp.codelens.enable(not vim.lsp.codelens.is_enabled({ bufnr = bufnr }), { bufnr = bufnr }) end,
+      { buffer = bufnr }
+    )
     -- Toggle inline completion
     vim.keymap.set(
       "n",
@@ -502,6 +511,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     -- Enable inlay hints by default
     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    -- Enable codelens by default
+    vim.lsp.codelens.enable(true, { bufnr = bufnr })
     -- Use LSP-provided color if possible
     vim.lsp.document_color.enable(true, bufnr)
     -- Enable inline completion if possible (except on some filetypes)
