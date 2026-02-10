@@ -2,7 +2,7 @@
 return {
   -- VSCode-like diff viewer
   {
-    "esmuellert/vscode-diff.nvim",
+    "esmuellert/codediff.nvim",
     dependencies = { "MunifTanjim/nui.nvim" },
     cmd = "CodeDiff",
   },
