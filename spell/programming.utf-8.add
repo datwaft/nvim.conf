@@ -58,6 +58,7 @@ ceil
 chezmoi
 chunksize
 codelens
+colocated
 colorcolumn
 colorscheme
 columnheader
@@ -152,6 +153,7 @@ secnumdepth
 sharding
 shellcheck
 slurm
+snapshotting
 statusline
 stderr
 stdout
