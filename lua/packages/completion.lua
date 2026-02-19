@@ -11,6 +11,7 @@ return {
       sources = {
         default = { "lsp", "path", "snippets", "buffer", "dadbod", "lazydev" },
         providers = {
+          lsp = { async = true },
           dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
           lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", fallbacks = { "lazy_dev" } },
           snippets = { should_show_items = function(ctx) return ctx.trigger.initial_kind ~= "trigger_character" end },
