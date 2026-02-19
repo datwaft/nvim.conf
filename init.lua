@@ -396,7 +396,7 @@ vim.lsp.enable({
   "texlab",
   "ts_query_ls",
   "vimls",
-  "vtsls",
+  "tsgo",
   "yamlls",
 })
 
