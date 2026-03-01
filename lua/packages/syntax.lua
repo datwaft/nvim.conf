@@ -13,11 +13,9 @@ return {
   -- Jinja
   "Glench/Vim-Jinja2-Syntax",
   -- Jupyter Notebooks
-  {
-    "goerz/jupytext.nvim",
-    version = "0.2.0",
-    config = true,
-  },
+  { "goerz/jupytext.nvim", version = "0.2.0", config = true },
   -- Caddy
   "isobit/vim-caddyfile",
+  -- Stack traces
+  { "relf108/nvim-unstack", version = "*", config = true },
 }
