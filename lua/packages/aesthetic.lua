@@ -99,4 +99,28 @@ return {
   {
     "HiPhish/rainbow-delimiters.nvim",
   },
+  -- Prettify symbols
+  {
+    "Prgebish/sigil.nvim",
+    lazy = false,
+    opts = {
+      filetypes = { "tex", "plaintex", "latex", "typst" },
+      filetype_symbols = {
+        tex = {
+          { pattern = [[\alpha]], replacement = "α", boundary = "left" },
+          { pattern = [[\beta]], replacement = "β", boundary = "left" },
+          { pattern = [[\to]], replacement = "→" },
+          { pattern = [[\leq]], replacement = "≤" },
+          { pattern = [[\infty]], replacement = "∞" },
+        },
+      },
+    },
+    keys = function()
+      local motions = require("sigil.motions")
+      return {
+        { "<Left>", motions.move_left, mode = { "n", "x" } },
+        { "<Right>", motions.move_right, mode = { "n", "x" } },
+      }
+    end,
+  },
 }
