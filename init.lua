@@ -456,7 +456,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local bufnr = args.buf
 
     -- Show hover documentation
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
+    vim.keymap.set("n", "K", function()
+      if #vim.lsp.get_clients({ bufnr = bufnr, name = "vtsls" }) > 0 then
+        require("custom.verbose-hover").hover()
+      else
+        vim.lsp.buf.hover()
+      end
+    end, { buffer = bufnr })
     -- Show signature help
     vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, { buffer = bufnr })
     -- Code actions
