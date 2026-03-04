@@ -88,12 +88,24 @@ return {
   },
   -- Indentation lines
   {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    event = "VeryLazy",
-    ---@module "ibl"
-    ---@type ibl.config
-    opts = { scope = { enabled = false } },
+    "saghen/blink.indent",
+    --- @module 'blink.indent'
+    --- @type blink.indent.Config
+    opts = {
+      static = { char = "▏" },
+      scope = {
+        char = "▏",
+        highlights = {
+          "RainbowDelimiterRed",
+          "RainbowDelimiterYellow",
+          "RainbowDelimiterBlue",
+          "RainbowDelimiterOrange",
+          "RainbowDelimiterGreen",
+          "RainbowDelimiterViolet",
+          "RainbowDelimiterCyan",
+        },
+      },
+    },
   },
   -- Rainbow delimiters
   {
