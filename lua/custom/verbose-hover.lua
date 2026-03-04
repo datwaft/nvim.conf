@@ -51,6 +51,25 @@ local state = {
 
 local hover_ns = vim.api.nvim_create_namespace("custom.verbose_hover")
 
+do
+  local float_footer = vim.api.nvim_get_hl(0, { name = "FloatFooter", link = false })
+  local normal_float = vim.api.nvim_get_hl(0, { name = "NormalFloat", link = false })
+  local comment = vim.api.nvim_get_hl(0, { name = "Comment", link = false })
+  vim.api.nvim_set_hl(0, "VerboseHoverFooterActive", {
+    default = true,
+    fg = float_footer.fg,
+    bg = normal_float.bg,
+    bold = true,
+    italic = false,
+  })
+  vim.api.nvim_set_hl(0, "VerboseHoverFooterInactive", {
+    default = true,
+    fg = comment.fg,
+    bg = normal_float.bg,
+    italic = false,
+  })
+end
+
 ---@return vim.lsp.Client|nil
 ---@param bufnr integer|nil
 local function find_vtsls_client(bufnr)
@@ -322,6 +341,51 @@ local function set_hover_keymaps(bufnr)
   vim.keymap.set("n", "_", function() M.collapse() end, { buffer = bufnr, silent = true, nowait = true })
 end
 
+---@param winid integer
+local function set_hover_controls(winid)
+  if not winid or not vim.api.nvim_win_is_valid(winid) then return end
+
+  local can_decrease = state.verbosity > 0
+  if not state.can_increase and not can_decrease then
+    pcall(vim.api.nvim_win_set_config, winid, { footer = nil })
+    return
+  end
+
+  local winborder = vim.opt.winborder:get()
+  local border_bottom = "─"
+  local border_right = "│"
+  local border_left = "│"
+  if type(winborder) == "table" and type(winborder[6]) == "string" and winborder[6] ~= "" then
+    border_bottom = winborder[6]
+  end
+  if type(winborder) == "table" and type(winborder[4]) == "string" and winborder[4] ~= "" then
+    border_right = winborder[4]
+  end
+  if type(winborder) == "table" and type(winborder[8]) == "string" and winborder[8] ~= "" then
+    border_left = winborder[8]
+  end
+
+  local dec_hl = can_decrease and "VerboseHoverFooterActive" or "VerboseHoverFooterInactive"
+  local inc_hl = state.can_increase and "VerboseHoverFooterActive" or "VerboseHoverFooterInactive"
+  local dec_label = "−"
+  local inc_label = "+"
+
+  pcall(vim.api.nvim_win_set_config, winid, {
+    footer = {
+      { border_bottom .. border_bottom .. border_bottom, "FloatBorder" },
+      { border_left, "FloatBorder" },
+      { " ", "FloatBorder" },
+      { dec_label, dec_hl },
+      { " ", "FloatBorder" },
+      { inc_label, inc_hl },
+      { " ", "FloatBorder" },
+      { border_right, "FloatBorder" },
+      { border_bottom .. border_bottom .. border_bottom, "FloatBorder" },
+    },
+    footer_pos = "right",
+  })
+end
+
 ---@param lines string[]
 ---@param opts vim.lsp.util.open_floating_preview.Opts
 ---@return integer|nil, integer|nil
@@ -436,6 +500,7 @@ local function show(body, silent, force_reopen)
   })
 
   local bufnr = vim.api.nvim_win_get_buf(winid)
+  set_hover_controls(winid)
   set_hover_keymaps(bufnr)
 
   if state.mapped_source_bufnr and state.mapped_source_bufnr ~= state.source_bufnr then
