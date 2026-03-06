@@ -73,8 +73,10 @@ boxplots
 checkpointing
 clojure
 clojure's
+codemod
 datetime
 datetimes
+destructures
 destructuring
 directhub
 docstrings
