@@ -107,6 +107,7 @@ iff
 io
 ipc
 ipython
+iter
 javascript
 jj
 js
@@ -133,6 +134,7 @@ netrw
 nfnl
 noqa
 num
+numpy
 numtasks
 nvim
 opam
@@ -154,6 +156,7 @@ rsync
 secnumdepth
 sharding
 shellcheck
+sklearn
 slurm
 snapshotting
 statusline
