@@ -108,9 +108,8 @@ return {
     },
   },
   -- Rainbow delimiters
-  {
-    "HiPhish/rainbow-delimiters.nvim",
-  },
+  -- FIXME: disable plugin until https://github.com/HiPhish/rainbow-delimiters.nvim/issues/204 is fixed
+  -- "HiPhish/rainbow-delimiters.nvim",
   -- Prettify symbols
   {
     "Prgebish/sigil.nvim",
