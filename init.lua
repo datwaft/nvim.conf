@@ -520,7 +520,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- Enable codelens by default
     vim.lsp.codelens.enable(true, { bufnr = bufnr })
     -- Use LSP-provided color if possible
-    vim.lsp.document_color.enable(true, bufnr)
+    vim.lsp.document_color.enable(true, { bufnr = bufnr })
     -- Enable inline completion if possible (except on some filetypes)
     local enable_inline = not vim.list_contains({ "fennel" }, vim.bo[bufnr].filetype)
     vim.lsp.inline_completion.enable(enable_inline, { bufnr = bufnr })
