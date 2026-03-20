@@ -6,7 +6,6 @@ return {
     lazy = false,
     build = ":TSUpdate",
     init = function()
-      vim.treesitter.language.register("bash", "zsh")
       vim.treesitter.language.register("bash", "sh")
       vim.treesitter.language.register("fennel", "fnl")
 
