@@ -53,6 +53,7 @@ RJ
 RL
 Raphson
 Raschka
+Rosenblatt
 SEM
 SWTES
 Smilei
@@ -131,6 +132,7 @@ seqs
 serializer
 shorthand
 shorthands
+softmax
 stackoverflow
 stdlib
 subtable
