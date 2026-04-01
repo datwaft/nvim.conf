@@ -92,6 +92,7 @@ return {
     --- @module 'blink.indent'
     --- @type blink.indent.Config
     opts = {
+      blocked = { filetypes = { include_defaults = true, "fennel" } },
       static = { char = "▏" },
       scope = {
         char = "▏",
