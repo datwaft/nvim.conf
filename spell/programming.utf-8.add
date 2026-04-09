@@ -27,6 +27,7 @@ REPL
 RMSE
 RMSprop
 ROC
+STG
 TERMINFO
 VueJS
 Vuser
@@ -121,6 +122,7 @@ keybinds
 kura
 lazydev
 listbox
+localhost
 lockfile
 luarocks
 luxon
@@ -186,6 +188,7 @@ vcs
 wasm
 wezterm
 wideorbit
+wildcards
 wildmenu
 www
 yaml
