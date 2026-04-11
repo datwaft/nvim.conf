@@ -8,7 +8,7 @@ return {
   "micarmst/vim-spellsync",
   -- Add programming dictionary
   {
-    "psliwka/vim-dirtytalk",
+    "sak96/vim-dirtytalk",
     build = ":DirtytalkUpdate",
   },
   -- Never invalidate undo files
