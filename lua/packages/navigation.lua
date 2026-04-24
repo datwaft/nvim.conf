@@ -1,13 +1,22 @@
 ---@type LazySpec
 return {
+  -- Even better fuzzy-finding
+  {
+    "dmtrKovalenko/fff.nvim",
+    lazy = false,
+    build = function() require("fff.download").download_or_build_binary() end,
+    opts = {},
+    keys = {
+      { [[<C-p>]], "<cmd>lua require('fff').find_files()<cr>" },
+      { [[<C-l>]], "<cmd>lua require('fff').live_grep()<cr>" },
+    },
+  },
   -- Fuzzy-finding
   {
     "ibhagwan/fzf-lua",
     dependencies = { "nvim-tree/nvim-web-devicons", config = true },
     keys = {
       { [[<C-\>]], "<cmd>lua require('fzf-lua').buffers()<cr>" },
-      { [[<C-p>]], "<cmd>lua require('fzf-lua').files()<cr>" },
-      { [[<C-l>]], "<cmd>lua require('fzf-lua').live_grep()<cr>" },
       { [[<F1>]], "<cmd>lua require('fzf-lua').helptags()<cr>" },
       { [[<C-t>]], "<cmd>lua require('fzf-lua').complete_path()<cr>", mode = "i" },
       { [[<C-x><C-f>]], "<cmd>lua require('fzf-lua').complete_path()<cr>", mode = "i" },
