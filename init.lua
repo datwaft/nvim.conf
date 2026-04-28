@@ -397,7 +397,7 @@ vim.lsp.enable({
   "ts_query_ls",
   "vimdoc_ls",
   "vimls",
-  "vtsls",
+  "tsgo",
   "yamlls",
 })
 
@@ -442,6 +442,17 @@ vim.lsp.config("ts_query_ls", {
   settings = {
     parser_install_directories = {
       vim.fn.stdpath("data") .. "/site/parser/",
+    },
+  },
+})
+
+vim.lsp.config("tsgo", {
+  settings = {
+    ["js/ts"] = {
+      inlayHints = {
+        parameterTypes = { enabled = false },
+        variableTypes = { enabled = false },
+      },
     },
   },
 })
