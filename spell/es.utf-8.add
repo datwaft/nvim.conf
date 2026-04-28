@@ -9,6 +9,7 @@ MNIST
 MSE
 Monge
 Olist
+SGD
 TEC
 Valdivia
 Valverde
@@ -23,6 +24,7 @@ autoregresivo
 autovalor
 autovector
 bayesianas
+binarizamos
 categorizamos
 centroide
 centroides
@@ -31,12 +33,14 @@ clústeres
 colinealidad
 computacionalmente
 contextualmente
+convolucional
 convolucionales
 correctitud
 covarianza
 covarianzas
 desbalanceadas
 desbalanceado
+desbalanceados
 desbalanceo
 diferenciable
 dimensionalidad
@@ -56,6 +60,7 @@ graficada
 graficamos
 graficando
 graficar
+graficarlo
 grafique
 grafíquelos
 hiperparámetro
@@ -79,6 +84,7 @@ médicamente
 ortonormal
 ortonormales
 ortonormalidad
+parametrizar
 parangaricutirimícuaro
 particionar
 percentil
@@ -95,6 +101,7 @@ recurrencias
 recursión
 reentrena
 reentrenar
+reimplementar
 reinicios
 reproducibilidad
 resiliencia
@@ -102,6 +109,8 @@ retropropaga
 retropropagación
 riesgoso
 separabilidad
+sobreajustado
+sobreajustando
 sobreajuste
 sobredependencia
 sobreestimar
