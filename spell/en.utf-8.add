@@ -108,6 +108,7 @@ macroexpansion
 manycore
 metatable
 mille
+minibatches
 monospaced
 multi-sym
 multisymbols
