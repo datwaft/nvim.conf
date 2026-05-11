@@ -379,7 +379,6 @@ vim.lsp.enable({
   "biome",
   "clangd",
   "cmake",
-  "copilot",
   "cssls",
   "dockerls",
   "fennel_ls",
