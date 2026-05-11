@@ -15,6 +15,7 @@ EIF
 ENOTFOUND
 ESM
 EX_DATAERR
+HDF5
 IMB
 INTL
 IWYU
@@ -30,6 +31,7 @@ ROC
 SDKMAN
 STG
 TERMINFO
+VGG
 VueJS
 Vuser
 Vusers
@@ -146,6 +148,7 @@ optuna
 paredit
 parinfer
 passwordless
+pca
 pnpx
 popup
 pragma
