@@ -396,7 +396,7 @@ vim.lsp.enable({
   "ts_query_ls",
   "vimdoc_ls",
   "vimls",
-  "tsgo",
+  "vtsls",
   "yamlls",
 })
 
