@@ -4,6 +4,7 @@ API
 APIs
 AUC
 Ai
+BLEU
 Brewfile
 CMA-ES
 CMD
@@ -19,6 +20,7 @@ HDF5
 IMB
 INTL
 IWYU
+LSTM
 MANPAGER
 MPI
 Mailosaur
@@ -27,6 +29,7 @@ PCA
 REPL
 RMSE
 RMSprop
+RNN
 ROC
 SDKMAN
 STG

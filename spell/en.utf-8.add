@@ -99,6 +99,7 @@ hardcodes
 hardcoding
 hashfn
 hubspot
+hyperparameters
 hyperthreading
 interop
 lifecycle
@@ -108,6 +109,7 @@ macroexpansion
 manycore
 metatable
 mille
+minibatch
 minibatches
 monospaced
 multi-sym
