@@ -1,15 +1,10 @@
-ARIMA
 BAC
 BNCR
 Barboza
 Cartago
-Hessiana
 Jafet
-MNIST
-MSE
 Monge
 Olist
-SGD
 TEC
 Valdivia
 Valverde
@@ -67,6 +62,7 @@ graficar
 graficarlo
 grafique
 grafíquelos
+hessiana
 hiperparámetro
 hiperparámetros
 hiperplano

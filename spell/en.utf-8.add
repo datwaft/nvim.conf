@@ -24,7 +24,6 @@ DLPOLY
 Davies-Bouldin
 Dongarra
 FFT
-Filesets
 GDN
 GEMM
 GFS
@@ -76,8 +75,6 @@ arity
 boxplots
 btw
 checkpointing
-clojure
-clojure's
 codeblock
 codemod
 datetime
@@ -89,7 +86,6 @@ docstrings
 donut
 dron
 dropdowns
-gensym
 geo-location
 geo-locations
 ha'pennies
@@ -97,7 +93,6 @@ hardcode
 hardcoded
 hardcodes
 hardcoding
-hashfn
 hubspot
 hyperparameters
 hyperthreading
@@ -107,13 +102,10 @@ linearized
 longwinded
 macroexpansion
 manycore
-metatable
 mille
 minibatch
 minibatches
 monospaced
-multi-sym
-multisymbols
 overfitting
 parens
 passthrough
@@ -123,7 +115,6 @@ powerpoint
 pragmas
 presale
 quasiquote
-rect
 recurse
 regressor
 requestor
@@ -140,16 +131,13 @@ shorthands
 softmax
 stackoverflow
 stdlib
-subtable
 superlinear
 symplectic
 t-SNE
-taskloop
 threepences
 timestep
 timezones
 unicode
-untrack
 uploader
 versicolor
 virginica

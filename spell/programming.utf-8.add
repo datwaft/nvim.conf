@@ -2,8 +2,8 @@
 <localleader>
 API
 APIs
+ARIMA
 AUC
-Ai
 BLEU
 Brewfile
 CMA-ES
@@ -22,7 +22,9 @@ INTL
 IWYU
 LSTM
 MANPAGER
+MNIST
 MPI
+MSE
 Mailosaur
 OLSR
 PCA
@@ -32,6 +34,7 @@ RMSprop
 RNN
 ROC
 SDKMAN
+SGD
 STG
 TERMINFO
 VGG
@@ -65,6 +68,8 @@ cdo
 ceil
 chezmoi
 chunksize
+clojure
+clojure's
 codelens
 colocated
 colorcolumn
@@ -92,6 +97,7 @@ extkeys
 eza
 fd
 filechooser
+filesets
 filetype
 filetypes
 fixup
@@ -99,6 +105,7 @@ frontend
 frontends
 func
 fzf
+gensym
 getaddrinfo
 ghostty
 github
@@ -106,6 +113,7 @@ globbing
 grainsize
 graphql
 gx
+hashfn
 headful
 heatmap
 hererocks
@@ -134,9 +142,12 @@ lockfile
 luarocks
 luxon
 matplotlib
+metatable
 mixin
 mixins
 mui
+multi-sym
+multisymbols
 neodev
 neovide
 neovim
@@ -160,6 +171,7 @@ pthreads
 qa
 quickfix
 readonly
+rect
 revset
 revsets
 rmsprop
@@ -174,10 +186,10 @@ statusline
 stderr
 stdout
 str
+subtable
 subword
 taskloop
 taskloops
-tesult
 tesults
 texthl
 timestamp
