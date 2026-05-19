@@ -70,6 +70,8 @@ Yarkhan
 ad-hoc
 adgroup
 allowlist
+allowlisted
+allowlisting
 anthropomorphization
 arity
 boxplots
@@ -77,6 +79,7 @@ btw
 checkpointing
 codeblock
 codemod
+codemods
 datetime
 datetimes
 destructures
@@ -94,6 +97,7 @@ hardcoded
 hardcodes
 hardcoding
 hubspot
+hyperparameter
 hyperparameters
 hyperthreading
 interop
@@ -106,6 +110,9 @@ mille
 minibatch
 minibatches
 monospaced
+overfit
+overfits
+overfitted
 overfitting
 parens
 passthrough
@@ -116,6 +123,9 @@ pragmas
 presale
 quasiquote
 recurse
+recursed
+recurses
+recursing
 regressor
 requestor
 routable
@@ -126,6 +136,7 @@ scrollback
 sem
 seqs
 serializer
+serializers
 shorthand
 shorthands
 softmax
