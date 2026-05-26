@@ -434,10 +434,11 @@ local function highlight_target(range, client)
   clear_target_highlight()
 
   local position_encoding = client and client.offset_encoding or "utf-16"
-  local start_idx = vim.lsp.util._get_line_byte_from_position(state.source_bufnr, range.start, position_encoding)
-  local end_idx = vim.lsp.util._get_line_byte_from_position(state.source_bufnr, range["end"], position_encoding)
-  start_idx = start_idx or range.start.character
-  end_idx = end_idx or range["end"].character
+  local lines = vim.api.nvim_buf_get_lines(state.source_bufnr, range.start.line, range["end"].line + 1, false)
+  local start_line = lines[1] or ""
+  local end_line = lines[range["end"].line - range.start.line + 1] or ""
+  local start_idx = vim.str_byteindex(start_line, position_encoding, range.start.character, false)
+  local end_idx = vim.str_byteindex(end_line, position_encoding, range["end"].character, false)
 
   vim.hl.range(
     state.source_bufnr,
