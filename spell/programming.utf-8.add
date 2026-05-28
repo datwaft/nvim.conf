@@ -206,6 +206,7 @@ url
 urls
 uv_fs_t
 vcs
+venv
 wasm
 wezterm
 wideorbit
