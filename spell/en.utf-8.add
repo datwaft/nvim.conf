@@ -130,6 +130,7 @@ recurses
 recursing
 regressor
 requestor
+rollup
 routable
 runtime's
 runtimes
@@ -144,9 +145,11 @@ shorthands
 softmax
 stackoverflow
 stdlib
+subgraphs
 superlinear
 symplectic
 t-SNE
+teardown
 threepences
 timestep
 timezones
