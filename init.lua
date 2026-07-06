@@ -528,8 +528,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     -- Enable inlay hints by default
     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-    -- Enable codelens by default
-    vim.lsp.codelens.enable(true, { bufnr = bufnr })
+    -- Disable codelens by default
+    vim.lsp.codelens.enable(false, { bufnr = bufnr })
     -- Use LSP-provided color if possible
     vim.lsp.document_color.enable(true, { bufnr = bufnr })
     -- Enable inline completion if possible (except on some filetypes)
