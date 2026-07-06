@@ -59,10 +59,7 @@ return {
   -- Outline
   {
     "stevearc/aerial.nvim",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      { "nvim-tree/nvim-web-devicons", config = true },
-    },
+    dependencies = { { "nvim-tree/nvim-web-devicons", config = true } },
     config = true,
     init = function() vim.keymap.set("n", "gO", "<cmd>AerialToggle!<cr>") end,
   },

@@ -1,25 +1,14 @@
 ---@type LazySpec
 return {
   {
-    "nvim-treesitter/nvim-treesitter",
-    branch = "main",
+    "arborist-ts/arborist.nvim",
     lazy = false,
-    build = ":TSUpdate",
     init = function()
-      vim.treesitter.language.register("bash", "sh")
-      vim.treesitter.language.register("fennel", "fnl")
-
       vim.api.nvim_create_autocmd("FileType", {
-        group = vim.api.nvim_create_augroup("tree-sitter-enable", { clear = true }),
+        group = vim.api.nvim_create_augroup("tree-sitter-folds", { clear = true }),
         callback = function(args)
           local lang = vim.treesitter.language.get_lang(args.match)
-          if not lang or not vim.treesitter.language.add(lang) then return end
-
-          if vim.treesitter.query.get(lang, "highlights") then vim.treesitter.start(args.buf) end
-
-          if vim.treesitter.query.get(lang, "indents") then
-            vim.opt_local.indentexpr = 'v:lua.require("nvim-treesitter").indentexpr()'
-          end
+          if not lang then return end
 
           if vim.treesitter.query.get(lang, "folds") then
             vim.opt_local.foldmethod = "expr"
@@ -27,32 +16,19 @@ return {
           end
         end,
       })
-
-      -- Custom parsers
-      vim.api.nvim_create_autocmd("User", {
-        pattern = "TSUpdate",
-        callback = function()
-          local parsers = require("nvim-treesitter.parsers")
-          parsers.ghactions = {
-            tier = 1,
-            install_info = {
-              url = "https://github.com/rmuir/tree-sitter-ghactions",
-              queries = "queries",
-              revision = "main",
-            },
-          }
-          parsers.comment.install_info = {
-            url = "https://github.com/OXY2DEV/tree-sitter-comment",
-            files = { "src/parser.c" },
-            revision = "main",
-            queries = "queries/",
-          }
-        end,
-      })
     end,
-  },
-  {
-    "bezhermoso/tree-sitter-ghostty",
-    build = "make nvim_install",
+    opts = {
+      update_cadence = "weekly",
+      ensure_installed = {
+        "comment",
+        "fennel",
+        "ghactions",
+        "ghostty",
+      },
+      overrides = {
+        comment = { url = "https://github.com/OXY2DEV/tree-sitter-comment" },
+        ghactions = { url = "https://github.com/rmuir/tree-sitter-ghactions" },
+      },
+    },
   },
 }

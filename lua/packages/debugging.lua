@@ -260,10 +260,7 @@ return {
     "theHamsta/nvim-dap-virtual-text",
     event = "VeryLazy",
     config = true,
-    dependencies = {
-      "mfussenegger/nvim-dap",
-      "nvim-treesitter/nvim-treesitter",
-    },
+    dependencies = { "mfussenegger/nvim-dap" },
   },
   {
     "jay-babu/mason-nvim-dap.nvim",

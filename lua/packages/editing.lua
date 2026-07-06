@@ -107,11 +107,7 @@ return {
     keys = { { "<leader>p", "<cmd>PasteImage<cr>", desc = "Paste image from system clipboard" } },
   },
   -- Join and split
-  {
-    "Wansmer/treesj",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-    config = true,
-  },
+  { "Wansmer/treesj", config = true },
   -- Multiple cursors
   {
     "jake-stewart/multicursor.nvim",
