@@ -6,7 +6,6 @@
   "amp.nvim": { "branch": "main", "commit": "b851d97d8e8782e58343608d8de7d9eb3a88090f" },
   "arborist.nvim": { "branch": "main", "commit": "fdeef56c2840c6772b9f68c5774ed87e9340ec7d" },
   "arm-syntax-vim": { "branch": "master", "commit": "84ee5c476bbfde87dd6b5fb9f6f207fbce335a73" },
-  "bg3.nvim": { "branch": "main", "commit": "ac9bed0fdaf67e5ffe30f22fbd4d0b144639ae4e" },
   "blink.cmp": { "branch": "main", "commit": "78336bc89ee5365633bcf754d93df01678b5c08f" },
   "codediff.nvim": { "branch": "main", "commit": "dc38f0b8a2ba8cc198cc024f3abe887341788820" },
   "colorful-menu.nvim": { "branch": "master", "commit": "196ddf16d5f8fec09ba7f20e6b153aa5188e907b" },

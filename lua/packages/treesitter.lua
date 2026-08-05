@@ -43,5 +43,4 @@ return {
     },
   },
   { "datwaft/tree-sitter-bg3", lazy = false },
-  { "datwaft/bg3.nvim", lazy = false },
 }
