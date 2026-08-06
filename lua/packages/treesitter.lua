@@ -22,6 +22,7 @@ return {
       ensure_installed = {
         "bg3_stats",
         "bg3_stats_value",
+        "bg3_thoth",
         "comment",
         "fennel",
         "ghactions",
@@ -36,6 +37,10 @@ return {
         bg3_stats_value = {
           url = "https://github.com/datwaft/tree-sitter-bg3",
           location = "tree-sitter-bg3-stats-value",
+        },
+        bg3_thoth = {
+          url = "https://github.com/datwaft/tree-sitter-bg3",
+          location = "tree-sitter-bg3-thoth",
         },
         comment = { url = "https://github.com/OXY2DEV/tree-sitter-comment" },
         ghactions = { url = "https://github.com/rmuir/tree-sitter-ghactions" },

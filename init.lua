@@ -376,6 +376,7 @@ vim.lsp.enable({
   "autotools_ls",
   "basedpyright",
   "bashls",
+  "bg3",
   "biome",
   "clangd",
   "cmake",
@@ -458,6 +459,13 @@ vim.lsp.config("tsgo", {
 
 vim.lsp.config("taplo", {
   root_markers = { ".taplo.toml", "taplo.toml", ".git", "starship.toml" },
+})
+
+vim.lsp.config("bg3", {
+  cmd = { "bg3-ls" },
+  filetypes = { "bg3_stats", "bg3_lsx", "bg3_thoth" },
+  workspace_required = true,
+  root_dir = function(_, on_dir) on_dir(vim.fs.root(vim.uv.cwd(), "bg3-ls.json")) end,
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {
