@@ -42,6 +42,10 @@ return {
           url = "https://github.com/datwaft/tree-sitter-bg3",
           location = "tree-sitter-bg3-thoth",
         },
+        bg3_osiris = {
+          url = "https://github.com/datwaft/tree-sitter-bg3",
+          location = "tree-sitter-bg3-osiris",
+        },
         comment = { url = "https://github.com/OXY2DEV/tree-sitter-comment" },
         ghactions = { url = "https://github.com/rmuir/tree-sitter-ghactions" },
       },
