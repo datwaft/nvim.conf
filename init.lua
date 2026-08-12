@@ -463,7 +463,7 @@ vim.lsp.config("taplo", {
 
 vim.lsp.config("bg3", {
   cmd = { "bg3-ls" },
-  filetypes = { "bg3_stats", "bg3_lsx", "bg3_thoth", "bg3_osiris" },
+  filetypes = { "bg3_stats", "bg3_lsx", "bg3_thoth", "bg3_osiris", "bg3_localization" },
   workspace_required = true,
   root_dir = function(_, on_dir) on_dir(vim.fs.root(vim.uv.cwd(), "bg3-ls.json")) end,
 })
