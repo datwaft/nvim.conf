@@ -374,7 +374,6 @@ end)
 vim.lsp.enable({
   "actionsls",
   "autotools_ls",
-  "basedpyright",
   "bashls",
   "bg3",
   "biome",
@@ -395,6 +394,7 @@ vim.lsp.enable({
   "taplo",
   "texlab",
   "ts_query_ls",
+  "ty",
   "vimdoc_ls",
   "vimls",
   "vtsls",
