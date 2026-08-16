@@ -10,6 +10,7 @@ AdCellerant
 AdCellerant's
 Adcock
 BSSC
+Baldur's
 CIFAR
 CPM
 CPV
@@ -40,6 +41,7 @@ KNN
 Kleene
 LDR
 LLM
+Larian
 Lim
 MAPE
 MDP
@@ -95,6 +97,8 @@ finetune
 finetuning
 geo-location
 geo-locations
+greatsword
+greatswords
 ha'pennies
 hardcode
 hardcoded
@@ -115,6 +119,7 @@ mille
 minibatch
 minibatches
 monospaced
+multiattack
 overfit
 overfits
 overfitted
@@ -133,6 +138,7 @@ recurses
 recursing
 regressor
 requestor
+respec
 rollup
 routable
 runtime's
@@ -145,6 +151,8 @@ serializer
 serializers
 shorthand
 shorthands
+shortsword
+shortswords
 softmax
 stackoverflow
 stdlib
@@ -161,6 +169,7 @@ unigram
 uploader
 versicolor
 virginica
+warhammer
 whitelabel
 wildcard
 wildshape
