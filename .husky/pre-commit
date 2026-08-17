@@ -1,1 +1,1 @@
-stylua --check .
+luafmt . --check

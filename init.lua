@@ -387,7 +387,7 @@ vim.lsp.enable({
   "jdtls",
   "jinja_lsp",
   "jsonls",
-  "lua_ls",
+  "emmylua_ls",
   "ruff",
   "rust_analyzer",
   "svelte",
@@ -421,15 +421,6 @@ vim.lsp.config("texlab", {
         executable = "tectonic",
         args = { "-X", "compile", "%f", "--synctex", "--keep-logs", "--keep-intermediates" },
       },
-    },
-  },
-})
-
-vim.lsp.config("lua_ls", {
-  settings = {
-    Lua = {
-      telemetry = { enable = false },
-      hint = { enable = true },
     },
   },
 })

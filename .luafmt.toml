@@ -1,0 +1,18 @@
+[syntax]
+level = "LuaJIT"
+
+[indent]
+width = 2
+
+[layout]
+prefer_call_args_layout_from_source = true
+prefer_table_layout_from_source = true
+
+[output]
+trailing_comma = "Multiline"
+trailing_table_separator = "Multiline"
+simple_lambda_single_line = "Always"
+end_of_line = "LF"
+
+[spacing]
+space_before_lambda_func_paren = false
