@@ -3,6 +3,7 @@
 ## Build/Lint/Test Commands
 - **Format check**: `luafmt . --check`
 - **Format apply**: `luafmt . --write`
+- **Lint check**: `emmylua_check . --severity error`
 - **Motion dependency**: `chrisgrieser/nvim-spider` requires the external `luautf8` library for UTF-8 motions.
 - **Git hooks**: install via `npx husky` (details and extra dependencies live in `README.md`).
 - **Update plugins**: `:Lazy update` in Neovim

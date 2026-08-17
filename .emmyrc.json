@@ -3,6 +3,9 @@
   "completion": {
     "autoRequire": true
   },
+  "diagnostics": {
+    "globals": ["vim"]
+  },
   "runtime": {
     "version": "LuaJIT"
   }

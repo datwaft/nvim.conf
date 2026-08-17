@@ -29,7 +29,7 @@ local M = {}
 ---@field tags                      TsQuickInfoTag[]?
 ---@field canIncreaseVerbosityLevel boolean?
 ---@field start                     TsQuickInfoPosition?
----@field ["end"]                   ['end']                        TsQuickInfoPosition?
+---@field ["end"]                   TsQuickInfoPosition?
 
 ---@class VerboseHoverRequestOpts
 ---@field fallback_to_default boolean

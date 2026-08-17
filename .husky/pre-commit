@@ -1,1 +1,2 @@
 luafmt . --check
+emmylua_check . --severity error
