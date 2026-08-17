@@ -5,8 +5,10 @@
 -- Helper to define a sign with its `name` as `texthl`
 ---@param name string
 ---@param text string
----@return -1|0
-function _G.define_sign(name, text) return vim.fn.sign_define(name, { text = text, texthl = name }) end
+---@return - 1 | 0
+function _G.define_sign(name, text)
+  return vim.fn.sign_define(name, { text = text, texthl = name })
+end
 
 -----------
 -- Settings
@@ -106,9 +108,7 @@ vim.opt.isfname:append("]")
 -- Open quickfix window when populated
 vim.api.nvim_create_autocmd("QuickFixCmdPost", {
   group = vim.api.nvim_create_augroup("open-quickfix-when-populated", { clear = true }),
-  callback = function()
-    vim.defer_fn(function() vim.cmd("botright cwindow") end, 10)
-  end,
+  callback = function() vim.defer_fn(function() vim.cmd("botright cwindow") end, 10) end,
 })
 -- Open files on the last position
 vim.api.nvim_create_autocmd("BufReadPost", {
@@ -140,9 +140,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
 -- When entering the terminal start in insert mode
 vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
   group = vim.api.nvim_create_augroup("terminal-enter", { clear = true }),
-  callback = function(args)
-    if vim.bo[args.buf].buftype == "terminal" then vim.cmd.startinsert() end
-  end,
+  callback = function(args) if vim.bo[args.buf].buftype == "terminal" then vim.cmd.startinsert() end end,
 })
 -- Always disable 'spell' on some filetypes
 vim.api.nvim_create_autocmd("FileType", {
@@ -219,7 +217,8 @@ vim.keymap.set({ "n", "v" }, "j", function()
   else
     return "m'" .. vim.v.count .. "j"
   end
-end, { expr = true })
+end, { expr = true }
+)
 -- Make `k` work with wrapped lines
 vim.keymap.set({ "n", "v" }, "k", function()
   if vim.v.count == 0 then
@@ -227,7 +226,8 @@ vim.keymap.set({ "n", "v" }, "k", function()
   else
     return "m'" .. vim.v.count .. "k"
   end
-end, { expr = true })
+end, { expr = true }
+)
 -- Make `<Up>` work with wrapped lines
 vim.keymap.set({ "n", "v" }, "<Up>", function()
   if vim.v.count == 0 then
@@ -235,7 +235,8 @@ vim.keymap.set({ "n", "v" }, "<Up>", function()
   else
     return "m'" .. vim.v.count .. "<Up>"
   end
-end, { expr = true })
+end, { expr = true }
+)
 -- Make `<Down>` work with wrapped lines
 vim.keymap.set({ "n", "v" }, "<Down>", function()
   if vim.v.count == 0 then
@@ -243,7 +244,8 @@ vim.keymap.set({ "n", "v" }, "<Down>", function()
   else
     return "m'" .. vim.v.count .. "<Down>"
   end
-end, { expr = true })
+end, { expr = true }
+)
 -- Do not jump with <S-Up> and <S-Down>
 vim.keymap.set({ "i", "n", "v" }, "<S-Up>", "<Up>", { remap = true })
 vim.keymap.set({ "i", "n", "v" }, "<S-Down>", "<Down>", { remap = true })
@@ -256,7 +258,8 @@ vim.keymap.set("x", "g/", "<Esc>/\\%V")
 vim.keymap.set("n", "<leader>l", function()
   vim.fn.setreg("+", vim.fn.expand("%:."))
   vim.notify(("'%s' was copied to clipboard"):format(vim.fn.getreg("+")), vim.log.levels.INFO)
-end, { silent = true })
+end, { silent = true }
+)
 -- Copy current location to clipboard
 vim.keymap.set("x", "<leader>l", function()
   local path = vim.fn.expand("%:.")
@@ -273,12 +276,14 @@ vim.keymap.set("x", "<leader>l", function()
     vim.fn.setreg("+", ("%s:%d-%d"):format(path, srow, erow))
   end
   vim.notify(("'%s' was copied to clipboard"):format(vim.fn.getreg("+")), vim.log.levels.INFO)
-end, { silent = true })
+end, { silent = true }
+)
 -- Copy current file path to clipboard modified to work with playwright
 vim.keymap.set("n", "<leader>L", function()
   vim.fn.setreg("+", vim.fn.expand("%:p:~:.:s?tests/??"))
   vim.notify(("'%s' was copied to clipboard"):format(vim.fn.getreg("+")), vim.log.levels.INFO)
-end, { silent = true })
+end, { silent = true }
+)
 -- Copy current location to clipboard modified to work with playwright
 vim.keymap.set("x", "<leader>L", function()
   local path = vim.fn.expand("%:p:~:.:s?tests/??")
@@ -295,7 +300,8 @@ vim.keymap.set("x", "<leader>L", function()
     vim.fn.setreg("+", ("%s:%d-%d"):format(path, srow, erow))
   end
   vim.notify(("'%s' was copied to clipboard"):format(vim.fn.getreg("+")), vim.log.levels.INFO)
-end, { silent = true })
+end, { silent = true }
+)
 
 ---------------
 -- Text objects
@@ -472,7 +478,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
       else
         vim.lsp.buf.hover()
       end
-    end, { buffer = bufnr })
+    end, { buffer = bufnr }
+    )
     -- Show signature help
     vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, { buffer = bufnr })
     -- Code actions
@@ -485,7 +492,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.lsp.buf.type_definition({
         on_list = function(t) vim.lsp.util.show_document(t.items[1].user_data, "utf-8", { focus = true }) end,
       })
-    end, { buffer = bufnr })
+    end, { buffer = bufnr }
+    )
     vim.keymap.set("n", "gT", "<cmd>Glance type_definitions<cr>", { buffer = bufnr })
     -- List all implementations
     vim.keymap.set("n", "<C-w>i", "<cmd>Glance implementations<cr>", { buffer = bufnr })
@@ -499,11 +507,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "grn", vim.lsp.buf.rename, { buffer = bufnr })
     -- Toggle inlay hints
     if client:supports_method("textDocument/inlayHint") then
-      vim.keymap.set(
-        "n",
-        "<leader>th",
-        function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }), { bufnr = bufnr }) end,
-        { buffer = bufnr }
+      vim.keymap.set("n", "<leader>th", function()
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
+      end, { buffer = bufnr }
       )
     end
     -- Run codelens
@@ -516,13 +522,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
       { buffer = bufnr }
     )
     -- Toggle inline completion
-    vim.keymap.set(
-      "n",
-      "<leader>ti",
-      function()
-        vim.lsp.inline_completion.enable(not vim.lsp.inline_completion.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
-      end,
-      { buffer = bufnr }
+    vim.keymap.set("n", "<leader>ti", function()
+      vim.lsp.inline_completion.enable(not vim.lsp.inline_completion.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
+    end, { buffer = bufnr }
     )
 
     -- Enable inlay hints by default
@@ -578,7 +580,7 @@ vim.filetype.add({ pattern = { [".*/%.github/actions/.*/action%.ya?ml"] = "yaml.
 local packages_path = vim.fn.stdpath("data") .. "/lazy"
 
 -- Helper function to install packages before lazy.nvim is loaded
----@param name string
+---@param name  string
 ---@param alias string?
 local function install_package(name, alias)
   ---@type unknown, unknown, string, string

@@ -21,9 +21,9 @@ local function rgb_to_hex(color)
   return ("#%06x"):format(number)
 end
 
----@param color string e.g. "#12fa56"
+---@param color      string e.g. "#12fa56"
 ---@param background string e.g. "#12fa56"
----@param alpha number e.g. 0.7
+---@param alpha      number e.g. 0.7
 ---@return string
 local function blend(color, background, alpha)
   local fg = hex_to_rgb(color)

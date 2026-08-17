@@ -21,7 +21,7 @@ local jj_available = vim.fn.executable("jj") == 1
 -- Revset to find closest ancestor bookmark (fallback to trunk)
 local closest_bookmark_revset = "heads(::@ & bookmarks()) | trunk()"
 
----Get jj branch info using revsets
+--- Get jj branch info using revsets
 ---@param workspace string jj workspace root path
 ---@return string branch display string
 local function get_jj_head(workspace)
@@ -74,7 +74,7 @@ local function get_jj_head(workspace)
   end
 end
 
----Update the current jj branch and set up file watch
+--- Update the current jj branch and set up file watch
 local function update_branch()
   active_bufnr = tostring(vim.api.nvim_get_current_buf())
   file_changed:stop()
@@ -96,8 +96,8 @@ local function update_branch()
   branch_cache[vim.api.nvim_get_current_buf()] = current_jj_branch
 end
 
----Update current_jj_workspace if it changed
----@param workspace string|nil
+--- Update current_jj_workspace if it changed
+---@param workspace string | nil
 local function update_current_workspace(workspace)
   if current_jj_workspace ~= workspace then
     current_jj_workspace = workspace or ""
@@ -105,9 +105,9 @@ local function update_current_workspace(workspace)
   end
 end
 
----Find jj workspace root for a directory
----@param dir_path string|nil directory to search from
----@return string|nil workspace root or nil
+--- Find jj workspace root for a directory
+---@param dir_path string | nil directory to search from
+---@return string | nil workspace root or nil
 function M.find_workspace(dir_path)
   if not jj_available then return nil end
 
@@ -147,11 +147,13 @@ function M.find_workspace(dir_path)
   return workspace
 end
 
----Check if currently in a jj workspace
+--- Check if currently in a jj workspace
 ---@return boolean
-function M.is_jj_workspace() return current_jj_workspace ~= nil and current_jj_workspace ~= "" end
+function M.is_jj_workspace()
+  return current_jj_workspace ~= nil and current_jj_workspace ~= ""
+end
 
----Initialize jj_branch module
+--- Initialize jj_branch module
 function M.init()
   M.find_workspace()
 
@@ -159,8 +161,8 @@ function M.init()
   utils.define_autocmd("BufEnter", "lua require'lualine.components.jj-vcs.jj_branch'.find_workspace()")
 end
 
----Get the current jj branch
----@param bufnr number|nil buffer number
+--- Get the current jj branch
+---@param bufnr number | nil buffer number
 ---@return string branch display string
 function M.get_branch(bufnr)
   if vim.g.actual_curbuf ~= nil and active_bufnr ~= vim.g.actual_curbuf then M.find_workspace() end

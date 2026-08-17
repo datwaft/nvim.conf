@@ -1,7 +1,7 @@
 -- Adapted from https://github.com/actions/languageservices/tree/main/languageserver#in-neovim
 
 --- Obtains GitHub token using the GitHub CLI.
----@return string|nil
+---@return string | nil
 local function get_token()
   if vim.fn.executable("op") == 0 or vim.fn.executable("gh") == 0 then return nil end
   local response = vim.system({ "op", "plugin", "run", "--", "gh", "auth", "token" }, { text = true }):wait()
@@ -18,7 +18,7 @@ end
 
 --- Parses a GitHub remote URL to extract the owner and repository name.
 ---@param url string
----@return string|nil, string|nil
+---@return string | nil, string | nil
 local function parse_remote(url)
   if not url or url == "" then return nil end
 
@@ -35,8 +35,8 @@ end
 
 --- Retrieves repository information from GitHub CLI.
 ---@param owner string
----@param repo string
----@return table|nil
+---@param repo  string
+---@return table | nil
 local function get_repo_info(owner, repo)
   if vim.fn.executable("op") == 0 or vim.fn.executable("gh") == 0 then return nil end
   local response = vim
@@ -62,15 +62,17 @@ local function get_repo_info(owner, repo)
   local result = vim.trim(response.stdout)
 
   local id, owner_type = result:match("^(%d+)\t(.+)$")
-  if id then return {
-    id = tonumber(id),
-    organizationOwned = owner_type == "Organization",
-  } end
+  if id then
+    return {
+      id = tonumber(id),
+      organizationOwned = owner_type == "Organization",
+    }
+  end
   return nil
 end
 
 --- Obtains repository configuration for the actions language server.
----@return table|nil
+---@return table | nil
 local function get_repos_config()
   local response = vim.system({ "git", "rev-parse", "--show-toplevel" }, { text = true }):wait()
   if response.code ~= 0 then return nil end

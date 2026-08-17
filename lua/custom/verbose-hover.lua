@@ -1,18 +1,18 @@
 local M = {}
 
 ---@class VerboseHoverState
----@field verbosity integer
----@field can_increase boolean
----@field requesting boolean
----@field generation integer
----@field source_bufnr integer|nil
----@field source_winid integer|nil
----@field source_pos { [1]: integer, [2]: integer }|nil
----@field float_winid integer|nil
----@field mapped_source_bufnr integer|nil
+---@field verbosity           integer
+---@field can_increase        boolean
+---@field requesting          boolean
+---@field generation          integer
+---@field source_bufnr        integer | nil
+---@field source_winid        integer | nil
+---@field source_pos          { [1]: integer, [2]: integer } | nil
+---@field float_winid         integer | nil
+---@field mapped_source_bufnr integer | nil
 
 ---@class TsQuickInfoPosition
----@field line integer
+---@field line   integer
 ---@field offset integer
 
 ---@class TsDisplayPart
@@ -21,20 +21,20 @@ local M = {}
 
 ---@class TsQuickInfoTag
 ---@field name string
----@field text string|TsDisplayPart[]|nil
+---@field text string | TsDisplayPart[] | nil
 
 ---@class TsQuickInfoBody
----@field displayString string?
----@field documentation string|TsDisplayPart[]|nil
----@field tags TsQuickInfoTag[]?
+---@field displayString             string?
+---@field documentation             string | TsDisplayPart[] | nil
+---@field tags                      TsQuickInfoTag[]?
 ---@field canIncreaseVerbosityLevel boolean?
----@field start TsQuickInfoPosition?
----@field ['end'] TsQuickInfoPosition?
+---@field start                     TsQuickInfoPosition?
+---@field ["end"]                   ['end']                        TsQuickInfoPosition?
 
 ---@class VerboseHoverRequestOpts
 ---@field fallback_to_default boolean
----@field silent boolean|nil
----@field force_reopen boolean|nil
+---@field silent              boolean | nil
+---@field force_reopen        boolean | nil
 
 ---@type VerboseHoverState
 local state = {
@@ -70,15 +70,15 @@ do
   })
 end
 
----@return vim.lsp.Client|nil
----@param bufnr integer|nil
+---@return vim.lsp.Client | nil
+---@param bufnr integer | nil
 local function find_vtsls_client(bufnr)
   local clients = vim.lsp.get_clients({ bufnr = bufnr or vim.api.nvim_get_current_buf(), name = "vtsls" })
   return clients[1]
 end
 
----@param value string|TsDisplayPart[]|nil
----@return string|nil
+---@param value string | TsDisplayPart[] | nil
+---@return string | nil
 local function flatten_display_parts(value)
   if value == nil then return nil end
   if type(value) == "string" then return value end
@@ -109,7 +109,7 @@ local function make_codeblock(text)
   return "```tsx\n" .. text .. "\n```"
 end
 
----@param parts string|TsDisplayPart[]|nil
+---@param parts string | TsDisplayPart[] | nil
 ---@return string
 --- Mirrors VS Code TypeScript extension `convertLinkTags` behavior from
 --- `languageFeatures/util/textRendering.ts` for quickinfo docs rendering.
@@ -120,7 +120,7 @@ local function convert_link_tags(parts)
   assert(vim.islist(parts), "quickinfo link parts must be a list")
 
   local out = {}
-  ---@type { name: string|nil, text: string|nil, linkcode: boolean }|nil
+  ---@type { name: string | nil, text: string | nil, linkcode: boolean } | nil
   local current_link = nil
 
   local function flush_current_link()
@@ -172,7 +172,7 @@ local function convert_link_tags(parts)
 end
 
 ---@param tag TsQuickInfoTag
----@return string|nil
+---@return string | nil
 --- Mirrors VS Code TypeScript extension `getTagBodyText` behavior.
 local function get_tag_body_text(tag)
   if not tag.text then return nil end
@@ -197,7 +197,7 @@ local function get_tag_body_text(tag)
 end
 
 ---@param tag TsQuickInfoTag
----@return string|nil, string|nil
+---@return string | nil, string | nil
 --- Mirrors VS Code TypeScript extension `getTagBody` behavior for param-like
 --- tags, including `template` display-part handling.
 local function get_tag_param_and_doc(tag)
@@ -228,7 +228,7 @@ local function get_tag_param_and_doc(tag)
 end
 
 ---@param tag TsQuickInfoTag
----@return string|nil
+---@return string | nil
 --- Mirrors VS Code TypeScript extension `getTagDocumentation` behavior.
 local function get_tag_documentation(tag)
   if tag.name == "augments" or tag.name == "extends" or tag.name == "param" or tag.name == "template" then
@@ -252,7 +252,7 @@ local function get_tag_documentation(tag)
   return label .. " — " .. text
 end
 
----@param tags TsQuickInfoTag[]|nil
+---@param tags TsQuickInfoTag[] | nil
 ---@return string
 --- Mirrors VS Code TypeScript extension `tagsToMarkdown` behavior.
 local function tags_to_markdown(tags)
@@ -291,7 +291,7 @@ local function build_markdown_lines(body)
 end
 
 ---@param empty_response boolean
----@param silent boolean|nil
+---@param silent         boolean | nil
 local function notify_hover_unavailable(empty_response, silent)
   if silent == true then return end
   if empty_response then
@@ -302,7 +302,7 @@ local function notify_hover_unavailable(empty_response, silent)
 end
 
 ---@param body TsQuickInfoBody
----@return lsp.Range|nil
+---@return lsp.Range | nil
 local function body_to_range(body)
   local start = body.start
   local finish = body["end"]
@@ -322,7 +322,7 @@ local function clear_target_highlight()
   end
 end
 
----@param bufnr integer|nil
+---@param bufnr integer | nil
 local function clear_hover_keymaps(bufnr)
   if not bufnr or not vim.api.nvim_buf_is_valid(bufnr) then return end
   pcall(vim.keymap.del, "n", "+", { buffer = bufnr })
@@ -331,7 +331,7 @@ local function clear_hover_keymaps(bufnr)
   pcall(vim.keymap.del, "n", "_", { buffer = bufnr })
 end
 
----@param bufnr integer|nil
+---@param bufnr integer | nil
 local function set_hover_keymaps(bufnr)
   if not bufnr or not vim.api.nvim_buf_is_valid(bufnr) then return end
 
@@ -387,16 +387,14 @@ local function set_hover_controls(winid)
 end
 
 ---@param lines string[]
----@param opts vim.lsp.util.open_floating_preview.Opts
----@return integer|nil, integer|nil
+---@param opts  vim.lsp.util.open_floating_preview.Opts
+---@return integer | nil, integer | nil
 local function open_preview_from_source(lines, opts)
   local source_winid = state.source_winid
   local current_winid = vim.api.nvim_get_current_win()
   local came_from_hover = state.float_winid and current_winid == state.float_winid
-  local can_use_source = source_winid
-    and vim.api.nvim_win_is_valid(source_winid)
-    and state.source_bufnr
-    and vim.api.nvim_win_get_buf(source_winid) == state.source_bufnr
+  local can_use_source = source_winid and vim.api.nvim_win_is_valid(source_winid)
+    and state.source_bufnr and vim.api.nvim_win_get_buf(source_winid) == state.source_bufnr
 
   if can_use_source and current_winid ~= source_winid then
     local ok_set = pcall(vim.api.nvim_set_current_win, source_winid)
@@ -426,8 +424,8 @@ local function open_preview_from_source(lines, opts)
   return nil, nil
 end
 
----@param range lsp.Range|nil
----@param client vim.lsp.Client|nil
+---@param range  lsp.Range | nil
+---@param client vim.lsp.Client | nil
 local function highlight_target(range, client)
   if not range or not state.source_bufnr or not vim.api.nvim_buf_is_valid(state.source_bufnr) then return end
 
@@ -450,9 +448,9 @@ local function highlight_target(range, client)
   )
 end
 
----@param body TsQuickInfoBody
----@param silent boolean|nil
----@param force_reopen boolean|nil
+---@param body         TsQuickInfoBody
+---@param silent       boolean | nil
+---@param force_reopen boolean | nil
 local function show(body, silent, force_reopen)
   local client = find_vtsls_client(state.source_bufnr)
   local opts = {
@@ -512,7 +510,7 @@ local function show(body, silent, force_reopen)
 end
 
 ---@param verbosity integer
----@param opts VerboseHoverRequestOpts
+---@param opts      VerboseHoverRequestOpts
 local function request_quickinfo(verbosity, opts)
   local client = find_vtsls_client(state.source_bufnr)
   if not client or not state.source_pos or not state.source_bufnr then
@@ -556,7 +554,8 @@ local function request_quickinfo(verbosity, opts)
       if current_generation ~= state.generation then return end
       show(result.body, opts.silent, opts.force_reopen)
     end)
-  end, state.source_bufnr)
+  end, state.source_bufnr
+  )
 end
 
 ---@param config? vim.lsp.buf.hover.Opts

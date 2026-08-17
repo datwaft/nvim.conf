@@ -20,7 +20,9 @@ end
 local function split_by_whitespace(input)
   local P, S, C, Cc, Ct = vim.lpeg.P, vim.lpeg.S, vim.lpeg.C, vim.lpeg.Cc, vim.lpeg.Ct
 
-  local function token(id, patt) return Ct(Cc(id) * C(patt)) end
+  local function token(id, patt)
+    return Ct(Cc(id) * C(patt))
+  end
 
   local singleq = P("'") * ((1 - S("'\r\n\f\\")) + (P("\\") * 1)) ^ 0 * "'"
   local doubleq = P('"') * ((1 - S('"\r\n\f\\')) + (P("\\") * 1)) ^ 0 * '"'
@@ -181,7 +183,8 @@ return {
         else
           dap.set_breakpoint(nil, nil, opts.fargs[1])
         end
-      end, { nargs = "?", bang = true, desc = "Set or toggle a breakpoint" })
+      end, { nargs = "?", bang = true, desc = "Set or toggle a breakpoint" }
+      )
       -- Define command for debugging a command line script
       vim.api.nvim_create_user_command("Debug", function(opts)
         local input = split_by_whitespace(vim.fn.expand(opts.args))
@@ -202,7 +205,8 @@ return {
           ---@diagnostic disable-next-line: undefined-field
           console = dap.configurations[ft][1].console,
         })
-      end, { complete = "file", nargs = "+", desc = "Debug command line script" })
+      end, { complete = "file", nargs = "+", desc = "Debug command line script" }
+      )
       -- Keybinds
       vim.keymap.set("n", "<localleader>gc", dap.continue)
       vim.keymap.set("n", "<localleader>go", dap.step_over)
