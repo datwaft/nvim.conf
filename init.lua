@@ -1,15 +1,3 @@
-----------
--- Helpers
-----------
-
--- Helper to define a sign with its `name` as `texthl`
----@param name string
----@param text string
----@return - 1 | 0
-function _G.define_sign(name, text)
-  return vim.fn.sign_define(name, { text = text, texthl = name })
-end
-
 -----------
 -- Settings
 -----------
@@ -327,13 +315,6 @@ _G.icons = {
     added = "+",
     modified = "~",
     removed = "-",
-  },
-  debug = {
-    breakpoint = "󰍡",
-    condition = "󰍩",
-    log = "󰍣",
-    stopped = "󰍥",
-    rejected = "󱙎",
   },
 }
 vim.opt.winborder = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" }
