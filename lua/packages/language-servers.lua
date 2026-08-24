@@ -73,6 +73,7 @@ return {
   -- LSP in embedded code
   {
     "jmbuhr/otter.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = true,
     init = function()
       vim.api.nvim_create_autocmd("InsertEnter", {
