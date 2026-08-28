@@ -7,7 +7,7 @@ local function get_token()
   local response = vim.system({ "op", "plugin", "run", "--", "gh", "auth", "token" }, { text = true }):wait()
   if response.code ~= 0 then
     vim.notify(
-      string.format("[actionsls] gh auth token failed: %s", vim.trim(response.stderr or "")),
+      string.format("[actionsls] gh auth token failed: %s", vim.trim(response.stderr ?? "")),
       vim.log.levels.WARN
     )
     return nil
@@ -54,7 +54,7 @@ local function get_repo_info(owner, repo)
     :wait()
   if response.code ~= 0 then
     vim.notify(
-      string.format("[actionsls] gh api failed for %s/%s: %s", owner, repo, vim.trim(response.stderr or "")),
+      string.format("[actionsls] gh api failed for %s/%s: %s", owner, repo, vim.trim(response.stderr ?? "")),
       vim.log.levels.WARN
     )
     return nil

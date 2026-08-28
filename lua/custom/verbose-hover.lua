@@ -73,7 +73,7 @@ end
 ---@return vim.lsp.Client | nil
 ---@param bufnr integer | nil
 local function find_vtsls_client(bufnr)
-  local clients = vim.lsp.get_clients({ bufnr = bufnr or vim.api.nvim_get_current_buf(), name = "vtsls" })
+  local clients = vim.lsp.get_clients({ bufnr = bufnr ?? vim.api.nvim_get_current_buf(), name = "vtsls" })
   return clients[1]
 end
 
@@ -126,7 +126,7 @@ local function convert_link_tags(parts)
   local function flush_current_link()
     if not current_link then return end
 
-    local text = current_link.text or current_link.name
+    local text = current_link.text ?? current_link.name
     if text and text ~= "" then
       if text:match("^https?://") then
         local url, label = text:match("^(%S+)%s+(.+)$")
@@ -179,7 +179,7 @@ local function get_tag_body_text(tag)
 
   local text = convert_link_tags(tag.text)
   if tag.name == "example" then
-    local plain = flatten_display_parts(tag.text) or ""
+    local plain = flatten_display_parts(tag.text) ?? ""
     local caption, rest = plain:match("^<caption>(.-)</caption>%s*[\r\n]+(.*)$")
     if caption then return caption .. "\n" .. make_codeblock(rest) end
     return make_codeblock(plain)
@@ -433,8 +433,8 @@ local function highlight_target(range, client)
 
   local position_encoding = client and client.offset_encoding or "utf-16"
   local lines = vim.api.nvim_buf_get_lines(state.source_bufnr, range.start.line, range["end"].line + 1, false)
-  local start_line = lines[1] or ""
-  local end_line = lines[range["end"].line - range.start.line + 1] or ""
+  local start_line = lines[1] ?? ""
+  local end_line = lines[range["end"].line - range.start.line + 1] ?? ""
   local start_idx = vim.str_byteindex(start_line, position_encoding, range.start.character, false)
   local end_idx = vim.str_byteindex(end_line, position_encoding, range["end"].character, false)
 
@@ -560,7 +560,7 @@ end
 
 ---@param config? vim.lsp.buf.hover.Opts
 function M.hover(config)
-  config = config or {}
+  config = config ?? {}
 
   if state.float_winid and vim.api.nvim_win_is_valid(state.float_winid) then
     local ok, owner_bufnr = pcall(vim.api.nvim_win_get_var, state.float_winid, "textDocument/hover")

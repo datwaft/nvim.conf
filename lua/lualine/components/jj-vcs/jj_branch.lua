@@ -43,7 +43,7 @@ local function get_jj_head(workspace)
 
   if vim.v.shell_error ~= 0 then return "" end
 
-  local anchor = vim.trim(bookmark_result[1] or "")
+  local anchor = vim.trim(bookmark_result[1] ?? "")
   if anchor == "" then return "" end
 
   -- Take first bookmark if multiple
@@ -65,7 +65,7 @@ local function get_jj_head(workspace)
 
   if vim.v.shell_error ~= 0 then return anchor end
 
-  local distance = #(distance_result[1] or "")
+  local distance = #(distance_result[1] ?? "")
 
   if distance > 0 then
     return anchor .. " ›" .. distance
@@ -100,7 +100,7 @@ end
 ---@param workspace string | nil
 local function update_current_workspace(workspace)
   if current_jj_workspace ~= workspace then
-    current_jj_workspace = workspace or ""
+    current_jj_workspace = workspace ?? ""
     update_branch()
   end
 end
@@ -112,7 +112,7 @@ function M.find_workspace(dir_path)
   if not jj_available then return nil end
 
   -- Get file dir so we can search from that dir
-  local file_dir = dir_path or vim.fn.expand("%:p:h")
+  local file_dir = dir_path ?? vim.fn.expand("%:p:h")
 
   -- Handle oil.nvim
   if package.loaded.oil then
@@ -140,7 +140,7 @@ function M.find_workspace(dir_path)
   if vim.v.shell_error == 0 and result[1] then workspace = vim.trim(result[1]) end
 
   -- Cache the result (empty string means not a jj workspace)
-  workspace_cache[file_dir] = workspace or ""
+  workspace_cache[file_dir] = workspace ?? ""
 
   if dir_path == nil then update_current_workspace(workspace) end
 
@@ -168,7 +168,7 @@ function M.get_branch(bufnr)
   if vim.g.actual_curbuf ~= nil and active_bufnr ~= vim.g.actual_curbuf then M.find_workspace() end
 
   if bufnr then
-    return branch_cache[bufnr] or ""
+    return branch_cache[bufnr] ?? ""
   else
     branch_cache[vim.api.nvim_get_current_buf()] = current_jj_branch
   end
