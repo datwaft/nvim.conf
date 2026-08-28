@@ -413,7 +413,10 @@ vim.lsp.config("texlab", {
 })
 
 vim.lsp.config("vtsls", {
-  settings = { vtsls = { autoUseWorkspaceTsdk = true } },
+  settings = {
+    typescript = { tsserver = { pluginPaths = { "./node_modules" } } },
+    vtsls = { autoUseWorkspaceTsdk = true },
+  },
 })
 
 vim.lsp.config("ts_query_ls", {
