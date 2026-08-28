@@ -10,66 +10,70 @@ vim.g.mapleader = [[\]]
 -- Set <localleader> to <SPACE>
 vim.g.maplocalleader = [[ ]]
 -- Swap
-vim.opt.swapfile = false
+vim.o.swapfile = false
 -- Indentation
-vim.opt.expandtab = true
-vim.opt.shiftwidth = 0
-vim.opt.tabstop = 2
+vim.o.expandtab = true
+vim.o.shiftwidth = 0
+vim.o.tabstop = 2
 -- Wrapping
-vim.opt.linebreak = true
-vim.opt.breakindent = true
-vim.opt.breakindentopt = { "shift:0" }
-vim.opt.showbreak = "↳ "
+vim.o.linebreak = true
+vim.o.breakindent = true
+---@diagnostic disable-next-line: assign-type-mismatch
+vim.o.breakindentopt = { "shift:0" }
+vim.o.showbreak = "↳ "
 -- Folding
-vim.opt.foldtext = ""
-vim.opt.foldlevel = 99
-vim.opt.foldcolumn = "1"
-vim.opt.fillchars = {
+vim.o.foldtext = ""
+vim.o.foldlevel = 99
+vim.o.foldcolumn = "1"
+---@diagnostic disable-next-line: assign-type-mismatch
+vim.o.fillchars = {
   fold = " ",
   foldclose = "",
   foldopen = "",
   foldsep = " ",
   foldinner = " ",
+  diff = "/",
 }
 -- Undo persistence
-vim.opt.undofile = true
+vim.o.undofile = true
 -- Enable local configuration
-vim.opt.exrc = true
+vim.o.exrc = true
 -- Line numbers
-vim.opt.number = true
-vim.opt.relativenumber = true
+vim.o.number = true
+vim.o.relativenumber = true
 -- Scrolling
-vim.opt.splitkeep = "screen"
-vim.opt.smoothscroll = true
-vim.opt.scrolloff = 7
+vim.o.splitkeep = "screen"
+vim.o.smoothscroll = true
+vim.o.scrolloff = 7
 -- Command-line
-vim.opt.showmode = false
+vim.o.showmode = false
 -- Whitespace
-vim.opt.list = true
-vim.opt.listchars = {
+vim.o.list = true
+---@diagnostic disable-next-line: assign-type-mismatch
+vim.o.listchars = {
   trail = "·",
   tab = "→ ",
   nbsp = "·",
 }
--- Diffs
-vim.opt.fillchars:append({ diff = "/" })
 -- Spell-checking
-vim.opt.spell = true
-vim.opt.spelllang = { "programming", "en", "es", "cjk", "el" }
-vim.opt.spellfile = {
+vim.o.spell = true
+---@diagnostic disable-next-line: assign-type-mismatch
+vim.o.spelllang = { "programming", "en", "es", "cjk", "el" }
+---@diagnostic disable-next-line: assign-type-mismatch
+vim.o.spellfile = {
   vim.fn.stdpath("config") .. "/spell/programming.utf-8.add",
   vim.fn.stdpath("config") .. "/spell/en.utf-8.add",
   vim.fn.stdpath("config") .. "/spell/es.utf-8.add",
 }
-vim.opt.spelloptions = "camel"
-vim.opt.spellcapcheck = ""
+vim.o.spelloptions = "camel"
+vim.o.spellcapcheck = ""
 -- Sign column
-vim.opt.signcolumn = "yes:1"
+vim.o.signcolumn = "yes:1"
 -- Insert-mode completion
-vim.opt.shortmess:append("c")
+if not vim.o.shortmess:find("c", 1, true) then vim.o.shortmess ..= "c" end
 -- Grep
-vim.opt.grepprg = "rg --vimgrep --smart-case --hidden --glob='!.git/*'"
-vim.opt.grepformat = "%f:%l:%c:%m"
+vim.o.grepprg = "rg --vimgrep --smart-case --hidden --glob='!.git/*'"
+vim.o.grepformat = "%f:%l:%c:%m"
 -- Find
 ---@param file_pattern string
 function _G.findfunc(file_pattern, _)
@@ -78,17 +82,17 @@ function _G.findfunc(file_pattern, _)
   local cmd = 'fd  --color=never --full-path --type file --hidden --exclude=".git" "' .. file_pattern .. '"'
   return vim.fn.systemlist(cmd)
 end
-vim.opt.findfunc = "v:lua.findfunc"
+vim.o.findfunc = "v:lua.findfunc"
 -- Mouse
-vim.opt.mousemodel = "extend"
-vim.opt.mousescroll = "ver:2,hor:0"
+vim.o.mousemodel = "extend"
+vim.o.mousescroll = "ver:2,hor:0"
 vim.keymap.set({ "n", "v", "o", "c", "i" }, "<MiddleMouse>", "<Nop>")
 vim.keymap.set({ "n", "v", "o", "c", "i" }, "<MiddleDrag>", "<Nop>")
 vim.keymap.set({ "n", "v", "o", "c", "i" }, "<MiddleRelease>", "<Nop>")
 -- Link identification
-vim.opt.isfname:append("*")
-vim.opt.isfname:append("[")
-vim.opt.isfname:append("]")
+for _, character in ipairs({ "*", "[", "]" }) do
+  if not vim.o.isfname:find(character, 1, true) then vim.o.isfname ..= "," .. character end
+end
 
 ---------------
 -- Autocommands
@@ -115,14 +119,15 @@ vim.api.nvim_create_autocmd("TermOpen", {
     -- Start on insert mode
     vim.cmd.startinsert()
     -- Disable line numbers
-    vim.opt_local.number = false
-    vim.opt_local.relativenumber = false
+    vim.wo.number = false
+    vim.wo.relativenumber = false
     -- Disable spell checking
-    vim.opt_local.spell = false
+    vim.wo.spell = false
     -- Disable sign column
-    vim.opt_local.signcolumn = "no"
+    vim.wo.signcolumn = "no"
     -- Disable colorcolumn
-    vim.opt_local.colorcolumn = {}
+    ---@diagnostic disable-next-line: assign-type-mismatch
+    vim.wo.colorcolumn = {}
   end,
 })
 -- When entering the terminal start in insert mode
@@ -145,7 +150,7 @@ vim.api.nvim_create_autocmd("FileType", {
     "jjdescription",
     "codediff-explorer",
   },
-  callback = function() vim.opt_local.spell = false end,
+  callback = function() vim.wo.spell = false end,
 })
 -- Always enable 'spell' on some filetypes
 vim.api.nvim_create_autocmd("FileType", {
@@ -158,14 +163,14 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     local win_id = vim.api.nvim_get_current_win()
     local config = vim.api.nvim_win_get_config(win_id)
-    if config.relative == "" then vim.opt_local.spell = true end
+    if config.relative == "" then vim.wo.spell = true end
   end,
 })
 -- Always enable 'conceallevel' on some filetypes
 vim.api.nvim_create_autocmd("FileType", {
   group = vim.api.nvim_create_augroup("enable-conceal", { clear = true }),
   pattern = { "html" },
-  callback = function() vim.opt_local.conceallevel = 2 end,
+  callback = function() vim.wo.conceallevel = 2 end,
 })
 
 -----------
@@ -317,7 +322,8 @@ _G.icons = {
     removed = "-",
   },
 }
-vim.opt.winborder = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" }
+---@diagnostic disable-next-line: assign-type-mismatch
+vim.o.winborder = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" }
 
 --------------
 -- Diagnostics
@@ -586,7 +592,7 @@ local function install_package(name, alias)
       :wait()
   end
 
-  vim.opt.runtimepath:prepend(path)
+  vim.o.runtimepath = path .. "," .. vim.o.runtimepath
 end
 
 install_package("folke/lazy.nvim")
@@ -599,5 +605,5 @@ require("lazy").setup({
   },
   install = { colorscheme = { "rose-pine" } },
   change_detection = { notify = false },
-  ui = { backdrop = 100, border = vim.opt.winborder:get() },
+  ui = { backdrop = 100, border = vim.split(vim.o.winborder, ",", { plain = true }) },
 })

@@ -1,4 +1,4 @@
-vim.opt_local.path:prepend(vim.fn.stdpath("config") .. "/lua")
-vim.opt_local.suffixesadd:prepend("/init.lua")
-vim.opt_local.suffixesadd:prepend(".lua")
-vim.opt_local.includeexpr = "tr(v:fname,'.','/')"
+vim.bo.path = vim.fn.stdpath("config") .. "/lua," .. vim.bo.path
+---@diagnostic disable-next-line: assign-type-mismatch
+vim.bo.suffixesadd = { ".lua", "/init.lua" }
+vim.bo.includeexpr = "tr(v:fname,'.','/')"

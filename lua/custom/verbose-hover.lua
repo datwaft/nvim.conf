@@ -351,7 +351,7 @@ local function set_hover_controls(winid)
     return
   end
 
-  local winborder = vim.opt.winborder:get()
+  local winborder = vim.split(vim.o.winborder, ",", { plain = true })
   local border_bottom = "─"
   local border_right = "│"
   local border_left = "│"
