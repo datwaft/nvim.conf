@@ -86,7 +86,7 @@ local function update_branch()
     -- Watch .jj/repo/op_heads directory for changes
     local op_heads_dir = workspace .. sep .. ".jj" .. sep .. "repo" .. sep .. "op_heads"
     local stat = vim.uv.fs_stat(op_heads_dir)
-    if stat and stat.type == "directory" then
+    if stat?.type == "directory" then
       file_changed:start(op_heads_dir, sep ~= "\\" ? {} : 1000, vim.schedule_wrap(function() update_branch() end))
     end
   else

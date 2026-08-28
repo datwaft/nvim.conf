@@ -38,9 +38,9 @@ return {
             function() return " " end,
             color = function()
               local status = require("sidekick.status").get()
+              if status?.kind == "Error" then return "DiagnosticError" end
+              if status?.busy then return "DiagnosticWarn" end
               if status then
-                if status.kind == "Error" then return "DiagnosticError" end
-                if status.busy then return "DiagnosticWarn" end
                 return "Special"
               end
             end,

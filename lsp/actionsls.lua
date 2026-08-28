@@ -90,10 +90,10 @@ local function get_repos_config()
 
   return {
     {
-      id = info ? info.id : 0,
+      id = info?.id ?? 0,
       owner = owner,
       name = name,
-      organizationOwned = info ? info.organizationOwned : false,
+      organizationOwned = info?.organizationOwned ?? false,
       workspaceUri = vim.uri_from_fname(git_root),
     },
   }
