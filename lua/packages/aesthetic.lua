@@ -44,10 +44,7 @@ return {
                 return "Special"
               end
             end,
-            cond = function()
-              local status = require("sidekick.status")
-              return status.get() ~= nil
-            end,
+            cond = || -> require("sidekick.status").get() ~= nil,
           },
           "encoding",
           {

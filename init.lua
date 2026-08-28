@@ -100,7 +100,9 @@ end
 -- Open quickfix window when populated
 vim.api.nvim_create_autocmd("QuickFixCmdPost", {
   group = vim.api.nvim_create_augroup("open-quickfix-when-populated", { clear = true }),
-  callback = function() vim.defer_fn(function() vim.cmd("botright cwindow") end, 10) end,
+  callback = || -> do
+    vim.defer_fn(|| -> vim.cmd("botright cwindow"), 10)
+  end,
 })
 -- Open files on the last position
 vim.api.nvim_create_autocmd("BufReadPost", {
@@ -204,41 +206,13 @@ vim.keymap.set(
   { expr = true }
 )
 -- Make `j` work with wrapped lines
-vim.keymap.set({ "n", "v" }, "j", function()
-  if vim.v.count == 0 then
-    return "gj"
-  else
-    return "m'" .. vim.v.count .. "j"
-  end
-end, { expr = true }
-)
+vim.keymap.set({ "n", "v" }, "j", || -> vim.v.count == 0 ? "gj" : "m'" .. vim.v.count .. "j", { expr = true })
 -- Make `k` work with wrapped lines
-vim.keymap.set({ "n", "v" }, "k", function()
-  if vim.v.count == 0 then
-    return "gk"
-  else
-    return "m'" .. vim.v.count .. "k"
-  end
-end, { expr = true }
-)
+vim.keymap.set({ "n", "v" }, "k", || -> vim.v.count == 0 ? "gk" : "m'" .. vim.v.count .. "k", { expr = true })
 -- Make `<Up>` work with wrapped lines
-vim.keymap.set({ "n", "v" }, "<Up>", function()
-  if vim.v.count == 0 then
-    return "gk"
-  else
-    return "m'" .. vim.v.count .. "<Up>"
-  end
-end, { expr = true }
-)
+vim.keymap.set({ "n", "v" }, "<Up>", || -> vim.v.count == 0 ? "gk" : "m'" .. vim.v.count .. "<Up>", { expr = true })
 -- Make `<Down>` work with wrapped lines
-vim.keymap.set({ "n", "v" }, "<Down>", function()
-  if vim.v.count == 0 then
-    return "gj"
-  else
-    return "m'" .. vim.v.count .. "<Down>"
-  end
-end, { expr = true }
-)
+vim.keymap.set({ "n", "v" }, "<Down>", || -> vim.v.count == 0 ? "gj" : "m'" .. vim.v.count .. "<Down>", { expr = true })
 -- Do not jump with <S-Up> and <S-Down>
 vim.keymap.set({ "i", "n", "v" }, "<S-Up>", "<Up>", { remap = true })
 vim.keymap.set({ "i", "n", "v" }, "<S-Down>", "<Down>", { remap = true })
@@ -452,7 +426,7 @@ vim.lsp.config("bg3", {
   cmd = { "bg3-ls" },
   filetypes = { "bg3_stats", "bg3_lsx", "bg3_thoth", "bg3_osiris", "bg3_localization" },
   workspace_required = true,
-  root_dir = function(_, on_dir) on_dir(vim.fs.root(vim.uv.cwd(), "bg3-ls.json")) end,
+  root_dir = |_, on_dir| -> on_dir(vim.fs.root(vim.uv.cwd(), "bg3-ls.json")),
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -478,11 +452,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr })
     vim.keymap.set("n", "gD", "<cmd>Glance definitions<cr>", { buffer = bufnr })
     -- Go to type definition
-    vim.keymap.set("n", "gt", function()
-      vim.lsp.buf.type_definition({
-        on_list = function(t) vim.lsp.util.show_document(t.items[1].user_data, "utf-8", { focus = true }) end,
-      })
-    end, { buffer = bufnr }
+    vim.keymap.set("n", "gt", || -> vim.lsp.buf.type_definition({
+      on_list = |t| -> vim.lsp.util.show_document(t.items[1].user_data, "utf-8", { focus = true }),
+    }), { buffer = bufnr }
     )
     vim.keymap.set("n", "gT", "<cmd>Glance type_definitions<cr>", { buffer = bufnr })
     -- List all implementations
@@ -497,24 +469,27 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "grn", vim.lsp.buf.rename, { buffer = bufnr })
     -- Toggle inlay hints
     if client:supports_method("textDocument/inlayHint") then
-      vim.keymap.set("n", "<leader>th", function()
-        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
-      end, { buffer = bufnr }
+      vim.keymap.set(
+        "n",
+        "<leader>th",
+        || -> vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }), { bufnr = bufnr }),
+        { buffer = bufnr }
       )
     end
     -- Run codelens
-    vim.keymap.set("n", "grl", function() vim.lsp.codelens.run({ client_id = client.id }) end, { buffer = bufnr })
+    vim.keymap.set("n", "grl", || -> vim.lsp.codelens.run({ client_id = client.id }), { buffer = bufnr })
     -- Toggle codelens
     vim.keymap.set(
       "n",
       "<leader>tl",
-      function() vim.lsp.codelens.enable(not vim.lsp.codelens.is_enabled({ bufnr = bufnr }), { bufnr = bufnr }) end,
+      || -> vim.lsp.codelens.enable(not vim.lsp.codelens.is_enabled({ bufnr = bufnr }), { bufnr = bufnr }),
       { buffer = bufnr }
     )
     -- Toggle inline completion
-    vim.keymap.set("n", "<leader>ti", function()
-      vim.lsp.inline_completion.enable(not vim.lsp.inline_completion.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
-    end, { buffer = bufnr }
+    vim.keymap.set("n", "<leader>ti", || -> vim.lsp.inline_completion.enable(
+      not vim.lsp.inline_completion.is_enabled({ bufnr = bufnr }),
+      { bufnr = bufnr }
+    ), { buffer = bufnr }
     )
 
     -- Enable inlay hints by default

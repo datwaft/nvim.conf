@@ -4,7 +4,7 @@ return {
   {
     "dmtrKovalenko/fff.nvim",
     lazy = false,
-    build = function() require("fff.download").download_or_build_binary() end,
+    build = || -> require("fff.download").download_or_build_binary(),
     opts = {},
     keys = {
       { [[<C-p>]], "<cmd>lua require('fff').find_files()<cr>" },
@@ -64,7 +64,7 @@ return {
       { "nvim-tree/nvim-web-devicons", config = true },
     },
     config = true,
-    init = function() vim.keymap.set("n", "gO", "<cmd>AerialToggle!<cr>") end,
+    init = || -> vim.keymap.set("n", "gO", "<cmd>AerialToggle!<cr>"),
   },
   -- Symbols
   {

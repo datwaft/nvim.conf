@@ -335,10 +335,10 @@ end
 local function set_hover_keymaps(bufnr)
   if not bufnr or not vim.api.nvim_buf_is_valid(bufnr) then return end
 
-  vim.keymap.set("n", "+", function() M.expand() end, { buffer = bufnr, silent = true, nowait = true })
-  vim.keymap.set("n", "=", function() M.expand() end, { buffer = bufnr, silent = true, nowait = true })
-  vim.keymap.set("n", "-", function() M.collapse() end, { buffer = bufnr, silent = true, nowait = true })
-  vim.keymap.set("n", "_", function() M.collapse() end, { buffer = bufnr, silent = true, nowait = true })
+  vim.keymap.set("n", "+", || -> M.expand(), { buffer = bufnr, silent = true, nowait = true })
+  vim.keymap.set("n", "=", || -> M.expand(), { buffer = bufnr, silent = true, nowait = true })
+  vim.keymap.set("n", "-", || -> M.collapse(), { buffer = bufnr, silent = true, nowait = true })
+  vim.keymap.set("n", "_", || -> M.collapse(), { buffer = bufnr, silent = true, nowait = true })
 end
 
 ---@param winid integer
@@ -543,7 +543,7 @@ local function request_quickinfo(verbosity, opts)
 
     if err or not result or not result.body then
       if opts.fallback_to_default then
-        vim.schedule(function() vim.lsp.buf.hover({ silent = opts.silent }) end)
+        vim.schedule(|| -> vim.lsp.buf.hover({ silent = opts.silent }))
       else
         notify_hover_unavailable(false, opts.silent)
       end

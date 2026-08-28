@@ -14,17 +14,9 @@ return {
           return false
         end
 
-        vim.keymap.set(
-          "n",
-          "]c",
-          function() return vim.wo.diff ? vim.cmd.normal({ "]c", bang = true }) : gs.nav_hunk("next") end
-        )
+        vim.keymap.set("n", "]c", || -> vim.wo.diff ? vim.cmd.normal({ "]c", bang = true }) : gs.nav_hunk("next"))
 
-        vim.keymap.set(
-          "n",
-          "[c",
-          function() return vim.wo.diff ? vim.cmd.normal({ "[c", bang = true }) : gs.nav_hunk("prev") end
-        )
+        vim.keymap.set("n", "[c", || -> vim.wo.diff ? vim.cmd.normal({ "[c", bang = true }) : gs.nav_hunk("prev"))
 
         vim.keymap.set("n", "ghs", gs.stage_hunk, { buffer = bufnr })
         vim.keymap.set("n", "ghS", gs.stage_buffer, { buffer = bufnr })
