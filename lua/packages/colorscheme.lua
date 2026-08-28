@@ -6,9 +6,9 @@ local function hex_to_rgb(color)
   local _, _, hex = color:find("^#(%x+)$")
   local number = tonumber(hex, 16)
   -- Then we extract the RGB components
-  local r = bit.rshift(bit.band(number, 0xFF0000), 16)
-  local g = bit.rshift(bit.band(number, 0x00FF00), 8)
-  local b = bit.band(number, 0x0000FF)
+  local r = bit.rshift(bit.band(number, 0xFF_00_00), 16)
+  local g = bit.rshift(bit.band(number, 0x00_FF_00), 8)
+  local b = bit.band(number, 0x00_00_FF)
   return { r, g, b }
 end
 
