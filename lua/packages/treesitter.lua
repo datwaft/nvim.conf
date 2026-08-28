@@ -67,8 +67,8 @@ return {
             tier = 1,
             install_info = {
               url = "https://github.com/rmuir/tree-sitter-ghactions",
-              queries = "queries",
               revision = "main",
+              queries = "queries",
             },
           }
           parsers.tmux = {
@@ -78,10 +78,15 @@ return {
               queries = "queries",
             },
           }
+          parsers.lua.install_info = {
+            url = "https://github.com/datwaft/tree-sitter-lua",
+            revision = "main",
+            queries = "queries",
+          }
           parsers.comment.install_info = {
             url = "https://github.com/OXY2DEV/tree-sitter-comment",
-            queries = "queries/",
             revision = "main",
+            queries = "queries",
           }
         end,
       })
