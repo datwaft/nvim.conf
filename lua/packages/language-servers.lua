@@ -59,7 +59,7 @@ return {
     "icholy/lsplinks.nvim",
     config = true,
     lazy = false,
-    keys = function() return { { "gx", require("lsplinks").gx } } end,
+    keys = || -> { { "gx", require("lsplinks").gx } },
   },
   -- Enhance code actions select
   {

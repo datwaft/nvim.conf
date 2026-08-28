@@ -13,8 +13,8 @@ return {
         providers = {
           lsp = { async = true },
           dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
-          snippets = { should_show_items = function(ctx) return ctx.trigger.initial_kind ~= "trigger_character" end },
-          path = { opts = { get_cwd = function() return vim.fn.getcwd() end } },
+          snippets = { should_show_items = |ctx| -> ctx.trigger.initial_kind ~= "trigger_character" },
+          path = { opts = { get_cwd = || -> vim.fn.getcwd() } },
         },
       },
       keymap = {
@@ -37,13 +37,13 @@ return {
           "fallback",
         },
         ["<M-l>"] = {
-          function() return require("sidekick").nes_jump_or_apply() end,
-          function() return vim.lsp.inline_completion.get() end,
+          || -> require("sidekick").nes_jump_or_apply(),
+          || -> vim.lsp.inline_completion.get(),
           "fallback",
         },
         ["<M-Right>"] = {
-          function() return require("sidekick").nes_jump_or_apply() end,
-          function() return vim.lsp.inline_completion.get() end,
+          || -> require("sidekick").nes_jump_or_apply(),
+          || -> vim.lsp.inline_completion.get(),
           "fallback",
         },
       },
@@ -58,8 +58,8 @@ return {
             columns = { { "kind_icon" }, { "label", gap = 1 } },
             components = {
               label = {
-                text = function(ctx) return require("colorful-menu").blink_components_text(ctx) end,
-                highlight = function(ctx) return require("colorful-menu").blink_components_highlight(ctx) end,
+                text = |ctx| -> require("colorful-menu").blink_components_text(ctx),
+                highlight = |ctx| -> require("colorful-menu").blink_components_highlight(ctx),
               },
             },
           },

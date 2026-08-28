@@ -195,7 +195,7 @@ vim.keymap.set("t", "<C-w>l", [[<C-\><C-n><cmd>wincmd l<cr>]])
 vim.keymap.set(
   "c",
   "<SPACE>",
-  function() return vim.fn.wildmenumode() == 1 ? "<C-y>" : "<SPACE>" end,
+  || -> vim.fn.wildmenumode() == 1 ? "<C-y>" : "<SPACE>",
   { expr = true }
 )
 -- Make `j` work with wrapped lines
@@ -593,9 +593,9 @@ install_package("folke/lazy.nvim")
 
 require("lazy").setup({
   spec = {
-    { import = "packages", cond = function() return not vim.g.vscode end },
-    { import = "packages.editing", cond = function() return vim.g.vscode end },
-    { import = "packages.movement", cond = function() return vim.g.vscode end },
+    { import = "packages", cond = || -> not vim.g.vscode },
+    { import = "packages.editing", cond = || -> vim.g.vscode },
+    { import = "packages.movement", cond = || -> vim.g.vscode },
   },
   install = { colorscheme = { "rose-pine" } },
   change_detection = { notify = false },

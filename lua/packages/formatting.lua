@@ -26,7 +26,7 @@ return {
         ["biome-check"] = { require_cwd = true },
         xmlformat = { prepend_args = { "--selfclose" } },
         prettierd = {
-          condition = function(_, context) return vim.fn.fnamemodify(context.filename, ":e") ~= "ipynb" end,
+          condition = |_, context| -> vim.fn.fnamemodify(context.filename, ":e") ~= "ipynb",
         },
       },
       format_on_save = {

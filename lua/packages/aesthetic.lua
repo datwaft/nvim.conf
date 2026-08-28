@@ -27,7 +27,7 @@ return {
           "jj-vcs",
           {
             "branch",
-            cond = function() return not require("lualine.components.jj-vcs.jj_branch").is_jj_workspace() end,
+            cond = || -> not require("lualine.components.jj-vcs.jj_branch").is_jj_workspace(),
           },
           { "diff", symbols = icons.git },
           { "diagnostics", symbols = icons.diagnostic },
@@ -35,7 +35,7 @@ return {
         lualine_c = { "filename" },
         lualine_x = {
           {
-            function() return " " end,
+            || -> " ",
             color = function()
               local status = require("sidekick.status").get()
               if status?.kind == "Error" then return "DiagnosticError" end
