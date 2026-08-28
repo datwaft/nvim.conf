@@ -1,5 +1,5 @@
 local M = require("lualine.component"):extend()
-local modules = require("lualine_require").lazy_require({
+const modules = require("lualine_require").lazy_require({
   jj_branch = "lualine.components.jj-vcs.jj_branch",
   utils = "lualine.utils.utils",
 })

@@ -150,7 +150,7 @@ return {
       },
     },
     keys = function()
-      local motions = require("sigil.motions")
+      const motions = require("sigil.motions")
       return {
         { "<Left>", motions.move_left, mode = { "n", "x" } },
         { "<Right>", motions.move_right, mode = { "n", "x" } },

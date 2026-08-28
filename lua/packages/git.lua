@@ -7,7 +7,7 @@ return {
       numhl = true,
       ---@param bufnr number
       on_attach = function(bufnr)
-        local gs = require("gitsigns")
+        const gs = require("gitsigns")
 
         if vim.api.nvim_buf_get_name(bufnr):match("%.ipynb$") then
           -- Do not attach for .ipynb file, since these are converted with jupytext.nvim

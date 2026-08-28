@@ -561,7 +561,7 @@ vim.filetype.add({ pattern = { [".*/%.github/actions/.*/action%.ya?ml"] = "yaml.
 --------------------------
 -- lazy.nvim configuration
 --------------------------
-local packages_path = vim.fn.stdpath("data") .. "/lazy"
+const packages_path = vim.fn.stdpath("data") .. "/lazy"
 
 -- Helper function to install packages before lazy.nvim is loaded
 ---@param name  string

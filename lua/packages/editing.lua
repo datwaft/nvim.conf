@@ -116,7 +116,7 @@ return {
   {
     "jake-stewart/multicursor.nvim",
     config = function(_, opts)
-      local mc = require("multicursor-nvim")
+      const mc = require("multicursor-nvim")
       mc.setup(opts)
 
       -- Add cursor above/below current cursor

@@ -3,7 +3,7 @@ return {
   "OXY2DEV/markview.nvim",
   lazy = false,
   opts = function()
-    local presets = require("markview.presets")
+    const presets = require("markview.presets")
     return {
       preview = {
         icon_provider = "devicons",

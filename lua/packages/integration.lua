@@ -8,7 +8,7 @@ return {
     config = true,
     lazy = false,
     keys = function()
-      local ss = require("smart-splits")
+      const ss = require("smart-splits")
       return {
         -- <C-w>+hjkl
         { "<C-w>h", ss.move_cursor_left },

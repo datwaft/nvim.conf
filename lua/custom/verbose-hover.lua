@@ -49,7 +49,7 @@ local state = {
   mapped_source_bufnr = nil,
 }
 
-local hover_ns = vim.api.nvim_create_namespace("custom.verbose_hover")
+const hover_ns = vim.api.nvim_create_namespace("custom.verbose_hover")
 
 do
   local float_footer = vim.api.nvim_get_hl(0, { name = "FloatFooter", link = false })

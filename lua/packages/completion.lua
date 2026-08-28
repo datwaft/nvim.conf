@@ -89,7 +89,7 @@ return {
         group = vim.api.nvim_create_augroup("clear-snippets-on-mode-change", { clear = true }),
         pattern = { "s:n", "i:*" },
         callback = function(args)
-          local luasnip = require("luasnip")
+          const luasnip = require("luasnip")
           if luasnip.session.current_nodes[args.buf] and not luasnip.session.jump_active then
             luasnip.unlink_current()
           end

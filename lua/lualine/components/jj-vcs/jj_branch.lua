@@ -1,7 +1,7 @@
 local M = {}
 
-local require = require("lualine_require").require
-local utils = require("lualine.utils.utils")
+const require = require("lualine_require").require
+const utils = require("lualine.utils.utils")
 
 -- vars
 local current_jj_branch = ""
@@ -10,16 +10,16 @@ local branch_cache = {} -- stores last known branch for a buffer
 local workspace_cache = {} -- stores jj workspace root for directories
 local active_bufnr = "0"
 -- os specific path separator
-local sep = package.config:sub(1, 1)
+const sep = package.config:sub(1, 1)
 -- event watcher to watch head file
 -- Use file watch for non Windows and poll for Windows.
 -- Windows doesn't like file watch for some reason.
 local file_changed = assert(sep ~= "\\" and vim.uv.new_fs_event() or vim.uv.new_fs_poll())
 -- check if jj executable is available
-local jj_available = vim.fn.executable("jj") == 1
+const jj_available = vim.fn.executable("jj") == 1
 
 -- Revset to find closest ancestor bookmark (fallback to trunk)
-local closest_bookmark_revset = "heads(::@ & bookmarks()) | trunk()"
+const closest_bookmark_revset = "heads(::@ & bookmarks()) | trunk()"
 
 --- Get jj branch info using revsets
 ---@param workspace string jj workspace root path
