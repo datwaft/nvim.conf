@@ -521,7 +521,7 @@ local function request_quickinfo(verbosity, opts)
   if state.requesting then return end
 
   state.requesting = true
-  state.generation = state.generation + 1
+  state.generation += 1
   local current_generation = state.generation
 
   local params = {
@@ -582,13 +582,13 @@ end
 
 function M.expand()
   if not state.can_increase then return end
-  state.verbosity = state.verbosity + 1
+  state.verbosity += 1
   request_quickinfo(state.verbosity, { fallback_to_default = false, silent = true, force_reopen = true })
 end
 
 function M.collapse()
   if state.verbosity == 0 then return end
-  state.verbosity = state.verbosity - 1
+  state.verbosity -= 1
   request_quickinfo(state.verbosity, { fallback_to_default = false, silent = true, force_reopen = true })
 end
 
