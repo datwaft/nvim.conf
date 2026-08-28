@@ -137,7 +137,7 @@ local function convert_link_tags(parts)
             out[#out + 1] = string.format("[`%s`](%s)", escape_markdown_code(text), text)
           end
         else
-          local link_label = current_link.linkcode and ("`" .. escape_markdown_code(label) .. "`") or label
+          local link_label = current_link.linkcode ? ("`" .. escape_markdown_code(label) .. "`") : label
           out[#out + 1] = string.format("[%s](%s)", link_label, url)
         end
       else
@@ -365,8 +365,8 @@ local function set_hover_controls(winid)
     border_left = winborder[8]
   end
 
-  local dec_hl = can_decrease and "VerboseHoverFooterActive" or "VerboseHoverFooterInactive"
-  local inc_hl = state.can_increase and "VerboseHoverFooterActive" or "VerboseHoverFooterInactive"
+  local dec_hl = can_decrease ? "VerboseHoverFooterActive" : "VerboseHoverFooterInactive"
+  local inc_hl = state.can_increase ? "VerboseHoverFooterActive" : "VerboseHoverFooterInactive"
   local dec_label = "−"
   local inc_label = "+"
 
@@ -431,7 +431,7 @@ local function highlight_target(range, client)
 
   clear_target_highlight()
 
-  local position_encoding = client and client.offset_encoding or "utf-16"
+  local position_encoding = client ? client.offset_encoding : "utf-16"
   local lines = vim.api.nvim_buf_get_lines(state.source_bufnr, range.start.line, range["end"].line + 1, false)
   local start_line = lines[1] ?? ""
   local end_line = lines[range["end"].line - range.start.line + 1] ?? ""

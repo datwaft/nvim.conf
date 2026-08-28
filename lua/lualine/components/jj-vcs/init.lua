@@ -13,7 +13,7 @@ M.init = function(self, options)
 end
 
 M.update_status = function(_, is_focused)
-  local buf = (not is_focused and vim.api.nvim_get_current_buf())
+  local buf = not is_focused ? vim.api.nvim_get_current_buf() : nil
   local branch = modules.jj_branch.get_branch(buf)
   return modules.utils.stl_escape(branch)
 end

@@ -13,7 +13,7 @@ local function get_token()
     return nil
   end
   local token = vim.trim(response.stdout)
-  return token ~= "" and token or nil
+  return token ~= "" ? token : nil
 end
 
 --- Parses a GitHub remote URL to extract the owner and repository name.
@@ -90,10 +90,10 @@ local function get_repos_config()
 
   return {
     {
-      id = info and info.id or 0,
+      id = info ? info.id : 0,
       owner = owner,
       name = name,
-      organizationOwned = info and info.organizationOwned or false,
+      organizationOwned = info ? info.organizationOwned : false,
       workspaceUri = vim.uri_from_fname(git_root),
     },
   }

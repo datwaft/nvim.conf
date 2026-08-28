@@ -87,7 +87,7 @@ local function update_branch()
     local op_heads_dir = workspace .. sep .. ".jj" .. sep .. "repo" .. sep .. "op_heads"
     local stat = vim.uv.fs_stat(op_heads_dir)
     if stat and stat.type == "directory" then
-      file_changed:start(op_heads_dir, sep ~= "\\" and {} or 1000, vim.schedule_wrap(function() update_branch() end))
+      file_changed:start(op_heads_dir, sep ~= "\\" ? {} : 1000, vim.schedule_wrap(function() update_branch() end))
     end
   else
     current_jj_branch = ""
@@ -129,8 +129,8 @@ function M.find_workspace(dir_path)
   -- Check cache first
   if workspace_cache[file_dir] ~= nil then
     local cached = workspace_cache[file_dir]
-    if dir_path == nil then update_current_workspace(cached ~= "" and cached or nil) end
-    return cached ~= "" and cached or nil
+    if dir_path == nil then update_current_workspace(cached ~= "" ? cached : nil) end
+    return cached ~= "" ? cached : nil
   end
 
   -- Run jj workspace root to find workspace

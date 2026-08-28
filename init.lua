@@ -195,7 +195,7 @@ vim.keymap.set("t", "<C-w>l", [[<C-\><C-n><cmd>wincmd l<cr>]])
 vim.keymap.set(
   "c",
   "<SPACE>",
-  function() return vim.fn.wildmenumode() == 1 and "<C-y>" or "<SPACE>" end,
+  function() return vim.fn.wildmenumode() == 1 ? "<C-y>" : "<SPACE>" end,
   { expr = true }
 )
 -- Make `j` work with wrapped lines

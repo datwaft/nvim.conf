@@ -17,13 +17,13 @@ return {
         vim.keymap.set(
           "n",
           "]c",
-          function() return vim.wo.diff and vim.cmd.normal({ "]c", bang = true }) or gs.nav_hunk("next") end
+          function() return vim.wo.diff ? vim.cmd.normal({ "]c", bang = true }) : gs.nav_hunk("next") end
         )
 
         vim.keymap.set(
           "n",
           "[c",
-          function() return vim.wo.diff and vim.cmd.normal({ "[c", bang = true }) or gs.nav_hunk("prev") end
+          function() return vim.wo.diff ? vim.cmd.normal({ "[c", bang = true }) : gs.nav_hunk("prev") end
         )
 
         vim.keymap.set("n", "ghs", gs.stage_hunk, { buffer = bufnr })
