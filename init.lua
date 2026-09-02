@@ -183,7 +183,11 @@ vim.keymap.set({ "i", "c", "t" }, "<M-BS>", "<C-w>")
 -- Go to folder with -
 vim.keymap.set("n", "-", "<CMD>e %:h<CR>")
 -- Disable highlights with <ESC>
-vim.keymap.set("n", "<ESC>", "<ESC><CMD>nohlsearch<CR>")
+vim.keymap.set(
+  "n",
+  "<ESC>",
+  [[<ESC><CMD>nohlsearch | diffupdate | call nvim_buf_clear_namespace(0, nvim_create_namespace("nvim.multicursor"), 0, -1)<CR>]]
+)
 -- Make mappings similar to TMUX mappings for Vim tabs
 vim.keymap.set("n", "<C-t>n", "<CMD>tabnew<CR>")
 vim.keymap.set("n", "<C-t>s", "<CMD>tabs<CR>")
