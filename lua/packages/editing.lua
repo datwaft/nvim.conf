@@ -112,49 +112,6 @@ return {
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = true,
   },
-  -- Multiple cursors
-  {
-    "jake-stewart/multicursor.nvim",
-    config = function(_, opts)
-      const mc = require("multicursor-nvim")
-      mc.setup(opts)
-
-      -- Add cursor above/below current cursor
-      vim.keymap.set({ "n", "x" }, "<M-Up>", || -> mc.lineAddCursor(-1))
-      vim.keymap.set({ "n", "x" }, "<M-Down>", || -> mc.lineAddCursor(1))
-
-      -- Keybinds enabled only when there are multiple cursors
-      mc.addKeymapLayer(function(set_keymap)
-        set_keymap({ "n", "x" }, "<M-Left>", mc.prevCursor)
-        set_keymap({ "n", "x" }, "<M-Right>", mc.nextCursor)
-
-        set_keymap({ "n", "x" }, "<leader>x", mc.deleteCursor)
-
-        set_keymap("n", "<ESC>", function()
-          if not mc.cursorsEnabled() then
-            mc.enableCursors()
-          else
-            mc.clearCursors()
-          end
-        end)
-      end)
-
-      -- Add cursor using operators
-      vim.keymap.set("n", "ga", mc.operator)
-
-      -- Add/remove cursors
-      vim.keymap.set({ "n", "x" }, "<C-q>", mc.toggleCursor)
-
-      -- Mouse keybinds
-      vim.keymap.set("n", "<C-LeftMouse>", mc.handleMouse)
-      vim.keymap.set("n", "<C-LeftDrag>", mc.handleMouseDrag)
-      vim.keymap.set("n", "<C-LeftRelease>", mc.handleMouseRelease)
-
-      -- Visual-mode mappings
-      vim.keymap.set("x", "I", mc.insertVisual)
-      vim.keymap.set("x", "A", mc.appendVisual)
-    end,
-  },
   -- Increment/decrement
   {
     "monaqa/dial.nvim",
