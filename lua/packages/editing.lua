@@ -112,18 +112,4 @@ return {
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = true,
   },
-  -- Increment/decrement
-  {
-    "monaqa/dial.nvim",
-    config = function()
-      vim.keymap.set("n", "<C-a>", || -> require("dial.map").manipulate("increment", "normal"))
-      vim.keymap.set("n", "<C-x>", || -> require("dial.map").manipulate("decrement", "normal"))
-      vim.keymap.set("n", "g<C-a>", || -> require("dial.map").manipulate("increment", "gnormal"))
-      vim.keymap.set("n", "g<C-x>", || -> require("dial.map").manipulate("decrement", "gnormal"))
-      vim.keymap.set("v", "<C-a>", || -> require("dial.map").manipulate("increment", "visual"))
-      vim.keymap.set("v", "<C-x>", || -> require("dial.map").manipulate("decrement", "visual"))
-      vim.keymap.set("v", "g<C-a>", || -> require("dial.map").manipulate("increment", "gvisual"))
-      vim.keymap.set("v", "g<C-x>", || -> require("dial.map").manipulate("decrement", "gvisual"))
-    end,
-  },
 }
