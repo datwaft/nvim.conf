@@ -65,7 +65,7 @@ vim.o.spellcapcheck = ""
 -- Sign column
 vim.o.signcolumn = "yes:1"
 -- Insert-mode completion
-if not vim.o.shortmess:find("c", 1, true) then vim.o.shortmess ..= "c" end
+vim.opt.shortmess:append("c")
 -- Grep
 vim.o.grepprg = "rg --vimgrep --smart-case --hidden --glob='!.git/*'"
 vim.o.grepformat = "%f:%l:%c:%m"
@@ -85,9 +85,7 @@ vim.keymap.set({ "n", "v", "o", "c", "i" }, "<MiddleMouse>", "<Nop>")
 vim.keymap.set({ "n", "v", "o", "c", "i" }, "<MiddleDrag>", "<Nop>")
 vim.keymap.set({ "n", "v", "o", "c", "i" }, "<MiddleRelease>", "<Nop>")
 -- Link identification
-for _, character in ipairs({ "*", "[", "]" }) do
-  if not vim.o.isfname:find(character, 1, true) then vim.o.isfname ..= "," .. character end
-end
+vim.opt.isfname:append({ "*", "[", "]" })
 
 ---------------
 -- Autocommands
@@ -573,7 +571,7 @@ local function install_package(name, alias)
       :wait()
   end
 
-  vim.o.runtimepath = path .. "," .. vim.o.runtimepath
+  vim.opt.runtimepath:prepend(path)
 end
 
 install_package("folke/lazy.nvim")
@@ -586,5 +584,5 @@ require("lazy").setup({
   },
   install = { colorscheme = { "rose-pine" } },
   change_detection = { notify = false },
-  ui = { backdrop = 100, border = vim.split(vim.o.winborder, ",", { plain = true }) },
+  ui = { backdrop = 100, border = vim.opt.winborder:get() },
 })

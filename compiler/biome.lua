@@ -1,9 +1,7 @@
 if vim.fn.exists("current_compiler") == 1 then return end
 vim.g.current_compiler = "biome"
 
-for _, character in ipairs({ "[", "]" }) do
-  if not vim.o.isfname:find(character, 1, true) then vim.o.isfname ..= "," .. character end
-end
+vim.opt_local.isfname:append({ "[", "]" })
 vim.bo.makeprg = "npx -y biome ci --reporter=github"
 vim.bo.errorformat = {
   [[::%trror title=%*[^\,]\,file=%f\,line=%l\,endLine=%e\,col=%c\,endColumn=%k::%m]],
