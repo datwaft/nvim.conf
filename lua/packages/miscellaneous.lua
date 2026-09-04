@@ -15,7 +15,9 @@ return {
   {
     "kevinhwang91/nvim-fundo",
     event = "BufReadPost",
-    build = || -> require("fundo").install(),
+    build = function()
+      require("fundo").install()
+    end,
     dependencies = { "kevinhwang91/promise-async" },
     config = true,
   },

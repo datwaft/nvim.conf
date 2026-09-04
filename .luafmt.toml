@@ -11,7 +11,7 @@ prefer_table_layout_from_source = true
 [output]
 trailing_comma = "Multiline"
 trailing_table_separator = "Multiline"
-simple_lambda_single_line = "Always"
+simple_lambda_single_line = "Never"
 end_of_line = "LF"
 
 [spacing]

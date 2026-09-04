@@ -42,7 +42,6 @@ return {
   priority = 1000,
   config = function(_, opts)
     require("rose-pine").setup(opts)
-
     -- Override some highlight groups that cannot be overridden using `highlight_groups`
     vim.api.nvim_create_autocmd("ColorScheme", {
       pattern = "rose-pine",
@@ -55,7 +54,6 @@ return {
         })
       end,
     })
-
     vim.cmd.colorscheme("rose-pine")
   end,
   opts = function()

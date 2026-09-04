@@ -93,8 +93,10 @@ vim.opt.isfname:append({ "*", "[", "]" })
 -- Open quickfix window when populated
 vim.api.nvim_create_autocmd("QuickFixCmdPost", {
   group = vim.api.nvim_create_augroup("open-quickfix-when-populated", { clear = true }),
-  callback = || -> do
-    vim.defer_fn(|| -> vim.cmd("botright cwindow"), 10)
+  callback = function()
+    vim.defer_fn(function()
+      vim.cmd("botright cwindow")
+    end, 10)
   end,
 })
 -- Open files on the last position
@@ -127,7 +129,9 @@ vim.api.nvim_create_autocmd("TermOpen", {
 -- When entering the terminal start in insert mode
 vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
   group = vim.api.nvim_create_augroup("terminal-enter", { clear = true }),
-  callback = function(args) if vim.bo[args.buf].buftype == "terminal" then vim.cmd.startinsert() end end,
+  callback = function(args)
+    if vim.bo[args.buf].buftype == "terminal" then vim.cmd.startinsert() end
+  end,
 })
 -- Always disable 'spell' on some filetypes
 vim.api.nvim_create_autocmd("FileType", {
@@ -144,7 +148,9 @@ vim.api.nvim_create_autocmd("FileType", {
     "jjdescription",
     "codediff-explorer",
   },
-  callback = function() vim.wo.spell = false end,
+  callback = function()
+    vim.wo.spell = false
+  end,
 })
 -- Always enable 'spell' on some filetypes
 vim.api.nvim_create_autocmd("FileType", {
@@ -164,7 +170,9 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("FileType", {
   group = vim.api.nvim_create_augroup("enable-conceal", { clear = true }),
   pattern = { "html" },
-  callback = function() vim.wo.conceallevel = 2 end,
+  callback = function()
+    vim.wo.conceallevel = 2
+  end,
 })
 
 -----------
@@ -226,13 +234,11 @@ end, { silent = true }
 -- Copy current location to clipboard
 vim.keymap.set("x", "<leader>l", function()
   local path = vim.fn.expand("%:.")
-
   local srow = vim.fn.line("v")
   local erow = vim.fn.line(".")
   if srow > erow then
     srow, erow = erow, srow
   end
-
   if srow == erow then
     vim.fn.setreg("+", ("%s:%d"):format(path, srow))
   else
@@ -250,13 +256,11 @@ end, { silent = true }
 -- Copy current location to clipboard modified to work with playwright
 vim.keymap.set("x", "<leader>L", function()
   local path = vim.fn.expand("%:p:~:.:s?tests/??")
-
   local srow = vim.fn.line("v")
   local erow = vim.fn.line(".")
   if srow > erow then
     srow, erow = erow, srow
   end
-
   if srow == erow then
     vim.fn.setreg("+", ("%s:%d"):format(path, srow))
   else
@@ -430,7 +434,9 @@ vim.lsp.config("bg3", {
   cmd = { "bg3-ls" },
   filetypes = { "bg3_stats", "bg3_lsx", "bg3_thoth", "bg3_osiris", "bg3_localization" },
   workspace_required = true,
-  root_dir = |_, on_dir| -> on_dir(vim.fs.root(vim.uv.cwd(), "bg3-ls.json")),
+  root_dir = function(_, on_dir)
+    on_dir(vim.fs.root(vim.uv.cwd(), "bg3-ls.json"))
+  end,
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -438,7 +444,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
     local bufnr = args.buf
-
     -- Show hover documentation
     vim.keymap.set("n", "K", function()
       if #vim.lsp.get_clients({ bufnr = bufnr, name = "vtsls" }) > 0 then
@@ -456,9 +461,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr })
     vim.keymap.set("n", "gD", "<cmd>Glance definitions<cr>", { buffer = bufnr })
     -- Go to type definition
-    vim.keymap.set("n", "gt", || -> vim.lsp.buf.type_definition({
-      on_list = |t| -> vim.lsp.util.show_document(t.items[1].user_data, "utf-8", { focus = true }),
-    }), { buffer = bufnr }
+    vim.keymap.set("n", "gt", function()
+      vim.lsp.buf.type_definition({
+        on_list = function(t)
+          vim.lsp.util.show_document(t.items[1].user_data, "utf-8", { focus = true })
+        end,
+      })
+    end, { buffer = bufnr }
     )
     vim.keymap.set("n", "gT", "<cmd>Glance type_definitions<cr>", { buffer = bufnr })
     -- List all implementations
@@ -473,29 +482,29 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "grn", vim.lsp.buf.rename, { buffer = bufnr })
     -- Toggle inlay hints
     if client:supports_method("textDocument/inlayHint") then
-      vim.keymap.set(
-        "n",
-        "<leader>th",
-        || -> vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }), { bufnr = bufnr }),
-        { buffer = bufnr }
+      vim.keymap.set("n", "<leader>th", function()
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
+      end, { buffer = bufnr }
       )
     end
     -- Run codelens
-    vim.keymap.set("n", "grl", || -> vim.lsp.codelens.run({ client_id = client.id }), { buffer = bufnr })
+    vim.keymap.set("n", "grl", function()
+      vim.lsp.codelens.run({ client_id = client.id })
+    end, { buffer = bufnr }
+    )
     -- Toggle codelens
-    vim.keymap.set(
-      "n",
-      "<leader>tl",
-      || -> vim.lsp.codelens.enable(not vim.lsp.codelens.is_enabled({ bufnr = bufnr }), { bufnr = bufnr }),
-      { buffer = bufnr }
+    vim.keymap.set("n", "<leader>tl", function()
+      vim.lsp.codelens.enable(not vim.lsp.codelens.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
+    end, { buffer = bufnr }
     )
     -- Toggle inline completion
-    vim.keymap.set("n", "<leader>ti", || -> vim.lsp.inline_completion.enable(
-      not vim.lsp.inline_completion.is_enabled({ bufnr = bufnr }),
-      { bufnr = bufnr }
-    ), { buffer = bufnr }
+    vim.keymap.set("n", "<leader>ti", function()
+      vim.lsp.inline_completion.enable(
+        not vim.lsp.inline_completion.is_enabled({ bufnr = bufnr }),
+        { bufnr = bufnr }
+      )
+    end, { buffer = bufnr }
     )
-
     -- Enable inlay hints by default
     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
     -- Disable codelens by default
@@ -509,7 +518,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     if client:supports_method("textDocument/linkedEditingRange") then
       vim.lsp.linked_editing_range.enable(true, { client_id = client.id })
     end
-
     -- Disable semantic highlighting for some LSPs
     for _, name in ipairs({ "dockerls" }) do
       if client.name == name then client.server_capabilities.semanticTokensProvider = nil end

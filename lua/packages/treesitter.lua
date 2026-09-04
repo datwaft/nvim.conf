@@ -8,28 +8,21 @@ return {
     init = function()
       vim.treesitter.language.register("bash", "sh")
       vim.treesitter.language.register("fennel", "fnl")
-
       vim.api.nvim_create_autocmd("FileType", {
         group = vim.api.nvim_create_augroup("tree-sitter-enable", { clear = true }),
         callback = function(args)
           local lang = vim.treesitter.language.get_lang(args.match)
           if not lang or not vim.treesitter.language.add(lang) then return end
-
-          if vim.treesitter.query.get(lang, "highlights") then
-            vim.treesitter.start(args.buf)
-          end
-
+          if vim.treesitter.query.get(lang, "highlights") then vim.treesitter.start(args.buf) end
           if vim.treesitter.query.get(lang, "indents") then
             vim.bo.indentexpr = 'v:lua.require("nvim-treesitter").indentexpr()'
           end
-
           if vim.treesitter.query.get(lang, "folds") then
             vim.wo.foldmethod = "expr"
             vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
           end
         end,
       })
-
       -- Custom parsers
       vim.api.nvim_create_autocmd("User", {
         pattern = "TSUpdate",

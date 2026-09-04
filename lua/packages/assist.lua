@@ -34,15 +34,21 @@ return {
       },
       {
         "<c-.>",
-        || -> require("sidekick.cli").send({ focus = true, msg = "{this}" }),
+        function()
+          require("sidekick.cli").send({ focus = true, msg = "{this}" })
+        end,
         mode = { "n", "x" },
         desc = "Sidekick Send This",
       },
     },
-    init = || -> vim.api.nvim_create_autocmd("FileType", {
-      pattern = { "markdown" },
-      callback = function() vim.b.sidekick_nes = false end,
-    }),
+    init = function()
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "markdown" },
+        callback = function()
+          vim.b.sidekick_nes = false
+        end,
+      })
+    end,
   },
   -- Amp CLI Integration
   {

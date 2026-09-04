@@ -12,7 +12,6 @@ return {
       vim.g.slime_dont_ask_default = 1
       vim.g.slime_bracketed_paste = 1
       vim.g.slime_no_mappings = 1
-
       vim.api.nvim_create_autocmd("FileType", {
         group = vim.api.nvim_create_augroup("vim-slime-keybinds", { clear = true }),
         callback = function()

@@ -50,9 +50,13 @@ return {
   -- Inspect types with // ^?
   {
     "marilari88/twoslash-queries.nvim",
-    init = || -> vim.lsp.config("vtsls", {
-      on_attach = |client, bufnr| -> require("twoslash-queries").attach(client, bufnr),
-    }),
+    init = function()
+      vim.lsp.config("vtsls", {
+        on_attach = function(client, bufnr)
+          require("twoslash-queries").attach(client, bufnr)
+        end,
+      })
+    end,
   },
   -- LSP installation
   { "mason-org/mason.nvim", config = true },
@@ -85,25 +89,27 @@ return {
     "jmbuhr/otter.nvim",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = true,
-    init = || -> vim.api.nvim_create_autocmd("InsertEnter", {
-      group = vim.api.nvim_create_augroup("otter-autostart", { clear = true }),
-      pattern = { "*.md", "*.ipynb" },
-      callback = function()
-        local parser = vim.treesitter.get_parser(0)
-        if not parser then return end
-
-        local otter = require("otter")
-        vim.b.otter_parsers_attached = vim.b.otter_parsers_attached or {}
-
-        local line, column = vim.fn.line(".") - 1, vim.fn.col(".") - 1
-        local language = parser:language_for_range({ line, column, line, column + 1 }):lang()
-        if language == parser:lang() then return end
-        if language == "markdown_inline" then return end
-        if not vim.b.otter_parsers_attached[language] then
-          vim.b.otter_parsers_attached[language] = true
-          vim.schedule(|| -> otter.activate({ language }, true, true))
-        end
-      end,
-    }),
+    init = function()
+      vim.api.nvim_create_autocmd("InsertEnter", {
+        group = vim.api.nvim_create_augroup("otter-autostart", { clear = true }),
+        pattern = { "*.md", "*.ipynb" },
+        callback = function()
+          local parser = vim.treesitter.get_parser(0)
+          if not parser then return end
+          local otter = require("otter")
+          vim.b.otter_parsers_attached = vim.b.otter_parsers_attached or {}
+          local line, column = vim.fn.line(".") - 1, vim.fn.col(".") - 1
+          local language = parser:language_for_range({ line, column, line, column + 1 }):lang()
+          if language == parser:lang() then return end
+          if language == "markdown_inline" then return end
+          if not vim.b.otter_parsers_attached[language] then
+            vim.b.otter_parsers_attached[language] = true
+            vim.schedule(function()
+              otter.activate({ language }, true, true)
+            end)
+          end
+        end,
+      })
+    end,
   },
 }

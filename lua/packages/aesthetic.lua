@@ -40,9 +40,7 @@ return {
               local status = require("sidekick.status").get()
               if status?.kind == "Error" then return "DiagnosticError" end
               if status?.busy then return "DiagnosticWarn" end
-              if status then
-                return "Special"
-              end
+              if status then return "Special" end
             end,
             cond = || -> require("sidekick.status").get() ~= nil,
           },

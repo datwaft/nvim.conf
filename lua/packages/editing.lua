@@ -7,7 +7,7 @@ return {
     "machakann/vim-sandwich",
     config = function()
       ---@param is_open boolean
-      function _G.latex_sandwich_bun(is_open)
+      _G.latex_sandwich_bun = function(is_open)
         if is_open then
           local name = vim.fn.input("LaTeX func: ")
           if name == "" then error("OperatorSandwichCancel") end
@@ -16,7 +16,6 @@ return {
           return "}"
         end
       end
-
       vim.api.nvim_create_autocmd("FileType", {
         pattern = { "tex", "plaintex", "latex", "markdown" },
         callback = function()
