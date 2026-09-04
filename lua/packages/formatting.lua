@@ -13,6 +13,7 @@ return {
         javascriptreact = { "biome-check", "prettierd", "prettier", stop_after_first = true },
         json = { "biome-check", "prettierd", "prettier", stop_after_first = true },
         jsonc = { "biome-check", "prettierd", "prettier", stop_after_first = true },
+        lua = { "luafmt" },
         typescript = { "biome-check", "prettierd", "prettier", stop_after_first = true },
         typescriptreact = { "biome-check", "prettierd", "prettier", stop_after_first = true },
         vue = { "biome-check", "prettierd", "prettier", stop_after_first = true },
