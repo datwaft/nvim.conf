@@ -35,6 +35,18 @@ return {
   { "j-hui/fidget.nvim", config = true },
   -- Inspect definitions
   { "DNLHC/glance.nvim", opts = { border = { enable = true } } },
+  -- Load Lua types lazily
+  {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    opts = {
+      library = {
+        "luvit-meta/library",
+        "lazy.nvim",
+      },
+    },
+    dependencies = { { "Bilal2453/luvit-meta", lazy = true } },
+  },
   -- Inspect types with // ^?
   {
     "marilari88/twoslash-queries.nvim",

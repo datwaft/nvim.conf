@@ -1,0 +1,6 @@
+{
+  "runtime.version": "LuaJIT",
+  "runtime.enableLuaJITExtensions": true,
+  "workspace.checkThirdParty": false,
+  "completion.autoRequire": false
+}

@@ -9,10 +9,11 @@ return {
     opts = {
       cmdline = { enabled = false },
       sources = {
-        default = { "lsp", "path", "snippets", "buffer", "dadbod" },
+        default = { "lsp", "path", "snippets", "buffer", "dadbod", "lazydev" },
         providers = {
           lsp = { async = true },
           dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
+          lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", fallbacks = { "lazy_dev" } },
           snippets = { should_show_items = |ctx| -> ctx.trigger.initial_kind ~= "trigger_character" },
           path = { opts = { get_cwd = || -> vim.fn.getcwd() } },
         },

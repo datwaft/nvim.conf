@@ -18,14 +18,12 @@ vim.o.tabstop = 2
 -- Wrapping
 vim.o.linebreak = true
 vim.o.breakindent = true
----@diagnostic disable-next-line: assign-type-mismatch
 vim.o.breakindentopt = { "shift:0" }
 vim.o.showbreak = "↳ "
 -- Folding
 vim.o.foldtext = ""
 vim.o.foldlevel = 99
 vim.o.foldcolumn = "1"
----@diagnostic disable-next-line: assign-type-mismatch
 vim.o.fillchars = {
   fold = " ",
   foldclose = "",
@@ -49,7 +47,6 @@ vim.o.scrolloff = 7
 vim.o.showmode = false
 -- Whitespace
 vim.o.list = true
----@diagnostic disable-next-line: assign-type-mismatch
 vim.o.listchars = {
   trail = "·",
   tab = "→ ",
@@ -57,9 +54,7 @@ vim.o.listchars = {
 }
 -- Spell-checking
 vim.o.spell = true
----@diagnostic disable-next-line: assign-type-mismatch
 vim.o.spelllang = { "programming", "en", "es", "cjk", "el" }
----@diagnostic disable-next-line: assign-type-mismatch
 vim.o.spellfile = {
   vim.fn.stdpath("config") .. "/spell/programming.utf-8.add",
   vim.fn.stdpath("config") .. "/spell/en.utf-8.add",
@@ -128,7 +123,6 @@ vim.api.nvim_create_autocmd("TermOpen", {
     -- Disable sign column
     vim.wo.signcolumn = "no"
     -- Disable colorcolumn
-    ---@diagnostic disable-next-line: assign-type-mismatch
     vim.wo.colorcolumn = {}
   end,
 })
@@ -300,7 +294,6 @@ _G.icons = {
     removed = "-",
   },
 }
----@diagnostic disable-next-line: assign-type-mismatch
 vim.o.winborder = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" }
 
 --------------
@@ -358,7 +351,7 @@ vim.lsp.enable({
   "jdtls",
   "jinja_lsp",
   "jsonls",
-  "emmylua_ls",
+  "lua_ls",
   "ruff",
   "rust_analyzer",
   "svelte",
@@ -381,6 +374,15 @@ vim.lsp.config("basedpyright", {
           callArgumentNames = false,
         },
       },
+    },
+  },
+})
+
+vim.lsp.config("lua_ls", {
+  settings = {
+    Lua = {
+      telemetry = { enable = false },
+      hint = { enable = true },
     },
   },
 })
