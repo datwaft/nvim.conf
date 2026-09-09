@@ -71,13 +71,12 @@ vim.o.grepprg = "rg --vimgrep --smart-case --hidden --glob='!.git/*'"
 vim.o.grepformat = "%f:%l:%c:%m"
 -- Find
 ---@param file_pattern string
-function _G.findfunc(file_pattern, _)
+vim.o.findfunc = function(file_pattern, _)
   -- if first character is '*' then fuzzy search
   if file_pattern:sub(1, 1) == "*" then file_pattern = file_pattern:gsub(".", ".*%0") .. ".*" end
   local cmd = 'fd  --color=never --full-path --type file --hidden --exclude=".git" "' .. file_pattern .. '"'
   return vim.fn.systemlist(cmd)
 end
-vim.o.findfunc = "v:lua.findfunc"
 -- Mouse
 vim.o.mousemodel = "extend"
 vim.o.mousescroll = "ver:2,hor:0"
