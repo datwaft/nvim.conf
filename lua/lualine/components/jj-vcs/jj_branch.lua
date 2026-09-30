@@ -143,12 +143,13 @@ function M.find_workspace(dir_path)
   const cached = workspace_cache[file_dir]
   if cached ~= nil then return cached ~= "" ? cached : nil end
   if workspace_tasks[file_dir] then return nil end
+  if vim.uv.fs_stat(file_dir)?.type ~= "directory" then return nil end
 
   workspace_tasks[file_dir] = async.run(
     ---@return nil
     function()
       const result = async.await(
-        3, vim.system, { "jj", "workspace", "root" }, { text = true }
+        3, vim.system, { "jj", "workspace", "root" }, { cwd = file_dir, text = true }
       ) --[[@as vim.SystemCompleted]]
       async.await(vim.schedule)
       const workspace = result.code == 0 ? vim.trim(result.stdout ?? "") : ""
