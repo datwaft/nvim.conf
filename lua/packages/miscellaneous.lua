@@ -5,7 +5,13 @@ return {
   -- Enhanced sorting
   { "sQVe/sort.nvim", config = true },
   -- Sync spell files
-  "micarmst/vim-spellsync",
+  {
+    "micarmst/vim-spellsync",
+    init = function()
+      -- Defer `SpellSync` until spelling activates.
+      vim.g.spellsync_run_at_startup = 0
+    end,
+  },
   -- Add programming dictionary
   {
     "sak96/vim-dirtytalk",

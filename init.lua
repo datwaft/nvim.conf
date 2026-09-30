@@ -52,16 +52,6 @@ vim.o.listchars = {
   tab = "→ ",
   nbsp = "·",
 }
--- Spell-checking
-vim.o.spell = true
-vim.o.spelllang = { "programming", "en", "es", "cjk", "el" }
-vim.o.spellfile = {
-  vim.fn.stdpath("config") .. "/spell/programming.utf-8.add",
-  vim.fn.stdpath("config") .. "/spell/en.utf-8.add",
-  vim.fn.stdpath("config") .. "/spell/es.utf-8.add",
-}
-vim.o.spelloptions = "camel"
-vim.o.spellcapcheck = ""
 -- Sign column
 vim.o.signcolumn = "yes:1"
 -- Insert-mode completion
@@ -130,39 +120,6 @@ vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
   group = vim.api.nvim_create_augroup("terminal-enter", { clear = true }),
   callback = function(args)
     if vim.bo[args.buf].buftype == "terminal" then vim.cmd.startinsert() end
-  end,
-})
--- Always disable 'spell' on some filetypes
-vim.api.nvim_create_autocmd("FileType", {
-  group = vim.api.nvim_create_augroup("disable-spell", { clear = true }),
-  pattern = {
-    "checkhealth",
-    "gitignore",
-    "help",
-    "qf",
-    "man",
-    "editorconfig",
-    "query",
-    "molten_output",
-    "jjdescription",
-    "codediff-explorer",
-  },
-  callback = function()
-    vim.wo.spell = false
-  end,
-})
--- Always enable 'spell' on some filetypes
-vim.api.nvim_create_autocmd("FileType", {
-  group = vim.api.nvim_create_augroup("enable-spell", { clear = true }),
-  pattern = {
-    "markdown",
-    "tex",
-    "quarto",
-  },
-  callback = function()
-    local win_id = vim.api.nvim_get_current_win()
-    local config = vim.api.nvim_win_get_config(win_id)
-    if config.relative == "" then vim.wo.spell = true end
   end,
 })
 -- Always enable 'conceallevel' on some filetypes
