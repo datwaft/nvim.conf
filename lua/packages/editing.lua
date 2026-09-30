@@ -93,6 +93,8 @@ return {
   -- Join and split
   {
     "Wansmer/treesj",
+    keys = { "<space>m", "<space>j", "<space>s" },
+    cmd = { "TSJToggle", "TSJJoin", "TSJSplit" },
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = true,
   },
