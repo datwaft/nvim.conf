@@ -186,6 +186,7 @@ ipc
 ipython
 iter
 javascript
+jax
 jj
 js
 jujutsu
@@ -289,6 +290,7 @@ timestep
 toolchains
 tracebacks
 treesitter
+ty
 typings
 ui
 undercurl
@@ -298,6 +300,7 @@ unicode
 unigram
 url
 urls
+uv
 uv_fs_t
 vcs
 venv
