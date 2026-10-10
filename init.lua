@@ -386,6 +386,14 @@ vim.lsp.config("taplo", {
   root_markers = { ".taplo.toml", "taplo.toml", ".git", "starship.toml" },
 })
 
+vim.lsp.config("ty", {
+  -- ty 0.0.84 gives multi-line semantic tokens wrong lengths in notebook cells, see
+  -- https://github.com/datwaft/notebook-lsp.nvim/issues/9
+  on_init = function(client)
+    client.server_capabilities.semanticTokensProvider = nil
+  end,
+})
+
 vim.lsp.config("bg3", {
   cmd = { "bg3-ls" },
   filetypes = { "bg3_stats", "bg3_lsx", "bg3_thoth", "bg3_osiris", "bg3_localization" },
