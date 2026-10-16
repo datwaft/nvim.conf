@@ -13,6 +13,7 @@ trailing_comma = "Multiline"
 trailing_table_separator = "Multiline"
 simple_lambda_single_line = "Never"
 end_of_line = "LF"
+quote_style = "Double"
 
 [spacing]
 space_before_lambda_func_paren = false
