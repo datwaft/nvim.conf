@@ -2,11 +2,8 @@
 return {
   -- TMUX integration
   {
-    "mrjones2014/smart-splits.nvim",
-    -- version = ">=1.0.0",
-    commit = "c697ea84309db323e4da82d29c1f23304e6910be", -- FIXME: remove once https://github.com/mrjones2014/smart-splits.nvim/issues/390 is solved
-    config = true,
-    lazy = false,
+    "smart-splits-nvim/smart-splits.nvim",
+    version = "^3.0.0",
     keys = function()
       const ss = require("smart-splits")
       return {
@@ -17,6 +14,12 @@ return {
         { "<C-w>l", ss.move_cursor_right },
       }
     end,
+    opts = {
+      mux = { backend = 'smart-splits-backend-tmux' },
+    },
+    dependencies = {
+      { 'smart-splits-nvim/backend-tmux', main = 'smart-splits-backend-tmux' },
+    },
   },
   -- Database
   {
