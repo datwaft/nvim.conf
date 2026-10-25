@@ -25,6 +25,7 @@ return {
       })
       -- Custom parsers
       vim.api.nvim_create_autocmd("User", {
+        group = vim.api.nvim_create_augroup("tree-sitter-custom-parsers", { clear = true }),
         pattern = "TSUpdate",
         callback = function()
           local parsers = require("nvim-treesitter.parsers")
@@ -56,6 +57,14 @@ return {
               queries = "tree-sitter-bg3-osiris/queries",
             },
           }
+          parsers.docstring = {
+            tier = 2,
+            install_info = {
+              url = "https://github.com/datwaft/tree-sitter-docstring",
+              revision = "main",
+              queries = "queries",
+            },
+          }
           parsers.ghactions = {
             tier = 1,
             install_info = {
@@ -85,9 +94,7 @@ return {
       })
     end,
   },
-  {
-    "bezhermoso/tree-sitter-ghostty",
-    build = "make nvim_install",
-  },
-  { "datwaft/tree-sitter-bg3", lazy = false },
+  { "bezhermoso/tree-sitter-ghostty", build = "make nvim_install" },
+  { "datwaft/tree-sitter-docstring" },
+  { "datwaft/tree-sitter-bg3",
 }
