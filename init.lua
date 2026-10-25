@@ -130,6 +130,16 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.wo.conceallevel = 2
   end,
 })
+-- Keep Markdown fences concealed when focusing LSP previews.
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("lsp-preview-conceal", { clear = true }),
+  pattern = "markdown",
+  callback = function(args)
+    for _, winid in ipairs(vim.fn.win_findbuf(args.buf)) do
+      if vim.w[winid].lsp_floating_bufnr then vim.wo[winid].concealcursor = "n" end
+    end
+  end,
+})
 
 -----------
 -- Keybinds

@@ -91,5 +91,17 @@ return {
     opts = { scope = { enabled = false } },
   },
   -- Rainbow delimiters
-  "HiPhish/rainbow-delimiters.nvim",
+  {
+    "HiPhish/rainbow-delimiters.nvim",
+    init = function()
+      vim.g.rainbow_delimiters = {
+        -- Avoid interfering with concealed-line sizing in LSP previews.
+        ---@param bufnr integer
+        ---@return boolean
+        condition = function(bufnr)
+          return vim.bo[bufnr].buftype ~= "nofile"
+        end,
+      }
+    end,
+  },
 }
