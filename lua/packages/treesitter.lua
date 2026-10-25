@@ -5,6 +5,11 @@ return {
     branch = "main",
     lazy = false,
     build = ":TSUpdate",
+    dependencies = {
+      { "bezhermoso/tree-sitter-ghostty", build = "make nvim_install" },
+      { "datwaft/tree-sitter-docstring" },
+      { "datwaft/tree-sitter-bg3" },
+    },
     init = function()
       vim.treesitter.language.register("bash", "sh")
       vim.treesitter.language.register("fennel", "fnl")
@@ -23,13 +28,18 @@ return {
           end
         end,
       })
+    end,
+    config = function()
       -- Custom parsers
       vim.api.nvim_create_autocmd("User", {
         group = vim.api.nvim_create_augroup("tree-sitter-custom-parsers", { clear = true }),
         pattern = "TSUpdate",
         callback = function()
           local parsers = require("nvim-treesitter.parsers")
+          -- Omit revision to follow main; upstream types require it despite runtime support.
+          ---@diagnostic disable: missing-fields
           parsers.bg3_stats = {
+            tier = 1,
             install_info = {
               url = "https://github.com/datwaft/tree-sitter-bg3",
               location = "tree-sitter-bg3-stats",
@@ -37,6 +47,7 @@ return {
             },
           }
           parsers.bg3_stats_value = {
+            tier = 1,
             install_info = {
               url = "https://github.com/datwaft/tree-sitter-bg3",
               location = "tree-sitter-bg3-stats-value",
@@ -44,6 +55,7 @@ return {
             },
           }
           parsers.bg3_thoth = {
+            tier = 1,
             install_info = {
               url = "https://github.com/datwaft/tree-sitter-bg3",
               location = "tree-sitter-bg3-thoth",
@@ -51,17 +63,25 @@ return {
             },
           }
           parsers.bg3_osiris = {
+            tier = 1,
             install_info = {
               url = "https://github.com/datwaft/tree-sitter-bg3",
               location = "tree-sitter-bg3-osiris",
               queries = "tree-sitter-bg3-osiris/queries",
             },
           }
+          parsers.ghostty = {
+            tier = 1,
+            install_info = {
+              url = "https://github.com/bezhermoso/tree-sitter-ghostty",
+              generate = true,
+              queries = "queries/ghostty",
+            },
+          }
           parsers.docstring = {
-            tier = 2,
+            tier = 1,
             install_info = {
               url = "https://github.com/datwaft/tree-sitter-docstring",
-              revision = "main",
               queries = "queries",
             },
           }
@@ -69,32 +89,27 @@ return {
             tier = 1,
             install_info = {
               url = "https://github.com/rmuir/tree-sitter-ghactions",
-              revision = "main",
               queries = "queries",
             },
           }
           parsers.tmux = {
+            tier = 1,
             install_info = {
               url = "https://github.com/Freed-Wu/tree-sitter-tmux",
-              branch = "main",
               queries = "queries",
             },
           }
           parsers.lua.install_info = {
             url = "https://github.com/datwaft/tree-sitter-lua",
-            revision = "main",
             queries = "queries",
           }
           parsers.comment.install_info = {
             url = "https://github.com/OXY2DEV/tree-sitter-comment",
-            revision = "main",
             queries = "queries",
           }
+          ---@diagnostic enable: missing-fields
         end,
       })
     end,
   },
-  { "bezhermoso/tree-sitter-ghostty", build = "make nvim_install" },
-  { "datwaft/tree-sitter-docstring" },
-  { "datwaft/tree-sitter-bg3" },
 }
