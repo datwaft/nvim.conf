@@ -96,5 +96,5 @@ return {
   },
   { "bezhermoso/tree-sitter-ghostty", build = "make nvim_install" },
   { "datwaft/tree-sitter-docstring" },
-  { "datwaft/tree-sitter-bg3",
+  { "datwaft/tree-sitter-bg3" },
 }
