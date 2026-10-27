@@ -1,7 +1,7 @@
 ---@type LazySpec
 return {
   -- Language-aware syntax highlighting for diffs
-  { url = "https://forge.barrettruth.com/barrettruth/diffs.nvim" },
+  "barrettruth/diffs.nvim",
   -- VSCode-like diff viewer
   {
     "esmuellert/codediff.nvim",
