@@ -3,7 +3,9 @@
 local function get_grammar_revision(name)
   local plugin = assert(require("lazy.core.config").plugins[name], "Unknown grammar plugin: " .. name)
   local info = assert(require("lazy.manage.git").info(plugin.dir), "Missing grammar checkout: " .. name)
-  return assert(info.commit, "Missing grammar commit: " .. name)
+  local revision = assert(info.commit, "Missing grammar commit: " .. name)
+  require("nvim-treesitter.log").trace("%s checkout revision: %s", name, revision)
+  return revision
 end
 
 ---@type LazySpec
@@ -141,7 +143,15 @@ return {
           end
           if syncing and args.match ~= "LazySync" then return end
           syncing = false
-          require("nvim-treesitter").update(nil, { summary = true })
+          -- Finish Lazy's callbacks before reading grammar revisions and starting builds.
+          vim.schedule(function()
+            require("nvim-treesitter.log").trace("Updating parsers after %s", args.match)
+            local task = require("nvim-treesitter").update(nil, { summary = true })
+            task:await(function(err, success)
+              if err then error(task:traceback(err), 0) end
+              assert(success, "Tree-sitter update failed; see :TSLog")
+            end)
+          end)
         end,
       })
     end,
