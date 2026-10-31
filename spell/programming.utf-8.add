@@ -9,6 +9,7 @@ APIs
 ARIMA
 AUC
 Ackley
+BETO
 BLEU
 Brewfile
 CIFAR
@@ -32,6 +33,7 @@ FFT
 GEMM
 GFS
 GMM
+GOAWAY
 HDBSCAN
 HDF5
 Himmelblau
@@ -51,9 +53,13 @@ MDP
 MNIST
 MPI
 MSE
+MTEB
 Mailosaur
 MultiNLI
+NLTK
 OLSR
+Punkt
+Qwen
 REPL
 RMSE
 RMSprop
@@ -65,6 +71,8 @@ SDKMAN
 SGD
 STG
 Smilei
+Smol
+SmolLM
 TERMINFO
 UMAP
 VAE
@@ -195,6 +203,7 @@ jujutsu
 jupyter
 jupytext
 jwt
+keepalive
 keybind
 keybinds
 kura
@@ -318,4 +327,3 @@ zod
 zoxide
 zsh
 ρ
-Punkt
