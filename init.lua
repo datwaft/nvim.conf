@@ -333,6 +333,16 @@ vim.lsp.enable({
   "yamlls",
 })
 
+vim.lsp.config("ty", {
+  settings = {
+    ty = {
+      inlayHints = {
+        callArgumentNames = false,
+      },
+    },
+  },
+})
+
 vim.lsp.config("basedpyright", {
   -- See https://docs.basedpyright.com/v1.28.1/configuration/language-server-settings/#based-settings
   settings = {
@@ -428,7 +438,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end, { buffer = bufnr }
     )
     -- Show signature help
-    vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, { buffer = bufnr })
+    vim.keymap.set("i", "<C-s>", function()
+      require("custom.signature_help").signature_help()
+    end, { buffer = bufnr, desc = "Show signature help" }
+    )
     -- Code actions
     vim.keymap.set({ "n", "x" }, "gra", [[<cmd>lua require("fastaction").code_action()<CR>]], { buffer = bufnr })
     -- Go to definition
