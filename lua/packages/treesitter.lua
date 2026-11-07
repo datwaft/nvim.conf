@@ -131,6 +131,44 @@ return {
         end,
       })
 
+      -- `:TSUninstall` skips languages nvim-treesitter no longer lists, so remove their files directly
+      vim.api.nvim_create_user_command("TSCleanup", function()
+        local ts_config = require("nvim-treesitter.config")
+        local log = require("nvim-treesitter.log")
+        local available = ts_config.get_available()
+        local entry_patterns = {
+          parser = "^(.+)%.so$",
+          ["parser-info"] = "^(.+)%.revision$",
+          queries = "^(.+)$",
+        }
+
+        local dropped = {} ---@type table<string, string[]>
+        for dir, pattern in pairs(entry_patterns) do
+          local install_dir = ts_config.get_install_dir(dir)
+          for name in vim.fs.dir(install_dir) do
+            local path = vim.fs.joinpath(install_dir, name)
+            local lang = assert(name:match(pattern), "Unexpected tree-sitter install entry: " .. path)
+            if not vim.list_contains(available, lang) then
+              dropped[lang] = dropped[lang] or {}
+              table.insert(dropped[lang], path)
+            end
+          end
+        end
+
+        local langs = vim.tbl_keys(dropped)
+        if #langs == 0 then
+          log.info("No dropped languages to clean up")
+          return
+        end
+        table.sort(langs)
+        for _, lang in ipairs(langs) do
+          for _, path in ipairs(dropped[lang]) do
+            vim.fs.rm(path, { recursive = true })
+          end
+        end
+        log.info("Removed dropped languages: %s", table.concat(langs, ", "))
+      end, { desc = "Remove installed tree-sitter languages that nvim-treesitter no longer supports" })
+
       -- Update parsers when updating plugins
       local syncing = false -- Support for `:Lazy sync`
       vim.api.nvim_create_autocmd("User", {
