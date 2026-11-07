@@ -21,10 +21,11 @@ local branch_pending = {}
 const file_changed = assert(vim.uv.new_fs_event())
 
 -- Ancestor bookmarks and `trunk()` supply the display anchor and distance baseline.
+-- The template prints `<anchors>|<distance>`, with anchors newest first.
 const closest_bookmark_revset = "heads(::@ & bookmarks()) | trunk()"
-const branch_revset = "(" .. closest_bookmark_revset .. ") | ((" .. closest_bookmark_revset .. ")..@)"
-const branch_template = 'if(self.contained_in("' .. closest_bookmark_revset
-  .. '"), "A" ++ coalesce(bookmarks.join(","), change_id.shortest(4)), "D") ++ "\\n"'
+const branch_template = 'revset("' .. closest_bookmark_revset .. '")'
+  .. '.map(|c| coalesce(c.bookmarks().join(","), c.change_id().shortest(4))).join(" ")'
+  .. ' ++ "|" ++ revset("(' .. closest_bookmark_revset .. ')..@").len()'
 
 --- Query the bookmark and distance in one asynchronous `jj log` call.
 ---@param workspace string
@@ -40,7 +41,7 @@ local function get_jj_head(workspace)
     "--color",
     "never",
     "-r",
-    branch_revset,
+    "@",
     "-T",
     branch_template,
   }, { text = true }
@@ -48,20 +49,13 @@ local function get_jj_head(workspace)
 
   if result.code ~= 0 then return "" end
 
-  local anchor = ""
-  local distance = 0
-  for line in (result.stdout ?? ""):gmatch("[^\n]+") do
-    if line == "D" then
-      distance = distance + 1
-    elseif line:sub(1, 1) == "A" then
-      if anchor == "" then anchor = vim.trim(line:sub(2)):match("^[^,]+") ?? "" end
-    else
-      error("Unexpected `jj` statusline output: " .. line)
-    end
-  end
+  const output = result.stdout ?? ""
+  const anchors, distance = output:match("^(.*)|(%d+)$")
+  if not anchors then error("Unexpected `jj` statusline output: " .. output) end
 
+  const anchor = anchors:match("^[^ ,]+") ?? ""
   if anchor == "" then return "" end
-  return distance > 0 ? anchor .. " ›" .. distance : anchor
+  return distance ~= "0" ? anchor .. " ›" .. distance : anchor
 end
 
 --- Keep one refresh in flight, with one follow-up for changes during the query.
