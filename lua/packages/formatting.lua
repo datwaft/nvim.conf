@@ -73,9 +73,6 @@ return {
       formatters = {
         ["biome-check"] = { require_cwd = true },
         xmlformat = { prepend_args = { "--selfclose" } },
-        prettierd = {
-          condition = |_, context| -> vim.fn.fnamemodify(context.filename, ":e") ~= "ipynb",
-        },
       },
       format_on_save = function(bufnr)
         if require("notebook_lsp").is_notebook(bufnr) then

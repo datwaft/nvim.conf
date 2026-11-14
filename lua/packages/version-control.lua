@@ -9,8 +9,6 @@ return {
       ---@param bufnr number
       on_attach = function(bufnr)
         const gs = require("gitsigns")
-        -- Do not attach for .ipynb files, since these are converted with jupytext.nvim
-        if vim.api.nvim_buf_get_name(bufnr):match("%.ipynb$") then return false end
         vim.keymap.set("n", "]c", function()
           if vim.wo.diff then
             vim.cmd.normal({ "]c", bang = true })

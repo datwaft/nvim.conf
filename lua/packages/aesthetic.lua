@@ -3,7 +3,7 @@ return {
   -- Statusline
   {
     "nvim-lualine/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = { { "nvim-tree/nvim-web-devicons", config = true } },
     opts = {
       options = {
         theme = "rose-pine",
@@ -13,11 +13,7 @@ return {
             "qf",
             "neo-tree",
             "aerial",
-            "Avante",
-            "AvanteInput",
-            "AvanteSelectedFiles",
             "sidekick_terminal",
-            "REPL",
           },
         },
       },

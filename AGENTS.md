@@ -24,7 +24,7 @@
 
 ## Architecture
 - **Package manager**: lazy.nvim with version pinning (check `lazy-lock.json` before updates)
-- **Modular structure**: Add features to the appropriate `lua/packages/*.lua` module (aesthetic, completion, debugging, etc.)
+- **Modular structure**: Add features to the appropriate `lua/packages/*.lua` module (aesthetic, completion, version-control, etc.)
 - **Custom queries**: TreeSitter overrides in `after/queries/{lang}/`
 - **Filetype configs**: Language-specific settings in `after/ftplugin/{lang}.lua`
 - **Compiler definitions**: `compiler/biome.lua` and `compiler/actionlint.lua` show the required `vim.fn.exists("current_compiler")` guard and format for new compilers.
