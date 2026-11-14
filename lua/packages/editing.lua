@@ -98,4 +98,6 @@ return {
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = true,
   },
+  -- Enhanced sorting
+  { "sQVe/sort.nvim", config = true },
 }

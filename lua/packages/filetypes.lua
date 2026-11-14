@@ -14,6 +14,9 @@ return {
   "Glench/Vim-Jinja2-Syntax",
   -- Caddy
   "isobit/vim-caddyfile",
-  -- Stack traces
-  { "relf108/nvim-unstack", version = "*", config = true },
+  -- Validate Ghostty configuration on save
+  {
+    "isak102/ghostty.nvim",
+    config = true,
+  },
 }

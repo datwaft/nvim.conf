@@ -27,4 +27,6 @@ return {
       { mode = { "n" }, "<S-Right>", "<cmd>Treewalker Right<cr>" },
     },
   },
+  -- Better parentheses match
+  "andymass/vim-matchup",
 }

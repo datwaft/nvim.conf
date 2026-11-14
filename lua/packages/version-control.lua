@@ -1,5 +1,6 @@
 ---@type LazySpec
 return {
+  -- Git signs and hunk operations
   {
     "lewis6991/gitsigns.nvim",
     opts = {
@@ -34,6 +35,22 @@ return {
         vim.keymap.set("n", "<leader>tb", gs.toggle_current_line_blame, { buffer = bufnr })
         vim.keymap.set({ "o", "x" }, "ih", ":<C-u>Gitsigns select_hunk<CR>", { silent = true, buffer = bufnr })
       end,
+    },
+  },
+  -- Language-aware syntax highlighting for diffs
+  "barrettruth/diffs.nvim",
+  -- VSCode-like diff viewer
+  {
+    "esmuellert/codediff.nvim",
+    dependencies = { "MunifTanjim/nui.nvim" },
+    cmd = "CodeDiff",
+    opts = {
+      keymaps = {
+        view = {
+          focus_explorer = "<C-n>",
+          toggle_explorer = "<C-w>f",
+        },
+      },
     },
   },
 }
