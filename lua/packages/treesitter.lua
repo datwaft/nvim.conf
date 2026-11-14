@@ -37,7 +37,7 @@ return {
           end
           if vim.treesitter.query.get(lang, "folds") then
             vim.wo.foldmethod = "expr"
-            vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+            vim.wo.foldexpr = vim.treesitter.foldexpr
           end
         end,
       })
