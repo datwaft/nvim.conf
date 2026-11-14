@@ -13,7 +13,6 @@ return {
             "qf",
             "neo-tree",
             "aerial",
-            "sidekick_terminal",
           },
         },
       },
@@ -30,16 +29,6 @@ return {
         },
         lualine_c = { "filename" },
         lualine_x = {
-          {
-            || -> " ",
-            color = function()
-              local status = require("sidekick.status").get()
-              if status?.kind == "Error" then return "DiagnosticError" end
-              if status?.busy then return "DiagnosticWarn" end
-              if status then return "Special" end
-            end,
-            cond = || -> require("sidekick.status").get() ~= nil,
-          },
           "encoding",
           {
             "fileformat",

@@ -37,16 +37,6 @@ return {
           "snippet_backward",
           "fallback",
         },
-        ["<M-l>"] = {
-          || -> require("sidekick").nes_jump_or_apply(),
-          || -> vim.lsp.inline_completion.get(),
-          "fallback",
-        },
-        ["<M-Right>"] = {
-          || -> require("sidekick").nes_jump_or_apply(),
-          || -> vim.lsp.inline_completion.get(),
-          "fallback",
-        },
       },
       completion = {
         keyword = { range = "full" },
