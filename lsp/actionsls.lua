@@ -94,7 +94,7 @@ local function get_repos_config()
       owner = owner,
       name = name,
       organizationOwned = info?.organizationOwned ?? false,
-      workspaceUri = vim.uri_from_fname(git_root),
+      workspaceUri = vim.uri.from_fname(git_root),
     },
   }
 end
@@ -112,7 +112,7 @@ return {
   handlers = {
     ["actions/readFile"] = function(_, result)
       if type(result.path) ~= "string" then return nil, nil end
-      local file_path = vim.uri_to_fname(result.path)
+      local file_path = vim.uri.to_fname(result.path)
       if vim.fn.filereadable(file_path) == 1 then
         local fd = assert(vim.uv.fs_open(file_path, "r", 438))
         local stat = assert(vim.uv.fs_fstat(fd))

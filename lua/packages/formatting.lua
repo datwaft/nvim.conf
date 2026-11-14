@@ -19,7 +19,7 @@ local function apply_code_action(bufnr, server, kind)
 
   ---@type lsp.CodeAction[]? and commands, which have no kind
   local offered = request("textDocument/codeAction", {
-    textDocument = { uri = vim.uri_from_bufnr(bufnr) },
+    textDocument = { uri = vim.uri.from_buf(bufnr) },
     range = {
       ["start"] = { line = 0, character = 0 },
       ["end"] = { line = vim.api.nvim_buf_line_count(bufnr), character = 0 },
