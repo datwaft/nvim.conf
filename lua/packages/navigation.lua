@@ -134,6 +134,4 @@ return {
       },
     },
   },
-  -- Stack traces
-  { "relf108/nvim-unstack", version = "*", config = true },
 }

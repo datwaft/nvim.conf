@@ -22,6 +22,4 @@ return {
       }
     end,
   },
-  -- Browser preview for Markdown, HTML, AsciiDoc and SVG
-  "brianhuster/live-preview.nvim",
 }
