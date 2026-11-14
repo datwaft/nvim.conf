@@ -17,7 +17,6 @@ return {
   },
   {
     "aaronik/treewalker.nvim",
-    cond = || -> not vim.g.vscode,
     opts = {
       highlight = true,
     },

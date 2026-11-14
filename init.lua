@@ -4,7 +4,7 @@
 -- Enable experimental bytecode cache
 vim.loader.enable()
 -- Enable experimental command line
-if not vim.g.vscode then require("vim._core.ui2").enable({}) end
+require("vim._core.ui2").enable({})
 -- Set <leader> to '\'
 vim.g.mapleader = [[\]]
 -- Set <localleader> to <SPACE>
@@ -571,9 +571,7 @@ install_package("folke/lazy.nvim")
 
 require("lazy").setup({
   spec = {
-    { import = "packages", cond = || -> not vim.g.vscode },
-    { import = "packages.editing", cond = || -> vim.g.vscode },
-    { import = "packages.movement", cond = || -> vim.g.vscode },
+    { import = "packages" },
   },
   install = { colorscheme = { "rose-pine" } },
   change_detection = { notify = false },
