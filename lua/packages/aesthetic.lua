@@ -24,7 +24,14 @@ return {
             "branch",
             cond = || -> not require("lualine.components.jj-vcs.jj_branch").is_jj_workspace(),
           },
-          { "diff", symbols = icons.git },
+          {
+            "diff",
+            symbols = icons.git,
+            source = function()
+              const summary = vim.b.minidiff_summary
+              return summary ? { added = summary.add, modified = summary.change, removed = summary.delete } : nil
+            end,
+          },
           { "diagnostics", symbols = icons.diagnostic },
         },
         lualine_c = { "filename" },
