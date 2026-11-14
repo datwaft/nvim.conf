@@ -88,9 +88,4 @@ return {
       vim.o.formatexpr = [[v:lua.require("conform").formatexpr()]]
     end,
   },
-  {
-    "zapling/mason-conform.nvim",
-    dependencies = { "stevearc/conform.nvim", "williamboman/mason.nvim" },
-    config = true,
-  },
 }
