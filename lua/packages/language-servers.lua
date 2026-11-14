@@ -40,12 +40,8 @@ return {
     "folke/lazydev.nvim",
     ft = "lua",
     opts = {
-      library = {
-        "luvit-meta/library",
-        "lazy.nvim",
-      },
+      library = { "lazy.nvim" },
     },
-    dependencies = { { "Bilal2453/luvit-meta", lazy = true } },
   },
   -- Inspect types with // ^?
   {
