@@ -101,7 +101,6 @@ return {
     opts = {
       mux = {
         backend = {
-          "smart-splits-backend-tmux",
           {
             name = "rex",
             protocol_version = "^3.0.0",
@@ -133,9 +132,6 @@ return {
           },
         },
       },
-    },
-    dependencies = {
-      { "smart-splits-nvim/backend-tmux", main = "smart-splits-backend-tmux" },
     },
   },
   -- Stack traces
