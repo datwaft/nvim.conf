@@ -533,6 +533,7 @@ vim.filetype.add({ pattern = { ["%.env%..*"] = "sh" } })
 vim.filetype.add({ extension = { ["add"] = "conf" } })
 vim.filetype.add({ pattern = { ["%.default%-%w+%-packages"] = "conf" } })
 vim.filetype.add({ extension = { ["jinja"] = "jinja", ["jinja2"] = "jinja", ["j2"] = "jinja" } })
+vim.filetype.add({ filename = { ["Caddyfile"] = "caddy" } })
 vim.filetype.add({ pattern = { [".*/%.github/workflows/.*%.ya?ml"] = "yaml.ghactions" } })
 vim.filetype.add({ pattern = { [".*/%.github/actions/.*/action%.ya?ml"] = "yaml.ghactions" } })
 
