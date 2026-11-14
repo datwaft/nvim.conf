@@ -60,9 +60,14 @@ return {
   { "folke/neoconf.nvim", config = true },
   -- Support LSP file operations
   {
-    "igorlfs/nvim-lsp-file-operations",
+    "antosha417/nvim-lsp-file-operations",
     dependencies = { "nvim-lua/plenary.nvim", "nvim-neo-tree/neo-tree.nvim" },
-    config = true,
+    config = function()
+      const lsp_file_operations = require("lsp-file-operations")
+      lsp_file_operations.setup()
+      -- Tell servers that the client supports file operations
+      vim.lsp.config("*", { capabilities = lsp_file_operations.default_capabilities() })
+    end,
   },
   -- Open 'textDocument/documentLink' with gx
   {
