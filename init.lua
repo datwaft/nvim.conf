@@ -72,6 +72,7 @@ vim.o.mousemodel = "extend"
 vim.o.mousescroll = "ver:2,hor:0"
 vim.keymap.set({ "n", "v", "o", "c", "i" }, { "<MiddleMouse>", "<MiddleDrag>", "<MiddleRelease>" }, "<Nop>")
 -- Link identification
+---@diagnostic disable-next-line: param-type-mismatch using lists in `:append` is supported
 vim.opt.isfname:append({ "*", "[", "]" })
 
 ---------------
@@ -417,7 +418,7 @@ vim.lsp.config("bg3", {
   filetypes = { "bg3_stats", "bg3_lsx", "bg3_thoth", "bg3_osiris", "bg3_localization" },
   workspace_required = true,
   root_dir = function(_, on_dir)
-    on_dir(vim.fs.root(vim.uv.cwd(), "bg3-ls.json"))
+    on_dir(vim.fs.root(assert(vim.uv.cwd()), "bg3-ls.json"))
   end,
 })
 
