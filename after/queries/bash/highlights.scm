@@ -2,4 +2,4 @@
 
 ; #SBATCH --some-arg
 ((comment) @nospell
-  (#match? @nospell "^#\s*SBATCH"))
+  (#match? @nospell "^#\\s*SBATCH"))
