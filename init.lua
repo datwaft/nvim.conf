@@ -330,6 +330,7 @@ vim.lsp.enable({
   "vimls",
   "vtsls",
   "yamlls",
+  "zls",
 })
 
 vim.lsp.config("ty", {
