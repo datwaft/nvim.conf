@@ -17,18 +17,22 @@ local function get_token()
 end
 
 --- Parses a GitHub remote URL to extract the owner and repository name.
----@param url string
+---@param url string | nil
 ---@return string | nil, string | nil
 local function parse_remote(url)
   if not url or url == "" then return nil end
 
-  -- SSH format: "git@github.com:owner/repo.git"
-  local owner, repo = url:match("git@github%.com:([^/]+)/([^/%.]+)")
-  if owner and repo then return owner, repo:gsub("%.git$", "") end
-
-  -- HTTPS format: "https://github.com/owner/repo.git"
-  owner, repo = url:match("github%.com/([^/]+)/([^/%.]+)")
-  if owner and repo then return owner, repo:gsub("%.git$", "") end
+  local owner, repo = url:match("^git@github%.com:([^/]+)/([^/%s]+)$")
+  if not owner then
+    local uri = vim.uri.parse(url)
+    if uri and uri.host == "github.com" then
+      owner, repo = uri.path:gsub("/+$", ""):match("^/([^/]+)/([^/%s]+)$")
+    end
+  end
+  if owner and repo then
+    repo = repo:gsub("%.git$", "")
+    if repo ~= "" then return owner, repo end
+  end
 
   return nil
 end
@@ -72,14 +76,17 @@ local function get_repo_info(owner, repo)
 end
 
 --- Obtains repository configuration for the actions language server.
+---@param root_dir string | nil
 ---@return table | nil
-local function get_repos_config()
-  local response = vim.system({ "git", "rev-parse", "--show-toplevel" }, { text = true }):wait()
+local function get_repos_config(root_dir)
+  if not root_dir or root_dir == "" then return nil end
+  local sys_opts = { cwd = root_dir, text = true }
+  local response = vim.system({ "git", "rev-parse", "--show-toplevel" }, sys_opts):wait()
   if response.code ~= 0 then return nil end
   local git_root = vim.trim(response.stdout)
   if git_root == "" then return nil end
 
-  response = vim.system({ "git", "remote", "get-url", "origin" }, { text = true }):wait()
+  response = vim.system({ "git", "remote", "get-url", "origin" }, sys_opts):wait()
   if response.code ~= 0 then return nil end
   local remote_url = vim.trim(response.stdout)
 
@@ -103,24 +110,31 @@ return {
   cmd = { "actions-languageserver", "--stdio" },
   filetypes = { "yaml.ghactions" },
   root_markers = { ".git" },
-  before_init = function(params)
+  before_init = function(params, config)
     params.initializationOptions = {
       sessionToken = get_token(),
-      repos = get_repos_config(),
+      repos = get_repos_config(config.root_dir),
     }
   end,
   handlers = {
-    ["actions/readFile"] = function(_, result)
-      if type(result.path) ~= "string" then return nil, nil end
-      local file_path = vim.uri.to_fname(result.path)
-      if vim.fn.filereadable(file_path) == 1 then
-        local fd = assert(vim.uv.fs_open(file_path, "r", 438))
-        local stat = assert(vim.uv.fs_fstat(fd))
-        local text = assert(vim.uv.fs_read(fd, stat.size, 0))
-        vim.uv.fs_close(fd)
-        return text, nil
+    ["actions/readFile"] = function(_, result, ctx)
+      if type(result) ~= "table" or type(result.path) ~= "string" then
+        return nil, vim.lsp.rpc_response_error(vim.lsp.protocol.ErrorCodes.InvalidParams, "Invalid path")
       end
-      return nil, nil
+      if vim.uri.parse(result.path)?.scheme ~= "file" then return vim.NIL, nil end
+
+      local client = vim.lsp.get_client_by_id(ctx.client_id)
+      local root = client?.root_dir and vim.uv.fs_realpath(client.root_dir)
+      local file_path = vim.uv.fs_realpath(vim.uri.to_fname(result.path))
+      if not root or not file_path or not vim.startswith(file_path, root .. "/") then return vim.NIL, nil end
+      if vim.uv.fs_stat(file_path)?.type ~= "file" then return vim.NIL, nil end
+
+      local fd = assert(vim.uv.fs_open(file_path, "r", 438))
+      local stat, err = vim.uv.fs_fstat(fd)
+      local text ---@type string?
+      if stat then text, err = vim.uv.fs_read(fd, stat.size, 0) end
+      vim.uv.fs_close(fd)
+      return assert(text, err), nil
     end,
   },
   init_options = {},
