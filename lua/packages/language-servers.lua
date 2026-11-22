@@ -68,7 +68,10 @@ return {
       ---@param _      lsp.InitializeParams
       ---@param config vim.lsp.ClientConfig
       local function load_local_settings(_, config)
-        codesettings.with_local_settings(config.name, config)
+        local folder_uri = config.workspace_folders?.[1]?.uri
+        local root_dir = config.root_dir or (folder_uri and vim.uri.to_fname(folder_uri))
+        if not root_dir then return end
+        codesettings.with_local_settings(config.name, config, { root_dir = root_dir })
       end
 
       -- Chain servers with their own `before_init` so they don't shadow `"*"`.
