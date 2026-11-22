@@ -23,17 +23,23 @@ local spell_disabled_filetypes = {
   "codediff-explorer",
 }
 
----@param win_id integer
----@param buf_id? integer Buffer captured by a scheduled FileType callback.
-local function enable_spell(win_id, buf_id)
+local spell_active = false
+
+---@param win_id  integer
+---@param buf_id? integer Buffer captured by a scheduled callback.
+local function update_spell(win_id, buf_id)
   if not vim.api.nvim_win_is_valid(win_id) then return end
   local current_buf = vim.api.nvim_win_get_buf(win_id)
   if buf_id and current_buf ~= buf_id then return end
-  if vim.api.nvim_win_get_config(win_id).relative ~= "" then return end
-  if vim.bo[current_buf].buftype == "terminal" then return end
-  if vim.list_contains(spell_disabled_filetypes, vim.bo[current_buf].filetype) then return end
+  local disabled = vim.api.nvim_win_get_config(win_id).relative ~= ""
+    or vim.bo[current_buf].buftype ~= ""
+    or vim.list_contains(spell_disabled_filetypes, vim.bo[current_buf].filetype)
 
-  vim.wo[win_id].spell = true
+  if disabled then
+    vim.wo[win_id][0].spell = false
+  elseif spell_active then
+    vim.wo[win_id][0].spell = true
+  end
 end
 
 local function sync_spell_files()
@@ -47,30 +53,35 @@ end
 
 local function activate_spell()
   sync_spell_files()
-  vim.go.spell = true
+  spell_active = true
   for _, win_id in ipairs(vim.api.nvim_list_wins()) do
-    enable_spell(win_id)
+    update_spell(win_id)
   end
 end
 
 local spell_group = vim.api.nvim_create_augroup("spell", { clear = true })
 
-vim.api.nvim_create_autocmd("FileType", {
+vim.api.nvim_create_autocmd({ "BufWinEnter", "TermOpen" }, {
   group = spell_group,
-  pattern = spell_disabled_filetypes,
-  callback = function()
-    vim.wo.spell = false
-  end,
-})
-vim.api.nvim_create_autocmd("FileType", {
-  group = spell_group,
-  pattern = { "markdown", "tex", "quarto" },
   callback = function(args)
-    local win_id = vim.api.nvim_get_current_win()
-    vim.schedule(function() enable_spell(win_id, args.buf) end)
+    local win_id = args.win or vim.api.nvim_get_current_win()
+    vim.schedule(function()
+      update_spell(win_id, args.buf)
+    end)
   end,
 })
--- Load dictionaries after startup without overriding window-specific exclusions.
+vim.api.nvim_create_autocmd("FileType", {
+  group = spell_group,
+  callback = function(args)
+    vim.schedule(function()
+      if not vim.api.nvim_buf_is_valid(args.buf) then return end
+      for _, win_id in ipairs(vim.fn.win_findbuf(args.buf)) do
+        update_spell(win_id, args.buf)
+      end
+    end)
+  end,
+})
+-- Load dictionaries after startup without enabling `spell` globally.
 vim.api.nvim_create_autocmd("User", {
   group = spell_group,
   pattern = "VeryLazy",
