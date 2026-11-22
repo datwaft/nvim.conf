@@ -94,12 +94,17 @@ vim.opt.isfname:append({ "*", "[", "]" })
 ---------------
 -- Autocommands
 ---------------
--- Open quickfix window when populated
+-- Open quickfix or location-list window when populated
 vim.api.nvim_create_autocmd("QuickFixCmdPost", {
   group = vim.api.nvim_create_augroup("open-quickfix-when-populated", { clear = true }),
-  callback = function()
+  callback = function(args)
+    local is_loclist = args.match:sub(1, 1) == "l"
     vim.defer_fn(function()
-      vim.cmd("botright cwindow")
+      if not is_loclist then
+        vim.cmd("botright cwindow")
+      elseif vim.fn.getloclist(0, { id = 0 }).id > 0 then
+        vim.cmd("botright lwindow")
+      end
     end, 10)
   end,
 })
