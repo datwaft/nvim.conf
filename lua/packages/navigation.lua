@@ -16,7 +16,7 @@ return {
   -- Fuzzy-finding
   {
     "ibhagwan/fzf-lua",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = { "nvim-mini/mini.icons" },
     keys = {
       { [[<C-\>]], "<cmd>lua require('fzf-lua').buffers()<cr>" },
       { [[<F1>]], "<cmd>lua require('fzf-lua').helptags()<cr>" },
@@ -33,7 +33,7 @@ return {
   -- File manipulation
   {
     "stevearc/oil.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = { "nvim-mini/mini.icons" },
     config = true,
   },
   -- Sidebar
@@ -42,7 +42,7 @@ return {
     branch = "v3.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
+      "nvim-mini/mini.icons",
       "MunifTanjim/nui.nvim",
     },
     opts = {
@@ -63,7 +63,7 @@ return {
     "stevearc/aerial.nvim",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons",
+      "nvim-mini/mini.icons",
     },
     config = true,
     init = function()

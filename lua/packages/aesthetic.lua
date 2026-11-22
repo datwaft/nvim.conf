@@ -1,9 +1,21 @@
 ---@type LazySpec
 return {
+  -- Icons
+  {
+    "nvim-mini/mini.icons",
+    lazy = true,
+    opts = {},
+    init = function()
+      package.preload["nvim-web-devicons"] = function()
+        require("mini.icons").mock_nvim_web_devicons()
+        return package.loaded["nvim-web-devicons"]
+      end
+    end,
+  },
   -- Statusline
   {
     "nvim-lualine/lualine.nvim",
-    dependencies = { { "nvim-tree/nvim-web-devicons", config = true } },
+    dependencies = { "nvim-mini/mini.icons" },
     opts = {
       options = {
         theme = "rose-pine",

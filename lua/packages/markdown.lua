@@ -8,7 +8,7 @@ return {
       const presets = require("markview.presets")
       return {
         preview = {
-          icon_provider = "devicons",
+          icon_provider = "mini",
         },
         markdown = {
           headings = vim.tbl_deep_extend("force", presets.headings.glow, {
