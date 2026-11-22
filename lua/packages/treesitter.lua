@@ -137,22 +137,23 @@ return {
         local ts_config = require("nvim-treesitter.config")
         local log = require("nvim-treesitter.log")
         local available = ts_config.get_available()
-        local entry_patterns = {
-          parser = "^(.+)%.so$",
-          ["parser-info"] = "^(.+)%.revision$",
-          queries = "^(.+)$",
-        }
-
         local dropped = {} ---@type table<string, string[]>
-        for dir, pattern in pairs(entry_patterns) do
-          local install_dir = ts_config.get_install_dir(dir)
-          for name in vim.fs.dir(install_dir) do
-            local path = vim.fs.joinpath(install_dir, name)
-            local lang = assert(name:match(pattern), "Unexpected tree-sitter install entry: " .. path)
-            if not vim.list_contains(available, lang) then
-              dropped[lang] = dropped[lang] or {}
-              table.insert(dropped[lang], path)
-            end
+
+        -- Only remove languages tracked by nvim-treesitter via `parser-info/*.revision`.
+        local info_dir = ts_config.get_install_dir("parser-info")
+        local parser_dir = ts_config.get_install_dir("parser")
+        local queries_dir = ts_config.get_install_dir("queries")
+        for name in vim.fs.dir(info_dir) do
+          local lang = name:match("^([%w_%-]+)%.revision$")
+          if lang and not vim.list_contains(available, lang) then
+            local paths = {} ---@type string[]
+            local parser = vim.fs.joinpath(parser_dir, lang .. ".so")
+            if vim.uv.fs_lstat(parser) then table.insert(paths, parser) end
+            local queries = vim.fs.joinpath(queries_dir, lang)
+            if vim.uv.fs_lstat(queries) then table.insert(paths, queries) end
+            -- Remove the revision marker last so failed deletions remain retryable.
+            table.insert(paths, vim.fs.joinpath(info_dir, name))
+            dropped[lang] = paths
           end
         end
 
