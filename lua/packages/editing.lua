@@ -4,41 +4,25 @@ return {
   { "folke/ts-comments.nvim", event = "VeryLazy", config = true },
   -- Surround operations
   {
-    "machakann/vim-sandwich",
-    config = function()
-      ---@param is_open boolean
-      _G.latex_sandwich_bun = function(is_open)
-        if is_open then
-          local name = vim.fn.input("LaTeX func: ")
-          if name == "" then error("OperatorSandwichCancel") end
-          return "\\" .. name .. "{"
-        else
-          return "}"
-        end
-      end
+    "nvim-mini/mini.surround",
+    opts = {},
+    init = function()
       vim.api.nvim_create_autocmd("FileType", {
+        group = vim.api.nvim_create_augroup("mini-surround-latex", { clear = true }),
         pattern = { "tex", "plaintex", "latex", "markdown" },
         callback = function()
-          vim.fn["sandwich#util#addlocal"]({
-            {
-              buns = {
-                "v:lua.latex_sandwich_bun(v:true)",
-                "v:lua.latex_sandwich_bun(v:false)",
+          vim.b.minisurround_config = {
+            custom_surroundings = {
+              f = {
+                input = { "\\[%a_][%w_]*%b{}", "^\\[%a_][%w_]*{().*()}$" },
+                output = function()
+                  local name = MiniSurround.user_input("LaTeX func")
+                  if not name or name == "" then return nil end
+                  return { left = "\\" .. name .. "{", right = "}" }
+                end,
               },
-              expr = 1,
-              input = { "f" },
-              kind = { "add", "replace" },
-              nesting = 1,
-              match_syntax = 1,
             },
-            {
-              buns = { [[\\\h\k*{]], [[}]] },
-              regex = 1,
-              input = { "f" },
-              kind = { "delete", "replace", "textobj", "query" },
-              nesting = 1,
-            },
-          })
+          }
         end,
       })
     end,

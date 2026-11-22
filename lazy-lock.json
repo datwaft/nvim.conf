@@ -25,6 +25,7 @@
   "mini.align": { "branch": "main", "commit": "b66a8300762ba0ec34236c995f6d45031f9d089c" },
   "mini.diff": { "branch": "main", "commit": "f527407247245d121ca65d539d7a8a3686938915" },
   "mini.icons": { "branch": "main", "commit": "5d58117d176c133f4cb5585ec8cb3450881c89a0" },
+  "mini.surround": { "branch": "main", "commit": "77f376bdebb3440ad13bc40b48062b29bccb7577" },
   "minidiff-jj.nvim": { "branch": "main", "commit": "1939af6f2f08ec67c4c46e04199dda6d1e2752d3" },
   "namu.nvim": { "branch": "main", "commit": "041e205395026ce212a2bb029fcca064a3343aa0" },
   "neo-tree.nvim": { "branch": "v3.x", "commit": "1a14083046d96e88e361d1da00761c40d45012f3" },
@@ -67,6 +68,5 @@
   "vim-dirtytalk": { "branch": "master", "commit": "4227b58c4151b7551a5d2185a511d516ad0f782b" },
   "vim-dotenv": { "branch": "master", "commit": "5c51cfcf8d87280d6414e03cd6b253eb70ecb800" },
   "vim-matchup": { "branch": "master", "commit": "0106b1afd4a2f7e1098037b5ceb161bab7471088" },
-  "vim-sandwich": { "branch": "master", "commit": "74cf93d58ccc567d8e2310a69860f1b93af19403" },
   "vim-slime": { "branch": "main", "commit": "375999b91aa9bd227350140d4aedc6d2ff8554ac" }
 }
