@@ -96,7 +96,7 @@ return {
       end,
     },
     init = function()
-      vim.o.formatexpr = [[v:lua.require("conform").formatexpr()]]
+      vim.o.formatexpr = || -> require("conform").formatexpr()
     end,
   },
 }

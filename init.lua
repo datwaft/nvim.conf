@@ -85,7 +85,7 @@ vim.o.findfunc = function(file_pattern, _)
 end
 -- Mouse
 vim.o.mousemodel = "extend"
-vim.o.mousescroll = "ver:2,hor:0"
+vim.o.mousescroll = { ver = 2, hor = 0 }
 vim.keymap.set({ "n", "v", "o", "c", "i" }, { "<MiddleMouse>", "<MiddleDrag>", "<MiddleRelease>" }, "<Nop>")
 -- Link identification
 ---@diagnostic disable-next-line: param-type-mismatch using lists in `:append` is supported
@@ -127,8 +127,6 @@ vim.api.nvim_create_autocmd("TermOpen", {
     -- Disable line numbers
     vim.wo.number = false
     vim.wo.relativenumber = false
-    -- Disable spell checking
-    vim.wo.spell = false
     -- Disable sign column
     vim.wo.signcolumn = "no"
     -- Disable colorcolumn
@@ -156,7 +154,7 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = "markdown",
   callback = function(args)
     for _, winid in ipairs(vim.fn.win_findbuf(args.buf)) do
-      if vim.w[winid].lsp_floating_bufnr then vim.wo[winid].concealcursor = "n" end
+      if vim.w[winid].lsp_floating_bufnr then vim.wo[winid][0].concealcursor = "n" end
     end
   end,
 })
@@ -165,7 +163,8 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   group = vim.api.nvim_create_augroup("mkdir-on-save", { clear = true }),
   callback = function(args)
     if args.match == "" or vim.uri.parse(args.match) then return end
-    vim.fn.mkdir(vim.fn.fnamemodify(args.match, ":p:h"), "p")
+    local path = vim.fs.normalize(vim.fs.abspath(args.match, { plain = true }), { plain = true })
+    vim.fs.mkdir(vim.fs.dirname(path), { parents = true })
   end,
 })
 
@@ -187,8 +186,7 @@ vim.keymap.set("n", "<C-t>n", "<CMD>tabnew<CR>")
 vim.keymap.set("n", "<C-t>s", "<CMD>tabs<CR>")
 vim.keymap.set("n", "<C-t>[", "<CMD>tabnext<CR>")
 vim.keymap.set("n", "<C-t>]", "<CMD>tabprevious<CR>")
-vim.keymap.set("n", "<C-t>w", "<CMD>tabclose<CR>")
-vim.keymap.set("n", "<C-t>q", "<CMD>tabclose<CR>")
+vim.keymap.set("n", { "<C-t>w", "<C-t>q" }, "<CMD>tabclose<CR>")
 -- Enter normal mode in terminal with <ESC><ESC>
 vim.keymap.set("t", "<ESC><ESC>", [[<C-\><C-n>]])
 -- Navigate between windows using <C-w>hjkl in terminal mode
