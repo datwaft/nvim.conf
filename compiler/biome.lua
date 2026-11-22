@@ -3,7 +3,7 @@ vim.g.current_compiler = "biome"
 
 ---@diagnostic disable-next-line: param-type-mismatch lists are supported in `:append`
 vim.opt_local.isfname:append({ "[", "]" })
-vim.bo.makeprg = "npx -y biome ci --reporter=github"
+vim.bo.makeprg = "npx -y @biomejs/biome ci --reporter=github"
 vim.bo.errorformat = {
   [[::%trror title=%*[^\,]\,file=%f\,line=%l\,endLine=%e\,col=%c\,endColumn=%k::%m]],
   [[::%tarning title=%*[^\,]\,file=%f\,line=%l\,endLine=%e\,col=%c\,endColumn=%k::%m]],
