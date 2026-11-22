@@ -1,15 +1,28 @@
 local M = {}
 
 ---@class VerboseHoverState
----@field verbosity           integer
----@field can_increase        boolean
----@field requesting          boolean
----@field generation          integer
----@field source_bufnr        integer | nil
----@field source_winid        integer | nil
----@field source_pos          { [1]: integer, [2]: integer } | nil
----@field float_winid         integer | nil
----@field mapped_source_bufnr integer | nil
+---@field verbosity            integer
+---@field can_increase         boolean
+---@field pending_req          VerboseHoverRequest | nil
+---@field latest_req_id        integer
+---@field source_bufnr         integer | nil
+---@field source_winid         integer | nil
+---@field source_pos           { [1]: integer, [2]: integer } | nil
+---@field float_winid          integer | nil
+---@field mapped_source_bufnr  integer | nil
+---@field saved_source_keymaps table<string, table>
+
+---@class VerboseHoverRequestSpec
+---@field winid       integer
+---@field bufnr       integer
+---@field pos         { [1]: integer, [2]: integer }
+---@field verbosity   integer
+---@field float_winid integer | nil
+
+---@class VerboseHoverRequest : VerboseHoverRequestSpec
+---@field id          integer
+---@field changedtick integer
+---@field cancelled   boolean
 
 ---@class TsQuickInfoPosition
 ---@field line   integer
@@ -40,13 +53,14 @@ local M = {}
 local state = {
   verbosity = 0,
   can_increase = false,
-  requesting = false,
-  generation = 0,
+  pending_req = nil,
+  latest_req_id = 0,
   source_bufnr = nil,
   source_winid = nil,
   source_pos = nil,
   float_winid = nil,
   mapped_source_bufnr = nil,
+  saved_source_keymaps = {},
 }
 
 const hover_ns = vim.api.nvim_create_namespace("custom.verbose_hover")
@@ -322,35 +336,62 @@ local function clear_target_highlight()
   end
 end
 
----@param bufnr integer | nil
-local function clear_hover_keymaps(bufnr)
+const hover_augroup = vim.api.nvim_create_augroup("verbose-hover", { clear = true })
+
+const hover_key_groups = {
+  {
+    { "+", "=" },
+    function()
+      M.expand()
+    end,
+  },
+  {
+    { "-", "_" },
+    function()
+      M.collapse()
+    end,
+  },
+}
+
+local function clear_source_keymaps()
+  local bufnr = state.mapped_source_bufnr
+  state.mapped_source_bufnr = nil
+  local saved_keymaps = state.saved_source_keymaps
+  state.saved_source_keymaps = {}
   if not bufnr or not vim.api.nvim_buf_is_valid(bufnr) then return end
-  pcall(vim.keymap.del, "n", "+", { buffer = bufnr })
-  pcall(vim.keymap.del, "n", "=", { buffer = bufnr })
-  pcall(vim.keymap.del, "n", "-", { buffer = bufnr })
-  pcall(vim.keymap.del, "n", "_", { buffer = bufnr })
+  vim.api.nvim_buf_call(bufnr, function()
+    for _, group in ipairs(hover_key_groups) do
+      for _, lhs in ipairs(group[1]) do
+        pcall(vim.keymap.del, "n", lhs, { buffer = bufnr })
+        if saved_keymaps[lhs] then vim.fn.mapset("n", false, saved_keymaps[lhs]) end
+      end
+    end
+  end)
 end
 
 ---@param bufnr integer | nil
-local function set_hover_keymaps(bufnr)
+local function set_float_keymaps(bufnr)
   if not bufnr or not vim.api.nvim_buf_is_valid(bufnr) then return end
+  for _, group in ipairs(hover_key_groups) do
+    vim.keymap.set("n", group[1], group[2], { buffer = bufnr, silent = true, nowait = true })
+  end
+end
 
-  vim.keymap.set("n", "+", function()
-    M.expand()
-  end, { buffer = bufnr, silent = true, nowait = true }
-  )
-  vim.keymap.set("n", "=", function()
-    M.expand()
-  end, { buffer = bufnr, silent = true, nowait = true }
-  )
-  vim.keymap.set("n", "-", function()
-    M.collapse()
-  end, { buffer = bufnr, silent = true, nowait = true }
-  )
-  vim.keymap.set("n", "_", function()
-    M.collapse()
-  end, { buffer = bufnr, silent = true, nowait = true }
-  )
+---@param bufnr integer | nil
+local function set_source_keymaps(bufnr)
+  if not bufnr or not vim.api.nvim_buf_is_valid(bufnr) then return end
+  if state.mapped_source_bufnr == bufnr then return end
+  clear_source_keymaps()
+  vim.api.nvim_buf_call(bufnr, function()
+    for _, group in ipairs(hover_key_groups) do
+      for _, lhs in ipairs(group[1]) do
+        local existing = vim.fn.maparg(lhs, "n", false, true)
+        if existing and existing.buffer == 1 then state.saved_source_keymaps[lhs] = existing end
+      end
+      vim.keymap.set("n", group[1], group[2], { buffer = bufnr, silent = true, nowait = true })
+    end
+  end)
+  state.mapped_source_bufnr = bufnr
 end
 
 ---@param winid integer
@@ -398,15 +439,16 @@ local function set_hover_controls(winid)
   })
 end
 
+---@param req   VerboseHoverRequest
 ---@param lines string[]
 ---@param opts  vim.lsp.util.open_floating_preview.Opts
 ---@return integer | nil, integer | nil
-local function open_preview_from_source(lines, opts)
-  local source_winid = state.source_winid
+local function open_preview_from_source(req, lines, opts)
+  local source_winid = req.winid
   local current_winid = vim.api.nvim_get_current_win()
   local came_from_hover = state.float_winid and current_winid == state.float_winid
-  local can_use_source = source_winid and vim.api.nvim_win_is_valid(source_winid)
-    and state.source_bufnr and vim.api.nvim_win_get_buf(source_winid) == state.source_bufnr
+  local can_use_source = vim.api.nvim_win_is_valid(source_winid)
+    and vim.api.nvim_win_get_buf(source_winid) == req.bufnr
 
   if can_use_source and current_winid ~= source_winid then
     local ok_set = pcall(vim.api.nvim_set_current_win, source_winid)
@@ -436,19 +478,18 @@ local function open_preview_from_source(lines, opts)
   return nil, nil
 end
 
----@param range  lsp.Range | nil
----@param client vim.lsp.Client | nil
-local function highlight_target(range, client)
+---@param range lsp.Range | nil
+local function highlight_target(range)
   if not range or not state.source_bufnr or not vim.api.nvim_buf_is_valid(state.source_bufnr) then return end
 
   clear_target_highlight()
 
-  local position_encoding = client?.offset_encoding ?? "utf-16"
   local lines = vim.api.nvim_buf_get_lines(state.source_bufnr, range.start.line, range["end"].line + 1, false)
   local start_line = lines[1] ?? ""
   local end_line = lines[range["end"].line - range.start.line + 1] ?? ""
-  local start_idx = vim.str_byteindex(start_line, position_encoding, range.start.character, false)
-  local end_idx = vim.str_byteindex(end_line, position_encoding, range["end"].character, false)
+  -- tsserver quickinfo ranges are always UTF-16.
+  local start_idx = vim.str_byteindex(start_line, "utf-16", range.start.character, false)
+  local end_idx = vim.str_byteindex(end_line, "utf-16", range["end"].character, false)
 
   vim.hl.range(
     state.source_bufnr,
@@ -460,17 +501,23 @@ local function highlight_target(range, client)
   )
 end
 
+---@param winid integer | nil
+---@return boolean
+local function is_float(winid)
+  return winid ~= nil and vim.api.nvim_win_is_valid(winid) and vim.api.nvim_win_get_config(winid).relative ~= ""
+end
+
+---@param req          VerboseHoverRequest
 ---@param body         TsQuickInfoBody
 ---@param silent       boolean | nil
 ---@param force_reopen boolean | nil
-local function show(body, silent, force_reopen)
-  local client = find_vtsls_client(state.source_bufnr)
+local function show(req, body, silent, force_reopen)
   local opts = {
     focus_id = "textDocument/hover",
   }
   if force_reopen then
     opts.focus = false
-  elseif state.float_winid and vim.api.nvim_win_is_valid(state.float_winid) then
+  elseif is_float(state.float_winid) and state.source_bufnr == req.bufnr and state.source_winid == req.winid then
     opts._update_win = state.float_winid
   end
 
@@ -489,119 +536,188 @@ local function show(body, silent, force_reopen)
     return
   end
 
-  local _, winid = open_preview_from_source(lines, opts)
+  local _, winid = open_preview_from_source(req, lines, opts)
   if not winid or not vim.api.nvim_win_is_valid(winid) then
     notify_hover_unavailable(false, silent)
     return
   end
+  clear_target_highlight()
+  state.source_winid = req.winid
+  state.source_bufnr = req.bufnr
+  state.source_pos = req.pos
+  state.verbosity = req.verbosity
   state.float_winid = winid
   state.can_increase = body.canIncreaseVerbosityLevel == true
 
-  highlight_target(hover.range, client)
+  highlight_target(hover.range)
 
   vim.api.nvim_create_autocmd("WinClosed", {
+    group = hover_augroup,
     pattern = tostring(winid),
     once = true,
     callback = function()
-      clear_target_highlight()
-      clear_hover_keymaps(state.mapped_source_bufnr)
-      state.mapped_source_bufnr = nil
-      return true
+      if state.float_winid == winid then
+        state.float_winid = nil
+        if state.pending_req and state.pending_req.float_winid == winid then
+          state.pending_req.cancelled = true
+          state.pending_req = nil
+        end
+        clear_target_highlight()
+        clear_source_keymaps()
+      end
     end,
   })
 
   local bufnr = vim.api.nvim_win_get_buf(winid)
   set_hover_controls(winid)
-  set_hover_keymaps(bufnr)
+  set_float_keymaps(bufnr)
 
-  if state.mapped_source_bufnr and state.mapped_source_bufnr ~= state.source_bufnr then
-    clear_hover_keymaps(state.mapped_source_bufnr)
+  if state.can_increase or state.verbosity > 0 then
+    set_source_keymaps(state.source_bufnr)
+  else
+    clear_source_keymaps()
   end
-  state.mapped_source_bufnr = state.source_bufnr
-  set_hover_keymaps(state.mapped_source_bufnr)
 end
 
----@param verbosity integer
----@param opts      VerboseHoverRequestOpts
-local function request_quickinfo(verbosity, opts)
-  local client = find_vtsls_client(state.source_bufnr)
-  if not client or not state.source_pos or not state.source_bufnr then
+---@param req VerboseHoverRequest
+---@return boolean
+local function is_request_valid(req)
+  if req.cancelled or req.id ~= state.latest_req_id then return false end
+  if not vim.api.nvim_buf_is_valid(req.bufnr) or not vim.api.nvim_win_is_valid(req.winid) then return false end
+  if vim.api.nvim_win_get_buf(req.winid) ~= req.bufnr then return false end
+  if vim.api.nvim_buf_get_changedtick(req.bufnr) ~= req.changedtick then return false end
+  if not vim.deep_equal(vim.api.nvim_win_get_cursor(req.winid), { req.pos[1] + 1, req.pos[2] }) then return false end
+  if req.float_winid then
+    return state.float_winid == req.float_winid and is_float(state.float_winid)
+  end
+  return vim.api.nvim_get_current_win() == req.winid
+end
+
+---@param req  VerboseHoverRequest
+---@param opts VerboseHoverRequestOpts
+local function finish_unavailable(req, opts)
+  vim.schedule(function()
+    if not is_request_valid(req) then return end
+    if opts.fallback_to_default then
+      vim.lsp.buf.hover({ silent = opts.silent })
+    else
+      notify_hover_unavailable(false, opts.silent)
+    end
+  end)
+end
+
+---@param spec VerboseHoverRequestSpec
+---@param opts VerboseHoverRequestOpts
+local function request_quickinfo(spec, opts)
+  local client = find_vtsls_client(spec.bufnr)
+  if not client then
     if opts.fallback_to_default then vim.lsp.buf.hover({ silent = opts.silent }) end
     return
   end
 
-  if state.requesting then return end
+  if state.pending_req and spec.float_winid then return end
 
-  state.requesting = true
-  state.generation += 1
-  local current_generation = state.generation
+  state.latest_req_id += 1
+  ---@type VerboseHoverRequest
+  local req = {
+    id = state.latest_req_id,
+    winid = spec.winid,
+    bufnr = spec.bufnr,
+    pos = spec.pos,
+    changedtick = vim.api.nvim_buf_get_changedtick(spec.bufnr),
+    verbosity = spec.verbosity,
+    float_winid = spec.float_winid,
+    cancelled = false,
+  }
+  state.pending_req = req
+
+  local line_text = vim.api.nvim_buf_get_lines(req.bufnr, req.pos[1], req.pos[1] + 1, false)[1] ?? ""
+  local utf16_col = vim.str_utfindex(line_text, "utf-16", req.pos[2], false)
 
   local params = {
     command = "typescript.tsserverRequest",
     arguments = {
       "quickinfo",
       {
-        file = vim.api.nvim_buf_get_name(state.source_bufnr),
-        line = state.source_pos[1] + 1,
-        offset = state.source_pos[2] + 1,
-        verbosityLevel = verbosity,
+        file = vim.api.nvim_buf_get_name(req.bufnr),
+        line = req.pos[1] + 1,
+        offset = utf16_col + 1,
+        verbosityLevel = req.verbosity,
       },
     },
   }
 
-  client:request("workspace/executeCommand", params, function(err, result)
-    state.requesting = false
-    if current_generation ~= state.generation then return end
+  local ok = client:request("workspace/executeCommand", params, function(err, result)
+    if state.pending_req == req then state.pending_req = nil end
+    if req.cancelled or req.id ~= state.latest_req_id then return end
     if err or not result or not result.body then
-      if opts.fallback_to_default then
-        vim.schedule(function()
-          vim.lsp.buf.hover({ silent = opts.silent })
-        end)
-      else
-        notify_hover_unavailable(false, opts.silent)
-      end
+      finish_unavailable(req, opts)
       return
     end
     vim.schedule(function()
-      if current_generation ~= state.generation then return end
-      show(result.body, opts.silent, opts.force_reopen)
+      if not is_request_valid(req) then return end
+      show(req, result.body, opts.silent, opts.force_reopen)
     end)
-  end, state.source_bufnr
+  end, req.bufnr
   )
+  if not ok then
+    if state.pending_req == req then state.pending_req = nil end
+    finish_unavailable(req, opts)
+  end
 end
 
 ---@param config? vim.lsp.buf.hover.Opts
 function M.hover(config)
   config = config ?? {}
 
-  if state.float_winid and vim.api.nvim_win_is_valid(state.float_winid) then
-    local ok, owner_bufnr = pcall(vim.api.nvim_win_get_var, state.float_winid, "textDocument/hover")
-    if ok and owner_bufnr == vim.api.nvim_get_current_buf() then
-      vim.api.nvim_set_current_win(state.float_winid)
-      vim.cmd("stopinsert")
-      return
+  if state.float_winid then
+    if is_float(state.float_winid) then
+      local owner_bufnr = vim.npcall(vim.api.nvim_win_get_var, state.float_winid, "textDocument/hover")
+      if owner_bufnr == vim.api.nvim_get_current_buf() then
+        vim.api.nvim_set_current_win(state.float_winid)
+        vim.cmd("stopinsert")
+        return
+      end
+    else
+      -- A hover docked into a normal split (`<C-w>H`) skips `WinClosed`; release it before hovering again.
+      state.float_winid = nil
+      clear_target_highlight()
+      clear_source_keymaps()
     end
   end
 
-  local cursor = vim.api.nvim_win_get_cursor(0)
-  state.source_winid = vim.api.nvim_get_current_win()
-  state.source_bufnr = vim.api.nvim_get_current_buf()
-  state.source_pos = { cursor[1] - 1, cursor[2] }
-  state.verbosity = 0
+  local winid = vim.api.nvim_get_current_win()
+  local cursor = vim.api.nvim_win_get_cursor(winid)
+  request_quickinfo({
+    winid = winid,
+    bufnr = vim.api.nvim_get_current_buf(),
+    pos = { cursor[1] - 1, cursor[2] },
+    verbosity = 0,
+    float_winid = nil,
+  }, { fallback_to_default = true, silent = config.silent, force_reopen = false })
+end
 
-  request_quickinfo(state.verbosity, { fallback_to_default = true, silent = config.silent, force_reopen = false })
+---@param next_verbosity integer
+local function adjust(next_verbosity)
+  if not state.source_winid or not state.source_bufnr or not state.source_pos or not state.float_winid then return end
+  if not vim.api.nvim_buf_is_valid(state.source_bufnr) then return end
+  request_quickinfo({
+    winid = state.source_winid,
+    bufnr = state.source_bufnr,
+    pos = state.source_pos,
+    verbosity = next_verbosity,
+    float_winid = state.float_winid,
+  }, { fallback_to_default = false, silent = true, force_reopen = true })
 end
 
 function M.expand()
   if not state.can_increase then return end
-  state.verbosity += 1
-  request_quickinfo(state.verbosity, { fallback_to_default = false, silent = true, force_reopen = true })
+  adjust(state.verbosity + 1)
 end
 
 function M.collapse()
   if state.verbosity == 0 then return end
-  state.verbosity -= 1
-  request_quickinfo(state.verbosity, { fallback_to_default = false, silent = true, force_reopen = true })
+  adjust(state.verbosity - 1)
 end
 
 return M
