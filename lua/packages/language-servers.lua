@@ -100,13 +100,6 @@ return {
       vim.lsp.config("*", { capabilities = lsp_file_operations.default_capabilities() })
     end,
   },
-  -- Open 'textDocument/documentLink' with gx
-  {
-    "icholy/lsplinks.nvim",
-    config = true,
-    lazy = false,
-    keys = || -> { { "gx", require("lsplinks").gx } },
-  },
   -- Enhance code actions select
   {
     "Chaitanyabsprip/fastaction.nvim",
