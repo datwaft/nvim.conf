@@ -57,7 +57,38 @@ return {
   -- LSP installation
   { "mason-org/mason.nvim", config = true },
   -- Project-local settings
-  { "folke/neoconf.nvim", config = true },
+  {
+    "mrjones2014/codesettings.nvim",
+    dependencies = { "neovim/nvim-lspconfig" },
+    opts = {},
+    config = function(_, opts)
+      local codesettings = require("codesettings")
+      codesettings.setup(opts)
+
+      ---@param _      lsp.InitializeParams
+      ---@param config vim.lsp.ClientConfig
+      local function load_local_settings(_, config)
+        codesettings.with_local_settings(config.name, config)
+      end
+
+      -- Chain servers with their own `before_init` so they don't shadow `"*"`.
+      for _, server in ipairs({ "rust_analyzer", "actionsls" }) do
+        local prev_before_init = vim.lsp.config[server]?.before_init
+        if prev_before_init then
+          vim.lsp.config(server, {
+            before_init = function(params, config)
+              load_local_settings(params, config)
+              prev_before_init(params, config)
+            end,
+          })
+        end
+      end
+
+      vim.lsp.config("*", {
+        before_init = load_local_settings,
+      })
+    end,
+  },
   -- Support LSP file operations
   {
     "antosha417/nvim-lsp-file-operations",
