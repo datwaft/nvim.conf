@@ -61,11 +61,27 @@ vim.o.grepprg = "rg --vimgrep --smart-case --hidden --glob='!.git/*'"
 vim.o.grepformat = "%f:%l:%c:%m"
 -- Find
 ---@param file_pattern string
+---@return string[]
 vim.o.findfunc = function(file_pattern, _)
   -- if first character is '*' then fuzzy search
-  if file_pattern:sub(1, 1) == "*" then file_pattern = file_pattern:gsub(".", ".*%0") .. ".*" end
-  local cmd = 'fd  --color=never --full-path --type file --hidden --exclude=".git" "' .. file_pattern .. '"'
-  return vim.fn.systemlist(cmd)
+  if file_pattern:sub(1, 1) == "*" then
+    local chars = vim.fn.split(file_pattern:sub(2), "\\zs")
+    for i, ch in ipairs(chars) do
+      chars[i] = ch:gsub("([%^%$%.%|%*%+%?%(%)%[%]%{%}\\])", "\\%1")
+    end
+    file_pattern = ".*" .. table.concat(chars, ".*") .. ".*"
+  end
+  return vim.fn.systemlist({
+    "fd",
+    "--color=never",
+    "--full-path",
+    "--type",
+    "file",
+    "--hidden",
+    "--exclude=.git",
+    "--",
+    file_pattern,
+  })
 end
 -- Mouse
 vim.o.mousemodel = "extend"
