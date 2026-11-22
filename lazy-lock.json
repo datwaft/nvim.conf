@@ -65,6 +65,5 @@
   "vim-dadbod-ui": { "branch": "master", "commit": "afd07819d8efcefc3317205b855ad4e3513b0011" },
   "vim-dirtytalk": { "branch": "master", "commit": "4227b58c4151b7551a5d2185a511d516ad0f782b" },
   "vim-dotenv": { "branch": "master", "commit": "5c51cfcf8d87280d6414e03cd6b253eb70ecb800" },
-  "vim-matchup": { "branch": "master", "commit": "0106b1afd4a2f7e1098037b5ceb161bab7471088" },
-  "vim-slime": { "branch": "main", "commit": "375999b91aa9bd227350140d4aedc6d2ff8554ac" }
+  "vim-matchup": { "branch": "master", "commit": "0106b1afd4a2f7e1098037b5ceb161bab7471088" }
 }
