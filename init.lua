@@ -469,7 +469,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "gt", function()
       vim.lsp.buf.type_definition({
         on_list = function(t)
-          vim.lsp.util.show_document(t.items[1].user_data, "utf-8", { focus = true })
+          local item = t.items[1]
+          if not item then return end
+          local pos = { line = math.max(0, (item.lnum ?? 1) - 1), character = math.max(0, (item.col ?? 1) - 1) }
+          local uri = item.user_data?.uri or item.user_data?.targetUri or vim.uri.from_fname(item.filename)
+          -- Quickfix columns are already byte offsets, so `"utf-8"` matches all server encodings.
+          vim.lsp.util.show_document({ uri = uri, range = { start = pos, ["end"] = pos } }, "utf-8", { focus = true })
         end,
       })
     end, { buffer = bufnr }
