@@ -441,6 +441,12 @@ vim.lsp.config("bg3", {
   end,
 })
 
+-- Default LSP feature states (buffer toggles override these without LspAttach resetting them)
+vim.lsp.inlay_hint.enable(true)
+vim.lsp.codelens.enable(false)
+vim.lsp.document_color.enable(true)
+vim.lsp.inline_completion.enable(true)
+
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("lsp-attach-config", { clear = true }),
   callback = function(args)
@@ -498,10 +504,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       )
     end
     -- Run codelens
-    vim.keymap.set("n", "grl", function()
-      vim.lsp.codelens.run({ client_id = client.id })
-    end, { buffer = bufnr }
-    )
+    vim.keymap.set("n", "grl", vim.lsp.codelens.run, { buffer = bufnr })
     -- Toggle codelens
     vim.keymap.set("n", "<leader>tl", function()
       vim.lsp.codelens.enable(not vim.lsp.codelens.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
@@ -515,15 +518,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
       )
     end, { buffer = bufnr }
     )
-    -- Enable inlay hints by default
-    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-    -- Disable codelens by default
-    vim.lsp.codelens.enable(false, { bufnr = bufnr })
-    -- Use LSP-provided color if possible
-    vim.lsp.document_color.enable(true, { bufnr = bufnr })
-    -- Enable inline completion if possible (except on some filetypes)
-    local enable_inline = not vim.list_contains({ "fennel" }, vim.bo[bufnr].filetype)
-    vim.lsp.inline_completion.enable(enable_inline, { bufnr = bufnr })
     -- Enable linked editing range if possible
     if client:supports_method("textDocument/linkedEditingRange") then
       vim.lsp.linked_editing_range.enable(true, { client_id = client.id })
