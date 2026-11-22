@@ -69,6 +69,5 @@
   "vim-dotenv": { "branch": "master", "commit": "5c51cfcf8d87280d6414e03cd6b253eb70ecb800" },
   "vim-matchup": { "branch": "master", "commit": "0106b1afd4a2f7e1098037b5ceb161bab7471088" },
   "vim-sandwich": { "branch": "master", "commit": "74cf93d58ccc567d8e2310a69860f1b93af19403" },
-  "vim-slime": { "branch": "main", "commit": "375999b91aa9bd227350140d4aedc6d2ff8554ac" },
-  "vim-spellsync": { "branch": "master", "commit": "ea9f431483ceb40ede8bd5b126a03eccd49b1bc0" }
+  "vim-slime": { "branch": "main", "commit": "375999b91aa9bd227350140d4aedc6d2ff8554ac" }
 }

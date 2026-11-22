@@ -36,12 +36,21 @@ local function enable_spell(win_id, buf_id)
   vim.wo[win_id].spell = true
 end
 
+local function sync_spell_files()
+  for _, wordlist in ipairs(vim.opt.spellfile:get()) do
+    local add_mtime = vim.uv.fs_stat(wordlist)?.mtime.sec
+    if add_mtime and add_mtime > (vim.uv.fs_stat(wordlist .. ".spl")?.mtime.sec ?? -1) then
+      vim.cmd({ cmd = "mkspell", args = { wordlist }, bang = true, mods = { silent = true } })
+    end
+  end
+end
+
 local function activate_spell()
+  sync_spell_files()
   vim.go.spell = true
   for _, win_id in ipairs(vim.api.nvim_list_wins()) do
     enable_spell(win_id)
   end
-  vim.cmd.SpellSync()
 end
 
 local spell_group = vim.api.nvim_create_augroup("spell", { clear = true })
