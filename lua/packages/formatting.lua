@@ -29,7 +29,11 @@ local function apply_code_action(bufnr, server, kind)
   -- `only` is a request: a server may offer actions of other kinds too
   local action ---@type lsp.CodeAction?
   for _, candidate in ipairs(offered or {}) do
-    if candidate.kind and (candidate.kind == kind or vim.startswith(candidate.kind, kind .. ".")) then
+    if
+      not candidate.disabled
+      and candidate.kind
+      and (candidate.kind == kind or vim.startswith(candidate.kind, kind .. "."))
+    then
       action = candidate
       break
     end
@@ -42,7 +46,14 @@ local function apply_code_action(bufnr, server, kind)
   end
   if action.edit then vim.lsp.util.apply_workspace_edit(action.edit, client.offset_encoding) end
   -- Its command runs after its edit
-  if action.command then request("workspace/executeCommand", action.command) end
+  if action.command then
+    local handler = client.commands[action.command.command] or vim.lsp.commands[action.command.command]
+    if handler then
+      handler(action.command, { client_id = client.id, bufnr = bufnr })
+    else
+      request("workspace/executeCommand", action.command)
+    end
+  end
 end
 
 ---@type LazySpec
