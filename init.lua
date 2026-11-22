@@ -436,9 +436,7 @@ vim.lsp.config("bg3", {
   cmd = { "bg3-ls" },
   filetypes = { "bg3_stats", "bg3_lsx", "bg3_thoth", "bg3_osiris", "bg3_localization" },
   workspace_required = true,
-  root_dir = function(_, on_dir)
-    on_dir(vim.fs.root(assert(vim.uv.cwd()), "bg3-ls.json"))
-  end,
+  root_markers = { "bg3-ls.json" },
 })
 
 -- Default LSP feature states (buffer toggles override these without LspAttach resetting them)
