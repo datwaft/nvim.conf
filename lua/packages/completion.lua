@@ -13,7 +13,7 @@ return {
         providers = {
           lsp = { async = true },
           dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
-          lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", fallbacks = { "lazy_dev" } },
+          lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", score_offset = 100 },
           snippets = { should_show_items = |ctx| -> ctx.trigger.initial_kind ~= "trigger_character" },
           path = { opts = { get_cwd = || -> vim.fn.getcwd() } },
         },
