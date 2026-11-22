@@ -139,6 +139,14 @@ vim.api.nvim_create_autocmd("FileType", {
     end
   end,
 })
+-- Create parent directories when saving
+vim.api.nvim_create_autocmd("BufWritePre", {
+  group = vim.api.nvim_create_augroup("mkdir-on-save", { clear = true }),
+  callback = function(args)
+    if args.match == "" or vim.uri.parse(args.match) then return end
+    vim.fn.mkdir(vim.fn.fnamemodify(args.match, ":p:h"), "p")
+  end,
+})
 
 -----------
 -- Keybinds

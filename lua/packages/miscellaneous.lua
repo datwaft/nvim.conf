@@ -1,7 +1,5 @@
 ---@type LazySpec
 return {
-  -- Create directories when saving if necessary
-  "jghauser/mkdir.nvim",
   -- Never invalidate undo files
   {
     "kevinhwang91/nvim-fundo",
