@@ -86,6 +86,19 @@ local function update_branch(workspace)
   end)
 end
 
+---@param workspace string
+---@return string | nil
+local function find_repo_dir(workspace)
+  const jj_dir = vim.fs.joinpath(workspace, ".jj")
+  const repo = vim.fs.joinpath(jj_dir, "repo")
+  const stat = vim.uv.fs_stat(repo)
+  if not stat then return nil end
+  if stat.type == "directory" then return repo end
+  const target = vim.trim(vim.fn.readfile(repo)[1] ?? "")
+  if target == "" then return nil end
+  return vim.uv.fs_realpath(vim.fs.abspath(target, { cwd = jj_dir, plain = true }))
+end
+
 --- Switch the watcher only when the active workspace changes.
 ---@param workspace string
 local function update_current_workspace(workspace)
@@ -95,10 +108,11 @@ local function update_current_workspace(workspace)
 
   if workspace == "" then return end
 
-  const op_heads_dir = workspace .. "/.jj/repo/op_heads"
-  if vim.uv.fs_stat(op_heads_dir)?.type == "directory" then
+  const repo_dir = find_repo_dir(workspace)
+  const heads_dir = repo_dir and vim.fs.joinpath(repo_dir, "op_heads", "heads")
+  if heads_dir and vim.uv.fs_stat(heads_dir)?.type == "directory" then
     file_changed:start(
-      op_heads_dir, {},
+      heads_dir, {},
       vim.schedule_wrap(function()
         if current_jj_workspace == workspace then update_branch(workspace) end
       end)
