@@ -31,8 +31,11 @@ local function update_spell(win_id, buf_id)
   if not vim.api.nvim_win_is_valid(win_id) then return end
   local current_buf = vim.api.nvim_win_get_buf(win_id)
   if buf_id and current_buf ~= buf_id then return end
+  local spell_disabled = vim.b[current_buf].spell_disabled
   local disabled = vim.api.nvim_win_get_config(win_id).relative ~= ""
     or vim.bo[current_buf].buftype ~= ""
+    or spell_disabled == true
+    or spell_disabled == 1
     or vim.list_contains(spell_disabled_filetypes, vim.bo[current_buf].filetype)
 
   if disabled then
