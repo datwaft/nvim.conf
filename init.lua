@@ -219,48 +219,40 @@ vim.keymap.set({ "c", "i", "n", "v" }, "<M-Left>", "<S-Left>")
 vim.keymap.set({ "c", "i", "n", "v" }, "<M-Right>", "<S-Right>")
 -- Search on selected text
 vim.keymap.set("x", "g/", "<Esc>/\\%V")
--- Copy current file path to clipboard
+---@param path          string
+---@param include_range boolean
+local function copy_location(path, include_range)
+  local value = path
+  if include_range then
+    local srow, erow = vim.fn.line("v"), vim.fn.line(".")
+    if srow > erow then srow, erow = erow, srow end
+    value = srow == erow ? string.format("%s:%d", path, srow) : string.format("%s:%d-%d", path, srow, erow)
+  end
+  vim.fn.setreg("+", value)
+  vim.notify(("'%s' was copied to clipboard"):format(value), vim.log.levels.INFO)
+end
+---@return string
+local function playwright_path()
+  local path, replaced = vim.fn.expand("%:p:~:."):gsub("^tests/", "", 1)
+  if replaced == 0 then path = path:gsub("/tests/", "/", 1) end
+  return path
+end
+-- Copy current file path / location to clipboard
 vim.keymap.set("n", "<leader>l", function()
-  vim.fn.setreg("+", vim.fn.expand("%:."))
-  vim.notify(("'%s' was copied to clipboard"):format(vim.fn.getreg("+")), vim.log.levels.INFO)
+  copy_location(vim.fn.expand("%:."), false)
 end, { silent = true }
 )
--- Copy current location to clipboard
 vim.keymap.set("x", "<leader>l", function()
-  local path = vim.fn.expand("%:.")
-  local srow = vim.fn.line("v")
-  local erow = vim.fn.line(".")
-  if srow > erow then
-    srow, erow = erow, srow
-  end
-  if srow == erow then
-    vim.fn.setreg("+", ("%s:%d"):format(path, srow))
-  else
-    vim.fn.setreg("+", ("%s:%d-%d"):format(path, srow, erow))
-  end
-  vim.notify(("'%s' was copied to clipboard"):format(vim.fn.getreg("+")), vim.log.levels.INFO)
+  copy_location(vim.fn.expand("%:."), true)
 end, { silent = true }
 )
--- Copy current file path to clipboard modified to work with playwright
+-- Copy current file path / location to clipboard modified to work with playwright
 vim.keymap.set("n", "<leader>L", function()
-  vim.fn.setreg("+", vim.fn.expand("%:p:~:.:s?tests/??"))
-  vim.notify(("'%s' was copied to clipboard"):format(vim.fn.getreg("+")), vim.log.levels.INFO)
+  copy_location(playwright_path(), false)
 end, { silent = true }
 )
--- Copy current location to clipboard modified to work with playwright
 vim.keymap.set("x", "<leader>L", function()
-  local path = vim.fn.expand("%:p:~:.:s?tests/??")
-  local srow = vim.fn.line("v")
-  local erow = vim.fn.line(".")
-  if srow > erow then
-    srow, erow = erow, srow
-  end
-  if srow == erow then
-    vim.fn.setreg("+", ("%s:%d"):format(path, srow))
-  else
-    vim.fn.setreg("+", ("%s:%d-%d"):format(path, srow, erow))
-  end
-  vim.notify(("'%s' was copied to clipboard"):format(vim.fn.getreg("+")), vim.log.levels.INFO)
+  copy_location(playwright_path(), true)
 end, { silent = true }
 )
 
